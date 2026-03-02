@@ -136,7 +136,8 @@ Digital public infrastructure contributor and system design lead.
 ### Xolotlcalli BioMuseum / [`xolotlcalli.axolodao.eth`](https://app.ens.domains/xolotlcalli.axolodao.eth)  
 Conservation and field-practice node connected to biodiversity operations.
 
-- [Instagram](https://www.instagram.com/xolotlcalli.mx/)  
+- [Instagram](https://www.instagram.com/xolotlcalli.mx/)
+- [Youtube](https://www.youtube.com/@Xolotlcalli)
 - [X](https://x.com/Xolotlcalli_mx)
 
 ---
@@ -154,7 +155,7 @@ Community articulation and stakeholder coordination node.
 - [`lego-lvsg.axolodao.eth`](https://app.ens.domains/lego-lvsg.axolodao.eth)
 
 
-## 7. 🏫 Offchain Affiliations & Collaborations
+## 🏫 7. Offchain Affiliations & Collaborations
 
 ### Academic Body of Ecology and Wildlife Diversity (CAEyDF)
 Research and scientific collaboration for ecology, biodiversity, and species-conservation frameworks.
@@ -202,6 +203,6 @@ This repository includes a `Docs/` directory with language-specific subfolders:
 Each folder contains conceptual documentation and system descriptions.
 
 
-## 9. 📬 Contact
+## 📬 9. Contact
 
 `hola@axolodao.org`
