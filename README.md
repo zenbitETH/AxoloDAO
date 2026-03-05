@@ -17,7 +17,7 @@ AxoloDAO connects conservation actors, researchers, and communities around a sha
 
 The genus *Ambystoma* encompasses approximately **32 salamander species across North America**, with **17 species in Mexico** and **16 endemic to the country**—representing over **50% of global genus diversity**. Despite this, Mexico contributes only a small fraction of global scientific publications on *Ambystoma* and holds no patents derived from its endemic biodiversity. The Mexican axolotl (*Ambystoma mexicanum*) alone accounts for a disproportionate share of worldwide research output, consolidating its role as a dominant biomedical model organism.
 
-### 🌍 Systemic Extinction Pressures
+### Systemic Extinction Pressures
 
 The survival of Mexican *Ambystoma* species is threatened by:
 
@@ -29,7 +29,7 @@ The survival of Mexican *Ambystoma* species is threatened by:
 
 According to IUCN classifications, at least 9 Mexican endemic species are categorized as Critically Endangered, with additional taxa listed as Endangered. This means that a majority of endemic species face extremely high or very high extinction risk.
 
-### 🧬 Global Research Imbalance
+###  Global Research Imbalance
 
 While *A. mexicanum* is globally recognized for its regenerative capabilities—regenerating limbs, spinal cord, cardiovascular tissue, and complex neural structures—most research infrastructure and funding is concentrated outside Mexico. This creates structural asymmetry between biological origin and scientific benefit.
 
@@ -57,7 +57,7 @@ Through this architecture, daily conservation operations become persistent, sear
 - Donors to observe measurable environmental impact  
 - Communities to participate in oversight and governance  
 
-### ⚙️ Onchain Integration Layer
+### Onchain Integration Layer
 
 AxoloDAO leverages:
 
