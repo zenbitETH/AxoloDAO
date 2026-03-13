@@ -1,7 +1,7 @@
 # AxoloDAO Micro-DAO Experiment: Axolobabies
 ## 1. Context and Objective
 
-As part of an ex-situ conservation initiative, our facility has received 10 juvenile axolotls (*Ambystoma spp.*). The objective of this dynamic is to operate within a Web3 Testnet environment, managing digital assets inside a test-net (**ETH** and **USDC**) to sustain the biological and physicochemical requirements of these specimens.
+As part of an ex-situ conservation initiative, our facility has received 10, 3-week old axolotl larvae (*Ambystoma mexicanum.*). The objective of this dynamic is to operate within a Web3 Testnet environment, managing digital assets inside a test-net (**ETH** and **USDC**) to sustain the biological and physicochemical requirements of these specimens. The survivance of the larvae will entirely depend on the actions and decisions made by the team in charge of each of the 4 different confinements.
 
 To maintain the aquatic systems, your team must acquire funding through scientific data generation and strategic planning, subsequently allocating those resources to cover operational costs.
 
