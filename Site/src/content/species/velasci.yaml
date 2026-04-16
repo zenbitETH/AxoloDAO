@@ -1,0 +1,34 @@
+slug: velasci
+scientificName: A. velasci
+commonNames:
+  - Axolote del altiplano
+states:
+  - CMX
+  - COA
+  - MEX
+  - MIC
+  - PUE
+  - QUE
+  - TLA
+  - VER
+iucn: LC
+nom059: Pr
+description: Son organismos robustos con una longitud hocico-cloaca (LHC) de en promedio $106.4 \pm 21$mm, cola de $35\pm13.4mm$; largo de la cabeza de $58.2\pm26$ 26.5mm, ancho de la cabeza de $27\pm2mm$ y la altura de la cola de $19.2\pm2.1$ mm (Ramírez-Bautista et al., 2009). Los individuos neoténicos son de color café oscuro en la región ventral con manchas amarillas o amarillos con manchas negras, incluso algunos con manchas muy poco conspicuas. Los individuos metamórficos son café oscuro con manchas negras amarillas o crema y con la región ventral también clara.
+habitat: Habita en arroyos, cuerpos de agua y sus alrededores, en pastizales, matorrales y bosques de encino.
+distribution: "Probablemente es la especie endémica a México con mayor extensión de distribución en el país, la cual abarca desde localidades muy cercanas a los límites con Estados Unidos, pasando por el Altiplano hasta el Eje Volcánico Transversal, muy cerca de la Ciudad de México. Los estados en donde se distribuye esta especie son: Michoacán, Estado de México, Puebla, Tlaxcala, Veracruz, Coahuila, y Querétaro (Dixon y Lemos-Espinal, 2010, Shaffer et al., 2010; Aguilar-Miguel, 2005)."
+threats: Las principales amenazas de esta especie es la pérdida del hábitat y la contaminación y extracción del agua de los cuerpos de agua donde se distribuye, en algunos sitios existe una extracción ilegal de individuos para consumo y elaboración de remedios tradicionales.
+feeding: No existen datos específicos sobre su alimentación, pero se puede asumir que se alimentan de invertebrados terrestres y acuáticos pequeños.
+reproduction: Los ejemplares reproductivos más pequeños reportados son de hasta 96 mm.
+references:
+  - Aguilar-Miguel, X. (compilador). 2005. Algunas especies de anfibios y reptiles contenidos en el Proyecto de Norma Oficial Mexicana PROY-NOM-059-ECOL-2000. Facultad de Ciencias, Centro de Investigación en Recursos Bióticos, Universidad Autónoma del Estado de México. Bases de datos SNIB-CONABIO. Proyecto No. W035. México, D.F.
+  - Dixon, J. R. y J. A. Lemos-Espinal. 2010. Anfibios y reptiles del estado de Querétaro, México. Universidad de Texas A&M, Universidad Nacional Autónoma de México, Comisión Nacional para el Conocimiento y Uso de la Biodiversidad. México. 428 p.
+  - "Dugès, A. A. D. 1888. Erpetología del Valle de México. La Naturaleza. Serie 2. México 1: 97-146."
+  - Ramírez-Bautista, A., U. Hernández-Salinas, U. O. García-Vázquez, A. Leyte-Manrique y L. Canseco-Márquez. 2009. Herpetofauna del Valle de México. Diversidad y Conservación. Universidad Autónoma del Estado de Hidalgo/Comisión Nacional para el Conocimiento y Uso de la Biodiversidad. D. F. México. 240 p.
+  - "Shaffer, H.B., O. Flores-Villela, G. Parra-Olea y D. Wake. 2010. Ambystoma velasci. The IUCN Red List of Threatened Species 2010: e.T59072A11878546."
+anp:
+  - No se conoce con certeza la distribución de esta especie dentro de ANP sin embargo es pro bable que ocurra en algunas de ellas
+localityType: “Lago de Santa Isabel, Cerca de la Villa de Hidalgo, México” , Villa Gustavo Madero
+characterizedBy: Dugès, 1888
+markerSvg: velasci.svg
+accentColor: "#9FE91F"
+endemic: true

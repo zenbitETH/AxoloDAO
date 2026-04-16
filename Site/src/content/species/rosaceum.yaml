@@ -1,0 +1,45 @@
+slug: rosaceum
+scientificName: A. rosaceum
+commonNames:
+  - Axolote rosado
+  - Axolote tarahumara
+  - Salamandra de la Sierra Madre Occidental
+  - Salamandra tarahumara.
+states:
+  - CHH
+  - DUR
+  - JAL
+  - NAY
+  - SIN
+  - SON
+  - ZAC
+iucn: LC
+nom059: Pr
+description: |-
+  Esta especie rara vez presenta neotenia, los adultos metamórficos alcanzan 85 mm de longitud hocico cloaca (LHC), y 152.0 mm de longitud total (LT). El tamaño al cual alcanzan la metamorfosis varia de 48.0 a 62.0 mm LHC y de 98.0 a 121.0 mm LT. Al momento de la eclosión las larvas miden entre 9 a 10 mm de LHC (Anderson, 1961; Anderson y Webb, 1978, Lemos-Espinal, 2003).
+
+  Las larvas de entre 9 y 35 mm presentan una coloración oscura en la porción dorsal y crema en la región ventral. Las larvas de más de 35 mm tienen manchas o manchas claras de color blanco, amarillo o rosa sobre un fondo café oscuro (Anderson, 1961: Anderson y Webb, 1978; Lemos-Espinal, 2003).
+
+  Los individuos metamórficos presentan una coloración café oscura con puntos de colores blanco a amarillo en los costados o la porción dorsal. El vientre y la región gular es de color café a crema. El vientre es color crema o amarillo y puede presentar manchas claras (Anderson, 1961; Anderson y Webb, 1978; Lemos-Espinal, 2003).
+habitat: Habita en arroyos de poca profundidad y baja corriente que corren bosques de pino, encino y pastizales. Los individuos metamórficos viven bajo troncos, rocas o refugios que mantengan mucha humedad en los alrededores de los arroyos (Anderson y Web, 1978).
+distribution: Esta especie es endémica para México y se distribuye únicamente en la Sierra Madre Occidental. Habita en arroyos pequeños en los estados de Chihuahua, Durango, Jalisco, Nayarit, Sinaloa, Sonora y Zacatecas (Lemos-Espinal et al., 2015; IUCN, 2015) entre los 1,000 y 3,110 msnm (Carbajal-Márquez et al., 2015).
+threats: Las principales amenazas de esta especie es la pérdida del hábitat y la contaminación de los arroyos (Carbajal-Márquez et al., 2015, Lemos-Espinal, 2003).
+feeding: No existen datos específicos sobre su alimentación, pero se puede asumir que se alimentan de invertebrados terrestres y acuáticos pequeños.
+reproduction: Se ha registrado huevos en los meses de julio en arroyos con poca corriente o pozas, Los huevos son adheridos a sustratos como troncos, vegetación acuática o bajo rocas a una profundidad de hasta 10 cm de la superficie. Los cúmulos de huevos pueden medir hasta 15 mm mientras que los huevos miden en promedio 2.6 mm; el periodo de incubación podría ser de entre 20 y 25 días con una temperatura ambiental de 11 a $15^{\circ}C$.
+references:
+  - Anderson, J. D. 1961. The Life History and Systematics of Ambystoma rosaceum. Copeia, 1961(4), 371-377.
+  - Anderson, J. D. y R.G. Webb. 1978. Life History Aspects of the Mexican Salamander Ambystoma rosaceum (Amphibia, Urodela, Ambystomatidae). Journal of Herpetology, 12(1), 89-93.
+  - "Carbajal-Márquez, R. A., G.E. Quintero-Díaz y C. Chávez-Floriano. 2015. Abystoma rosaceum Taylor, 1941, the Tharahumara Salamander (Caudata: Ambystomatidae), a new state record for Aguascalientes, México. Check List, 11(3), 10-12."
+  - Diario Oficial de la Federación. 2015. Decreto por el que se declara Área de Protección de Flora y Fauna Cerro Mohinora.
+  - "IUCN SSC Amphibian Specialist Group. 2015. Ambystoma rosaceum. The IUCN Red List of Threatened Species 2015: e.T59069A53974411."
+  - Lemos-Espinal, J. A. 2003. Ficha técnica de Ambystoma rosaceum. Fichas diagnós- ticas para 10 especies de anfibios y reptiles mexicanos. Facultad de Estudios Superiores Iztacala, Universidad Nacional Autónoma de México. Bases de datos SNIB-CONABIO. Proyecto No. W002. México, D.F.
+  - Lemos-Espinal, J.A., H.M. Smith, J.R. Dixon y A. Cruz. 2016, Amphibians and Reptiles of Sonora, Chihuahua and Coahuila, Mexico. CONABIO. México.
+  - Taylor, E. H. 1941. Two new ambystomid salamanders from Chihuahua. Copeia 1941 143-146.
+anp:
+  - Cerro Mohinora en el Municipio de Guadalupe y Calvo
+  - Área de Protección de Flora y Fauna Campo Verde
+localityType: “Mojárachic, Chihuahua, México”. Sierra Madre Occi- dental
+characterizedBy: Tylor, 1941
+markerSvg: rosaceum.svg
+accentColor: "#F6716D"
+endemic: true

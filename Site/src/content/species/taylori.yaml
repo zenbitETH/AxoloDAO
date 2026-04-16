@@ -1,0 +1,22 @@
+slug: taylori
+scientificName: A. taylori
+commonNames:
+  - Axolote de Alchichica
+states:
+  - PUE
+iucn: EN
+nom059: Pr
+description: |-
+  En vida libre solo se han observado individuos neoténicos; en cautiverio si se ha observado metamorfosis. Los adultos neoténicos miden en promedio 76 mm de longitud hocico cloaca (LHC) con un intervalo de 60 a 113mm. Cuando eclosionan las larvas miden entre 10 y 17 mm (Brandon et al., 1981). La cabeza es un poco más ancha que larga y la cola es corta aproximadamente al 65% del tamaño del cuerpo (Aguilar-Miguel. 2005).
+
+  Los ejemplares neoténicos son de color amarillo brillante con manchas oscuras, mientras que los organismos metamórficos son color café oscuro en el dorso con manchas crema. Presentan un par de manchas claras en la región occipital y una mancha clara en la región occipital (Aguilar-Miguel, 2005).
+habitat: Habita en aguas salobres profundas de la Laguna de Alchichica (Aguilar-Miguel, 2005).
+distribution: Su distribución está restringida a la Laguna de Alchichica, en el Municipio de Tepehuayo, Puebla.
+threats: Las principales amenazas de esta especie es la pérdida del hábitat y la contaminación y extracción del agua de la de la Laguna de Alchichica (IUCN SSC Amphibian Specialist Group, 2015a).
+feeding: No existen datos específicos sobre su alimentación, pero se puede asumir que se alimentan de invertebrados terrestres y acuáticos pequeños.
+reproduction: Los organismos son reproductivos cuando alcanzan los 70 mm de LHC.
+localityType: “Laguna Alchichica, Puebla, México, alrededor de 24 km al suroeste Perote”.
+characterizedBy: Brandon et al, 1981
+markerSvg: taylori.svg
+accentColor: "#369E57"
+endemic: true

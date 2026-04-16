@@ -1,0 +1,33 @@
+slug: andersoni
+scientificName: A. andersoni
+commonNames:
+  - Achoque de Zacapu
+states:
+  - MIC
+iucn: CR
+nom059: Pr
+description: |-
+  Los adultos miden de longitud hocico-cloaca entre 100 y 140 mm (x = 120.9, SD =10.2), con una longitud total de 162 a 235 mm (x = 197.9, SD = 18.3); no existen evidencias de dimorfismo sexual utilizando estas medidas. El ancho de la cabeza comprende entre el 22 al 30% de la longitud hocico-cloaca. Los huevos miden entre 2.2 y 2.3 mm y son de color amarillento y negro (Krebs y Brandon, 1984).
+
+  Presenta una coloración naranja obscuro, con manchas negras a lo largo del cuerpo, la aleta dorsal está reducida en longitud en los adultos; patas posteriores con cuatro dedos cortos y palmeados; en el cuarto dedo de las extremidades posteriores presenta tres falanges (Aguilar-Miguel, 2005).
+habitat: Habita en la Laguna de Zacapu y en el arroyo que la alimenta. Los ejemplares reportados en la descripción de la especie se encontraron en sitios con salinidad de entre 85 y 90 ppm; la temperatura del agua entre 20 y 26 °C. Se colectaron a los ejemplares en porciones de la laguna y del arroyo con abundante vegetación (Krebs y Brandon, 1984).
+distribution: |-
+  Esta especie se distribuye dentro de la Laguna de Zacapu, en el estado de Michoacán. Históricamente se le podía encontrar en los canales circundantes a la Laguna, sin embargo, durante el trabajo de campo realizado en 2015 para la identificación de sitios prioritarios para la conservación de las especies de Ambystoma, no se obtuvo ningún ejemplar en dichos cuerpos de agua. Los pescadores de la localidad refieren que únicamente habita dentro de la Laguna, en donde sí fue posible registrar su presencia mediante el uso de redes.
+
+  Recientemente la laguna de Zacapu fue descrita como un sitio en buen estado de conservación (Zubieta-Rojas et al., 2004).
+threats: Pérdida del hábitat y contaminación de la laguna de Zacapu por el crecimiento de la ciudad de Zacapu y la extracción no sustentable de axolotes para su venta en mercados cercanos (Aguilar-Miguel y Casas-Andreu, 2005).
+feeding: No existen datos específicos sobre su alimentación, pero se puede asumir que se alimentan de invertebrados terrestres y acuáticos pequeños.
+reproduction: Alcanzan la madurez sexual a los 90 mm y 12 meses de edad. Se han colectado hembras grávidas y a punto de eclosionar y machos con la cloaca distendida en el mes de julio, lo que indica que en ese mes es la temporada de reproducción (Krebs y Brandon, 1984).
+references:
+  - Aguilar-Miguel, X. (compilador). 2005. Algunas especies de anfibios y reptiles contenidos en el Proyecto de Norma Oficial Mexicana PROY-NOM-059-ECOL-2000. Facultad de Ciencias, Centro de Investigación en Recursos Bióticos, Universidad Autónoma del Estado de México. Bases de datos SNIB-CONABIO. Proyecto No. W035. México, D.F.
+  - "Aguilar-Miguel, X. y G. Casas-Andreu. 2005. Ambystoma andersoni. En: Enciclopedia de las Especies de México (online resource)."
+  - "Krebs, S. L. y R. A. Brandon. 1984. A new species of salamander (family Ambystomatidae) from Michoacan, Mexico. Herpetologica 40: 238-245."
+  - Zubieta-Rojas, L., J. L. De La Fuente-De La Fuente, and J. L. García-Soto. 2004. Estado de conservación de la Laguna de Zacapu, Michoacán.
+anp:
+  - La Laguna de Zacapu
+localityType: “Laguna de Zacapu, 2000 m.s.n.m., Michoacán, México”.
+characterizedBy: Krebs y Brandon,1984
+heroCardSvg: AndersoniCard.svg
+markerSvg: andersoni.svg
+accentColor: "#1A00FF"
+endemic: true

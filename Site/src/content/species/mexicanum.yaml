@@ -1,0 +1,32 @@
+slug: mexicanum
+scientificName: A. mexicanum
+commonNames:
+  - Axolote
+  - Axolote de Xochimilco
+  - Axolote mexicano
+states:
+  - CMX
+iucn: CR
+nom059: P
+description: Es una salamandra con longitud hocico-cloaca de $133.3\pm12.5$ mm y de cloaca cola (LC) $108.3 \pm 11.9$ mm. El largo de la cabeza es de $42.7\pm3.4$ mm, mientras de que ancho es de $37.9\pm4.2$ mm. La altura de la cola es de $25.8\pm0.29$ mm. Presenta 11 pliegues intercostales. La cola está dorsolateralmente aplanada. La piel es lisa con numerosos poros en cuerpo y cabeza y las extremidades se sobreponen cuando se pliegan sobre el cuerpo. Son de color café oscuro con numerosas manchas dispersas en todo el cuerpo la parte inferior de la garganta y la región ventral son de color crema o amarillo. La punta de los dedos es color crema (Ramírez-Bautista et al., 2009).
+habitat: Habita en el fondo de los canales de Xochimilco, entre sustratos fangosos, con arena, grava o entre la vegetación acuática.
+distribution: Únicamente se distribuye en el centro del país, en el límite suroeste de la Ciudad de México en canales y humedales de Xochimilco, Texcoco, Zumpango y Chalco. Se cree que esta especie tenía una amplia distribución en el Valle de México, en los lagos de Texcoco y Zumpango, pero ha desaparecido en esas localidades (Zambrano et al., 2010). Adicionalmente se conoce una población en el parque Chapultepec en la Ciudad de México, la cual ha sido estudiada recientemente (Recuero et al., 2010).
+threats: El hábitat original de esta especie ha desaparecido o está completamente modificado. En Xochimilco, los canales están fuertemente contaminados y eutrofizados por las aguas residuales y residuos sólidos urbanos y por contaminantes producto de actividades agrícolas o industriales. Otra amenaza de los axolotes es la invasión de especies exóticas en los canales de Xochimilco, tanto de vegetación acuática como de peces exóticos como carpas y tilapias. También existe extracción no supervisada por parte de pescadores, para su posterior consumo o comercialización para la elaboración de remedios tradicionales.
+feeding: Se ha documentado la dieta de Ambystoma mexicanum a través del análisis del contenido intestinal de 12 especímenes capturados en los canales de Xochimilco entre 2002 y 2008 (Zambrano et al., 2010). En este trabajo reportan que la dieta de los axolotes en vida libre consiste en materia orgánica, raíces, semillas, hojas de plantas, algas, dafnias y rotíferos, pequeños crustáceos, como anfipodos e isópodos, insectos, sanguijuelas, caracoles y peces pequeños (Zambrano et al., 2010).
+reproduction: En cautiverio se ha documentado que la madurez sexual la alcanzan al año y que las hembras ovopositan entre 100 a 600 huevos por puesta dependiendo de la temperatura del agua el tiempo de incubación puede oscilar entre los 12 y 18 días. Se ha documentado que los machos realizan un cortejo ritual para atraer a las hembras y que posteriormente los machos secretan por la cloaca un espermatóforo. El espermatóforo es absorbido por la cloaca de la hembra para así lograr la fertilización (Mena-González y Sevin-Zamora, 2014).
+references:
+  - Mena Gonzales, H. y E. Servín Zamora. 2014. Manual básico para el cuidado en cautiverio del axolote de Xochimilco (Ambystoma mexicanum). Laboratorio de Restauración Ecológica del Instituto de Biología, UNAM. México.
+  - Ramírez-Bautista, A., U. Hernández-Salinas, U. O. García-Vázquez, A. Leyte-Manrique y L. Canseco-Márquez. 2009. Herpetofauna del Valle de México. Diversidad y Conservación. Universidad Autónoma del Estado de Hidalgo/Comisión Nacional para el Conocimiento y Uso de la Biodiversidad. D. F. México. 240 p.
+  - "Recuero, E., J. Cruzado-Cortes, G. Parra-Olea y K.R. Zamudio. 2010. Urban aquatic habitats and conservation of highly endangered species: the case of Ambystoma mexicanum (Caudata, Ambystomatidae). In: Annales Zoologici Fennici (pp. 223-238). Finnish Zoological and Botanical Publishing Board."
+  - Shaw, G. y F.P. Nodder. 1798. The Naturalist's Miscellany. Vol. 9.
+  - "Zambrano, L, E. Valiente y M.J. Vander Zanden. 2010. Food web overlap arnong native axolotl (Ambystoma mexicanum) and two exotic fishes: carp (Cyprinus carpio) and tilapia (Oreochromis niloticus) in Xochimilco, Mexico City. Biological Invasions, 12(9), 3061-3069."
+  - Aquí tienes una propuesta de descargo de responsabilidad (disclaimer) redactada con un tono formal y profesional, ideal para incluir al principio o al final de tu presentación.
+  - He incluido menciones a tus colaboradores basándome en los datos del documento para que la protección legal abarque a todo tu ecosistema.
+anp:
+  - Sitio Ramsar “Ejidos de Xochimilco y San Gregorio”
+localityType: Valle de México, en los lagos de Texcoco y Zumpango Xochimilco, Texcoco, Zumpango y Chalco
+characterizedBy: Shaw y Nodder, 1978
+heroCardSvg: MexicanumCard.svg
+markerSvg: mexicanum.svg
+accentColor: "#2F5A70"
+endemic: true

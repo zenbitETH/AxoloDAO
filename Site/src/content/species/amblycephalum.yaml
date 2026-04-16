@@ -1,0 +1,23 @@
+slug: amblycephalum
+scientificName: A. amblycephalum
+commonNames:
+  - Axolote de cabeza chata
+states:
+  - MIC
+iucn: CR
+nom059: Pr
+description: Los ejemplares utilizados en la descripción de esta especie midieron de longitud hocico-cloaca 90, 93 y 64.5 mm; longitud cloaca-cola, 71, 60 y 47 mm; ancho de la cabeza de 17.5, 16.5 y 13.5 mm; largo de la cabeza, 18.5, 20 y 16 mm (Taylor, 1940). De acuerdo con Aguilar-Miguel (2005), los ejemplares tienen una longitud hocico-cloaca (LHC) entre 80 y 87 mm y una longitud total (LT) entre 135 y 142 mm. Presentan una coloración dorsal negruzca y la región ventral gris con manchas color crema. La porción media de la región ventral es un poco más oscura. En el pecho y la garganta presentan algunas manchas crema. Las porciones distales de la cola son más oscuras que la porción central (Taylor, 1940).
+habitat: Cuerpos de agua con poca corriente en las formas larvarias y en los adultos transformados, en las orillas de arroyos (Aguilar-Miguel, 2005).
+distribution: Solo se conoce a esta especie de la localidad tipo, a 2,000 msnm (IUCN SSC Amphibian Specialist Group, 2016). En 2001 Huacúz realizó un muestreo en aproximadamente 15 km al oeste de la ciudad de Morelia, sin encontrar ejemplares. Además, revisó localidades reportadas anteriormente para esta especie, así como ejemplares recolectados en ellas; ningún ejemplar presentó las características descritas para la especie. Recientemente, el grupo de trabajo de la Dra. Ireri Suazo (UMSNH) ha recolectado ejemplares de Ambystoma sp. dentro del área donde se reconoce históricamente la localidad tipo para la especie (Taylor, 1940); sin embargo, se están realizando trabajos de sistemática para aprobar la identidad específica de estos organismos (Rodolfo Pérez-Rodríguez, com. pers.).
+feeding: No existen datos específicos sobre su alimentación, pero se puede asumir que se alimentan de invertebrados terrestres y acuáticos pequeños.
+reproduction: No existen datos específicos sobre su biología reproductiva.
+references:
+  - Aguilar-Miguel, X. (compilador). 2005. Algunas especies de anfibios y reptiles contenidos en el Proyecto de Norma Oficial Mexicana PROY-NOM-059-ECOL-2000. Facultad de Ciencias, Centro de Investigación en Recursos Bióticos, Universidad Autónoma del Estado de México. Bases de datos SNIB-CONABIO. Proyecto No. W035. México, D.F.
+  - Huacúz, M. E. 2001. Monografía sobre el estado de conservación del género Ambystoma en Michoacán, México.
+  - "IUCN SSC Amphibian Specialist Group. 2016. Ambystoma amblycephalum. The IUCN Red List of Threatened Species 2016: e.T59050A53973313."
+  - "Taylor, E. H. 1940. New salamanders from Mexico, with a discussion of certain known forms. University of Kansas Science Bulletin 26: 407-430."
+localityType: 15 km. al oeste de Morelia (Tacícuaro), Michoacán,
+characterizedBy: Taylor, 1940
+markerSvg: amblycephalum.svg
+accentColor: "#0D7DE9"
+endemic: true
