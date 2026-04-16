@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { type Locale, t } from '@/i18n/strings';
+
+interface Props {
+  partner: CollectionEntry<'partners'>['data'];
+  locale: Locale;
+  modalId: string;
+  size?: 'normal' | 'featured';
+}
+const { partner, locale, modalId, size = 'normal' } = Astro.props;
+const role = partner.role[locale];
+const featuredLabel = partner.featuredLabel?.[locale] ?? t(locale, 'partners.featured');
+const isFeatured = size === 'featured';
+---
+
+<button
+  type="button"
+  data-modal={modalId}
+  class:list={[
+    'glass glass-hover group w-full rounded-3xl p-6 text-left',
+    isFeatured && 'md:p-8 md:col-span-2 border-rosa/30 bg-rosa/5 hover:shadow-neon-rosa hover:border-rosa/60',
+  ]}
+>
+  {isFeatured && (
+    <span class="badge-rosa mb-3 inline-flex">{featuredLabel}</span>
+  )}
+  <div class="flex items-start gap-4">
+    {partner.logo ? (
+      <img src={partner.logo} alt={`${partner.name} logo`} class:list={['rounded-2xl bg-white/5 p-1.5', isFeatured ? 'h-20 w-20' : 'h-14 w-14']} />
+    ) : (
+      <div class:list={['grid place-items-center rounded-2xl bg-white/5 font-display text-teal', isFeatured ? 'h-20 w-20 text-3xl' : 'h-14 w-14 text-xl']}>{partner.name.slice(0, 1)}</div>
+    )}
+    <div class="flex-1">
+      <h3 class:list={['font-display', isFeatured ? 'text-2xl' : 'text-xl']}>{partner.name}</h3>
+      <p class="text-sm text-white/70">{role}</p>
+    </div>
+  </div>
+</button>

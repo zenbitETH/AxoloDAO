@@ -1,0 +1,68 @@
+---
+import { type Locale, t, localePath, LOCALES } from '@/i18n/strings';
+import LocaleToggle from './LocaleToggle.astro';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const links = [
+  { href: localePath(locale, 'especies'), label: t(locale, 'nav.species') },
+  { href: localePath(locale, '#projects'), label: t(locale, 'nav.projects') },
+  { href: localePath(locale, '#participate'), label: t(locale, 'nav.participate') },
+  { href: localePath(locale, '#concepts'), label: t(locale, 'nav.concepts') },
+];
+---
+
+<header class="fixed inset-x-0 top-0 z-50 h-16 border-b border-white/10 bg-navy/85 backdrop-blur-xl">
+  <div class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6">
+    <a href={localePath(locale)} class="flex items-center gap-2">
+      <img src="/logos/AxoloDAO.svg" alt="AxoloDAO" class="h-8 w-8" />
+      <span class="font-display text-xl font-extrabold tracking-tight">AxoloDAO</span>
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          class="text-sm font-medium text-white/80 transition-colors hover:text-teal hover:[text-shadow:_0_0_10px_rgba(0,156,156,0.6)]"
+        >
+          {l.label}
+        </a>
+      ))}
+      <LocaleToggle locale={locale} />
+    </nav>
+
+    <button
+      id="mobile-menu-toggle"
+      class="md:hidden rounded-md border border-white/20 p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden h-[calc(100vh-4rem)] flex-col gap-6 bg-gradient-to-br from-navy via-dark-navy to-rosa/15 px-6 py-12 md:hidden"
+  >
+    {links.map((l) => (
+      <a href={l.href} class="font-display text-2xl text-white hover:text-teal">{l.label}</a>
+    ))}
+    <div class="mt-4"><LocaleToggle locale={locale} /></div>
+  </div>
+</header>
+
+<div class="h-16"></div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      menu.classList.toggle('flex', !open);
+    });
+  }
+</script>

@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { type Locale } from '@/i18n/strings';
+
+interface Props {
+  member: CollectionEntry<'members'>['data'];
+  locale: Locale;
+  modalId: string;
+}
+const { member, locale, modalId } = Astro.props;
+const role = member.role[locale];
+---
+
+<button
+  type="button"
+  data-modal={modalId}
+  class="glass glass-hover group w-full rounded-3xl p-6 text-left"
+  style={member.accentColor ? `--accent: ${member.accentColor};` : ''}
+>
+  <div class="flex items-start gap-4">
+    {member.logo ? (
+      <img src={member.logo} alt={`${member.name} logo`} class="h-14 w-14 rounded-2xl bg-white/5 p-1.5" />
+    ) : (
+      <div class="grid h-14 w-14 place-items-center rounded-2xl bg-teal/15 font-display text-xl text-teal">{member.name.slice(0, 1)}</div>
+    )}
+    <div class="flex-1">
+      <h3 class="font-display text-xl">{member.name}</h3>
+      <p class="text-sm text-white/70">{role}</p>
+      {member.ens && (
+        <p class="mt-2 font-mono text-xs text-teal/90">{member.ens}</p>
+      )}
+    </div>
+  </div>
+</button>

@@ -1,0 +1,48 @@
+---
+import { type Locale, t } from '@/i18n/strings';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const ens = [
+  'axolodao.eth',
+  'treasury.axolodao.eth',
+  'zenbit.axolodao.eth',
+  'xolotlcalli.axolodao.eth',
+  'ndali.axolodao.eth',
+];
+---
+
+<footer class="mt-32 border-t border-teal/20 bg-dark-navy">
+  <div class="container-wide grid gap-10 py-14 md:grid-cols-3">
+    <div>
+      <h3 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-teal/80">
+        {t(locale, 'footer.identities')}
+      </h3>
+      <ul class="space-y-2 font-mono text-sm text-white/70">
+        {ens.map((e) => <li>{e}</li>)}
+      </ul>
+    </div>
+    <div>
+      <h3 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-teal/80">
+        {t(locale, 'footer.socials')}
+      </h3>
+      <ul class="space-y-2 text-sm text-white/70">
+        <li><a class="hover:text-teal" href="https://x.com/axolodao">X / Twitter</a></li>
+        <li><a class="hover:text-teal" href="https://github.com/zenbitETH/AxoloDAO">GitHub</a></li>
+        <li><a class="hover:text-teal" href="https://farcaster.xyz/axolodao">Farcaster</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-teal/80">
+        {t(locale, 'footer.contact')}
+      </h3>
+      <p class="text-sm text-white/70">
+        <a class="hover:text-teal" href="mailto:hola@axolodao.org">hola@axolodao.org</a>
+      </p>
+    </div>
+  </div>
+  <div class="border-t border-white/5 py-6 text-center text-xs text-white/40">
+    {t(locale, 'footer.tagline')}
+  </div>
+</footer>
