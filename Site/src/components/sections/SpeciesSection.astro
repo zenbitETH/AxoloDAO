@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import SpeciesExplorer from '@components/SpeciesExplorer';
+import { type Locale, t, localePath } from '@/i18n/strings';
+import mapSvgRaw from '@assets/mexico-interactive.svg?raw';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const all = await getCollection('species');
+const speciesData = all
+  .map((s) => ({
+    slug: s.data.slug,
+    scientificName: s.data.scientificName,
+    commonNames: s.data.commonNames,
+    states: s.data.states,
+    iucn: s.data.iucn,
+    nom059: s.data.nom059,
+    description: s.data.description,
+    habitat: s.data.habitat,
+    distribution: s.data.distribution,
+    threats: s.data.threats,
+    references: s.data.references ?? [],
+    anp: s.data.anp ?? [],
+    accentColor: s.data.accentColor,
+    endemic: s.data.endemic,
+    hasHeroCard: Boolean(s.data.heroCardSvg),
+  }))
+  .sort((a, b) => a.slug.localeCompare(b.slug));
+
+const speciesPathBase = localePath(locale, 'especies/');
+---
+
+<section id="species" class="py-20">
+  <div class="container-wide">
+    <header class="mb-10 max-w-3xl">
+      <h2 class="font-display text-4xl font-bold sm:text-5xl">{t(locale, 'species.title')}</h2>
+      <p class="mt-3 text-white/70">{t(locale, 'species.subtitle')}</p>
+    </header>
+  </div>
+  <SpeciesExplorer
+    client:load
+    species={speciesData}
+    mapSvg={mapSvgRaw}
+    locale={locale}
+    speciesPathBase={speciesPathBase}
+  />
+</section>
