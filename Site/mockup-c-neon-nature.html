@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AxoloDAO — Neon Nature</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #009C9C;
+  --navy: #0A3B49;
+  --rosa: #E85D75;
+  --ocre: #D4925F;
+  --marfil: #F4E8C8;
+  --dark-navy: #071F29;
+  --mid-navy: #0E4555;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--navy);
+  color: #fff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: 'Baloo 2', cursive; }
+
+a { text-decoration: none; color: inherit; }
+
+.neon-glow {
+  box-shadow: 0 0 10px rgba(0,156,156,0.5), 0 0 20px rgba(0,156,156,0.3), 0 0 40px rgba(0,156,156,0.1);
+}
+
+.neon-text {
+  text-shadow: 0 0 10px rgba(0,156,156,0.5), 0 0 20px rgba(0,156,156,0.3);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 156, 156, 0.2);
+  border-radius: 25px;
+  padding: 40px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.glass-card:hover {
+  border-color: var(--teal);
+  box-shadow: 0 0 30px rgba(0,156,156,0.15);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-card { background: rgba(10, 59, 73, 0.9); }
+}
+
+.section-divider {
+  background: linear-gradient(to right, transparent, var(--teal), transparent);
+  height: 1px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 59, 73, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0 24px;
+  transition: box-shadow 0.3s;
+}
+
+.header.scrolled {
+  box-shadow: 0 2px 30px rgba(0,0,0,0.3);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.logo {
+  font-family: 'Baloo 2', cursive;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.nav-desktop { display: flex; align-items: center; gap: 32px; }
+
+.nav-desktop a {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-desktop a:hover {
+  color: var(--teal);
+  text-shadow: 0 0 10px rgba(0,156,156,0.4);
+}
+
+.lang-toggle {
+  display: flex;
+  gap: 4px;
+  margin-left: 16px;
+}
+
+.lang-btn {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  color: rgba(255,255,255,0.7);
+  padding: 4px 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.lang-btn.active {
+  background: rgba(0,156,156,0.2);
+  border-color: var(--teal);
+  color: var(--teal);
+  box-shadow: 0 0 10px rgba(0,156,156,0.3);
+}
+
+.lang-btn:hover { border-color: var(--teal); color: var(--teal); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--dark-navy) 60%, rgba(232,93,117,0.15) 100%);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.mobile-menu.open { display: flex; }
+
+.mobile-menu a {
+  font-family: 'Baloo 2', cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.mobile-menu a:hover { color: var(--teal); }
+
+.mobile-lang-toggle {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .nav-desktop { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 24px 60px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0,156,156,0.15), transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(232,93,117,0.1), transparent 40%),
+    radial-gradient(ellipse at 60% 80%, rgba(212,146,95,0.08), transparent 40%),
+    var(--navy);
+}
+
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: particleFloat infinite;
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-100px) translateX(20px); }
+  100% { transform: translateY(-200px) translateX(-10px); opacity: 0; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.hero p {
+  font-weight: 300;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: var(--teal);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 16px 40px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0,156,156,0.4), 0 0 60px rgba(0,156,156,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0,156,156,0.6), 0 0 80px rgba(0,156,156,0.2);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(0,156,156,0.4);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  z-index: 2;
+}
+
+.scroll-indicator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.15); }
+}
+
+/* ===== ABOUT ===== */
+.about {
+  padding: 100px 24px;
+  background: var(--navy);
+}
+
+.about-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 60px;
+  color: #fff;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+
+.stat-item { text-align: center; }
+
+.stat-value {
+  font-family: 'Baloo 2', cursive;
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--teal);
+  text-shadow: 0 0 30px rgba(0,156,156,0.5);
+}
+
+.stat-value.rosa-glow {
+  color: var(--rosa);
+  text-shadow: 0 0 30px rgba(232,93,117,0.5);
+}
+
+.stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  max-width: 200px;
+  margin: 8px auto 0;
+}
+
+.about-desc {
+  color: rgba(255,255,255,0.85);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 720px;
+  margin: 0 auto 24px;
+}
+
+.about-microdao {
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ===== PRODUCTS ===== */
+.products {
+  padding: 100px 24px;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(0,156,156,0.06), transparent 60%),
+    var(--navy);
+}
+
+.products-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.products h2 {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 50px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .products-grid { grid-template-columns: 1fr; }
+}
+
+.product-badge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.badge-rosa {
+  background: rgba(232,93,117,0.15);
+  color: var(--rosa);
+  border: 1px solid rgba(232,93,117,0.3);
+  text-shadow: 0 0 8px rgba(232,93,117,0.4);
+}
+
+.badge-teal {
+  background: rgba(0,156,156,0.15);
+  color: var(--teal);
+  border: 1px solid rgba(0,156,156,0.3);
+  text-shadow: 0 0 8px rgba(0,156,156,0.4);
+}
+
+.product-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.product-desc {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.product-cta {
+  display: inline-block;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 10px 28px;
+  border-radius: 50px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.product-cta:hover {
+  background: var(--teal);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0,156,156,0.3);
+}
+
+/* ===== CONCEPTS ===== */
+.concepts {
+  padding: 100px 24px;
+  background: var(--mid-navy);
+}
+
+.concepts-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.concepts h2 {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 50px;
+}
+
+.concepts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .concepts-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .concepts-grid { grid-template-columns: 1fr; }
+}
+
+.concept-card { padding: 32px; text-align: center; }
+
+.concept-icon {
+  width: 56px;
+  height: 56px;
+  border: 2px solid var(--teal);
+  box-shadow: 0 0 15px rgba(0,156,156,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.concept-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.concept-card h3 {
+  color: var(--teal);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.concept-card p {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+/* ===== BIOTECH ===== */
+.biotech {
+  padding: 100px 24px;
+  background:
+    radial-gradient(ellipse at 80% 30%, rgba(232,93,117,0.08), transparent 50%),
+    linear-gradient(180deg, var(--navy) 0%, #0C3845 50%, var(--navy) 100%);
+}
+
+.biotech-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.biotech h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.biotech-subtitle {
+  color: rgba(255,255,255,0.6);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 50px;
+}
+
+.biotech-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .biotech-layout { grid-template-columns: 1fr; }
+}
+
+.biotech-text p {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.biotech-quote {
+  border-left: 3px solid var(--rosa);
+  padding: 16px 20px;
+  margin: 24px 0;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-style: italic;
+  box-shadow: -5px 0 15px rgba(232,93,117,0.15);
+}
+
+.biotech-visual {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.protein-blob {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin-bottom: 40px;
+}
+
+.blob-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.blob-circle:nth-child(1) {
+  width: 140px; height: 140px;
+  background: rgba(0,156,156,0.35);
+  top: 10px; left: 10px;
+}
+
+.blob-circle:nth-child(2) {
+  width: 120px; height: 120px;
+  background: rgba(232,93,117,0.3);
+  top: 50px; right: 0;
+}
+
+.blob-circle:nth-child(3) {
+  width: 100px; height: 100px;
+  background: rgba(0,156,156,0.25);
+  bottom: 10px; left: 40px;
+}
+
+.blob-circle:nth-child(4) {
+  width: 80px; height: 80px;
+  background: rgba(212,146,95,0.2);
+  bottom: 30px; right: 20px;
+}
+
+.pathway {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+.pathway-step {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,156,156,0.2);
+  border-radius: 25px;
+  padding: 10px 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #fff;
+  text-align: center;
+}
+
+.pathway-connector {
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(to bottom, var(--teal), rgba(0,156,156,0.2));
+}
+
+.proteins-preview {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.proteins-label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.proteins-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.protein-pill {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,156,156,0.25);
+  border-radius: 16px;
+  padding: 8px 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--teal);
+  text-shadow: 0 0 8px rgba(0,156,156,0.3);
+}
+
+/* ===== PARTNERS ===== */
+.partners {
+  padding: 100px 24px;
+  background: var(--navy);
+}
+
+.partners-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.partners h2 {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  margin-bottom: 50px;
+}
+
+.partners-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--teal);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.partners-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .partners-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .partners-grid { grid-template-columns: 1fr; }
+  .partners-grid-4 { grid-template-columns: 1fr; }
+}
+
+.partner-card {
+  padding: 30px;
+  text-align: center;
+}
+
+.partner-logo {
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(0,156,156,0.3);
+  box-shadow: 0 0 10px rgba(0,156,156,0.15);
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--teal);
+}
+
+.partner-card h3 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.partner-card p {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.partner-ens {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: var(--teal);
+  text-shadow: 0 0 6px rgba(0,156,156,0.3);
+  margin-top: 6px;
+  display: block;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--dark-navy);
+  padding: 60px 24px 40px;
+}
+
+.footer-divider {
+  background: linear-gradient(to right, transparent, var(--teal), transparent);
+  height: 1px;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; text-align: center; }
+}
+
+.footer-col h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col ul li {
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.footer-col ul li a {
+  color: rgba(255,255,255,0.6);
+  transition: color 0.3s;
+}
+
+.footer-col ul li a:hover { color: var(--teal); }
+
+.ens-item {
+  font-family: 'Courier New', monospace;
+  color: var(--teal) !important;
+  text-shadow: 0 0 6px rgba(0,156,156,0.2);
+  font-size: 0.8rem !important;
+}
+
+.footer-tagline {
+  text-align: center;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.85rem;
+  font-weight: 300;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .stats-row { gap: 30px; }
+  .stat-value { font-size: clamp(2.5rem, 15vw, 5rem); }
+  .biotech-visual { min-height: auto; margin-top: 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="#" class="logo">AxoloDAO</a>
+    <nav class="nav-desktop">
+      <a href="#about" data-i18n="nav.about">Nosotros</a>
+      <a href="#products" data-i18n="nav.products">Productos</a>
+      <a href="#concepts" data-i18n="nav.concepts">Conceptos</a>
+      <a href="#biotech" data-i18n="nav.biotech">Biotech</a>
+      <a href="#partners" data-i18n="nav.partners">Aliados</a>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pt">PT</button>
+      </div>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" data-i18n="nav.about" onclick="closeMobile()">Nosotros</a>
+  <a href="#products" data-i18n="nav.products" onclick="closeMobile()">Productos</a>
+  <a href="#concepts" data-i18n="nav.concepts" onclick="closeMobile()">Conceptos</a>
+  <a href="#biotech" data-i18n="nav.biotech" onclick="closeMobile()">Biotech</a>
+  <a href="#partners" data-i18n="nav.partners" onclick="closeMobile()">Aliados</a>
+  <div class="mobile-lang-toggle">
+    <button class="lang-btn active" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="pt">PT</button>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div id="particles"></div>
+  <div class="hero-content fade-in">
+    <h1 data-i18n="hero.title">53% de la biodiversidad. 0 patentes. Estamos cambiando eso.</h1>
+    <p data-i18n="hero.subtitle">AxoloDAO construye infraestructura digital para el animal mas regenerativo del planeta.</p>
+    <a href="#about" class="hero-cta" data-i18n="hero.cta">Descubre como</a>
+  </div>
+  <div class="scroll-indicator"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-divider" style="margin-bottom:80px;"></div>
+  <div class="about-inner">
+    <h2 class="fade-in" data-i18n="about.title">La Paradoja Cientifica Mexicana</h2>
+    <div class="stats-row fade-in">
+      <div class="stat-item">
+        <div class="stat-value" data-i18n="about.stat1_value">53%</div>
+        <div class="stat-label" data-i18n="about.stat1_label">Biodiversidad global Ambystoma en Mexico</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value" data-i18n="about.stat2_value">3.3%</div>
+        <div class="stat-label" data-i18n="about.stat2_label">Publicaciones cientificas mexicanas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value rosa-glow" data-i18n="about.stat3_value">0</div>
+        <div class="stat-label" data-i18n="about.stat3_label">Patentes mexicanas</div>
+      </div>
+    </div>
+    <p class="about-desc fade-in" data-i18n="about.description">Mexico alberga 17 especies de Ambystoma (53% de la biodiversidad global del genero), siendo 16 de ellas endemicas exclusivas del territorio nacional. Sin embargo, contribuye solo 3.3% de las publicaciones cientificas y mantiene cero patentes, mientras instituciones extranjeras dominan la investigacion y capturan el valor de un mercado de medicina regenerativa proyectado en $151.9 mil millones USD.</p>
+    <p class="about-microdao fade-in" data-i18n="about.microdao">AxoloDAO es una MicroDAO: una organizacion pequena, agil y enfocada que usa infraestructura blockchain para coordinar la conservacion con transparencia total.</p>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="section-divider" style="margin-bottom:80px;"></div>
+  <div class="products-inner">
+    <h2 class="fade-in" data-i18n="products.title">Nuestros Productos</h2>
+    <div class="products-grid">
+      <div class="glass-card fade-in">
+        <span class="product-badge badge-rosa" data-i18n="products.stream.status">En desarrollo</span>
+        <h3 class="product-title" data-i18n="products.stream.title">Stream Funding</h3>
+        <p class="product-desc" data-i18n="products.stream.description">Crowdfunding en tiempo real a traves de livestreams. Dona mientras observas ajolotes vivos desde BioMuseo Xolotlcalli.</p>
+        <a href="https://live.axolodao.org" target="_blank" rel="noopener" class="product-cta" data-i18n="products.stream.cta">Ir al stream</a>
+      </div>
+      <div class="glass-card fade-in">
+        <span class="product-badge badge-teal" data-i18n="products.system.partner">con Inteli</span>
+        <h3 class="product-title" data-i18n="products.system.title">AxoloDAO System</h3>
+        <p class="product-desc" data-i18n="products.system.description">Trazabilidad onchain para conservacion. Registro de especimenes, calidad de agua y datos cientificos en Ethereum.</p>
+        <a href="https://dapp.axolodao.org" target="_blank" rel="noopener" class="product-cta" data-i18n="products.system.cta">Ir al dApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPTS -->
+<section class="concepts" id="concepts">
+  <div class="concepts-inner">
+    <h2 class="fade-in" data-i18n="concepts.title">Conceptos Clave</h2>
+    <div class="concepts-grid">
+      <div class="glass-card concept-card fade-in">
+        <div class="concept-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <h3 data-i18n="concepts.publicGoods.title">Bienes Publicos</h3>
+        <p data-i18n="concepts.publicGoods.text">Imagina el aire limpo o Wikipedia: recursos disponibles para todos sin exclusion. AxoloDAO construye infraestructura digital abierta para la conservacion, como un parque publico, pero para la ciencia.</p>
+      </div>
+      <div class="glass-card concept-card fade-in">
+        <div class="concept-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M12 7V4M8 4h8"/></svg>
+        </div>
+        <h3 data-i18n="concepts.ethereum.title">Ethereum</h3>
+        <p data-i18n="concepts.ethereum.text">Una computadora global compartida donde se ejecutan programas que nadie puede alterar. Usamos Ethereum para que cada registro de conservacion sea transparente y permanente. Como un notario digital que nunca duerme.</p>
+      </div>
+      <div class="glass-card concept-card fade-in">
+        <div class="concept-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><path d="M12 8v3M7.5 17.5l3-5M16.5 17.5l-3-5"/></svg>
+        </div>
+        <h3 data-i18n="concepts.dao.title">DAO</h3>
+        <p data-i18n="concepts.dao.text">Organizacion Autonoma Descentralizada. Imagina un grupo de amigos que comparten una alcancia transparente. Todos ven lo que entra y sale. Nadie controla solo. Las reglas estan en codigo, no en el escritorio de alguien.</p>
+      </div>
+      <div class="glass-card concept-card fade-in">
+        <div class="concept-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3 data-i18n="concepts.microdao.title">MicroDAO</h3>
+        <p data-i18n="concepts.microdao.text">Una DAO pequena enfocada en un solo problema. AxoloDAO se dedica exclusivamente a conservar Ambystoma, no a salvar todo el planeta. Precision sobre ambicion. Un equipo, una mision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIOTECH -->
+<section class="biotech" id="biotech">
+  <div class="section-divider" style="margin-bottom:80px;"></div>
+  <div class="biotech-inner">
+    <h2 class="fade-in" data-i18n="biotech.title">Vision Biotech</h2>
+    <p class="biotech-subtitle fade-in" data-i18n="biotech.subtitle">Ciencia Regenerativa + Inteligencia Artificial</p>
+    <div class="biotech-layout">
+      <div class="biotech-text fade-in">
+        <p data-i18n="biotech.description">Los ajolotes pueden regenerar extremidades, corazon y partes de su cerebro. Esta capacidad unica los hace invaluables para la medicina regenerativa.</p>
+        <blockquote class="biotech-quote" data-i18n="biotech.alphafold">AlphaFold y modelos de deep learning permiten predecir estructuras de proteinas de Ambystoma. AxoloDAO trabaja para que Mexico se beneficie de sus propios recursos geneticos.</blockquote>
+      </div>
+      <div class="biotech-visual fade-in">
+        <div class="protein-blob">
+          <div class="blob-circle"></div>
+          <div class="blob-circle"></div>
+          <div class="blob-circle"></div>
+          <div class="blob-circle"></div>
+        </div>
+        <div class="pathway" id="pathway">
+          <!-- Steps injected by JS -->
+        </div>
+        <div class="proteins-preview">
+          <div class="proteins-label" data-i18n="biotech.proteinsLabel">Proteinas en investigacion</div>
+          <div class="proteins-row" id="proteinsRow">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners" id="partners">
+  <div class="section-divider" style="margin-bottom:80px;"></div>
+  <div class="partners-inner">
+    <h2 class="fade-in" data-i18n="partners.title">Nuestra Red</h2>
+    <h3 class="partners-subtitle fade-in" data-i18n="partners.onchain">Miembros Onchain</h3>
+    <div class="partners-grid fade-in">
+      <div class="glass-card partner-card">
+        <div class="partner-logo">Z</div>
+        <h3>Zenbit</h3>
+        <p data-i18n="partners.zenbit">Infraestructura digital publica y diseno de sistemas</p>
+        <span class="partner-ens">zenbit.axolodao.eth</span>
+      </div>
+      <div class="glass-card partner-card">
+        <div class="partner-logo">X</div>
+        <h3>Xolotlcalli</h3>
+        <p data-i18n="partners.xolotlcalli">Conservacion y practica de campo en biodiversidad</p>
+        <span class="partner-ens">xolotlcalli.axolodao.eth</span>
+      </div>
+      <div class="glass-card partner-card">
+        <div class="partner-logo">N</div>
+        <h3>Ndali</h3>
+        <p data-i18n="partners.ndali">Articulacion comunitaria y coordinacion de stakeholders</p>
+        <span class="partner-ens">ndali.axolodao.eth</span>
+      </div>
+    </div>
+    <h3 class="partners-subtitle fade-in" data-i18n="partners.institutional">Aliados Institucionales</h3>
+    <div class="partners-grid-4 fade-in">
+      <div class="glass-card partner-card">
+        <div class="partner-logo">CA</div>
+        <h3>CAEyDF</h3>
+        <p data-i18n="partners.caeydf">Cuerpo Academico de Ecologia y Diversidad Faunistica</p>
+      </div>
+      <div class="glass-card partner-card">
+        <div class="partner-logo">SE</div>
+        <h3>SEMARNAT</h3>
+        <p data-i18n="partners.semarnat">Secretaria de Medio Ambiente y Recursos Naturales</p>
+      </div>
+      <div class="glass-card partner-card">
+        <div class="partner-logo">SC</div>
+        <h3>SECULT</h3>
+        <p data-i18n="partners.secult">Secretaria de Cultura del Estado de Queretaro</p>
+      </div>
+      <div class="glass-card partner-card">
+        <div class="partner-logo">IN</div>
+        <h3>INTELI</h3>
+        <p data-i18n="partners.inteli">Instituto de Tecnologia y Liderazgo, Sao Paulo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="footer">
+  <div class="footer-divider"></div>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 data-i18n="footer.ens">Identidades ENS</h4>
+        <ul>
+          <li class="ens-item">axolodao.eth</li>
+          <li class="ens-item">treasury.axolodao.eth</li>
+          <li class="ens-item">zenbit.axolodao.eth</li>
+          <li class="ens-item">xolotlcalli.axolodao.eth</li>
+          <li class="ens-item">ndali.axolodao.eth</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.social">Redes</h4>
+        <ul>
+          <li><a href="#">X (Twitter)</a></li>
+          <li><a href="#">Farcaster</a></li>
+          <li><a href="#">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.contact">Contacto</h4>
+        <ul>
+          <li><a href="mailto:hola@axolodao.org">hola@axolodao.org</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-tagline" data-i18n="footer.tagline">Construido en Ethereum. Impulsado por ajolotes.</div>
+  </div>
+</footer>
+
+<script>
+// ===== i18n =====
+const translations = {
+  es: {
+    nav: { about: 'Nosotros', products: 'Productos', concepts: 'Conceptos', biotech: 'Biotech', partners: 'Aliados' },
+    hero: {
+      title: '53% de la biodiversidad. 0 patentes. Estamos cambiando eso.',
+      subtitle: 'AxoloDAO construye infraestructura digital para el animal mas regenerativo del planeta.',
+      cta: 'Descubre como'
+    },
+    about: {
+      title: 'La Paradoja Cientifica Mexicana',
+      stat1_value: '53%', stat1_label: 'Biodiversidad global Ambystoma en Mexico',
+      stat2_value: '3.3%', stat2_label: 'Publicaciones cientificas mexicanas',
+      stat3_value: '0', stat3_label: 'Patentes mexicanas',
+      description: 'Mexico alberga 17 especies de Ambystoma (53% de la biodiversidad global del genero), siendo 16 de ellas endemicas exclusivas del territorio nacional. Sin embargo, contribuye solo 3.3% de las publicaciones cientificas y mantiene cero patentes, mientras instituciones extranjeras dominan la investigacion y capturan el valor de un mercado de medicina regenerativa proyectado en $151.9 mil millones USD.',
+      microdao: 'AxoloDAO es una MicroDAO: una organizacion pequena, agil y enfocada que usa infraestructura blockchain para coordinar la conservacion con transparencia total.'
+    },
+    products: {
+      title: 'Nuestros Productos',
+      stream: { title: 'Stream Funding', status: 'En desarrollo', description: 'Crowdfunding en tiempo real a traves de livestreams. Dona mientras observas ajolotes vivos desde BioMuseo Xolotlcalli.', cta: 'Ir al stream' },
+      system: { title: 'AxoloDAO System', partner: 'con Inteli', description: 'Trazabilidad onchain para conservacion. Registro de especimenes, calidad de agua y datos cientificos en Ethereum.', cta: 'Ir al dApp' }
+    },
+    concepts: {
+      title: 'Conceptos Clave',
+      publicGoods: { title: 'Bienes Publicos', text: 'Imagina el aire limpo o Wikipedia: recursos disponibles para todos sin exclusion. AxoloDAO construye infraestructura digital abierta para la conservacion, como un parque publico, pero para la ciencia.' },
+      ethereum: { title: 'Ethereum', text: 'Una computadora global compartida donde se ejecutan programas que nadie puede alterar. Usamos Ethereum para que cada registro de conservacion sea transparente y permanente. Como un notario digital que nunca duerme.' },
+      dao: { title: 'DAO', text: 'Organizacion Autonoma Descentralizada. Imagina un grupo de amigos que comparten una alcancia transparente. Todos ven lo que entra y sale. Nadie controla solo. Las reglas estan en codigo, no en el escritorio de alguien.' },
+      microdao: { title: 'MicroDAO', text: 'Una DAO pequena enfocada en un solo problema. AxoloDAO se dedica exclusivamente a conservar Ambystoma, no a salvar todo el planeta. Precision sobre ambicion. Un equipo, una mision.' }
+    },
+    biotech: {
+      title: 'Vision Biotech',
+      subtitle: 'Ciencia Regenerativa + Inteligencia Artificial',
+      description: 'Los ajolotes pueden regenerar extremidades, corazon y partes de su cerebro. Esta capacidad unica los hace invaluables para la medicina regenerativa.',
+      alphafold: 'AlphaFold y modelos de deep learning permiten predecir estructuras de proteinas de Ambystoma. AxoloDAO trabaja para que Mexico se beneficie de sus propios recursos geneticos.',
+      steps: ['Conservacion', 'Datos onchain', 'Analisis IA', 'Proteinas', 'Soberania cientifica'],
+      proteins: ['L-BABP', 'SALL4', 'Neuregulin-1'],
+      proteinsLabel: 'Proteinas en investigacion'
+    },
+    partners: {
+      title: 'Nuestra Red',
+      onchain: 'Miembros Onchain',
+      institutional: 'Aliados Institucionales',
+      zenbit: 'Infraestructura digital publica y diseno de sistemas',
+      xolotlcalli: 'Conservacion y practica de campo en biodiversidad',
+      ndali: 'Articulacion comunitaria y coordinacion de stakeholders',
+      caeydf: 'Cuerpo Academico de Ecologia y Diversidad Faunistica',
+      semarnat: 'Secretaria de Medio Ambiente y Recursos Naturales',
+      secult: 'Secretaria de Cultura del Estado de Queretaro',
+      inteli: 'Instituto de Tecnologia y Liderazgo, Sao Paulo'
+    },
+    footer: {
+      ens: 'Identidades ENS',
+      social: 'Redes',
+      contact: 'Contacto',
+      tagline: 'Construido en Ethereum. Impulsado por ajolotes.'
+    }
+  },
+  en: {
+    nav: { about: 'About', products: 'Products', concepts: 'Concepts', biotech: 'Biotech', partners: 'Partners' },
+    hero: {
+      title: "53% of biodiversity. 0 patents. We're changing that.",
+      subtitle: 'AxoloDAO builds digital infrastructure for the most regenerative animal on Earth.',
+      cta: 'Discover how'
+    },
+    about: {
+      title: 'The Mexican Scientific Paradox',
+      stat1_value: '53%', stat1_label: 'Global Ambystoma biodiversity in Mexico',
+      stat2_value: '3.3%', stat2_label: 'Mexican scientific publications',
+      stat3_value: '0', stat3_label: 'Mexican patents',
+      description: 'Mexico is home to 17 Ambystoma species (53% of global genus biodiversity), 16 of which are endemic exclusively to the country. Yet it contributes only 3.3% of scientific publications and holds zero patents, while foreign institutions dominate research and capture value from a regenerative medicine market projected at $151.9 billion USD.',
+      microdao: 'AxoloDAO is a MicroDAO: a small, agile, and focused organization that uses blockchain infrastructure to coordinate conservation with full transparency.'
+    },
+    products: {
+      title: 'Our Products',
+      stream: { title: 'Stream Funding', status: 'In development', description: 'Real-time crowdfunding through livestreams. Donate while watching live axolotls from BioMuseo Xolotlcalli.', cta: 'Go to stream' },
+      system: { title: 'AxoloDAO System', partner: 'with Inteli', description: 'Onchain traceability for conservation. Specimen registry, water quality, and scientific data on Ethereum.', cta: 'Go to dApp' }
+    },
+    concepts: {
+      title: 'Key Concepts',
+      publicGoods: { title: 'Public Goods', text: 'Imagine clean air or Wikipedia: resources available to everyone without exclusion. AxoloDAO builds open digital infrastructure for conservation, like a public park, but for science.' },
+      ethereum: { title: 'Ethereum', text: 'A shared global computer that runs programs no one can tamper with. We use Ethereum so every conservation record is transparent and permanent. Like a digital notary that never sleeps.' },
+      dao: { title: 'DAO', text: 'Decentralized Autonomous Organization. Imagine a group of friends sharing a transparent piggy bank. Everyone sees what goes in and out. No one controls it alone. The rules are in code, not on someone\'s desk.' },
+      microdao: { title: 'MicroDAO', text: 'A small DAO focused on a single problem. AxoloDAO is dedicated exclusively to conserving Ambystoma, not saving the entire planet. Precision over ambition. One team, one mission.' }
+    },
+    biotech: {
+      title: 'Biotech Vision',
+      subtitle: 'Regenerative Science + Artificial Intelligence',
+      description: 'Axolotls can regenerate limbs, heart, and parts of their brain. This unique ability makes them invaluable for regenerative medicine.',
+      alphafold: 'AlphaFold and deep learning models can predict Ambystoma protein structures. AxoloDAO works to ensure Mexico benefits from its own genetic resources.',
+      steps: ['Conservation', 'Onchain data', 'AI Analysis', 'Proteins', 'Scientific sovereignty'],
+      proteins: ['L-BABP', 'SALL4', 'Neuregulin-1'],
+      proteinsLabel: 'Proteins under research'
+    },
+    partners: {
+      title: 'Our Network',
+      onchain: 'Onchain Members',
+      institutional: 'Institutional Partners',
+      zenbit: 'Public digital infrastructure and systems design',
+      xolotlcalli: 'Conservation and biodiversity field practice',
+      ndali: 'Community coordination and stakeholder engagement',
+      caeydf: 'Academic Body of Ecology and Faunal Diversity',
+      semarnat: 'Ministry of Environment and Natural Resources',
+      secult: 'Ministry of Culture of the State of Queretaro',
+      inteli: 'Institute of Technology and Leadership, Sao Paulo'
+    },
+    footer: {
+      ens: 'ENS Identities',
+      social: 'Social',
+      contact: 'Contact',
+      tagline: 'Built on Ethereum. Powered by axolotls.'
+    }
+  },
+  pt: {
+    nav: { about: 'Sobre', products: 'Produtos', concepts: 'Conceitos', biotech: 'Biotech', partners: 'Parceiros' },
+    hero: {
+      title: '53% da biodiversidade. 0 patentes. Estamos mudando isso.',
+      subtitle: 'AxoloDAO constroi infraestrutura digital para o animal mais regenerativo do planeta.',
+      cta: 'Descubra como'
+    },
+    about: {
+      title: 'O Paradoxo Cientifico Mexicano',
+      stat1_value: '53%', stat1_label: 'Biodiversidade global de Ambystoma no Mexico',
+      stat2_value: '3.3%', stat2_label: 'Publicacoes cientificas mexicanas',
+      stat3_value: '0', stat3_label: 'Patentes mexicanas',
+      description: 'O Mexico abriga 17 especies de Ambystoma (53% da biodiversidade global do genero), sendo 16 delas endemicas exclusivas do territorio nacional. No entanto, contribui apenas 3.3% das publicacoes cientificas e mantem zero patentes, enquanto instituicoes estrangeiras dominam a pesquisa e capturam o valor de um mercado de medicina regenerativa projetado em $151.9 bilhoes USD.',
+      microdao: 'AxoloDAO e uma MicroDAO: uma organizacao pequena, agil e focada que usa infraestrutura blockchain para coordenar a conservacao com total transparencia.'
+    },
+    products: {
+      title: 'Nossos Produtos',
+      stream: { title: 'Stream Funding', status: 'Em desenvolvimento', description: 'Crowdfunding em tempo real atraves de livestreams. Doe enquanto observa axolotes vivos do BioMuseu Xolotlcalli.', cta: 'Ir ao stream' },
+      system: { title: 'AxoloDAO System', partner: 'com Inteli', description: 'Rastreabilidade onchain para conservacao. Registro de especimes, qualidade da agua e dados cientificos no Ethereum.', cta: 'Ir ao dApp' }
+    },
+    concepts: {
+      title: 'Conceitos-Chave',
+      publicGoods: { title: 'Bens Publicos', text: 'Imagine o ar limpo ou a Wikipedia: recursos disponiveis para todos sem exclusao. AxoloDAO constroi infraestrutura digital aberta para a conservacao, como um parque publico, mas para a ciencia.' },
+      ethereum: { title: 'Ethereum', text: 'Um computador global compartilhado que executa programas que ninguem pode alterar. Usamos Ethereum para que cada registro de conservacao seja transparente e permanente. Como um cartorio digital que nunca dorme.' },
+      dao: { title: 'DAO', text: 'Organizacao Autonoma Descentralizada. Imagine um grupo de amigos compartilhando um cofrinho transparente. Todos veem o que entra e sai. Ninguem controla sozinho. As regras estao em codigo, nao na mesa de alguem.' },
+      microdao: { title: 'MicroDAO', text: 'Uma DAO pequena focada em um unico problema. AxoloDAO dedica-se exclusivamente a conservar Ambystoma, nao a salvar todo o planeta. Precisao sobre ambicao. Uma equipe, uma missao.' }
+    },
+    biotech: {
+      title: 'Visao Biotech',
+      subtitle: 'Ciencia Regenerativa + Inteligencia Artificial',
+      description: 'Os axolotes podem regenerar membros, coracao e partes do cerebro. Essa capacidade unica os torna invaluaveis para a medicina regenerativa.',
+      alphafold: 'AlphaFold e modelos de deep learning permitem prever estruturas de proteinas de Ambystoma. AxoloDAO trabalha para que o Mexico se beneficie de seus proprios recursos geneticos.',
+      steps: ['Conservacao', 'Dados onchain', 'Analise IA', 'Proteinas', 'Soberania cientifica'],
+      proteins: ['L-BABP', 'SALL4', 'Neuregulin-1'],
+      proteinsLabel: 'Proteinas em pesquisa'
+    },
+    partners: {
+      title: 'Nossa Rede',
+      onchain: 'Membros Onchain',
+      institutional: 'Parceiros Institucionais',
+      zenbit: 'Infraestrutura digital publica e design de sistemas',
+      xolotlcalli: 'Conservacao e pratica de campo em biodiversidade',
+      ndali: 'Articulacao comunitaria e coordenacao de stakeholders',
+      caeydf: 'Corpo Academico de Ecologia e Diversidade Faunistica',
+      semarnat: 'Secretaria de Meio Ambiente e Recursos Naturais',
+      secult: 'Secretaria de Cultura do Estado de Queretaro',
+      inteli: 'Instituto de Tecnologia e Lideranca, Sao Paulo'
+    },
+    footer: {
+      ens: 'Identidades ENS',
+      social: 'Redes',
+      contact: 'Contato',
+      tagline: 'Construido no Ethereum. Impulsionado por axolotes.'
+    }
+  }
+};
+
+let currentLang = 'es';
+
+function getNestedValue(obj, path) {
+  return path.split('.').reduce((o, k) => (o && o[k] !== undefined ? o[k] : null), obj);
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = getNestedValue(t, key);
+    if (val) el.textContent = val;
+  });
+
+  // Rebuild dynamic elements
+  buildPathway(t.biotech.steps);
+  buildProteins(t.biotech.proteins);
+
+  // Update active lang buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+}
+
+// ===== PARTICLES =====
+function generateParticles() {
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 35; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.top = Math.random() * 100 + '%';
+    p.style.animationDuration = (3 + Math.random() * 7) + 's';
+    p.style.animationDelay = (Math.random() * 5) + 's';
+    p.style.opacity = 0.1 + Math.random() * 0.3;
+    p.style.width = p.style.height = (2 + Math.random() * 4) + 'px';
+    container.appendChild(p);
+  }
+}
+
+// ===== PATHWAY =====
+function buildPathway(steps) {
+  const container = document.getElementById('pathway');
+  container.innerHTML = '';
+  steps.forEach((step, i) => {
+    const pill = document.createElement('div');
+    pill.className = 'pathway-step';
+    pill.textContent = step;
+    container.appendChild(pill);
+    if (i < steps.length - 1) {
+      const line = document.createElement('div');
+      line.className = 'pathway-connector';
+      container.appendChild(line);
+    }
+  });
+}
+
+// ===== PROTEINS =====
+function buildProteins(proteins) {
+  const row = document.getElementById('proteinsRow');
+  row.innerHTML = '';
+  proteins.forEach(name => {
+    const pill = document.createElement('div');
+    pill.className = 'protein-pill';
+    pill.textContent = name;
+    row.appendChild(pill);
+  });
+}
+
+// ===== MOBILE MENU =====
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+function closeMobile() {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ===== LANG TOGGLE =====
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+});
+
+// ===== STICKY HEADER SHADOW =====
+window.addEventListener('scroll', () => {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+});
+
+// ===== INTERSECTION OBSERVER =====
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ===== INIT =====
+generateParticles();
+setLanguage('es');
+</script>
+</body>
+</html>
