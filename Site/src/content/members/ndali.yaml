@@ -1,0 +1,17 @@
+slug: ndali
+name: Ndali Centro de Conexión
+ens: ndali.axolodao.eth
+logo: /logos/Ndali.svg
+accentColor: '#D4925F'
+role:
+  es: Articulación comunitaria y coordinación
+  en: Community articulation & coordination
+  pt: Articulação comunitária e coordenação
+description:
+  es: Nodo de articulación comunitaria que conecta investigadores, educadores y participantes locales. Coordina convocatorias, encuentros y la presencia en el podcast AxoloDAO.
+  en: Community articulation node connecting researchers, educators and local participants. Coordinates calls, gatherings and the AxoloDAO podcast presence.
+  pt: Nó de articulação comunitária conectando pesquisadores, educadores e participantes locais. Coordena chamadas, encontros e a presença no podcast da AxoloDAO.
+socials:
+  - platform: instagram
+    url: https://instagram.com/ndali_centro_de_conexion
+    handle: '@ndali_centro_de_conexion'

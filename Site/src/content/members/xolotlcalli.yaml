@@ -1,0 +1,23 @@
+slug: xolotlcalli
+name: Xolotlcalli BioMuseo
+ens: xolotlcalli.axolodao.eth
+logo: /logos/Xolotlcalli.svg
+accentColor: '#E85D75'
+role:
+  es: Conservación y práctica de campo
+  en: Conservation & field practice
+  pt: Conservação e prática de campo
+description:
+  es: BioMuseo en Querétaro dedicado al cuidado, exhibición y reproducción ex situ de Ambystoma. Opera la jornada semanal Maintenance Monday y articula educación pública con investigación.
+  en: BioMuseum in Querétaro dedicated to care, exhibition and ex-situ reproduction of Ambystoma. Hosts the weekly Maintenance Monday session and bridges public education with research.
+  pt: BioMuseu em Querétaro dedicado ao cuidado, exibição e reprodução ex-situ de Ambystoma. Conduz a sessão semanal Maintenance Monday e conecta educação pública com pesquisa.
+socials:
+  - platform: instagram
+    url: https://instagram.com/xolotlcalli.mx
+    handle: '@xolotlcalli.mx'
+  - platform: x
+    url: https://x.com/Xolotlcalli_mx
+    handle: '@Xolotlcalli_mx'
+  - platform: youtube
+    url: https://youtube.com/@Xolotlcalli
+    handle: '@Xolotlcalli'
