@@ -1,0 +1,32 @@
+{
+  "name": "axolodao-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "data:map": "node scripts/tag-mexico-map.mjs",
+    "data:species": "node scripts/extract-species.mjs",
+    "data:tables": "node scripts/build-control-tables.mjs",
+    "data:all": "npm run data:map && npm run data:species && npm run data:tables"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/preact": "^4.0.0",
+    "@astrojs/tailwind": "^5.1.4",
+    "astro": "^5.0.0",
+    "preact": "^10.25.0",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.0"
+  },
+  "devDependencies": {
+    "node-html-parser": "^7.0.1",
+    "svgo": "^3.3.2",
+    "yaml": "^2.6.1"
+  }
+}
