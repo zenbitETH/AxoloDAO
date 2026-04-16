@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: #071F29;
+  }
+
+  body {
+    @apply bg-dark-navy text-white font-body antialiased;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(0, 156, 156, 0.18), transparent 60%),
+      radial-gradient(ellipse at 100% 30%, rgba(232, 93, 117, 0.12), transparent 55%),
+      radial-gradient(ellipse at 50% 100%, rgba(212, 146, 95, 0.10), transparent 60%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-3xl;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:bg-white/[0.07] hover:border-teal/40 hover:shadow-neon-teal;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-teal px-8 py-4 font-semibold text-dark-navy shadow-neon-teal transition-transform duration-200 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-teal/70 px-8 py-4 font-semibold text-teal transition-colors duration-200 hover:bg-teal/10;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wider;
+  }
+
+  .badge-teal { @apply badge border-teal/40 bg-teal/10 text-teal; }
+  .badge-rosa { @apply badge border-rosa/40 bg-rosa/10 text-rosa; }
+  .badge-ocre { @apply badge border-ocre/40 bg-ocre/10 text-ocre; }
+
+  .container-tight { @apply mx-auto w-full max-w-6xl px-6; }
+  .container-wide  { @apply mx-auto w-full max-w-7xl px-6; }
+}
