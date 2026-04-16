@@ -1,0 +1,14 @@
+slug: semarnat
+name: SEMARNAT
+role:
+  es: Secretaría de Medio Ambiente y Recursos Naturales (México)
+  en: Ministry of Environment and Natural Resources (Mexico)
+  pt: Ministério do Meio Ambiente e Recursos Naturais (México)
+description:
+  es: Autoridad federal mexicana en materia ambiental. Provee marco normativo (NOM-059) y registro oficial de especies en riesgo, base regulatoria del trabajo de AxoloDAO.
+  en: Mexican federal environmental authority. Provides the regulatory framework (NOM-059) and the official endangered-species registry that anchors AxoloDAO's work.
+  pt: Autoridade ambiental federal mexicana. Fornece o marco normativo (NOM-059) e o registro oficial de espécies em risco que ancoram o trabalho da AxoloDAO.
+website: https://www.gob.mx/semarnat
+socials:
+  - platform: website
+    url: https://www.gob.mx/semarnat
