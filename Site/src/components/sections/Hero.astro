@@ -1,17 +1,14 @@
 ---
 import { type Locale, t, localePath } from '@/i18n/strings';
+import HeroParallax from '@components/HeroParallax';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 ---
 
-<section class="relative overflow-hidden">
-  <div class="absolute inset-0 -z-10">
-    <div class="absolute left-1/2 top-32 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-teal/30 blur-3xl"></div>
-    <div class="absolute right-0 top-64 h-72 w-72 rounded-full bg-rosa/25 blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-ocre/20 blur-3xl"></div>
-  </div>
+<HeroParallax client:idle />
 
+<section class="relative">
   <div class="container-tight pb-24 pt-20 text-center sm:pt-28">
     <span class="badge-teal mx-auto inline-flex">{t(locale, 'hero.eyebrow')}</span>
     <h1 class="mx-auto mt-6 max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-6xl">

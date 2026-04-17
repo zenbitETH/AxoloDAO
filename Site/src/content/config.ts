@@ -18,6 +18,7 @@ const members = defineCollection({
     description: localeText,
     socials: z.array(social).default([]),
     logo: z.string().optional(),
+    icon: z.string().optional(),
     ens: z.string().optional(),
     accentColor: z.string().optional(),
   }),
