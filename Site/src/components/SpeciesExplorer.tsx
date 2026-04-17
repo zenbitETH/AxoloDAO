@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'preact/hooks';
 import MexicoMap from './MexicoMap';
 
 export interface SpeciesItem {
@@ -67,14 +67,24 @@ const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
 
 interface Props {
   species: SpeciesItem[];
-  mapSvg: string;
+  mapSvgUrl: string;
   locale: 'es' | 'en' | 'pt';
   speciesPathBase: string; // e.g. '/especies/' or '/en/especies/'
 }
 
-export default function SpeciesExplorer({ species, mapSvg, locale, speciesPathBase }: Props) {
+export default function SpeciesExplorer({ species, mapSvgUrl, locale, speciesPathBase }: Props) {
   const tx = STRINGS[locale];
   const [view, setView] = useState<'map' | 'grid'>('map');
+  const [mapSvg, setMapSvg] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch(mapSvgUrl)
+      .then((r) => r.text())
+      .then((txt) => { if (!cancelled) setMapSvg(txt); })
+      .catch(() => { if (!cancelled) setMapSvg(''); });
+    return () => { cancelled = true; };
+  }, [mapSvgUrl]);
   const [iucnFilter, setIucnFilter] = useState<string | null>(null);
   const [stateFilter, setStateFilter] = useState<string | null>(null);
   const [search, setSearch] = useState('');
@@ -193,14 +203,18 @@ export default function SpeciesExplorer({ species, mapSvg, locale, speciesPathBa
         <div class={`${view === 'map' ? 'block' : 'hidden'} lg:col-span-3 lg:block`}>
           <div class="glass mx-auto overflow-hidden rounded-3xl p-4" style="max-width: min(100%, 3840px)">
             <div class="mx-auto" style="aspect-ratio: 7205 / 4735;">
-              <MexicoMap
-                svgMarkup={mapSvg}
-                highlightedStates={highlightedStates}
-                activeStates={stateFilter || iucnFilter || search ? activeStates : []}
-                onStateHover={setHoveredState}
-                onStateClick={handleStateClick}
-                className="h-full w-full"
-              />
+              {mapSvg ? (
+                <MexicoMap
+                  svgMarkup={mapSvg}
+                  highlightedStates={highlightedStates}
+                  activeStates={stateFilter || iucnFilter || search ? activeStates : []}
+                  onStateHover={setHoveredState}
+                  onStateClick={handleStateClick}
+                  className="h-full w-full"
+                />
+              ) : (
+                <div class="flex h-full w-full items-center justify-center text-white/40 text-sm">…</div>
+              )}
             </div>
             {hoveredState && (
               <div class="mt-2 text-center text-sm text-white/70">
@@ -246,7 +260,7 @@ export default function SpeciesExplorer({ species, mapSvg, locale, speciesPathBa
       </div>
 
       {selected && (
-        <SpeciesModal sp={selected} locale={locale} onClose={() => setSelected(null)} mapSvg={mapSvg} speciesPathBase={speciesPathBase} />
+        <SpeciesModal sp={selected} locale={locale} onClose={() => setSelected(null)} speciesPathBase={speciesPathBase} />
       )}
     </div>
   );
@@ -256,11 +270,10 @@ interface ModalProps {
   sp: SpeciesItem;
   locale: 'es' | 'en' | 'pt';
   onClose: () => void;
-  mapSvg: string;
   speciesPathBase: string;
 }
 
-function SpeciesModal({ sp, locale, onClose, mapSvg, speciesPathBase }: ModalProps) {
+function SpeciesModal({ sp, locale, onClose, speciesPathBase }: ModalProps) {
   const tx = STRINGS[locale];
   return (
     <div class="fixed inset-0 z-[100] flex items-center justify-center bg-dark-navy/80 p-2 backdrop-blur-md sm:p-6" role="dialog" aria-modal="true" onClick={onClose}>

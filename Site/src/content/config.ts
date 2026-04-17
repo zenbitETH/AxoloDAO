@@ -34,6 +34,7 @@ const partners = defineCollection({
     featuredLabel: localeTextOptional.optional(),
     socials: z.array(social).default([]),
     logo: z.string().optional(),
+    logoMode: z.enum(['image', 'text']).default('image'),
     website: z.string().url().optional(),
   }),
 });

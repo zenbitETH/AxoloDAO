@@ -2,7 +2,8 @@
 import { getCollection } from 'astro:content';
 import SpeciesExplorer from '@components/SpeciesExplorer';
 import { type Locale, t, localePath } from '@/i18n/strings';
-import mapSvgRaw from '@assets/mexico-interactive.svg?raw';
+
+const mapSvgUrl = '/map/mexico-interactive.svg';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -31,7 +32,7 @@ const speciesData = all
 const speciesPathBase = localePath(locale, 'especies/');
 ---
 
-<section id="species" class="py-20">
+<section id="species" class="scroll-mt-20 py-24">
   <div class="container-wide">
     <header class="mb-10 max-w-3xl">
       <h2 class="font-display text-4xl font-bold sm:text-5xl">{t(locale, 'species.title')}</h2>
@@ -39,9 +40,9 @@ const speciesPathBase = localePath(locale, 'especies/');
     </header>
   </div>
   <SpeciesExplorer
-    client:load
+    client:visible
     species={speciesData}
-    mapSvg={mapSvgRaw}
+    mapSvgUrl={mapSvgUrl}
     locale={locale}
     speciesPathBase={speciesPathBase}
   />

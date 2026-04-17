@@ -5,11 +5,12 @@ import LocaleToggle from './LocaleToggle.astro';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
+const home = localePath(locale);
 const links = [
-  { href: localePath(locale, 'especies'), label: t(locale, 'nav.species') },
-  { href: localePath(locale, '#projects'), label: t(locale, 'nav.projects') },
-  { href: localePath(locale, '#participate'), label: t(locale, 'nav.participate') },
-  { href: localePath(locale, '#concepts'), label: t(locale, 'nav.concepts') },
+  { href: `${home}#members`,     label: t(locale, 'nav.about') },
+  { href: `${home}#species`,     label: t(locale, 'nav.species') },
+  { href: `${home}#projects`,    label: t(locale, 'nav.projects') },
+  { href: `${home}#participate`, label: t(locale, 'nav.participate') },
 ];
 ---
 

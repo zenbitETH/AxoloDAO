@@ -26,10 +26,12 @@ const isFeatured = size === 'featured';
     <span class="badge-rosa mb-3 inline-flex">{featuredLabel}</span>
   )}
   <div class="flex items-start gap-4">
-    {partner.logo ? (
+    {partner.logoMode === 'image' && partner.logo ? (
       <img src={partner.logo} alt={`${partner.name} logo`} class:list={['rounded-2xl bg-white/5 p-1.5', isFeatured ? 'h-20 w-20' : 'h-14 w-14']} />
     ) : (
-      <div class:list={['grid place-items-center rounded-2xl bg-white/5 font-display text-teal', isFeatured ? 'h-20 w-20 text-3xl' : 'h-14 w-14 text-xl']}>{partner.name.slice(0, 1)}</div>
+      <div class:list={['grid place-items-center rounded-2xl border border-white/10 bg-white/[0.03] font-display font-bold text-teal', isFeatured ? 'h-20 w-20 text-2xl' : 'h-14 w-14 text-base']}>
+        {partner.name.split(/\s+/).map((w) => w[0]).slice(0, 3).join('')}
+      </div>
     )}
     <div class="flex-1">
       <h3 class:list={['font-display', isFeatured ? 'text-2xl' : 'text-xl']}>{partner.name}</h3>
