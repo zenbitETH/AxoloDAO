@@ -6,7 +6,7 @@
  * one YAML per species into src/content/species/{slug}.yaml.
  * Cross-references the master CSV to reconcile state lists.
  */
-import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseHTML } from 'node-html-parser';
@@ -17,8 +17,13 @@ const ROOT = resolve(__dirname, '..');
 const SRC_DIR = resolve(ROOT, 'AmbystomaSpecies');
 const OUT_DIR = resolve(ROOT, 'src/content/species');
 const MARKERS_DIR = resolve(ROOT, 'MapAssets');
+const STATE_OVERRIDES_PATH = resolve(__dirname, 'species-state-overrides.json');
 
 mkdirSync(OUT_DIR, { recursive: true });
+
+const stateOverrides = existsSync(STATE_OVERRIDES_PATH)
+  ? JSON.parse(readFileSync(STATE_OVERRIDES_PATH, 'utf8'))
+  : {};
 
 // Map Spanish state names → ISO codes used in our schema
 const STATE_NAME_TO_CODE = {
@@ -221,7 +226,8 @@ for (const file of files) {
   const characterizedBy = getProperty(propertyRows, 'Caracterizado');
   const localityType = getProperty(propertyRows, 'Localidad tipo');
   const stateMulti = getMultiSelect(propertyRows, 'Ubicación por Estado');
-  const states = parseStates(stateMulti.join(','));
+  const parsedStates = parseStates(stateMulti.join(','));
+  const states = Array.isArray(stateOverrides[slug]) ? stateOverrides[slug] : parsedStates;
   const anpRaw = getProperty(propertyRows, 'ANP');
   const anp = anpRaw && !/^sin\s+(presencia|información)/i.test(anpRaw)
     ? anpRaw.split(/,(?![^()]*\))/).map((s) => s.trim()).filter(Boolean)

@@ -234,13 +234,69 @@ out = out.replace(
       .replace(/\s+width="[^"]*"/g, '')
       .replace(/\s+height="[^"]*"/g, '')
       .replace(/\s+preserveAspectRatio="[^"]*"/g, '');
-    return `<svg${cleaned} preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:auto;max-width:100%">`;
+    return `<svg${cleaned} preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:100%">`;
   },
 );
 
 // Strip the opaque white background rectangle so the map blends into the dark canvas.
 out = out.replace(/<rect\s+width="7205"\s+height="4735"\s+fill="white"\s*\/>/i, '');
 
+// --- tag distribution-area paths and point markers with their species slug --------------
+// (color -> species was extracted by inspecting MapAssets/{slug}.svg marker files and
+//  the colored overlays in MapCanvas.svg)
+const COLOR_TO_SPECIES = {
+  '#00E1CA': 'altamirani',
+  '#1699F0': 'mavortium',
+  '#76B555': 'ordinarium',
+  '#D7B4E6': 'silvense',
+  '#F6716D': 'rosaceum',
+  '#9FE91F': 'velasci',
+  '#0D7DE9': 'amblycephalum',
+  '#1A00FF': 'andersoni',
+  '#4E00DF': 'bombypellum',
+  '#356340': 'dumerili',
+  '#981284': 'flavipiperatum',
+  '#BD066A': 'granulosum',
+  '#DB182F': 'leorae',
+  '#EE4A10': 'lermaense',
+  '#2F5A70': 'mexicanum',
+  '#DCC32A': 'rivulare',
+  '#369E57': 'taylori',
+};
+
+// Tag <path fill="#XXX"> distribution areas
+out = out.replace(/<path\b[^>]*\bfill="(#[0-9A-Fa-f]{3,8})"[^>]*\bclass="distribution-overlay"[^>]*\/>/g, (m, color) => {
+  const slug = COLOR_TO_SPECIES[color.toUpperCase()];
+  if (!slug) return m;
+  return m.replace('class="distribution-overlay"', `class="species-area" data-species="${slug}" data-overlay-type="area"`);
+});
+
+// Tag <circle fill="#XXX"> point markers
+out = out.replace(/<circle\b[^>]*\bfill="(#[0-9A-Fa-f]{3,8})"[^>]*\/>/g, (m, color) => {
+  const slug = COLOR_TO_SPECIES[color.toUpperCase()];
+  if (!slug) return m;
+  // Inject classname before fill attr
+  return m.replace('<circle', `<circle class="species-marker" data-species="${slug}" data-overlay-type="point"`);
+});
+
 writeFileSync(OUT_MAP, out);
 console.log(`[map] wrote ${OUT_MAP} (${(out.length / 1024).toFixed(1)} KB)`);
+
+// --- emit per-state bounding boxes (master-canvas coords) for the zoom feature ----------
+const bboxes = {};
+for (let i = 0; i < canvasPaths.length; i++) {
+  const code = assignments[i];
+  if (!code) continue;
+  const pts = parsePoints(canvasPaths[i].d);
+  if (!pts.length) continue;
+  let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (const [x, y] of pts) {
+    if (x < minX) minX = x; if (y < minY) minY = y;
+    if (x > maxX) maxX = x; if (y > maxY) maxY = y;
+  }
+  bboxes[code] = { x: Math.round(minX), y: Math.round(minY), w: Math.round(maxX - minX), h: Math.round(maxY - minY) };
+}
+const BBOX_OUT = join(OUT_DIR, 'state-bboxes.json');
+writeFileSync(BBOX_OUT, JSON.stringify(bboxes, null, 2));
+console.log(`[map] wrote ${BBOX_OUT} (${Object.keys(bboxes).length} states)`);
 console.log('[map] done. Validate visually in a browser; add overrides to scripts/state-path-overrides.json if needed.');

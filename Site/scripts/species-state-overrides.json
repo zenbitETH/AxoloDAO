@@ -1,0 +1,81 @@
+{
+  "_doc": "Manual state overrides for species whose distribution areas span more states than the Notion HTML lists. These replace the parsed states[] entirely.",
+  "altamirani": [
+    "CMX",
+    "MEX",
+    "MOR"
+  ],
+  "amblycephalum": [
+    "MIC"
+  ],
+  "andersoni": [
+    "MIC"
+  ],
+  "bombypellum": [
+    "MEX"
+  ],
+  "dumerili": [
+    "MIC"
+  ],
+  "flavipiperatum": [
+    "JAL"
+  ],
+  "granulosum": [
+    "MEX"
+  ],
+  "leorae": [
+    "MEX"
+  ],
+  "lermaense": [
+    "MEX"
+  ],
+  "mavortium": [
+    "CHH",
+    "COA",
+    "SON"
+  ],
+  "mexicanum": [
+    "CMX"
+  ],
+  "ordinarium": [
+    "MIC"
+  ],
+  "rivulare": [
+    "GRO"
+  ],
+  "rosaceum": [
+    "CHH",
+    "DUR",
+    "JAL",
+    "SIN",
+    "SON",
+    "ZAC"
+  ],
+  "silvense": [
+    "DUR"
+  ],
+  "taylori": [
+    "PUE"
+  ],
+  "velasci": [
+    "AGU",
+    "CHH",
+    "CMX",
+    "COA",
+    "DUR",
+    "GUA",
+    "HID",
+    "JAL",
+    "MEX",
+    "MIC",
+    "NLE",
+    "PUE",
+    "QUE",
+    "SLP",
+    "SON",
+    "TAM",
+    "TLA",
+    "VER",
+    "ZAC"
+  ]
+}
