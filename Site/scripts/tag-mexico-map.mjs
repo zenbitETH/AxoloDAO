@@ -16,7 +16,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');
 const MAP_ASSETS = resolve(ROOT, 'MapAssets');
 const SRC_MAP = join(MAP_ASSETS, 'MapCanvas.svg');
-const OUT_DIR = resolve(ROOT, 'src/assets');
+const OUT_DIR = resolve(ROOT, 'public/map');
 const OUT_MAP = join(OUT_DIR, 'mexico-interactive.svg');
 const OVERRIDES_PATH = resolve(__dirname, 'state-path-overrides.json');
 
@@ -225,6 +225,21 @@ replacements.sort((a, b) => b.start - a.start);
 for (const r of replacements) {
   out = out.slice(0, r.start) + r.text + out.slice(r.end);
 }
+
+// Strip width/height from the root <svg> so it scales fluidly via CSS, and ensure preserveAspectRatio is set.
+out = out.replace(
+  /<svg([^>]*)>/,
+  (_, attrs) => {
+    const cleaned = attrs
+      .replace(/\s+width="[^"]*"/g, '')
+      .replace(/\s+height="[^"]*"/g, '')
+      .replace(/\s+preserveAspectRatio="[^"]*"/g, '');
+    return `<svg${cleaned} preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:auto;max-width:100%">`;
+  },
+);
+
+// Strip the opaque white background rectangle so the map blends into the dark canvas.
+out = out.replace(/<rect\s+width="7205"\s+height="4735"\s+fill="white"\s*\/>/i, '');
 
 writeFileSync(OUT_MAP, out);
 console.log(`[map] wrote ${OUT_MAP} (${(out.length / 1024).toFixed(1)} KB)`);
