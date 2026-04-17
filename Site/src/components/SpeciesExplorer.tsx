@@ -225,32 +225,58 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
   }
 
   const hasActiveFilter = Boolean(iucnGroupFilter || stateFilter || search);
-  const renderCard = (s: SpeciesItem) => (
-    <button
-      type="button"
-      key={s.slug}
-      onClick={() => setSelected(s)}
-      onMouseEnter={() => setHoveredSpecies(s.slug)}
-      onMouseLeave={() => setHoveredSpecies(null)}
-      onFocus={() => setHoveredSpecies(s.slug)}
-      onBlur={() => setHoveredSpecies(null)}
-      class="glass glass-hover group flex flex-col items-start gap-2 rounded-2xl p-4 text-left transition-transform duration-200 hover:-translate-y-0.5"
-    >
-      <div
-        class="h-3 w-3 rounded-full transition-transform duration-200 group-hover:scale-125"
-        style={{ backgroundColor: s.accentColor ?? '#009C9C', boxShadow: `0 0 12px ${s.accentColor ?? '#009C9C'}aa` }}
-      />
-      <div class="font-display text-lg italic leading-tight text-white transition-colors duration-200 group-hover:text-teal">
-        A. {s.slug}
-      </div>
-      {s.commonNames[0] && (
-        <div class="line-clamp-1 text-sm text-white/70 transition-colors duration-200 group-hover:text-white">
-          {s.commonNames[0]}
+
+  // Map IUCN code to the merged-legend category color (rosa/teal/ocre) for card badges.
+  const iucnGroupColor = (code?: string) => {
+    if (!code) return '#888';
+    for (const g of IUCN_GROUPS) {
+      if ((g.codes as readonly string[]).includes(code)) return g.color;
+    }
+    return '#888';
+  };
+
+  const renderCard = (s: SpeciesItem) => {
+    const badgeColor = iucnGroupColor(s.iucn);
+    return (
+      <button
+        type="button"
+        key={s.slug}
+        onClick={() => setSelected(s)}
+        onMouseEnter={() => setHoveredSpecies(s.slug)}
+        onMouseLeave={() => setHoveredSpecies(null)}
+        onFocus={() => setHoveredSpecies(s.slug)}
+        onBlur={() => setHoveredSpecies(null)}
+        class="glass glass-hover group flex w-full items-center gap-4 rounded-2xl p-4 text-left transition-transform duration-200 hover:-translate-y-0.5"
+      >
+        <div
+          class="h-4 w-4 shrink-0 rounded-full transition-transform duration-200 group-hover:scale-125"
+          style={{ backgroundColor: s.accentColor ?? '#009C9C', boxShadow: `0 0 12px ${s.accentColor ?? '#009C9C'}aa` }}
+        />
+        <div class="min-w-0 flex-1">
+          <div class="font-display text-lg italic leading-tight text-white transition-colors duration-200 group-hover:text-teal">
+            A. {s.slug}
+          </div>
+          {s.commonNames[0] && (
+            <div class="truncate text-sm text-white/70 transition-colors duration-200 group-hover:text-white">
+              {s.commonNames[0]}
+            </div>
+          )}
         </div>
-      )}
-      <div class="mt-auto text-xs text-white/45">{s.states.length} {tx.nstates}</div>
-    </button>
-  );
+        <div class="flex shrink-0 flex-col items-end gap-1 text-right">
+          {s.iucn && (
+            <span
+              class="rounded-full border px-2 py-0.5 text-[10px] font-bold tracking-wider"
+              style={{ borderColor: `${badgeColor}66`, backgroundColor: `${badgeColor}22`, color: badgeColor }}
+              title={IUCN_LABELS[s.iucn]?.[locale]}
+            >
+              {s.iucn}
+            </span>
+          )}
+          <span class="text-[10px] text-white/45">{s.states.length} {tx.nstates}</span>
+        </div>
+      </button>
+    );
+  };
 
   return (
     <div class="container-wide">
@@ -334,15 +360,15 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
                 <div class="flex h-full w-full items-center justify-center text-white/40 text-sm">…</div>
               )}
             </div>
-            <div class="mt-2 min-h-[1.25rem] text-center text-xs text-white/60">
+            <div class="mt-3 min-h-[2rem] text-center">
               {hoveredState ? (
-                <>
+                <div class="text-sm text-white/70">
                   <strong class="text-teal">{STATE_LABELS_ES[hoveredState]}</strong>
                   {' · '}
                   {species.filter((s) => s.states.includes(hoveredState)).length} {locale === 'es' ? 'especies' : locale === 'en' ? 'species' : 'espécies'}
-                </>
+                </div>
               ) : focusedSpecies ? (
-                <span class="italic">A. {focusedSpecies}</span>
+                <div class="font-display text-2xl italic text-teal">A. {focusedSpecies}</div>
               ) : null}
             </div>
           </div>
@@ -356,13 +382,13 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
                 <h3 class="font-display text-sm leading-tight text-teal">{ONSITE_LABELS[locale]}</h3>
                 <span class="badge-teal shrink-0 whitespace-nowrap">{ONSITE_BADGE[locale]}</span>
               </header>
-              <div class="grid grid-cols-3 gap-3">
+              <div class="flex flex-col gap-2.5">
                 {featuredFiltered.map(renderCard)}
               </div>
             </section>
           )}
           {restFiltered.length > 0 && (
-            <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
+            <div class="flex flex-col gap-2.5">
               {restFiltered.map(renderCard)}
             </div>
           )}
@@ -388,8 +414,18 @@ interface ModalProps {
   speciesPathBase: string;
 }
 
+// Slug -> filename in /public/species/ for the 4 species that have a hero image.
+// Dumerili's slug is "dumerili" (single i) but the file was exported as "dumerilii.png".
+const HERO_IMAGE_FILE: Record<string, string> = {
+  andersoni: 'andersoni.png',
+  dumerili: 'dumerilii.png',
+  mexicanum: 'mexicanum.png',
+  velasci: 'velasci.png',
+};
+
 function SpeciesModal({ sp, locale, onClose, speciesPathBase }: ModalProps) {
   const tx = STRINGS[locale];
+  const heroImage = HERO_IMAGE_FILE[sp.slug];
   return (
     <div class="fixed inset-0 z-[100] flex items-center justify-center bg-dark-navy/80 p-2 backdrop-blur-md sm:p-6" role="dialog" aria-modal="true" onClick={onClose}>
       <div
@@ -401,16 +437,20 @@ function SpeciesModal({ sp, locale, onClose, speciesPathBase }: ModalProps) {
           {tx.close}
         </button>
         <div class="max-h-[92vh] overflow-y-auto">
-          <div class="relative h-44 w-full overflow-hidden bg-gradient-to-br from-mid-navy via-navy to-dark-navy sm:h-56">
-            {sp.hasHeroCard ? (
+          <div class="relative h-52 w-full overflow-hidden bg-gradient-to-br from-mid-navy via-navy to-dark-navy sm:h-64">
+            {heroImage ? (
               <img
-                src={`/species-cards/${sp.slug}.svg`}
+                src={`/species/${heroImage}`}
                 alt={sp.scientificName}
-                class="h-full w-full object-cover object-left"
+                class="h-full w-full object-contain"
+                loading="eager"
               />
             ) : (
               <div class="flex h-full w-full items-center justify-center" style={{ background: `radial-gradient(circle at center, ${sp.accentColor ?? '#009C9C'}40, transparent 70%)` }}>
-                <div class="h-24 w-24 rounded-full" style={{ backgroundColor: sp.accentColor ?? '#009C9C' }} />
+                <div
+                  class="h-24 w-24 rounded-full"
+                  style={{ backgroundColor: sp.accentColor ?? '#009C9C', boxShadow: `0 0 32px ${sp.accentColor ?? '#009C9C'}80` }}
+                />
               </div>
             )}
           </div>

@@ -264,11 +264,15 @@ const COLOR_TO_SPECIES = {
   '#369E57': 'taylori',
 };
 
-// Tag <path fill="#XXX"> distribution areas
+// Tag <path fill="#XXX"> distribution areas and strip any stroke="white" (several overlays
+// in the source file have white strokes that stay visible through fill-opacity transitions
+// and leave phantom outlines when the overlay is hidden).
 out = out.replace(/<path\b[^>]*\bfill="(#[0-9A-Fa-f]{3,8})"[^>]*\bclass="distribution-overlay"[^>]*\/>/g, (m, color) => {
   const slug = COLOR_TO_SPECIES[color.toUpperCase()];
   if (!slug) return m;
-  return m.replace('class="distribution-overlay"', `class="species-area" data-species="${slug}" data-overlay-type="area"`);
+  return m
+    .replace(/\s+stroke="[^"]*"/g, '')
+    .replace('class="distribution-overlay"', `class="species-area" data-species="${slug}" data-overlay-type="area"`);
 });
 
 // Tag <circle fill="#XXX"> point markers
