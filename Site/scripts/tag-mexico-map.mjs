@@ -244,6 +244,14 @@ out = out.replace(/<rect\s+width="7205"\s+height="4735"\s+fill="white"\s*\/>/i, 
 // --- tag distribution-area paths and point markers with their species slug --------------
 // (color -> species was extracted by inspecting MapAssets/{slug}.svg marker files and
 //  the colored overlays in MapCanvas.svg)
+// Optional per-species color overrides. Applied AFTER identification — the original
+// artist colors still identify each overlay; these recolors change what's visible.
+const SPECIES_RECOLOR = {
+  andersoni: '#BD7A39',
+  dumerili: '#356340',
+  mexicanum: '#2F5A70',
+};
+
 const COLOR_TO_SPECIES = {
   '#00E1CA': 'altamirani',
   '#1699F0': 'mavortium',
@@ -270,18 +278,43 @@ const COLOR_TO_SPECIES = {
 out = out.replace(/<path\b[^>]*\bfill="(#[0-9A-Fa-f]{3,8})"[^>]*\bclass="distribution-overlay"[^>]*\/>/g, (m, color) => {
   const slug = COLOR_TO_SPECIES[color.toUpperCase()];
   if (!slug) return m;
-  return m
+  let out = m
     .replace(/\s+stroke="[^"]*"/g, '')
     .replace('class="distribution-overlay"', `class="species-area" data-species="${slug}" data-overlay-type="area"`);
+  if (SPECIES_RECOLOR[slug]) {
+    out = out.replace(/\bfill="#[0-9A-Fa-f]+"/, `fill="${SPECIES_RECOLOR[slug]}"`);
+  }
+  return out;
 });
 
 // Tag <circle fill="#XXX"> point markers
 out = out.replace(/<circle\b[^>]*\bfill="(#[0-9A-Fa-f]{3,8})"[^>]*\/>/g, (m, color) => {
   const slug = COLOR_TO_SPECIES[color.toUpperCase()];
   if (!slug) return m;
-  // Inject classname before fill attr
-  return m.replace('<circle', `<circle class="species-marker" data-species="${slug}" data-overlay-type="point"`);
+  let out = m.replace('<circle', `<circle class="species-marker" data-species="${slug}" data-overlay-type="point"`);
+  if (SPECIES_RECOLOR[slug]) {
+    out = out.replace(/\bfill="#[0-9A-Fa-f]+"/, `fill="${SPECIES_RECOLOR[slug]}"`);
+  }
+  return out;
 });
+
+// Remove any remaining distribution-overlay paths that weren't matched to a species.
+// These are Figma-export leftovers: a thick #1B333F outline and a fill="white" path
+// drawn AROUND the altamirani area to fake a stroke. They have no functional role
+// in the interactive map and bleed through focused-species views as phantom outlines.
+out = out.replace(/<path\b[^>]*\bclass="distribution-overlay"[^>]*\/>\s*/g, '');
+
+// Mark state borders non-scaling so zooming doesn't blow the 9-unit white stroke up
+// into a massive white band dominating the viewport.
+out = out.replace(/(<path\b[^>]*\bdata-state-code="[A-Z]{3}"[^>]*)\/>/g, (_, attrs) => {
+  if (/vector-effect=/.test(attrs)) return _;
+  return `${attrs} vector-effect="non-scaling-stroke"/>`;
+});
+// Reduce the raw stroke-width from 9 to 1.5. Combined with non-scaling-stroke on the
+// state paths above, borders render as a crisp thin line at any zoom level instead of
+// ballooning into a thick white band when zoomed into small states like CMX.
+// (stroke-width="9" only appears on state paths after we removed the Figma leftovers.)
+out = out.replace(/stroke-width="9"/g, 'stroke-width="1.5"');
 
 writeFileSync(OUT_MAP, out);
 console.log(`[map] wrote ${OUT_MAP} (${(out.length / 1024).toFixed(1)} KB)`);

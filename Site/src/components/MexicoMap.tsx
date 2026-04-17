@@ -11,6 +11,8 @@ interface Props {
   activeStates?: string[];
   /** Slug of the focused species. When set, only its overlay/markers show; others are hidden. */
   focusedSpecies?: string | null;
+  /** Hex color used for state highlights — defaults to teal but typically the focused species's accent color */
+  highlightColor?: string;
   /** When set, animate the SVG viewBox to this region (in master-canvas coords) */
   zoomBBox?: BBox | null;
   onStateHover?: (code: string | null) => void;
@@ -48,6 +50,7 @@ export default function MexicoMap({
   activeStates = [],
   focusedSpecies = null,
   zoomBBox = null,
+  highlightColor,
   onStateHover,
   onStateClick,
   className,
@@ -111,23 +114,28 @@ export default function MexicoMap({
     if (!container) return;
     const hi = new Set(highlightedStates);
     const active = new Set(activeStates);
+    const hc = highlightColor ?? '#009C9C';
     container.querySelectorAll<SVGPathElement>('[data-state-code]').forEach((path) => {
       const code = path.dataset.stateCode!;
       if (hi.has(code)) {
-        path.setAttribute('fill', '#009C9C');
-        path.style.filter = 'drop-shadow(0 0 14px rgba(0,156,156,0.7))';
+        path.setAttribute('fill', hc);
+        // 80% transparency so the highlight is clearly distinct from the solid point/area marker
+        path.style.fillOpacity = '0.2';
+        path.style.filter = `drop-shadow(0 0 14px ${hc}b3)`;
         path.style.opacity = '1';
       } else if (active.size && active.has(code)) {
         path.setAttribute('fill', '#0E4555');
+        path.style.fillOpacity = '';
         path.style.filter = '';
         path.style.opacity = '1';
       } else {
         path.setAttribute('fill', '#1B333F');
+        path.style.fillOpacity = '';
         path.style.filter = '';
         path.style.opacity = active.size ? '0.55' : '1';
       }
     });
-  }, [highlightedStates, activeStates]);
+  }, [highlightedStates, activeStates, highlightColor]);
 
   // ------ overlay / marker visibility based on focusedSpecies ----
   useEffect(() => {

@@ -7,13 +7,17 @@ states:
   - MIC
 iucn: CR
 nom059: Pr
-description: Es una especie grande con una longitud hocico-cloaca de en promedio 142 mm y longitud cloaca-cola de 118 mm. La cabeza está redondeada y se presenta aplanada dorsoventralmente. La cola está aplanada lateralmente. Su color es verde claro, con tonalidades violeta y café, color más claro en las extremidades y en la región ventral; en los costados presenta manchas blanquecinas, en cabeza y dorso; se pueden presentar depresiones por la presencia de glándulas en la piel. Su pliegue gular es visible (Aguilar-Miguel, 2005).
+description: Es una de las especies más robustas y de mayor tamaño del género Ambystoma, con una longitud total promedio de 26 cm. Se distingue por su cabeza ancha, redondeada y notablemente aplanada. Presenta una coloración verde claro con matices violetas y cafés, más clara en el vientre y las extremidades. En los costados y el dorso se observan pequeñas manchas blanquecinas y poros glandulares visibles, así como un pliegue cutáneo marcadamente desarrollado en la garganta (pliegue gular).
 habitat: |-
   Se considera un animal epibentónico, aunque puede utilizar todos los estratos de la columna de agua (Aguilar-Miguel, 2005).
 
   Distribución geográfica
 
   Únicamente se distribuye en el Lago de Pátzcuaro, Michoacán. Recientemente Huacúz (2011) en su libro sobre el estado de conservación del género Ambystoma delimita la distribución de esta especie al lago de Pátzcuaro. Algunos pescadores de las comunidades aledañas al lago mencionan haber capturado ejemplares de esta especie recientemente. Durante el muestreo realizado en 2016 como parte de un proyecto Procer se obtuvo acceso a ejemplares recolectados en 2014 por un pescador local.
+distribution: |-
+  Especie endémica del Lago de Pátzcuaro, Michoacán, México. No se encuentra de forma natural en ningún otro lugar del mundo. Prefiere habitar y cazar cerca del fondo del lago (organismo epibentónico), aunque puede desplazarse a lo largo de toda la columna de agua.
+
+  Su ciclo de vida es completamente acuático. La reproducción ocurre principalmente de febrero a abril, cuando las hembras depositan de 100 a 600 huevos entre la vegetación acuática.
 threats: |-
   Sobreexplotación de las poblaciones de achoque para su venta y consumo como alimento y para elaborar remedios tradicionales. Contaminación del lago de Pátzcuaro con aguas residuales y residuos sólidos urbanos, introducción de especies de peces exóticos como la carpa y la tilapia.
 
@@ -27,12 +31,11 @@ threats: |-
 
   Velarde-Mendoza, T. 2012. Importancia ecológica y cultural de una especie endémica de ajolote (Ambystoma dumerilii) del lago de Pátzcuaro, Michoacán. Etnobiología 10(2):40-49.
 feeding: |-
-  Se ha reportado que se alimenta de acociles (Cambarellus montezumae), plancton, crustáceos, insectos, moluscos, peces pequeños, gusanos y renacuajos (Velarde-Mendoza, 2012).
+  En su hábitat natural: es un depredador versátil que se alimenta principalmente de acociles (pequeños cangrejos de río), además de peces pequeños, renacuajos, moluscos, insectos acuáticos y plancton.
 
-  Reproducción
-
-  La madurez sexual es alcanzada a los 16 meses; la temporada reproductiva ocurre entre febrero y abril, ovopositan de 100 a 600 huevos por puesta y se ha registrado que el tiempo de incubación varía entre 16 y 23 días; se ha observado que esta variación está relacionada con la temperatura del ambiente (Servín-Zamora, 2017).
+  En cautiverio: se le proporciona una dieta alta en proteína que incluye lombrices, tubifex, larvas de insectos y, ocasionalmente, trozos de pescado o pellets formulados para axolotes.
 localityType: “laguna de Pátzcuaro, Michoacán, México, 2,055 pies de altitud”.
 characterizedBy: Dugè, 1870
 heroCardSvg: DumeriliCard.svg
+accentColor: "#356340"
 endemic: true

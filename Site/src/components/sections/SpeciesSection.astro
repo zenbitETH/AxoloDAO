@@ -22,6 +22,7 @@ const speciesData = all
     habitat: s.data.habitat,
     distribution: s.data.distribution,
     threats: s.data.threats,
+    feeding: s.data.feeding,
     references: s.data.references ?? [],
     anp: s.data.anp ?? [],
     accentColor: s.data.accentColor,
@@ -38,11 +39,6 @@ const titleByLocale = {
   pt: 'Axolotes e achoques do México',
 };
 const breadcrumb = 'Reino Animalia · Phylum Chordata · Clase Amphibia · Orden Caudata · Familia Ambystomatidae · Género Ambystoma';
-const subtitleByLocale = {
-  es: 'Navega por especie o por estado en el mapa interactivo de México.',
-  en: 'Browse by species or by state on the interactive map of Mexico.',
-  pt: 'Navegue por espécie ou por estado no mapa interativo do México.',
-};
 const legendNote = {
   es: '* De acuerdo a la Lista Roja de la Unión Internacional para la Conservación de la Naturaleza (UICN).',
   en: '* According to the IUCN Red List of Threatened Species.',
@@ -55,7 +51,6 @@ const legendNote = {
     <header class="mb-10 max-w-4xl">
       <h2 class="font-display text-4xl font-bold sm:text-5xl">{titleByLocale[locale]}</h2>
       <p class="mt-2 font-mono text-xs italic text-white/55 sm:text-sm">{breadcrumb}</p>
-      <p class="mt-4 text-white/75">{subtitleByLocale[locale]}</p>
       <p class="mt-3 text-[11px] text-white/45">{legendNote[locale]}</p>
     </header>
   </div>

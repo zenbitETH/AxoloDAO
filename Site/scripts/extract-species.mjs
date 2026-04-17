@@ -18,11 +18,15 @@ const SRC_DIR = resolve(ROOT, 'AmbystomaSpecies');
 const OUT_DIR = resolve(ROOT, 'src/content/species');
 const MARKERS_DIR = resolve(ROOT, 'MapAssets');
 const STATE_OVERRIDES_PATH = resolve(__dirname, 'species-state-overrides.json');
+const FIELD_OVERRIDES_PATH = resolve(__dirname, 'species-overrides.json');
 
 mkdirSync(OUT_DIR, { recursive: true });
 
 const stateOverrides = existsSync(STATE_OVERRIDES_PATH)
   ? JSON.parse(readFileSync(STATE_OVERRIDES_PATH, 'utf8'))
+  : {};
+const fieldOverrides = existsSync(FIELD_OVERRIDES_PATH)
+  ? JSON.parse(readFileSync(FIELD_OVERRIDES_PATH, 'utf8'))
   : {};
 
 // Map Spanish state names → ISO codes used in our schema
@@ -272,6 +276,15 @@ for (const file of files) {
     accentColor,
     endemic: !/(US|Canada|Texas|Mexico\)|Nuevo Mexico)/i.test(stateMulti.join(',')),
   };
+
+  // Apply per-species field overrides (curated content / accent color tuning)
+  const overrideFields = fieldOverrides[slug];
+  if (overrideFields && typeof overrideFields === 'object') {
+    for (const [k, v] of Object.entries(overrideFields)) {
+      if (k.startsWith('_')) continue;
+      data[k] = v;
+    }
+  }
 
   // strip undefined keys
   const clean = Object.fromEntries(Object.entries(data).filter(([, v]) => v !== undefined && v !== null && !(Array.isArray(v) && v.length === 0)));

@@ -24,8 +24,10 @@ const MAP_SVG = resolve(ROOT, 'public/map/mexico-interactive.svg');
 const OUT = resolve(__dirname, 'species-state-overrides.json');
 
 // Species whose derived list should NOT be overwritten (manual curation wins).
-// Velasci: the artist's green blob covers the user-specified 19-state range.
-const PROTECTED = new Set(['velasci']);
+// - velasci: the artist's green blob covers the user-specified 19-state range
+// - rosaceum: NAY is added manually (painted area doesn't strictly extend there
+//   but the species is biologically present in Nayarit)
+const PROTECTED = new Set(['velasci', 'rosaceum']);
 
 // ------------ parsing -------------------------------------------------------
 function parsePoints(d) {

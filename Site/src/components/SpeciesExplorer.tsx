@@ -12,6 +12,7 @@ export interface SpeciesItem {
   habitat?: string;
   distribution?: string;
   threats?: string;
+  feeding?: string;
   references: string[];
   anp: string[];
   accentColor?: string;
@@ -47,19 +48,22 @@ const IUCN_LABELS: Record<string, Record<'es' | 'en' | 'pt', string>> = {
 const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
   es: {
     map: 'Mapa', grid: 'Especies', all: 'Todas', states: 'Estados', search: 'Buscar especie...',
-    description: 'Descripción', habitat: 'Hábitat', distribution: 'Distribución', threats: 'Amenazas', references: 'Referencias',
+    description: 'Descripción', habitat: 'Hábitat', distribution: 'Ubicación', threats: 'Amenazas', references: 'Referencias',
+    feeding: 'Alimentación',
     nstates: 'estados', endemic: 'Endémica de México', protected: 'Presente en ANP', viewFull: 'Ver ficha completa', close: 'Cerrar',
     iucnFilter: 'Estatus IUCN', clear: 'Limpiar',
   },
   en: {
     map: 'Map', grid: 'Species', all: 'All', states: 'States', search: 'Search species...',
-    description: 'Description', habitat: 'Habitat', distribution: 'Distribution', threats: 'Threats', references: 'References',
+    description: 'Description', habitat: 'Habitat', distribution: 'Location', threats: 'Threats', references: 'References',
+    feeding: 'Diet',
     nstates: 'states', endemic: 'Endemic to Mexico', protected: 'Found in ANP', viewFull: 'Open full profile', close: 'Close',
     iucnFilter: 'IUCN status', clear: 'Clear',
   },
   pt: {
     map: 'Mapa', grid: 'Espécies', all: 'Todas', states: 'Estados', search: 'Buscar espécie...',
-    description: 'Descrição', habitat: 'Hábitat', distribution: 'Distribuição', threats: 'Ameaças', references: 'Referências',
+    description: 'Descrição', habitat: 'Hábitat', distribution: 'Localização', threats: 'Ameaças', references: 'Referências',
+    feeding: 'Alimentação',
     nstates: 'estados', endemic: 'Endêmica do México', protected: 'Presente em ANP', viewFull: 'Ver ficha completa', close: 'Fechar',
     iucnFilter: 'Status IUCN', clear: 'Limpar',
   },
@@ -111,9 +115,13 @@ const LOCALIZED_FOR_ZOOM: Record<string, string[]> = {
   granulosum:    ['MEX'],
   leorae:        ['MEX', 'PUE'],
   lermaense:     ['MEX'],
-  mexicanum:     ['CMX'],
+  mexicanum:     ['CMX', 'MEX', 'MOR'],
   ordinarium:    ['MEX', 'MIC'],
   rivulare:      ['MEX', 'GRO'],
+  rosaceum:      ['CHH', 'DUR', 'JAL', 'NAY', 'SIN', 'SON', 'ZAC'],
+  silvense:      ['DUR'],
+  mavortium:     ['CHH', 'COA', 'SON', 'NLE', 'TAM'],
+  velasci:       ['AGU', 'CHH', 'CMX', 'COA', 'DUR', 'GUA', 'HID', 'JAL', 'MEX', 'MIC', 'NLE', 'PUE', 'QUE', 'SLP', 'SON', 'TAM', 'TLA', 'VER', 'ZAC'],
   taylori:       ['PUE'],
 };
 
@@ -197,6 +205,10 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
 
   // Species being focused on the map (highest priority: modal > hovered card > nothing)
   const focusedSpecies = selected?.slug ?? hoveredSpecies ?? null;
+  const focusedAccent = useMemo(() => {
+    if (!focusedSpecies) return undefined;
+    return species.find((s) => s.slug === focusedSpecies)?.accentColor;
+  }, [focusedSpecies, species]);
 
   // Compute zoom bbox: union of bboxes of LOCALIZED_FOR_ZOOM[focused].
   const zoomBBox = useMemo<BBox | null>(() => {
@@ -278,8 +290,26 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
     );
   };
 
+  const subtitleByLocale: Record<'es' | 'en' | 'pt', string> = {
+    es: 'Navega por especie o por estado en el mapa interactivo de México.',
+    en: 'Browse by species or by state on the interactive map of Mexico.',
+    pt: 'Navegue por espécie ou por estado no mapa interativo do México.',
+  };
+
   return (
     <div class="container-wide">
+      {/* Instruction subtitle + search (same row on desktop, stacked on mobile) */}
+      <div class="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p class="text-white/75">{subtitleByLocale[locale]}</p>
+        <input
+          type="search"
+          value={search}
+          onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
+          placeholder={tx.search}
+          class="w-full rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm placeholder:text-white/40 focus:border-teal focus:outline-none sm:w-72"
+        />
+      </div>
+
       {/* Merged legend + IUCN group filter */}
       <div class="mb-6 grid gap-3 sm:grid-cols-4">
         <button
@@ -308,9 +338,9 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
         })}
       </div>
 
-      {/* Search + clear */}
-      <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex flex-wrap items-center gap-2 text-xs text-white/55">
+      {/* Active-filter chips row (only when something is filtering) */}
+      {(stateFilter || hasActiveFilter) && (
+        <div class="mb-4 flex flex-wrap items-center gap-2 text-xs text-white/55">
           {stateFilter && (
             <span class="inline-flex items-center gap-2 rounded-full bg-teal/15 px-3 py-1 text-teal">
               {STATE_LABELS_ES[stateFilter]}
@@ -323,14 +353,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
             </button>
           )}
         </div>
-        <input
-          type="search"
-          value={search}
-          onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
-          placeholder={tx.search}
-          class="w-full rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm placeholder:text-white/40 focus:border-teal focus:outline-none sm:w-64"
-        />
-      </div>
+      )}
 
       {/* Mobile view toggle */}
       <div class="mb-4 flex justify-center lg:hidden">
@@ -351,6 +374,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
                   highlightedStates={highlightedStates}
                   activeStates={hasActiveFilter ? activeStates : []}
                   focusedSpecies={focusedSpecies}
+                  highlightColor={focusedAccent}
                   zoomBBox={zoomBBox}
                   onStateHover={setHoveredState}
                   onStateClick={handleStateClick}
@@ -368,7 +392,12 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
                   {species.filter((s) => s.states.includes(hoveredState)).length} {locale === 'es' ? 'especies' : locale === 'en' ? 'species' : 'espécies'}
                 </div>
               ) : focusedSpecies ? (
-                <div class="font-display text-2xl italic text-teal">A. {focusedSpecies}</div>
+                <div
+                  class="font-display text-2xl italic"
+                  style={{ color: focusedAccent ?? '#009C9C' }}
+                >
+                  A. {focusedSpecies}
+                </div>
               ) : null}
             </div>
           </div>
@@ -437,16 +466,21 @@ function SpeciesModal({ sp, locale, onClose, speciesPathBase }: ModalProps) {
           {tx.close}
         </button>
         <div class="max-h-[92vh] overflow-y-auto">
-          <div class="relative h-52 w-full overflow-hidden bg-gradient-to-br from-mid-navy via-navy to-dark-navy sm:h-64">
+          <div class="relative w-full overflow-hidden bg-gradient-to-br from-mid-navy via-navy to-dark-navy">
             {heroImage ? (
+              // Show the full illustration end-to-end horizontally; height adapts to the
+              // image's own aspect ratio so nothing is cropped sideways.
               <img
                 src={`/species/${heroImage}`}
                 alt={sp.scientificName}
-                class="h-full w-full object-contain"
+                class="block h-auto w-full"
                 loading="eager"
               />
             ) : (
-              <div class="flex h-full w-full items-center justify-center" style={{ background: `radial-gradient(circle at center, ${sp.accentColor ?? '#009C9C'}40, transparent 70%)` }}>
+              <div
+                class="flex h-52 w-full items-center justify-center sm:h-64"
+                style={{ background: `radial-gradient(circle at center, ${sp.accentColor ?? '#009C9C'}40, transparent 70%)` }}
+              >
                 <div
                   class="h-24 w-24 rounded-full"
                   style={{ backgroundColor: sp.accentColor ?? '#009C9C', boxShadow: `0 0 32px ${sp.accentColor ?? '#009C9C'}80` }}
@@ -474,6 +508,7 @@ function SpeciesModal({ sp, locale, onClose, speciesPathBase }: ModalProps) {
             {sp.description && (
               <Block title={tx.description} body={sp.description} />
             )}
+            {sp.feeding && <Block title={tx.feeding} body={sp.feeding} />}
             {sp.habitat && <Block title={tx.habitat} body={sp.habitat} />}
             {sp.distribution && <Block title={tx.distribution} body={sp.distribution} />}
             {sp.threats && <Block title={tx.threats} body={sp.threats} />}
