@@ -1,15 +1,49 @@
 ---
 import Modal from '@components/Modal.astro';
-import { type Locale, t, localePath } from '@/i18n/strings';
+import { type Locale, t } from '@/i18n/strings';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
-const concepts = [
-  { slug: 'public-goods', title: { es: 'Bienes Públicos', en: 'Public Goods', pt: 'Bens Públicos' } },
-  { slug: 'ethereum',     title: { es: 'Ethereum',       en: 'Ethereum',     pt: 'Ethereum' } },
-  { slug: 'daos',         title: { es: 'DAOs',           en: 'DAOs',         pt: 'DAOs' } },
-  { slug: 'microdaos',    title: { es: 'MicroDAOs',      en: 'MicroDAOs',    pt: 'MicroDAOs' } },
+type Tri = { es: string; en: string; pt: string };
+
+const concepts: { slug: string; title: Tri; body: Tri }[] = [
+  {
+    slug: 'public-goods',
+    title: { es: 'Bienes Públicos', en: 'Public Goods', pt: 'Bens Públicos' },
+    body: {
+      es: 'Recursos no rivales y no excluibles: su uso por una persona no impide el de otras y no se puede excluir a nadie. La infraestructura de Ethereum —protocolo, clientes, documentación— se trata como un bien público digital sostenido por una comunidad global.',
+      en: 'Non-rival and non-excludable resources: one person\u2019s use does not reduce availability for others, and no one can be excluded. Ethereum\u2019s infrastructure —protocol, clients, documentation— is treated as a digital public good sustained by a global community.',
+      pt: 'Recursos não rivais e não excludentes: o uso por uma pessoa não impede o de outras e ninguém pode ser excluído. A infraestrutura da Ethereum —protocolo, clientes, documentação— é tratada como um bem público digital sustentado por uma comunidade global.',
+    },
+  },
+  {
+    slug: 'ethereum',
+    title: { es: 'Ethereum', en: 'Ethereum', pt: 'Ethereum' },
+    body: {
+      es: 'Ethereum tiene tres dimensiones: red descentralizada de nodos, activo nativo (ETH) e infraestructura programable mediante contratos inteligentes. Tras The Merge, su consumo energético se redujo ~99.95% al migrar a Proof of Stake.',
+      en: 'Ethereum has three dimensions: a decentralized network of nodes, a native asset (ETH), and programmable infrastructure via smart contracts. Since The Merge, its energy consumption dropped ~99.95% by migrating to Proof of Stake.',
+      pt: 'A Ethereum tem três dimensões: uma rede descentralizada de nós, um ativo nativo (ETH) e infraestrutura programável via contratos inteligentes. Desde o Merge, seu consumo energético caiu ~99,95% ao migrar para Proof of Stake.',
+    },
+  },
+  {
+    slug: 'daos',
+    title: { es: 'DAOs', en: 'DAOs', pt: 'DAOs' },
+    body: {
+      es: 'Organizaciones nativas de internet que coordinan personas, recursos y decisiones sobre Ethereum. AxoloDAO sigue principios de DAOs pequeñas: 7 a 14 miembros y nodos modulares que ejecutan funciones específicas.',
+      en: 'Internet-native organizations that coordinate people, resources and decisions on top of Ethereum. AxoloDAO follows small-DAO design principles: 7 to 14 members and modular nodes that execute specific functions.',
+      pt: 'Organizações nativas da internet que coordenam pessoas, recursos e decisões sobre a Ethereum. A AxoloDAO segue princípios de DAOs pequenas: 7 a 14 membros e nós modulares que executam funções específicas.',
+    },
+  },
+  {
+    slug: 'microdaos',
+    title: { es: 'MicroDAOs', en: 'MicroDAOs', pt: 'MicroDAOs' },
+    body: {
+      es: 'Puerta de entrada ligera a Ethereum mediante tres primitivas: ENS para identidad, Safe para tesorería multifirma y EAS para atestaciones verificables. Permiten lanzar una organización onchain en minutos, sin reescribir contratos.',
+      en: 'A lightweight on-ramp to Ethereum built on three primitives: ENS for identity, Safe for multisig treasury, and EAS for verifiable attestations. They let you launch an onchain organization in minutes without writing custom contracts.',
+      pt: 'Uma porta de entrada leve para a Ethereum com três primitivas: ENS para identidade, Safe para tesouraria multisig e EAS para atestações verificáveis. Permitem lançar uma organização onchain em minutos sem escrever contratos.',
+    },
+  },
 ];
 ---
 
@@ -45,11 +79,15 @@ const concepts = [
     <div class="pt-8">
       <h3 class="font-display text-3xl">{t(locale, 'participate.concepts.title')}</h3>
       <p class="mt-2 text-white/75">{t(locale, 'participate.concepts.desc')}</p>
-      <div class="mt-6 grid gap-3 sm:grid-cols-2">
+      <div class="mt-6 space-y-3">
         {concepts.map((c) => (
-          <a href={localePath(locale, `conceptos/${c.slug}`)} class="glass glass-hover rounded-2xl p-4">
-            <span class="font-display text-lg">{c.title[locale]}</span>
-          </a>
+          <details class="concept-item glass rounded-2xl">
+            <summary class="flex cursor-pointer items-center justify-between gap-3 rounded-2xl px-5 py-4 font-display text-lg transition-colors hover:text-teal">
+              <span>{c.title[locale]}</span>
+              <span class="concept-chevron text-white/50 transition-transform" aria-hidden="true">+</span>
+            </summary>
+            <p class="px-5 pb-5 text-base leading-relaxed text-white/80">{c.body[locale]}</p>
+          </details>
         ))}
       </div>
     </div>

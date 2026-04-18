@@ -30,26 +30,26 @@ const members = order
 
   {members.map((m) => (
     <Modal id={`member-${m.data.slug}`} locale={locale}>
-      <div class="pt-8">
-        <div class="flex items-start gap-5">
-          {m.data.logo ? (
-            <img src={m.data.logo} alt={`${m.data.name} logo`} class="h-20 w-20 rounded-2xl bg-white/5 p-2" />
-          ) : null}
-          <div>
-            <h3 class="font-display text-3xl">{m.data.name}</h3>
-            <p class="text-white/70">{m.data.role[locale]}</p>
-            {m.data.ens && <p class="mt-2 font-mono text-xs text-teal">{m.data.ens}</p>}
-          </div>
-        </div>
-        <p class="mt-6 leading-relaxed text-white/85">{m.data.description[locale]}</p>
+      <div class="pt-8 text-center">
+        {m.data.logo && (
+          <img
+            src={m.data.logo}
+            alt={`${m.data.name} logo`}
+            data-slug={m.data.slug}
+            class="member-modal-logo mx-auto block h-auto w-full max-w-xl"
+          />
+        )}
+        <p class="mt-6 text-xl text-white/80">{m.data.role[locale]}</p>
+        {m.data.ens && <p class="mt-2 font-mono text-sm text-teal">{m.data.ens}</p>}
+        <p class="mx-auto mt-8 max-w-2xl text-left text-lg leading-relaxed text-white/85">{m.data.description[locale]}</p>
         {m.data.socials.length > 0 && (
-          <div class="mt-6 flex flex-wrap gap-2">
+          <div class="mt-6 flex flex-wrap justify-center gap-2">
             {m.data.socials.map((s) => (
               <a
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="rounded-full border border-teal/40 bg-teal/10 px-3 py-1 text-xs font-semibold text-teal hover:bg-teal/20"
+                class="rounded-full border border-teal/40 bg-teal/10 px-3 py-1 text-sm font-semibold text-teal hover:bg-teal/20"
               >
                 {s.platform}{s.handle ? ` · ${s.handle}` : ''}
               </a>

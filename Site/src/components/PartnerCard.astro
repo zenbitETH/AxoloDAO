@@ -19,7 +19,7 @@ const isFeatured = size === 'featured';
   data-modal={modalId}
   class:list={[
     'glass glass-hover group w-full rounded-3xl p-6 text-left',
-    isFeatured && 'md:p-8 md:col-span-2 border-rosa/30 bg-rosa/5 hover:shadow-neon-rosa hover:border-rosa/60',
+    isFeatured && 'border-rosa/30 bg-rosa/5 hover:shadow-neon-rosa hover:border-rosa/60',
   ]}
 >
   {isFeatured && (
@@ -27,14 +27,21 @@ const isFeatured = size === 'featured';
   )}
   <div class="flex items-start gap-4">
     {partner.logoMode === 'image' && partner.logo ? (
-      <img src={partner.logo} alt={`${partner.name} logo`} class:list={['rounded-2xl bg-white/5 p-1.5', isFeatured ? 'h-20 w-20' : 'h-14 w-14']} />
+      <img
+        src={partner.logo}
+        alt={`${partner.name} logo`}
+        class:list={[
+          'h-14 w-14 rounded-2xl p-1.5',
+          isFeatured ? 'bg-marfil shadow-neon-rosa/30' : 'bg-white/5',
+        ]}
+      />
     ) : (
-      <div class:list={['grid place-items-center rounded-2xl border border-white/10 bg-white/[0.03] font-display font-bold text-teal', isFeatured ? 'h-20 w-20 text-2xl' : 'h-14 w-14 text-base']}>
+      <div class="grid h-14 w-14 place-items-center rounded-2xl border border-white/10 bg-white/[0.03] font-display text-base font-bold text-teal">
         {partner.name.split(/\s+/).map((w) => w[0]).slice(0, 3).join('')}
       </div>
     )}
     <div class="flex-1">
-      <h3 class:list={['font-display', isFeatured ? 'text-2xl' : 'text-xl']}>{partner.name}</h3>
+      <h3 class="font-display text-xl">{partner.name}</h3>
       <p class="text-sm text-white/70">{role}</p>
     </div>
   </div>

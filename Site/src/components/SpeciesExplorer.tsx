@@ -77,6 +77,7 @@ interface Props {
   bboxesUrl: string;
   locale: 'es' | 'en' | 'pt';
   speciesPathBase: string; // e.g. '/especies/' or '/en/especies/'
+  legendNote?: string;
 }
 
 // Species whose distributions are localized enough to merit zooming into a single state region.
@@ -97,11 +98,6 @@ const ONSITE_LABELS: Record<'es' | 'en' | 'pt', string> = {
   es: 'Disponibles en línea y en el BioMuseo Xolotlcalli',
   en: 'Available online and onsite at BioMuseo Xolotlcalli',
   pt: 'Disponíveis online e no BioMuseo Xolotlcalli',
-};
-const ONSITE_BADGE: Record<'es' | 'en' | 'pt', string> = {
-  es: 'En vivo · Xolotlcalli',
-  en: 'Live · Xolotlcalli',
-  pt: 'Ao vivo · Xolotlcalli',
 };
 
 const LOCALIZED_FOR_ZOOM: Record<string, string[]> = {
@@ -125,7 +121,7 @@ const LOCALIZED_FOR_ZOOM: Record<string, string[]> = {
   taylori:       ['PUE'],
 };
 
-export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale, speciesPathBase }: Props) {
+export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale, speciesPathBase, legendNote }: Props) {
   const tx = STRINGS[locale];
   const [view, setView] = useState<'map' | 'grid'>('map');
   const [mapSvg, setMapSvg] = useState<string | null>(null);
@@ -311,7 +307,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
       </div>
 
       {/* Merged legend + IUCN group filter */}
-      <div class="mb-6 grid gap-3 sm:grid-cols-4">
+      <div class="mb-2 grid gap-3 sm:grid-cols-4">
         <button
           type="button"
           onClick={() => setIucnGroupFilter(null)}
@@ -322,6 +318,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
         </button>
         {IUCN_GROUPS.map((g) => {
           const active = iucnGroupFilter === g.key;
+          const isEndangered = g.key === 'endangered';
           return (
             <button
               type="button"
@@ -331,12 +328,21 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
               style={active ? `box-shadow: 0 0 0 2px ${g.color}55` : ''}
               title={g.codes.join(' · ')}
             >
-              <span class="font-display text-3xl font-extrabold leading-none" style={`color:${g.color}`}>{groupCounts[g.key]}</span>
-              <span class="font-display text-sm leading-tight" style={`color:${g.color}`}>{g.labels[locale]}</span>
+              <span class="font-display text-3xl font-extrabold leading-none" style={`color:${g.color}`}>
+                {groupCounts[g.key]}
+                {isEndangered && <sup class="ml-0.5 text-base font-bold" style={`color:${g.color}`}>*</sup>}
+              </span>
+              <span class="flex flex-col items-start leading-tight" style={`color:${g.color}`}>
+                <span class="font-display text-sm">{g.labels[locale]}</span>
+                <span class="mt-0.5 text-[10px] font-semibold tracking-[0.15em] opacity-75">{g.codes.join(' · ')}</span>
+              </span>
             </button>
           );
         })}
       </div>
+      {legendNote && (
+        <p class="mb-6 text-right text-[11px] italic text-white/50">{legendNote}</p>
+      )}
 
       {/* Active-filter chips row (only when something is filtering) */}
       {(stateFilter || hasActiveFilter) && (
@@ -374,6 +380,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
                   highlightedStates={highlightedStates}
                   activeStates={hasActiveFilter ? activeStates : []}
                   focusedSpecies={focusedSpecies}
+                  filteredSlugs={hasActiveFilter ? filtered.map((s) => s.slug) : null}
                   highlightColor={focusedAccent}
                   zoomBBox={zoomBBox}
                   onStateHover={setHoveredState}
@@ -407,9 +414,8 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
         <div class={`${view === 'grid' ? 'block' : 'hidden'} lg:col-span-2 lg:block space-y-5`}>
           {featuredFiltered.length > 0 && (
             <section class="rounded-3xl border border-teal/30 bg-teal/[0.06] p-4 shadow-neon-teal/30">
-              <header class="mb-3 flex items-start justify-between gap-2">
-                <h3 class="font-display text-sm leading-tight text-teal">{ONSITE_LABELS[locale]}</h3>
-                <span class="badge-teal shrink-0 whitespace-nowrap">{ONSITE_BADGE[locale]}</span>
+              <header class="mb-3">
+                <span class="badge-teal inline-flex">{ONSITE_LABELS[locale]}</span>
               </header>
               <div class="flex flex-col gap-2.5">
                 {featuredFiltered.map(renderCard)}

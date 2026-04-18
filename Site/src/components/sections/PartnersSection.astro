@@ -34,7 +34,14 @@ const rest = all.filter((p) => !p.data.featured);
       <div class="pt-8">
         <div class="flex items-start gap-5">
           {p.data.logoMode === 'image' && p.data.logo ? (
-            <img src={p.data.logo} alt={`${p.data.name} logo`} class="h-20 w-20 rounded-2xl bg-white/5 p-2" />
+            <img
+              src={p.data.logo}
+              alt={`${p.data.name} logo`}
+              class:list={[
+                'h-20 w-20 rounded-2xl p-2',
+                p.data.featured ? 'bg-marfil' : 'bg-white/5',
+              ]}
+            />
           ) : (
             <div class="grid h-20 w-20 place-items-center rounded-2xl border border-white/10 bg-white/[0.03] font-display text-2xl font-bold text-teal">
               {p.data.name.split(/\s+/).map((w) => w[0]).slice(0, 3).join('')}

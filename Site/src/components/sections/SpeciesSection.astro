@@ -48,10 +48,9 @@ const legendNote = {
 
 <section id="species" class="scroll-mt-20 py-24">
   <div class="container-wide">
-    <header class="mb-10 max-w-4xl">
+    <header class="mb-10">
       <h2 class="font-display text-4xl font-bold sm:text-5xl">{titleByLocale[locale]}</h2>
-      <p class="mt-2 font-mono text-xs italic text-white/55 sm:text-sm">{breadcrumb}</p>
-      <p class="mt-3 text-[11px] text-white/45">{legendNote[locale]}</p>
+      <p class="mt-2 font-mono text-xs italic text-white/55 sm:text-sm md:whitespace-nowrap">{breadcrumb}</p>
     </header>
   </div>
   <SpeciesExplorer
@@ -61,5 +60,6 @@ const legendNote = {
     bboxesUrl={bboxesUrl}
     locale={locale}
     speciesPathBase={speciesPathBase}
+    legendNote={legendNote[locale]}
   />
 </section>

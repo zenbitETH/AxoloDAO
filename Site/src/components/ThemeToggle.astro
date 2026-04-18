@@ -1,0 +1,69 @@
+---
+import { type Locale } from '@/i18n/strings';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const labels = {
+  es: { auto: 'Auto', dark: 'Noche', light: 'Día' },
+  en: { auto: 'Auto', dark: 'Night', light: 'Day' },
+  pt: { auto: 'Auto', dark: 'Noite',  light: 'Dia' },
+} as const;
+---
+
+<button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">
+  <svg data-icon="auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 3v18" />
+    <path d="M12 12a9 9 0 0 0 0-9" />
+  </svg>
+  <svg data-icon="dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+  <svg data-icon="light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+  </svg>
+  <span data-theme-label>{labels[locale].auto}</span>
+</button>
+
+<script is:inline define:vars={{ labels: { es: labels.es, en: labels.en, pt: labels.pt }, locale }}>
+  const order = ['auto', 'dark', 'light'];
+  const key = 'axolodao-theme';
+  const btns = document.querySelectorAll('[data-theme-toggle]');
+
+  function systemResolved() {
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+
+  function apply(mode) {
+    const resolved = mode === 'auto' ? systemResolved() : mode;
+    document.documentElement.dataset.theme = resolved;
+    document.documentElement.dataset.themeMode = mode;
+    btns.forEach((btn) => {
+      btn.querySelectorAll('[data-icon]').forEach((ic) => {
+        ic.style.display = ic.getAttribute('data-icon') === mode ? '' : 'none';
+      });
+      const label = btn.querySelector('[data-theme-label]');
+      if (label) label.textContent = labels[locale][mode];
+    });
+  }
+
+  const mq = window.matchMedia('(prefers-color-scheme: light)');
+  mq.addEventListener('change', () => {
+    const mode = localStorage.getItem(key) || 'auto';
+    if (mode === 'auto') apply('auto');
+  });
+
+  apply(localStorage.getItem(key) || 'auto');
+
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const current = localStorage.getItem(key) || 'auto';
+      const idx = order.indexOf(current);
+      const next = order[(idx + 1) % order.length];
+      localStorage.setItem(key, next);
+      apply(next);
+    });
+  });
+</script>
