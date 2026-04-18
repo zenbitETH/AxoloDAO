@@ -1,0 +1,29 @@
+slug: ordinarium
+scientificName: A. ordinarium
+commonNames:
+  - Achoque de Michoacán
+states:
+  - MIC
+iucn: EN
+nom059: Pr
+description: Los individuos neoténicos de esta especie presentan hasta 100 mm de longitud hocico-cloaca (LHC) y hasta 86 mm de LHC en adultos metamórficos. La cola es igual o un poco más corta que el cuerpo. Los adultos metamórficos son de color gris oscuro a negro en la parte dorsal, y la parte ventral gris oscuro y opaco uniforme. En algunos individuos el dorso presenta manchas claras y en otros individuos se presentan tres líneas de puntos claros en sus diferentes regiones dorsal, lateral y ventrolateral. Generalmente presentan 12 surcos costales (Aguilar-Miguel, 2005).
+habitat: Habita en arroyos y manantiales a altitudes mayores a 2,200 msnm en bosques de encino, pino y oyamel. Montes-Calderón et al. (2011) estudiaron una población de Ambystoma ordinarium en la localidad conocida como Agua Zarca en Michoacán y reportan que los organismos están en condiciones de entre 10 y 50 cm de profundidad; el ancho del arroyo es de entre 0.5 y 3.5 m, la temperatura promedio del agua es de $15^{\circ}C$ y la velocidad media de la corriente es de $0.28m/seg.$ Los adultos metamórficos también pueden observarse en troncos podridos o debajo de ellos en las inmediaciones de los arroyos (Anderson y Worthington, 1971).
+distribution: Esta especie se distribuye en el noreste del estado de Michoacán. Hay poblaciones reportadas desde Zitácuaro (cerca del Estado de México), pasando por Morelia hasta Tacámbaro entre los 2,400 a 2,900 msnm (IUCN SSC Amphibian Specialist Group, 2015; Medina-Agui- lar et al., 2011). Esta especie habita arroyos o manantiales de montaña en bosques templados en el estado de Michoacán. En el 2001 Huacúz reporta la presencia de esta especie en varias de las localidades reportadas e incluso hace el primer registro de ejemplares para algunas de ellas, todas dentro de los límites del Estado de Michoacán.
+threats: Pérdida y degradación del hábitat debido a urbanización, agricultura, ganadería. Extracción no sustentable de los arroyos, contaminación de los cuerpos de agua e introducción de peces exóticos (eg. Cyprinus carpio, Oreochromis aureus, O. mossambicus, O. niloticus) (IUCN SSC Amphibian Specialist Group, 2015).
+feeding: Se ha documentado que esta especie en vida libre consume hasta 57 tipos de presas, principalmente insectos de las familias Chironomidae, Baetidae, Daphniidae, Simuliidae, y crustáceos del orden Ostracoda (Ruíz-Martínez et al., 2013).
+reproduction: La madurez sexual se presenta en tallas de 70 a 75 mm de longitud hocico-cloaca (LHC) tanto en neoténicos como metamórficos. Esta especie presenta puestas de huevos de entre 92 y 192 huevos con un promedio de 109. Los huevos miden en promedio 2.8mm de diá- metro. Las puestas de huevos son adheridas a la vegetación acuática o ramas. La temporada reproductiva de esta especie podría ser entre los meses de junio a enero o a través de todo el año (Anderson y Worthington, 1971).
+references:
+  - Aguilar-Miguel, X. (compilador). 2005. Algunas especies de anfibios y reptiles contenidos en el Proyecto de Norma Oficial Mexicana PROY-NOM-059-ECOL-2000. Facultad de Ciencias, Centro de Investigación en Recursos Bióticos, Universidad Autónoma del Estado de México. Bases de datos SNIB-CONABIO. Proyecto No. W035. México, D.F.
+  - Anderson. J. D. y R.D. Worthington. 1971. The Life History of the Mexican Salamander Ambystoma ordinarium Taylor. Herpetologica, 27(2), 165-176.
+  - "IUCN SSC Amphibian Specialist Group. 2015. Ambystoma ordinarium. The IUCN Red List of Threatened Species 2015: e.T1093A53947147."
+  - Medina-Aguilar, O., I. Suazo-Ortuño y J. Díaz-Alvarado, 2011. Herpetofauna de Tacámbaro, Michoacán, México. Revista Mexicana de Biodiversidad, 82, 1194-1202.
+  - "Montes-Calderón, M., I. Suazo-Ortuño y J. Alvarado-Díaz. 2011. Ecología poblacional de Ambystoma ordinarium (Amphibia: Ambystomatidae) en Agua Zarca, Michoacán, México."
+  - "Ruiz-Martínez, L., J. Alvarado-Díaz, I. Suazo-Ortuño y R. Pérez-Munguía. 2014. Diet of Ambystoma ordinarium (Caudata: Ambystomatidae) in undisturbed and disturbed segments of a mountain stream in the trans-Mexican Volcanic Belt. Salamandra, 50(2), 63-70."
+  - "Taylor, E. H. 1940. New salamanders from Mexico, with a discussion of certain known forms. University of Kansas Science Bulletin 26: 407-430."
+anp:
+  - Parque Nacional Bosencheve
+localityType: ¨Pequeño arroyo a una elevación de 9,000 pies, 4 millas al oeste de El Mirador, cerca de Puerto Hondo¨
+characterizedBy: Taylor, 1940
+markerSvg: ordinarium.svg
+accentColor: "#76B555"
+endemic: true

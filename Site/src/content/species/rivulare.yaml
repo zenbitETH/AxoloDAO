@@ -1,0 +1,30 @@
+slug: rivulare
+scientificName: A. rivulare
+commonNames:
+  - Axolote de arroyo de Michoacán
+  - Ajolote arroyero de Toluca
+states:
+  - GRO
+iucn: DD
+nom059: A
+description: Se analizaron 75 machos y 55 hembras de Ambystoma rivulare. Los machos alcanzaron de longitud hocico-cloaca (LHC) de 85 mm y 114 mm de longitud total (LT). Las hembras alcanzaron 87 mm de LHC y 115 de LT (Sánchez-Manjarrez, 2017). En el dorso la coloración tiene tonos negruzcos y grisáceos en los lados. Presentan manchas amarillas o negras en la porción dorsal (Taylor, 1940a).
+habitat: Habita en arroyos con poca corriente de agua en zonas de montaña entre los 2,720 y 3,180 msnm (Woolrich-Piña et al., 2017).
+distribution: Se distribuye en zonas montañosas del Eje Neovolcánico en los estados de Estado de México, Michoacán y Guerrero. La localidad tipo de la especie se ubica en las serranías que limitan al Estado de México y Michoacán, a 13 km de la localidad de Villa Victoria en el Estado de México. Además, se conocen poblaciones en la Ciudad de México, así como en las partes adyacentes del Estado de México y en el Nevado de Toluca. Existe, además una población en el estado de Guerrero (Shaffer et al., 2008).
+threats: Pérdida del hábitat y uso no sustentable de los arroyos en su área de distribución.
+feeding: No existen datos específicos sobre su alimentación, pero se puede asumir que se alimentan de invertebrados terrestres y acuáticos pequeños.
+reproduction: Se ha reportado la ovoposición el 30 de junio del 2010 de una hembra que se colecto en campo y que se mantuvo en cautiverio. Al momento de la ovoposición la hembra midió 100mm de longitud de hocico-cloaca (LHC) y 197mm de longitud total (LT), con un peso de 38 gr. En este evento el tamaño de la puesta fue de 463 huevos, los cuales fueron depositados en un acuario de 40 lt a $18^{\circ}C$ En promedio los huevos alcanzaron $1.96\pm0.19$ mm, con un rango de 1.70-2.50 mm. Se observó una fertilidad de 86% y las crías eclosionaron entre las 288 y 312 hrs. Existe el reporte de un avistamiento de puesta de huevos en campo en primavera y verano de Brandon y Altig (1973) y Bille (2009) respectivamente citados en Legorreta-Balbuena et al. (2014).
+references:
+  - "Bille, T. 2009. Field observations on the salamanders (Caudata: Ambystomatidae, Ple- thodontidae) of Nevado de Toluca, Mexico. Salamandra 45:155-164."
+  - Brandon, R. A. y R.G. Altig. 1973. Eggs and Small Larvae of Two Species of Rhyacosire- don. Herpetologica, 29(4), 349-351.
+  - Legorreta-Balbuena, G., G. Gutierrez-Ospina, I. Villalpando-Fierro, G. Parra-Olea. 2014. Ambystoma rivulare (Toluca siredon) Reproduction. Herpetological Review. 45(1):107.
+  - "Sánchez-Manjarrez, D. 2017. Dimorfismo sexual en Ambystoma rivulare (Caudata: Ambystomatidae). Tesis de Licenciatura. Universidad Autónoma del Estado de Morelos."
+  - "Shaffer, H.B., O. Flores-Villela, G. Parra-Olea y D. Wake. 2008. Ambystoma rivulare. The IUCN Red List of Threatened Species 2008: e.T59067A11878072."
+  - Taylor, E. H. 1940a. A new Rhyacosiredon (Caudata) from western Mexico. Herpetologica 1:171-176.
+  - Woolrich-Piña, G., G.R. Smith, J.A. Lemos-Espinal, A.B.E. Zamora y R.M. Ayala. 2017. Observed localities for three endangered, endemic Mexican ambystomatids (Ambystoma altamirani, A. leorae, and A. rivulare) from central Mexico. The Herpetological Bulletin 139-12-15.
+anp:
+  - Parque Nacional Nevado de Toluca y en la Reserva de la Biósfera Mariposa Monarca en el Santuario de Chincua
+localityType: “Cerca de 13 km. al oeste de Villa Victoria, México, en un pequeño arroyo dentro de un bosque de pino
+characterizedBy: Taylor, 1940
+markerSvg: rivulare.svg
+accentColor: "#DCC32A"
+endemic: true

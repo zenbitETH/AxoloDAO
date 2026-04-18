@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+import SpeciesExplorer from '@components/SpeciesExplorer';
+import { type Locale, localePath } from '@/i18n/strings';
+
+const mapSvgUrl = '/map/mexico-interactive.svg';
+const bboxesUrl = '/map/state-bboxes.json';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const all = await getCollection('species');
+const speciesData = all
+  .map((s) => ({
+    slug: s.data.slug,
+    scientificName: s.data.scientificName,
+    commonNames: s.data.commonNames,
+    states: s.data.states,
+    iucn: s.data.iucn,
+    nom059: s.data.nom059,
+    description: s.data.description,
+    habitat: s.data.habitat,
+    distribution: s.data.distribution,
+    threats: s.data.threats,
+    feeding: s.data.feeding,
+    references: s.data.references ?? [],
+    anp: s.data.anp ?? [],
+    accentColor: s.data.accentColor,
+    endemic: s.data.endemic,
+    hasHeroCard: Boolean(s.data.heroCardSvg),
+  }))
+  .sort((a, b) => a.slug.localeCompare(b.slug));
+
+const speciesPathBase = localePath(locale, 'especies/');
+
+const titleByLocale = {
+  es: 'Ajolotes y achoques de México',
+  en: 'Axolotls and achoques of Mexico',
+  pt: 'Axolotes e achoques do México',
+};
+const breadcrumb = 'Reino Animalia · Phylum Chordata · Clase Amphibia · Orden Caudata · Familia Ambystomatidae · Género Ambystoma';
+const legendNote = {
+  es: '* De acuerdo a la Lista Roja de la Unión Internacional para la Conservación de la Naturaleza (UICN).',
+  en: '* According to the IUCN Red List of Threatened Species.',
+  pt: '* Segundo a Lista Vermelha da União Internacional para a Conservação da Natureza (UICN).',
+};
+---
+
+<section id="species" class="scroll-mt-20 py-24">
+  <div class="container-wide">
+    <header class="mb-10">
+      <h2 class="font-display text-4xl font-bold sm:text-5xl">{titleByLocale[locale]}</h2>
+      <p class="mt-2 font-mono text-xs italic text-white/55 sm:text-sm md:whitespace-nowrap">{breadcrumb}</p>
+    </header>
+  </div>
+  <SpeciesExplorer
+    client:visible
+    species={speciesData}
+    mapSvgUrl={mapSvgUrl}
+    bboxesUrl={bboxesUrl}
+    locale={locale}
+    speciesPathBase={speciesPathBase}
+    legendNote={legendNote[locale]}
+  />
+</section>

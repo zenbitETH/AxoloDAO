@@ -1,0 +1,447 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root, [data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #071F29;
+    --text: #ffffff;
+    --text-rgb: 255, 255, 255;
+    --surface-rgb: 255, 255, 255;
+    --grad-teal: rgba(0, 156, 156, 0.18);
+    --grad-rosa: rgba(232, 93, 117, 0.12);
+    --grad-ocre: rgba(212, 146, 95, 0.10);
+  }
+
+  [data-theme="light"] {
+    color-scheme: light;
+    --bg: #F6EFE0;
+    --text: #071F29;
+    --text-rgb: 7, 31, 41;
+    --surface-rgb: 7, 31, 41;
+    --grad-teal: rgba(0, 156, 156, 0.10);
+    --grad-rosa: rgba(232, 93, 117, 0.08);
+    --grad-ocre: rgba(212, 146, 95, 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg);
+  }
+
+  body {
+    @apply font-body antialiased;
+    background-color: transparent;
+    color: var(--text);
+    min-height: 100vh;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, var(--grad-teal), transparent 60%),
+      radial-gradient(ellipse at 100% 30%, var(--grad-rosa), transparent 55%),
+      radial-gradient(ellipse at 50% 100%, var(--grad-ocre), transparent 60%);
+    will-change: transform;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: rgb(var(--surface-rgb) / 0.04);
+    border: 1px solid rgb(var(--surface-rgb) / 0.10);
+    @apply rounded-3xl;
+  }
+
+  .glass-hover {
+    transition: background-color 200ms, border-color 200ms;
+  }
+  .glass-hover:hover {
+    background-color: rgb(var(--surface-rgb) / 0.07);
+    border-color: rgb(0 156 156 / 0.40);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    --btn-ease: cubic-bezier(0.23, 1, 0.32, 1);
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 font-semibold;
+    position: relative;
+    border: 1px solid transparent;
+    transition:
+      background-color 220ms var(--btn-ease),
+      color 220ms var(--btn-ease),
+      border-color 220ms var(--btn-ease),
+      transform 160ms var(--btn-ease),
+      box-shadow 220ms var(--btn-ease);
+  }
+  .btn-primary:focus-visible,
+  .btn-secondary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 156, 156, 0.45), 0 8px 22px rgba(0, 156, 156, 0.30);
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wider;
+  }
+
+  .badge-teal { @apply badge border-teal/40 bg-teal/10 text-teal; }
+  .badge-rosa { @apply badge border-rosa/40 bg-rosa/10 text-rosa; }
+  .badge-ocre { @apply badge border-ocre/40 bg-ocre/10 text-ocre; }
+
+  .container-tight { @apply mx-auto w-full max-w-6xl px-6; }
+  .container-wide  { @apply mx-auto w-full max-w-7xl px-6; }
+}
+
+/* Light-theme overrides for dark-mode utility classes */
+[data-theme="light"] .text-white { color: var(--text); }
+[data-theme="light"] .text-white\/90 { color: rgb(7 31 41 / 0.90); }
+[data-theme="light"] .text-white\/85 { color: rgb(7 31 41 / 0.85); }
+[data-theme="light"] .text-white\/80 { color: rgb(7 31 41 / 0.80); }
+[data-theme="light"] .text-white\/75 { color: rgb(7 31 41 / 0.78); }
+[data-theme="light"] .text-white\/70 { color: rgb(7 31 41 / 0.75); }
+[data-theme="light"] .text-white\/65 { color: rgb(7 31 41 / 0.72); }
+[data-theme="light"] .text-white\/60 { color: rgb(7 31 41 / 0.72); }
+[data-theme="light"] .text-white\/55 { color: rgb(7 31 41 / 0.70); }
+[data-theme="light"] .text-white\/50 { color: rgb(7 31 41 / 0.68); }
+[data-theme="light"] .text-white\/45 { color: rgb(7 31 41 / 0.65); }
+[data-theme="light"] .text-white\/40 { color: rgb(7 31 41 / 0.62); }
+
+[data-theme="light"] .bg-white\/5 { background-color: rgb(7 31 41 / 0.04); }
+[data-theme="light"] .bg-white\/10 { background-color: rgb(7 31 41 / 0.08); }
+[data-theme="light"] .bg-white\/\[0\.03\],
+[data-theme="light"] .bg-white\/\[0\.04\],
+[data-theme="light"] .bg-white\/\[0\.06\],
+[data-theme="light"] .bg-white\/\[0\.07\] { background-color: rgb(7 31 41 / 0.05); }
+
+[data-theme="light"] .border-white\/5 { border-color: rgb(7 31 41 / 0.08); }
+[data-theme="light"] .border-white\/10 { border-color: rgb(7 31 41 / 0.12); }
+[data-theme="light"] .border-white\/15 { border-color: rgb(7 31 41 / 0.14); }
+[data-theme="light"] .border-white\/20 { border-color: rgb(7 31 41 / 0.18); }
+[data-theme="light"] .border-white\/30 { border-color: rgb(7 31 41 / 0.25); }
+[data-theme="light"] .border-white\/60 { border-color: rgb(7 31 41 / 0.50); }
+
+[data-theme="light"] .bg-dark-navy { background-color: var(--bg); }
+[data-theme="light"] .bg-dark-navy\/80 { background-color: rgb(246 239 224 / 0.82); }
+[data-theme="light"] .bg-mid-navy,
+[data-theme="light"] .bg-mid-navy\/95 { background-color: rgb(246 239 224 / 0.98); }
+
+/* Species detail modal: Tailwind gradient stops also need light-mode swaps */
+[data-theme="light"] .from-mid-navy { --tw-gradient-from: rgb(246 239 224 / 0.98) var(--tw-gradient-from-position); --tw-gradient-to: rgb(246 239 224 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+[data-theme="light"] .via-navy     { --tw-gradient-to: rgb(236 225 197 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), rgb(236 225 197 / 0.96) var(--tw-gradient-via-position), var(--tw-gradient-to); }
+[data-theme="light"] .to-dark-navy { --tw-gradient-to: rgb(246 239 224 / 0.98) var(--tw-gradient-to-position); }
+
+/* Header: the bg stays dark in both themes, so keep nav text light on light mode too.
+   Without this, the base text-white/* overrides would flip nav links to dark navy
+   and they'd vanish against the teal-navy header. */
+[data-theme="light"] .site-header .text-white,
+[data-theme="light"] .site-header .text-white\/80,
+[data-theme="light"] .site-header .text-white\/70 {
+  color: rgba(255, 255, 255, 0.82);
+}
+[data-theme="light"] .site-header .group:hover .group-hover\:text-white,
+[data-theme="light"] .site-header .hover\:text-white:hover {
+  color: #ffffff;
+}
+[data-theme="light"] .site-header .bg-white\/5 { background-color: rgb(255 255 255 / 0.08); }
+[data-theme="light"] .site-header .border-white\/15 { border-color: rgb(255 255 255 / 0.20); }
+[data-theme="light"] .site-header .border-white\/20 { border-color: rgb(255 255 255 / 0.22); }
+
+[data-theme="light"] input[type="search"] {
+  color: var(--text);
+}
+[data-theme="light"] input[type="search"]::placeholder {
+  color: rgb(7 31 41 / 0.45);
+}
+
+[data-theme="light"] .btn-primary {
+  color: #F6EFE0;
+}
+
+/* Button states — white default, teal on hover, themed per-theme.
+   Uses a strong ease-out (Emil Kowalski's skill) + transform feedback on click. */
+.btn-primary {
+  background-color: #ffffff;
+  color: #071F29;
+  border-color: rgba(7, 31, 41, 0.08);
+  box-shadow: 0 2px 14px rgba(7, 31, 41, 0.28);
+}
+.btn-primary:hover {
+  background-color: #009C9C;
+  color: #ffffff;
+  border-color: rgba(0, 156, 156, 0.9);
+  transform: translateY(-1.5px);
+  box-shadow: 0 10px 28px rgba(0, 156, 156, 0.45), 0 0 0 1px rgba(0, 156, 156, 0.3);
+}
+.btn-primary:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 10px rgba(0, 156, 156, 0.40);
+  transition-duration: 110ms;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.btn-secondary:hover {
+  background-color: #009C9C;
+  color: #ffffff;
+  border-color: #009C9C;
+  transform: translateY(-1.5px);
+  box-shadow: 0 8px 22px rgba(0, 156, 156, 0.35);
+}
+.btn-secondary:active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 156, 156, 0.30);
+  transition-duration: 110ms;
+}
+
+/* Light theme adjustments */
+[data-theme="light"] .btn-primary {
+  background-color: #ffffff;
+  color: #071F29;
+  border-color: rgba(7, 31, 41, 0.14);
+  box-shadow: 0 2px 14px rgba(7, 31, 41, 0.10);
+}
+[data-theme="light"] .btn-primary:hover {
+  background-color: #009C9C;
+  color: #ffffff;
+  border-color: #009C9C;
+}
+[data-theme="light"] .btn-secondary {
+  color: #071F29;
+  border-color: rgba(7, 31, 41, 0.45);
+}
+[data-theme="light"] .btn-secondary:hover {
+  background-color: #009C9C;
+  color: #ffffff;
+  border-color: #009C9C;
+}
+
+/* Reduced motion: no lift or scale */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary, .btn-secondary {
+    transition: background-color 220ms, color 220ms, border-color 220ms, box-shadow 220ms;
+  }
+  .btn-primary:hover, .btn-secondary:hover,
+  .btn-primary:active, .btn-secondary:active {
+    transform: none;
+  }
+}
+
+/* Hover-variant text overrides — Tailwind emits `group-hover:text-white` as
+   `.group:hover .group-hover\:text-white`. On light mode, `text-white` resolves to
+   `var(--text)` via the base override but the hover variants are separate classes,
+   so we override them explicitly to stay readable on light surfaces. */
+[data-theme="light"] .group:hover .group-hover\:text-white,
+[data-theme="light"] .hover\:text-white:hover {
+  color: var(--text);
+}
+
+/* Header logo: always white (header bg stays dark in both themes) */
+.header-logo {
+  filter: brightness(0) invert(1);
+}
+
+/* Concept accordion: rotate the "+" chevron when the details is open */
+.concept-item[open] .concept-chevron {
+  transform: rotate(45deg);
+  color: var(--text);
+}
+.concept-item summary {
+  list-style: none;
+}
+.concept-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Slightly stronger glass-hover on light mode so interactive cards feel alive */
+[data-theme="light"] .glass-hover:hover {
+  background-color: rgb(7 31 41 / 0.09);
+  border-color: rgb(0 110 110 / 0.55);
+}
+
+/* Member logos: xolotlcalli and ndali ship with white fills; invert on light mode so they
+   contrast with the light card/modal surfaces. Zenbit has its own palette and is left alone. */
+[data-theme="light"] img.member-card-logo[data-slug="xolotlcalli"],
+[data-theme="light"] img.member-card-logo[data-slug="ndali"] {
+  filter: invert(1) brightness(0.18);
+}
+[data-theme="light"] img.member-modal-logo[data-slug="xolotlcalli"],
+[data-theme="light"] img.member-modal-logo[data-slug="ndali"] {
+  filter: invert(1) brightness(0.18);
+}
+
+/* Hero parallax — gentle float + glow pulse. Light mode skips the glow keyframes
+   because they would overwrite the invert() filter that keeps the silhouette
+   readable on the cream background. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme="dark"] .hero-parallax-icon,
+  :root:not([data-theme]) .hero-parallax-icon {
+    animation: hero-float 7s ease-in-out infinite, hero-glow 5s ease-in-out infinite;
+  }
+  [data-theme="light"] .hero-parallax-icon {
+    animation: hero-float 7s ease-in-out infinite;
+  }
+}
+@keyframes hero-float {
+  0%, 100% {
+    transform:
+      translate3d(-50%, calc(-50% + var(--scrollY, 0) * -0.18px - 6px), 0)
+      scale(calc(1 + var(--scrollY, 0) * -0.00018));
+  }
+  50% {
+    transform:
+      translate3d(-50%, calc(-50% + var(--scrollY, 0) * -0.18px + 6px), 0)
+      scale(calc(1.015 + var(--scrollY, 0) * -0.00018));
+  }
+}
+@keyframes hero-glow {
+  0%, 100% { filter: drop-shadow(0 0 36px rgba(0, 156, 156, 0.30)) drop-shadow(0 0 12px rgba(0, 156, 156, 0.20)); }
+  50%      { filter: drop-shadow(0 0 64px rgba(0, 156, 156, 0.50)) drop-shadow(0 0 24px rgba(232, 93, 117, 0.18)); }
+}
+
+/* Hero parallax */
+.hero-parallax {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 600ms var(--ease-out);
+  will-change: opacity;
+}
+.hero-parallax-icon {
+  transform:
+    translate3d(-50%, calc(-50% + var(--scrollY, 0) * -0.18px), 0)
+    scale(calc(1 + var(--scrollY, 0) * -0.00018));
+  filter: drop-shadow(0 0 48px rgba(0, 156, 156, 0.35));
+  opacity: 0.22;
+  will-change: transform;
+}
+[data-theme="light"] .hero-parallax-icon {
+  opacity: 0.28;
+  /* invert the white SVG to near-black so the silhouette actually reads on the
+     cream background, then layer a teal glow behind it for brand warmth. */
+  filter: invert(1) brightness(0.4) sepia(0.3) hue-rotate(150deg) saturate(2)
+          drop-shadow(0 0 36px rgba(0, 156, 156, 0.28));
+}
+
+.hero-parallax-strand {
+  transform: translate3d(0, calc(var(--scrollY, 0) * var(--depth, 0.4) * -1px), 0) rotate(var(--rot0, 0deg));
+  will-change: transform;
+}
+/* DNA strand uses the organic dnaShape / dnaInfinity SVGs as a mask so the same
+   <div> can inherit any color. The SVG URL is set per-strand via --mask-url. */
+.hero-parallax-dna {
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  -webkit-mask: var(--mask-url) center / contain no-repeat;
+          mask: var(--mask-url) center / contain no-repeat;
+  opacity: 0.55;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+[data-theme="light"] .hero-parallax-dna {
+  opacity: 0.45;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-parallax-spin {
+    animation: hero-dna-spin var(--spin-dur, 24s) linear infinite;
+    animation-delay: var(--spin-delay, 0s);
+    transform-origin: center;
+  }
+}
+@keyframes hero-dna-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-parallax-icon {
+    transform: translate(-50%, -50%);
+  }
+  .hero-parallax-strand {
+    transform: rotate(var(--rot0, 0deg));
+  }
+}
+
+/* Hero title + subtitle — white on dark (icon is faint enough that text stays
+   readable); dark navy on the cream light theme. */
+.hero-title {
+  color: #ffffff;
+  text-shadow: 0 2px 24px rgba(7, 31, 41, 0.6);
+}
+[data-theme="light"] .hero-title {
+  color: #071F29;
+  text-shadow: 0 1px 14px rgba(246, 239, 224, 0.8);
+}
+.hero-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+}
+[data-theme="light"] .hero-subtitle {
+  color: rgba(7, 31, 41, 0.80);
+}
+
+/* Header: no hard border. Instead, a blurred gradient layer sits just below the
+   header, fading the navy top-band into the page background. */
+.site-header {
+  border-bottom: 0;
+}
+.site-header::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 100%;
+  height: 3.5rem;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 59, 73, 0.9) 0%,
+    rgba(10, 59, 73, 0.55) 35%,
+    rgba(10, 59, 73, 0.22) 65%,
+    rgba(10, 59, 73, 0) 100%
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+[data-theme="light"] .site-header::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 59, 73, 0.72) 0%,
+    rgba(10, 59, 73, 0.40) 35%,
+    rgba(10, 59, 73, 0.15) 65%,
+    rgba(10, 59, 73, 0) 100%
+  );
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(var(--surface-rgb) / 0.15);
+  background-color: rgb(var(--surface-rgb) / 0.05);
+  color: rgb(var(--text-rgb) / 0.75);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 200ms, color 200ms, border-color 200ms;
+}
+.theme-toggle:hover {
+  background-color: rgb(var(--surface-rgb) / 0.09);
+  color: rgb(var(--text-rgb) / 0.95);
+  border-color: rgb(0 156 156 / 0.45);
+}
+.theme-toggle svg { width: 0.9rem; height: 0.9rem; }

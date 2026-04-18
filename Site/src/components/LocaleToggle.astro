@@ -1,0 +1,31 @@
+---
+import { type Locale, LOCALES, DEFAULT_LOCALE } from '@/i18n/strings';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const labels: Record<Locale, string> = { es: 'ES', en: 'EN', pt: 'PT' };
+
+function pathFor(target: Locale): string {
+  const current = Astro.url.pathname;
+  // strip leading /en/ or /pt/
+  const stripped = current.replace(/^\/(en|pt)(\/|$)/, '/');
+  if (target === DEFAULT_LOCALE) return stripped || '/';
+  const clean = stripped.replace(/^\//, '');
+  return `/${target}/${clean}`;
+}
+---
+
+<div class="flex items-center gap-1 rounded-full border border-white/15 bg-white/5 p-0.5 text-xs font-semibold">
+  {LOCALES.map((l) => (
+    <a
+      href={pathFor(l)}
+      class:list={[
+        'rounded-full px-2.5 py-1 transition-colors',
+        l === locale ? 'bg-teal text-dark-navy' : 'text-white/70 hover:text-white',
+      ]}
+    >
+      {labels[l]}
+    </a>
+  ))}
+</div>

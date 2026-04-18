@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import MemberCard from '@components/MemberCard.astro';
+import Modal from '@components/Modal.astro';
+import { type Locale, t } from '@/i18n/strings';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const order = ['zenbit', 'xolotlcalli', 'ndali'];
+const all = await getCollection('members');
+const members = order
+  .map((slug) => all.find((m) => m.data.slug === slug))
+  .filter((m): m is (typeof all)[number] => Boolean(m));
+---
+
+<section id="members" class="scroll-mt-20 py-24">
+  <div class="container-wide">
+    <header class="mb-12 max-w-2xl">
+      <h2 class="font-display text-4xl font-bold sm:text-5xl">{t(locale, 'members.title')}</h2>
+      <p class="mt-3 text-white/70">{t(locale, 'members.subtitle')}</p>
+    </header>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      {members.map((m) => (
+        <MemberCard member={m.data} locale={locale} modalId={`member-${m.data.slug}`} />
+      ))}
+    </div>
+  </div>
+
+  {members.map((m) => (
+    <Modal id={`member-${m.data.slug}`} locale={locale}>
+      <div class="pt-8 text-center">
+        {m.data.logo && (
+          <img
+            src={m.data.logo}
+            alt={`${m.data.name} logo`}
+            data-slug={m.data.slug}
+            class="member-modal-logo mx-auto block h-auto w-full max-w-xl"
+          />
+        )}
+        <p class="mt-6 text-xl text-white/80">{m.data.role[locale]}</p>
+        {m.data.ens && <p class="mt-2 font-mono text-sm text-teal">{m.data.ens}</p>}
+        <p class="mx-auto mt-8 max-w-2xl text-left text-lg leading-relaxed text-white/85">{m.data.description[locale]}</p>
+        {m.data.socials.length > 0 && (
+          <div class="mt-6 flex flex-wrap justify-center gap-2">
+            {m.data.socials.map((s) => (
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rounded-full border border-teal/40 bg-teal/10 px-3 py-1 text-sm font-semibold text-teal hover:bg-teal/20"
+              >
+                {s.platform}{s.handle ? ` · ${s.handle}` : ''}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </Modal>
+  ))}
+</section>
+
+<script>
+  document.querySelectorAll('[data-modal]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const id = trigger.getAttribute('data-modal');
+      if (!id) return;
+      const dlg = document.getElementById(id) as HTMLDialogElement | null;
+      if (dlg) dlg.showModal();
+    });
+  });
+</script>

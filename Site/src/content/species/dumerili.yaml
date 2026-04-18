@@ -1,0 +1,41 @@
+slug: dumerili
+scientificName: A. dumerili
+commonNames:
+  - Achoque de Pátzcuaro
+  - Achójki
+states:
+  - MIC
+iucn: CR
+nom059: Pr
+description: Es una de las especies más robustas y de mayor tamaño del género Ambystoma, con una longitud total promedio de 26 cm. Se distingue por su cabeza ancha, redondeada y notablemente aplanada. Presenta una coloración verde claro con matices violetas y cafés, más clara en el vientre y las extremidades. En los costados y el dorso se observan pequeñas manchas blanquecinas y poros glandulares visibles, así como un pliegue cutáneo marcadamente desarrollado en la garganta (pliegue gular).
+habitat: |-
+  Se considera un animal epibentónico, aunque puede utilizar todos los estratos de la columna de agua (Aguilar-Miguel, 2005).
+
+  Distribución geográfica
+
+  Únicamente se distribuye en el Lago de Pátzcuaro, Michoacán. Recientemente Huacúz (2011) en su libro sobre el estado de conservación del género Ambystoma delimita la distribución de esta especie al lago de Pátzcuaro. Algunos pescadores de las comunidades aledañas al lago mencionan haber capturado ejemplares de esta especie recientemente. Durante el muestreo realizado en 2016 como parte de un proyecto Procer se obtuvo acceso a ejemplares recolectados en 2014 por un pescador local.
+distribution: |-
+  Especie endémica del Lago de Pátzcuaro, Michoacán, México. No se encuentra de forma natural en ningún otro lugar del mundo. Prefiere habitar y cazar cerca del fondo del lago (organismo epibentónico), aunque puede desplazarse a lo largo de toda la columna de agua.
+
+  Su ciclo de vida es completamente acuático. La reproducción ocurre principalmente de febrero a abril, cuando las hembras depositan de 100 a 600 huevos entre la vegetación acuática.
+threats: |-
+  Sobreexplotación de las poblaciones de achoque para su venta y consumo como alimento y para elaborar remedios tradicionales. Contaminación del lago de Pátzcuaro con aguas residuales y residuos sólidos urbanos, introducción de especies de peces exóticos como la carpa y la tilapia.
+
+  Aguilar-Miguel, X. (compilador). 2005. Algunas especies de anfibios y reptiles contenidos en el Proyecto de Norma Oficial Mexicana PROY-NOM-059-ECOL-2000. Facultad de Ciencias, Centro de Investigación en Recursos Bióticos, Universidad Autónoma del Estado de México. Bases de datos SNIB-CONABIO. Proyecto No. W035. México, D.F.
+
+  Dugès, A. A. D. 1870. Descriptions d'un nouveau Batracien de la famille des Ambystomidae.
+
+  Huacúz, M. E. 2011. Monografía sobre el estado de conservación del género Ambystoma en Michoacán, México.
+
+  Servín-Zamora, E. 2017. Reproducción del achoque de Pátzcuaro (Ambystoma dumerilii) en cautiverio.
+
+  Velarde-Mendoza, T. 2012. Importancia ecológica y cultural de una especie endémica de ajolote (Ambystoma dumerilii) del lago de Pátzcuaro, Michoacán. Etnobiología 10(2):40-49.
+feeding: |-
+  En su hábitat natural: es un depredador versátil que se alimenta principalmente de acociles (pequeños cangrejos de río), además de peces pequeños, renacuajos, moluscos, insectos acuáticos y plancton.
+
+  En cautiverio: se le proporciona una dieta alta en proteína que incluye lombrices, tubifex, larvas de insectos y, ocasionalmente, trozos de pescado o pellets formulados para axolotes.
+localityType: “laguna de Pátzcuaro, Michoacán, México, 2,055 pies de altitud”.
+characterizedBy: Dugè, 1870
+heroCardSvg: DumeriliCard.svg
+accentColor: "#356340"
+endemic: true

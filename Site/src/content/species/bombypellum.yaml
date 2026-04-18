@@ -1,0 +1,22 @@
+slug: bombypellum
+scientificName: A. bombypellum
+commonNames:
+  - Axolote de piel fina
+states:
+  - MEX
+iucn: CR
+nom059: Pr
+description: La longitud hocico-cloaca registrada en la descripción 81 y 67 mm y la longitud de la cola 61 y 52.3 mm. Presenta once surcos intercostales. Su color es café-verde en la parte dorsal y crema a blanco en la parte ventral. Taylor (1940) menciona que se distingue por poseer piel con textura fina y coloración distintiva.
+habitat: Los dos ejemplares utilizados en la descripción de la especie fueron colectados bajo un tronco podrido cerca de un pequeño cuerpo de agua permanente (Taylor, 1940).
+distribution: Esta especie fue descrita para el estado de México, sin embargo, un paratipo se ubicó dentro de Michoacán, 15 km al oeste de Morelia (Taylor, 1940). Actualmente la Lista Roja de las Especies (IUCN) ubica su localidad tipo en el noroeste del Estado de México a 2,500 msnm (Shaffer, 2008). Durante el proyecto realizado en el 2016 a través del Programa para la Conservación de Especies en Riesgo (Procer), se ubicó un poblado dentro del Estado de México que quizá represente la localidad tipo descrita por Taylor. Esta localidad se localiza al Oeste del Nevado de Toluca. Cabe mencionar que se deberá llegar a un consenso entre los expertos para determinar el lugar exacto donde se colectó la serie tipo.
+threats: Pérdida del hábitat y contaminación de los cuerpos de agua donde se distribuye.
+feeding: No existen datos específicos sobre su alimentación, pero se puede asumir que se alimentan de invertebrados terrestres y acuáticos pequeños.
+reproduction: No existen datos específicos sobre su biología reproductiva.
+references:
+  - "Shaffer, H.B., O. Flores-Villela, G. Parra-Olea y D. Wake. 2008. Ambystoma bombypellum. The IUCN Red List of Threatened Species 2008: e.T59053A11876801."
+  - Taylor, E. H. 1940. New salamanders from Mexico, with a discussion of certain known forms. University of Kansas Science Bulletin 26
+localityType: Cerca del Rancho Guadalupe, 14 km. este de San Martín (Asunción), México
+characterizedBy: Taylor, 1940
+markerSvg: bombypellum.svg
+accentColor: "#4E00DF"
+endemic: true

@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { type Locale, t } from '@/i18n/strings';
+
+interface Props {
+  project: CollectionEntry<'projects'>['data'];
+  locale: Locale;
+  modalId: string;
+}
+const { project, locale, modalId } = Astro.props;
+const blurb = project.blurb[locale];
+const accentClass: Record<string, string> = {
+  teal: 'badge-teal',
+  rosa: 'badge-rosa',
+  ocre: 'badge-ocre',
+  marfil: 'badge-teal',
+};
+const statusLabel: Record<string, Record<Locale, string>> = {
+  live: { es: 'En vivo', en: 'Live', pt: 'No ar' },
+  wip: { es: 'En construcción', en: 'In progress', pt: 'Em construção' },
+  planning: { es: 'En planeación', en: 'Planning', pt: 'Em planejamento' },
+};
+---
+
+<button
+  type="button"
+  data-modal={modalId}
+  class="glass glass-hover group flex w-full flex-col gap-4 rounded-3xl p-6 text-left"
+>
+  <div class="flex items-center justify-between">
+    <h3 class="font-display text-2xl">{project.name}</h3>
+    <span class={accentClass[project.accent] ?? 'badge-teal'}>{statusLabel[project.status][locale]}</span>
+  </div>
+  <p class="text-sm leading-relaxed text-white/80">{blurb}</p>
+  <div class="mt-auto flex items-center text-sm font-semibold text-teal">
+    <span>{project.cta?.[locale] ?? t(locale, 'projects.cta')}</span>
+    <svg class="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </div>
+</button>

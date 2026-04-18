@@ -1,0 +1,25 @@
+slug: granulosum
+scientificName: A. granulosum
+commonNames:
+  - Axolote de Toluca
+states:
+  - MEX
+iucn: CR
+nom059: Pr
+description: Los adultos neoténicos miden 90 mm de longitud hocico-cloaca (LHC) y 70 mm de la longi- tud de la cola (LC); 28 mm de longitud del ancho de la cabeza (LAC), pudiendo ser más an- cha a nivel de la base de las branquias con hasta 36.5 mm. Los adultos metamórficos pueden medir desde 81-92 mm de LHC y 62-77 mm la LC. Son de color amarillo-olivo, en todo el organismo y cola. La porción dorsal es más obscura que la ventral, la cual es amarillo opaco, con manchas en el dorso y partes laterales. Las larvas son ligeramente verdes con pocas o sin manchas en el cuerpo (Aguilar-Miguel, 2005).
+habitat: Habita en cuerpos de agua poco profundos y áreas aledañas.
+distribution: Esta especie se distribuye en un área pequeña al Noreste de la ciudad de Toluca, Estado de México, a aproximadamente 3000 msnm (Shaffer et al., 2008). Actualmente se ha registrado su presencia en seis cuerpos de agua ubicados desde la zona antes mencionada hasta el este del estado de Michoacán (Parra-Olea et al., 2011; Aguilar-Miguel, 2009; Frías-Alvarez, 2008).
+threats: Pérdida del hábitat, contaminación de los cuerpos de agua, introducción de peces exóticos y captura para comercialización no sustentable. Todas las amenazas antes mencionadas se incrementan por la expansión acelerada de la ciudad de Toluca (Aguilar-Miguel, 2005).
+feeding: Se han alimentado en cautiverio con acociles, peces y larvas de insecto colectados en dos lo- calidades donde también se colectaron ejemplares de A. granulosum utilizados en un estudio de biología reproductiva (Aguilar-Miguel et al., 2009).
+reproduction: Se ha documentado que A. granulosum alcanzan su madures sexual a los 100 mm de LHC. El periodo de reproducción ocurre entre los meses de mayo a septiembre. En cautiverio se ha documentado la reproducción de adultos neoténicos y metamórficos con puestas de $664 \pm 325$ huevos y porcentajes de fecundidad de entre el 40 y 90% (Aguilar-Miguel et al., 2009).
+references:
+  - Aguilar-Miguel, X. (compilador). 2005. Algunas especies de anfibios y reptiles contenidos en el Proyecto de Norma Oficial Mexicana PROY-NOM-059-ECOL-2000. Facultad de Ciencias, Centro de Investigación en Recursos Bióticos, Universidad Autónoma del Estado de México. Bases de datos SNIB-CONABIO. Proyecto No. W035. México, D.F.
+  - "Aguilar-Miguel, X., G. Legorreta y G. Casas-Andreu. 2009. Reproducción ex situ en Ambystoma granulosum y Ambystoma lermaense (Amphibia: Ambystomatidae). Acta Zoológica Mexicana, 25(3), 443-454."
+  - "Shaffer, H.B., O. Flores-Villela, G. Parra-Olea y D. Wake. 2008. Ambystoma granulosum. The IUCN Red List of Threatened Species 2008: e.T59058A11877234."
+  - Parra-Olea, G., O. Flores-Villela y C. Mendoza-Almeralla. 2014. Biodiversidad de anfibios en México. Revista mexicana de biodiversidad, 85, 460-466. (Esta es la referencia más probable para Parra-Olea et al. en el contexto del documento).
+  - Frías-Alvarez, P., J.J. Zúñiga-Vega y O. Flores-Villela. 2010. A general assessment of the conservation status and decline trends of Mexican amphibians. Biodiversity and Conservation, 19(13), 3699-3742. (Esta es la referencia más probable para Frías-Álvarez en el contexto del documento).
+localityType: “km. 74, aproximadamente 12 millas al noroeste de Toluca, México, México
+characterizedBy: Taylor, 1944
+markerSvg: granulosum.svg
+accentColor: "#BD066A"
+endemic: true

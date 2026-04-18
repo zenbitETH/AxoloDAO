@@ -1,0 +1,60 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { localePath } from '@/i18n/strings';
+
+export async function getStaticPaths() {
+  const all = await getCollection('species');
+  return all.map((s) => ({ params: { slug: s.data.slug }, props: { sp: s.data } }));
+}
+
+const { sp } = Astro.props;
+const locale = 'es' as const;
+---
+
+<BaseLayout locale={locale} title={`A. ${sp.slug} — AxoloDAO`} description={sp.commonNames.join(', ')}>
+  <article class="container-tight py-16">
+    <a href={localePath(locale, 'especies')} class="mb-6 inline-block text-sm text-teal hover:underline">← Volver al explorador</a>
+    <h1 class="font-display text-5xl italic">A. {sp.slug}</h1>
+    {sp.commonNames.length > 0 && <p class="mt-2 text-xl text-white/70">{sp.commonNames.join(' · ')}</p>}
+
+    <div class="mt-6 flex flex-wrap gap-2">
+      {sp.iucn && <span class="badge-rosa">IUCN · {sp.iucn}</span>}
+      {sp.nom059 && <span class="badge-ocre">NOM-059 · {sp.nom059}</span>}
+      <span class="badge-teal">{sp.states.length} estados</span>
+    </div>
+
+    {sp.description && (
+      <section class="mt-10">
+        <h2 class="font-display text-2xl">Descripción</h2>
+        <p class="mt-3 leading-relaxed text-white/85 whitespace-pre-wrap">{sp.description}</p>
+      </section>
+    )}
+    {sp.habitat && (
+      <section class="mt-8">
+        <h2 class="font-display text-2xl">Hábitat</h2>
+        <p class="mt-3 leading-relaxed text-white/85 whitespace-pre-wrap">{sp.habitat}</p>
+      </section>
+    )}
+    {sp.distribution && (
+      <section class="mt-8">
+        <h2 class="font-display text-2xl">Distribución</h2>
+        <p class="mt-3 leading-relaxed text-white/85 whitespace-pre-wrap">{sp.distribution}</p>
+      </section>
+    )}
+    {sp.threats && (
+      <section class="mt-8">
+        <h2 class="font-display text-2xl">Principales amenazas</h2>
+        <p class="mt-3 leading-relaxed text-white/85 whitespace-pre-wrap">{sp.threats}</p>
+      </section>
+    )}
+    {sp.references && sp.references.length > 0 && (
+      <section class="mt-10">
+        <h2 class="font-display text-2xl">Referencias</h2>
+        <ul class="mt-3 space-y-2 text-sm text-white/65">
+          {sp.references.map((r: string) => <li>{r}</li>)}
+        </ul>
+      </section>
+    )}
+  </article>
+</BaseLayout>

@@ -24,3 +24,7 @@ yarn-error.log*
 
 # OS
 Thumbs.db
+
+# Local-only Claude skills (not for public repo)
+.claude/skills/
+

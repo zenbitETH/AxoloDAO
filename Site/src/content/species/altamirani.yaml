@@ -1,0 +1,35 @@
+slug: altamirani
+scientificName: A. altamirani
+commonNames:
+  - Ajolote de arroyo de montaña
+  - Axolote de Zempoala
+states:
+  - CMX
+  - MEX
+  - MOR
+iucn: EN
+nom059: A
+description: Los individuos de Ambystoma altamirani son de forma alargada. El tamaño medio del cuerpo es de 70.4 ±3.2 mm, longitud de la cola 70.9 ±5.3mm, altura de la cola 13.0± largo de la cabeza 17.4±2.4, ancho de la cabeza 17.4±0.62. La cabeza es grande de forma ovalada, con dientes mandibulares prevomerianos, presenta orificios nasales pequeños. La forma del cuerpo es aplanada dorsoventralmente; presenta 10 surcos laterales entre las extremidades. El color del cuerpo es oscuro con manchas pardo amarillo claro. En organismos pequeños las manchas son proporcionalmente más pequeñas (Ramírez-Bautista et al., 2009).
+habitat: "Habita en pequeños arroyos que corren en bosques de pino, oyamel y pastizales de montaña (Lemos-Espinal, 1993). Lemos-Espinal et al. (2016) reporto que en el arroyo Los axolotes, Ambystoma altamirani está presente en sitios con las siguientes características: Ancho 84.8 ± 3.9cm, profundidad 43.0 ±1.62cm, oxígeno disuelto 5.44 ± 0.44 mg/L, temperatura del agua 16.7 ± 0.28 °C, velocidad del flujo en la superficie 0.15 ± 0.020 m/s, velocidad del flujo a media profundidad 0.034 ± 0.006 m/s"
+threats: Las principales amenazas de esta especie son la pérdida del hábitat, el entubamiento de los arroyos donde esta especie se distribuye, la presencia de peces exóticos, principalmente la trucha arcoíris (Onchorryncus mykiss).
+feeding: Se ha documentado que la dieta de Ambystoma altamirani consiste principalmente en ostrácodos, gastropodos e insectos (Lemos-Espinal, 2015).
+reproduction: Lemos-Espinal et al. (2016) reportó la observación de tres cúmulos de huevos en el arroyo “Los axolotes” en el Estado de México en el mes de junio de 2015 con 21, 23 y 19 huevos respectivamente adheridos a plantas acuáticas. Los cúmulos de huevos fueron observados en porciones de arroyos de entre 40 y 53 cm de ancho y entre 10 y 25 cm de profundidad. La velocidad de la corriente de agua fue de entre 0 y 0.012 m/s y los valores de oxígeno disuelto donde se encontraron los cúmulos de huevos van de 5.81 y 5.92 mg/L. La temperatura del agua en donde se encontró uno de los cúmulos fue de 15.2° C.
+references:
+  - Castro-Franco, R. 2006. Anfibios y Reptiles del Parque Nacional Lagunas de Zempoala, Estado de México y Morelos.
+  - Dugès, A. 1895. Description d'un axolotl des montagnes de Las Cruces (Amblystoma altamirani, A. Dugès). Imprimérie du Ministére de Fomento. Institut Medico-National. México, D.F.
+  - García, J. C. 2013. Genética de poblaciones de Ambystoma altamirani en la Sierra de las Cruces. Tesis de Licenciatura.
+  - Gómez-Álvarez, S. y V. Reyes-Gómez. 2006. Distribución de Ambystoma altamirani en el estado de Tlaxcala.
+  - Lemos-Espinal, J. A. 1993. Amphibian and Reptile Distribution in the Valley of Mexico.
+  - "Lemos-Espinal, J.A., G.R. Smith, R.E. Ballinger y A. Ramírez-Bautista. 1999. Status of protected endemic salamanders (Ambystoma: Ambystomatidae: Caudata) in the transvolcanic belt of México. British Herpetological Society Bulletin. 68: 1-4."
+  - "Lemos-Espinal J.A., G.R. Smith, A.H. Ruíz y R. Montoya-Ayala. 2016. Stream use and population characteristics of the endangered salamander, Ambystoma altamirani, from the Arroyo Los Axolotes, State of Mexico, Mexico. The South Western Naturalist 61(1): 61:28-32."
+  - Lemos-Espinal J.A., G.R. Smith y G. Woolrich-Pina. 2015. Diet of Larval Ambystoma altamirani from Llano de los Axolotes, Mexico. Current Herpetology 34(1)75-79.
+  - Ramírez-Bautista, A., U. Hernández-Salinas, U. O. García-Vázquez, A. Leyte-Manrique y L. Canseco-Márquez. 2009. Herpetofauna del Valle de México. Diversidad y Conservación. Universidad Autónoma del Estado de Hidalgo/Comisión Nacional para el Conocimiento y Uso de la Biodiversidad. D. F. México. 240 p.
+  - "Shaffer, H.B., O. Flores-Villela, G. Parra-Olea y D. Wake. 2008. Ambystoma altamirani. The IUCN Red List of Threatened Species 2008: e.T59049A11876617."
+anp:
+  - Parque Nacional Lagunas de Zempoala
+  - Parque Nacional Cumbres del Ajusco y el Parque Nacional Desierto de los Leones
+localityType: “Manantial de los Axolotes” en la serranía de las Cruces perteneciente al Valle de México. 3,100 msnm.
+characterizedBy: Dugès, 1985
+markerSvg: altamirani.svg
+accentColor: "#00E1CA"
+endemic: true

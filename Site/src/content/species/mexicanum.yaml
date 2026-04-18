@@ -1,0 +1,38 @@
+slug: mexicanum
+scientificName: A. mexicanum
+commonNames:
+  - Axolote
+  - Axolote de Xochimilco
+  - Axolote mexicano
+states:
+  - CMX
+iucn: CR
+nom059: P
+description: Es una salamandra neoténica de talla mediana a grande que alcanza una longitud total promedio de 24 cm. Su piel es lisa y presenta una coloración café oscuro a negro con manchas dispersas; la región ventral y las puntas de los dedos suelen ser crema o amarillentas. Se distingue por su cabeza ancha, ojos sin párpados y tres pares de branquias externas plumosas que emergen de la base de la cabeza. Su cola, aplanada lateralmente, le permite desplazarse con eficiencia en el agua.
+habitat: Habita en el fondo de los canales de Xochimilco, entre sustratos fangosos, con arena, grava o entre la vegetación acuática.
+distribution: |-
+  Es una especie endémica del Valle de México, hoy restringida a los canales y humedales de Xochimilco, en la Ciudad de México. Antes habitaba todo el sistema lacustre (incluidos Texcoco y Chalco), pero la urbanización redujo su distribución a su actual refugio.
+
+  Vive en el fondo de los canales, donde prefiere sustratos fangosos y áreas con abundante vegetación acuática. Allí realiza su ritual de cortejo: el macho deposita un espermatóforo que la hembra recoge para fertilizar sus huevos.
+threats: El hábitat original de esta especie ha desaparecido o está completamente modificado. En Xochimilco, los canales están fuertemente contaminados y eutrofizados por las aguas residuales y residuos sólidos urbanos y por contaminantes producto de actividades agrícolas o industriales. Otra amenaza de los axolotes es la invasión de especies exóticas en los canales de Xochimilco, tanto de vegetación acuática como de peces exóticos como carpas y tilapias. También existe extracción no supervisada por parte de pescadores, para su posterior consumo o comercialización para la elaboración de remedios tradicionales.
+feeding: |-
+  En su hábitat natural: es un depredador generalista que se alimenta de insectos, crustáceos, sanguijuelas, caracoles y peces de talla pequeña, además de materia orgánica y algas.
+
+  En cautiverio: recibe una dieta basada en presas vivas como lombrices de tierra, tubifex, larvas de mosquito y artemia, complementada con pellets balanceados ricos en proteína formulados para anfibios.
+reproduction: En cautiverio se ha documentado que la madurez sexual la alcanzan al año y que las hembras ovopositan entre 100 a 600 huevos por puesta dependiendo de la temperatura del agua el tiempo de incubación puede oscilar entre los 12 y 18 días. Se ha documentado que los machos realizan un cortejo ritual para atraer a las hembras y que posteriormente los machos secretan por la cloaca un espermatóforo. El espermatóforo es absorbido por la cloaca de la hembra para así lograr la fertilización (Mena-González y Sevin-Zamora, 2014).
+references:
+  - Mena Gonzales, H. y E. Servín Zamora. 2014. Manual básico para el cuidado en cautiverio del axolote de Xochimilco (Ambystoma mexicanum). Laboratorio de Restauración Ecológica del Instituto de Biología, UNAM. México.
+  - Ramírez-Bautista, A., U. Hernández-Salinas, U. O. García-Vázquez, A. Leyte-Manrique y L. Canseco-Márquez. 2009. Herpetofauna del Valle de México. Diversidad y Conservación. Universidad Autónoma del Estado de Hidalgo/Comisión Nacional para el Conocimiento y Uso de la Biodiversidad. D. F. México. 240 p.
+  - "Recuero, E., J. Cruzado-Cortes, G. Parra-Olea y K.R. Zamudio. 2010. Urban aquatic habitats and conservation of highly endangered species: the case of Ambystoma mexicanum (Caudata, Ambystomatidae). In: Annales Zoologici Fennici (pp. 223-238). Finnish Zoological and Botanical Publishing Board."
+  - Shaw, G. y F.P. Nodder. 1798. The Naturalist's Miscellany. Vol. 9.
+  - "Zambrano, L, E. Valiente y M.J. Vander Zanden. 2010. Food web overlap arnong native axolotl (Ambystoma mexicanum) and two exotic fishes: carp (Cyprinus carpio) and tilapia (Oreochromis niloticus) in Xochimilco, Mexico City. Biological Invasions, 12(9), 3061-3069."
+  - Aquí tienes una propuesta de descargo de responsabilidad (disclaimer) redactada con un tono formal y profesional, ideal para incluir al principio o al final de tu presentación.
+  - He incluido menciones a tus colaboradores basándome en los datos del documento para que la protección legal abarque a todo tu ecosistema.
+anp:
+  - Sitio Ramsar “Ejidos de Xochimilco y San Gregorio”
+localityType: Valle de México, en los lagos de Texcoco y Zumpango Xochimilco, Texcoco, Zumpango y Chalco
+characterizedBy: Shaw y Nodder, 1978
+heroCardSvg: MexicanumCard.svg
+markerSvg: mexicanum.svg
+accentColor: "#2F5A70"
+endemic: true

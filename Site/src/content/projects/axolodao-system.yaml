@@ -1,0 +1,21 @@
+slug: axolodao-system
+name: AxoloDAO System
+status: live
+accent: rosa
+url: https://dapp.axolodao.org
+contributors:
+  - inteli
+  - zenbit
+  - xolotlcalli
+blurb:
+  es: Sistema de datos de ajolotes y ambiente, construido con Inteli.
+  en: Axolotl & environment data system, built with Inteli.
+  pt: Sistema de dados de axolotes e ambiente, construído com a Inteli.
+description:
+  es: AxoloDAO System es la infraestructura de datos abierta del nodo. Diseñada e implementada en colaboración con Inteli (Instituto de Tecnología y Liderazgo, São Paulo), articula sensores, registros de campo y atestaciones onchain en una sola capa de datos pública y verificable.
+  en: AxoloDAO System is the node's open data infrastructure. Designed and built in collaboration with Inteli (Institute of Technology & Leadership, São Paulo), it knits together sensors, field records and onchain attestations into a single public, verifiable data layer.
+  pt: O AxoloDAO System é a infraestrutura de dados aberta do nó. Desenhada e construída em colaboração com a Inteli (Instituto de Tecnologia e Liderança, São Paulo), articula sensores, registros de campo e atestações onchain em uma única camada de dados pública e verificável.
+cta:
+  es: Conocer el sistema
+  en: Explore the system
+  pt: Conhecer o sistema

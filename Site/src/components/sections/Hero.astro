@@ -1,0 +1,24 @@
+---
+import { type Locale, t } from '@/i18n/strings';
+import HeroParallax from '@components/HeroParallax';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<HeroParallax client:idle />
+
+<section class="relative">
+  <div class="container-tight pb-24 pt-24 text-center sm:pt-32">
+    <h1 class="hero-title mx-auto max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-6xl">
+      {t(locale, 'hero.title')}
+    </h1>
+    <p class="hero-subtitle mx-auto mt-6 max-w-2xl text-lg">
+      {t(locale, 'hero.subtitle')}
+    </p>
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a href="#species" class="btn-primary">{t(locale, 'hero.cta.primary')}</a>
+      <a href="#members" class="btn-secondary">{t(locale, 'hero.cta.secondary')}</a>
+    </div>
+  </div>
+</section>

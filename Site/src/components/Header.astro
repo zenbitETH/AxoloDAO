@@ -1,0 +1,68 @@
+---
+import { type Locale, t, localePath } from '@/i18n/strings';
+import LocaleToggle from './LocaleToggle.astro';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const home = localePath(locale);
+const links = [
+  { href: `${home}#members`,     label: t(locale, 'nav.about') },
+  { href: `${home}#species`,     label: t(locale, 'nav.species') },
+  { href: `${home}#projects`,    label: t(locale, 'nav.projects') },
+  { href: `${home}#participate`, label: t(locale, 'nav.participate') },
+];
+---
+
+<header class="site-header fixed inset-x-0 top-0 z-50 h-20 bg-navy/85 backdrop-blur-xl">
+  <div class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6">
+    <a href={localePath(locale)} class="flex items-center">
+      <img src="/logos/AxoloDAO.svg" alt="AxoloDAO" class="header-logo h-12 w-auto sm:h-14" />
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex">
+      {links.map((l) => (
+        <a
+          href={l.href}
+          class="text-sm font-medium text-white/80 transition-colors hover:text-teal hover:[text-shadow:_0_0_10px_rgba(0,156,156,0.6)]"
+        >
+          {l.label}
+        </a>
+      ))}
+      <LocaleToggle locale={locale} />
+    </nav>
+
+    <button
+      id="mobile-menu-toggle"
+      class="md:hidden rounded-md border border-white/20 p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden h-[calc(100vh-4rem)] flex-col gap-6 bg-gradient-to-br from-navy via-dark-navy to-rosa/15 px-6 py-12 md:hidden"
+  >
+    {links.map((l) => (
+      <a href={l.href} class="font-display text-2xl text-white hover:text-teal">{l.label}</a>
+    ))}
+    <div class="mt-4"><LocaleToggle locale={locale} /></div>
+  </div>
+</header>
+
+<div class="h-20"></div>
+
+<script>
+  const btn = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+      menu.classList.toggle('flex', !open);
+    });
+  }
+</script>

@@ -1,0 +1,34 @@
+slug: flavipiperatum
+scientificName: A. flavipiperatum
+commonNames:
+  - Axolote de Chapala
+states:
+  - JAL
+iucn: EN
+nom059: Pr
+description: El holotipo es un organismo macho metamórfico con 99.5 mm de longitud hocico-cloaca (LHC) y 175.0 mm de longitud total (LT). Los paratipos son tres hembras metamórficas que alcanzaron los 80.0 a 103.0 de LHC y 137.0 - 188.0 de LT (Dixon, 1963). Rosas-Espinoza et al., 2013 registró un macho metamórfico de 133.3 mm de LT, 62.2 mm de LHC, 16.2 mm de longitud del ancho de la cabeza (LAC) y 22.3 mm de largo de la cabeza (LLC). Rosas-Espinoza et al., también registraron las dimensiones de dos organismos neoténicos, un macho de 173 mm de LT, 83.66 mm LHC y 15.87 mm LAC y 20.84 mm LLC, y una hembra de 154.7 mm LT, 77.7 mm LHC, 15.17 mm de LAC y 22.9mm de LLC. Son de color café, café-amarillento con manchas negras y amarillas en la región dorsal del cuerpo. La región ventral es clara con una marcada línea oscura bordeada de manchas amarillentas. Los adultos terrestres son grises con machas amarillas en el dorso y en los costados. Presentan de 11 a 13 surcos intercostales (Santiago-Pérez et al., 2012).
+habitat: Los individuos neoténicos habitan en arroyos de poca profundidad y poca corriente con abundante materia orgánica, en bosques de pino, encino y pastizales. Los individuos metamórficos se encuentran en las cercanías de los arroyos (Santiago-Pérez, et al., 2012) y en madrigueras de mamíferos pequeños (Rosas-Espinoza et al., 2014).
+distribution: Se distribuye en los arroyos y zonas aledañas de la sierra de Quila, en el Municipio de Tecolotlán, Jalisco (Cortéz-Vázquez et al., 2016). Esta especie se conocía únicamente de la localidad tipo en las cercanías de la ciudad de Guadalajara en el estado de Jalisco, sin embargo, recientemente se reportó su presencia en la Sierra de Quila en el mismo estado. Además, se conocen poblaciones cercanas a estas localidades donde se han reportado Ambystoma spp. las cuales probablemente representen a esta especie (IUCN, 2016).
+threats: |-
+  Las principales amenazas de esta especie es la pérdida del hábitat y la instalación de tuberías en los arroyos donde se distribuyen.
+
+  Cortéz-Vázquez, S., D. Cruz-Saenz y L.D. Wilson. 2016. Notes on a leucistic Ambystoma flavipiperatum Dixon, 1963 (Caudata: Ambystomatidae). Mesoamerican Herpetology 3(4):1077-1080.
+
+  Dixon, J. R. 1963. A new species of Ambystoma from Jalisco, Mexico.
+
+  IUCN SSC Amphibian Specialist Group. 2016. Ambystoma flavipiperatum. The IUCN Red List of Threatened Species 2016: e.T59056A53973059.
+
+  Rosas-Espinoza, V. C., E.S. García-Mata, A.L. Santiago-Pérez y J. Villarreal-Méndez. 2014. Herpetofauna asociada a madrigueras de la tuza Pappogeomys bulleri en el bosque templado de sierra de Quila, Jalisco. Revista Mexicana de Biodiversidad, 85(1), 328-331.
+
+  Rosas-Espinoza, V. C., J.M. Rodríguez-Canseco, A.L. Santiago-Pérez, A. Ayón-Escobedo y M. Domínguez-Laso. (2013). Distribution of some amphibians from central western Mexico: Jalisco. Revista Mexicana de Biodiversidad, 84(2), 690-696.
+
+  Santiago-Pérez, A. L., M. Domínguez-Laso, V. C. Rosas-Espinoza y J. M. Rodríguez-Canseco. 2012. Anfibios y Reptiles de las Montañas de Jalisco. Sierra de Quila. Universidad de Guadalajara / CONABIO (Comisión Nacional para el Conocimiento y Uso de la Biodiversidad), México.
+feeding: Se alimenta de insectos, moluscos y lombrices (Santiago-Pérez et al., 2012).
+reproduction: No existen datos específicos sobre su biología reproductiva.
+anp:
+  - Sierra de Quila
+localityType: “una milla al norte de Santa Cruz, Jalisco, México, 4,900 pies de altitud”.
+characterizedBy: Dixon, 1953
+markerSvg: flavipiperatum.svg
+accentColor: "#981284"
+endemic: true

@@ -1,0 +1,26 @@
+slug: lermaense
+scientificName: A. lermaense
+commonNames:
+  - Axolote de Lerma
+states:
+  - MEX
+iucn: CR
+nom059: Pr
+description: "Los adultos neoténicos miden entre de 118-125 mm de longitud hocico-cloaca (LHC). Los adultos metamorfoseados alcanzan los 78 mm de LHC y 68 mm de longitud cloaca-cola (LCC) (Aguilar-Miguel, 2005). En un estudio en cautiverio se registraron las siguientes me- didas morfométricas: hembras LT $(217\\pm13mm)$ LHC (120±6mm); machos LT $(223\\pm37)$, LHC $(123\\pm8)$ (Aguilar-Miguel et al., 2009). Presenta de 11 a 12 surcos intercostales. Su coloración es gris a negra en la porción ventral y dorsal y la punta de los dígitos es color crema, los labios son más claros que la cabeza y puede presentar pequeñas manchas color crema bajo los ojos (Taylor, 1940)."
+habitat: Habita en la Laguna de Lerma y en los canales de riego y cuerpos de agua artificiales alimentados por la misma (Aguilar-Miguel, 2005). Los individuos metamórficos pueden encontrase en pastizales adyacentes a los cuerpos de agua (IUCN SSC Amphibian Specialist Group, 2015).
+distribution: Se considera que históricamente Ambystoma lermaense se distribuía en 6 municipios contiguos a Toluca, entre los 2,500 y 3,000 msnm. Actualmente se considera que su distribución está restringida a los cuerpos de agua del Rio Lerma y de la Laguna de Lerma en lugares cercanos a la ciudad de Toluca (IUCN SSC Amphibian Specialist Group, 2015). En 2008 se registró su presencia en tres lagunas de la Ciénega de Lerma (IUCN, 2015).
+threats: Las principales amenazas para esta especie son la pérdida del hábitat por la expansión de la frontera agrícola y urbana, la contaminación de los cuerpos de agua; presión en las poblaciones por la captura para consumo y comercialización local de los individuos como alimento o para su uso en remedios tradicionales (IUCN SSC Amphibian Specialist Group, 2015).
+feeding: Se han alimentado en cautiverio con acociles, peces y larvas de insecto colectados en una localidad donde también se colectaron ejemplares de Ambystoma lermaense utilizados en un estudio de biología reproductiva (Aguilar-Miguel et al., 2009).
+reproduction: Se ha documentado que A. lermoense alcanzan su madures sexual a los 100 mm de LHC y no presentan dimorfismo sexual por talla. El periodo de reproducción de esta especie es entre los meses de mayo a septiembre (Aguilar-Miguel et al., 2009).
+references:
+  - Aguilar-Miguel, X. (compilador). 2005. Algunas especies de anfibios y reptiles contenidos en el Proyecto de Norma Oficial Mexicana PROY-NOM-059-ECOL-2000. Facultad de Ciencias, Centro de Investigación en Recursos Bióticos, Universidad Autónoma del Estado de México. Bases de datos SNIB-CONABIO. Proyecto No. W035. México, D.F.
+  - "Aguilar-Miguel, X., G. Legorreta y G. Casas-Andreu. 2009. Reproducción ex situ en Ambystoma granulosum y Ambystoma lermaense (Amphibia: Ambystomatidae). Acta Zoológica Mexicana, 25(3), 443-454."
+  - "IUCN SSC Amphibian Specialist Group. 2015. Ambystoma lermaense. The IUCN Red List of Threatened Species 2015: e.T1093A53947147."
+  - "Taylor, E. H. 1940. New salamanders from Mexico, with a discussion of certain known forms. University of Kansas Science Bulletin 26: 407-430."
+anp:
+  - Área de Protección de Flora y Fauna Ciénagas de Lerma
+localityType: “Lago Lerma, este de Toluca¨
+characterizedBy: Taylor, 1940
+markerSvg: lermaense.svg
+accentColor: "#EE4A10"
+endemic: true

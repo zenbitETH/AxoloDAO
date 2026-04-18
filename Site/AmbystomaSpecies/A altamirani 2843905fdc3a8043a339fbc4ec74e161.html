@@ -1,0 +1,743 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>A. altamirani</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2843905f-dc3a-8043-a339-fbc4ec74e161" class="page sans"><header><h1 class="page-title" dir="auto"><em>A. altamirani</em></h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/chat_gray.svg" style="width:14px;height:14px;display:block"/></span>Nombre común</th><td> Ajolote de arroyo de montaña, Axolote de Zempoala</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/photo-landscape_gray.svg" style="width:14px;height:14px;display:block"/></span>Caracterizado</th><td>Dugès, 1985</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/map-pin-alternate_gray.svg" style="width:14px;height:14px;display:block"/></span>Localidad tipo</th><td>“Manantial de los Axolotes” en la serranía de las Cruces perteneciente al Valle de México. 3,100 msnm.</td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/map_gray.svg" style="width:14px;height:14px;display:block"/></span>Ubicación por Estado</th><td><span class="selected-value select-value-color-blue">CDMX</span><span class="selected-value select-value-color-yellow">Estado de México</span></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/shield_gray.svg" style="width:14px;height:14px;display:block"/></span>ANP</th><td>Parque Nacional Lagunas de Zempoala, Parque Nacional Cumbres del Ajusco y el Parque Nacional Desierto de los Leones</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/globe_gray.svg" style="width:14px;height:14px;display:block"/></span>Estatus IUCN</th><td>EN (En Peligro)</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/verified_gray.svg" style="width:14px;height:14px;display:block"/></span>Estatus NOM-059</th><td>A (Amenazada)</td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="auto"><h2 id="28d3905f-dc3a-80e6-884b-db62eadf034f" class="">Descripción</h2></div><div style="display:contents" dir="auto"><p id="28d3905f-dc3a-80fc-a778-d21881c1f467" class="">Los individuos de Ambystoma altamirani son de forma alargada. El tamaño medio del cuerpo es de 70.4 ±3.2 mm, longitud de la cola 70.9 ±5.3mm, altura de la cola 13.0± largo de la cabeza 17.4±2.4, ancho de la cabeza 17.4±0.62. La cabeza es grande de forma ovalada, con dientes mandibulares prevomerianos, presenta orificios nasales pequeños. La forma del cuerpo es aplanada dorsoventralmente; presenta 10 surcos laterales entre las extremidades. El color del cuerpo es oscuro con manchas pardo amarillo claro. En organismos pequeños las manchas son proporcionalmente más pequeñas (Ramírez-Bautista et al., 2009).</p></div><div style="display:contents" dir="auto"><h2 id="28d3905f-dc3a-803e-91ea-c192b4fb422d" class="">Alimentación</h2></div><div style="display:contents" dir="auto"><p id="28d3905f-dc3a-80ef-bd26-f4811e0b4584" class="">Se ha documentado que la dieta de Ambystoma altamirani consiste principalmente en ostrácodos, gastropodos e insectos (Lemos-Espinal, 2015).</p></div><div style="display:contents" dir="auto"><h2 id="28d3905f-dc3a-80a4-8340-ec1c25e13d21" class="">Reproducción</h2></div><div style="display:contents" dir="auto"><p id="28d3905f-dc3a-806e-be2b-f3bd0ecfca91" class="">Lemos-Espinal et al. (2016) reportó la observación de tres cúmulos de huevos en el arroyo “Los axolotes” en el Estado de México en el mes de junio de 2015 con 21, 23 y 19 huevos respectivamente adheridos a plantas acuáticas. Los cúmulos de huevos fueron observados en porciones de arroyos de entre 40 y 53 cm de ancho y entre 10 y 25 cm de profundidad. La velocidad de la corriente de agua fue de entre 0 y 0.012 m/s y los valores de oxígeno disuelto donde se encontraron los cúmulos de huevos van de 5.81 y 5.92 mg/L. La temperatura del agua en donde se encontró uno de los cúmulos fue de 15.2° C.</p></div><div style="display:contents" dir="auto"><h2 id="28d3905f-dc3a-8055-8f1f-c1362e7b1802" class="">Hábitat</h2></div><div style="display:contents" dir="auto"><p id="28d3905f-dc3a-8069-b2ca-ea832bf052c9" class="">Habita en pequeños arroyos que corren en bosques de pino, oyamel y pastizales de montaña (Lemos-Espinal, 1993). Lemos-Espinal et al. (2016) reporto que en el arroyo Los axolotes, Ambystoma altamirani está presente en sitios con las siguientes características: Ancho 84.8<br/>± 3.9cm, profundidad 43.0 ±1.62cm, oxígeno disuelto 5.44 ± 0.44 mg/L, temperatura del agua 16.7 ± 0.28 °C, velocidad del flujo en la superficie 0.15 ± 0.020 m/s, velocidad del flujo a media profundidad 0.034 ± 0.006 m/s</p></div><div style="display:contents" dir="auto"><h2 id="28d3905f-dc3a-807c-8b52-f137143419c1" class="">Distribución</h2></div><div style="display:contents" dir="auto"><p id="28d3905f-dc3a-807a-aa36-fe5ab3b640cb" class="">Se limita el oeste y sur del Valle de México en la Sierra de Las Cruces en los estados de Morelos, Estado de México y la Ciudad de México. Recientemente se han realizado trabajos con poblaciones en el Estado de México (García 2013; Lemos-Espinal et al., 2015; 2016). Gómez-Álvarez y Reyes-Gómez (2006) reportaron una población en el estado de Tlaxcala, sin embargo, los ejemplares colectados fueron revisados por Ramírez-Bautista y colaboradores (2009), quienes encontraron características morfológicas correspondientes a la especie A. velasci, la cual históricamente se distribuye en ese estado. Actualmente se está llevando a cabo una tesis de licenciatura en distintos arroyos dentro de su distribución conocida en la Sierra de las Cruces (Estrella-Zamora, com. pers.).</p></div><div style="display:contents" dir="auto"><h2 id="28d3905f-dc3a-80b7-bff1-d8d6d3c877c9" class="">Presencia en ANP</h2></div><div style="display:contents" dir="auto"><p id="28d3905f-dc3a-80ca-8bc2-dc451be06960" class="">Esta especie habita arroyos dentro del Parque Nacional Lagunas de Zempoala (Castro-Franco, 2006) y dentro del Parque Nacional Cumbres del Ajusco y el Parque Nacional Desierto de los<br/>Leones (Shaffer, 2008).<br/></p></div><div style="display:contents" dir="auto"><h2 id="28e3905f-dc3a-80f8-b190-dc77b56dd302" class="">Estado de conservación</h2></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-802c-bcfa-d050b1d05d1f" class="">En la NOM-059-Semarnat-2010 tiene la categoría de Amenazada (A); de acuerdo con la Lista Roja de la Unión Internacional para la Conservación de la Naturaleza está en la categoría de En peligro (En).</p></div><div style="display:contents" dir="auto"><h2 id="28d3905f-dc3a-80e4-a621-ee92df948a02" class="">Principales amenazas</h2></div><div style="display:contents" dir="auto"><p id="28d3905f-dc3a-8055-8765-f0b3da2acaa5" class="">Las principales amenazas de esta especie son la pérdida del hábitat, el entubamiento de los arroyos donde esta especie se distribuye, la presencia de peces exóticos, principalmente la trucha arcoíris (Onchorryncus mykiss).</p></div><div style="display:contents" dir="auto"><h2 id="28e3905f-dc3a-803c-9c68-f43824877981" class="">Referencias</h2></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-806f-b302-e041af22f607" class="">Castro-Franco, R. 2006. Anfibios y Reptiles del Parque Nacional Lagunas de Zempoala, Estado de México y Morelos.</p></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-8016-a37b-c8a5486998a5" class="">Dugès, A. 1895. Description d&#x27;un axolotl des montagnes de Las Cruces (Amblystoma altamirani, A. Dugès). Imprimérie du Ministére de Fomento. Institut Medico-National. México, D.F.</p></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-80d3-abf2-f52e33dd3f0a" class="">García, J. C. 2013. Genética de poblaciones de <em>Ambystoma altamirani</em> en la Sierra de las Cruces. Tesis de Licenciatura.</p></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-80b5-9a16-fb259105ff9f" class="">Gómez-Álvarez, S. y V. Reyes-Gómez. 2006. Distribución de <em>Ambystoma altamirani</em> en el estado de Tlaxcala.</p></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-807d-b943-c96915102576" class="">Lemos-Espinal, J. A. 1993. Amphibian and Reptile Distribution in the Valley of Mexico.</p></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-80c3-bf70-c1db17a5edd3" class="">Lemos-Espinal, J.A., G.R. Smith, R.E. Ballinger y A. Ramírez-Bautista. 1999. Status of protected endemic salamanders (<em>Ambystoma</em>: Ambystomatidae: Caudata) in the transvolcanic belt of México. British Herpetological Society Bulletin. 68: 1-4.</p></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-8094-8aa1-e4b105cfa5b4" class="">Lemos-Espinal J.A., G.R. Smith, A.H. Ruíz y R. Montoya-Ayala. 2016. Stream use and population characteristics of the endangered salamander, Ambystoma altamirani, from the Arroyo Los Axolotes, State of Mexico, Mexico. The South Western Naturalist 61(1): 61:28-32.</p></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-8055-8ed4-f3100266bbf1" class="">Lemos-Espinal J.A., G.R. Smith y G. Woolrich-Pina. 2015. Diet of Larval Ambystoma altamirani from Llano de los Axolotes, Mexico. Current Herpetology 34(1)75-79.</p></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-8016-a6ba-e345f5d0d4cc" class="">Ramírez-Bautista, A., U. Hernández-Salinas, U. O. García-Vázquez, A. Leyte-Manrique y L. Canseco-Márquez. 2009. Herpetofauna del Valle de México. Diversidad y Conservación. Universidad Autónoma del Estado de Hidalgo/Comisión Nacional para el Conocimiento y Uso de la Biodiversidad. D. F. México. 240 p.</p></div><div style="display:contents" dir="auto"><p id="28e3905f-dc3a-801c-ab0e-f20933023c8b" class="">Shaffer, H.B., O. Flores-Villela, G. Parra-Olea y D. Wake. 2008. Ambystoma altamirani. The IUCN Red List of Threatened Species 2008: e.T59049A11876617.</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

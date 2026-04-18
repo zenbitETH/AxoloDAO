@@ -1,0 +1,16 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@content/*": ["src/content/*"],
+      "@assets/*": ["src/assets/*"]
+    }
+  },
+  "include": ["src", ".astro/types.d.ts", "astro.config.mjs", "tailwind.config.mjs"],
+  "exclude": ["node_modules", "dist"]
+}

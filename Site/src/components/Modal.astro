@@ -1,0 +1,38 @@
+---
+import { type Locale, t } from '@/i18n/strings';
+
+interface Props {
+  id: string;
+  locale: Locale;
+}
+const { id, locale } = Astro.props;
+---
+
+<dialog
+  id={id}
+  class="fixed inset-0 m-auto max-h-[90vh] w-[min(90vw,52rem)] rounded-3xl border border-white/10 bg-mid-navy/95 p-0 text-white shadow-neon-teal backdrop:bg-dark-navy/70 backdrop:backdrop-blur-md open:animate-[fadeIn_0.2s_ease]"
+>
+  <div class="sticky top-0 flex items-center justify-end border-b border-white/10 bg-mid-navy/95 p-3 backdrop-blur">
+    <button
+      type="button"
+      data-close
+      class="rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm font-medium text-white/80 hover:bg-white/10"
+    >
+      {t(locale, 'modal.close')}
+    </button>
+  </div>
+  <div class="overflow-y-auto px-6 pb-8 sm:px-10">
+    <slot />
+  </div>
+</dialog>
+
+<script>
+  document.querySelectorAll('dialog').forEach((dlg) => {
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+    dlg.querySelectorAll('[data-close]').forEach((btn) => {
+      btn.addEventListener('click', () => dlg.close());
+    });
+  });
+</script>

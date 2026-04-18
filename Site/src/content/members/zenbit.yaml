@@ -1,0 +1,21 @@
+slug: zenbit
+name: Zenbit
+ens: zenbit.axolodao.eth
+logo: /logos/Zenbit.svg
+icon: /logos/zenbiticon.svg
+accentColor: '#009C9C'
+role:
+  es: Infraestructura digital y diseño de sistemas
+  en: Digital infrastructure & system design
+  pt: Infraestrutura digital e design de sistemas
+description:
+  es: Nodo dedicado a investigación, desarrollo e innovación en infraestructura pública digital, software de código abierto y bienes públicos sobre Ethereum. Coordina la base técnica y de datos de AxoloDAO.
+  en: Node focused on research, development and innovation in public digital infrastructure, open-source software and Ethereum-based public goods. Coordinates AxoloDAO's technical and data backbone.
+  pt: Nó dedicado a pesquisa, desenvolvimento e inovação em infraestrutura pública digital, software de código aberto e bens públicos no Ethereum. Coordena a base técnica e de dados da AxoloDAO.
+socials:
+  - platform: x
+    url: https://x.com/zenbitMX
+    handle: '@zenbitMX'
+  - platform: instagram
+    url: https://instagram.com/zenbit.eth
+    handle: '@zenbit.eth'

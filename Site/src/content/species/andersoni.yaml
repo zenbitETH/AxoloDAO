@@ -1,0 +1,35 @@
+slug: andersoni
+scientificName: A. andersoni
+commonNames:
+  - Achoque de Zacapu
+states:
+  - MIC
+iucn: CR
+nom059: Pr
+description: Es una salamandra neoténica que alcanza entre 16 y 23 cm de longitud total. Se distingue por su intensa coloración naranja oscuro cubierta con densas manchas negras. A diferencia de otros ajolotes, presenta patas cortas con dedos robustos y palmeados, adaptadas al desplazamiento sobre el fondo lacustre. Los adultos muestran una aleta dorsal reducida y conservan sus branquias externas rojizas durante toda su vida.
+habitat: Habita en la Laguna de Zacapu y en el arroyo que la alimenta. Los ejemplares reportados en la descripción de la especie se encontraron en sitios con salinidad de entre 85 y 90 ppm; la temperatura del agua entre 20 y 26 °C. Se colectaron a los ejemplares en porciones de la laguna y del arroyo con abundante vegetación (Krebs y Brandon, 1984).
+distribution: |-
+  Su distribución natural se restringe exclusivamente a la Laguna de Zacapu y a los manantiales que la alimentan, en Michoacán, México.
+
+  Habita en aguas templadas con abundante vegetación acuática, que utiliza como refugio y sitio de oviposición. Sus huevos presentan una coloración bicolor característica: amarilla y negra.
+
+  Aunque históricamente también ocupaba canales aledaños, hoy su supervivencia depende por completo del estado de conservación de la laguna central.
+threats: Pérdida del hábitat y contaminación de la laguna de Zacapu por el crecimiento de la ciudad de Zacapu y la extracción no sustentable de axolotes para su venta en mercados cercanos (Aguilar-Miguel y Casas-Andreu, 2005).
+feeding: |-
+  En su hábitat natural: es un depredador oportunista que se alimenta principalmente de pequeños invertebrados acuáticos, crustáceos y larvas de insectos que habitan entre las plantas acuáticas.
+
+  En cautiverio: su dieta se basa en presas vivas o frescas como lombrices de tierra, tubifex, larvas de mosquito y pequeños crustáceos, así como en pellets balanceados formulados para anfibios.
+reproduction: Alcanzan la madurez sexual a los 90 mm y 12 meses de edad. Se han colectado hembras grávidas y a punto de eclosionar y machos con la cloaca distendida en el mes de julio, lo que indica que en ese mes es la temporada de reproducción (Krebs y Brandon, 1984).
+references:
+  - Aguilar-Miguel, X. (compilador). 2005. Algunas especies de anfibios y reptiles contenidos en el Proyecto de Norma Oficial Mexicana PROY-NOM-059-ECOL-2000. Facultad de Ciencias, Centro de Investigación en Recursos Bióticos, Universidad Autónoma del Estado de México. Bases de datos SNIB-CONABIO. Proyecto No. W035. México, D.F.
+  - "Aguilar-Miguel, X. y G. Casas-Andreu. 2005. Ambystoma andersoni. En: Enciclopedia de las Especies de México (online resource)."
+  - "Krebs, S. L. y R. A. Brandon. 1984. A new species of salamander (family Ambystomatidae) from Michoacan, Mexico. Herpetologica 40: 238-245."
+  - Zubieta-Rojas, L., J. L. De La Fuente-De La Fuente, and J. L. García-Soto. 2004. Estado de conservación de la Laguna de Zacapu, Michoacán.
+anp:
+  - La Laguna de Zacapu
+localityType: “Laguna de Zacapu, 2000 m.s.n.m., Michoacán, México”.
+characterizedBy: Krebs y Brandon,1984
+heroCardSvg: AndersoniCard.svg
+markerSvg: andersoni.svg
+accentColor: "#BD7A39"
+endemic: true

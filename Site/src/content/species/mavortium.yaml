@@ -1,0 +1,26 @@
+slug: mavortium
+scientificName: A. mavortium
+commonNames:
+  - Axolote tigre rayado
+states:
+  - CHH
+  - COA
+  - SON
+iucn: LC
+description: Los adultos metamórficos pueden llegar a medir hasta 345 mm de longitud Total (LT), mientras que los individuos neoténicos hasta 385 mm. Presentan de 12 a 13 surcos intercostales. La cola es comprimida y no tiene aleta dorsal. Los individuos neoténicos presentan una coloración amarilla uniforme y en algunos casos con pequeñas manchas oscuras. Los individuos metamórficos son de color café oscuro con manchas en forma de franjas transversales que cruzan la línea vertebral (Lemos-Espinal et al., 2016).
+habitat: Cuerpos de agua con vegetación acuática y áreas aledañas entre los 200 y 1500 msnm.
+distribution: Esta especie cuenta con una amplia distribución, habita en Canadá, Estados Unidos y México. Particularmente en México está restringida a zonas áridas del norte del territorio nacional (IUCN, 2015). Esta especie se le conoce en algunas comunidades aisladas del Desierto Chihuahuense y el extremo sureste de Coahuila. Además, se distribuye en el Desierto Sonorense en el Extremo Noroeste de Sonora, así como en la costa norte del estado en Puerto Peñasco (Lemos-Espinal et al., 2015).
+threats: Pérdida del hábitat, contaminación y extracción no sustentable del agua e invasión de especies exóticas de peces en sus hábitats.
+feeding: Se alimentan de pequeños invertebrados acuáticos o terrestres, principalmente cladóceros y copépodos. En menor medida moluscos, insectos y nematodos (Lemos-Espinal et al., 2016).
+reproduction: Los individuos se agrupan alrededor de cuerpos de agua en la temporada de lluvias para reproducirse. Los machos estimulan a las hembras a través de cortejos rituales y depositan espermatóforos que posteriormente recoge la hembra con la cloaca. Las hembras pueden depositar hasta 5000 huevos; estos regularmente se encuentran adheridos a sustratos vegetales en el agua y las larvas eclosionan aproximadamente a las dos semanas. Después de depositar los huevos en el agua, los adultos se retiran de los cuerpos de agua y las larvaspermanecen ahí hasta su madurez. Si las condiciones son variables pueden metamorfosear a los 50 mm de longitud total, sin embargo, si las condiciones son favorables pueden presentar reproducción en estadio larvario (Lemos-Espinal et al., 2016).
+references:
+  - "Baird, S. F. 1850. Revision of the North American tailed-batrachia, with descriptions of new genera and species [Including: Descriptions of four new species of North American salamanders, and one new species of scink. Journal of the Academy of Natural Sciences of Philadelphia. Series 2, 1: 281-294."
+  - "IUCN SSC Amphibian Specialist Group. 2015. Ambystoma mavortium. The IUCN Red List of Threatened Species 2015: e.T59064A53973685."
+  - "Lemos-Espinal JA, G.R. Smith, A.H. Ruíz y R. Montoya-Ayala. 2016. Stream use and population characteristics of the endangered salamander, Ambystoma altamirani, from the Arroyo Los Axolotes, State of Mexico, Mexico. The South Western Naturalist 61(1): 61:28-32."
+  - Lemos-Espinal, J.A., H.M. Smith, J.R. Dixon y A. Cruz. 2016, Amphibians and Reptiles of Sonora, Chihuahua and Coahuila, Mexico. CONABIO. México.
+localityType: “Valle del Río Grande, entre Santa Fé, Nuevo México, y El Paso, Texas¨
+characterizedBy: Baird, 1850
+markerSvg: mavortium.svg
+accentColor: "#1699F0"
+endemic: false
+nom059: null

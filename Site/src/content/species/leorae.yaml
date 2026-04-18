@@ -1,0 +1,27 @@
+slug: leorae
+scientificName: A. leorae
+commonNames:
+  - Axolote de Río Frío
+states:
+  - MEX
+iucn: CR
+nom059: A
+description: De los 161 ejemplares de Ambystoma leorae que reportan Sunny et al. (2014), 151 corresponden a organismos neoténicos, mientras que el resto corresponden a organismos metamórficos. Ellos reportan que la longitud total de los organismos va desde los 42 a los 226 mm. Presenta una coloración verde olivo con marcas de color café en la porción dorsal y en los lados la cola presenta puntos cafés de tonalidades más oscuras o claras y el vientre es de color crema (Taylor, 1943).
+habitat: Pequeñas pozas con medidas de entre 0.033 a 0.47 m de profundidad y 1.35 a 3.75 m de ancho, con fondo arenoso, fangoso o con rocas. Arroyos pequeños con poca corriente de ($0.3-0.4~m/s$) temperatura de entre 12 y $18.5^{\circ}C$ pH del agua entre 6.9 y 7.4 con niveles de oxígeno $6.5~mg/L$ vegetación acuática de entre cero a 40%. La vegetación próxima a los cuerpos de agua donde se distribuye es de pastizales de Muhlenbergia sp. y bosques de pino y de oyamel (Pinus hartwegii y Abies religiosa) (Sunny et al., 2014).
+distribution: Es una especie que se distribuye únicamente en arroyos de la Sierra Nevada (Iztaccíhuatl y Popocatepetl y Monte Tiáloc) en el Centro de México. Hasta hace poco esta especie se creía extinta y no se encontró en la localidad tipo durante más de 30 años (Shaffer, 2008), sin embargo, en 2013 Sunny y colaboradores (2013) reportaron una población en un cuerpo de agua en la locali dad tipo en Río Frío. Sunny et al. (2014) mencionan que los únicos sitios donde esta especie está presente actualmente son dos pequeños arroyos de aproximadamente 1km de largo.
+threats: La principal amenaza de esta especie es la pérdida del hábitat, la contaminación del agua y la instalación de infraestructura para explotar los arroyos y cuerpos de agua del monte Tláloc y en general de la Sierra Fría (Monroy-Vilchis et al., 2014).
+feeding: Se ha documentado que Ambystoma leorge se alimenta de insectos del orden Trichoptera y Diptera, además de pequeños invertebrados acuáticos (Vega-López y Álvarez, 1992).
+reproduction: Entre febrero y junio fueron observados puestas de huevos adheridos en vegetación acuática o en pequeñas cavidades, los cúmulos de huevos median entre 8.5 a 20 mm. Los cúmulos de huevos variaban entre uno y 10 huevos (Sunny et al., 2014).
+references:
+  - "Monroy-Vilchis, O., H. Domínguez-Vega, M. Zarco-González y A. Sunny. 2014. Distribution of an endemic stream river salamander (Caudata: Ambystoma leorae) notes, natural history, habitat and threats. Herpetozoa. 27:166-168."
+  - "Shaffer, H.B. 2008. Ambystoma leorae. The IUCN Red List of Threatened Species 2008: e.T1968A11878414."
+  - "Sunny, A., O. Monroy-Vilchis, V. Fajardo y U. Aguilera-Reyes. 2014. Genetic diversity and structure of an endernic and critically endangered stream river salamander (Caudata: Ambystoma leorae) in Mexico. Conservation Genetics 1:49-59."
+  - "Taylor, E. H. 1943. Herpetological novelties from Mexico. University of Kansas Science Bulletin 29: 343-361."
+  - "Vega-López, A. y T. Álvarez. 1992. La herpetofauna de los volcanes Popocatepetl e Iztaccihuati. Acta Zoológica Mexicana 51: 1-131."
+anp:
+  - Parque Nacional Iztaccíhuatl-Popocatépetl.
+localityType: “Río de montaña cerca de Río Frío”
+characterizedBy: Taylor, 1943
+markerSvg: leorae.svg
+accentColor: "#DB182F"
+endemic: true

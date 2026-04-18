@@ -1,0 +1,69 @@
+---
+import '@/styles/globals.css';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import { type Locale, t } from '@/i18n/strings';
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+}
+
+const { locale, title, description } = Astro.props;
+
+const pageTitle = title ?? 'AxoloDAO — Conservación onchain para los ajolotes de México';
+const pageDesc =
+  description ??
+  t(locale, 'hero.subtitle');
+---
+
+<!doctype html>
+<html lang={locale} data-theme="dark">
+  <head>
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('axolodao-theme');
+          var mode = stored || 'auto';
+          var resolved = mode === 'auto'
+            ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+            : mode;
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.dataset.themeMode = mode;
+        } catch (_) {}
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#071F29" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F6EFE0" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/logos/AxoloDAO.svg" />
+    <link rel="canonical" href={Astro.url.href} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDesc} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={new URL('/logos/AxoloDAO.svg', Astro.site).href} />
+    <meta property="og:locale" content={locale === 'es' ? 'es_MX' : locale === 'en' ? 'en_US' : 'pt_BR'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:image" content={new URL('/logos/AxoloDAO.svg', Astro.site).href} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-body text-white">
+    <Header locale={locale} />
+    <main>
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </body>
+</html>

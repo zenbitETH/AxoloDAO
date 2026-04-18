@@ -1,0 +1,24 @@
+slug: silvense
+scientificName: A. silvense
+commonNames:
+  - Axolote del bosque de pino
+states:
+  - DUR
+iucn: DD
+description: Los ejemplares encontrados por Web (2004) son organismos neoténicos la longitud total del ejemplar tipo es de 125 mm, 75 mm de longitud hocico-cloaca (LHC) y 53 mm de longitud de la cola (LC). La cabeza tiene una longitud media 15.9 mm de ancho. Los once paratipos median en promedio 80.1 mm de LHC, con un rango de 72 a 91mm. La longitud promedio de la cola fue de 64.1 (57-72mm) y la longitud total tuvo en promedio 142.2 mm (129-159mm). Presentan 10 surcos intercostales. Los ejemplares son de color café oscuro en la porción dorsal con manchas pequeñas de color negro. La región ventral es de color café claro con manchas negras a lo largo del cuerpo (Webb, 2004).
+habitat: Arroyos, otros cuerpos de cuerpos de agua y áreas adyacentes en bosques de encino-pino, entre los 2,438 a 2,469 msnm (Webb, 2004).
+distribution: Bosques de encino-pino en la Sierra Madre Occidental de Durango.
+threats: |-
+  Las principales amenazas de esta especie es la pérdida del hábitat, la contaminación de los arroyos y la introducción de peces exóticos en su hábitat (Webb et al., 2008).
+
+  Webb, R. G. 2004. Observations on tiger salamanders (Ambystoma tigrinum complex, family Ambystomatidae) in Mexico with description of a new species. Bulletin of the Maryland Herpetological Society 40: 122-143.
+
+  Webb, R, D. Wake, G. Parra-Olea y T. Papenfuss. 2008. Ambystoma silvense. The IUCN Red List of Threatened Species 2008: e.T61893A12563435.
+feeding: No existen datos específicos sobre su alimentación, pero se puede asumir que se alimentan de invertebrados terrestres y acuáticos pequeños.
+reproduction: Son sexualmente maduros en estado neoténico y metamórfico (Webb et al., 2008).
+localityType: “Una poza a 4.5 millas (7.2 km) al noreste de Navios (Navios ca. 23° 54′ N, 105° 03′ W), 8,000 pies (2,438 m)
+characterizedBy: Webb, 2004
+markerSvg: silvense.svg
+accentColor: "#D7B4E6"
+endemic: true
+nom059: null

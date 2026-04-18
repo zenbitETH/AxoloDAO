@@ -1,0 +1,65 @@
+---
+import { type Locale, t } from '@/i18n/strings';
+import ThemeToggle from '@components/ThemeToggle.astro';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const ens = [
+  'axolodao.eth',
+  'treasury.axolodao.eth',
+  'zenbit.axolodao.eth',
+  'xolotlcalli.axolodao.eth',
+  'ndali.axolodao.eth',
+];
+
+const taglineParts: Record<Locale, { prefix: string; suffix: string }> = {
+  es: { prefix: 'Construido en ethereum con ❤️. Impulsado por ajolotes y ', suffix: '.' },
+  en: { prefix: 'Built on ethereum with ❤️. Powered by axolotls and ',       suffix: '.' },
+  pt: { prefix: 'Construído em ethereum com ❤️. Movido por axolotes e ',     suffix: '.' },
+};
+const tag = taglineParts[locale];
+---
+
+<footer class="mt-32 border-t border-teal/20 bg-dark-navy">
+  <div class="container-wide grid gap-12 py-16 md:grid-cols-3">
+    <div>
+      <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-teal/80">
+        {t(locale, 'footer.identities')}
+      </h3>
+      <ul class="space-y-2 font-mono text-base text-white/70">
+        {ens.map((e) => <li>{e}</li>)}
+      </ul>
+    </div>
+    <div>
+      <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-teal/80">
+        {t(locale, 'footer.socials')}
+      </h3>
+      <ul class="space-y-2 text-base text-white/70">
+        <li><a class="hover:text-teal" href="https://x.com/zenbitMX">X / Twitter</a></li>
+        <li><a class="hover:text-teal" href="https://github.com/zenbitETH/AxoloDAO">GitHub</a></li>
+        <li><a class="hover:text-teal" href="https://www.instagram.com/zenbit.eth/">Instagram · Zenbit</a></li>
+        <li><a class="hover:text-teal" href="https://www.instagram.com/xolotlcalli.mx/">Instagram · Xolotlcalli</a></li>
+        <li><a class="hover:text-teal" href="https://www.instagram.com/ndali_centro_de_conexion/">Instagram · Ndali</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-teal/80">
+        {t(locale, 'footer.contact')}
+      </h3>
+      <p class="text-base text-white/70">
+        <a class="hover:text-teal" href="mailto:hola@axolodao.org">hola@axolodao.org</a>
+      </p>
+    </div>
+  </div>
+  <div class="border-t border-white/5">
+    <div class="container-wide flex flex-col items-center justify-between gap-4 py-6 text-sm text-white/60 sm:flex-row">
+      <span>
+        {tag.prefix}
+        <a href="https://zenbit.mx" target="_blank" rel="noopener noreferrer" class="font-semibold text-teal hover:text-teal/80">Zenbit</a>
+        {tag.suffix}
+      </span>
+      <ThemeToggle locale={locale} />
+    </div>
+  </div>
+</footer>

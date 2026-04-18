@@ -1,0 +1,9 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SpeciesSection from '@components/sections/SpeciesSection.astro';
+import { t } from '@/i18n/strings';
+---
+
+<BaseLayout locale="es" title={`${t('es', 'species.title')} — AxoloDAO`}>
+  <SpeciesSection locale="es" />
+</BaseLayout>
