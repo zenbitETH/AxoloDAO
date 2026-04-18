@@ -334,8 +334,17 @@
 }
 
 .hero-parallax-strand {
-  transform: translate3d(0, calc(var(--scrollY, 0) * var(--depth, 0.4) * -1px), 0) rotate(var(--rot0, 0deg));
+  transform:
+    translate3d(0, calc(var(--scrollY, 0) * var(--depth, 0.4) * -1px), 0)
+    rotate(var(--rot0, 0deg))
+    scale(var(--strand-scale, 1));
   will-change: transform;
+}
+/* Mobile: shrink strands so they feel like background accents, not dominant shapes. */
+@media (max-width: 640px) {
+  .hero-parallax {
+    --strand-scale: 0.48;
+  }
 }
 /* DNA strand uses the organic dnaShape / dnaInfinity SVGs as a mask so the same
    <div> can inherit any color. The SVG URL is set per-strand via --mask-url. */
@@ -367,7 +376,7 @@
     transform: translate(-50%, -50%);
   }
   .hero-parallax-strand {
-    transform: rotate(var(--rot0, 0deg));
+    transform: rotate(var(--rot0, 0deg)) scale(var(--strand-scale, 1));
   }
 }
 
