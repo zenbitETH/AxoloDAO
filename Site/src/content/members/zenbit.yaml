@@ -2,6 +2,7 @@ slug: zenbit
 name: Zenbit
 ens: zenbit.axolodao.eth
 logo: /logos/Zenbit.svg
+icon: /logos/zenbiticon.svg
 accentColor: '#009C9C'
 role:
   es: Infraestructura digital y diseño de sistemas

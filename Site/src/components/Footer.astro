@@ -12,6 +12,13 @@ const ens = [
   'xolotlcalli.axolodao.eth',
   'ndali.axolodao.eth',
 ];
+
+const taglineParts: Record<Locale, { prefix: string; suffix: string }> = {
+  es: { prefix: 'Construido en ethereum con ❤️. Impulsado por ajolotes y ', suffix: '.' },
+  en: { prefix: 'Built on ethereum with ❤️. Powered by axolotls and ',       suffix: '.' },
+  pt: { prefix: 'Construído em ethereum com ❤️. Movido por axolotes e ',     suffix: '.' },
+};
+const tag = taglineParts[locale];
 ---
 
 <footer class="mt-32 border-t border-teal/20 bg-dark-navy">
@@ -46,8 +53,12 @@ const ens = [
     </div>
   </div>
   <div class="border-t border-white/5">
-    <div class="container-wide flex flex-col items-center justify-between gap-4 py-6 text-sm text-white/45 sm:flex-row">
-      <span>{t(locale, 'footer.tagline')}</span>
+    <div class="container-wide flex flex-col items-center justify-between gap-4 py-6 text-sm text-white/60 sm:flex-row">
+      <span>
+        {tag.prefix}
+        <a href="https://zenbit.mx" target="_blank" rel="noopener noreferrer" class="font-semibold text-teal hover:text-teal/80">Zenbit</a>
+        {tag.suffix}
+      </span>
       <ThemeToggle locale={locale} />
     </div>
   </div>

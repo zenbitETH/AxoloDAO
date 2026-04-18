@@ -107,12 +107,14 @@
 [data-theme="light"] .text-white\/90 { color: rgb(7 31 41 / 0.90); }
 [data-theme="light"] .text-white\/85 { color: rgb(7 31 41 / 0.85); }
 [data-theme="light"] .text-white\/80 { color: rgb(7 31 41 / 0.80); }
-[data-theme="light"] .text-white\/75 { color: rgb(7 31 41 / 0.75); }
-[data-theme="light"] .text-white\/70 { color: rgb(7 31 41 / 0.72); }
-[data-theme="light"] .text-white\/55 { color: rgb(7 31 41 / 0.65); }
-[data-theme="light"] .text-white\/50 { color: rgb(7 31 41 / 0.60); }
-[data-theme="light"] .text-white\/45 { color: rgb(7 31 41 / 0.58); }
-[data-theme="light"] .text-white\/40 { color: rgb(7 31 41 / 0.55); }
+[data-theme="light"] .text-white\/75 { color: rgb(7 31 41 / 0.78); }
+[data-theme="light"] .text-white\/70 { color: rgb(7 31 41 / 0.75); }
+[data-theme="light"] .text-white\/65 { color: rgb(7 31 41 / 0.72); }
+[data-theme="light"] .text-white\/60 { color: rgb(7 31 41 / 0.72); }
+[data-theme="light"] .text-white\/55 { color: rgb(7 31 41 / 0.70); }
+[data-theme="light"] .text-white\/50 { color: rgb(7 31 41 / 0.68); }
+[data-theme="light"] .text-white\/45 { color: rgb(7 31 41 / 0.65); }
+[data-theme="light"] .text-white\/40 { color: rgb(7 31 41 / 0.62); }
 
 [data-theme="light"] .bg-white\/5 { background-color: rgb(7 31 41 / 0.04); }
 [data-theme="light"] .bg-white\/10 { background-color: rgb(7 31 41 / 0.08); }
@@ -280,10 +282,16 @@
   filter: invert(1) brightness(0.18);
 }
 
-/* Hero parallax — add gentle float + glow pulse to the centerpiece icon */
+/* Hero parallax — gentle float + glow pulse. Light mode skips the glow keyframes
+   because they would overwrite the invert() filter that keeps the silhouette
+   readable on the cream background. */
 @media (prefers-reduced-motion: no-preference) {
-  .hero-parallax-icon {
+  [data-theme="dark"] .hero-parallax-icon,
+  :root:not([data-theme]) .hero-parallax-icon {
     animation: hero-float 7s ease-in-out infinite, hero-glow 5s ease-in-out infinite;
+  }
+  [data-theme="light"] .hero-parallax-icon {
+    animation: hero-float 7s ease-in-out infinite;
   }
 }
 @keyframes hero-float {
@@ -318,8 +326,11 @@
   will-change: transform;
 }
 [data-theme="light"] .hero-parallax-icon {
-  opacity: 0.18;
-  filter: drop-shadow(0 0 48px rgba(0, 156, 156, 0.20));
+  opacity: 0.28;
+  /* invert the white SVG to near-black so the silhouette actually reads on the
+     cream background, then layer a teal glow behind it for brand warmth. */
+  filter: invert(1) brightness(0.4) sepia(0.3) hue-rotate(150deg) saturate(2)
+          drop-shadow(0 0 36px rgba(0, 156, 156, 0.28));
 }
 
 .hero-parallax-strand {
