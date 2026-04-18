@@ -19,8 +19,21 @@ const pageDesc =
 ---
 
 <!doctype html>
-<html lang={locale}>
+<html lang={locale} data-theme="dark">
   <head>
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('axolodao-theme');
+          var mode = stored || 'auto';
+          var resolved = mode === 'auto'
+            ? (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+            : mode;
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.dataset.themeMode = mode;
+        } catch (_) {}
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="icon" type="image/svg+xml" href="/logos/AxoloDAO.svg" />

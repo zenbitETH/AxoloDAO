@@ -1,5 +1,6 @@
 ---
 import { type Locale, t } from '@/i18n/strings';
+import ThemeToggle from '@components/ThemeToggle.astro';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -14,35 +15,40 @@ const ens = [
 ---
 
 <footer class="mt-32 border-t border-teal/20 bg-dark-navy">
-  <div class="container-wide grid gap-10 py-14 md:grid-cols-3">
+  <div class="container-wide grid gap-12 py-16 md:grid-cols-3">
     <div>
-      <h3 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-teal/80">
+      <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-teal/80">
         {t(locale, 'footer.identities')}
       </h3>
-      <ul class="space-y-2 font-mono text-sm text-white/70">
+      <ul class="space-y-2 font-mono text-base text-white/70">
         {ens.map((e) => <li>{e}</li>)}
       </ul>
     </div>
     <div>
-      <h3 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-teal/80">
+      <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-teal/80">
         {t(locale, 'footer.socials')}
       </h3>
-      <ul class="space-y-2 text-sm text-white/70">
+      <ul class="space-y-2 text-base text-white/70">
         <li><a class="hover:text-teal" href="https://x.com/axolodao">X / Twitter</a></li>
         <li><a class="hover:text-teal" href="https://github.com/zenbitETH/AxoloDAO">GitHub</a></li>
-        <li><a class="hover:text-teal" href="https://farcaster.xyz/axolodao">Farcaster</a></li>
+        <li><a class="hover:text-teal" href="https://www.instagram.com/zenbit.eth/">Instagram · Zenbit</a></li>
+        <li><a class="hover:text-teal" href="https://www.instagram.com/xolotlcalli.mx/">Instagram · Xolotlcalli</a></li>
+        <li><a class="hover:text-teal" href="https://www.instagram.com/ndali_centro_de_conexion/">Instagram · Ndali</a></li>
       </ul>
     </div>
     <div>
-      <h3 class="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-teal/80">
+      <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-teal/80">
         {t(locale, 'footer.contact')}
       </h3>
-      <p class="text-sm text-white/70">
+      <p class="text-base text-white/70">
         <a class="hover:text-teal" href="mailto:hola@axolodao.org">hola@axolodao.org</a>
       </p>
     </div>
   </div>
-  <div class="border-t border-white/5 py-6 text-center text-xs text-white/40">
-    {t(locale, 'footer.tagline')}
+  <div class="border-t border-white/5">
+    <div class="container-wide flex flex-col items-center justify-between gap-4 py-6 text-sm text-white/45 sm:flex-row">
+      <span>{t(locale, 'footer.tagline')}</span>
+      <ThemeToggle locale={locale} />
+    </div>
   </div>
 </footer>

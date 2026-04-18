@@ -1,0 +1,31 @@
+<svg width="820" height="400" viewBox="0 0 820 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Two organic ribbon loops forming a closed infinity (∞). Each half mirrors the
+       dnaShape.svg curvature: a fat filled lobe with an inner hole, in the same
+       hand-drawn ribbon language. evenodd fill-rule punches the holes out. -->
+  <path fill-rule="evenodd" clip-rule="evenodd" fill="white"
+    d="M 20,200
+       C 20,80 200,55 305,160
+       C 365,220 455,220 515,160
+       C 620,55 800,80 800,200
+       C 800,320 620,345 515,240
+       C 455,180 365,180 305,240
+       C 200,345 20,320 20,200 Z
+       M 130,200
+       C 130,150 170,130 210,140
+       C 250,150 280,180 280,200
+       C 280,220 250,250 210,260
+       C 170,270 130,250 130,200 Z
+       M 540,200
+       C 540,180 570,150 610,140
+       C 650,130 690,150 690,200
+       C 690,250 650,270 610,260
+       C 570,250 540,220 540,200 Z" />
+  <!-- DNA rungs in the left lobe -->
+  <line x1="65"  y1="145" x2="130" y2="145" stroke="white" stroke-width="26" stroke-linecap="round"/>
+  <line x1="60"  y1="200" x2="135" y2="200" stroke="white" stroke-width="26" stroke-linecap="round"/>
+  <line x1="65"  y1="255" x2="130" y2="255" stroke="white" stroke-width="26" stroke-linecap="round"/>
+  <!-- DNA rungs in the right lobe -->
+  <line x1="690" y1="145" x2="755" y2="145" stroke="white" stroke-width="26" stroke-linecap="round"/>
+  <line x1="685" y1="200" x2="760" y2="200" stroke="white" stroke-width="26" stroke-linecap="round"/>
+  <line x1="690" y1="255" x2="755" y2="255" stroke="white" stroke-width="26" stroke-linecap="round"/>
+</svg>

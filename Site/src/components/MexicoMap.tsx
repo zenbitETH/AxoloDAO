@@ -11,6 +11,9 @@ interface Props {
   activeStates?: string[];
   /** Slug of the focused species. When set, only its overlay/markers show; others are hidden. */
   focusedSpecies?: string | null;
+  /** Species slugs that pass the current filters. When set and non-empty, overlays/markers
+   *  for species outside this list are hidden even if no single species is focused. */
+  filteredSlugs?: string[] | null;
   /** Hex color used for state highlights — defaults to teal but typically the focused species's accent color */
   highlightColor?: string;
   /** When set, animate the SVG viewBox to this region (in master-canvas coords) */
@@ -49,6 +52,7 @@ export default function MexicoMap({
   highlightedStates = [],
   activeStates = [],
   focusedSpecies = null,
+  filteredSlugs = null,
   zoomBBox = null,
   highlightColor,
   onStateHover,
@@ -137,24 +141,30 @@ export default function MexicoMap({
     });
   }, [highlightedStates, activeStates, highlightColor]);
 
-  // ------ overlay / marker visibility based on focusedSpecies ----
+  // ------ overlay / marker visibility: focusedSpecies wins; otherwise filter by filteredSlugs ----
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+    const allow = filteredSlugs ? new Set(filteredSlugs) : null;
     container.querySelectorAll<SVGElement>('[data-overlay-type]').forEach((el) => {
       const slug = el.getAttribute('data-species');
-      if (!focusedSpecies) {
-        el.style.opacity = el.dataset.overlayType === 'area' ? '0.7' : '1';
-        el.style.display = '';
-      } else if (slug === focusedSpecies) {
-        el.style.opacity = '1';
-        el.style.display = '';
-      } else {
-        el.style.opacity = '0';
-        // keep in DOM for transition; pointer-events already none
+      if (focusedSpecies) {
+        if (slug === focusedSpecies) {
+          el.style.opacity = '1';
+          el.style.display = '';
+        } else {
+          el.style.opacity = '0';
+        }
+        return;
       }
+      if (allow && slug && !allow.has(slug)) {
+        el.style.opacity = '0';
+        return;
+      }
+      el.style.opacity = el.dataset.overlayType === 'area' ? '0.7' : '1';
+      el.style.display = '';
     });
-  }, [focusedSpecies]);
+  }, [focusedSpecies, filteredSlugs]);
 
   // ------ viewBox zoom ----
   useEffect(() => {

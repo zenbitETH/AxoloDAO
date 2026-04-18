@@ -9,6 +9,7 @@ interface Props {
 }
 const { member, locale, modalId } = Astro.props;
 const role = member.role[locale];
+const cardLogo = member.icon ?? member.logo;
 ---
 
 <button
@@ -18,16 +19,21 @@ const role = member.role[locale];
   style={member.accentColor ? `--accent: ${member.accentColor};` : ''}
 >
   <div class="flex items-start gap-4">
-    {member.logo ? (
-      <img src={member.logo} alt={`${member.name} logo`} class="h-14 w-14 rounded-2xl bg-white/5 p-1.5" />
+    {cardLogo ? (
+      <img
+        src={cardLogo}
+        alt={`${member.name} logo`}
+        data-slug={member.slug}
+        class="member-card-logo h-16 w-16 rounded-2xl bg-white/5 p-1.5"
+      />
     ) : (
-      <div class="grid h-14 w-14 place-items-center rounded-2xl bg-teal/15 font-display text-xl text-teal">{member.name.slice(0, 1)}</div>
+      <div class="grid h-16 w-16 place-items-center rounded-2xl bg-teal/15 font-display text-2xl text-teal">{member.name.slice(0, 1)}</div>
     )}
     <div class="flex-1">
-      <h3 class="font-display text-xl">{member.name}</h3>
-      <p class="text-sm text-white/70">{role}</p>
+      <h3 class="font-display text-2xl sm:text-3xl">{member.name}</h3>
+      <p class="text-base text-white/75">{role}</p>
       {member.ens && (
-        <p class="mt-2 font-mono text-xs text-teal/90">{member.ens}</p>
+        <p class="mt-2 font-mono text-sm text-teal/90">{member.ens}</p>
       )}
     </div>
   </div>
