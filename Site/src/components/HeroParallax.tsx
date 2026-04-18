@@ -82,7 +82,7 @@ export default function HeroParallax() {
       <img
         src="/logos/axolodaoicon.svg"
         alt=""
-        class="hero-parallax-icon absolute left-1/2 top-1/2 h-[28rem] w-[28rem] sm:h-[36rem] sm:w-[36rem]"
+        class="hero-parallax-icon absolute left-1/2 top-1/2 h-[16rem] w-[16rem] sm:h-[28rem] sm:w-[28rem] lg:h-[36rem] lg:w-[36rem]"
       />
 
       {DNA_STRANDS.map((s, i) => (
