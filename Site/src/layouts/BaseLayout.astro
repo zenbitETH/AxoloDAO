@@ -36,12 +36,22 @@ const pageDesc =
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <link rel="icon" type="image/svg+xml" href="/logos/AxoloDAO.svg" />
+    <meta name="theme-color" content="#071F29" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F6EFE0" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/logos/axolodaoicon.svg" />
+    <link rel="canonical" href={Astro.url.href} />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDesc} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={new URL('/logos/AxoloDAO.svg', Astro.site).href} />
+    <meta property="og:locale" content={locale === 'es' ? 'es_MX' : locale === 'en' ? 'en_US' : 'pt_BR'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDesc} />
+    <meta name="twitter:image" content={new URL('/logos/AxoloDAO.svg', Astro.site).href} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

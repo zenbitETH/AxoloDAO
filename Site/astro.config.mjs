@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import preact from '@astrojs/preact';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://axolodao.org',
@@ -8,6 +9,12 @@ export default defineConfig({
   integrations: [
     preact({ compat: false }),
     tailwind({ applyBaseStyles: false }),
+    sitemap({
+      i18n: {
+        defaultLocale: 'es',
+        locales: { es: 'es-MX', en: 'en-US', pt: 'pt-BR' },
+      },
+    }),
   ],
   i18n: {
     defaultLocale: 'es',

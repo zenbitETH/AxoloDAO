@@ -452,10 +452,10 @@ interface ModalProps {
 // Slug -> filename in /public/species/ for the 4 species that have a hero image.
 // Dumerili's slug is "dumerili" (single i) but the file was exported as "dumerilii.png".
 const HERO_IMAGE_FILE: Record<string, string> = {
-  andersoni: 'andersoni.png',
-  dumerili: 'dumerilii.png',
-  mexicanum: 'mexicanum.png',
-  velasci: 'velasci.png',
+  andersoni: 'andersoni.webp',
+  dumerili: 'dumerilii.webp',
+  mexicanum: 'mexicanum.webp',
+  velasci: 'velasci.webp',
 };
 
 function SpeciesModal({ sp, locale, onClose, speciesPathBase }: ModalProps) {
@@ -479,8 +479,11 @@ function SpeciesModal({ sp, locale, onClose, speciesPathBase }: ModalProps) {
               <img
                 src={`/species/${heroImage}`}
                 alt={sp.scientificName}
+                width={1482}
+                height={954}
                 class="block h-auto w-full"
                 loading="eager"
+                decoding="async"
               />
             ) : (
               <div
