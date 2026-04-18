@@ -2,20 +2,59 @@
 import '@/styles/globals.css';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-import { type Locale, t } from '@/i18n/strings';
+import { type Locale, LOCALES, DEFAULT_LOCALE, t } from '@/i18n/strings';
 
 interface Props {
   locale: Locale;
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { locale, title, description } = Astro.props;
+const { locale, title, description, ogImage } = Astro.props;
 
-const pageTitle = title ?? 'AxoloDAO — Conservación onchain para los ajolotes de México';
-const pageDesc =
-  description ??
-  t(locale, 'hero.subtitle');
+const pageTitle = title ?? t(locale, 'seo.title');
+const pageDesc = description ?? t(locale, 'seo.description');
+const pageKeywords = t(locale, 'seo.keywords');
+const ogLocale = locale === 'es' ? 'es_MX' : locale === 'en' ? 'en_US' : 'pt_BR';
+const ogLocaleAlternates = (['es', 'en', 'pt'] as Locale[])
+  .filter((l) => l !== locale)
+  .map((l) => (l === 'es' ? 'es_MX' : l === 'en' ? 'en_US' : 'pt_BR'));
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const ogImagePath = ogImage ?? '/og-image.png';
+const ogImageUrl = new URL(ogImagePath, Astro.site).href;
+
+const pathNoLocale = Astro.url.pathname
+  .replace(/^\/(en|pt)(\/|$)/, '/')
+  .replace(/\/+$/, '') || '/';
+const alternates = LOCALES.map((l) => ({
+  locale: l,
+  href: new URL(l === DEFAULT_LOCALE ? pathNoLocale : `/${l}${pathNoLocale === '/' ? '' : pathNoLocale}`, Astro.site).href,
+  hreflang: l === 'es' ? 'es-MX' : l === 'en' ? 'en-US' : 'pt-BR',
+}));
+const xDefaultHref = new URL(pathNoLocale, Astro.site).href;
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'AxoloDAO',
+  url: Astro.site?.href ?? 'https://axolodao.org',
+  logo: new URL('/android-chrome-512x512.png', Astro.site).href,
+  description: pageDesc,
+  foundingLocation: 'Mexico',
+  sameAs: [
+    'https://app.ens.domains/axolodao.eth',
+    'https://github.com/zenbitETH/AxoloDAO',
+  ],
+};
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'AxoloDAO',
+  url: Astro.site?.href ?? 'https://axolodao.org',
+  inLanguage: [ogLocale, ...ogLocaleAlternates],
+};
 ---
 
 <!doctype html>
@@ -38,20 +77,57 @@ const pageDesc =
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#071F29" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#F6EFE0" media="(prefers-color-scheme: light)" />
-    <link rel="icon" type="image/svg+xml" href="/logos/AxoloDAO.svg" />
-    <link rel="canonical" href={Astro.url.href} />
+    <meta name="color-scheme" content="dark light" />
+
+    <link rel="icon" type="image/svg+xml" href="/logos/axolodaoicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="application-name" content="AxoloDAO" />
+    <meta name="apple-mobile-web-app-title" content="AxoloDAO" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="msapplication-TileColor" content="#071F29" />
+
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc} />
+    <meta name="keywords" content={pageKeywords} />
+    <meta name="author" content="AxoloDAO" />
+    <meta name="publisher" content="AxoloDAO" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <link rel="canonical" href={canonicalUrl} />
+    {alternates.map((a) => (
+      <link rel="alternate" hreflang={a.hreflang} href={a.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
+
+    <meta property="og:site_name" content="AxoloDAO" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDesc} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url.href} />
-    <meta property="og:image" content={new URL('/logos/AxoloDAO.svg', Astro.site).href} />
-    <meta property="og:locale" content={locale === 'es' ? 'es_MX' : locale === 'en' ? 'en_US' : 'pt_BR'} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={pageTitle} />
+    <meta property="og:locale" content={ogLocale} />
+    {ogLocaleAlternates.map((l) => (
+      <meta property="og:locale:alternate" content={l} />
+    ))}
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDesc} />
-    <meta name="twitter:image" content={new URL('/logos/AxoloDAO.svg', Astro.site).href} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={pageTitle} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

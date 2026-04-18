@@ -51,6 +51,9 @@ const dictionaries: Record<Locale, Dict> = {
     'footer.identities': 'Identidades onchain',
     'footer.socials': 'Redes',
     'footer.contact': 'Contacto',
+    'seo.title': 'AxoloDAO — Conservación onchain para los ajolotes de México',
+    'seo.description': 'AxoloDAO es una microDAO en Ethereum que coordina la conservación onchain de las 17 especies del género Ambystoma en México, incluyendo el ajolote de Xochimilco (Ambystoma mexicanum). Investigación científica, trazabilidad de germoplasma y financiamiento como bien público.',
+    'seo.keywords': 'ajolote, axolotl, Ambystoma mexicanum, Ambystoma, conservación, México, Xochimilco, microDAO, Ethereum, onchain, bienes públicos, ReFi, DAO, atestaciones EAS, ENS, Safe, biodiversidad, salamandras, conservación onchain, tracking onchain, germoplasma',
   },
   en: {
     'nav.about': 'About',
@@ -98,6 +101,9 @@ const dictionaries: Record<Locale, Dict> = {
     'footer.identities': 'Onchain identities',
     'footer.socials': 'Social',
     'footer.contact': 'Contact',
+    'seo.title': 'AxoloDAO — Onchain conservation for Mexico\u2019s axolotls',
+    'seo.description': 'AxoloDAO is an Ethereum microDAO coordinating onchain conservation for the 17 Ambystoma species of Mexico, including the Xochimilco axolotl (Ambystoma mexicanum). Scientific research, germplasm traceability and public-goods funding.',
+    'seo.keywords': 'axolotl, ajolote, Ambystoma mexicanum, Ambystoma, axolotl conservation, Mexico, Xochimilco, microDAO, Ethereum, onchain, public goods, ReFi, DAO, EAS attestations, ENS, Safe, biodiversity, salamander, onchain conservation, onchain tracking, germplasm, endangered species',
   },
   pt: {
     'nav.about': 'Sobre',
@@ -145,6 +151,9 @@ const dictionaries: Record<Locale, Dict> = {
     'footer.identities': 'Identidades onchain',
     'footer.socials': 'Redes',
     'footer.contact': 'Contato',
+    'seo.title': 'AxoloDAO — Conservação onchain para os axolotes do México',
+    'seo.description': 'A AxoloDAO é uma microDAO em Ethereum que coordena a conservação onchain das 17 espécies do gênero Ambystoma no México, incluindo o axolote de Xochimilco (Ambystoma mexicanum). Pesquisa científica, rastreabilidade de germoplasma e financiamento como bem público.',
+    'seo.keywords': 'axolote, ajolote, axolotl, Ambystoma mexicanum, Ambystoma, conservação, México, Xochimilco, microDAO, Ethereum, onchain, bens públicos, ReFi, DAO, atestações EAS, ENS, Safe, biodiversidade, salamandras, conservação onchain, rastreamento onchain, germoplasma',
   },
 };
 
