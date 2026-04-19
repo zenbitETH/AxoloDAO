@@ -45,7 +45,7 @@
 <circle class="species-marker" data-species="mexicanum" data-overlay-type="point" cx="4368.1" cy="3569.95" r="18.7315" transform="rotate(0.308406 4368.1 3569.95)" fill="#2F5A70" stroke="white"/>
 <circle class="species-marker" data-species="mexicanum" data-overlay-type="point" cx="4317.17" cy="3550.5" r="18.7315" transform="rotate(0.308406 4317.17 3550.5)" fill="#2F5A70" stroke="white"/>
 <circle class="species-marker" data-species="rivulare" data-overlay-type="point" cx="4240.66" cy="3813.84" r="18.7315" transform="rotate(0.308406 4240.66 3813.84)" fill="#DCC32A" stroke="white"/>
-<circle class="species-marker" data-species="dumerili" data-overlay-type="point" cx="3767" cy="3418.63" r="18.7315" transform="rotate(0.308406 3767 3418.63)" fill="#356340" stroke="white"/>
+<circle class="species-marker" data-species="dumerilii" data-overlay-type="point" cx="3767" cy="3418.63" r="18.7315" transform="rotate(0.308406 3767 3418.63)" fill="#356340" stroke="white"/>
 <circle class="species-marker" data-species="andersoni" data-overlay-type="point" cx="3669.67" cy="3408.54" r="18.7307" transform="rotate(0.308406 3669.67 3408.54)" fill="#BD7A39" stroke="white"/>
 <circle class="species-marker" data-species="bombypellum" data-overlay-type="point" cx="4244.1" cy="3427.03" r="18.7315" transform="rotate(0.308406 4244.1 3427.03)" fill="#4E00DF" stroke="white"/>
 <circle class="species-marker" data-species="amblycephalum" data-overlay-type="point" cx="3848.48" cy="3446.34" r="18.7315" transform="rotate(0.308406 3848.48 3446.34)" fill="#0D7DE9" stroke="white"/>

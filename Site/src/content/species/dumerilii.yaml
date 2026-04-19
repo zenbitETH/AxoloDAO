@@ -1,5 +1,5 @@
-slug: dumerili
-scientificName: A. dumerili
+slug: dumerilii
+scientificName: A. dumerilii
 commonNames:
   - Achoque de Pátzcuaro
   - Achójki
@@ -36,6 +36,6 @@ feeding: |-
   En cautiverio: se le proporciona una dieta alta en proteína que incluye lombrices, tubifex, larvas de insectos y, ocasionalmente, trozos de pescado o pellets formulados para axolotes.
 localityType: “laguna de Pátzcuaro, Michoacán, México, 2,055 pies de altitud”.
 characterizedBy: Dugè, 1870
-heroCardSvg: DumeriliCard.svg
+heroCardSvg: DumeriliiCard.svg
 accentColor: "#356340"
 endemic: true
