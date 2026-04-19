@@ -248,7 +248,7 @@ out = out.replace(/<rect\s+width="7205"\s+height="4735"\s+fill="white"\s*\/>/i, 
 // artist colors still identify each overlay; these recolors change what's visible.
 const SPECIES_RECOLOR = {
   andersoni: '#BD7A39',
-  dumerili: '#356340',
+  dumerilii: '#356340',
   mexicanum: '#2F5A70',
 };
 
@@ -262,7 +262,7 @@ const COLOR_TO_SPECIES = {
   '#0D7DE9': 'amblycephalum',
   '#1A00FF': 'andersoni',
   '#4E00DF': 'bombypellum',
-  '#356340': 'dumerili',
+  '#356340': 'dumerilii',
   '#981284': 'flavipiperatum',
   '#BD066A': 'granulosum',
   '#DB182F': 'leorae',

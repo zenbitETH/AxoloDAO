@@ -109,9 +109,20 @@ function parseNom(text) {
   return m && NOM_MAP[m[1]] ? NOM_MAP[m[1]] : null;
 }
 
+// Some Notion entries use historical single-i spellings; the app treats the
+// ICZN-correct double-i form as canonical.
+const SLUG_REMAP = {
+  dumerili: 'dumerilii',
+};
+
 function slugify(scientificName) {
   // "A. mexicanum" → "mexicanum"
-  return scientificName.replace(/^A\.?\s*/i, '').trim().toLowerCase().replace(/\s+/g, '-');
+  const raw = scientificName.replace(/^A\.?\s*/i, '').trim().toLowerCase().replace(/\s+/g, '-');
+  return SLUG_REMAP[raw] ?? raw;
+}
+
+function canonicalScientificName(scientificName) {
+  return scientificName.replace(/\bdumerili\b/i, 'dumerilii');
 }
 
 function readMarker(slug) {
@@ -217,7 +228,7 @@ for (const file of files) {
 
   const titleNode = article.querySelector('.page-title');
   const scientificRaw = titleNode?.text?.trim() ?? file.replace(/\s+[0-9a-f]{32}\.html$/i, '');
-  const scientificName = scientificRaw.replace(/\s+/g, ' ').trim();
+  const scientificName = canonicalScientificName(scientificRaw.replace(/\s+/g, ' ').trim());
   const slug = slugify(scientificName);
 
   const propertyRows = article.querySelectorAll('tr.property-row');
@@ -250,7 +261,7 @@ for (const file of files) {
   const markerSvg = readMarker(slug);
   const accentColor = extractAccentFromMarker(markerSvg);
 
-  const heroCardSvg = ['andersoni', 'dumerili', 'mexicanum'].includes(slug)
+  const heroCardSvg = ['andersoni', 'dumerilii', 'mexicanum'].includes(slug)
     ? `${slug.charAt(0).toUpperCase()}${slug.slice(1)}Card.svg`
     : undefined;
 

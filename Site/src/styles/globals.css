@@ -431,6 +431,186 @@
   );
 }
 
+/* ============================================================
+   Species explorer — mobile UX (sticky map, drawer, touch rules)
+   ============================================================ */
+
+/* Touch-only: suppress the card lift (:hover is sticky after tap on touch).
+   The pulsing neon glow is now driven by a class (.species-card--primed) so
+   touch devices get the same feedback via an explicit tap, not :hover. */
+@media (hover: none) {
+  .glass-hover:hover {
+    background-color: rgb(var(--surface-rgb) / 0.04);
+    border-color: rgb(var(--surface-rgb) / 0.10);
+  }
+  .species-card:hover {
+    transform: none;
+  }
+}
+
+/* Pulsing neon glow used to signal "this species is active / primed":
+   desktop fires it on :hover, mobile on a dedicated primed class that
+   toggles on first tap (second tap opens the sheet/modal). */
+@keyframes species-card-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(var(--pulse-rgb, 0 156 156) / 0.0),
+                0 0 0 0 rgba(var(--pulse-rgb, 0 156 156) / 0.0);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 28px 2px rgba(var(--pulse-rgb, 0 156 156) / 0.45),
+                0 0 0 1px rgba(var(--pulse-rgb, 0 156 156) / 0.35);
+    border-color: rgba(var(--pulse-rgb, 0 156 156) / 0.6);
+  }
+}
+
+.species-card {
+  --pulse-rgb: 0 156 156;
+  position: relative;
+}
+
+/* Desktop hover: pulse + lift (the existing hover:-translate-y-0.5 stays). */
+@media (hover: hover) {
+  .species-card:hover {
+    animation: species-card-pulse 1.6s ease-in-out infinite;
+  }
+}
+
+/* Mobile / touch: explicit primed class (toggled on first tap). */
+.species-card--primed {
+  animation: species-card-pulse 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .species-card:hover,
+  .species-card--primed {
+    animation: none;
+    box-shadow: 0 0 0 1px rgba(var(--pulse-rgb, 0 156 156) / 0.55);
+  }
+}
+
+/* "Tap again to open" hint: reveals itself the first time a card primes,
+   fading out shortly after to stay subtle. */
+.species-card-hint {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 240ms cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 180ms ease-out;
+}
+.species-card--primed .species-card-hint {
+  max-height: 1.25rem;
+  opacity: 1;
+}
+
+/* Sticky map container — mobile gets an opaque backdrop so species cards
+   scrolling underneath don't bleed through. Desktop keeps the subtle glass. */
+.species-map-surface {
+  background-color: rgb(7 31 41 / 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+@media (min-width: 1024px) {
+  .species-map-surface {
+    background-color: rgb(var(--surface-rgb) / 0.04);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+[data-theme="light"] .species-map-surface {
+  background-color: rgb(246 239 224 / 0.94);
+}
+@media (min-width: 1024px) {
+  [data-theme="light"] .species-map-surface {
+    background-color: rgb(var(--surface-rgb) / 0.04);
+  }
+}
+
+/* Map container sizing.
+   Mobile default: generous height (~66vh) so Mexico is legible and zoom-ins
+   have room to breathe. Mobile compact: ~160px mini-strip on deep scroll.
+   Desktop: untouched — keeps the aspect-ratio 4/5 column it's always used. */
+.species-map-aspect {
+  width: 100%;
+  height: 66vh;
+  min-height: 500px;
+  max-height: 78vh;
+  transition: height 280ms cubic-bezier(0.23, 1, 0.32, 1),
+              min-height 280ms cubic-bezier(0.23, 1, 0.32, 1),
+              max-height 280ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (min-width: 1024px) {
+  .species-map-aspect {
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    max-height: calc(100vh - 9rem);
+  }
+}
+.species-map-compact .species-map-aspect {
+  height: 160px !important;
+  min-height: 160px !important;
+  max-height: 160px !important;
+}
+.species-map-compact .species-map-label {
+  display: none;
+}
+
+/* When a species is zoomed in on mobile, cap the map at ~50vh so the species
+   list below stays reachable without scrolling past the sticky header. */
+.species-map-zoomed .species-map-aspect {
+  height: 38vh !important;
+  min-height: 240px !important;
+  max-height: 38vh !important;
+}
+@media (min-width: 1024px) {
+  .species-map-zoomed .species-map-aspect {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 5 !important;
+    max-height: calc(100vh - 9rem) !important;
+  }
+}
+@media (min-width: 1024px) {
+  .species-map-compact .species-map-aspect {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 5 !important;
+    max-height: calc(100vh - 9rem) !important;
+  }
+  .species-map-compact .species-map-label {
+    display: block;
+  }
+}
+
+/* Bottom sheet — dragged via pointer events; baseline styles for the handle. */
+.species-sheet {
+  will-change: transform;
+  transition: transform 280ms cubic-bezier(0.23, 1, 0.32, 1),
+              height 280ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.species-sheet--dragging {
+  transition: none;
+}
+.species-sheet-handle {
+  touch-action: none;
+  cursor: grab;
+}
+.species-sheet-handle:active {
+  cursor: grabbing;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .species-sheet {
+    transition: none;
+  }
+  .species-map-aspect,
+  .species-map-compact .species-map-aspect {
+    transition: none;
+  }
+}
+
 /* Theme toggle */
 .theme-toggle {
   display: inline-flex;
