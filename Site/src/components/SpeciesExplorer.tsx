@@ -313,9 +313,9 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
     }
     setStateFilter(code);
     clearFocus();
-    if (isCoarse) {
-      window.setTimeout(() => smoothScrollTo(gridRef.current), 120);
-    }
+    // No auto-scroll on state tap — the user is already looking at the map
+    // and auto-scrolling overshoots into the next section when the filtered
+    // list is short.
   }
 
   function clearFocus() {

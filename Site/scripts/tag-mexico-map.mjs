@@ -280,7 +280,7 @@ out = out.replace(/<path\b[^>]*\bfill="(#[0-9A-Fa-f]{3,8})"[^>]*\bclass="distrib
   if (!slug) return m;
   let out = m
     .replace(/\s+stroke="[^"]*"/g, '')
-    .replace('class="distribution-overlay"', `class="species-area" data-species="${slug}" data-overlay-type="area"`);
+    .replace('class="distribution-overlay"', `class="species-area" data-species="${slug}" data-overlay-type="area" pointer-events="none"`);
   if (SPECIES_RECOLOR[slug]) {
     out = out.replace(/\bfill="#[0-9A-Fa-f]+"/, `fill="${SPECIES_RECOLOR[slug]}"`);
   }
@@ -291,7 +291,7 @@ out = out.replace(/<path\b[^>]*\bfill="(#[0-9A-Fa-f]{3,8})"[^>]*\bclass="distrib
 out = out.replace(/<circle\b[^>]*\bfill="(#[0-9A-Fa-f]{3,8})"[^>]*\/>/g, (m, color) => {
   const slug = COLOR_TO_SPECIES[color.toUpperCase()];
   if (!slug) return m;
-  let out = m.replace('<circle', `<circle class="species-marker" data-species="${slug}" data-overlay-type="point"`);
+  let out = m.replace('<circle', `<circle class="species-marker" data-species="${slug}" data-overlay-type="point" pointer-events="none"`);
   if (SPECIES_RECOLOR[slug]) {
     out = out.replace(/\bfill="#[0-9A-Fa-f]+"/, `fill="${SPECIES_RECOLOR[slug]}"`);
   }

@@ -119,10 +119,14 @@ export default function MexicoMap({
       );
     });
 
-    // overlays + markers default styles
+    // overlays + markers default styles. `pointer-events: none` is set BOTH as
+    // an SVG attribute and as inline CSS — iOS Safari occasionally ignores the
+    // style-based form for complex filled paths (species area overlays), letting
+    // the overlay capture taps that should hit the underlying state path.
     container.querySelectorAll<SVGElement>('[data-overlay-type]').forEach((el) => {
       el.style.transition = 'opacity 0.25s ease';
       el.style.pointerEvents = 'none';
+      el.setAttribute('pointer-events', 'none');
     });
 
     return () => {
@@ -216,12 +220,62 @@ export default function MexicoMap({
     return () => cancelAnimationFrame(raf);
   }, [zoomBBox]);
 
+  // Imperative zoom controls. Multiply the current viewBox by `factor` around
+  // its center — factor > 1 zooms in, factor < 1 zooms out. We clamp against
+  // the full-canvas bounds so the user can't zoom further out than the full map.
+  function manualZoom(factor: number) {
+    const container = containerRef.current;
+    if (!container) return;
+    const svg = container.querySelector('svg') as SVGSVGElement | null;
+    if (!svg) return;
+    const parts = (svg.getAttribute('viewBox') ?? FULL_VIEWBOX).split(/\s+/).map(Number);
+    if (parts.length !== 4 || parts.some(Number.isNaN)) return;
+    const [x, y, w, h] = parts;
+    const cx = x + w / 2;
+    const cy = y + h / 2;
+    const scale = 1 / factor;
+    const full = FULL_VIEWBOX.split(' ').map(Number);
+    const maxW = full[2];
+    const maxH = full[3];
+    let newW = Math.min(w * scale, maxW);
+    let newH = Math.min(h * scale, maxH);
+    // Keep the container aspect ratio in sync so zoom-out doesn't letterbox.
+    const ratio = containerRatioRef.current;
+    if (newW / newH > ratio) newH = newW / ratio;
+    else newW = newH * ratio;
+    newW = Math.min(newW, maxW);
+    newH = Math.min(newH, maxH);
+    const newX = Math.max(0, Math.min(maxW - newW, cx - newW / 2));
+    const newY = Math.max(0, Math.min(maxH - newH, cy - newH / 2));
+    svg.setAttribute('viewBox', `${newX} ${newY} ${newW} ${newH}`);
+  }
+
   return (
-    <div
-      ref={containerRef}
-      class={className}
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: svgMarkup }}
-    />
+    <div class={`relative ${className ?? ''}`}>
+      <div
+        ref={containerRef}
+        class="h-full w-full"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: svgMarkup }}
+      />
+      <div class="pointer-events-none absolute right-2 top-2 z-10 flex flex-col gap-1.5">
+        <button
+          type="button"
+          onClick={() => manualZoom(1.4)}
+          aria-label="Zoom in"
+          class="pointer-events-auto flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-dark-navy/80 text-lg font-bold text-white/85 shadow-sm backdrop-blur-md transition-colors hover:border-teal/60 hover:text-teal"
+        >
+          +
+        </button>
+        <button
+          type="button"
+          onClick={() => manualZoom(1 / 1.4)}
+          aria-label="Zoom out"
+          class="pointer-events-auto flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-dark-navy/80 text-lg font-bold text-white/85 shadow-sm backdrop-blur-md transition-colors hover:border-teal/60 hover:text-teal"
+        >
+          −
+        </button>
+      </div>
+    </div>
   );
 }
