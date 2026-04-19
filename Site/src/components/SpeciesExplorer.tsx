@@ -52,6 +52,7 @@ const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
     feeding: 'Alimentación',
     nstates: 'estados', endemic: 'Endémica de México', protected: 'Presente en ANP', viewFull: 'Ver ficha completa', close: 'Cerrar',
     iucnFilter: 'Estatus IUCN', clear: 'Limpiar', searchAria: 'Buscar especie',
+    tapAgain: 'Toca de nuevo para ver la ficha',
   },
   en: {
     map: 'Map', grid: 'Species', all: 'All', states: 'States', search: 'Search species...',
@@ -59,6 +60,7 @@ const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
     feeding: 'Diet',
     nstates: 'states', endemic: 'Endemic to Mexico', protected: 'Found in ANP', viewFull: 'Open full profile', close: 'Close',
     iucnFilter: 'IUCN status', clear: 'Clear', searchAria: 'Search species',
+    tapAgain: 'Tap again to open the profile',
   },
   pt: {
     map: 'Mapa', grid: 'Espécies', all: 'Todas', states: 'Estados', search: 'Buscar espécie...',
@@ -66,6 +68,7 @@ const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
     feeding: 'Alimentação',
     nstates: 'estados', endemic: 'Endêmica do México', protected: 'Presente em ANP', viewFull: 'Ver ficha completa', close: 'Fechar',
     iucnFilter: 'Status IUCN', clear: 'Limpar', searchAria: 'Buscar espécie',
+    tapAgain: 'Toque novamente para abrir a ficha',
   },
 };
 
@@ -124,9 +127,6 @@ const HERO_IMAGE_FILE: Record<string, string> = {
   velasci: 'velasci.png',
 };
 
-const LONG_PRESS_MS = 450;
-const LONG_PRESS_MOVE_TOLERANCE = 10;
-
 function prefersReducedMotion() {
   if (typeof window === 'undefined') return false;
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -171,6 +171,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
   const [hoveredSpecies, setHoveredSpecies] = useState<string | null>(null);
   const [selected, setSelected] = useState<SpeciesItem | null>(null);
   const [pinnedSpecies, setPinnedSpecies] = useState<string | null>(null);
+  const [primedSpecies, setPrimedSpecies] = useState<string | null>(null);
   const [isCoarse, setIsCoarse] = useState(false);
   const [compact, setCompact] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -191,12 +192,17 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    const mq = window.matchMedia('(max-width: 1023px)');
     let raf = 0;
     let lastCompact = false;
-    const COMPACT_AT = 520;
-    const EXPAND_AT = 420;
+    const COMPACT_AT = 560;
+    const EXPAND_AT = 460;
     const check = () => {
       raf = 0;
+      if (!mq.matches) {
+        if (lastCompact) { lastCompact = false; setCompact(false); }
+        return;
+      }
       const y = window.scrollY;
       const next = lastCompact ? y > EXPAND_AT : y > COMPACT_AT;
       if (next !== lastCompact) {
@@ -209,9 +215,11 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
       raf = requestAnimationFrame(check);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
+    mq.addEventListener?.('change', check);
     check();
     return () => {
       window.removeEventListener('scroll', onScroll);
+      mq.removeEventListener?.('change', check);
       if (raf) cancelAnimationFrame(raf);
     };
   }, []);
@@ -300,6 +308,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
       return;
     }
     setStateFilter(code);
+    setPrimedSpecies(null);
     if (isCoarse) {
       window.setTimeout(() => smoothScrollTo(gridRef.current), 120);
     }
@@ -308,21 +317,33 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
   function handleGroupFilter(key: IucnGroupKey | null) {
     setIucnGroupFilter(key);
     setPinnedSpecies(null);
+    setPrimedSpecies(null);
     if (isCoarse && key !== null) {
       window.setTimeout(() => smoothScrollTo(mapRef.current), 50);
     }
   }
 
-  function handleCardShortTap(s: SpeciesItem) {
-    setHoveredSpecies(s.slug);
-    setPinnedSpecies(s.slug);
-    if (compact) expandMap();
-    window.setTimeout(() => smoothScrollTo(mapRef.current), 40);
-  }
-
-  function handleCardLongPress(s: SpeciesItem) {
-    setSelected(s);
-    setPinnedSpecies(s.slug);
+  // Double-tap / click model:
+  //   - Desktop: hover already primes the map (CSS :hover handles the glow).
+  //     Click opens the modal directly.
+  //   - Mobile: first tap primes (pulses, pans map, reveals "tap again" hint);
+  //     second tap on the same card opens the sheet.
+  function handleCardTap(s: SpeciesItem) {
+    if (isCoarse) {
+      if (primedSpecies === s.slug) {
+        setSelected(s);
+        setPrimedSpecies(null);
+        return;
+      }
+      setPrimedSpecies(s.slug);
+      setPinnedSpecies(s.slug);
+      setHoveredSpecies(s.slug);
+      if (compact) expandMap();
+      window.setTimeout(() => smoothScrollTo(mapRef.current), 40);
+    } else {
+      setSelected(s);
+      setPinnedSpecies(s.slug);
+    }
   }
 
   function handleSheetClose() {
@@ -355,15 +376,14 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
     <SpeciesCard
       key={s.slug}
       sp={s}
-      locale={locale}
       badgeColor={iucnGroupColor(s.iucn)}
       iucnLabel={s.iucn ? IUCN_LABELS[s.iucn]?.[locale] : undefined}
       nstates={tx.nstates}
+      tapAgainLabel={tx.tapAgain}
       isCoarse={isCoarse}
+      primed={primedSpecies === s.slug}
       onHover={setHoveredSpecies}
-      onSelect={() => setSelected(s)}
-      onShortTap={() => handleCardShortTap(s)}
-      onLongPress={() => handleCardLongPress(s)}
+      onTap={() => handleCardTap(s)}
     />
   );
 
@@ -484,8 +504,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
         <div ref={mapRef} class="sticky top-20 z-20 lg:top-24 lg:col-span-3">
           <div class={`species-map-surface overflow-hidden rounded-3xl border border-white/10 p-3 sm:p-4 ${compact ? 'species-map-compact' : ''}`}>
             <div
-              class="species-map-aspect mx-auto flex w-full items-center justify-center transition-[height,aspect-ratio,max-height] duration-300 ease-out"
-              style="aspect-ratio: 4 / 5; max-height: calc(100vh - 9rem);"
+              class="species-map-aspect mx-auto flex w-full items-center justify-center"
               onClick={compact ? () => expandMap() : undefined}
               role={compact ? 'button' : undefined}
               aria-label={compact ? tx.map : undefined}
@@ -570,87 +589,41 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
 
 interface CardProps {
   sp: SpeciesItem;
-  locale: 'es' | 'en' | 'pt';
   badgeColor: string;
   iucnLabel?: string;
   nstates: string;
+  tapAgainLabel: string;
   isCoarse: boolean;
+  primed: boolean;
   onHover: (slug: string | null) => void;
-  onSelect: () => void;
-  onShortTap: () => void;
-  onLongPress: () => void;
+  onTap: () => void;
 }
 
-function SpeciesCard({ sp, badgeColor, iucnLabel, nstates, isCoarse, onHover, onSelect, onShortTap, onLongPress }: CardProps) {
-  const pressTimer = useRef<number | null>(null);
-  const startPos = useRef<{ x: number; y: number } | null>(null);
-  const resolved = useRef(false);
-
-  function clearTimer() {
-    if (pressTimer.current) {
-      window.clearTimeout(pressTimer.current);
-      pressTimer.current = null;
-    }
-  }
-
-  function onPointerDown(e: PointerEvent) {
-    if (!isCoarse) return;
-    resolved.current = false;
-    startPos.current = { x: e.clientX, y: e.clientY };
-    clearTimer();
-    pressTimer.current = window.setTimeout(() => {
-      if (resolved.current) return;
-      resolved.current = true;
-      pressTimer.current = null;
-      onLongPress();
-    }, LONG_PRESS_MS);
-  }
-
-  function onPointerMove(e: PointerEvent) {
-    if (!startPos.current) return;
-    const dx = e.clientX - startPos.current.x;
-    const dy = e.clientY - startPos.current.y;
-    if (dx * dx + dy * dy > LONG_PRESS_MOVE_TOLERANCE * LONG_PRESS_MOVE_TOLERANCE) {
-      clearTimer();
-      resolved.current = true;
-      startPos.current = null;
-    }
-  }
-
-  function onPointerUp(_e: PointerEvent) {
-    if (!isCoarse) return;
-    clearTimer();
-    if (!resolved.current) {
-      resolved.current = true;
-      onShortTap();
-    }
-    startPos.current = null;
-  }
-
-  function onPointerCancel() {
-    clearTimer();
-    resolved.current = true;
-    startPos.current = null;
-  }
+function SpeciesCard({ sp, badgeColor, iucnLabel, nstates, tapAgainLabel, isCoarse, primed, onHover, onTap }: CardProps) {
+  const accent = sp.accentColor ?? '#009C9C';
+  // Parse #RRGGBB into "r g b" for CSS custom property.
+  const pulseRgb = (() => {
+    const m = /^#?([0-9a-f]{6})$/i.exec(accent);
+    if (!m) return '0 156 156';
+    const n = parseInt(m[1], 16);
+    return `${(n >> 16) & 255} ${(n >> 8) & 255} ${n & 255}`;
+  })();
 
   return (
     <button
       type="button"
-      onClick={isCoarse ? undefined : onSelect}
+      onClick={onTap}
       onMouseEnter={isCoarse ? undefined : () => onHover(sp.slug)}
       onMouseLeave={isCoarse ? undefined : () => onHover(null)}
       onFocus={() => onHover(sp.slug)}
       onBlur={() => onHover(null)}
-      onPointerDown={isCoarse ? onPointerDown : undefined}
-      onPointerMove={isCoarse ? onPointerMove : undefined}
-      onPointerUp={isCoarse ? onPointerUp : undefined}
-      onPointerCancel={isCoarse ? onPointerCancel : undefined}
-      onContextMenu={isCoarse ? (e: Event) => e.preventDefault() : undefined}
-      class="species-card glass glass-hover group flex w-full items-center gap-4 rounded-2xl p-4 text-left transition-transform duration-200 hover:-translate-y-0.5"
+      aria-pressed={primed || undefined}
+      class={`species-card ${primed ? 'species-card--primed' : ''} glass glass-hover group flex w-full items-center gap-4 rounded-2xl p-4 text-left transition-transform duration-200 hover:-translate-y-0.5`}
+      style={`--pulse-rgb: ${pulseRgb}`}
     >
       <div
         class="species-card-dot h-4 w-4 shrink-0 rounded-full transition-transform duration-200 group-hover:scale-125"
-        style={{ backgroundColor: sp.accentColor ?? '#009C9C', boxShadow: `0 0 12px ${sp.accentColor ?? '#009C9C'}aa` }}
+        style={{ backgroundColor: accent, boxShadow: `0 0 12px ${accent}aa` }}
       />
       <div class="min-w-0 flex-1">
         <div class="species-card-name font-display text-lg italic leading-tight text-white transition-colors duration-200 group-hover:text-teal">
@@ -661,6 +634,9 @@ function SpeciesCard({ sp, badgeColor, iucnLabel, nstates, isCoarse, onHover, on
             {sp.commonNames[0]}
           </div>
         )}
+        <div class="species-card-hint mt-1 text-[11px] italic tracking-wide text-white/55">
+          ↗ {tapAgainLabel}
+        </div>
       </div>
       <div class="flex shrink-0 flex-col items-end gap-1 text-right">
         {sp.iucn && (
