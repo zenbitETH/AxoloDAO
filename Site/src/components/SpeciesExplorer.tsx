@@ -285,9 +285,13 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
     return species.find((s) => s.slug === focusedSpecies)?.accentColor;
   }, [focusedSpecies, species]);
 
+  // When a species is focused, force the map out of compact mode so the zoom
+  // has real-estate to render. Otherwise auto-scrolling the list into view
+  // would trip `compact = true` and kill the zoom.
+  const effectiveCompact = compact && !focusedSpecies;
+
   const zoomBBox = useMemo<BBox | null>(() => {
     if (!focusedSpecies) return null;
-    if (compact) return null;
     const codes = LOCALIZED_FOR_ZOOM[focusedSpecies];
     if (!codes || !codes.length) return null;
     const boxes = codes.map((c) => bboxes[c]).filter(Boolean) as BBox[];
@@ -300,7 +304,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
       if (b.y + b.h > maxY) maxY = b.y + b.h;
     }
     return { x: minX, y: minY, w: maxX - minX, h: maxY - minY };
-  }, [focusedSpecies, bboxes, compact]);
+  }, [focusedSpecies, bboxes]);
 
   function handleStateClick(code: string) {
     if (stateFilter === code) {
@@ -502,12 +506,12 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
       <div class="grid gap-6 lg:grid-cols-5 lg:items-start">
         {/* Sticky map on both mobile and desktop */}
         <div ref={mapRef} class="sticky top-20 z-20 lg:top-24 lg:col-span-3">
-          <div class={`species-map-surface overflow-hidden rounded-3xl border border-white/10 p-3 sm:p-4 ${compact ? 'species-map-compact' : ''}`}>
+          <div class={`species-map-surface overflow-hidden rounded-3xl border border-white/10 p-3 sm:p-4 ${effectiveCompact ? 'species-map-compact' : ''}`}>
             <div
               class="species-map-aspect mx-auto flex w-full items-center justify-center"
-              onClick={compact ? () => expandMap() : undefined}
-              role={compact ? 'button' : undefined}
-              aria-label={compact ? tx.map : undefined}
+              onClick={effectiveCompact ? () => expandMap() : undefined}
+              role={effectiveCompact ? 'button' : undefined}
+              aria-label={effectiveCompact ? tx.map : undefined}
             >
               {mapSvg ? (
                 <MexicoMap
@@ -518,8 +522,8 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
                   filteredSlugs={hasActiveFilter ? filtered.map((s) => s.slug) : null}
                   highlightColor={focusedAccent}
                   zoomBBox={zoomBBox}
-                  onStateHover={compact ? undefined : setHoveredState}
-                  onStateClick={compact ? undefined : handleStateClick}
+                  onStateHover={effectiveCompact ? undefined : setHoveredState}
+                  onStateClick={effectiveCompact ? undefined : handleStateClick}
                   className="h-full w-full"
                 />
               ) : (

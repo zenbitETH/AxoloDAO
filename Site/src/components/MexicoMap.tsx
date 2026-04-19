@@ -24,20 +24,20 @@ interface Props {
 }
 
 const FULL_VIEWBOX = '0 0 7205 4735';
-const CONTAINER_RATIO = 4 / 5; // width / height — must stay in sync with SpeciesExplorer container aspect-ratio
+const DEFAULT_CONTAINER_RATIO = 4 / 5; // fallback if we can't measure yet
 
-function bboxToViewBox(b: BBox, paddingFraction = 0.18): string {
+function bboxToViewBox(b: BBox, containerRatio: number, paddingFraction = 0.18): string {
   // 1) Extend the shorter axis so the bbox matches the container aspect ratio.
   //    Otherwise preserveAspectRatio="meet" letterboxes on one axis and the user
   //    sees no neighboring-state context on that axis.
   let x = b.x, y = b.y, w = b.w, h = b.h;
   const currentRatio = w / h;
-  if (currentRatio < CONTAINER_RATIO) {
-    const newW = h * CONTAINER_RATIO;
+  if (currentRatio < containerRatio) {
+    const newW = h * containerRatio;
     x -= (newW - w) / 2;
     w = newW;
-  } else if (currentRatio > CONTAINER_RATIO) {
-    const newH = w / CONTAINER_RATIO;
+  } else if (currentRatio > containerRatio) {
+    const newH = w / containerRatio;
     y -= (newH - h) / 2;
     h = newH;
   }
@@ -60,6 +60,24 @@ export default function MexicoMap({
   className,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const containerRatioRef = useRef<number>(DEFAULT_CONTAINER_RATIO);
+
+  // Track the real width/height of the container so the zoom bbox extension
+  // matches reality (desktop is 4/5, mobile is taller).
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el || typeof ResizeObserver === 'undefined') return;
+    const update = () => {
+      const r = el.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0) {
+        containerRatioRef.current = r.width / r.height;
+      }
+    };
+    update();
+    const obs = new ResizeObserver(update);
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   // ------ initial setup: size + click/hover handlers (runs once per markup) ----
   useEffect(() => {
@@ -173,7 +191,7 @@ export default function MexicoMap({
     const svg = container.querySelector('svg') as SVGSVGElement | null;
     if (!svg) return;
 
-    const target = zoomBBox ? bboxToViewBox(zoomBBox) : FULL_VIEWBOX;
+    const target = zoomBBox ? bboxToViewBox(zoomBBox, containerRatioRef.current) : FULL_VIEWBOX;
     const current = svg.getAttribute('viewBox') ?? FULL_VIEWBOX;
     if (current === target) return;
 

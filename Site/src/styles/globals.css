@@ -528,14 +528,14 @@
 }
 
 /* Map container sizing.
-   Mobile default: generous height (~55vh) so Mexico is legible without scroll.
-   Mobile compact: shrinks to ~160px (double the earlier mini-strip) on scroll.
+   Mobile default: generous height (~66vh) so Mexico is legible and zoom-ins
+   have room to breathe. Mobile compact: ~160px mini-strip on deep scroll.
    Desktop: untouched — keeps the aspect-ratio 4/5 column it's always used. */
 .species-map-aspect {
   width: 100%;
-  height: 55vh;
-  min-height: 380px;
-  max-height: 68vh;
+  height: 66vh;
+  min-height: 500px;
+  max-height: 78vh;
   transition: height 280ms cubic-bezier(0.23, 1, 0.32, 1),
               min-height 280ms cubic-bezier(0.23, 1, 0.32, 1),
               max-height 280ms cubic-bezier(0.23, 1, 0.32, 1);
