@@ -347,7 +347,6 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
       setPrimedSpecies(s.slug);
       setPinnedSpecies(s.slug);
       setHoveredSpecies(s.slug);
-      if (compact) expandMap();
       window.setTimeout(() => smoothScrollTo(mapRef.current), 40);
     } else {
       setSelected(s);
@@ -358,11 +357,6 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
   function handleSheetClose() {
     setSelected(null);
     clearFocus();
-  }
-
-  function expandMap() {
-    if (typeof window === 'undefined') return;
-    window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
   }
 
   function clearAll() {
@@ -515,9 +509,6 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
           <div class={`species-map-surface overflow-hidden rounded-3xl border border-white/10 p-3 sm:p-4 ${effectiveCompact ? 'species-map-compact' : ''} ${focusedSpecies ? 'species-map-zoomed' : ''}`}>
             <div
               class="species-map-aspect mx-auto flex w-full items-center justify-center"
-              onClick={effectiveCompact ? () => expandMap() : undefined}
-              role={effectiveCompact ? 'button' : undefined}
-              aria-label={effectiveCompact ? tx.map : undefined}
             >
               {mapSvg ? (
                 <MexicoMap
@@ -528,8 +519,8 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
                   filteredSlugs={hasActiveFilter ? filtered.map((s) => s.slug) : null}
                   highlightColor={focusedAccent}
                   zoomBBox={zoomBBox}
-                  onStateHover={effectiveCompact ? undefined : setHoveredState}
-                  onStateClick={effectiveCompact ? undefined : handleStateClick}
+                  onStateHover={setHoveredState}
+                  onStateClick={handleStateClick}
                   className="h-full w-full"
                 />
               ) : (
