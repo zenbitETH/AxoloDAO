@@ -556,6 +556,22 @@
 .species-map-compact .species-map-label {
   display: none;
 }
+
+/* When a species is zoomed in on mobile, cap the map at ~50vh so the species
+   list below stays reachable without scrolling past the sticky header. */
+.species-map-zoomed .species-map-aspect {
+  height: 50vh !important;
+  min-height: 320px !important;
+  max-height: 50vh !important;
+}
+@media (min-width: 1024px) {
+  .species-map-zoomed .species-map-aspect {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 4 / 5 !important;
+    max-height: calc(100vh - 9rem) !important;
+  }
+}
 @media (min-width: 1024px) {
   .species-map-compact .species-map-aspect {
     height: auto !important;

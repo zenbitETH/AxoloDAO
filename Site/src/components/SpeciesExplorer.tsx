@@ -93,7 +93,7 @@ const IUCN_GROUPS = [
 ] as const;
 type IucnGroupKey = typeof IUCN_GROUPS[number]['key'];
 
-const XOLOTLCALLI_ONSITE = new Set(['andersoni', 'dumerili', 'mexicanum']);
+const XOLOTLCALLI_ONSITE = new Set(['andersoni', 'dumerilii', 'mexicanum']);
 const ONSITE_LABELS: Record<'es' | 'en' | 'pt', string> = {
   es: 'Disponibles en línea y en el BioMuseo Xolotlcalli',
   en: 'Available online and onsite at BioMuseo Xolotlcalli',
@@ -105,7 +105,7 @@ const LOCALIZED_FOR_ZOOM: Record<string, string[]> = {
   amblycephalum: ['MIC'],
   andersoni:     ['MIC'],
   bombypellum:   ['MEX', 'MIC'],
-  dumerili:      ['MIC'],
+  dumerilii:     ['MIC'],
   flavipiperatum:['JAL'],
   granulosum:    ['MEX'],
   leorae:        ['MEX', 'PUE'],
@@ -122,7 +122,7 @@ const LOCALIZED_FOR_ZOOM: Record<string, string[]> = {
 
 const HERO_IMAGE_FILE: Record<string, string> = {
   andersoni: 'andersoni.png',
-  dumerili: 'dumerilii.png',
+  dumerilii: 'dumerilii.png',
   mexicanum: 'mexicanum.png',
   velasci: 'velasci.png',
 };
@@ -312,16 +312,21 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
       return;
     }
     setStateFilter(code);
-    setPrimedSpecies(null);
+    clearFocus();
     if (isCoarse) {
       window.setTimeout(() => smoothScrollTo(gridRef.current), 120);
     }
   }
 
-  function handleGroupFilter(key: IucnGroupKey | null) {
-    setIucnGroupFilter(key);
+  function clearFocus() {
     setPinnedSpecies(null);
     setPrimedSpecies(null);
+    setHoveredSpecies(null);
+  }
+
+  function handleGroupFilter(key: IucnGroupKey | null) {
+    setIucnGroupFilter(key);
+    clearFocus();
     if (isCoarse && key !== null) {
       window.setTimeout(() => smoothScrollTo(mapRef.current), 50);
     }
@@ -352,6 +357,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
 
   function handleSheetClose() {
     setSelected(null);
+    clearFocus();
   }
 
   function expandMap() {
@@ -363,7 +369,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
     setIucnGroupFilter(null);
     setStateFilter(null);
     setSearch('');
-    setPinnedSpecies(null);
+    clearFocus();
   }
 
   const hasActiveFilter = Boolean(iucnGroupFilter || stateFilter || search);
@@ -506,7 +512,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
       <div class="grid gap-6 lg:grid-cols-5 lg:items-start">
         {/* Sticky map on both mobile and desktop */}
         <div ref={mapRef} class="sticky top-20 z-20 lg:top-24 lg:col-span-3">
-          <div class={`species-map-surface overflow-hidden rounded-3xl border border-white/10 p-3 sm:p-4 ${effectiveCompact ? 'species-map-compact' : ''}`}>
+          <div class={`species-map-surface overflow-hidden rounded-3xl border border-white/10 p-3 sm:p-4 ${effectiveCompact ? 'species-map-compact' : ''} ${focusedSpecies ? 'species-map-zoomed' : ''}`}>
             <div
               class="species-map-aspect mx-auto flex w-full items-center justify-center"
               onClick={effectiveCompact ? () => expandMap() : undefined}
