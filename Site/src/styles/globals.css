@@ -560,9 +560,9 @@
 /* When a species is zoomed in on mobile, cap the map at ~50vh so the species
    list below stays reachable without scrolling past the sticky header. */
 .species-map-zoomed .species-map-aspect {
-  height: 50vh !important;
-  min-height: 320px !important;
-  max-height: 50vh !important;
+  height: 38vh !important;
+  min-height: 240px !important;
+  max-height: 38vh !important;
 }
 @media (min-width: 1024px) {
   .species-map-zoomed .species-map-aspect {
