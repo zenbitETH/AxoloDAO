@@ -53,6 +53,7 @@ const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
     nstates: 'estados', endemic: 'Endémica de México', protected: 'Presente en ANP', viewFull: 'Ver ficha completa', close: 'Cerrar',
     iucnFilter: 'Estatus IUCN', clear: 'Limpiar', searchAria: 'Buscar especie',
     tapAgain: 'Toca de nuevo para ver la ficha',
+    zoomIn: 'Acercar mapa', zoomOut: 'Alejar mapa', zoomReset: 'Restablecer zoom',
   },
   en: {
     map: 'Map', grid: 'Species', all: 'All', states: 'States', search: 'Search species...',
@@ -61,6 +62,7 @@ const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
     nstates: 'states', endemic: 'Endemic to Mexico', protected: 'Found in ANP', viewFull: 'Open full profile', close: 'Close',
     iucnFilter: 'IUCN status', clear: 'Clear', searchAria: 'Search species',
     tapAgain: 'Tap again to open the profile',
+    zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomReset: 'Reset zoom',
   },
   pt: {
     map: 'Mapa', grid: 'Espécies', all: 'Todas', states: 'Estados', search: 'Buscar espécie...',
@@ -69,6 +71,7 @@ const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
     nstates: 'estados', endemic: 'Endêmica do México', protected: 'Presente em ANP', viewFull: 'Ver ficha completa', close: 'Fechar',
     iucnFilter: 'Status IUCN', clear: 'Limpar', searchAria: 'Buscar espécie',
     tapAgain: 'Toque novamente para abrir a ficha',
+    zoomIn: 'Aproximar mapa', zoomOut: 'Afastar mapa', zoomReset: 'Redefinir zoom',
   },
 };
 
@@ -313,9 +316,6 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
     }
     setStateFilter(code);
     clearFocus();
-    if (isCoarse) {
-      window.setTimeout(() => smoothScrollTo(gridRef.current), 120);
-    }
   }
 
   function clearFocus() {
@@ -522,6 +522,7 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
                   onStateHover={setHoveredState}
                   onStateClick={handleStateClick}
                   className="h-full w-full"
+                  controlLabels={{ zoomIn: tx.zoomIn, zoomOut: tx.zoomOut, zoomReset: tx.zoomReset }}
                 />
               ) : (
                 <div class="flex h-full w-full items-center justify-center text-white/40 text-sm">…</div>

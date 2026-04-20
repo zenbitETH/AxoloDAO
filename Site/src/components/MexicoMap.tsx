@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 
 interface BBox { x: number; y: number; w: number; h: number }
 
@@ -21,6 +21,8 @@ interface Props {
   onStateHover?: (code: string | null) => void;
   onStateClick?: (code: string) => void;
   className?: string;
+  /** Localized labels for the zoom controls */
+  controlLabels?: { zoomIn: string; zoomOut: string; zoomReset: string };
 }
 
 const FULL_VIEWBOX = '0 0 7205 4735';
@@ -58,9 +60,19 @@ export default function MexicoMap({
   onStateHover,
   onStateClick,
   className,
+  controlLabels,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const containerRatioRef = useRef<number>(DEFAULT_CONTAINER_RATIO);
+  const [userZoom, setUserZoom] = useState(1);
+  const [userPan, setUserPan] = useState({ x: 0, y: 0 });
+
+  // Reset user zoom/pan whenever the authored focus changes, so species zooms
+  // always start from a clean baseline regardless of prior manual zooming.
+  useEffect(() => {
+    setUserZoom(1);
+    setUserPan({ x: 0, y: 0 });
+  }, [zoomBBox]);
 
   // Track the real width/height of the container so the zoom bbox extension
   // matches reality (desktop is 4/5, mobile is taller).
@@ -191,7 +203,13 @@ export default function MexicoMap({
     const svg = container.querySelector('svg') as SVGSVGElement | null;
     if (!svg) return;
 
-    const target = zoomBBox ? bboxToViewBox(zoomBBox, containerRatioRef.current) : FULL_VIEWBOX;
+    const base = zoomBBox ? bboxToViewBox(zoomBBox, containerRatioRef.current) : FULL_VIEWBOX;
+    const [bx, by, bw, bh] = base.split(/\s+/).map(Number);
+    const cx = bx + bw / 2;
+    const cy = by + bh / 2;
+    const w = bw / userZoom;
+    const h = bh / userZoom;
+    const target = `${cx - w / 2 + userPan.x} ${cy - h / 2 + userPan.y} ${w} ${h}`;
     const current = svg.getAttribute('viewBox') ?? FULL_VIEWBOX;
     if (current === target) return;
 
@@ -214,14 +232,60 @@ export default function MexicoMap({
     };
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, [zoomBBox]);
+  }, [zoomBBox, userZoom, userPan]);
+
+  const ZOOM_STEP = 1.4;
+  const ZOOM_MAX = 5;
+  const hasUserTransform = userZoom !== 1 || userPan.x !== 0 || userPan.y !== 0;
 
   return (
     <div
       ref={containerRef}
       class={className}
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: svgMarkup }}
-    />
+      style={{ position: 'relative', touchAction: 'pan-y' }}
+    >
+      <div
+        class="h-full w-full"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: svgMarkup }}
+      />
+      <div class="absolute bottom-3 right-3 z-10 flex flex-col gap-1 rounded-full border border-white/15 bg-[rgb(7_31_41/0.78)] p-1 backdrop-blur">
+        <button
+          type="button"
+          onClick={() => setUserZoom((z) => Math.min(z * ZOOM_STEP, ZOOM_MAX))}
+          aria-label={controlLabels?.zoomIn ?? 'Zoom in'}
+          class="flex h-8 w-8 items-center justify-center rounded-full text-lg leading-none text-white/85 transition-colors hover:bg-white/10"
+        >
+          +
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setUserZoom((z) => {
+              const next = Math.max(z / ZOOM_STEP, 1);
+              if (next === 1) setUserPan({ x: 0, y: 0 });
+              return next;
+            });
+          }}
+          aria-label={controlLabels?.zoomOut ?? 'Zoom out'}
+          class="flex h-8 w-8 items-center justify-center rounded-full text-lg leading-none text-white/85 transition-colors hover:bg-white/10"
+        >
+          −
+        </button>
+        {hasUserTransform && (
+          <button
+            type="button"
+            onClick={() => {
+              setUserZoom(1);
+              setUserPan({ x: 0, y: 0 });
+            }}
+            aria-label={controlLabels?.zoomReset ?? 'Reset zoom'}
+            class="flex h-8 w-8 items-center justify-center rounded-full text-base leading-none text-white/85 transition-colors hover:bg-white/10"
+          >
+            ⟲
+          </button>
+        )}
+      </div>
+    </div>
   );
 }
