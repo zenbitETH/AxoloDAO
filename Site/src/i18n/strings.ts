@@ -1,5 +1,5 @@
 export type Locale = 'es' | 'en' | 'pt';
-export const LOCALES: Locale[] = ['es', 'en', 'pt'];
+export const LOCALES: Locale[] = ['es', 'pt', 'en'];
 export const DEFAULT_LOCALE: Locale = 'es';
 
 type Dict = Record<string, string>;

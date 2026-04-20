@@ -2,9 +2,9 @@ slug: inteli
 name: Inteli
 featured: true
 featuredLabel:
-  es: Aliado en Investigación y desarrollo
-  en: Research & development partner
-  pt: Parceiro de pesquisa e desenvolvimento
+  es: Socio en Investigación y Desarrollo
+  en: R&D partner
+  pt: Parceiro em Pesquisa e Desenvolvimento
 logo: /logos/inteli.svg
 website: https://www.inteli.edu.br
 role:
@@ -19,5 +19,3 @@ socials:
   - platform: instagram
     url: https://instagram.com/inteli_edu
     handle: '@inteli_edu'
-  - platform: website
-    url: https://www.inteli.edu.br
