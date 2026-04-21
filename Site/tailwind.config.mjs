@@ -12,6 +12,11 @@ export default {
         rosa: '#E85D75',
         ocre: '#D4925F',
         marfil: '#F4E8C8',
+        cream: '#F6EFE0',
+        choco: '#4A3628',
+        'wq-aa': '#B87333',
+        'wq-am': '#2C5F7C',
+        'wq-ad': '#3E6B4A',
       },
       fontFamily: {
         display: ['"Baloo 2"', 'cursive'],

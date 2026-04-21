@@ -1,0 +1,1732 @@
+[
+  {
+    "date": "2025-12-15",
+    "time": "10:00",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": null,
+      "nh3": null,
+      "no2": 0.1,
+      "no3": 50,
+      "gh": 60,
+      "kh": 90,
+      "ph": 8,
+      "po4": 5,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "no3",
+      "kh",
+      "ph",
+      "po4"
+    ],
+    "note": null
+  },
+  {
+    "date": "2025-12-15",
+    "time": "10:00",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": null,
+      "nh3": null,
+      "no2": 0.1,
+      "no3": 20,
+      "gh": 60,
+      "kh": 80,
+      "ph": 7.8,
+      "po4": 5,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "ph",
+      "po4"
+    ],
+    "note": null
+  },
+  {
+    "date": "2025-12-15",
+    "time": "10:00",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": null,
+      "nh3": null,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": null,
+      "ph": 8,
+      "po4": 5,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "ph",
+      "po4"
+    ],
+    "note": null
+  },
+  {
+    "date": "2025-12-15",
+    "time": "10:00",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": null,
+      "nh3": null,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": null,
+      "ph": 8,
+      "po4": 5,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "po4"
+    ],
+    "note": null
+  },
+  {
+    "date": "2025-12-22",
+    "time": "10:34",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 15.3,
+      "nh3": null,
+      "no2": null,
+      "no3": null,
+      "gh": 80,
+      "kh": 50,
+      "ph": 8.3,
+      "po4": null,
+      "cond": 590,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "gh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2025-12-22",
+    "time": "10:34",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 15.4,
+      "nh3": null,
+      "no2": null,
+      "no3": null,
+      "gh": 120,
+      "kh": 50,
+      "ph": 7.9,
+      "po4": null,
+      "cond": 678,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "gh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2025-12-22",
+    "time": "10:34",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 15.4,
+      "nh3": null,
+      "no2": null,
+      "no3": null,
+      "gh": 140,
+      "kh": null,
+      "ph": 7.6,
+      "po4": null,
+      "cond": 678,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2025-12-22",
+    "time": "11:12",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 16.9,
+      "nh3": 0,
+      "no2": 0.1,
+      "no3": 5,
+      "gh": null,
+      "kh": null,
+      "ph": 8.2,
+      "po4": 5,
+      "cond": 624,
+      "tds": null
+    },
+    "alarms": [
+      "ph",
+      "po4",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2025-12-22",
+    "time": "11:12",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 15.6,
+      "nh3": 0,
+      "no2": 0.1,
+      "no3": 10,
+      "gh": null,
+      "kh": null,
+      "ph": 8,
+      "po4": 5,
+      "cond": 488,
+      "tds": null
+    },
+    "alarms": [
+      "po4"
+    ],
+    "note": null
+  },
+  {
+    "date": "2025-12-29",
+    "time": "16:57",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": null,
+      "nh3": null,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": null,
+      "ph": null,
+      "po4": null,
+      "cond": 2038,
+      "tds": null
+    },
+    "alarms": [
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-01-19",
+    "time": "14:57",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 16.5,
+      "nh3": null,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": null,
+      "ph": 9,
+      "po4": null,
+      "cond": 1140,
+      "tds": null
+    },
+    "alarms": [
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-01-19",
+    "time": "14:57",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 17.8,
+      "nh3": null,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": null,
+      "ph": 9,
+      "po4": null,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "ph"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-01-19",
+    "time": "14:57",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 17.8,
+      "nh3": null,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": null,
+      "ph": 9,
+      "po4": null,
+      "cond": 1240,
+      "tds": null
+    },
+    "alarms": [
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-01-19",
+    "time": "14:57",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 18.7,
+      "nh3": null,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": null,
+      "ph": 9,
+      "po4": null,
+      "cond": 906,
+      "tds": null
+    },
+    "alarms": [
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-01-26",
+    "time": "13:03",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 18.5,
+      "nh3": 0,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": 120,
+      "ph": 9,
+      "po4": 5,
+      "cond": 870,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "ph",
+      "po4",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-01-26",
+    "time": "13:03",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 16.5,
+      "nh3": 0,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": null,
+      "ph": 8.8,
+      "po4": 5,
+      "cond": 1200,
+      "tds": null
+    },
+    "alarms": [
+      "ph",
+      "po4",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-01-26",
+    "time": "13:03",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 16.7,
+      "nh3": 0,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": null,
+      "ph": 9,
+      "po4": 5,
+      "cond": 820,
+      "tds": null
+    },
+    "alarms": [
+      "ph",
+      "po4",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-01-26",
+    "time": "13:03",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 17,
+      "nh3": 0,
+      "no2": null,
+      "no3": null,
+      "gh": null,
+      "kh": null,
+      "ph": 9,
+      "po4": 5,
+      "cond": 900,
+      "tds": null
+    },
+    "alarms": [
+      "ph",
+      "po4",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-02",
+    "time": "17:57",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 18,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 20,
+      "gh": null,
+      "kh": 100,
+      "ph": 9.18,
+      "po4": 1.2,
+      "cond": 385,
+      "tds": null
+    },
+    "alarms": [
+      "no3",
+      "kh",
+      "ph",
+      "po4",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-02",
+    "time": "17:57",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 16,
+      "nh3": 0,
+      "no2": 0.1,
+      "no3": 20,
+      "gh": null,
+      "kh": 130,
+      "ph": 9.18,
+      "po4": 1.2,
+      "cond": 519,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "ph",
+      "po4",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-02",
+    "time": "17:57",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 16.6,
+      "nh3": 0,
+      "no2": 0.1,
+      "no3": 20,
+      "gh": null,
+      "kh": 140,
+      "ph": 9.18,
+      "po4": 0.21,
+      "cond": 449,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-02",
+    "time": "17:57",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 16.8,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 20,
+      "gh": null,
+      "kh": 120,
+      "ph": 9.1,
+      "po4": 0.3,
+      "cond": 473,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "ph"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-16",
+    "time": "17:30",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "zenbit.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 18,
+      "nh3": null,
+      "no2": 0.1,
+      "no3": 5,
+      "gh": null,
+      "kh": 90.78,
+      "ph": null,
+      "po4": 0.9,
+      "cond": 1883,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "po4",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-16",
+    "time": "17:30",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "zenbit.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 17.4,
+      "nh3": null,
+      "no2": 0.3,
+      "no3": 10,
+      "gh": null,
+      "kh": 108.58,
+      "ph": null,
+      "po4": 0.15,
+      "cond": 1212,
+      "tds": null
+    },
+    "alarms": [
+      "no2",
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-16",
+    "time": "17:30",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "zenbit.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 17.6,
+      "nh3": null,
+      "no2": 0.3,
+      "no3": 10,
+      "gh": null,
+      "kh": 108.58,
+      "ph": null,
+      "po4": 0.15,
+      "cond": 1269,
+      "tds": null
+    },
+    "alarms": [
+      "no2",
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-16",
+    "time": "17:30",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "zenbit.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 15.4,
+      "nh3": null,
+      "no2": 0.1,
+      "no3": 10,
+      "gh": null,
+      "kh": 110.36,
+      "ph": null,
+      "po4": 0.09,
+      "cond": 783,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-23",
+    "time": "15:05",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 18.6,
+      "nh3": null,
+      "no2": 0.1,
+      "no3": 10,
+      "gh": null,
+      "kh": 74.76,
+      "ph": 7.4,
+      "po4": 0.3,
+      "cond": 1506,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-23",
+    "time": "15:05",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 16.9,
+      "nh3": null,
+      "no2": 0.3,
+      "no3": 5,
+      "gh": null,
+      "kh": 64.08,
+      "ph": 7.4,
+      "po4": 0.3,
+      "cond": 1322,
+      "tds": null
+    },
+    "alarms": [
+      "no2",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-23",
+    "time": "15:05",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 16.6,
+      "nh3": null,
+      "no2": 0.3,
+      "no3": 10,
+      "gh": null,
+      "kh": 69.42,
+      "ph": 7.4,
+      "po4": 0.3,
+      "cond": 1247,
+      "tds": null
+    },
+    "alarms": [
+      "no2",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-02-23",
+    "time": "15:05",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 17.4,
+      "nh3": null,
+      "no2": 0.1,
+      "no3": 5,
+      "gh": null,
+      "kh": 138.84,
+      "ph": 8,
+      "po4": 0.3,
+      "cond": 2306,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-02",
+    "time": "14:10",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 19.1,
+      "nh3": 0.25,
+      "no2": 0.1,
+      "no3": 10,
+      "gh": null,
+      "kh": 71.2,
+      "ph": 7.5,
+      "po4": 13.15,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "kh",
+      "po4"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-02",
+    "time": "14:10",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 15.3,
+      "nh3": 0.5,
+      "no2": 0.8,
+      "no3": 20,
+      "gh": null,
+      "kh": 49.84,
+      "ph": 7.7,
+      "po4": 10.5,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "nh3",
+      "no2",
+      "kh",
+      "ph",
+      "po4"
+    ],
+    "note": "Estancamiento de agua por evaporación en el filtro "
+  },
+  {
+    "date": "2026-03-02",
+    "time": "14:10",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 14.7,
+      "nh3": 0.25,
+      "no2": 0.3,
+      "no3": 10,
+      "gh": null,
+      "kh": 55.18,
+      "ph": 7.4,
+      "po4": 10.5,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "nh3",
+      "no2",
+      "po4"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-02",
+    "time": "14:10",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 15.5,
+      "nh3": 0.25,
+      "no2": 0.1,
+      "no3": 10,
+      "gh": null,
+      "kh": 149.52,
+      "ph": 8.15,
+      "po4": 13.15,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "kh",
+      "po4"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-09",
+    "time": "14:27",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 18.5,
+      "nh3": 0,
+      "no2": 0.1,
+      "no3": 15,
+      "gh": null,
+      "kh": 49.81,
+      "ph": 7.7,
+      "po4": 0.3,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "no3",
+      "ph"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-09",
+    "time": "14:27",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 16.5,
+      "nh3": 0,
+      "no2": 0.3,
+      "no3": 15,
+      "gh": null,
+      "kh": 55.18,
+      "ph": 7.7,
+      "po4": 0.3,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "no2",
+      "ph"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-09",
+    "time": "14:27",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 16.6,
+      "nh3": 0.25,
+      "no2": 0.3,
+      "no3": 5,
+      "gh": null,
+      "kh": 55.18,
+      "ph": 7.7,
+      "po4": 0.3,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "no2",
+      "ph"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-09",
+    "time": "14:27",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 16.9,
+      "nh3": 0,
+      "no2": 0.1,
+      "no3": 5,
+      "gh": null,
+      "kh": 140.62,
+      "ph": 8.15,
+      "po4": 0.3,
+      "cond": null,
+      "tds": null
+    },
+    "alarms": [
+      "kh"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-16",
+    "time": "14:04",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 17.7,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 10,
+      "gh": null,
+      "kh": 39.16,
+      "ph": 7.5,
+      "po4": 0.3,
+      "cond": 1786,
+      "tds": null
+    },
+    "alarms": [
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-16",
+    "time": "14:04",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 15.3,
+      "nh3": 0.12,
+      "no2": 0,
+      "no3": 10,
+      "gh": null,
+      "kh": 58.74,
+      "ph": 7.5,
+      "po4": 0.3,
+      "cond": 2508,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "nh3",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-16",
+    "time": "14:04",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 15.5,
+      "nh3": 0.12,
+      "no2": 0,
+      "no3": 5,
+      "gh": null,
+      "kh": 40.94,
+      "ph": 7.5,
+      "po4": 0.3,
+      "cond": 2636,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "nh3",
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-16",
+    "time": "14:04",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "Practicante"
+    },
+    "values": {
+      "temp": 15.9,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": null,
+      "kh": 129.94,
+      "ph": 8.2,
+      "po4": 0.7,
+      "cond": 3618,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "po4",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-23",
+    "time": "14:31",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "Practicante",
+      "secondary": "xolotlcalli.axolodao.eth"
+    },
+    "values": {
+      "temp": 17.7,
+      "nh3": 0.25,
+      "no2": 0.1,
+      "no3": 20,
+      "gh": null,
+      "kh": 44.5,
+      "ph": 7.5,
+      "po4": 0.3,
+      "cond": 1374,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "no3",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-23",
+    "time": "14:31",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "Practicante",
+      "secondary": "xolotlcalli.axolodao.eth"
+    },
+    "values": {
+      "temp": 15.6,
+      "nh3": 0.25,
+      "no2": 0.25,
+      "no3": 15,
+      "gh": null,
+      "kh": 39.16,
+      "ph": 7,
+      "po4": 0.3,
+      "cond": 2030,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "nh3",
+      "no2",
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-23",
+    "time": "14:31",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "Practicante",
+      "secondary": "xolotlcalli.axolodao.eth"
+    },
+    "values": {
+      "temp": 15.6,
+      "nh3": 0.5,
+      "no2": 0.25,
+      "no3": 10,
+      "gh": null,
+      "kh": 39.16,
+      "ph": 7,
+      "po4": 0.3,
+      "cond": 2208,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "nh3",
+      "no2",
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-23",
+    "time": "14:31",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "Practicante",
+      "secondary": "xolotlcalli.axolodao.eth"
+    },
+    "values": {
+      "temp": 15.9,
+      "nh3": 0.25,
+      "no2": 0.1,
+      "no3": 5,
+      "gh": null,
+      "kh": 110.36,
+      "ph": 8,
+      "po4": 0.3,
+      "cond": 2024,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-30",
+    "time": "16:30",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 18.1,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 20,
+      "gh": null,
+      "kh": 49.84,
+      "ph": null,
+      "po4": null,
+      "cond": 1380,
+      "tds": null
+    },
+    "alarms": [
+      "no3",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-30",
+    "time": "16:30",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 15.16,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 10,
+      "gh": null,
+      "kh": 55.18,
+      "ph": null,
+      "po4": null,
+      "cond": 2800,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-30",
+    "time": "16:30",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 16.4,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": null,
+      "kh": 37.36,
+      "ph": null,
+      "po4": null,
+      "cond": 2940,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-03-30",
+    "time": "16:30",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 15.7,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 10,
+      "gh": null,
+      "kh": 185.12,
+      "ph": null,
+      "po4": null,
+      "cond": 4130,
+      "tds": null
+    },
+    "alarms": [
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-06",
+    "time": "14:17",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 18.8,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 20,
+      "gh": null,
+      "kh": 24.92,
+      "ph": 7.9,
+      "po4": null,
+      "cond": 1080,
+      "tds": null
+    },
+    "alarms": [
+      "no3",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-06",
+    "time": "14:17",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 17,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 15,
+      "gh": null,
+      "kh": 30.26,
+      "ph": 7.7,
+      "po4": null,
+      "cond": 3000,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-06",
+    "time": "14:17",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 17.1,
+      "nh3": 0.5,
+      "no2": 0,
+      "no3": 15,
+      "gh": null,
+      "kh": 30.26,
+      "ph": 7.8,
+      "po4": null,
+      "cond": 3160,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "kh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-06",
+    "time": "14:17",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "NA"
+    },
+    "values": {
+      "temp": 17.8,
+      "nh3": 0.25,
+      "no2": 0,
+      "no3": 10,
+      "gh": null,
+      "kh": 192.24,
+      "ph": 8.7,
+      "po4": null,
+      "cond": 3400,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-13",
+    "time": "19:46",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 17.6,
+      "nh3": 0,
+      "no2": 0.1,
+      "no3": 10,
+      "gh": 89.5,
+      "kh": 161,
+      "ph": 8.7,
+      "po4": 0.25,
+      "cond": 1640,
+      "tds": null
+    },
+    "alarms": [
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-13",
+    "time": "19:46",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 17.1,
+      "nh3": 0.25,
+      "no2": 0.3,
+      "no3": 20,
+      "gh": 89.5,
+      "kh": 35,
+      "ph": 7.9,
+      "po4": 0.25,
+      "cond": 3410,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "no2",
+      "gh",
+      "kh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-13",
+    "time": "19:46",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 17.2,
+      "nh3": 0.25,
+      "no2": 0.3,
+      "no3": 10,
+      "gh": 89.5,
+      "kh": 18,
+      "ph": 7.9,
+      "po4": 0.5,
+      "cond": 3060,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "no2",
+      "gh",
+      "kh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-13",
+    "time": "19:46",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 18.5,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": 35.8,
+      "kh": 16,
+      "ph": 7.8,
+      "po4": 0.25,
+      "cond": 840,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-20",
+    "time": "12:03",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "lups-plantae.axolodao.eth"
+    },
+    "values": {
+      "temp": 19.4,
+      "nh3": 0,
+      "no2": 0.175,
+      "no3": 20,
+      "gh": 71.2,
+      "kh": 53.4,
+      "ph": 7.6,
+      "po4": null,
+      "cond": 650,
+      "tds": null
+    },
+    "alarms": [
+      "no2",
+      "no3",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-20",
+    "time": "12:03",
+    "tankId": "AM 1",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "lups-plantae.axolodao.eth"
+    },
+    "values": {
+      "temp": 17.6,
+      "nh3": 0,
+      "no2": 0.1,
+      "no3": 10,
+      "gh": 89,
+      "kh": 71.2,
+      "ph": 7.6,
+      "po4": null,
+      "cond": 2230,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-20",
+    "time": "12:03",
+    "tankId": "AM 2",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "lups-plantae.axolodao.eth"
+    },
+    "values": {
+      "temp": 17.9,
+      "nh3": 0,
+      "no2": 0.1,
+      "no3": 5,
+      "gh": 71.2,
+      "kh": 71.2,
+      "ph": 7.7,
+      "po4": null,
+      "cond": 1990,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-04-20",
+    "time": "12:03",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": "lups-plantae.axolodao.eth"
+    },
+    "values": {
+      "temp": 18.6,
+      "nh3": 0,
+      "no2": 0.1,
+      "no3": 5,
+      "gh": 89,
+      "kh": 160.2,
+      "ph": 8.7,
+      "po4": null,
+      "cond": 1410,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  }
+]

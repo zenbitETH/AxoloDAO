@@ -1,0 +1,66 @@
+[
+  {
+    "id": "AA",
+    "speciesCode": "andersoni",
+    "scientificName": "Ambystoma andersoni",
+    "displayName": "Pecera AA",
+    "volumeL": 106,
+    "primary": true,
+    "note": null,
+    "accentColor": "#B87333"
+  },
+  {
+    "id": "AM 1",
+    "speciesCode": "mexicanum",
+    "scientificName": "Ambystoma mexicanum",
+    "displayName": "Pecera AM 1",
+    "volumeL": 67,
+    "primary": true,
+    "note": null,
+    "accentColor": "#2C5F7C"
+  },
+  {
+    "id": "AM 2",
+    "speciesCode": "mexicanum",
+    "scientificName": "Ambystoma mexicanum",
+    "displayName": "Pecera AM 2",
+    "volumeL": 67,
+    "primary": true,
+    "note": null,
+    "accentColor": "#2C5F7C"
+  },
+  {
+    "id": "AD",
+    "speciesCode": "dumerilii",
+    "scientificName": "Ambystoma dumerilii",
+    "displayName": "Pecera AD",
+    "volumeL": 252,
+    "primary": true,
+    "note": {
+      "es": "Unificado desde inicios de 2026 (AD 1.1 + AD 1.2)",
+      "en": "Unified since early 2026 (AD 1.1 + AD 1.2)",
+      "pt": "Unificado desde o início de 2026 (AD 1.1 + AD 1.2)"
+    },
+    "accentColor": "#3E6B4A"
+  },
+  {
+    "id": "Llave",
+    "speciesCode": "control",
+    "scientificName": null,
+    "displayName": "Control (Llave)",
+    "volumeL": null,
+    "primary": false,
+    "note": null,
+    "accentColor": "#4A3628"
+  },
+  {
+    "id": "Guppies",
+    "speciesCode": "guppies",
+    "scientificName": null,
+    "displayName": "Guppies",
+    "volumeL": null,
+    "primary": false,
+    "note": null,
+    "accentColor": "#4A3628"
+  }
+]
