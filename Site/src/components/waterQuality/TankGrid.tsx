@@ -2,11 +2,10 @@ import type {
   Locale,
   Measurement,
   ParameterCatalogEntry,
-  ParamKey,
   Tank,
 } from './types';
 import { PARAM_KEYS } from './types';
-import { formatNumber, formatUnit, paramLabel, speciesLabel, STRINGS } from './strings';
+import { formatNumber, formatUnit, paramLabel } from './strings';
 import { statusOf } from './status';
 
 interface Props {
@@ -18,8 +17,6 @@ interface Props {
 }
 
 export default function TankGrid({ locale, tanks, measurements, catalog, onTankSelect }: Props) {
-  const t = STRINGS[locale];
-
   // Index catalog by tank+key for quick min/max lookup
   const catByTankParam = new Map<string, ParameterCatalogEntry>();
   for (const c of catalog) catByTankParam.set(`${c.tankId}|${c.key}`, c);

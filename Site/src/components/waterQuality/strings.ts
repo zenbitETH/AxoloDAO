@@ -177,7 +177,7 @@ export function formatWeekDate(locale: Locale, iso: string): string {
 }
 
 export function formatShortDate(locale: Locale, iso: string): string {
-  const [y, m, d] = iso.split('-').map(Number);
+  const [, m, d] = iso.split('-').map(Number);
   const month = monthLabel(locale, m - 1).slice(0, 3);
   return `${d} ${month}`;
 }

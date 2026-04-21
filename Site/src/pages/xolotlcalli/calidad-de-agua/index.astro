@@ -1,12 +1,16 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import WaterQualityDashboard from '@components/waterQuality/WaterQualityDashboard';
-import tanks from '@/data/water-quality/tanks.json';
-import parameters from '@/data/water-quality/parameters.json';
-import mondays from '@/data/water-quality/measurements-mondays.json';
+import tanksRaw from '@/data/water-quality/tanks.json';
+import parametersRaw from '@/data/water-quality/parameters.json';
+import mondaysRaw from '@/data/water-quality/measurements-mondays.json';
+import type { Tank, ParameterCatalogEntry, Measurement } from '@components/waterQuality/types';
 import { t } from '@/i18n/strings';
 
 const locale = 'es';
+const tanks = tanksRaw as unknown as Tank[];
+const parameters = parametersRaw as unknown as ParameterCatalogEntry[];
+const mondays = mondaysRaw as unknown as Measurement[];
 ---
 
 <BaseLayout
