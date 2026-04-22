@@ -24,6 +24,7 @@ const ogLocaleAlternates = (['es', 'en', 'pt'] as Locale[])
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 const ogImagePath = ogImage ?? '/og-image.png';
 const ogImageUrl = new URL(ogImagePath, Astro.site).href;
+const ogImageType = /\.jpe?g$/i.test(ogImagePath) ? 'image/jpeg' : 'image/png';
 
 const pathNoLocale = Astro.url.pathname
   .replace(/^\/(en|pt)(\/|$)/, '/')
@@ -110,7 +111,7 @@ const websiteLd = {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content={ogImageType} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={pageTitle} />
