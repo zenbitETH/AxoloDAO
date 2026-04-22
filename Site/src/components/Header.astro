@@ -1,16 +1,16 @@
 ---
 import { type Locale, t, localePath } from '@/i18n/strings';
 import LocaleToggle from './LocaleToggle.astro';
+import ThemeToggle from './ThemeToggle.astro';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
 const home = localePath(locale);
 const links = [
-  { href: `${home}#members`,     label: t(locale, 'nav.about') },
-  { href: `${home}#species`,     label: t(locale, 'nav.species') },
-  { href: `${home}#projects`,    label: t(locale, 'nav.projects') },
-  { href: `${home}#participate`, label: t(locale, 'nav.participate') },
+  { href: `${home}#species`,             label: t(locale, 'nav.species') },
+  { href: t(locale, 'xolotlcalli.path'), label: t(locale, 'nav.xolotlcalli') },
+  { href: `${home}#projects`,            label: t(locale, 'nav.projects') },
 ];
 ---
 
@@ -29,6 +29,7 @@ const links = [
           {l.label}
         </a>
       ))}
+      <ThemeToggle locale={locale} compact />
       <LocaleToggle locale={locale} />
     </nav>
 
@@ -49,7 +50,10 @@ const links = [
     {links.map((l) => (
       <a href={l.href} class="font-display text-2xl text-white hover:text-teal">{l.label}</a>
     ))}
-    <div class="mt-4"><LocaleToggle locale={locale} /></div>
+    <div class="mt-4 flex items-center gap-3">
+      <ThemeToggle locale={locale} compact />
+      <LocaleToggle locale={locale} />
+    </div>
   </div>
 </header>
 

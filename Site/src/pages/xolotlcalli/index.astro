@@ -1,0 +1,70 @@
+---
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import WaterQualityDashboard from '@components/waterQuality/WaterQualityDashboard';
+import tanksRaw from '@/data/water-quality/tanks.json';
+import parametersRaw from '@/data/water-quality/parameters.json';
+import mondaysRaw from '@/data/water-quality/measurements-mondays.json';
+import type { Tank, ParameterCatalogEntry, Measurement } from '@components/waterQuality/types';
+import { t } from '@/i18n/strings';
+
+const locale = 'es';
+const tanks = tanksRaw as unknown as Tank[];
+const parameters = parametersRaw as unknown as ParameterCatalogEntry[];
+const mondays = mondaysRaw as unknown as Measurement[];
+
+const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
+  .replace(/fill="white"/g, 'fill="currentColor"')
+  .replace(/<svg([^>]*?)\swidth="\d+"/, '<svg$1')
+  .replace(/<svg([^>]*?)\sheight="\d+"/, '<svg$1');
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t(locale, 'wq.title')} — Biomuseo Xolotlcalli`}
+  description={t(locale, 'wq.subtitle')}
+>
+  <section class="wq-surface relative">
+    <div class="mx-auto max-w-6xl px-4 pt-8 sm:pt-10">
+      <div class="wq-logo-mark text-choco dark:text-cream/90" aria-label="Biomuseo Xolotlcalli">
+        <Fragment set:html={logoSvg} />
+      </div>
+      <h1 class="mt-3 font-display text-3xl text-choco dark:text-cream sm:text-4xl">
+        {t(locale, 'wq.title')}
+      </h1>
+      <p class="mt-2 max-w-2xl font-body text-sm text-choco/70 dark:text-cream/70 sm:text-base">
+        {t(locale, 'wq.subtitle')}
+      </p>
+    </div>
+    <WaterQualityDashboard
+      client:load
+      locale={locale}
+      tanks={tanks}
+      parameters={parameters}
+      mondays={mondays}
+      allDataUrl="/data/water-quality/measurements-all.json"
+    />
+  </section>
+</BaseLayout>
+
+<style is:global>
+  .wq-surface {
+    background-color: #F6EFE0;
+  }
+  [data-theme='dark'] .wq-surface {
+    background-color: #11202A;
+  }
+  .wq-logo-mark {
+    display: inline-block;
+    height: 1.75rem;
+  }
+  .wq-logo-mark svg {
+    height: 100%;
+    width: auto;
+    display: block;
+  }
+  @media (min-width: 640px) {
+    .wq-logo-mark { height: 2rem; }
+  }
+</style>

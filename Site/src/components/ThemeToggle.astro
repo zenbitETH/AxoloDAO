@@ -1,17 +1,29 @@
 ---
 import { type Locale } from '@/i18n/strings';
 
-interface Props { locale: Locale }
-const { locale } = Astro.props;
+interface Props { locale: Locale; compact?: boolean }
+const { locale, compact = false } = Astro.props;
 
 const labels = {
   es: { auto: 'Auto', dark: 'Noche', light: 'Día' },
   en: { auto: 'Auto', dark: 'Night', light: 'Day' },
   pt: { auto: 'Auto', dark: 'Noite',  light: 'Dia' },
 } as const;
+
+const ariaLabels = {
+  es: 'Cambiar tema (día / noche)',
+  en: 'Switch theme (day / night)',
+  pt: 'Alternar tema (dia / noite)',
+} as const;
 ---
 
-<button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">
+<button
+  type="button"
+  class={compact ? 'theme-toggle theme-toggle--compact' : 'theme-toggle'}
+  data-theme-toggle
+  aria-label={ariaLabels[locale]}
+  title={ariaLabels[locale]}
+>
   <svg data-icon="auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <circle cx="12" cy="12" r="9" />
     <path d="M12 3v18" />
@@ -24,23 +36,23 @@ const labels = {
     <circle cx="12" cy="12" r="4" />
     <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
   </svg>
-  <span data-theme-label>{labels[locale].auto}</span>
+  {!compact && <span data-theme-label>{labels[locale].auto}</span>}
 </button>
 
 <script is:inline define:vars={{ labels: { es: labels.es, en: labels.en, pt: labels.pt }, locale }}>
   const order = ['auto', 'dark', 'light'];
   const key = 'axolodao-theme';
-  const btns = document.querySelectorAll('[data-theme-toggle]');
 
   function systemResolved() {
     return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   }
 
+  // Re-queried inside apply() so newly-rendered toggles pick up the current mode.
   function apply(mode) {
     const resolved = mode === 'auto' ? systemResolved() : mode;
     document.documentElement.dataset.theme = resolved;
     document.documentElement.dataset.themeMode = mode;
-    btns.forEach((btn) => {
+    document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
       btn.querySelectorAll('[data-icon]').forEach((ic) => {
         ic.style.display = ic.getAttribute('data-icon') === mode ? '' : 'none';
       });
@@ -49,21 +61,33 @@ const labels = {
     });
   }
 
-  const mq = window.matchMedia('(prefers-color-scheme: light)');
-  mq.addEventListener('change', () => {
-    const mode = localStorage.getItem(key) || 'auto';
-    if (mode === 'auto') apply('auto');
-  });
+  // This component inlines its own script, so with multiple instances on the
+  // same page (desktop header + mobile menu + footer) the script runs once per
+  // instance. Without this guard each button ends up with N click listeners,
+  // and every click advances the state N times — a no-op when N equals the
+  // cycle length.
+  if (window.__axolodaoThemeToggleBound) {
+    apply(localStorage.getItem(key) || 'auto');
+  } else {
+    window.__axolodaoThemeToggleBound = true;
 
-  apply(localStorage.getItem(key) || 'auto');
+    const mq = window.matchMedia('(prefers-color-scheme: light)');
+    mq.addEventListener('change', () => {
+      const mode = localStorage.getItem(key) || 'auto';
+      if (mode === 'auto') apply('auto');
+    });
 
-  btns.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    apply(localStorage.getItem(key) || 'auto');
+
+    // Delegate clicks from any current or future toggle button on the page.
+    document.addEventListener('click', (e) => {
+      const btn = e.target instanceof Element ? e.target.closest('[data-theme-toggle]') : null;
+      if (!btn) return;
       const current = localStorage.getItem(key) || 'auto';
       const idx = order.indexOf(current);
       const next = order[(idx + 1) % order.length];
       localStorage.setItem(key, next);
       apply(next);
     });
-  });
+  }
 </script>
