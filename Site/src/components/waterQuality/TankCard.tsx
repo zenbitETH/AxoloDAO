@@ -3,10 +3,12 @@ import type {
   Measurement,
   ParameterCatalogEntry,
   Tank,
+  TimeWindow,
 } from './types';
 import { speciesLabel, STRINGS } from './strings';
 import ParameterTable from './ParameterTable';
 import HistoricalGrid from './HistoricalGrid';
+import WindowToggle from './WindowToggle';
 import { accentForTheme, useTheme } from './theme';
 
 interface Props {
@@ -17,6 +19,8 @@ interface Props {
   history: Measurement[];
   catalogForTank: ParameterCatalogEntry[];
   onBack: () => void;
+  window: TimeWindow;
+  onWindowChange: (w: TimeWindow) => void;
 }
 
 export default function TankCard({
@@ -27,6 +31,8 @@ export default function TankCard({
   history,
   catalogForTank,
   onBack,
+  window: timeWindow,
+  onWindowChange,
 }: Props) {
   const t = STRINGS[locale];
   const note = tank.note?.[locale];
@@ -89,13 +95,20 @@ export default function TankCard({
       </div>
 
       <section class="border-t border-[var(--wq-divider)] bg-[var(--wq-surface)] px-4 py-5 sm:px-6">
-        <div class="mb-3 flex items-baseline justify-between">
+        <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
           <h3 class="font-display text-lg" style={{ color: accent }}>
             {t.historyTitle}
           </h3>
-          <span class="font-body text-xs text-[var(--wq-ink-muted)]">
-            {history.length} {t.week.toLowerCase()}s
-          </span>
+          <div class="flex items-center gap-3">
+            <WindowToggle
+              locale={locale}
+              window={timeWindow}
+              onWindowChange={onWindowChange}
+            />
+            <span class="font-body text-xs text-[var(--wq-ink-muted)] tabular-nums">
+              {history.length} {t.week.toLowerCase()}s
+            </span>
+          </div>
         </div>
         {history.length === 0 ? (
           <p class="rounded-lg bg-[var(--wq-cell-bg)] px-3 py-4 text-sm text-[var(--wq-ink-muted)]">

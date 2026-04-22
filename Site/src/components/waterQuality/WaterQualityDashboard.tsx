@@ -215,12 +215,8 @@ export default function WaterQualityDashboard({
         </div>
         <ViewToggle
           locale={locale}
-          view={view}
           mondaysOnly={mondaysOnly}
-          window={timeWindow}
-          showWindow={true}
           onMondaysToggle={setMondaysOnly}
-          onWindowChange={setTimeWindow}
         />
       </div>
 
@@ -301,6 +297,8 @@ export default function WaterQualityDashboard({
             history={historyForDetail}
             catalogForTank={catalogForSelected}
             onBack={onBack}
+            window={timeWindow}
+            onWindowChange={setTimeWindow}
           />
         )}
       </div>

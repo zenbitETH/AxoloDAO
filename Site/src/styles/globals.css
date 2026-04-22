@@ -635,6 +635,42 @@
 }
 .theme-toggle svg { width: 0.9rem; height: 0.9rem; }
 
+/* Compact (textless) variant used in the site header: a square icon button that
+   matches the other round/pill controls. */
+.theme-toggle.theme-toggle--compact {
+  gap: 0;
+  padding: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  justify-content: center;
+}
+.theme-toggle.theme-toggle--compact svg {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.theme-toggle.theme-toggle--compact:hover svg {
+  transform: rotate(18deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle.theme-toggle--compact svg { transition: none; }
+  .theme-toggle.theme-toggle--compact:hover svg { transform: none; }
+}
+
+/* Header-mode: the site header stays dark in both themes, so a compact toggle
+   sitting there needs a border/text/hover tuned for a dark backdrop. */
+.site-header .theme-toggle.theme-toggle--compact {
+  border-color: rgba(255, 255, 255, 0.20);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.80);
+}
+.site-header .theme-toggle.theme-toggle--compact:hover {
+  border-color: rgba(0, 156, 156, 0.55);
+  background-color: rgba(255, 255, 255, 0.10);
+  color: #ffffff;
+}
+
 /* ============================================================
    Water-quality dashboard
    ============================================================ */

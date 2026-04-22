@@ -25,10 +25,12 @@ export default function HistoricalGrid({ locale, tank, measurements, catalogForT
   // Sync hover across all charts in this grid
   const [highlight, setHighlight] = useState<string | null>(null);
 
-  const visibleKeys = PARAM_KEYS.filter((k) => {
-    const hasData = measurements.some((m) => m.values[k] != null);
-    return hasData || catBy.has(k);
-  });
+  // Require at least one measurement for the parameter; parameters with no
+  // historical data (e.g. TDS, when the team hasn't started logging it) would
+  // produce an empty chart and are dropped.
+  const visibleKeys = PARAM_KEYS.filter((k) =>
+    measurements.some((m) => m.values[k] != null),
+  );
 
   return (
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
