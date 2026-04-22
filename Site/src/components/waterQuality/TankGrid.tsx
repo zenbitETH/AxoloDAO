@@ -2,65 +2,82 @@ import type {
   Locale,
   Measurement,
   ParameterCatalogEntry,
+  ParamKey,
   Tank,
 } from './types';
 import { PARAM_KEYS } from './types';
 import { formatNumber, formatUnit, paramLabel } from './strings';
-import { statusOf } from './status';
+import { statusOf, trendOf } from './status';
+import { StatusBadge } from './StatusBadge';
 
 interface Props {
   locale: Locale;
-  tanks: Tank[];               // primary tanks only
-  measurements: Measurement[]; // all rows for the selected week (mondays only here)
+  tanks: Tank[];
+  measurements: Measurement[];         // current-week rows
+  prevMeasurements: Measurement[];      // previous Monday week rows
   catalog: ParameterCatalogEntry[];
   onTankSelect: (tankId: string) => void;
+  onParamFocus: (k: ParamKey) => void;
+  activeParam?: ParamKey | null;
 }
 
-export default function TankGrid({ locale, tanks, measurements, catalog, onTankSelect }: Props) {
-  // Index catalog by tank+key for quick min/max lookup
-  const catByTankParam = new Map<string, ParameterCatalogEntry>();
-  for (const c of catalog) catByTankParam.set(`${c.tankId}|${c.key}`, c);
-
-  // Most recent measurement for each tank within the current week pool
-  const latestByTank = new Map<string, Measurement>();
-  for (const m of measurements) {
-    const prev = latestByTank.get(m.tankId);
+// Pick the latest row per tank from a slice (handles multiple daily rows)
+function latestByTank(rows: Measurement[]): Map<string, Measurement> {
+  const out = new Map<string, Measurement>();
+  for (const m of rows) {
+    const prev = out.get(m.tankId);
     if (!prev || (m.date + (m.time ?? '')) > (prev.date + (prev.time ?? ''))) {
-      latestByTank.set(m.tankId, m);
+      out.set(m.tankId, m);
     }
   }
+  return out;
+}
 
-  // Show only parameters where we have at least one measurement or catalog
+export default function TankGrid({
+  locale,
+  tanks,
+  measurements,
+  prevMeasurements,
+  catalog,
+  onTankSelect,
+  onParamFocus,
+  activeParam,
+}: Props) {
+  const catBy = new Map<string, ParameterCatalogEntry>();
+  for (const c of catalog) catBy.set(`${c.tankId}|${c.key}`, c);
+
+  const latest = latestByTank(measurements);
+  const prevLatest = latestByTank(prevMeasurements);
+
   const visibleKeys = PARAM_KEYS.filter((k) =>
     tanks.some((tk) =>
-      latestByTank.get(tk.id)?.values[k] != null ||
-      catByTankParam.has(`${tk.id}|${k}`),
+      latest.get(tk.id)?.values[k] != null || catBy.has(`${tk.id}|${k}`),
     ),
   );
 
   return (
     <div class="overflow-x-auto -mx-4 sm:mx-0">
-      <div class="min-w-[640px] px-4 sm:min-w-0 sm:px-0">
+      <div class="min-w-[720px] px-4 sm:min-w-0 sm:px-0">
         <div
           class="grid gap-2"
           style={{
-            gridTemplateColumns: `minmax(150px, 1.3fr) repeat(${tanks.length}, minmax(120px, 1fr))`,
+            gridTemplateColumns: `minmax(150px, 1.1fr) repeat(${tanks.length}, minmax(160px, 1fr))`,
           }}
         >
-          {/* Header row */}
+          {/* Header row — tank cards */}
           <div />
           {tanks.map((tk) => (
             <button
               key={tk.id}
               type="button"
               onClick={() => onTankSelect(tk.id)}
-              class="group flex flex-col items-start rounded-xl px-3 py-2 text-left text-cream shadow-sm ring-1 ring-black/10 transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-choco"
+              class="wq-on-accent group flex flex-col items-start rounded-xl px-3 py-2 text-left shadow-sm ring-1 ring-black/10 transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)]"
               style={{ backgroundColor: tk.accentColor }}
               aria-label={`${tk.displayName} — ver detalle`}
             >
               <span class="font-display text-sm leading-tight">{tk.displayName}</span>
               {tk.scientificName && (
-                <span class="font-body text-[11px] italic text-cream/85">
+                <span class="font-body text-[11px] italic opacity-90">
                   {tk.scientificName}
                 </span>
               )}
@@ -70,37 +87,63 @@ export default function TankGrid({ locale, tanks, measurements, catalog, onTankS
           {/* Parameter rows */}
           {visibleKeys.map((k) => (
             <>
-              <div
+              <button
+                type="button"
                 key={`label-${k}`}
-                class="flex items-center rounded-xl bg-choco/90 px-3 py-2 font-display text-sm text-cream"
+                onClick={() => onParamFocus(k)}
+                aria-pressed={activeParam === k}
+                class={`flex items-center rounded-xl px-3 py-2 text-left font-display text-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)] ${
+                  activeParam === k
+                    ? 'bg-[var(--wq-ink)] text-[var(--wq-surface)] shadow-sm'
+                    : 'bg-choco/90 text-cream hover:bg-[var(--wq-ink)]'
+                }`}
+                title="Ver gráfica de este parámetro"
               >
                 {paramLabel(locale, k)}
-              </div>
+              </button>
               {tanks.map((tk) => {
-                const m = latestByTank.get(tk.id);
+                const m = latest.get(tk.id);
+                const pm = prevLatest.get(tk.id);
                 const v = m?.values[k] ?? null;
-                const cat = catByTankParam.get(`${tk.id}|${k}`);
+                const prev = pm?.values[k] ?? null;
+                const cat = catBy.get(`${tk.id}|${k}`);
                 const status = statusOf(v, cat?.min ?? null, cat?.max ?? null);
-                const border =
+                const trend = trendOf(prev, v);
+                const unit = formatUnit(cat?.unit ?? '');
+                const ringCls =
                   status === 'alarm'
-                    ? 'ring-2 ring-red-500/50'
+                    ? 'ring-2 ring-rose-400/90 shadow-[0_0_0_3px_rgba(244,63,94,0.18)]'
                     : status === 'warn'
-                    ? 'ring-2 ring-amber-400/60'
+                    ? 'ring-2 ring-amber-300/80'
                     : 'ring-1 ring-black/10';
                 return (
                   <button
                     key={`${tk.id}-${k}`}
                     type="button"
                     onClick={() => onTankSelect(tk.id)}
-                    class={`flex flex-col rounded-xl px-3 py-2 text-left text-cream shadow-sm transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-choco ${border}`}
+                    class={`wq-on-accent relative flex flex-col justify-between rounded-xl px-3 py-2 text-left shadow-sm transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)] ${ringCls}`}
                     style={{ backgroundColor: tk.accentColor }}
                   >
-                    <span class="font-body text-base font-semibold tabular-nums">
-                      {formatNumber(v, k)}{' '}
-                      <span class="text-xs font-normal text-cream/80">
-                        {formatUnit(cat?.unit ?? '')}
+                    <div class="flex items-start justify-between gap-2">
+                      <span class="font-body text-lg font-semibold tabular-nums leading-tight">
+                        {formatNumber(v, k)}
+                        {unit && (
+                          <span class="ml-1 text-[10px] font-normal opacity-80">{unit}</span>
+                        )}
                       </span>
-                    </span>
+                      <StatusBadge trend={trend} status={status} size="xs" variant="on-accent" />
+                    </div>
+                    <div class="mt-1 font-body text-[10px] leading-tight tabular-nums opacity-80">
+                      {cat?.min != null || cat?.max != null ? (
+                        <>
+                          <span>min {cat.min != null ? formatNumber(cat.min, k) : '—'}</span>
+                          <span class="mx-1 opacity-60">·</span>
+                          <span>max {cat.max != null ? formatNumber(cat.max, k) : '—'}</span>
+                        </>
+                      ) : (
+                        <span class="opacity-60">sin rango</span>
+                      )}
+                    </div>
                   </button>
                 );
               })}

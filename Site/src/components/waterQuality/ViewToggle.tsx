@@ -25,12 +25,12 @@ export default function ViewToggle({
   const t = STRINGS[locale];
   return (
     <div class="flex flex-wrap items-center gap-3">
-      <label class="flex cursor-pointer items-center gap-2 rounded-full bg-cream px-3 py-1.5 text-sm text-choco shadow-sm ring-1 ring-choco/10">
+      <label class="flex cursor-pointer items-center gap-2 rounded-full bg-[var(--wq-surface-2)] px-3 py-1.5 text-sm text-[var(--wq-ink)] shadow-sm ring-1 ring-[var(--wq-divider)]">
         <input
           type="checkbox"
           checked={mondaysOnly}
           onChange={(e) => onMondaysToggle((e.target as HTMLInputElement).checked)}
-          class="h-4 w-4 accent-choco"
+          class="h-4 w-4 accent-current"
         />
         <span class="font-body">
           {mondaysOnly ? t.mondaysOnly : t.allMeasurements}
@@ -38,8 +38,8 @@ export default function ViewToggle({
       </label>
 
       {showWindow && view === 'detail' && (
-        <div class="inline-flex items-center rounded-full bg-cream p-1 shadow-sm ring-1 ring-choco/10">
-          <span class="px-2 font-body text-xs uppercase tracking-wider text-choco/50">
+        <div class="inline-flex items-center rounded-full bg-[var(--wq-surface-2)] p-1 shadow-sm ring-1 ring-[var(--wq-divider)]">
+          <span class="px-2 font-body text-xs uppercase tracking-wider text-[var(--wq-ink-muted)]">
             {t.windowLabel}
           </span>
           {WINDOWS.map((w) => {
@@ -52,8 +52,8 @@ export default function ViewToggle({
                 onClick={() => onWindowChange(w)}
                 class={`rounded-full px-3 py-1 font-body text-xs transition ${
                   selected
-                    ? 'bg-choco text-cream'
-                    : 'text-choco/70 hover:text-choco'
+                    ? 'bg-[var(--wq-ink)] text-[var(--wq-surface)]'
+                    : 'text-[var(--wq-ink)]/70 hover:text-[var(--wq-ink)]'
                 }`}
                 aria-pressed={selected}
               >

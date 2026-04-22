@@ -3,73 +3,107 @@ import type {
   Measurement,
   ParameterCatalogEntry,
   ParamKey,
-  Tank,
 } from './types';
 import { PARAM_KEYS } from './types';
 import { formatNumber, formatUnit, paramLabel, STRINGS } from './strings';
 import { statusOf, trendOf } from './status';
-import TrendIndicator from './TrendIndicator';
+import { StatusBadge } from './StatusBadge';
 
 interface Props {
   locale: Locale;
-  tank: Tank;
   prev: Measurement | null;
   curr: Measurement | null;
   catalogForTank: ParameterCatalogEntry[];
+  // Resolved tank accent for the active theme (passed down from TankCard).
+  accent: string;
 }
 
-export default function ParameterTable({ locale, tank, prev, curr, catalogForTank }: Props) {
+export default function ParameterTable({
+  locale,
+  prev,
+  curr,
+  catalogForTank,
+  accent,
+}: Props) {
   const t = STRINGS[locale];
-  const catalogByKey = new Map<ParamKey, ParameterCatalogEntry>();
-  for (const c of catalogForTank) catalogByKey.set(c.key, c);
+  const catBy = new Map<ParamKey, ParameterCatalogEntry>();
+  for (const c of catalogForTank) catBy.set(c.key, c);
 
-  // Skip parameters for which we have neither a catalog entry nor any data —
-  // keeps the table focused on what the team actually tracks for this tank.
   const visibleKeys = PARAM_KEYS.filter((k) => {
-    const cat = catalogByKey.get(k);
-    const hasData = (prev?.values[k] ?? null) != null || (curr?.values[k] ?? null) != null;
+    const cat = catBy.get(k);
+    const hasData =
+      (prev?.values[k] ?? null) != null || (curr?.values[k] ?? null) != null;
     return !!cat || hasData;
   });
 
+  // A single parent grid defines the column tracks. Each row is a full-width
+  // subgrid, so every row aligns to the same columns regardless of content.
   return (
-    <div class="flex flex-col gap-1">
-      <div class="grid grid-cols-[1fr_repeat(3,auto)] items-center gap-x-3 gap-y-1 px-3 pb-1 text-[11px] uppercase tracking-wide text-cream/70">
+    <div class="wq-param-grid grid grid-cols-[minmax(130px,1.2fr)_minmax(92px,auto)_minmax(72px,auto)_minmax(72px,auto)_auto] items-center gap-x-3 gap-y-1.5 sm:grid-cols-[minmax(160px,1.4fr)_minmax(110px,auto)_minmax(88px,auto)_minmax(88px,auto)_auto] sm:gap-x-4">
+      {/* Header row — live directly in the parent grid to occupy the same tracks */}
+      <div class="col-span-full grid grid-cols-subgrid px-3 pb-1 text-[10px] uppercase tracking-wider text-[var(--wq-ink-muted)]">
         <span />
+        <span class="text-right">Rango</span>
         <span class="text-right">{t.prevWeek}</span>
         <span class="text-right">{t.thisWeek}</span>
         <span class="text-center">{t.indicator}</span>
       </div>
 
       {visibleKeys.map((k) => {
-        const cat = catalogByKey.get(k);
+        const cat = catBy.get(k);
         const prevVal = prev?.values[k] ?? null;
         const currVal = curr?.values[k] ?? null;
         const status = statusOf(currVal, cat?.min ?? null, cat?.max ?? null);
         const trend = trendOf(prevVal, currVal);
         const unit = formatUnit(cat?.unit ?? '');
+
+        const range =
+          cat && (cat.min != null || cat.max != null)
+            ? `${cat.min != null ? formatNumber(cat.min, k) : '—'}–${cat.max != null ? formatNumber(cat.max, k) : '—'}`
+            : '—';
+
+        const statusRing =
+          status === 'alarm'
+            ? 'ring-1 ring-rose-400/70 shadow-[0_0_0_2px_rgba(244,63,94,0.14)]'
+            : status === 'warn'
+            ? 'ring-1 ring-amber-300/70'
+            : 'ring-1 ring-[var(--wq-divider)]';
+
         return (
           <div
             key={k}
-            class="grid grid-cols-[1fr_auto_auto_auto] items-center gap-x-3 rounded-xl bg-cream/95 px-3 py-2 text-choco"
+            class={`col-span-full grid grid-cols-subgrid items-center rounded-xl bg-[var(--wq-cell-bg)] px-3 py-2 ${statusRing}`}
           >
-            <span class="font-display text-sm">
+            <span class="font-display text-sm" style={{ color: accent }}>
               {paramLabel(locale, k)}
             </span>
-            <span class="font-body text-sm tabular-nums text-choco/70">
-              <span class="mr-1">{formatNumber(prevVal, k)}</span>
-              <span class="text-xs text-choco/45">{unit}</span>
+            <span class="text-right font-body text-[11px] tabular-nums text-[var(--wq-ink-muted)] whitespace-nowrap">
+              {range}
+              <span class="ml-1 opacity-60">{unit}</span>
             </span>
-            <span class="font-body text-sm tabular-nums">
-              <span class="mr-1 font-semibold">{formatNumber(currVal, k)}</span>
-              <span class="text-xs text-choco/45">{unit}</span>
+            <span
+              class="text-right font-body text-sm tabular-nums whitespace-nowrap"
+              style={{ color: accent, opacity: 0.62 }}
+            >
+              {formatNumber(prevVal, k)}
+              <span class="ml-1 text-[10px] opacity-80">{unit}</span>
             </span>
-            <TrendIndicator trend={trend} status={status} size="sm" />
+            <span
+              class="text-right font-body text-base font-semibold tabular-nums whitespace-nowrap"
+              style={{ color: accent }}
+            >
+              {formatNumber(currVal, k)}
+              <span class="ml-1 text-[10px] font-normal opacity-70">{unit}</span>
+            </span>
+            <div class="justify-self-center">
+              <StatusBadge trend={trend} status={status} size="sm" />
+            </div>
           </div>
         );
       })}
 
       {!curr && (
-        <p class="mt-2 rounded-lg bg-cream/80 px-3 py-2 text-sm text-choco/70">
+        <p class="col-span-full mt-2 rounded-lg bg-[var(--wq-cell-bg)] px-3 py-2 text-sm text-[var(--wq-ink-muted)]">
           {t.emptyWeek}
         </p>
       )}

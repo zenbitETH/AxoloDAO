@@ -3,29 +3,32 @@ import type {
   Locale,
   Measurement,
   ParameterCatalogEntry,
+  ParamKey,
   Tank,
   TimeWindow,
 } from './types';
+import { PARAM_KEYS } from './types';
 import { STRINGS } from './strings';
+import { statusOf } from './status';
 import CoverHeader from './CoverHeader';
 import WeekNav from './WeekNav';
 import ViewToggle from './ViewToggle';
 import TankGrid from './TankGrid';
 import TankCard from './TankCard';
+import RotatingHeroChart from './RotatingHeroChart';
 
 interface Props {
   locale: Locale;
   tanks: Tank[];
   parameters: ParameterCatalogEntry[];
-  mondays: Measurement[];        // inlined at build time
-  allDataUrl: string;            // lazy-fetched when user toggles all measurements
+  mondays: Measurement[];
+  allDataUrl: string;
 }
 
-// Week helpers: all weeks keyed by the Monday of that week (ISO date).
 function mondayOf(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
   const date = new Date(y, m - 1, d);
-  const dow = date.getDay(); // 0=Sun, 1=Mon, ...
+  const dow = date.getDay();
   const delta = dow === 0 ? -6 : 1 - dow;
   date.setDate(date.getDate() + delta);
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
@@ -46,10 +49,8 @@ export default function WaterQualityDashboard({
   allDataUrl,
 }: Props) {
   const t = STRINGS[locale];
-
   const primaryTanks = useMemo(() => tanks.filter((tk) => tk.primary), [tanks]);
 
-  // All unique Monday ISO dates across mondays-only data, ascending.
   const mondayWeeks = useMemo(() => {
     const set = new Set<string>();
     for (const m of mondays) set.add(mondayOf(m.date));
@@ -63,6 +64,7 @@ export default function WaterQualityDashboard({
   const [tankId, setTankId] = useState<string | null>(null);
   const [mondaysOnly, setMondaysOnly] = useState(true);
   const [timeWindow, setTimeWindow] = useState<TimeWindow>(12);
+  const [focusedParam, setFocusedParam] = useState<ParamKey | null>(null);
 
   const [allData, setAllData] = useState<Measurement[] | null>(null);
   const [allDataLoading, setAllDataLoading] = useState(false);
@@ -82,27 +84,26 @@ export default function WaterQualityDashboard({
     return allData;
   }, [mondaysOnly, mondays, allData]);
 
-  // Overview: all rows dated on the selected week (between weekIso Monday and +6 days).
   const weekMeasurements = useMemo(() => {
     const start = weekIso;
     const end = shiftWeek(weekIso, 1);
-    return sourceMeasurements.filter(
-      (m) => m.date >= start && m.date < end,
-    );
+    return sourceMeasurements.filter((m) => m.date >= start && m.date < end);
   }, [sourceMeasurements, weekIso]);
+
+  const prevWeekIso = useMemo(() => shiftWeek(weekIso, -1), [weekIso]);
+  const prevWeekMeasurements = useMemo(() => {
+    const start = prevWeekIso;
+    const end = shiftWeek(prevWeekIso, 1);
+    return sourceMeasurements.filter((m) => m.date >= start && m.date < end);
+  }, [sourceMeasurements, prevWeekIso]);
 
   const weekIdx = mondayWeeks.indexOf(weekIso);
   const canPrev = weekIdx > 0;
   const canNext = weekIdx >= 0 && weekIdx < mondayWeeks.length - 1;
 
-  function onPrev() {
-    if (canPrev) setWeekIso(mondayWeeks[weekIdx - 1]);
-  }
-  function onNext() {
-    if (canNext) setWeekIso(mondayWeeks[weekIdx + 1]);
-  }
+  function onPrev() { if (canPrev) setWeekIso(mondayWeeks[weekIdx - 1]); }
+  function onNext() { if (canNext) setWeekIso(mondayWeeks[weekIdx + 1]); }
 
-  // Keyboard arrow navigation (only when overview visible)
   useEffect(() => {
     if (view !== 'overview') return;
     const handler = (e: KeyboardEvent) => {
@@ -114,24 +115,56 @@ export default function WaterQualityDashboard({
     return () => window.removeEventListener('keydown', handler);
   }, [view, weekIdx, mondayWeeks]);
 
+  // Weekly status summary (all primary tanks × all params for this week)
+  const weekSummary = useMemo(() => {
+    let ok = 0, warn = 0, alarm = 0;
+    const latestByTank = new Map<string, Measurement>();
+    for (const m of weekMeasurements) {
+      const prev = latestByTank.get(m.tankId);
+      if (!prev || (m.date + (m.time ?? '')) > (prev.date + (prev.time ?? ''))) {
+        latestByTank.set(m.tankId, m);
+      }
+    }
+    for (const tk of primaryTanks) {
+      const m = latestByTank.get(tk.id);
+      if (!m) continue;
+      for (const k of PARAM_KEYS) {
+        const cat = parameters.find((p) => p.tankId === tk.id && p.key === k);
+        if (!cat) continue;
+        const v = m.values[k];
+        if (v == null) continue;
+        const s = statusOf(v, cat.min, cat.max);
+        if (s === 'ok') ok++;
+        else if (s === 'warn') warn++;
+        else alarm++;
+      }
+    }
+    return { ok, warn, alarm };
+  }, [weekMeasurements, parameters, primaryTanks]);
+
+  // Latest measurement in the selected week (for author metadata)
+  const latestOfWeek = useMemo<Measurement | null>(() => {
+    if (weekMeasurements.length === 0) return null;
+    return [...weekMeasurements].sort((a, b) =>
+      (b.date + (b.time ?? '')).localeCompare(a.date + (a.time ?? '')),
+    )[0];
+  }, [weekMeasurements]);
+
   const selectedTank = tankId ? tanks.find((tk) => tk.id === tankId) ?? null : null;
   const catalogForSelected = useMemo(
     () => (selectedTank ? parameters.filter((p) => p.tankId === selectedTank.id) : []),
     [parameters, selectedTank],
   );
 
-  // For the detail view, pick current-week measurement + previous-week
   const currForDetail = useMemo(() => {
     if (!selectedTank) return null;
     const inWeek = weekMeasurements.filter((m) => m.tankId === selectedTank.id);
-    // take latest in week
     inWeek.sort((a, b) => (a.date + (a.time ?? '')).localeCompare(b.date + (b.time ?? '')));
     return inWeek[inWeek.length - 1] ?? null;
   }, [weekMeasurements, selectedTank]);
 
   const prevForDetail = useMemo(() => {
     if (!selectedTank) return null;
-    // previous Monday in the available mondays list (from source)
     const priorWeek = mondayWeeks[weekIdx - 1];
     if (!priorWeek) return null;
     const start = priorWeek;
@@ -145,10 +178,7 @@ export default function WaterQualityDashboard({
 
   const historyForDetail = useMemo(() => {
     if (!selectedTank) return [];
-    const weeks =
-      timeWindow === 'all'
-        ? Number.POSITIVE_INFINITY
-        : (timeWindow as number);
+    const weeks = timeWindow === 'all' ? Number.POSITIVE_INFINITY : (timeWindow as number);
     const cutoff = shiftWeek(weekIso, -Math.ceil(weeks));
     return sourceMeasurements
       .filter(
@@ -163,20 +193,14 @@ export default function WaterQualityDashboard({
   function onTankSelect(id: string) {
     setTankId(id);
     setView('detail');
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   function onBack() {
     setView('overview');
   }
 
   return (
-    <section
-      data-theme="light"
-      class="relative mx-auto max-w-6xl px-4 py-8 sm:py-10"
-      style={{ backgroundColor: '#F6EFE0' }}
-    >
+    <section class="relative mx-auto max-w-6xl px-4 py-6 sm:py-8">
       {/* Controls row */}
       <div class="mb-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div class="w-full sm:w-auto">
@@ -200,7 +224,7 @@ export default function WaterQualityDashboard({
         />
       </div>
 
-      {/* Views (crossfade via CSS). We always render both so transitions are smooth. */}
+      {/* Overview */}
       <div
         class="transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none"
         style={{
@@ -213,11 +237,29 @@ export default function WaterQualityDashboard({
         aria-hidden={view !== 'overview'}
       >
         <div class="mb-5">
-          <CoverHeader locale={locale} weekIso={weekIso} />
+          <CoverHeader
+            locale={locale}
+            weekIso={weekIso}
+            latest={latestOfWeek}
+            summary={weekSummary}
+          />
         </div>
 
+        {/* Hero rotating chart */}
+        <div class="mb-5">
+          <RotatingHeroChart
+            locale={locale}
+            tanks={primaryTanks}
+            measurements={sourceMeasurements}
+            catalog={parameters}
+            focusedParam={focusedParam}
+            onFocusChange={setFocusedParam}
+          />
+        </div>
+
+        {/* Tank grid */}
         {weekMeasurements.length === 0 ? (
-          <p class="rounded-xl bg-cream px-4 py-6 text-center font-body text-sm text-choco/70 shadow-sm ring-1 ring-choco/10">
+          <p class="rounded-xl bg-[var(--wq-cell-bg)] px-4 py-6 text-center font-body text-sm text-[var(--wq-ink-muted)] shadow-sm ring-1 ring-[var(--wq-divider)]">
             {t.emptyWeek}
           </p>
         ) : (
@@ -225,16 +267,20 @@ export default function WaterQualityDashboard({
             locale={locale}
             tanks={primaryTanks}
             measurements={weekMeasurements}
+            prevMeasurements={prevWeekMeasurements}
             catalog={parameters}
             onTankSelect={onTankSelect}
+            onParamFocus={(k) => setFocusedParam(k)}
+            activeParam={focusedParam}
           />
         )}
 
         {allDataLoading && (
-          <p class="mt-3 text-right font-body text-xs text-choco/60">{t.loading}</p>
+          <p class="mt-3 text-right font-body text-xs text-[var(--wq-ink-muted)]">{t.loading}</p>
         )}
       </div>
 
+      {/* Detail */}
       <div
         class="transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none"
         style={{
