@@ -11,7 +11,6 @@ import { PARAM_KEYS } from './types';
 import { STRINGS } from './strings';
 import { statusOf } from './status';
 import CoverHeader from './CoverHeader';
-import WeekNav from './WeekNav';
 import ViewToggle from './ViewToggle';
 import TankGrid from './TankGrid';
 import TankCard from './TankCard';
@@ -201,25 +200,6 @@ export default function WaterQualityDashboard({
 
   return (
     <section class="relative mx-auto max-w-6xl px-4 py-6 sm:py-8">
-      {/* Controls row */}
-      <div class="mb-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div class="w-full sm:w-auto">
-          <WeekNav
-            locale={locale}
-            weekIso={weekIso}
-            canPrev={canPrev}
-            canNext={canNext}
-            onPrev={onPrev}
-            onNext={onNext}
-          />
-        </div>
-        <ViewToggle
-          locale={locale}
-          mondaysOnly={mondaysOnly}
-          onMondaysToggle={setMondaysOnly}
-        />
-      </div>
-
       {/* Overview */}
       <div
         class="transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] motion-reduce:transition-none"
@@ -232,24 +212,16 @@ export default function WaterQualityDashboard({
         }}
         aria-hidden={view !== 'overview'}
       >
-        <div class="mb-5">
+        <div class="mb-6">
           <CoverHeader
             locale={locale}
             weekIso={weekIso}
+            canPrev={canPrev}
+            canNext={canNext}
+            onPrev={onPrev}
+            onNext={onNext}
             latest={latestOfWeek}
             summary={weekSummary}
-          />
-        </div>
-
-        {/* Hero rotating chart */}
-        <div class="mb-5">
-          <RotatingHeroChart
-            locale={locale}
-            tanks={primaryTanks}
-            measurements={sourceMeasurements}
-            catalog={parameters}
-            focusedParam={focusedParam}
-            onFocusChange={setFocusedParam}
           />
         </div>
 
@@ -270,6 +242,25 @@ export default function WaterQualityDashboard({
             activeParam={focusedParam}
           />
         )}
+
+        {/* Trend chart + view toggle, below the table */}
+        <div class="mt-6 flex justify-end sm:mt-8">
+          <ViewToggle
+            locale={locale}
+            mondaysOnly={mondaysOnly}
+            onMondaysToggle={setMondaysOnly}
+          />
+        </div>
+        <div class="mt-3">
+          <RotatingHeroChart
+            locale={locale}
+            tanks={primaryTanks}
+            measurements={sourceMeasurements}
+            catalog={parameters}
+            focusedParam={focusedParam}
+            onFocusChange={setFocusedParam}
+          />
+        </div>
 
         {allDataLoading && (
           <p class="mt-3 text-right font-body text-xs text-[var(--wq-ink-muted)]">{t.loading}</p>

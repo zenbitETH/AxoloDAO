@@ -1,23 +1,43 @@
 import type { Locale, Measurement } from './types';
-import { formatWeekDate, STRINGS } from './strings';
+import { STRINGS } from './strings';
+import WeekNav from './WeekNav';
 
 interface Props {
   locale: Locale;
   weekIso: string;
+  canPrev: boolean;
+  canNext: boolean;
+  onPrev: () => void;
+  onNext: () => void;
   // Optional metadata: the freshest measurement of the week
   latest?: Measurement | null;
   summary?: { ok: number; warn: number; alarm: number };
 }
 
-export default function CoverHeader({ locale, weekIso, latest, summary }: Props) {
+export default function CoverHeader({
+  locale,
+  weekIso,
+  canPrev,
+  canNext,
+  onPrev,
+  onNext,
+  latest,
+  summary,
+}: Props) {
   const t = STRINGS[locale];
   return (
-    <div class="flex flex-col items-center gap-2 py-2 text-center">
+    <div class="flex flex-col items-center gap-3 py-2 text-center">
       <p class="font-display text-2xl text-[var(--wq-ink)] sm:text-3xl">{t.coverTitle}</p>
-      <p class="font-display text-base text-[var(--wq-ink)]/70 sm:text-lg">{t.coverSubtitle}</p>
-      <p class="font-body text-sm text-[var(--wq-ink)]/55">
-        {formatWeekDate(locale, weekIso)}
-      </p>
+      <div class="mt-1">
+        <WeekNav
+          locale={locale}
+          weekIso={weekIso}
+          canPrev={canPrev}
+          canNext={canNext}
+          onPrev={onPrev}
+          onNext={onNext}
+        />
+      </div>
       {latest?.authors?.main && (
         <p class="font-mono text-[11px] text-[var(--wq-ink)]/45">
           {latest.authors.main}

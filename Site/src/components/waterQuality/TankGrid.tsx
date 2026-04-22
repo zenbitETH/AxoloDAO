@@ -56,12 +56,12 @@ export default function TankGrid({
   );
 
   return (
-    <div class="overflow-x-auto -mx-4 sm:mx-0">
-      <div class="min-w-[720px] px-4 sm:min-w-0 sm:px-0">
+    <div class="-mx-4 overflow-x-auto sm:mx-0 sm:overflow-visible">
+      <div class="min-w-[760px] px-4 py-1 sm:min-w-0 sm:px-1">
         <div
-          class="grid gap-2"
+          class="grid gap-2.5"
           style={{
-            gridTemplateColumns: `minmax(150px, 1.1fr) repeat(${tanks.length}, minmax(160px, 1fr))`,
+            gridTemplateColumns: `minmax(150px, 1.1fr) repeat(${tanks.length}, minmax(168px, 1fr))`,
           }}
         >
           {/* Header row — tank cards */}
@@ -71,13 +71,13 @@ export default function TankGrid({
               key={tk.id}
               type="button"
               onClick={() => onTankSelect(tk.id)}
-              class="wq-on-accent group flex flex-col items-start rounded-xl px-3 py-2 text-left shadow-sm ring-1 ring-black/10 transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)]"
+              class="wq-on-accent group flex flex-col items-start rounded-xl px-3.5 py-2.5 text-left shadow-sm ring-1 ring-black/10 transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)]"
               style={{ backgroundColor: tk.accentColor }}
               aria-label={`${tk.displayName} — ver detalle`}
             >
-              <span class="font-display text-sm leading-tight">{tk.displayName}</span>
+              <span class="font-display text-base leading-tight">{tk.displayName}</span>
               {tk.scientificName && (
-                <span class="font-body text-[11px] italic opacity-90">
+                <span class="font-body text-xs italic opacity-90">
                   {tk.scientificName}
                 </span>
               )}
@@ -92,7 +92,7 @@ export default function TankGrid({
                 key={`label-${k}`}
                 onClick={() => onParamFocus(k)}
                 aria-pressed={activeParam === k}
-                class={`flex items-center rounded-xl px-3 py-2 text-left font-display text-sm transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)] ${
+                class={`flex items-center rounded-xl px-3.5 py-2.5 text-left font-display text-[15px] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)] ${
                   activeParam === k
                     ? 'bg-[var(--wq-ink)] text-[var(--wq-surface)] shadow-sm'
                     : 'bg-choco/90 text-cream hover:bg-[var(--wq-ink)]'
@@ -121,19 +121,19 @@ export default function TankGrid({
                     key={`${tk.id}-${k}`}
                     type="button"
                     onClick={() => onTankSelect(tk.id)}
-                    class={`wq-on-accent relative flex flex-col justify-between rounded-xl px-3 py-2 text-left shadow-sm transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)] ${ringCls}`}
+                    class={`wq-on-accent relative flex flex-col justify-between rounded-xl px-3.5 py-2.5 text-left shadow-sm transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)] ${ringCls}`}
                     style={{ backgroundColor: tk.accentColor }}
                   >
                     <div class="flex items-start justify-between gap-2">
-                      <span class="font-body text-lg font-semibold tabular-nums leading-tight">
+                      <span class="font-body text-xl font-semibold tabular-nums leading-tight">
                         {formatNumber(v, k)}
                         {unit && (
-                          <span class="ml-1 text-[10px] font-normal opacity-80">{unit}</span>
+                          <span class="ml-1 text-[11px] font-normal opacity-80">{unit}</span>
                         )}
                       </span>
                       <StatusBadge trend={trend} status={status} size="xs" variant="on-accent" />
                     </div>
-                    <div class="mt-1 font-body text-[10px] leading-tight tabular-nums opacity-80">
+                    <div class="mt-1.5 font-body text-[11px] leading-tight tabular-nums opacity-80">
                       {cat?.min != null || cat?.max != null ? (
                         <>
                           <span>min {cat.min != null ? formatNumber(cat.min, k) : '—'}</span>
