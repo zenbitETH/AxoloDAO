@@ -29,11 +29,10 @@ export default function ParameterTable({
   const catBy = new Map<ParamKey, ParameterCatalogEntry>();
   for (const c of catalogForTank) catBy.set(c.key, c);
 
+  // Only show rows with actual data — a catalog entry alone (e.g. TDS, which
+  // the team hasn't started logging) would render an empty row.
   const visibleKeys = PARAM_KEYS.filter((k) => {
-    const cat = catBy.get(k);
-    const hasData =
-      (prev?.values[k] ?? null) != null || (curr?.values[k] ?? null) != null;
-    return !!cat || hasData;
+    return (prev?.values[k] ?? null) != null || (curr?.values[k] ?? null) != null;
   });
 
   const rows = visibleKeys.map((k) => {

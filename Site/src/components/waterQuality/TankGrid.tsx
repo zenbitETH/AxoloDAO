@@ -49,9 +49,14 @@ export default function TankGrid({
   const latest = latestByTank(measurements);
   const prevLatest = latestByTank(prevMeasurements);
 
+  // Only show parameter rows that actually have data in the current or previous
+  // week — a catalog entry alone (e.g. TDS, which the team hasn't started
+  // logging) would render an empty row.
   const visibleKeys = PARAM_KEYS.filter((k) =>
-    tanks.some((tk) =>
-      latest.get(tk.id)?.values[k] != null || catBy.has(`${tk.id}|${k}`),
+    tanks.some(
+      (tk) =>
+        latest.get(tk.id)?.values[k] != null ||
+        prevLatest.get(tk.id)?.values[k] != null,
     ),
   );
 
@@ -117,11 +122,9 @@ export default function TankGrid({
                     ? 'ring-2 ring-amber-300/80'
                     : 'ring-1 ring-black/10';
                 return (
-                  <button
+                  <div
                     key={`${tk.id}-${k}`}
-                    type="button"
-                    onClick={() => onTankSelect(tk.id)}
-                    class={`wq-on-accent relative flex flex-col justify-between rounded-xl px-3.5 py-2.5 text-left shadow-sm transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)] ${ringCls}`}
+                    class={`wq-on-accent relative flex flex-col justify-between rounded-xl px-3.5 py-2.5 text-left shadow-sm ${ringCls}`}
                     style={{ backgroundColor: tk.accentColor }}
                   >
                     <div class="flex items-start justify-between gap-2">
@@ -144,7 +147,7 @@ export default function TankGrid({
                         <span class="opacity-60">sin rango</span>
                       )}
                     </div>
-                  </button>
+                  </div>
                 );
               })}
             </>
