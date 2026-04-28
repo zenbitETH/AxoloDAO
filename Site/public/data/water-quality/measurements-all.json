@@ -9466,7 +9466,9 @@
       "cond": 3280,
       "tds": null
     },
-    "alarms": [],
+    "alarms": [
+      "cond"
+    ],
     "note": null
   },
   {
@@ -9568,7 +9570,9 @@
       "cond": 3250,
       "tds": null
     },
-    "alarms": [],
+    "alarms": [
+      "cond"
+    ],
     "note": null
   },
   {
@@ -9673,7 +9677,8 @@
       "tds": null
     },
     "alarms": [
-      "ph"
+      "ph",
+      "cond"
     ],
     "note": null
   },
@@ -10589,8 +10594,7 @@
     "alarms": [
       "gh",
       "kh",
-      "ph",
-      "cond"
+      "ph"
     ],
     "note": null
   },
