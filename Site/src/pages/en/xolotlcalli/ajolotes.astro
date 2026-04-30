@@ -1,0 +1,40 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AjolotesExplorer from '@components/ajolotes/AjolotesExplorer';
+import bundleRaw from '@/data/ajolotes/bundle.json';
+import type { Bundle } from '@components/ajolotes/types';
+import { t } from '@/i18n/strings';
+
+const locale = 'en' as const;
+const bundle = bundleRaw as unknown as Bundle;
+
+const paths = {
+  waterPath: t(locale, 'wq.path'),
+  ajolotesByLocale: {
+    es: t('es', 'ajolotes.path'),
+    en: t('en', 'ajolotes.path'),
+    pt: t('pt', 'ajolotes.path'),
+  },
+};
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t(locale, 'ajolotes.title')} — Xolotlcalli BioMuseum`}
+  description={t(locale, 'ajolotes.subtitle')}
+  ogImage="/og-image-xolotlcalli.jpg"
+>
+  <section class="aj-surface relative">
+    <AjolotesExplorer client:load locale={locale} bundle={bundle} paths={paths} />
+  </section>
+</BaseLayout>
+
+<style is:global>
+  .aj-surface {
+    background-color: #F6EFE0;
+    min-height: 100vh;
+  }
+  [data-theme='dark'] .aj-surface {
+    background-color: #11202A;
+  }
+</style>
