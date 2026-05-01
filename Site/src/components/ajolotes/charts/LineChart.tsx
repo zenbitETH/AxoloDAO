@@ -1,8 +1,11 @@
 // Hand-rolled SVG line chart, ported from the prototype's charts.jsx and
 // extended with the waterQuality MultiSeriesChart's responsive ResizeObserver
-// pattern so it scales cleanly inside the modal at any width.
+// pattern so it scales cleanly inside the modal at any width. Adds a draw-on
+// animation and a hover tracker that snaps to the nearest data point and
+// shows the value in a portal tooltip.
 
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
+import { createPortal } from 'preact/compat';
 import type { Locale } from '../types';
 import { s } from '../strings';
 
@@ -23,6 +26,13 @@ interface Props {
 
 const PAD = { l: 40, r: 14, b: 26 };
 
+interface HoverState {
+  date: string;
+  px: number;
+  py: number;
+  rows: { name: string; value: number; color: string }[];
+}
+
 export default function LineChart({
   locale,
   series,
@@ -32,7 +42,10 @@ export default function LineChart({
   format = (v) => String(v),
 }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
   const [width, setWidth] = useState(560);
+  const [hover, setHover] = useState<HoverState | null>(null);
+  const [tip, setTip] = useState<{ top: number; left: number } | null>(null);
 
   useEffect(() => {
     if (!wrapRef.current) return;
@@ -54,6 +67,21 @@ export default function LineChart({
     [series],
   );
 
+  const dates = useMemo(() => [...new Set(flat.map((d) => d.date))].sort(), [flat]);
+
+  const { yMin, yMax } = useMemo(() => {
+    if (flat.length === 0) return { yMin: 0, yMax: 1 };
+    const vals = flat.map((d) => +(d.value as number));
+    let mn = Math.min(...vals);
+    let mx = Math.max(...vals);
+    if (mn === mx) {
+      mn -= 1;
+      mx += 1;
+    }
+    const p = (mx - mn) * 0.15;
+    return { yMin: mn - p, yMax: mx + p };
+  }, [flat]);
+
   if (flat.length < 1) {
     return (
       <div
@@ -66,25 +94,11 @@ export default function LineChart({
     );
   }
 
-  const dates = useMemo(() => [...new Set(flat.map((d) => d.date))].sort(), [flat]);
   const xAt = (d: string) => {
     const i = dates.indexOf(d);
     if (dates.length === 1) return PAD.l + (width - PAD.l - PAD.r) / 2;
     return PAD.l + (i / (dates.length - 1)) * (width - PAD.l - PAD.r);
   };
-
-  const { yMin, yMax } = useMemo(() => {
-    const vals = flat.map((d) => +(d.value as number));
-    let mn = Math.min(...vals);
-    let mx = Math.max(...vals);
-    if (mn === mx) {
-      mn -= 1;
-      mx += 1;
-    }
-    const p = (mx - mn) * 0.15;
-    return { yMin: mn - p, yMax: mx + p };
-  }, [flat]);
-
   const yAt = (v: number) => padTop + (1 - (v - yMin) / (yMax - yMin)) * (height - padTop - PAD.b);
 
   const yTicks: number[] = [];
@@ -100,13 +114,50 @@ export default function LineChart({
     }
   }
 
+  const onMove = (ev: MouseEvent) => {
+    if (!svgRef.current) return;
+    const rect = svgRef.current.getBoundingClientRect();
+    const scale = width / rect.width;
+    const cx = (ev.clientX - rect.left) * scale;
+    let bestIdx = 0;
+    let bestDist = Infinity;
+    dates.forEach((d, i) => {
+      const dist = Math.abs(xAt(d) - cx);
+      if (dist < bestDist) {
+        bestDist = dist;
+        bestIdx = i;
+      }
+    });
+    const date = dates[bestIdx];
+    const rows = series
+      .map((sr) => {
+        const point = sr.data.find((d) => d.date === date && d.value != null && !Number.isNaN(d.value as number));
+        if (!point) return null;
+        return { name: sr.name, value: +(point.value as number), color: sr.color ?? accent };
+      })
+      .filter((r): r is { name: string; value: number; color: string } => r != null);
+    if (!rows.length) return;
+    const px = xAt(date);
+    const py = yAt(rows[0].value);
+    setHover({ date, px, py, rows });
+    setTip({ top: ev.clientY, left: ev.clientX });
+  };
+
+  const onLeave = () => {
+    setHover(null);
+    setTip(null);
+  };
+
   return (
-    <div ref={wrapRef} class="block w-full">
+    <div ref={wrapRef} class="relative block w-full">
       <svg
+        ref={svgRef}
         viewBox={`0 0 ${width} ${height}`}
         width={width}
         height={height}
         class="block w-full select-none"
+        onMouseMove={onMove}
+        onMouseLeave={onLeave}
       >
         {yTicks.map((v, i) => (
           <g key={i}>
@@ -134,6 +185,18 @@ export default function LineChart({
             {dates[i].slice(5)}
           </text>
         ))}
+        {hover && (
+          <line
+            x1={hover.px}
+            y1={padTop}
+            x2={hover.px}
+            y2={height - PAD.b}
+            stroke="var(--wq-ink)"
+            stroke-width="1"
+            stroke-dasharray="3 3"
+            opacity="0.4"
+          />
+        )}
         {series.map((sr, si) => {
           const pts = sr.data
             .filter((d) => d.value != null && !Number.isNaN(d.value))
@@ -150,12 +213,23 @@ export default function LineChart({
                 stroke-width="2"
                 stroke-linejoin="round"
                 stroke-linecap="round"
+                class="aj-line-draw"
+                style={{ animationDelay: `${si * 120}ms` }}
               />
-              {pts.map((p, i) => (
-                <circle key={i} cx={p.x} cy={p.y} r="3" fill={color}>
-                  <title>{`${p.date}: ${format(p.v)}`}</title>
-                </circle>
-              ))}
+              {pts.map((p, i) => {
+                const active = hover?.date === p.date;
+                return (
+                  <circle
+                    key={i}
+                    cx={p.x}
+                    cy={p.y}
+                    r={active ? 5 : 3}
+                    fill={color}
+                    class="transition-[r] duration-150"
+                    style={active ? { filter: `drop-shadow(0 0 6px ${color})` } : undefined}
+                  />
+                );
+              })}
             </g>
           );
         })}
@@ -177,6 +251,30 @@ export default function LineChart({
           </text>
         )}
       </svg>
+      {hover && tip && typeof document !== 'undefined' && createPortal(
+        <div
+          role="tooltip"
+          style={{
+            position: 'fixed',
+            top: tip.top - 12,
+            left: tip.left,
+            transform: 'translate(-50%, -100%)',
+          }}
+          class="pointer-events-none z-[9999] min-w-[120px] rounded-md border border-[var(--wq-divider)] bg-[var(--wq-surface)] px-2.5 py-1.5 text-[11px] shadow-lg"
+        >
+          <div class="font-mono text-[10px] text-[var(--wq-ink-muted)]">{hover.date}</div>
+          {hover.rows.map((r, i) => (
+            <div key={i} class="flex items-center justify-between gap-3">
+              <span class="inline-flex items-center gap-1.5 text-[var(--wq-ink)]">
+                <span class="inline-block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: r.color }} />
+                {r.name}
+              </span>
+              <span class="font-mono font-semibold tabular-nums text-[var(--wq-ink)]">{format(r.value)}</span>
+            </div>
+          ))}
+        </div>,
+        document.body,
+      )}
     </div>
   );
 }

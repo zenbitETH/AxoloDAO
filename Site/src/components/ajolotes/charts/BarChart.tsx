@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
+import { createPortal } from 'preact/compat';
 import type { Locale } from '../types';
 
 export interface BarDatum {
@@ -27,6 +28,8 @@ export default function BarChart({
 }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(560);
+  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  const [tip, setTip] = useState<{ top: number; left: number } | null>(null);
 
   useEffect(() => {
     if (!wrapRef.current) return;
@@ -60,9 +63,20 @@ export default function BarChart({
   const yTicks = [0, yMax / 2, yMax];
   const step = Math.max(1, Math.ceil(data.length / 6));
 
+  const hover = hoverIdx != null ? data[hoverIdx] : null;
+
   return (
-    <div ref={wrapRef} class="block w-full">
-      <svg viewBox={`0 0 ${width} ${height}`} width={width} height={height} class="block w-full select-none">
+    <div ref={wrapRef} class="relative block w-full">
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        width={width}
+        height={height}
+        class="block w-full select-none"
+        onMouseLeave={() => {
+          setHoverIdx(null);
+          setTip(null);
+        }}
+      >
         {yTicks.map((v, i) => (
           <g key={i}>
             <line x1={PAD.l} y1={yAt(v)} x2={width - PAD.r} y2={yAt(v)} stroke="var(--wq-divider)" stroke-width="1" />
@@ -83,6 +97,7 @@ export default function BarChart({
           const y = yAt(v);
           const h = height - PAD.b - y;
           const c = d.color ?? accent;
+          const active = hoverIdx === i;
           return (
             <g key={i}>
               <rect
@@ -91,11 +106,22 @@ export default function BarChart({
                 width={Math.max(2, bw - 3)}
                 height={Math.max(1, h)}
                 fill={c}
-                opacity="0.85"
+                opacity={active ? 1 : 0.85}
                 rx="2"
-              >
-                <title>{`${d.label}: ${format(v)}`}</title>
-              </rect>
+                class="aj-bar-rise origin-bottom"
+                style={{
+                  animationDelay: `${Math.min(i * 18, 360)}ms`,
+                  filter: active ? `drop-shadow(0 0 8px ${c})` : undefined,
+                  transition: 'opacity 150ms, filter 150ms',
+                }}
+                onMouseEnter={(ev) => {
+                  setHoverIdx(i);
+                  setTip({ top: (ev as unknown as MouseEvent).clientY, left: (ev as unknown as MouseEvent).clientX });
+                }}
+                onMouseMove={(ev) => {
+                  setTip({ top: (ev as unknown as MouseEvent).clientY, left: (ev as unknown as MouseEvent).clientX });
+                }}
+              />
               {i % step === 0 && (
                 <text
                   x={x + bw / 2}
@@ -111,6 +137,27 @@ export default function BarChart({
           );
         })}
       </svg>
+      {hover && tip && typeof document !== 'undefined' && createPortal(
+        <div
+          role="tooltip"
+          style={{
+            position: 'fixed',
+            top: tip.top - 12,
+            left: tip.left,
+            transform: 'translate(-50%, -100%)',
+          }}
+          class="pointer-events-none z-[9999] min-w-[110px] rounded-md border border-[var(--wq-divider)] bg-[var(--wq-surface)] px-2.5 py-1.5 text-[11px] shadow-lg"
+        >
+          <div class="font-mono text-[10px] text-[var(--wq-ink-muted)]">{hover.label}</div>
+          <div class="flex items-center justify-between gap-3">
+            <span class="inline-flex items-center gap-1.5 text-[var(--wq-ink)]">
+              <span class="inline-block h-1.5 w-1.5 rounded-full" style={{ backgroundColor: hover.color ?? accent }} />
+              {format(+hover.value || 0)}
+            </span>
+          </div>
+        </div>,
+        document.body,
+      )}
     </div>
   );
 }

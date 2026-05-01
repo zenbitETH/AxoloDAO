@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'preact/hooks';
 import type { Bundle, Ejemplar, Locale } from './types';
+import type { Measurement } from '../waterQuality/types';
 import {
   accent as accentFor,
   genderSymbol,
   parseEmojiStatus,
+  stationOf,
   type ThemeMode,
 } from './theme';
 import { commonName, genderTitle, s } from './strings';
-import AjoloteAvatar from './AjoloteAvatar';
+import EjemplarPhoto from './EjemplarPhoto';
+import StageChip from './StageChip';
+import { classifyStage } from './stage';
 import ResumenTab from './tabs/ResumenTab';
 import BiometriaTab from './tabs/BiometriaTab';
 import HistorialTab from './tabs/HistorialTab';
@@ -20,21 +24,35 @@ interface Props {
   bundle: Bundle;
   theme: ThemeMode;
   locale: Locale;
+  water: Measurement[];
+  waterPath: string;
   onClose: () => void;
 }
 
 const GENDER_CLASS: Record<'♀' | '♂' | '(?)', string> = {
   '♀':   'text-[#D67BA8] dark:text-[#F4A6CB] text-[1.4rem] font-semibold self-center',
   '♂':   'text-[#4FA3D1] dark:text-[#7AC0E8] text-[1.4rem] font-semibold self-center',
-  '(?)': 'text-[var(--wq-ink-muted)] text-[0.78em] tracking-tight font-medium ml-1 self-center',
+  '(?)': 'text-[var(--wq-ink-muted)] text-[0.95rem] tracking-tight font-medium self-center',
 };
 
-export default function EjemplarModal({ ej, bundle, theme, locale, onClose }: Props) {
+function peceraLabel(locale: Locale, pecera: string | null | undefined): string {
+  const raw = (pecera ?? '').trim();
+  if (!raw) return '—';
+  const station = stationOf(raw);
+  if (station === 'AM') return `${s(locale, 'pecera.aquarium')} ${raw}`;
+  if (station === 'AA' || station === 'AD') return `${s(locale, 'pecera.station')} ${raw}`;
+  return raw;
+}
+
+export default function EjemplarModal({ ej, bundle, theme, locale, water, waterPath, onClose }: Props) {
   const [tab, setTab] = useState<TabId>('resumen');
+  const [mounted, setMounted] = useState(false);
   const ac = accentFor(ej.especie, theme);
   const isLarva = (ej.alias ?? '').toLowerCase().includes('ajolobebe');
 
-  // Esc to close + body scroll lock
+  // Esc to close + body scroll lock + flip the mount flag on next frame so the
+  // CSS transition fires on entry instead of skipping straight to the resting
+  // state (Emil's @starting-style pattern, fallback for older browsers).
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -42,9 +60,11 @@ export default function EjemplarModal({ ej, bundle, theme, locale, onClose }: Pr
     document.addEventListener('keydown', onKey);
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    const raf = requestAnimationFrame(() => setMounted(true));
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = prev;
+      cancelAnimationFrame(raf);
     };
   }, [onClose]);
 
@@ -52,15 +72,11 @@ export default function EjemplarModal({ ej, bundle, theme, locale, onClose }: Pr
   const alim = bundle.alimentacion[ej.alias] ?? [];
   const plan = bundle.planes[ej.alias] ?? null;
 
-  const histClinicalCount = hist.filter(
-    (h) => h.cabeza || h.cuerpo || h.cola || h.extremidades || h.comportamiento || h.notas,
-  ).length;
-
-  const tabs: { id: TabId; label: string; count?: number | null }[] = [
+  const tabs: { id: TabId; label: string }[] = [
     { id: 'resumen', label: s(locale, 'tab.resumen') },
-    { id: 'biometria', label: s(locale, 'tab.biometria'), count: hist.length || null },
-    { id: 'medico', label: s(locale, 'tab.medico'), count: histClinicalCount || null },
-    { id: 'alimentacion', label: s(locale, 'tab.alimentacion'), count: alim.length || null },
+    { id: 'biometria', label: s(locale, 'tab.biometria') },
+    { id: 'medico', label: s(locale, 'tab.medico') },
+    { id: 'alimentacion', label: s(locale, 'tab.alimentacion') },
   ];
 
   const bcs = parseEmojiStatus(ej.estadoBio);
@@ -69,63 +85,100 @@ export default function EjemplarModal({ ej, bundle, theme, locale, onClose }: Pr
 
   const sym = genderSymbol(ej.genero);
   const cName = commonName(locale, ej.especie);
+  const stage = classifyStage(ej.lt, ej.estadio);
 
   return (
     <div
-      class="fixed inset-0 z-[100] grid place-items-center px-4 py-8 backdrop-blur-md"
+      class="aj-modal-backdrop fixed inset-0 z-[100] grid place-items-center px-4 py-8 backdrop-blur-sm"
+      data-mounted={mounted}
       style={{ background: 'color-mix(in oklab, #071F29 76%, transparent)' }}
       onClick={onClose}
       role="presentation"
     >
       <div
-        class="flex max-h-[92vh] w-full max-w-[1080px] flex-col overflow-hidden rounded-3xl border border-[var(--wq-divider)] bg-[var(--wq-surface)] shadow-2xl"
+        class="aj-modal-panel flex max-h-[92vh] w-full max-w-[1080px] flex-col overflow-hidden rounded-3xl border border-[var(--wq-divider)] bg-[var(--wq-surface)] shadow-2xl"
+        data-mounted={mounted}
         style={{ borderTopWidth: 4, borderTopColor: ac, ['--accent' as string]: ac }}
         role="dialog"
         aria-modal="true"
         aria-label={ej.alias}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div class="flex items-start justify-between gap-4 border-b border-[var(--wq-divider)] p-5 sm:p-6">
-          <div class="flex min-w-0 items-center gap-4">
-            <AjoloteAvatar alias={ej.alias} size={88} accent={ac} />
-            <div class="min-w-0">
-              <p class="m-0 mb-1.5 flex flex-wrap items-center gap-2.5 text-xs text-[var(--wq-ink-muted)]">
-                <span
-                  class="rounded-full px-3 py-0.5 font-display text-[11px] font-bold"
-                  style={{ backgroundColor: ac, color: '#F6EFE0' }}
-                >
-                  {ej.pecera}
-                </span>
-                {ej.id && (
-                  <span class="rounded border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-2.5 py-0.5 font-mono text-[14px] font-semibold tracking-[0.02em] text-[var(--wq-ink)]">
-                    {ej.id}
-                  </span>
-                )}
-              </p>
-              <h2 class="m-0 flex flex-wrap items-baseline gap-3 font-display text-3xl font-bold leading-none tracking-tight text-[var(--wq-ink)]">
-                <span>{ej.alias}</span>
-                <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)}>
+        {/* Header — photo bleeds in from the right with a left-edge fade so
+            the alias and chips stay legible without a separate photo column. */}
+        <div class="relative overflow-hidden border-b border-[var(--wq-divider)]">
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 w-[62%] sm:w-[55%]"
+            aria-hidden="true"
+          >
+            <div class="relative h-full w-full">
+              <EjemplarPhoto alias={ej.alias} accent={ac} fill />
+            </div>
+            <div
+              class="absolute inset-0"
+              style={{
+                background:
+                  'linear-gradient(to right, var(--wq-surface) 0%, color-mix(in oklab, var(--wq-surface) 85%, transparent) 22%, color-mix(in oklab, var(--wq-surface) 35%, transparent) 55%, transparent 92%)',
+              }}
+            />
+          </div>
+          <div class="relative flex items-start justify-between gap-4 p-5 sm:p-6">
+            <div class="min-w-0 flex-1 sm:max-w-[58%]">
+              <h2 class="m-0 flex flex-wrap items-center gap-3 font-display text-3xl font-bold leading-none tracking-tight text-[var(--wq-ink)]">
+                <span class="truncate">{ej.alias}</span>
+                <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)} aria-label={genderTitle(locale, ej.genero)}>
                   {sym}
                 </span>
               </h2>
-              <p class="mt-1 text-sm text-[var(--wq-ink-muted)]">
-                <em style={{ color: ac, fontStyle: 'italic' }}>{ej.especie}</em>
+              {ej.fenotipo && (
+                <p class="mt-1.5 m-0 text-sm italic text-[var(--wq-ink-muted)]">
+                  {ej.fenotipo}
+                </p>
+              )}
+              <p class="mt-1.5 m-0 text-sm text-[var(--wq-ink-muted)]">
+                <em class="italic" style={{ color: ac }}>{ej.especie}</em>
                 {cName && <span> · {cName}</span>}
-                <span> · {genderTitle(locale, ej.genero)}</span>
-                {ej.estadio && <span> · {ej.estadio}</span>}
-                {ej.edad && <span> · {ej.edad}</span>}
               </p>
+              <div class="mt-2 flex flex-wrap items-center gap-1.5">
+                <StageChip stage={stage} accent={ac} locale={locale} />
+                <span
+                  class="whitespace-nowrap rounded-full px-2.5 py-0.5 font-display text-[11px] font-bold uppercase tracking-[0.04em] shadow-sm"
+                  style={{ backgroundColor: ac, color: '#F6EFE0' }}
+                >
+                  {peceraLabel(locale, ej.pecera)}
+                </span>
+                {ej.id && (
+                  <span
+                    class="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-2 py-0.5"
+                    title={s(locale, 'card.semarnat.tooltip')}
+                  >
+                    <span class="shrink-0 text-[9px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
+                      {s(locale, 'card.semarnat')}
+                    </span>
+                    <span class="font-mono text-[11px] font-semibold tracking-[-0.01em] text-[var(--wq-ink)]">
+                      {ej.id}
+                    </span>
+                  </span>
+                )}
+              </div>
+              {ej.marcas && (
+                <p class="mt-2 m-0 text-sm leading-relaxed text-[var(--wq-ink)]">
+                  <span class="mr-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
+                    {s(locale, 'resumen.marcas')}
+                  </span>
+                  {ej.marcas}
+                </p>
+              )}
             </div>
+            <button
+              type="button"
+              onClick={onClose}
+              class="aj-press relative grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)]/60 text-2xl leading-none text-[var(--wq-ink)] backdrop-blur transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[var(--wq-row-bg)] active:scale-[0.92]"
+              aria-label={s(locale, 'modal.close')}
+            >
+              ×
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            class="grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-[var(--wq-divider)] bg-transparent text-2xl leading-none text-[var(--wq-ink)] transition-colors duration-200 hover:bg-[var(--wq-row-bg)]"
-            aria-label={s(locale, 'modal.close')}
-          >
-            ×
-          </button>
         </div>
 
         {/* Tabs */}
@@ -141,27 +194,15 @@ export default function EjemplarModal({ ej, bundle, theme, locale, onClose }: Pr
                 type="button"
                 role="tab"
                 aria-selected={active}
-                class={`inline-flex items-center gap-1.5 whitespace-nowrap border-b-2 px-3.5 py-3 font-body text-sm font-semibold transition-colors duration-200 ${
+                class={`inline-flex items-center gap-1.5 whitespace-nowrap border-b-2 px-3.5 py-3 font-body text-sm font-semibold transition-[color,border-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] ${
                   active
                     ? 'text-[var(--wq-ink)]'
-                    : 'border-transparent text-[var(--wq-ink-muted)] hover:text-[var(--wq-ink)]'
+                    : 'border-transparent text-[var(--wq-ink-muted)] [@media(hover:hover)]:hover:text-[var(--wq-ink)]'
                 }`}
                 style={active ? { color: ac, borderBottomColor: ac } : undefined}
                 onClick={() => setTab(t.id)}
               >
                 {t.label}
-                {t.count != null && (
-                  <span
-                    class="rounded-full px-1.5 py-0 text-[10px] tabular-nums"
-                    style={
-                      active
-                        ? { color: ac, backgroundColor: `${ac}33` }
-                        : { color: 'var(--wq-ink-muted)', backgroundColor: 'var(--wq-row-bg)' }
-                    }
-                  >
-                    {t.count}
-                  </span>
-                )}
               </button>
             );
           })}
@@ -172,18 +213,21 @@ export default function EjemplarModal({ ej, bundle, theme, locale, onClose }: Pr
           {tab === 'resumen' && (
             <ResumenTab
               ej={ej}
+              hist={hist}
               bcs={bcs}
               respAlim={respAlim}
               conduc={conduc}
               accent={ac}
               isLarva={isLarva}
               locale={locale}
+              water={water}
+              waterPath={waterPath}
             />
           )}
           {tab === 'biometria' && <BiometriaTab hist={hist} accent={ac} locale={locale} />}
           {tab === 'medico' && <HistorialTab hist={hist} accent={ac} locale={locale} />}
           {tab === 'alimentacion' && (
-            <AlimentacionTab alim={alim} plan={plan} accent={ac} locale={locale} />
+            <AlimentacionTab ej={ej} alim={alim} plan={plan} accent={ac} locale={locale} />
           )}
         </div>
 

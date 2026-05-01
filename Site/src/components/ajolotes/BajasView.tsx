@@ -22,18 +22,27 @@ function simplifyCausa(c: string | null | undefined): string {
   return (c ?? '').split(/[,/]/)[0].trim() || 'Otra';
 }
 
+// Drop unnamed larva-of-A.mexicanum entries — the operativo flags them as
+// `nombre: 'Larva de ajolote (Ambystoma mexicanum)'`. Researchers can still
+// reach the raw bundle if they need them; the public memorial wall is for
+// named individuals.
+const isLarvaBaja = (b: { nombre: string | null }) =>
+  /^larva\b/i.test((b.nombre ?? '').trim());
+
 export default function BajasView({ bajas, locale, onBack }: Props) {
   const [search, setSearch] = useState('');
 
+  const visible = useMemo(() => bajas.filter((b) => !isLarvaBaja(b)), [bajas]);
+
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    if (!q) return bajas;
-    return bajas.filter((b) =>
+    if (!q) return visible;
+    return visible.filter((b) =>
       (b.nombre ?? '').toLowerCase().includes(q) ||
       (b.causa ?? '').toLowerCase().includes(q) ||
       (b.fecha ?? '').toLowerCase().includes(q),
     );
-  }, [bajas, search]);
+  }, [visible, search]);
 
   const ordered = useMemo(
     () => [...filtered].sort((a, b) => (b.fecha ?? '').localeCompare(a.fecha ?? '')),
@@ -42,12 +51,12 @@ export default function BajasView({ bajas, locale, onBack }: Props) {
 
   const causaCounts = useMemo(() => {
     const map: Record<string, number> = {};
-    bajas.forEach((b) => {
+    visible.forEach((b) => {
       const k = simplifyCausa(b.causa);
       map[k] = (map[k] ?? 0) + 1;
     });
     return Object.entries(map).sort((a, b) => b[1] - a[1]);
-  }, [bajas]);
+  }, [visible]);
 
   return (
     <>
@@ -78,7 +87,7 @@ export default function BajasView({ bajas, locale, onBack }: Props) {
         <div class="flex flex-col gap-3.5">
           <div class="rounded-xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
             <div class="font-display text-5xl font-bold leading-none text-[var(--wq-ink)]">
-              {bajas.length}
+              {visible.length}
             </div>
             <div class="mt-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
               {s(locale, 'bajas.total')}
@@ -95,7 +104,7 @@ export default function BajasView({ bajas, locale, onBack }: Props) {
                 <span class="relative h-1.5 overflow-hidden rounded-[3px] border border-[var(--wq-divider)] bg-[var(--wq-row-bg)]">
                   <span
                     class="block h-full rounded-[2px]"
-                    style={{ width: `${(n / Math.max(1, bajas.length)) * 100}%`, background: '#8B6F47' }}
+                    style={{ width: `${(n / Math.max(1, visible.length)) * 100}%`, background: '#8B6F47' }}
                   />
                 </span>
                 <span class="text-right font-mono text-xs text-[var(--wq-ink-muted)]">{n}</span>

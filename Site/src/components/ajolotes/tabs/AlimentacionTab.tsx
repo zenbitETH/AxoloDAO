@@ -1,4 +1,4 @@
-import type { Locale, PlanAlimentacion, RegistroAlimentacion } from '../types';
+import type { Ejemplar, Locale, PlanAlimentacion, RegistroAlimentacion } from '../types';
 import { DAY_ORDER, parseDays } from '../theme';
 import { s } from '../strings';
 import BarChart from '../charts/BarChart';
@@ -8,7 +8,14 @@ interface Props {
   plan: PlanAlimentacion | null;
   accent: string;
   locale: Locale;
+  ej: Ejemplar;
 }
+
+const fmt = (v: unknown, d = 2): string => {
+  if (v == null || v === '') return '—';
+  if (typeof v === 'number') return v.toFixed(d);
+  return String(v);
+};
 
 const dayLabel = (locale: Locale, key: typeof DAY_ORDER[number]) =>
   s(locale, `days.${key}`);
@@ -16,7 +23,7 @@ const dayLabel = (locale: Locale, key: typeof DAY_ORDER[number]) =>
 const interp = (template: string, params: Record<string, string>): string =>
   template.replace(/\{(\w+)\}/g, (_, k: string) => params[k] ?? '');
 
-export default function AlimentacionTab({ alim, plan, accent, locale }: Props) {
+export default function AlimentacionTab({ alim, plan, accent, locale, ej }: Props) {
   if (!alim.length && !plan) {
     return (
       <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-10 text-center">
@@ -26,6 +33,8 @@ export default function AlimentacionTab({ alim, plan, accent, locale }: Props) {
       </section>
     );
   }
+
+  const hasLastMeal = ej.ultimoConsumo != null || (ej.respuestaAlim && ej.respuestaAlim.trim());
 
   const activeDays = plan ? parseDays(plan.frecuencia) : [];
 
@@ -57,6 +66,25 @@ export default function AlimentacionTab({ alim, plan, accent, locale }: Props) {
 
   return (
     <div>
+      {hasLastMeal && !alim.length && (
+        <section class="mb-3.5 flex flex-wrap items-center gap-4 rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
+          <div class="flex flex-col gap-0.5">
+            <span class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
+              {s(locale, 'alim.lastMeal')}
+            </span>
+            <span
+              class="font-display text-3xl font-bold leading-none tabular-nums"
+              style={{ color: accent }}
+            >
+              {fmt(ej.ultimoConsumo, 2)}
+              <small class="ml-0.5 text-[0.9rem] font-normal opacity-70">g</small>
+            </span>
+          </div>
+          {ej.respuestaAlim && (
+            <span class="text-sm text-[var(--wq-ink-muted)]">{ej.respuestaAlim}</span>
+          )}
+        </section>
+      )}
       {plan && (
         <>
           <h4
@@ -65,38 +93,38 @@ export default function AlimentacionTab({ alim, plan, accent, locale }: Props) {
           >
             {s(locale, 'alim.section.plan')}
           </h4>
-          <div class="grid grid-cols-1 gap-3.5 md:grid-cols-[2fr_1fr]">
-            <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4 md:col-span-2">
-              <h3 class="m-0 mb-3 font-display text-base font-bold tracking-tight text-[var(--wq-ink)]">
-                {s(locale, 'alim.frecuencia')}
-              </h3>
-              <div class="mb-2 grid grid-cols-7 gap-1.5">
-                {DAY_ORDER.map((d) => {
-                  const on = activeDays.includes(d);
-                  return (
-                    <div
-                      key={d}
-                      class={`flex flex-col items-center gap-0.5 rounded-xl border-[1.5px] px-1.5 py-3 text-xs transition-all duration-200 ${
-                        on ? 'font-bold' : 'text-[var(--wq-ink-muted)]'
-                      }`}
-                      style={
-                        on
-                          ? { backgroundColor: accent, color: '#F6EFE0', borderColor: accent, boxShadow: `0 4px 14px ${accent}55` }
-                          : { backgroundColor: 'var(--wq-cell-bg)', borderColor: 'var(--wq-divider)' }
-                      }
-                    >
-                      <span class="font-display text-[1.2rem] font-bold leading-none">
-                        {dayLabel(locale, d)[0]}
-                      </span>
-                      <span class="text-[10px] uppercase tracking-[0.08em]">{dayLabel(locale, d)}</span>
-                    </div>
-                  );
-                })}
-              </div>
-              {plan.frecuencia && (
-                <p class="m-0 text-xs text-[var(--wq-ink-muted)]">{plan.frecuencia}</p>
-              )}
-            </section>
+          <section class="mb-3 rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
+            <h3 class="m-0 mb-3 font-display text-base font-bold tracking-tight text-[var(--wq-ink)]">
+              {s(locale, 'alim.frecuencia')}
+            </h3>
+            <div class="mb-2 grid grid-cols-7 gap-1.5">
+              {DAY_ORDER.map((d) => {
+                const on = activeDays.includes(d);
+                return (
+                  <div
+                    key={d}
+                    class={`flex flex-col items-center gap-0.5 rounded-xl border-[1.5px] px-1.5 py-3 text-xs transition-all duration-200 ${
+                      on ? 'font-bold' : 'text-[var(--wq-ink-muted)]'
+                    }`}
+                    style={
+                      on
+                        ? { backgroundColor: accent, color: '#F6EFE0', borderColor: accent, boxShadow: `0 4px 14px ${accent}55` }
+                        : { backgroundColor: 'var(--wq-cell-bg)', borderColor: 'var(--wq-divider)' }
+                    }
+                  >
+                    <span class="font-display text-[1.2rem] font-bold leading-none">
+                      {dayLabel(locale, d)[0]}
+                    </span>
+                    <span class="text-[10px] uppercase tracking-[0.08em]">{dayLabel(locale, d)}</span>
+                  </div>
+                );
+              })}
+            </div>
+            {plan.frecuencia && (
+              <p class="m-0 text-xs text-[var(--wq-ink-muted)]">{plan.frecuencia}</p>
+            )}
+          </section>
+          <div class="grid grid-cols-1 gap-3.5 md:grid-cols-3">
             <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
               <h3 class="m-0 mb-3 font-display text-base font-bold tracking-tight text-[var(--wq-ink)]">
                 {s(locale, 'alim.porcion')}
@@ -127,17 +155,17 @@ export default function AlimentacionTab({ alim, plan, accent, locale }: Props) {
                 {plan.planB || '—'}
               </p>
             </section>
-            {plan.notas && (
-              <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4 md:col-span-2">
-                <h3 class="m-0 mb-3 font-display text-base font-bold tracking-tight text-[var(--wq-ink)]">
-                  {s(locale, 'alim.notas')}
-                </h3>
-                <p class="m-0 whitespace-pre-wrap text-sm leading-relaxed text-[var(--wq-ink)]">
-                  {plan.notas}
-                </p>
-              </section>
-            )}
           </div>
+          {plan.notas && (
+            <section class="mt-3.5 rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
+              <h3 class="m-0 mb-3 font-display text-base font-bold tracking-tight text-[var(--wq-ink)]">
+                {s(locale, 'alim.notas')}
+              </h3>
+              <p class="m-0 whitespace-pre-wrap text-sm leading-relaxed text-[var(--wq-ink)]">
+                {plan.notas}
+              </p>
+            </section>
+          )}
         </>
       )}
 
@@ -149,7 +177,24 @@ export default function AlimentacionTab({ alim, plan, accent, locale }: Props) {
           >
             {s(locale, 'alim.section.records')}
           </h4>
-          <div class="mb-3.5 grid grid-cols-1 gap-3 md:grid-cols-3">
+          <div class={`mb-3.5 grid grid-cols-2 gap-3 ${hasLastMeal ? 'md:grid-cols-4' : 'md:grid-cols-3'}`}>
+            {hasLastMeal && (
+              <div class="flex flex-col gap-1 rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
+                <span class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
+                  {s(locale, 'alim.lastMeal')}
+                </span>
+                <span
+                  class="font-display text-3xl font-bold leading-none tabular-nums"
+                  style={{ color: accent }}
+                >
+                  {fmt(ej.ultimoConsumo, 2)}
+                  <small class="ml-0.5 text-[0.9rem] font-normal opacity-70">g</small>
+                </span>
+                <span class="truncate text-xs text-[var(--wq-ink-muted)]">
+                  {ej.respuestaAlim || '—'}
+                </span>
+              </div>
+            )}
             <div class="flex flex-col gap-1 rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
               <span class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
                 {s(locale, 'alim.acceptance')}

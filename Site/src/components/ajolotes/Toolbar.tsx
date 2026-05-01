@@ -3,39 +3,69 @@ import { s } from './strings';
 
 interface Props {
   locale: Locale;
-  groupBy: 'station' | 'species';
-  onGroupBy: (g: 'station' | 'species') => void;
+  viewDensity: 'gallery' | 'list';
+  onViewDensity: (v: 'gallery' | 'list') => void;
   search: string;
   onSearch: (q: string) => void;
 }
 
-export default function Toolbar({ locale, groupBy, onGroupBy, search, onSearch }: Props) {
+function Segmented<T extends string>({
+  value,
+  options,
+  onChange,
+  ariaLabel,
+}: {
+  value: T;
+  options: { value: T; label: string }[];
+  onChange: (v: T) => void;
+  ariaLabel?: string;
+}) {
+  return (
+    <div
+      class="inline-flex overflow-hidden rounded-full border border-[var(--wq-divider)] bg-[var(--wq-row-bg)]"
+      role="tablist"
+      aria-label={ariaLabel}
+    >
+      {options.map((o) => {
+        const active = value === o.value;
+        return (
+          <button
+            key={o.value}
+            type="button"
+            role="tab"
+            aria-selected={active}
+            onClick={() => onChange(o.value)}
+            class={`px-3.5 py-1.5 text-xs font-semibold transition-[transform,color,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.96] ${
+              active
+                ? 'bg-[var(--wq-ink)] text-[var(--wq-surface)]'
+                : 'text-[var(--wq-ink-muted)] [@media(hover:hover)]:hover:text-[var(--wq-ink)]'
+            }`}
+          >
+            {o.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+export default function Toolbar({
+  locale,
+  viewDensity,
+  onViewDensity,
+  search,
+  onSearch,
+}: Props) {
   return (
     <div class="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-3 px-6 pt-2">
-      <div class="inline-flex overflow-hidden rounded-full border border-[var(--wq-divider)] bg-[var(--wq-row-bg)]">
-        <button
-          type="button"
-          onClick={() => onGroupBy('station')}
-          class={`px-3.5 py-1.5 text-xs font-semibold transition-colors duration-200 ${
-            groupBy === 'station'
-              ? 'bg-[var(--wq-ink)] text-[var(--wq-surface)]'
-              : 'text-[var(--wq-ink-muted)] hover:text-[var(--wq-ink)]'
-          }`}
-        >
-          {s(locale, 'toolbar.groupBy.station')}
-        </button>
-        <button
-          type="button"
-          onClick={() => onGroupBy('species')}
-          class={`px-3.5 py-1.5 text-xs font-semibold transition-colors duration-200 ${
-            groupBy === 'species'
-              ? 'bg-[var(--wq-ink)] text-[var(--wq-surface)]'
-              : 'text-[var(--wq-ink-muted)] hover:text-[var(--wq-ink)]'
-          }`}
-        >
-          {s(locale, 'toolbar.groupBy.species')}
-        </button>
-      </div>
+      <Segmented
+        value={viewDensity}
+        options={[
+          { value: 'gallery', label: s(locale, 'view.gallery') },
+          { value: 'list',    label: s(locale, 'view.list') },
+        ]}
+        onChange={onViewDensity}
+      />
       <input
         type="search"
         value={search}

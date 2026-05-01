@@ -11,10 +11,8 @@ import { s } from './strings';
 interface Props {
   locale: Locale;
   theme: 'light' | 'dark';
-  groupBy: 'station' | 'species';
   showLarvario: boolean;
   onTheme: (t: 'light' | 'dark') => void;
-  onGroupBy: (g: 'station' | 'species') => void;
   onLarvario: (v: boolean) => void;
   // path builders for locale switching — provided by the page shell so each
   // locale's URL keeps its prefix correct
@@ -56,10 +54,8 @@ function Segmented<T extends string>({
 export default function TweaksPanel({
   locale,
   theme,
-  groupBy,
   showLarvario,
   onTheme,
-  onGroupBy,
   onLarvario,
   pathFor,
 }: Props) {
@@ -132,20 +128,6 @@ export default function TweaksPanel({
             { value: 'light', label: s(locale, 'tweaks.theme.light') },
           ]}
           onChange={onTheme}
-        />
-      </div>
-
-      <div class="flex flex-col gap-1.5">
-        <span class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
-          {s(locale, 'tweaks.groupBy')}
-        </span>
-        <Segmented
-          value={groupBy}
-          options={[
-            { value: 'station', label: s(locale, 'tweaks.groupBy.station') },
-            { value: 'species', label: s(locale, 'tweaks.groupBy.species') },
-          ]}
-          onChange={onGroupBy}
         />
       </div>
 

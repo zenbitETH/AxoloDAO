@@ -28,7 +28,7 @@ export const STATION_ORDER: ReadonlyArray<'AA' | 'AM' | 'AD' | 'Larvario'> = [
   'AA', 'AM', 'AD', 'Larvario',
 ];
 export const SPECIES_ORDER: ReadonlyArray<SpeciesCode> = [
-  'A. andersoni', 'A. mexicanum', 'A. dumerilii',
+  'A. andersoni', 'A. dumerilii', 'A. mexicanum',
 ];
 
 // Always render unknown gender as "(?)" — the bare "?" form was rejected.

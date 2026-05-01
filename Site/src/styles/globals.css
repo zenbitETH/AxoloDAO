@@ -712,6 +712,145 @@
   .wq-fade-in { animation: none; }
 }
 
+/* Ajolote — shared easing tokens, scoped to the ajolote island so they don't
+   leak into the rest of the site's existing motion language. */
+:root {
+  --aj-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --aj-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Ajolote card SEMARNAT row — the ID can be 18+ characters and must stay
+   on a single line at every grid width. We deliberately do NOT use
+   `container-type: inline-size` on the card here: Chromium has long-standing
+   issues where any container-type on an ancestor (or even sibling, in some
+   layout cases) collapses `position: fixed` on the modal, which would make
+   the detail overlay render inline below the grid. Instead we pick a small
+   fixed monospace size that fits the longest existing SEMARNAT ID at the
+   220px minimum card width, with a touch of negative tracking. */
+.aj-semarnat > span:last-child {
+  font-size: 9.5px;
+  letter-spacing: -0.02em;
+}
+
+/* Modal — backdrop fades, panel scales up slightly from 0.96 with a small
+   upward translate. Never start from scale(0): nothing in the real world
+   appears from nothing. Asymmetric timing — 220ms in, 180ms out via the same
+   transition (the unmount happens immediately, so the visible exit is the
+   data-mounted="false" rest state of the animation). */
+.aj-modal-backdrop {
+  opacity: 0;
+  transition: opacity 220ms var(--aj-ease-out);
+}
+.aj-modal-backdrop[data-mounted='true'] {
+  opacity: 1;
+}
+.aj-modal-panel {
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transform-origin: center;
+  transition: opacity 220ms var(--aj-ease-out),
+              transform 220ms var(--aj-ease-out);
+}
+.aj-modal-panel[data-mounted='true'] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Press feedback on small UI buttons that don't already animate on their own. */
+.aj-press {
+  transition: transform 140ms var(--aj-ease-out),
+              background-color 150ms var(--aj-ease-out),
+              border-color 150ms var(--aj-ease-out);
+}
+
+/* Water-quality snapshot cells — each is a deep-link to the station detail.
+   Hover is gated to hover-capable pointers so touch devices don't get a
+   sticky :hover after tap. The arrow icon already animates via Tailwind. */
+.aj-water-cell {
+  transition: background-color 150ms var(--aj-ease-out),
+              border-color 150ms var(--aj-ease-out),
+              transform 150ms var(--aj-ease-out),
+              box-shadow 150ms var(--aj-ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .aj-water-cell:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10), 0 0 0 1px var(--accent, var(--wq-divider));
+  }
+}
+.aj-water-cell:active {
+  transform: scale(0.985);
+}
+
+/* InfoIcon tooltip — origin from the trigger (bottom of the tooltip, since
+   it sits above its anchor), subtle scale-from-0.96 fade in. Never scale
+   from 0 — Emil's rule: things shouldn't appear from nothing. */
+.aj-tooltip {
+  animation: aj-tooltip-in 125ms var(--aj-ease-out) both;
+}
+@keyframes aj-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1);
+  }
+}
+
+/* Honor prefers-reduced-motion — keep opacity transitions (they aid
+   comprehension), drop transform / translate movement. */
+@media (prefers-reduced-motion: reduce) {
+  .aj-modal-panel,
+  .aj-modal-backdrop,
+  .aj-press,
+  .aj-water-cell,
+  .aj-card-button {
+    transition-property: opacity, color, background-color, border-color;
+  }
+  .aj-modal-panel,
+  .aj-modal-panel[data-mounted='true'],
+  .aj-card-button,
+  .aj-water-cell,
+  .aj-press {
+    transform: none !important;
+  }
+  .aj-tooltip {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Ajolote charts — draw-on for line paths, rise-up for bars. The line-draw
+   uses a generous dasharray so any reasonable chart-path length is covered;
+   bars scale from the bottom edge. Both respect prefers-reduced-motion. */
+.aj-line-draw {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: aj-line-draw 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes aj-line-draw {
+  to { stroke-dashoffset: 0; }
+}
+.aj-bar-rise {
+  transform: scaleY(0);
+  transform-origin: center bottom;
+  transform-box: fill-box;
+  animation: aj-bar-rise 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes aj-bar-rise {
+  to { transform: scaleY(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aj-line-draw,
+  .aj-bar-rise {
+    animation: none;
+    stroke-dashoffset: 0;
+    transform: none;
+  }
+}
+
 /* Surface tokens — keep cream in light mode and a warm-charcoal in dark.
    Components reference `var(--wq-surface)` so they don't have to repeat the
    light/dark logic at the call site. */

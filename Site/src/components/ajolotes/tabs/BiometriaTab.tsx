@@ -82,19 +82,20 @@ export default function BiometriaTab({ hist, accent, locale }: Props) {
               <thead>
                 <tr>
                   {[
-                    'biometria.col.fecha',
-                    'biometria.col.peso',
-                    'biometria.col.lt',
-                    'biometria.col.lhc',
-                    'biometria.col.cabeza',
-                    'biometria.col.cuerpo',
-                    'biometria.col.branquias',
-                    'biometria.col.bcs',
-                    'biometria.col.autor',
-                  ].map((k) => (
+                    { k: 'biometria.col.fecha' },
+                    { k: 'biometria.col.peso' },
+                    { k: 'biometria.col.lt', tip: 'card.lt.tooltip' },
+                    { k: 'biometria.col.lhc', tip: 'card.lhc.tooltip' },
+                    { k: 'biometria.col.cabeza' },
+                    { k: 'biometria.col.cuerpo' },
+                    { k: 'biometria.col.branquias' },
+                    { k: 'biometria.col.bcs', tip: 'card.bcs.tooltip' },
+                    { k: 'biometria.col.autor' },
+                  ].map(({ k, tip }) => (
                     <th
                       key={k}
-                      class="whitespace-nowrap border-b border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-2.5 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]"
+                      title={tip ? s(locale, tip) : undefined}
+                      class={`whitespace-nowrap border-b border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-2.5 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)] ${tip ? 'cursor-help underline decoration-dotted underline-offset-[3px]' : ''}`}
                     >
                       {s(locale, k)}
                     </th>

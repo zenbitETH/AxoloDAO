@@ -48,9 +48,10 @@ export default function InfoIcon({ text, ariaLabel }: Props) {
             position: 'fixed',
             top: pos.top,
             left: pos.left,
-            transform: 'translate(-50%, -100%)',
+            transform: 'translate(-50%, calc(-100% + 0px)) scale(1)',
+            transformOrigin: 'bottom center',
           }}
-          class="pointer-events-none z-[9999] whitespace-nowrap rounded-md bg-[var(--wq-ink)] px-2.5 py-1.5 text-[11px] font-medium text-[var(--wq-surface)] shadow-lg"
+          class="aj-tooltip pointer-events-none z-[9999] max-w-[280px] whitespace-normal rounded-md bg-[var(--wq-ink)] px-2.5 py-1.5 text-[11px] font-medium leading-snug text-[var(--wq-surface)] shadow-lg"
         >
           {text}
         </span>,
