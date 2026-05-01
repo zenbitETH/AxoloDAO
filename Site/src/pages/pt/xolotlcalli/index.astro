@@ -37,6 +37,12 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
       <p class="mt-2 max-w-2xl font-body text-sm text-choco/70 dark:text-cream/70 sm:text-base">
         {t(locale, 'wq.subtitle')}
       </p>
+      <a
+        href={t(locale, 'ajolotes.path')}
+        class="mt-4 inline-flex items-center gap-1 rounded-full border border-choco/15 px-3.5 py-1.5 text-sm text-choco transition-colors duration-200 hover:bg-choco/5 dark:border-cream/15 dark:text-cream dark:hover:bg-cream/5"
+      >
+        {t(locale, 'ajolotes.cta')}
+      </a>
     </div>
     <WaterQualityDashboard
       client:load

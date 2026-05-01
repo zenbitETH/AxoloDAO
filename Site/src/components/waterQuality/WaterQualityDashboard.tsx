@@ -68,6 +68,30 @@ export default function WaterQualityDashboard({
   const [allData, setAllData] = useState<Measurement[] | null>(null);
   const [allDataLoading, setAllDataLoading] = useState(false);
 
+  // Deep-link entry from the ajolotes detail view: `?tank=AA&param=ph` jumps
+  // straight to that station and parameter on mount.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const tankParam = params.get('tank');
+    const paramParam = params.get('param') as ParamKey | null;
+    if (tankParam && tanks.some((t) => t.id === tankParam)) {
+      setTankId(tankParam);
+      setView('detail');
+      if (paramParam && PARAM_KEYS.includes(paramParam)) {
+        setFocusedParam(paramParam);
+      }
+    }
+    // Once consumed, clean the URL so a refresh doesn't re-trigger.
+    if (tankParam || paramParam) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('tank');
+      url.searchParams.delete('param');
+      window.history.replaceState({}, '', url.toString());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     if (mondaysOnly || allData || allDataLoading) return;
     setAllDataLoading(true);

@@ -29,10 +29,10 @@ export function useTheme(): ThemeMode {
   return theme;
 }
 
-// Each species has two tones: a light-mode accent that reads on cream, and a
-// noticeably brighter dark-mode accent that reads on the warm-charcoal
-// surface. Teal and green shift the most because the light-mode tones are
-// already dark — they'd vanish on a dark background.
+// Single saturated palette for both themes. The pre-hydration render reads
+// well on dark and is the curators' preferred contrast on cream too, so we
+// drop the dual palette to avoid the SSR→hydration color flip and the same
+// flicker when returning from the Bajas view.
 const SPECIES_ACCENT_LIGHT: Record<SpeciesCode, string> = {
   andersoni: '#B87333',
   mexicanum: '#2C5F7C',
@@ -41,14 +41,7 @@ const SPECIES_ACCENT_LIGHT: Record<SpeciesCode, string> = {
   guppies:   '#4A3628',
   na:        '#4A3628',
 };
-const SPECIES_ACCENT_DARK: Record<SpeciesCode, string> = {
-  andersoni: '#E2A066',
-  mexicanum: '#7EB2D1',
-  dumerilii: '#7AB58C',
-  control:   '#D0C3A8',
-  guppies:   '#D0C3A8',
-  na:        '#D0C3A8',
-};
+const SPECIES_ACCENT_DARK: Record<SpeciesCode, string> = SPECIES_ACCENT_LIGHT;
 
 export function accentForTheme(
   speciesCode: SpeciesCode,
