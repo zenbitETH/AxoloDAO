@@ -58,10 +58,14 @@ export default function StationsList({
     );
   }
 
+  // On mobile (single-column territory) the layout becomes a snap-x carousel
+  // with each card centred on swipe — Instagram-style horizontal navigation.
+  // From the `sm:` breakpoint up we restore the auto-fill grid so the
+  // existing desktop/tablet layout is unchanged.
   return (
-    <main class="mx-auto max-w-[1240px] px-6 pb-20 pt-4">
+    <main class="mx-auto max-w-[1240px] pb-20 pt-4">
       <div
-        class="grid gap-3.5"
+        class="aj-card-rail flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-6 pb-2 [-ms-overflow-style:none] [scroll-padding-inline:1.5rem] [scrollbar-width:none] sm:grid sm:overflow-visible sm:pb-0 [&::-webkit-scrollbar]:hidden"
         style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))' }}
       >
         {sorted.map((e) => {
@@ -71,14 +75,18 @@ export default function StationsList({
               ? 'highlighted'
               : 'dimmed';
           return (
-            <EjemplarCard
+            <div
               key={e.id ?? e.alias}
-              ej={e}
-              theme={theme}
-              locale={locale}
-              emphasis={emphasis}
-              onClick={onSelect}
-            />
+              class="flex w-[82vw] max-w-[320px] flex-none snap-center sm:w-auto sm:max-w-none sm:snap-align-none"
+            >
+              <EjemplarCard
+                ej={e}
+                theme={theme}
+                locale={locale}
+                emphasis={emphasis}
+                onClick={onSelect}
+              />
+            </div>
           );
         })}
       </div>

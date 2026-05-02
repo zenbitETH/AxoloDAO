@@ -105,10 +105,13 @@ export default function EjemplarModal({ ej, bundle, theme, locale, water, waterP
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header — photo bleeds in from the right with a left-edge fade so
-            the alias and chips stay legible without a separate photo column. */}
-        <div class="relative overflow-hidden border-b border-[var(--wq-divider)]">
+            the alias and chips stay legible without a separate photo column.
+            On mobile the photo column is narrower (so the alias has real
+            room) and the chips row falls back to a horizontal scroll instead
+            of wrapping into multiple lines and inflating header height. */}
+        <div class="relative flex-shrink-0 overflow-hidden border-b border-[var(--wq-divider)]">
           <div
-            class="pointer-events-none absolute inset-y-0 right-0 w-[62%] sm:w-[55%]"
+            class="pointer-events-none absolute inset-y-0 right-0 w-[40%] sm:w-[55%]"
             aria-hidden="true"
           >
             <div class="relative h-full w-full">
@@ -118,31 +121,31 @@ export default function EjemplarModal({ ej, bundle, theme, locale, water, waterP
               class="absolute inset-0"
               style={{
                 background:
-                  'linear-gradient(to right, var(--wq-surface) 0%, color-mix(in oklab, var(--wq-surface) 85%, transparent) 22%, color-mix(in oklab, var(--wq-surface) 35%, transparent) 55%, transparent 92%)',
+                  'linear-gradient(to right, var(--wq-surface) 0%, color-mix(in oklab, var(--wq-surface) 88%, transparent) 28%, color-mix(in oklab, var(--wq-surface) 35%, transparent) 60%, transparent 92%)',
               }}
             />
           </div>
-          <div class="relative flex items-start justify-between gap-4 p-5 sm:p-6">
+          <div class="relative flex items-start justify-between gap-3 p-4 sm:gap-4 sm:p-6">
             <div class="min-w-0 flex-1 sm:max-w-[58%]">
-              <h2 class="m-0 flex flex-wrap items-center gap-3 font-display text-3xl font-bold leading-none tracking-tight text-[var(--wq-ink)]">
+              <h2 class="m-0 flex items-center gap-2.5 font-display text-2xl font-bold leading-none tracking-tight text-[var(--wq-ink)] sm:text-3xl">
                 <span class="truncate">{ej.alias}</span>
                 <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)} aria-label={genderTitle(locale, ej.genero)}>
                   {sym}
                 </span>
               </h2>
               {ej.fenotipo && (
-                <p class="mt-1.5 m-0 text-sm italic text-[var(--wq-ink-muted)]">
+                <p class="m-0 mt-1 truncate text-xs italic text-[var(--wq-ink-muted)] sm:text-sm">
                   {ej.fenotipo}
                 </p>
               )}
-              <p class="mt-1.5 m-0 text-sm text-[var(--wq-ink-muted)]">
+              <p class="m-0 mt-1 truncate text-xs text-[var(--wq-ink-muted)] sm:text-sm">
                 <em class="italic" style={{ color: ac }}>{ej.especie}</em>
                 {cName && <span> · {cName}</span>}
               </p>
-              <div class="mt-2 flex flex-wrap items-center gap-1.5">
+              <div class="mt-1.5 flex flex-nowrap items-center gap-1.5 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] sm:mt-2 sm:flex-wrap sm:overflow-visible [&::-webkit-scrollbar]:hidden">
                 <StageChip stage={stage} accent={ac} locale={locale} />
                 <span
-                  class="whitespace-nowrap rounded-full px-2.5 py-0.5 font-display text-[11px] font-bold uppercase tracking-[0.04em] shadow-sm"
+                  class="shrink-0 whitespace-nowrap rounded-full px-2.5 py-0.5 font-display text-[11px] font-bold uppercase tracking-[0.04em] shadow-sm"
                   style={{ backgroundColor: ac, color: '#F6EFE0' }}
                 >
                   {peceraLabel(locale, ej.pecera)}
@@ -162,7 +165,7 @@ export default function EjemplarModal({ ej, bundle, theme, locale, water, waterP
                 )}
               </div>
               {ej.marcas && (
-                <p class="mt-2 m-0 text-sm leading-relaxed text-[var(--wq-ink)]">
+                <p class="m-0 mt-1.5 line-clamp-2 text-xs leading-snug text-[var(--wq-ink)] sm:mt-2 sm:line-clamp-none sm:text-sm sm:leading-relaxed">
                   <span class="mr-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
                     {s(locale, 'resumen.marcas')}
                   </span>
