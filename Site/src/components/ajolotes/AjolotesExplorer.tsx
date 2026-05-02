@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'preact/hooks';
 import type { Bundle, Ejemplar, Locale, SpeciesCode } from './types';
 import type { Measurement } from '../waterQuality/types';
-import { useTheme, SPECIES_ORDER } from './theme';
+import { useTheme, SPECIES_ORDER, stationOf } from './theme';
 import CoverHeader from './CoverHeader';
 import Toolbar from './Toolbar';
 import StationsList from './StationsList';
@@ -71,12 +71,17 @@ export default function AjolotesExplorer({ locale, bundle, water, paths }: Props
     return out;
   }, [bundle.ejemplares]);
 
+  // Total mirrors what's actually rendered in the gallery: the unnamed
+  // ajolobebes + Larvario station are gated behind the "showLarvario" tweak,
+  // so the cover number shouldn't pre-count them when they're hidden.
   const totals = useMemo(
     () => ({
-      total: bundle.ejemplares.length,
+      total: bundle.ejemplares.filter(
+        (e) => showLarvario || (!isAjolobebe(e) && stationOf(e.pecera) !== 'Larvario'),
+      ).length,
       bajas: visibleBajas.length,
     }),
-    [bundle.ejemplares, visibleBajas],
+    [bundle.ejemplares, visibleBajas, showLarvario],
   );
 
   const filtered = useMemo(() => {

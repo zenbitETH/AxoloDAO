@@ -59,7 +59,7 @@ export default function EjemplarCard({ ej, theme, locale, emphasis = 'neutral', 
           ? `0 18px 36px ${ac}33, 0 0 0 1px ${ac}66`
           : undefined,
       }}
-      class={`aj-card-button group flex cursor-pointer flex-col overflow-hidden rounded-3xl border border-[var(--wq-divider)] border-t-[3px] bg-[var(--wq-cell-bg)] text-left text-[var(--wq-ink)] transition-[transform,opacity,box-shadow,border-color] duration-[220ms] ease-[cubic-bezier(0.23,1,0.32,1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal/60 active:scale-[0.985] [@media(hover:hover)]:hover:-translate-y-[2px] [@media(hover:hover)]:hover:border-[color:var(--accent)] [@media(hover:hover)]:hover:shadow-[0_14px_32px_rgba(0,0,0,0.18)] ${stateClass}`}
+      class={`aj-card-button group flex w-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-[var(--wq-divider)] border-t-[3px] bg-[var(--wq-cell-bg)] text-left text-[var(--wq-ink)] transition-[transform,opacity,box-shadow,border-color] duration-[220ms] ease-[cubic-bezier(0.23,1,0.32,1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-teal/60 active:scale-[0.985] [@media(hover:hover)]:hover:-translate-y-[2px] [@media(hover:hover)]:hover:border-[color:var(--accent)] [@media(hover:hover)]:hover:shadow-[0_14px_32px_rgba(0,0,0,0.18)] ${stateClass}`}
       aria-label={ej.alias}
     >
       {/* Photo hero — square, fills card width */}
