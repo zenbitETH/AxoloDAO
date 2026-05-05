@@ -30,6 +30,20 @@
     "accentColor": "#2C5F7C"
   },
   {
+    "id": "AM",
+    "speciesCode": "mexicanum",
+    "scientificName": "Ambystoma mexicanum",
+    "displayName": "Pecera AM",
+    "volumeL": 360,
+    "primary": true,
+    "note": {
+      "es": "Unificado desde 2026-04-28 (5 acuarios × 72 L)",
+      "en": "Unified since 2026-04-28 (5 sub-aquariums × 72 L)",
+      "pt": "Unificado desde 2026-04-28 (5 sub-aquários × 72 L)"
+    },
+    "accentColor": "#2C5F7C"
+  },
+  {
     "id": "AD",
     "speciesCode": "dumerilii",
     "scientificName": "Ambystoma dumerilii",

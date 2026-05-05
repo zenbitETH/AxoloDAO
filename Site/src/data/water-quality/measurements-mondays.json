@@ -885,7 +885,7 @@
       "ph",
       "po4"
     ],
-    "note": "Estancamiento de agua por evaporaci\u00f3n en el filtro "
+    "note": "Estancamiento de agua por evaporación en el filtro "
   },
   {
     "date": "2026-03-02",
@@ -1739,7 +1739,7 @@
       "secondary": "NA"
     },
     "values": {
-      "temp": 16.0,
+      "temp": 16,
       "nh3": 0,
       "no2": 0.3,
       "no3": 20,
@@ -1769,13 +1769,13 @@
       "secondary": "NA"
     },
     "values": {
-      "temp": 17.0,
+      "temp": 17,
       "nh3": 0,
       "no2": 0.1,
       "no3": 10,
       "gh": 53.7,
       "kh": 35.8,
-      "ph": 8.0,
+      "ph": 8,
       "po4": 0.5,
       "cond": 2030,
       "tds": null
@@ -1798,13 +1798,13 @@
       "secondary": "NA"
     },
     "values": {
-      "temp": 17.0,
+      "temp": 17,
       "nh3": 0,
       "no2": 0.1,
       "no3": 10,
       "gh": 53.7,
       "kh": 35.8,
-      "ph": 8.0,
+      "ph": 8,
       "po4": 0.5,
       "cond": 1750,
       "tds": null
@@ -1833,13 +1833,99 @@
       "gh": 71.6,
       "kh": 107.4,
       "ph": 8.5,
-      "po4": 0.0,
+      "po4": 0,
       "cond": 530,
       "tds": null
     },
     "alarms": [
       "kh",
       "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-05-04",
+    "time": "16:36",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 18.5,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": 53.4,
+      "kh": 53.4,
+      "ph": 8.3,
+      "po4": null,
+      "cond": 320,
+      "tds": 160
+    },
+    "alarms": [
+      "ph",
+      "cond",
+      "tds"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-05-04",
+    "time": "16:36",
+    "tankId": "AM",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 16.5,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": 106.8,
+      "kh": 106.8,
+      "ph": 7.9,
+      "po4": null,
+      "cond": 1790,
+      "tds": 895
+    },
+    "alarms": [
+      "gh",
+      "kh",
+      "ph"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-05-04",
+    "time": "16:36",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "xolotlcalli.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 17,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": 106.8,
+      "kh": 124.6,
+      "ph": 8.7,
+      "po4": null,
+      "cond": 660,
+      "tds": 330
+    },
+    "alarms": [
+      "gh",
+      "kh",
+      "ph",
+      "cond",
+      "tds"
     ],
     "note": null
   }
