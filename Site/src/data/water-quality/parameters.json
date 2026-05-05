@@ -3,9 +3,9 @@
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "temp",
-    "unit": "\u00b0C",
-    "min": 15.0,
-    "max": 20.0,
+    "unit": "°C",
+    "min": 15,
+    "max": 20,
     "target": 17.5
   },
   {
@@ -13,52 +13,52 @@
     "speciesCode": "andersoni",
     "key": "nh3",
     "unit": "mg/L",
-    "min": 0.0,
-    "max": 0.0,
-    "target": 0.0
+    "min": 0,
+    "max": 0,
+    "target": 0
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "no2",
     "unit": "mg/L",
-    "min": 0.0,
+    "min": 0,
     "max": 0.1,
-    "target": 0.0
+    "target": 0
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "no3",
     "unit": "mg/L",
-    "min": 0.0,
-    "max": 10.0,
-    "target": 5.0
+    "min": 0,
+    "max": 10,
+    "target": 5
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "gh",
     "unit": "mg/L",
-    "min": 50.0,
-    "max": 90.0,
-    "target": 75.0
+    "min": 50,
+    "max": 90,
+    "target": 75
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "kh",
     "unit": "mg/L",
-    "min": 15.0,
-    "max": 70.0,
-    "target": 50.0
+    "min": 15,
+    "max": 70,
+    "target": 50
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "ph",
     "unit": "-",
-    "min": 7.0,
+    "min": 7,
     "max": 7.5,
     "target": 7.2
   },
@@ -67,35 +67,35 @@
     "speciesCode": "andersoni",
     "key": "po4",
     "unit": "mg/L",
-    "min": 0.0,
+    "min": 0,
     "max": 0.5,
-    "target": 0.0
+    "target": 0
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "cond",
-    "unit": "\u00b5S/cm",
-    "min": 180.0,
-    "max": 220.0,
-    "target": 200.0
+    "unit": "µS/cm",
+    "min": 180,
+    "max": 220,
+    "target": 200
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "tds",
     "unit": "mg/L",
-    "min": 70.0,
-    "max": 150.0,
-    "target": 100.0
+    "min": 70,
+    "max": 150,
+    "target": 100
   },
   {
     "tankId": "AM 1",
     "speciesCode": "mexicanum",
     "key": "temp",
-    "unit": "\u00b0C",
-    "min": 16.0,
-    "max": 18.0,
+    "unit": "°C",
+    "min": 16,
+    "max": 18,
     "target": 17
   },
   {
@@ -103,52 +103,52 @@
     "speciesCode": "mexicanum",
     "key": "nh3",
     "unit": "mg/L",
-    "min": 0.0,
-    "max": 0.0,
-    "target": 0.0
+    "min": 0,
+    "max": 0,
+    "target": 0
   },
   {
     "tankId": "AM 1",
     "speciesCode": "mexicanum",
     "key": "no2",
     "unit": "mg/L",
-    "min": 0.0,
+    "min": 0,
     "max": 0.1,
-    "target": 0.0
+    "target": 0
   },
   {
     "tankId": "AM 1",
     "speciesCode": "mexicanum",
     "key": "no3",
     "unit": "mg/L",
-    "min": 0.0,
-    "max": 20.0,
-    "target": 10.0
+    "min": 0,
+    "max": 20,
+    "target": 10
   },
   {
     "tankId": "AM 1",
     "speciesCode": "mexicanum",
     "key": "gh",
     "unit": "mg/L",
-    "min": 125.0,
-    "max": 250.0,
-    "target": 180.0
+    "min": 125,
+    "max": 250,
+    "target": 180
   },
   {
     "tankId": "AM 1",
     "speciesCode": "mexicanum",
     "key": "kh",
     "unit": "mg/L",
-    "min": 50.0,
-    "max": 100.0,
-    "target": 75.0
+    "min": 50,
+    "max": 100,
+    "target": 75
   },
   {
     "tankId": "AM 1",
     "speciesCode": "mexicanum",
     "key": "ph",
     "unit": "-",
-    "min": 7.0,
+    "min": 7,
     "max": 7.5,
     "target": 7.2
   },
@@ -157,35 +157,35 @@
     "speciesCode": "mexicanum",
     "key": "po4",
     "unit": "mg/L",
-    "min": 0.0,
-    "max": 1.0,
-    "target": 0.0
+    "min": 0,
+    "max": 1,
+    "target": 0
   },
   {
     "tankId": "AM 1",
     "speciesCode": "mexicanum",
     "key": "cond",
-    "unit": "\u00b5S/cm",
-    "min": 1500.0,
-    "max": 1800.0,
-    "target": 1650.0
+    "unit": "µS/cm",
+    "min": 1500,
+    "max": 1800,
+    "target": 1650
   },
   {
     "tankId": "AM 2",
     "speciesCode": "mexicanum",
     "key": "tds",
     "unit": "mg/L",
-    "min": 1500.0,
-    "max": 1800.0,
-    "target": 1650.0
+    "min": 1500,
+    "max": 1800,
+    "target": 1650
   },
   {
     "tankId": "AM 2",
     "speciesCode": "mexicanum",
     "key": "temp",
-    "unit": "\u00b0C",
-    "min": 16.0,
-    "max": 18.0,
+    "unit": "°C",
+    "min": 16,
+    "max": 18,
     "target": 17
   },
   {
@@ -193,52 +193,52 @@
     "speciesCode": "mexicanum",
     "key": "nh3",
     "unit": "mg/L",
-    "min": 0.0,
-    "max": 0.0,
-    "target": 0.0
+    "min": 0,
+    "max": 0,
+    "target": 0
   },
   {
     "tankId": "AM 2",
     "speciesCode": "mexicanum",
     "key": "no2",
     "unit": "mg/L",
-    "min": 0.0,
+    "min": 0,
     "max": 0.1,
-    "target": 0.0
+    "target": 0
   },
   {
     "tankId": "AM 2",
     "speciesCode": "mexicanum",
     "key": "no3",
     "unit": "mg/L",
-    "min": 0.0,
-    "max": 20.0,
-    "target": 10.0
+    "min": 0,
+    "max": 20,
+    "target": 10
   },
   {
     "tankId": "AM 2",
     "speciesCode": "mexicanum",
     "key": "gh",
     "unit": "mg/L",
-    "min": 125.0,
-    "max": 250.0,
-    "target": 180.0
+    "min": 125,
+    "max": 250,
+    "target": 180
   },
   {
     "tankId": "AM 2",
     "speciesCode": "mexicanum",
     "key": "kh",
     "unit": "mg/L",
-    "min": 50.0,
-    "max": 100.0,
-    "target": 75.0
+    "min": 50,
+    "max": 100,
+    "target": 75
   },
   {
     "tankId": "AM 2",
     "speciesCode": "mexicanum",
     "key": "ph",
     "unit": "-",
-    "min": 7.0,
+    "min": 7,
     "max": 7.5,
     "target": 7.2
   },
@@ -247,35 +247,26 @@
     "speciesCode": "mexicanum",
     "key": "po4",
     "unit": "mg/L",
-    "min": 0.0,
-    "max": 1.0,
-    "target": 0.0
+    "min": 0,
+    "max": 1,
+    "target": 0
   },
   {
     "tankId": "AM 2",
     "speciesCode": "mexicanum",
     "key": "cond",
-    "unit": "\u00b5S/cm",
-    "min": 1500.0,
-    "max": 1800.0,
-    "target": 1650.0
-  },
-  {
-    "tankId": "AM 2",
-    "speciesCode": "mexicanum",
-    "key": "tds",
-    "unit": "mg/L",
-    "min": 1500.0,
-    "max": 1800.0,
-    "target": 1650.0
+    "unit": "µS/cm",
+    "min": 1500,
+    "max": 1800,
+    "target": 1650
   },
   {
     "tankId": "AD",
     "speciesCode": "dumerilii",
     "key": "temp",
-    "unit": "\u00b0C",
-    "min": 15.0,
-    "max": 18.0,
+    "unit": "°C",
+    "min": 15,
+    "max": 18,
     "target": 16.5
   },
   {
@@ -283,52 +274,52 @@
     "speciesCode": "dumerilii",
     "key": "nh3",
     "unit": "mg/L",
-    "min": 0.0,
-    "max": 0.0,
-    "target": 0.0
+    "min": 0,
+    "max": 0,
+    "target": 0
   },
   {
     "tankId": "AD",
     "speciesCode": "dumerilii",
     "key": "no2",
     "unit": "mg/L",
-    "min": 0.0,
+    "min": 0,
     "max": 0.1,
-    "target": 0.0
+    "target": 0
   },
   {
     "tankId": "AD",
     "speciesCode": "dumerilii",
     "key": "no3",
     "unit": "mg/L",
-    "min": 0.0,
-    "max": 20.0,
-    "target": 10.0
+    "min": 0,
+    "max": 20,
+    "target": 10
   },
   {
     "tankId": "AD",
     "speciesCode": "dumerilii",
     "key": "gh",
     "unit": "mg/L",
-    "min": 70.0,
-    "max": 100.0,
-    "target": 75.0
+    "min": 70,
+    "max": 100,
+    "target": 75
   },
   {
     "tankId": "AD",
     "speciesCode": "dumerilii",
     "key": "kh",
     "unit": "mg/L",
-    "min": 150.0,
-    "max": 250.0,
-    "target": 200.0
+    "min": 150,
+    "max": 250,
+    "target": 200
   },
   {
     "tankId": "AD",
     "speciesCode": "dumerilii",
     "key": "ph",
     "unit": "-",
-    "min": 8.0,
+    "min": 8,
     "max": 8.5,
     "target": 8.2
   },
@@ -337,26 +328,107 @@
     "speciesCode": "dumerilii",
     "key": "po4",
     "unit": "mg/L",
-    "min": 0.0,
+    "min": 0,
     "max": 0.5,
-    "target": 0.0
+    "target": 0
   },
   {
     "tankId": "AD",
     "speciesCode": "dumerilii",
     "key": "cond",
-    "unit": "\u00b5S/cm",
-    "min": 400.0,
-    "max": 500.0,
-    "target": 450.0
+    "unit": "µS/cm",
+    "min": 400,
+    "max": 500,
+    "target": 450
   },
   {
     "tankId": "AD",
     "speciesCode": "dumerilii",
     "key": "tds",
     "unit": "mg/L",
-    "min": 180.0,
-    "max": 300.0,
-    "target": 230.0
+    "min": 180,
+    "max": 300,
+    "target": 230
+  },
+  {
+    "tankId": "AM",
+    "speciesCode": "mexicanum",
+    "key": "temp",
+    "unit": "°C",
+    "min": 16,
+    "max": 18,
+    "target": 17
+  },
+  {
+    "tankId": "AM",
+    "speciesCode": "mexicanum",
+    "key": "nh3",
+    "unit": "mg/L",
+    "min": 0,
+    "max": 0,
+    "target": 0
+  },
+  {
+    "tankId": "AM",
+    "speciesCode": "mexicanum",
+    "key": "no2",
+    "unit": "mg/L",
+    "min": 0,
+    "max": 0.1,
+    "target": 0
+  },
+  {
+    "tankId": "AM",
+    "speciesCode": "mexicanum",
+    "key": "no3",
+    "unit": "mg/L",
+    "min": 0,
+    "max": 20,
+    "target": 10
+  },
+  {
+    "tankId": "AM",
+    "speciesCode": "mexicanum",
+    "key": "gh",
+    "unit": "mg/L",
+    "min": 125,
+    "max": 250,
+    "target": 180
+  },
+  {
+    "tankId": "AM",
+    "speciesCode": "mexicanum",
+    "key": "kh",
+    "unit": "mg/L",
+    "min": 50,
+    "max": 100,
+    "target": 75
+  },
+  {
+    "tankId": "AM",
+    "speciesCode": "mexicanum",
+    "key": "ph",
+    "unit": "-",
+    "min": 7,
+    "max": 7.5,
+    "target": 7.2
+  },
+  {
+    "tankId": "AM",
+    "speciesCode": "mexicanum",
+    "key": "po4",
+    "unit": "mg/L",
+    "min": 0,
+    "max": 1,
+    "target": 0
+  },
+  {
+    "tankId": "AM",
+    "speciesCode": "mexicanum",
+    "key": "cond",
+    "unit": "µS/cm",
+    "min": 1500,
+    "max": 1800,
+    "target": 1650
   }
 ]

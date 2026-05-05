@@ -20,12 +20,15 @@ interface Props {
   onFocusChange?: (k: ParamKey | null) => void;
 }
 
-// Each tank gets a fixed line style. AM 2 is the brighter variant with a
-// dashed stroke to distinguish it from AM 1 at a glance.
+// Each tank gets a fixed line style. Pre-2026-04-28 the AM system was split
+// into AM 1 (canonical mexicanum blue) and AM 2 (brighter dashed variant). On
+// 2026-04-28 the two were physically unified into a single 'AM' system that
+// inherits the canonical solid blue.
 const SERIES_STYLE: Record<string, { color: string; dashed?: boolean; brighter?: boolean }> = {
   'AA':   { color: '#B87333' },
   'AM 1': { color: '#2C5F7C' },
   'AM 2': { color: '#5AA0C8', dashed: true, brighter: true },
+  'AM':   { color: '#2C5F7C' },
   'AD':   { color: '#3E6B4A' },
 };
 
@@ -83,14 +86,30 @@ export default function RotatingHeroChart({
 
   const currentKey: ParamKey = activeParams[idx] ?? 'temp';
 
-  // Build chart series for the current parameter
+  // Build chart series for the current parameter. AM 1 and AM 2 lines are
+  // bridged into the first AM datapoint so the visual reads as a Y-merge at
+  // the 2026-04-28 unification rather than two abrupt endings.
   const series = useMemo<ChartSeries[]>(() => {
+    const firstAmBridge = (() => {
+      const amPts = measurements
+        .filter((m) => m.tankId === 'AM' && m.values[currentKey] != null)
+        .sort((a, b) => a.date.localeCompare(b.date));
+      const first = amPts[0];
+      return first ? { date: first.date, value: first.values[currentKey] } : null;
+    })();
+
     return tanks.map((tk) => {
       const style = SERIES_STYLE[tk.id] ?? { color: tk.accentColor };
       const points = measurements
         .filter((m) => m.tankId === tk.id)
         .map((m) => ({ date: m.date, value: m.values[currentKey] ?? null }))
         .sort((a, b) => a.date.localeCompare(b.date));
+
+      if ((tk.id === 'AM 1' || tk.id === 'AM 2') && firstAmBridge && points.length > 0) {
+        const last = points[points.length - 1];
+        if (firstAmBridge.date > last.date) points.push(firstAmBridge);
+      }
+
       return {
         tankId: tk.id,
         label: tk.id,

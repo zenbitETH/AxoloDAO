@@ -24,6 +24,13 @@ interface Props {
   allDataUrl: string;
 }
 
+// AM 1 + AM 2 were physically unified into a single 360 L recirculating system
+// on 2026-04-28. Pre-cutoff weeks render two AM columns; from this date the
+// dashboard collapses to a single "AM" column. The chart still receives the
+// full primary-tank list so a window straddling the cutoff shows AM 1 + AM 2
+// lines ending and the AM line beginning.
+const AM_UNIFICATION = '2026-04-28';
+
 function mondayOf(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
   const date = new Date(y, m - 1, d);
@@ -56,6 +63,7 @@ export default function WaterQualityDashboard({
     return [...set].sort();
   }, [mondays]);
 
+
   const [view, setView] = useState<'overview' | 'detail'>('overview');
   const [weekIso, setWeekIso] = useState<string>(
     () => mondayWeeks[mondayWeeks.length - 1] ?? mondayOf(new Date().toISOString().slice(0, 10)),
@@ -67,6 +75,17 @@ export default function WaterQualityDashboard({
 
   const [allData, setAllData] = useState<Measurement[] | null>(null);
   const [allDataLoading, setAllDataLoading] = useState(false);
+
+  // Date-aware tank visibility for the dashboard grid: pre-cutoff weeks show
+  // AM 1 + AM 2 separately; post-cutoff weeks collapse to AM. The chart still
+  // receives the full primary-tank list so a window straddling the cutoff
+  // renders all three series.
+  const visibleTanksForWeek = useMemo(() => {
+    const post = weekIso >= AM_UNIFICATION;
+    return primaryTanks.filter((tk) =>
+      post ? tk.id !== 'AM 1' && tk.id !== 'AM 2' : tk.id !== 'AM',
+    );
+  }, [primaryTanks, weekIso]);
 
   // Deep-link entry from the ajolotes detail view: `?tank=AA&param=ph` jumps
   // straight to that station and parameter on mount.
@@ -257,7 +276,7 @@ export default function WaterQualityDashboard({
         ) : (
           <TankGrid
             locale={locale}
-            tanks={primaryTanks}
+            tanks={visibleTanksForWeek}
             measurements={weekMeasurements}
             prevMeasurements={prevWeekMeasurements}
             catalog={parameters}

@@ -70,13 +70,25 @@ const AD_UNIFICATION_NOTE = {
   pt: 'Unificado desde o início de 2026 (AD 1.1 + AD 1.2)',
 };
 
+// AM 1 + AM 2 were physically unified into a single recirculating system on
+// 2026-04-28. Pre-cutoff readings keep the AM 1 / AM 2 distinction; from this
+// date onward the Excel writes a single 'AM' row per measurement.
+const AM_UNIFICATION = '2026-04-28';
+const AM_UNIFICATION_NOTE = {
+  es: 'Unificado desde 2026-04-28 (5 acuarios × 72 L)',
+  en: 'Unified since 2026-04-28 (5 sub-aquariums × 72 L)',
+  pt: 'Unificado desde 2026-04-28 (5 sub-aquários × 72 L)',
+};
+
 // Single source of truth for tank metadata. Subsystems (AD 1.x, AM 1.x, AM 2.x)
 // are not listed as distinct tanks; the normalizer below collapses them into
-// their parents.
+// their parents. AM 1 / AM 2 remain primary so their pre-cutoff history can
+// still render side-by-side in the dashboard.
 const TANK_META = {
   'AA':      { speciesCode: 'andersoni', scientificName: 'Ambystoma andersoni', displayName: 'Pecera AA',   volumeL: 106, primary: true,  note: null },
   'AM 1':    { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM 1', volumeL: 67,  primary: true,  note: null },
   'AM 2':    { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM 2', volumeL: 67,  primary: true,  note: null },
+  'AM':      { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM',   volumeL: 360, primary: true,  note: AM_UNIFICATION_NOTE },
   'AD':      { speciesCode: 'dumerilii', scientificName: 'Ambystoma dumerilii', displayName: 'Pecera AD',   volumeL: 252, primary: true,  note: AD_UNIFICATION_NOTE },
   'Llave':   { speciesCode: 'control',   scientificName: null,                   displayName: 'Control (Llave)', volumeL: null, primary: false, note: null },
   'Guppies': { speciesCode: 'guppies',   scientificName: null,                   displayName: 'Guppies',         volumeL: null, primary: false, note: null },
@@ -92,23 +104,49 @@ function speciesCodeFrom(label) {
 }
 
 // Collapse subsystem IDs into their logical parent tank.
-// AD 1.1, AD 1.2, AD1.2, AD-1.1 → AD   (physically unified since early 2026)
-// AM 1.1, AM 1.2               → AM 1  (subsystems feeding parent sump)
-// AM 2.1, AM 2.2               → AM 2
-function normalizeTankId(raw) {
+//   AD 1.1, AD 1.2, AD1.2, AD-1.1 → AD            (unified since early 2026)
+//   AM 1.x, AM 1                  → AM 1 (pre-cutoff) | AM (post-cutoff)
+//   AM 2.x, AM 2                  → AM 2 (pre-cutoff) | AM (post-cutoff)
+//   AM                            → AM   (post-cutoff only; pre-cutoff = invalid)
+//
+// `isoDate` is the row's ISO date (YYYY-MM-DD) and is required so AM routing
+// can pick the right side of the cutoff. For the catalog sheet (which has no
+// date column) use `normalizeCatalogTankId` instead.
+function normalizeTankId(raw, isoDate) {
   const s = (raw ?? '').toString().trim();
   if (!s) return null;
   const compact = s.replace(/\s+/g, ' ').toUpperCase();
+
   if (/^AD[\s-]*\d+\.\d+$/.test(compact) || compact === 'AD') return 'AD';
-  if (/^AM[\s-]*1\.\d+$/.test(compact)) return 'AM 1';
-  if (/^AM[\s-]*2\.\d+$/.test(compact)) return 'AM 2';
-  // Canonical display casing for known parents
-  if (compact === 'AM 1') return 'AM 1';
-  if (compact === 'AM 2') return 'AM 2';
+
+  const post = isoDate >= AM_UNIFICATION;
+
+  if (compact === 'AM') return post ? 'AM' : null;
+  if (compact === 'AM 1' || /^AM[\s-]*1\.\d+$/.test(compact)) return post ? 'AM' : 'AM 1';
+  if (compact === 'AM 2' || /^AM[\s-]*2\.\d+$/.test(compact)) return post ? 'AM' : 'AM 2';
+
   if (compact === 'AA') return 'AA';
   if (compact === 'LLAVE') return 'Llave';
   if (compact === 'GUPPIES') return 'Guppies';
   return s; // unknown id; will be filtered downstream
+}
+
+// Catalog rows are dateless: keep AM 1 / AM 2 / AM literally as written so the
+// catalog can carry both pre-cutoff and post-cutoff entries. After the loop we
+// mirror AM 1 entries under AM so post-cutoff measurements have a min/max set.
+function normalizeCatalogTankId(raw) {
+  const s = (raw ?? '').toString().trim();
+  if (!s) return null;
+  const compact = s.replace(/\s+/g, ' ').toUpperCase();
+
+  if (/^AD[\s-]*\d+\.\d+$/.test(compact) || compact === 'AD') return 'AD';
+  if (compact === 'AM') return 'AM';
+  if (compact === 'AM 1' || /^AM[\s-]*1\.\d+$/.test(compact)) return 'AM 1';
+  if (compact === 'AM 2' || /^AM[\s-]*2\.\d+$/.test(compact)) return 'AM 2';
+  if (compact === 'AA') return 'AA';
+  if (compact === 'LLAVE') return 'Llave';
+  if (compact === 'GUPPIES') return 'Guppies';
+  return s;
 }
 
 function paramKeyFromName(raw) {
@@ -212,8 +250,14 @@ const catalogSheet = wb.Sheets['Catálogo de parámetros'];
 if (!catalogSheet) throw new Error('Sheet "Catálogo de parámetros" not found');
 
 const catalogRows = XLSX.utils.sheet_to_json(catalogSheet, { header: 1, defval: null, raw: true, blankrows: false });
-// Row 0 is the title; row 1 is headers; data starts at row 2.
-const headerRow = catalogRows[1] ?? [];
+// Header row may be at index 0 (current xlsx format) or 1 (older format with a
+// title row). Locate it by scanning for the canonical "ID-sistemas" cell.
+const headerRowIdx = catalogRows.findIndex(r =>
+  Array.isArray(r) && r.some(c => (c ?? '').toString().toLowerCase().includes('id-sistemas'))
+);
+if (headerRowIdx < 0) throw new Error('Catalog: header row with "ID-sistemas" not found');
+const headerRow = catalogRows[headerRowIdx];
+const dataStartIdx = headerRowIdx + 1;
 const idxOf = (needle) => headerRow.findIndex(h => (h ?? '').toString().toLowerCase().includes(needle));
 const IDX = {
   tankId:  idxOf('id-sistemas'),
@@ -230,12 +274,12 @@ const IDX = {
 // measurements so the lookup keys match.
 const parameters = [];
 const seenCatalogKey = new Set();
-for (let r = 2; r < catalogRows.length; r++) {
+for (let r = dataStartIdx; r < catalogRows.length; r++) {
   const row = catalogRows[r];
   if (!row || row.every(c => c == null || c === '')) continue;
   const rawId = (row[IDX.tankId] ?? '').toString().trim();
   if (!rawId) continue;
-  const tankId = normalizeTankId(rawId);
+  const tankId = normalizeCatalogTankId(rawId);
   if (!tankId || !TANK_META[tankId]) continue;
   const paramKey = paramKeyFromName(row[IDX.param]);
   if (!paramKey) {
@@ -255,6 +299,16 @@ for (let r = 2; r < catalogRows.length; r++) {
     target: parseNumber(row[IDX.target]),
   });
 }
+
+// Mirror AM 1 catalog entries under the unified 'AM' key so post-cutoff
+// measurements (m.tankId === 'AM') resolve to a min/max range. Skip params
+// already present under 'AM' (e.g. if the team adds an explicit AM row later).
+const amKeysPresent = new Set(parameters.filter(p => p.tankId === 'AM').map(p => p.key));
+for (const p of parameters.filter(p => p.tankId === 'AM 1')) {
+  if (amKeysPresent.has(p.key)) continue;
+  parameters.push({ ...p, tankId: 'AM' });
+}
+
 writeFileSync(
   join(CONTENT_OUT, 'parameters.json'),
   JSON.stringify(parameters, null, 2) + '\n'
@@ -295,15 +349,16 @@ for (let r = 1; r < measRowsRaw.length; r++) {
 
   const rawTank = (row[IDX_M.pecera] ?? '').toString().trim();
   if (!rawTank) continue;
-  const tankId = normalizeTankId(rawTank);
+
+  const iso = toIsoDate(row[IDX_M.fecha]);
+  if (!iso) { skippedNoDate++; continue; }
+
+  const tankId = normalizeTankId(rawTank, iso);
   if (!tankId || !TANK_META[tankId]) {
     skippedUnknownTank++;
     if (unknownTankSamples.size < 10) unknownTankSamples.add(rawTank);
     continue;
   }
-
-  const iso = toIsoDate(row[IDX_M.fecha]);
-  if (!iso) { skippedNoDate++; continue; }
 
   const values = Object.fromEntries(PARAM_KEYS.map(k => [k, null]));
   for (const [colIdx, paramKey] of colToParam) {
