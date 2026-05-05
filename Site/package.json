@@ -14,7 +14,8 @@
     "data:species": "node scripts/extract-species.mjs",
     "data:tables": "node scripts/build-control-tables.mjs",
     "data:water": "node scripts/data-water.mjs",
-    "data:all": "npm run data:map && npm run data:species && npm run data:tables && npm run data:water"
+    "data:ajolotes": "node scripts/data-ajolotes.mjs",
+    "data:all": "npm run data:map && npm run data:species && npm run data:tables && npm run data:water && npm run data:ajolotes"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

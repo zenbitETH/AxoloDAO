@@ -22,8 +22,8 @@
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 1.27,
-      "respuestaAlim": "Camarón azul",
+      "ultimoConsumo": 1.8,
+      "respuestaAlim": "camarón",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -43,12 +43,12 @@
       "propCabezaCuerpo": 0.2887931034,
       "propColaCuerpo": 1.076724138,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 2.855,
+      "ultimoConsumo": 1.77,
       "respuestaAlim": "Camarón azul",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
@@ -69,13 +69,13 @@
       "propCabezaCuerpo": 0.4174311927,
       "propColaCuerpo": 0.9082568807,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "⚠️ REQUIERE ATENCIÓN",
-      "ultimoConsumo": 2.855,
-      "respuestaAlim": "Camarón azul",
+      "ultimoConsumo": 3.19,
+      "respuestaAlim": "lombriz",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -95,13 +95,13 @@
       "propCabezaCuerpo": 0.3510638298,
       "propColaCuerpo": 0.4657210402,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "⚠️ REQUIERE ATENCIÓN",
-      "ultimoConsumo": 1.157,
-      "respuestaAlim": "Camarón azul",
+      "ultimoConsumo": 3.73,
+      "respuestaAlim": "no le gusta",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -121,13 +121,13 @@
       "propCabezaCuerpo": 0.3955223881,
       "propColaCuerpo": 0.6592039801,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 1.157,
-      "respuestaAlim": "Camarón azul",
+      "ultimoConsumo": 3.73,
+      "respuestaAlim": "lombriz",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -147,13 +147,13 @@
       "propCabezaCuerpo": 0.3894165536,
       "propColaCuerpo": 0.750339213,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "⚠️ REQUIERE ATENCIÓN",
-      "ultimoConsumo": 1.157,
-      "respuestaAlim": "Camarón azul",
+      "ultimoConsumo": 3.73,
+      "respuestaAlim": "lombriz",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -173,13 +173,13 @@
       "propCabezaCuerpo": 0.3595505618,
       "propColaCuerpo": 0.9303370787,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 1.157,
-      "respuestaAlim": "Camarón azul",
+      "ultimoConsumo": 3.19,
+      "respuestaAlim": "lombriz",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -199,13 +199,13 @@
       "propCabezaCuerpo": 0.3469387755,
       "propColaCuerpo": 0.9765306122,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 2.036,
-      "respuestaAlim": "lombriz ",
+      "ultimoConsumo": 7,
+      "respuestaAlim": "lombriz",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -225,13 +225,13 @@
       "propCabezaCuerpo": 0.328,
       "propColaCuerpo": 0.923,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 2.036,
-      "respuestaAlim": "Camarón azul",
+      "ultimoConsumo": 3.19,
+      "respuestaAlim": "lombriz",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -251,13 +251,13 @@
       "propCabezaCuerpo": 0.3143418468,
       "propColaCuerpo": 1.092337917,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "⚠️ REQUIERE ATENCIÓN",
-      "ultimoConsumo": 2.036,
-      "respuestaAlim": "Camarón azul",
+      "ultimoConsumo": 7,
+      "respuestaAlim": "lombriz",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -277,13 +277,13 @@
       "propCabezaCuerpo": 0.3304347826,
       "propColaCuerpo": 0.9304347826,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "⚠️ REQUIERE ATENCIÓN",
-      "ultimoConsumo": 3.29,
-      "respuestaAlim": "Camarón azul",
+      "ultimoConsumo": 1.2,
+      "respuestaAlim": "lombriz",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -303,13 +303,13 @@
       "propCabezaCuerpo": 0.3253012048,
       "propColaCuerpo": 0.8882803943,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 1.78,
-      "respuestaAlim": "Sin datos",
+      "ultimoConsumo": 4.78,
+      "respuestaAlim": "camarón",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -329,13 +329,13 @@
       "propCabezaCuerpo": 0.3314065511,
       "propColaCuerpo": 0.7196531792,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 3.38,
-      "respuestaAlim": "Camarón azul",
+      "ultimoConsumo": 4.37,
+      "respuestaAlim": "camarón",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
@@ -348,19 +348,19 @@
       "fenotipo": "Silvestre",
       "edad": null,
       "estadio": "Cría / Larva",
-      "peso": "Sin datos",
-      "lt": "Sin datos",
-      "lhc": "Sin datos",
-      "icc": "Faltan medidas",
-      "propCabezaCuerpo": "Sin datos",
-      "propColaCuerpo": "Sin datos",
+      "peso": null,
+      "lt": null,
+      "lhc": null,
+      "icc": null,
+      "propCabezaCuerpo": null,
+      "propColaCuerpo": null,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "SIN DATOS",
-      "ultimoConsumo": "Sin datos",
+      "ultimoConsumo": null,
       "respuestaAlim": "Sin datos",
       "alertaGastrica": "SIN DATOS"
     },
@@ -374,19 +374,19 @@
       "fenotipo": "Silvestre",
       "edad": null,
       "estadio": "Cría / Larva",
-      "peso": "Sin datos",
-      "lt": "Sin datos",
-      "lhc": "Sin datos",
-      "icc": "Faltan medidas",
-      "propCabezaCuerpo": "Sin datos",
-      "propColaCuerpo": "Sin datos",
+      "peso": null,
+      "lt": null,
+      "lhc": null,
+      "icc": null,
+      "propCabezaCuerpo": null,
+      "propColaCuerpo": null,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "SIN DATOS",
-      "ultimoConsumo": "Sin datos",
+      "ultimoConsumo": null,
       "respuestaAlim": "Sin datos",
       "alertaGastrica": "SIN DATOS"
     },
@@ -400,19 +400,19 @@
       "fenotipo": "Silvestre",
       "edad": null,
       "estadio": "Cría / Larva",
-      "peso": "Sin datos",
-      "lt": "Sin datos",
-      "lhc": "Sin datos",
-      "icc": "Faltan medidas",
-      "propCabezaCuerpo": "Sin datos",
-      "propColaCuerpo": "Sin datos",
+      "peso": null,
+      "lt": null,
+      "lhc": null,
+      "icc": null,
+      "propCabezaCuerpo": null,
+      "propColaCuerpo": null,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "SIN DATOS",
-      "ultimoConsumo": "Sin datos",
+      "ultimoConsumo": null,
       "respuestaAlim": "Sin datos",
       "alertaGastrica": "SIN DATOS"
     },
@@ -426,19 +426,19 @@
       "fenotipo": "Silvestre",
       "edad": null,
       "estadio": "Cría / Larva",
-      "peso": "Sin datos",
-      "lt": "Sin datos",
-      "lhc": "Sin datos",
-      "icc": "Faltan medidas",
-      "propCabezaCuerpo": "Sin datos",
-      "propColaCuerpo": "Sin datos",
+      "peso": null,
+      "lt": null,
+      "lhc": null,
+      "icc": null,
+      "propCabezaCuerpo": null,
+      "propColaCuerpo": null,
       "asimetria": "Sin datos",
-      "temp": "Sin datos",
+      "temp": null,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "SIN DATOS",
-      "ultimoConsumo": "Sin datos",
+      "ultimoConsumo": null,
       "respuestaAlim": "Sin datos",
       "alertaGastrica": "SIN DATOS"
     }
@@ -480,7 +480,7 @@
       "estadio": "Juvenil",
       "dietaBase": "Lunes: Pellets.\nMar a Vie: Lombriz picada.",
       "planB": "Lombriz picada de composta a la medida de su boca.",
-      "porcion": 4.3,
+      "porcion": "4.3",
       "frecuencia": "Entre semana",
       "notas": "Sifonear rigurosamente cualquier sobrante a los 15 minutos para que el amoniaco no suba a los adultos (AM 1.1)."
     },
@@ -490,7 +490,7 @@
       "estadio": "Juvenil",
       "dietaBase": "Lunes: Pellets.\nMar a Vie: Lombriz picada.",
       "planB": "Lombriz picada de composta a la medida de su boca.",
-      "porcion": 2.5,
+      "porcion": "2.5",
       "frecuencia": "Entre semana",
       "notas": null
     },
@@ -500,7 +500,7 @@
       "estadio": "Juvenil",
       "dietaBase": "Lunes: Pellets.\nMar a Vie: Lombriz picada.",
       "planB": "Lombriz picada de composta a la medida de su boca.",
-      "porcion": 1.6,
+      "porcion": "1.6",
       "frecuencia": "Entre semana",
       "notas": null
     },
@@ -754,7 +754,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "2.1/2.07",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -855,7 +855,7 @@
         "subcategoria": null,
         "tipo": null,
         "justificacion": null,
-        "notas": "Se registra rebrote de crecimiento algodonoso en branquias (intermedia derecha) "
+        "notas": "Se registra rebrote de crecimiento algodonoso en branquias (intermedia derecha)"
       }
     ],
     "Tamal de dulce": [
@@ -996,7 +996,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "0.7/0.69",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -1118,7 +1118,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "0.81/0.84",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -1300,7 +1300,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "1.8/1.86",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -1512,7 +1512,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "1.23/1.2",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -1634,7 +1634,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "1.43/1.39",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -1696,7 +1696,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "0.91/1",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -1818,7 +1818,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "1.75/1.85",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -1940,7 +1940,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "0.96/1.01",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -2032,7 +2032,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "1.2/1.17",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -2154,7 +2154,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "1.5/1.39",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -2336,7 +2336,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "1.53/1.47",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -2518,7 +2518,7 @@
         "antebrazo": null,
         "brazo": null,
         "branqIzq": null,
-        "branqDer": "1.98/2.1",
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -2879,7 +2879,7 @@
     "Tascalate": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 3.66,
@@ -2889,7 +2889,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.05,
@@ -2899,7 +2899,7 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 0.95,
@@ -2909,29 +2909,49 @@
       },
       {
         "fecha": "2026-04-21",
-        "hora": 0.6743055555555556,
+        "hora": 0.9497222222222222,
         "autor": "Practicante",
-        "tipo": "lombriz ",
+        "tipo": null,
         "racion": 0.47,
         "sobrante": 0,
         "consumo": 0.47,
-        "respuesta": "lombriz "
+        "respuesta": "lombriz"
       },
       {
         "fecha": "2026-04-23",
-        "hora": 0.71875,
+        "hora": 0.9941666666666666,
         "autor": "Practicante",
-        "tipo": "lombriz ",
+        "tipo": null,
         "racion": 0.27,
         "sobrante": 0,
         "consumo": 0.27,
-        "respuesta": "lombriz "
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9552777777777778,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 0.17,
+        "sobrante": 0.17,
+        "consumo": 0,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": null,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 7.46,
+        "sobrante": 4.27,
+        "consumo": 3.19,
+        "respuesta": null
       }
     ],
     "Parda": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 3.296,
@@ -2941,7 +2961,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.24,
@@ -2951,7 +2971,7 @@
       },
       {
         "fecha": "2026-04-12",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 5.15,
@@ -2961,7 +2981,7 @@
       },
       {
         "fecha": "2026-04-13",
-        "hora": 0.4583333333333333,
+        "hora": 0.73375,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Guppie",
         "racion": 0.64,
@@ -2971,19 +2991,39 @@
       },
       {
         "fecha": "2026-04-23",
-        "hora": 0.7194444444444444,
+        "hora": 0.9948611111111111,
         "autor": "Practicante",
-        "tipo": "lombriz ",
+        "tipo": null,
         "racion": 0.27,
         "sobrante": 0,
         "consumo": 0.27,
-        "respuesta": "lombriz "
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9552777777777778,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 0.46,
+        "sobrante": 0,
+        "consumo": 0.46,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": 0.8858333333333334,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 7.66,
+        "sobrante": 0.66,
+        "consumo": 7,
+        "respuesta": null
       }
     ],
     "Tamal de dulce": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 3.66,
@@ -2993,7 +3033,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.12,
@@ -3003,7 +3043,7 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.08,
@@ -3013,29 +3053,39 @@
       },
       {
         "fecha": "2026-04-21",
-        "hora": 0.8201388888888889,
+        "hora": 0.09555555555555556,
         "autor": "Practicante",
-        "tipo": "lombriz ",
+        "tipo": null,
         "racion": 0.48,
         "sobrante": 0,
         "consumo": 0.48,
-        "respuesta": "lombriz "
+        "respuesta": "lombriz"
       },
       {
         "fecha": "2026-04-23",
-        "hora": 0.7236111111111111,
+        "hora": 0.9990277777777777,
         "autor": "Practicante",
-        "tipo": "lombriz ",
+        "tipo": null,
         "racion": 0.42,
         "sobrante": 0,
         "consumo": 0.42,
-        "respuesta": "lombriz "
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": 0.8858333333333334,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 4.31,
+        "sobrante": 2.54,
+        "consumo": 1.77,
+        "respuesta": null
       }
     ],
     "Pardo Macho": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 3.29,
@@ -3045,7 +3095,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.18,
@@ -3055,7 +3105,7 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.05,
@@ -3065,19 +3115,39 @@
       },
       {
         "fecha": "2026-04-23",
-        "hora": 0.7381944444444445,
+        "hora": 0.01361111111111111,
         "autor": "Practicante",
-        "tipo": "lombriz ",
+        "tipo": null,
         "racion": 0.27,
         "sobrante": 0,
         "consumo": 0.27,
-        "respuesta": "lombriz "
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9552777777777778,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 0.44,
+        "sobrante": 0.44,
+        "consumo": 0,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": null,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 2.46,
+        "sobrante": 1.26,
+        "consumo": 1.2,
+        "respuesta": null
       }
     ],
     "La negra": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 3.296,
@@ -3087,7 +3157,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.74,
@@ -3097,7 +3167,7 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.05,
@@ -3107,7 +3177,7 @@
       },
       {
         "fecha": "2026-04-15",
-        "hora": 0.6201388888888889,
+        "hora": 0.8955555555555555,
         "autor": "Practicante",
         "tipo": "Guppie",
         "racion": 0.63,
@@ -3117,29 +3187,49 @@
       },
       {
         "fecha": "2026-04-21",
-        "hora": 0.8222222222222222,
+        "hora": 0.09763888888888889,
         "autor": "Practicante",
-        "tipo": "lombriz ",
+        "tipo": null,
         "racion": 0.23,
         "sobrante": 0,
         "consumo": 0.23,
-        "respuesta": "lombriz "
+        "respuesta": "lombriz"
       },
       {
         "fecha": "2026-04-23",
-        "hora": 0.7381944444444445,
+        "hora": 0.01361111111111111,
         "autor": "Practicante",
-        "tipo": "lombriz ",
+        "tipo": null,
         "racion": 0.23,
         "sobrante": 0,
         "consumo": 0.23,
-        "respuesta": "lombriz "
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9552777777777778,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 0.22,
+        "sobrante": 0.22,
+        "consumo": 0,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": null,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 7.66,
+        "sobrante": 0.66,
+        "consumo": 7,
+        "respuesta": null
       }
     ],
     "Martin": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 2.397,
@@ -3149,7 +3239,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.31,
@@ -3159,7 +3249,7 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.13,
@@ -3169,19 +3259,39 @@
       },
       {
         "fecha": "2026-04-21",
-        "hora": 0.8201388888888889,
+        "hora": 0.09555555555555556,
         "autor": "Practicante",
-        "tipo": "no le gusta la lombriz ",
+        "tipo": null,
         "racion": 0,
         "sobrante": 0,
         "consumo": 0,
-        "respuesta": "no le gusta la lombriz "
+        "respuesta": "no le gusta la lombriz"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9552777777777778,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 0,
+        "sobrante": 0,
+        "consumo": 0,
+        "respuesta": "no le gusta"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": null,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 9.28,
+        "sobrante": 5.55,
+        "consumo": 3.73,
+        "respuesta": null
       }
     ],
     "Limon": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 2.397,
@@ -3191,7 +3301,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1,
@@ -3201,7 +3311,7 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.46,
@@ -3211,19 +3321,39 @@
       },
       {
         "fecha": "2026-04-21",
-        "hora": 0.8215277777777777,
+        "hora": 0.09694444444444444,
         "autor": "Practicante",
-        "tipo": "lombriz ",
+        "tipo": null,
         "racion": 0.23,
         "sobrante": 0,
         "consumo": 0.23,
-        "respuesta": "lombriz "
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9552777777777778,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 0.23,
+        "sobrante": 0,
+        "consumo": 0.23,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": null,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 9.28,
+        "sobrante": 5.55,
+        "consumo": 3.73,
+        "respuesta": null
       }
     ],
     "Larvas": [
       {
         "fecha": "2026-04-10",
-        "hora": 0.5902777777777778,
+        "hora": 0.8656944444444444,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": null,
@@ -3233,7 +3363,7 @@
       },
       {
         "fecha": "2026-04-11",
-        "hora": 0.6041666666666666,
+        "hora": 0.8795833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": null,
@@ -3243,7 +3373,7 @@
       },
       {
         "fecha": "2026-04-12",
-        "hora": 0.375,
+        "hora": 0.6504166666666666,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": null,
@@ -3253,7 +3383,7 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.5694444444444444,
+        "hora": 0.8448611111111111,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Croquetas",
         "racion": null,
@@ -3263,7 +3393,7 @@
       },
       {
         "fecha": "2026-04-15",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Croquetas",
         "racion": null,
@@ -3273,7 +3403,7 @@
       },
       {
         "fecha": "2026-04-15",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Pulga de agua/Artemia/Daphnia",
         "racion": null,
@@ -3283,7 +3413,7 @@
       },
       {
         "fecha": "2026-04-16",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Pulga de agua/Artemia/Daphnia",
         "racion": null,
@@ -3295,7 +3425,7 @@
     "Panchita": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 5.51,
@@ -3305,7 +3435,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1,
@@ -3315,7 +3445,7 @@
       },
       {
         "fecha": "2026-04-13",
-        "hora": 0.4583333333333333,
+        "hora": 0.73375,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Guppie",
         "racion": 0.61,
@@ -3325,7 +3455,7 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.02,
@@ -3335,19 +3465,39 @@
       },
       {
         "fecha": "2026-04-15",
-        "hora": 0.6229166666666667,
+        "hora": 0.8983333333333333,
         "autor": "Practicante",
         "tipo": "Guppie",
         "racion": 1.07,
         "sobrante": 0,
         "consumo": 1.07,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9552777777777778,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 3.25,
+        "sobrante": 0,
+        "consumo": 3.25,
+        "respuesta": "camarón"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": null,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 4.46,
+        "sobrante": 2.66,
+        "consumo": 1.8,
+        "respuesta": null
       }
     ],
     "Romulo": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 5.55,
@@ -3357,7 +3507,7 @@
       },
       {
         "fecha": "2026-04-09",
-        "hora": 0.3888888888888889,
+        "hora": 0.6643055555555556,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 3.77,
@@ -3367,7 +3517,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.28,
@@ -3377,7 +3527,7 @@
       },
       {
         "fecha": "2026-04-12",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 2.25,
@@ -3387,7 +3537,7 @@
       },
       {
         "fecha": "2026-04-13",
-        "hora": 0.4583333333333333,
+        "hora": 0.73375,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Guppie",
         "racion": 0.92,
@@ -3397,19 +3547,39 @@
       },
       {
         "fecha": "2026-04-15",
-        "hora": 0.6944444444444444,
+        "hora": 0.9698611111111111,
         "autor": "Practicante",
         "tipo": "Guppie",
         "racion": 0.44,
         "sobrante": 0,
         "consumo": 0.44,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.8858333333333334,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 2.23,
+        "sobrante": 0,
+        "consumo": 2.23,
+        "respuesta": "camarón"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": null,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 8.51,
+        "sobrante": 3.73,
+        "consumo": 4.78,
+        "respuesta": null
       }
     ],
     "Chocoroll": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 2.397,
@@ -3419,7 +3589,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.16,
@@ -3429,19 +3599,39 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.01,
         "sobrante": 0.29,
         "consumo": 0.72,
         "respuesta": "Camarón azul"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9552777777777778,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 0.19,
+        "sobrante": 0,
+        "consumo": 0.19,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": null,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 7.46,
+        "sobrante": 4.27,
+        "consumo": 3.19,
+        "respuesta": null
       }
     ],
     "Goldy": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 2.397,
@@ -3451,7 +3641,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.72,
@@ -3461,19 +3651,39 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 0.8,
         "sobrante": 0.22,
         "consumo": 0.58,
         "respuesta": "Camarón azul"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9552777777777778,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 0.12,
+        "sobrante": 0,
+        "consumo": 0.12,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": 0.8858333333333334,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 9.28,
+        "sobrante": 5.55,
+        "consumo": 3.73,
+        "respuesta": null
       }
     ],
     "Leucistica": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 3.296,
@@ -3483,7 +3693,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.48,
@@ -3493,19 +3703,39 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.01,
         "sobrante": 0,
         "consumo": 1.01,
         "respuesta": "Camarón azul"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9525,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 0.17,
+        "sobrante": 0,
+        "consumo": 0.17,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": 0.8858333333333334,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 7.46,
+        "sobrante": 4.27,
+        "consumo": 3.19,
+        "respuesta": null
       }
     ],
     "Remo": [
       {
         "fecha": "2026-04-08",
-        "hora": 0.5833333333333334,
+        "hora": 0.85875,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 5.38,
@@ -3515,7 +3745,7 @@
       },
       {
         "fecha": "2026-04-09",
-        "hora": 0.3888888888888889,
+        "hora": 0.6643055555555556,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tubifex",
         "racion": 2,
@@ -3525,7 +3755,7 @@
       },
       {
         "fecha": "2026-04-10",
-        "hora": 0.7083333333333334,
+        "hora": 0.98375,
         "autor": "lego-lvsg.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 0.98,
@@ -3535,26 +3765,37 @@
       },
       {
         "fecha": "2026-04-14",
-        "hora": 0.4166666666666667,
+        "hora": 0.6920833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
         "racion": 1.03,
         "sobrante": 0.1,
         "consumo": 0.93,
         "respuesta": "Camarón azul"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.8858333333333334,
+        "autor": "Practicante",
+        "tipo": null,
+        "racion": 1.15,
+        "sobrante": 0,
+        "consumo": 1.15,
+        "respuesta": "camarón"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": 0.8858333333333334,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 8.51,
+        "sobrante": 4.14,
+        "consumo": 4.37,
+        "respuesta": null
       }
     ]
   },
   "bajas": [
-    {
-      "fecha": "2025-12-20",
-      "nombre": "Jaffy",
-      "peso": 60,
-      "longitud": "NA",
-      "edad": "1 año, 6 meses",
-      "causa": "Sospecha de infección parasitica o bacteriana",
-      "necropcia": "NA"
-    },
     {
       "fecha": "2025-01-14",
       "nombre": "Golden",
@@ -3562,6 +3803,15 @@
       "longitud": 17,
       "edad": "1 año, 8 meses",
       "causa": "Infección bacteriana",
+      "necropcia": "NA"
+    },
+    {
+      "fecha": "2025-11-10",
+      "nombre": "Loncho",
+      "peso": 116,
+      "longitud": "NA",
+      "edad": "3 años",
+      "causa": "Sepsis bacteriana/ Daños por caida",
       "necropcia": "NA"
     },
     {
@@ -3574,53 +3824,26 @@
       "necropcia": "En proceso"
     },
     {
-      "fecha": "2025-11-10",
-      "nombre": "Loncho",
-      "peso": 116,
-      "longitud": "NA",
-      "edad": "3 años",
-      "causa": "Sepsis bacteriana/ Daños por caida",
-      "necropcia": "NA "
-    },
-    {
       "fecha": "2025-12-17",
       "nombre": "Guajolote",
       "peso": 26,
       "longitud": 16,
       "edad": "1 año, 8 meses",
       "causa": "Infección bacteriana",
-      "necropcia": "NA "
-    },
-    {
-      "fecha": "2026-04-16",
-      "nombre": "Larva de ajolote (Ambystoma mexicanum)",
-      "peso": "NA",
-      "longitud": "NA",
-      "edad": "3 meses",
-      "causa": "Desconocido",
       "necropcia": "NA"
     },
     {
-      "fecha": null,
-      "nombre": "Larva de ajolote (Ambystoma mexicanum)",
-      "peso": "NA",
+      "fecha": "2025-12-20",
+      "nombre": "Jaffy",
+      "peso": 60,
       "longitud": "NA",
-      "edad": "2 meses",
-      "causa": "Desconocido",
-      "necropcia": "NA"
-    },
-    {
-      "fecha": null,
-      "nombre": "Larva de ajolote (Ambystoma mexicanum)",
-      "peso": "NA",
-      "longitud": "NA",
-      "edad": "2 meses",
-      "causa": "Desconocido",
+      "edad": "1 año, 6 meses",
+      "causa": "Sospecha de infección parasitica o bacteriana",
       "necropcia": "NA"
     },
     {
       "fecha": "2026-04-05",
-      "nombre": "Larva de ajolote (Ambystoma mexicanum)",
+      "nombre": "Larva de ajolote \n(Ambystoma mexicanum)",
       "peso": "NA",
       "longitud": "NA",
       "edad": "2 meses",
@@ -3629,7 +3852,34 @@
     },
     {
       "fecha": "2026-04-15",
-      "nombre": "Larva de ajolote (Ambystoma mexicanum)",
+      "nombre": "Larva de ajolote \n(Ambystoma mexicanum)",
+      "peso": "NA",
+      "longitud": "NA",
+      "edad": "2 meses",
+      "causa": "Desconocido",
+      "necropcia": "NA"
+    },
+    {
+      "fecha": "2026-04-16",
+      "nombre": "Larva de ajolote \n(Ambystoma mexicanum)",
+      "peso": "NA",
+      "longitud": "NA",
+      "edad": "3 meses",
+      "causa": "Desconocido",
+      "necropcia": "NA"
+    },
+    {
+      "fecha": null,
+      "nombre": "Larva de ajolote \n(Ambystoma mexicanum)",
+      "peso": "NA",
+      "longitud": "NA",
+      "edad": "2 meses",
+      "causa": "Desconocido",
+      "necropcia": "NA"
+    },
+    {
+      "fecha": null,
+      "nombre": "Larva de ajolote \n(Ambystoma mexicanum)",
       "peso": "NA",
       "longitud": "NA",
       "edad": "2 meses",
