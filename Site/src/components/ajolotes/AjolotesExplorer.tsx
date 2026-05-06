@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'preact/hooks';
-import type { Bundle, Ejemplar, Locale, SpeciesCode } from './types';
+import type { Baja, Bundle, Ejemplar, Locale, SpeciesCode } from './types';
 import type { Measurement } from '../waterQuality/types';
 import { useTheme, SPECIES_ORDER, stationOf } from './theme';
 import CoverHeader from './CoverHeader';
@@ -34,26 +34,75 @@ function applyTheme(t: 'light' | 'dark') {
   }
 }
 
-// Drop unnamed larva-of-A.mexicanum entries from the public Bajas wall.
-const isLarvaBaja = (b: { nombre: string | null }) =>
-  /^larva\b/i.test((b.nombre ?? '').trim());
+// Public Bajas wall is curated to named, individually-tracked specimens that
+// are part of the current Xolotlcalli memorial scope. The xlsx contains
+// historical entries (Golden, Moka, Guajolote, Jaffy) plus unnamed mexicanum
+// larvae; these are filtered here rather than removed from source so the raw
+// operativo file stays the system of record. Update this list when curators
+// add a new memorialized specimen.
+const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica']);
+const isVisibleBaja = (b: { nombre: string | null }) =>
+  BAJAS_VISIBLE_NAMES.has((b.nombre ?? '').trim());
+
+// Aliases hidden from the live Ajolotes Explorer because the specimens are
+// no longer in the colony: Leucistica passed (memorial in Bajas); Ajolobebe 3
+// and 4 did not survive (their deaths are reflected in the larvae bajas which
+// the public wall already filters out). Cleared once the Monday xlsx update
+// drops them from the active ejemplares sheet.
+const EJEMPLARES_HIDDEN_ALIASES = new Set(['Leucistica', 'Ajolobebe 3', 'Ajolobebe 4']);
+const isHiddenEjemplar = (e: Ejemplar) =>
+  EJEMPLARES_HIDDEN_ALIASES.has((e.alias ?? '').trim());
 
 const isAjolobebe = (e: Ejemplar) =>
   (e.alias ?? '').toLowerCase().includes('ajolobebe');
+
+// Synthesize a Baja entry for Leucistica from her latest ejemplar snapshot
+// when the xlsx has not yet recorded her death. Becomes a no-op once the
+// Monday update adds her to the bajas sheet.
+function synthLeucisticaBaja(ejemplares: Ejemplar[]): Baja | null {
+  const e = ejemplares.find((x) => (x.alias ?? '').trim() === 'Leucistica');
+  if (!e) return null;
+  return {
+    fecha: null,
+    nombre: 'Leucistica',
+    peso: e.peso,
+    longitud: e.lt,
+    edad: e.edad,
+    causa: null,
+    necropcia: null,
+  };
+}
 
 export default function AjolotesExplorer({ locale, bundle, water, paths }: Props) {
   const theme = useTheme();
   const [view, setView] = useState<'ejemplares' | 'bajas'>('ejemplares');
   const [viewDensity, setViewDensity] = useState<'gallery' | 'list'>('gallery');
   const [search, setSearch] = useState('');
-  const [showLarvario, setShowLarvario] = useState(false);
+  // Default ON so the surviving larvae (Ajolobebe 1 + 2) appear in the main
+  // gallery without requiring the curator tweak. The unsurvived siblings are
+  // already excluded via EJEMPLARES_HIDDEN_ALIASES, so this gate is now only
+  // a curator-side power-user toggle, not a public-default safeguard.
+  const [showLarvario, setShowLarvario] = useState(true);
   const [selectedSpecies, setSelectedSpecies] = useState<SpeciesCode | null>(null);
   const [active, setActive] = useState<Ejemplar | null>(null);
 
-  const visibleBajas = useMemo(
-    () => bundle.bajas.filter((b) => !isLarvaBaja(b)),
-    [bundle.bajas],
+  // Drop deceased / off-colony specimens before any downstream component
+  // sees them. Source xlsx still carries them; this filter is the boundary.
+  const liveEjemplares = useMemo<Ejemplar[]>(
+    () => bundle.ejemplares.filter((e: Ejemplar) => !isHiddenEjemplar(e)),
+    [bundle.ejemplares],
   );
+
+  // Curated public memorial: Loncho + Leucistica. If the xlsx has not yet
+  // recorded Leucistica's death, synthesize an entry from her ejemplar row
+  // (next Monday's xlsx update will shadow this synthetic entry).
+  const visibleBajas = useMemo<Baja[]>(() => {
+    const fromData = bundle.bajas.filter(isVisibleBaja);
+    const hasLeucistica = fromData.some((b: Baja) => (b.nombre ?? '').trim() === 'Leucistica');
+    if (hasLeucistica) return fromData;
+    const synth = synthLeucisticaBaja(bundle.ejemplares);
+    return synth ? [...fromData, synth] : fromData;
+  }, [bundle.bajas, bundle.ejemplares]);
 
   // Per-species counts exclude the unnamed ajolobebes so the cover cards
   // reflect named, individually-tracked specimens. The total cell still
@@ -64,29 +113,29 @@ export default function AjolotesExplorer({ locale, bundle, water, paths }: Props
       'A. mexicanum': 0,
       'A. dumerilii': 0,
     };
-    for (const e of bundle.ejemplares) {
+    for (const e of liveEjemplares) {
       if (isAjolobebe(e)) continue;
       if (SPECIES_ORDER.includes(e.especie)) out[e.especie] += 1;
     }
     return out;
-  }, [bundle.ejemplares]);
+  }, [liveEjemplares]);
 
   // Total mirrors what's actually rendered in the gallery: the unnamed
   // ajolobebes + Larvario station are gated behind the "showLarvario" tweak,
   // so the cover number shouldn't pre-count them when they're hidden.
   const totals = useMemo(
     () => ({
-      total: bundle.ejemplares.filter(
+      total: liveEjemplares.filter(
         (e) => showLarvario || (!isAjolobebe(e) && stationOf(e.pecera) !== 'Larvario'),
       ).length,
       bajas: visibleBajas.length,
     }),
-    [bundle.ejemplares, visibleBajas, showLarvario],
+    [liveEjemplares, visibleBajas, showLarvario],
   );
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    return bundle.ejemplares.filter((e) => {
+    return liveEjemplares.filter((e) => {
       if (!showLarvario && isAjolobebe(e)) return false;
       if (!q) return true;
       return (
@@ -97,7 +146,7 @@ export default function AjolotesExplorer({ locale, bundle, water, paths }: Props
         (e.fenotipo ?? '').toLowerCase().includes(q)
       );
     });
-  }, [bundle.ejemplares, search, showLarvario]);
+  }, [liveEjemplares, search, showLarvario]);
 
   const setBajasView = () => setView((v) => (v === 'bajas' ? 'ejemplares' : 'bajas'));
 
@@ -153,7 +202,7 @@ export default function AjolotesExplorer({ locale, bundle, water, paths }: Props
       )}
 
       {view === 'bajas' && (
-        <BajasView bajas={bundle.bajas} locale={locale} onBack={() => setView('ejemplares')} />
+        <BajasView bajas={visibleBajas} locale={locale} onBack={() => setView('ejemplares')} />
       )}
 
       {active && (

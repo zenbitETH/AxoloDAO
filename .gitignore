@@ -31,3 +31,6 @@ Thumbs.db
 # Local-only operational data (xlsx exports, working files)
 Context/
 
+# Private water-telemetry seed kit (input to a separate private repo)
+water-telemetry-seed/
+
