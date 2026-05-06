@@ -104,9 +104,10 @@ export default function AjolotesExplorer({ locale, bundle, water, paths }: Props
     return synth ? [...fromData, synth] : fromData;
   }, [bundle.bajas, bundle.ejemplares]);
 
-  // Per-species counts exclude the unnamed ajolobebes so the cover cards
-  // reflect named, individually-tracked specimens. The total cell still
-  // shows the raw count so curators see the full ledger at a glance.
+  // Per-species counts mirror exactly what the gallery renders, so the cover
+  // cards always agree with `totals.total`. When the Larvario tweak is off,
+  // ajolobebes (and any other Larvario-station specimens) are excluded from
+  // both this breakdown and the total.
   const speciesCounts = useMemo(() => {
     const out: Record<SpeciesCode, number> = {
       'A. andersoni': 0,
@@ -114,11 +115,11 @@ export default function AjolotesExplorer({ locale, bundle, water, paths }: Props
       'A. dumerilii': 0,
     };
     for (const e of liveEjemplares) {
-      if (isAjolobebe(e)) continue;
+      if (!showLarvario && (isAjolobebe(e) || stationOf(e.pecera) === 'Larvario')) continue;
       if (SPECIES_ORDER.includes(e.especie)) out[e.especie] += 1;
     }
     return out;
-  }, [liveEjemplares]);
+  }, [liveEjemplares, showLarvario]);
 
   // Total mirrors what's actually rendered in the gallery: the unnamed
   // ajolobebes + Larvario station are gated behind the "showLarvario" tweak,
