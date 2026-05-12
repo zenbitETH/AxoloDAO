@@ -7,7 +7,7 @@ import { type Locale, t } from '@/i18n/strings';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
-const order = ['axolovision', 'axolodao-system', 'maintenance-monday'];
+const order = ['axolovision', 'axolodao-system', 'axolodao-podcast'];
 const all = await getCollection('projects');
 const projects = order
   .map((slug) => all.find((p) => p.data.slug === slug))

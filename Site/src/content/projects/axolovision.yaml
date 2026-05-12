@@ -1,8 +1,8 @@
 slug: axolovision
 name: Axolovision
-status: live
+status: wip
 accent: teal
-url: https://www.youtube.com/watch?v=LJ315PEfY3I
+url: https://www.youtube.com/@Xolotlcalli/streams
 contributors:
   - xolotlcalli
   - zenbit
@@ -11,9 +11,9 @@ blurb:
   en: 24/7 axolotl livestream with live onchain interactions.
   pt: Transmissão contínua dos axolotes com interações onchain ao vivo.
 description:
-  es: Axolovision es una transmisión en YouTube desde el BioMuseo Xolotlcalli que combina monitoreo permanente de los ajolotes con dinámicas onchain durante la transmisión. Los espectadores pueden disparar acciones, votaciones y registros que quedan asentados en la cadena.
-  en: Axolovision is a YouTube livestream from the Xolotlcalli BioMuseum that pairs continuous monitoring of the axolotls with live onchain dynamics. Viewers can trigger actions, votes and on-record events that settle on chain.
-  pt: A Axolovision é uma transmissão no YouTube desde o BioMuseu Xolotlcalli que combina monitoramento contínuo dos axolotes com dinâmicas onchain ao vivo. Espectadores podem disparar ações, votações e registros que se assentam na cadeia.
+  es: Axolovision es una transmisión en YouTube desde el BioMuseo Xolotlcalli, en desarrollo, que combinará el monitoreo permanente de los ajolotes con dinámicas onchain durante la transmisión. Los espectadores podrán disparar acciones, votaciones y registros que queden asentados en la cadena.
+  en: Axolovision is a YouTube livestream from the Xolotlcalli BioMuseum, under development, that will pair continuous monitoring of the axolotls with live onchain dynamics. Viewers will be able to trigger actions, votes and on-record events that settle on chain.
+  pt: A Axolovision é uma transmissão no YouTube desde o BioMuseu Xolotlcalli, em desenvolvimento, que combinará o monitoramento contínuo dos axolotes com dinâmicas onchain ao vivo. Espectadores poderão disparar ações, votações e registros que se assentem na cadeia.
 cta:
   es: Ver transmisión
   en: Watch live

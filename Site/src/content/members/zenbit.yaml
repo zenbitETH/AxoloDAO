@@ -19,3 +19,16 @@ socials:
   - platform: instagram
     url: https://instagram.com/zenbit.eth
     handle: '@zenbit.eth'
+# Team members. Uncomment + duplicate entries to populate. Photos live in
+# Site/public/photos/team/ — see that folder's README for naming conventions.
+# team:
+#   - name: Nombre Apellido
+#     title:
+#       es: Ingeniero de software
+#       en: Software engineer
+#       pt: Engenheiro de software
+#     photo: /photos/team/zenbit-nombre.webp
+#     socials:
+#       - platform: x
+#         url: https://x.com/handle
+#         handle: '@handle'

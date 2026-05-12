@@ -7,9 +7,13 @@ import { type Locale, t } from '@/i18n/strings';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
+const order = ['inteli', 'uaq', 'semarnat', 'secult-qro'];
 const all = await getCollection('partners');
-const featured = all.filter((p) => p.data.featured);
-const rest = all.filter((p) => !p.data.featured);
+const sorted = order
+  .map((slug) => all.find((p) => p.data.slug === slug))
+  .filter((p): p is (typeof all)[number] => Boolean(p));
+const featured = sorted.filter((p) => p.data.featured);
+const rest = sorted.filter((p) => !p.data.featured);
 ---
 
 <section id="partners" class="scroll-mt-20 py-16">

@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import AxoloNewsInstagramCard from '@components/AxoloNewsInstagramCard.astro';
+import AxoloNewsPodcastCard from '@components/AxoloNewsPodcastCard.astro';
+import { type Locale, t } from '@/i18n/strings';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const all = await getCollection('news');
+const items = all
+  .map((n) => n.data)
+  .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
+  .slice(0, 6);
+---
+
+<section id="news" class="scroll-mt-20 py-16">
+  <div class="container-wide">
+    <header class="mb-10 max-w-2xl">
+      <h2 class="font-display text-4xl font-bold sm:text-5xl">{t(locale, 'news.title')}</h2>
+      <p class="mt-3 text-white/70">{t(locale, 'news.subtitle')}</p>
+    </header>
+
+    <div class="grid gap-6 md:grid-cols-2 md:items-start">
+      <AxoloNewsInstagramCard items={items} locale={locale} />
+      <AxoloNewsPodcastCard locale={locale} />
+    </div>
+  </div>
+</section>

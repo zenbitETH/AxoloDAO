@@ -4,6 +4,9 @@ import HeroParallax from '@components/HeroParallax';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
+
+const xolotlcalliPath = t(locale, 'xolotlcalli.path');
+const ajolotesPath = t(locale, 'ajolotes.path');
 ---
 
 <HeroParallax client:idle />
@@ -13,12 +16,37 @@ const { locale } = Astro.props;
     <h1 class="hero-title mx-auto max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-6xl">
       {t(locale, 'hero.title')}
     </h1>
+
     <p class="hero-subtitle mx-auto mt-6 max-w-2xl text-lg">
       {t(locale, 'hero.subtitle')}
     </p>
-    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
-      <a href="#species" class="btn-primary">{t(locale, 'hero.cta.primary')}</a>
-      <a href="#members" class="btn-secondary">{t(locale, 'hero.cta.secondary')}</a>
+
+    <div class="mt-10 flex flex-col items-center gap-3">
+      <a href="#species" class="btn-primary">
+        {t(locale, 'hero.cta.primary')}
+      </a>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href={xolotlcalliPath} class="btn-secondary btn-secondary--compact">
+          {t(locale, 'hero.cta.xolotlcalli')}
+        </a>
+        <a href={ajolotesPath} class="btn-secondary btn-secondary--compact">
+          {t(locale, 'hero.cta.ajolotes')}
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-disclosure-grid mx-auto mt-12 grid max-w-4xl gap-3 text-left sm:grid-cols-2 sm:items-stretch">
+      <article class="hero-disclosure-item">
+        <span class="badge-rosa">{t(locale, 'hero.problem.label')}</span>
+        <h3 class="hero-disclosure-headline">{t(locale, 'hero.problem.headline')}</h3>
+        <p class="hero-disclosure-text">{t(locale, 'hero.problem.body')}</p>
+      </article>
+
+      <article class="hero-disclosure-item">
+        <span class="badge-teal">{t(locale, 'hero.solution.label')}</span>
+        <h3 class="hero-disclosure-headline">{t(locale, 'hero.solution.headline')}</h3>
+        <p class="hero-disclosure-text">{t(locale, 'hero.solution.body')}</p>
+      </article>
     </div>
   </div>
 </section>

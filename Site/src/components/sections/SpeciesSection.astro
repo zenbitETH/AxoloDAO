@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import SpeciesExplorer from '@components/SpeciesExplorer';
-import { type Locale, localePath } from '@/i18n/strings';
+import { type Locale, localePath, t } from '@/i18n/strings';
+import bundle from '@/data/ajolotes/bundle.json';
+import { ejemplarPhotoUrl, aliasSlug } from '@components/ajolotes/photos';
 
 const mapSvgUrl = '/map/mexico-interactive.svg';
 const bboxesUrl = '/map/state-bboxes.json';
@@ -33,12 +35,34 @@ const speciesData = all
 
 const speciesPathBase = localePath(locale, 'especies/');
 
+// Build the list of BioMuseo ajolotes shown inside each species detail modal.
+// Mirrors the hidden-alias filter used by AjolotesExplorer so memorialized /
+// off-colony specimens don't surface from the map. Only ajolotes with an
+// available photo (per components/ajolotes/photos.ts manifest) are included.
+const HIDDEN_AJOLOTE_ALIASES = new Set(['Leucistica', 'Ajolobebe 3', 'Ajolobebe 4']);
+type RawEjemplar = { alias: string | null; especie: string };
+const museumAjolotes = (bundle.ejemplares as RawEjemplar[])
+  .map((e) => {
+    if (!e.alias) return null;
+    if (HIDDEN_AJOLOTE_ALIASES.has(e.alias)) return null;
+    const photoUrl = ejemplarPhotoUrl(e.alias);
+    if (!photoUrl) return null;
+    return {
+      alias: e.alias,
+      slug: aliasSlug(e.alias),
+      photoUrl,
+      speciesSlug: e.especie.replace(/^A\.\s+/, ''),
+    };
+  })
+  .filter((x): x is NonNullable<typeof x> => x !== null);
+
+const ajolotesPath = t(locale, 'ajolotes.path');
+
 const titleByLocale = {
   es: 'Ajolotes y achoques de México',
   en: 'Axolotls and achoques of Mexico',
   pt: 'Axolotes e achoques do México',
 };
-const breadcrumb = 'Reino Animalia · Phylum Chordata · Clase Amphibia · Orden Caudata · Familia Ambystomatidae · Género Ambystoma';
 const legendNote = {
   es: '* De acuerdo a la Lista Roja de la Unión Internacional para la Conservación de la Naturaleza (UICN).',
   en: '* According to the IUCN Red List of Threatened Species.',
@@ -50,7 +74,7 @@ const legendNote = {
   <div class="container-wide">
     <header class="mb-10">
       <h2 class="font-display text-4xl font-bold sm:text-5xl">{titleByLocale[locale]}</h2>
-      <p class="mt-2 font-mono text-xs italic text-white/55 sm:text-sm md:whitespace-nowrap">{breadcrumb}</p>
+      <p class="mt-2 font-mono text-xs italic text-white/55 sm:text-sm md:whitespace-nowrap">{t(locale, 'species.taxonomy')}</p>
     </header>
   </div>
   <SpeciesExplorer
@@ -61,5 +85,7 @@ const legendNote = {
     locale={locale}
     speciesPathBase={speciesPathBase}
     legendNote={legendNote[locale]}
+    museumAjolotes={museumAjolotes}
+    ajolotesPath={ajolotesPath}
   />
 </section>

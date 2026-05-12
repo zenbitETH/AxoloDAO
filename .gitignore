@@ -25,12 +25,11 @@ yarn-error.log*
 # OS
 Thumbs.db
 
-# Local-only Claude skills (not for public repo)
-.claude/skills/
+# Local-only Claude tooling (not for public repo)
+.claude/
 
 # Local-only operational data (xlsx exports, working files)
 Context/
 
 # Private water-telemetry seed kit (input to a separate private repo)
 water-telemetry-seed/
-

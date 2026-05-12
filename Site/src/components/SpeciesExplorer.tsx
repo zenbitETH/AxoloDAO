@@ -20,6 +20,13 @@ export interface SpeciesItem {
   hasHeroCard: boolean;
 }
 
+export interface MuseumAjolote {
+  alias: string;
+  slug: string;
+  photoUrl: string;
+  speciesSlug: string;
+}
+
 const STATE_LABELS_ES: Record<string, string> = {
   AGU: 'Aguascalientes', BCN: 'Baja California', BCS: 'Baja California Sur', CAM: 'Campeche',
   CHH: 'Chihuahua', CHP: 'Chiapas', CMX: 'Ciudad de México', COA: 'Coahuila', COL: 'Colima',
@@ -50,7 +57,7 @@ const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
     map: 'Mapa', grid: 'Especies', all: 'Todas', states: 'Estados', search: 'Buscar especie...',
     description: 'Descripción', habitat: 'Hábitat', distribution: 'Ubicación', threats: 'Amenazas', references: 'Referencias',
     feeding: 'Alimentación',
-    nstates: 'estados', endemic: 'Endémica de México', protected: 'Presente en ANP', viewFull: 'Ver ficha completa', close: 'Cerrar',
+    nstates: 'estados', endemic: 'Endémica de México', protected: 'Presente en ANP', viewFull: 'Ver ficha completa', close: 'Cerrar', inMuseum: 'En el Biomuseo Xolotlcalli',
     iucnFilter: 'Estatus IUCN', clear: 'Limpiar', searchAria: 'Buscar especie',
     tapAgain: 'Toca de nuevo para ver la ficha',
     zoomIn: 'Acercar mapa', zoomOut: 'Alejar mapa', zoomReset: 'Restablecer zoom',
@@ -59,7 +66,7 @@ const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
     map: 'Map', grid: 'Species', all: 'All', states: 'States', search: 'Search species...',
     description: 'Description', habitat: 'Habitat', distribution: 'Location', threats: 'Threats', references: 'References',
     feeding: 'Diet',
-    nstates: 'states', endemic: 'Endemic to Mexico', protected: 'Found in ANP', viewFull: 'Open full profile', close: 'Close',
+    nstates: 'states', endemic: 'Endemic to Mexico', protected: 'Found in ANP', viewFull: 'Open full profile', close: 'Close', inMuseum: 'At the Xolotlcalli BioMuseum',
     iucnFilter: 'IUCN status', clear: 'Clear', searchAria: 'Search species',
     tapAgain: 'Tap again to open the profile',
     zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomReset: 'Reset zoom',
@@ -68,7 +75,7 @@ const STRINGS: Record<'es' | 'en' | 'pt', Record<string, string>> = {
     map: 'Mapa', grid: 'Espécies', all: 'Todas', states: 'Estados', search: 'Buscar espécie...',
     description: 'Descrição', habitat: 'Hábitat', distribution: 'Localização', threats: 'Ameaças', references: 'Referências',
     feeding: 'Alimentação',
-    nstates: 'estados', endemic: 'Endêmica do México', protected: 'Presente em ANP', viewFull: 'Ver ficha completa', close: 'Fechar',
+    nstates: 'estados', endemic: 'Endêmica do México', protected: 'Presente em ANP', viewFull: 'Ver ficha completa', close: 'Fechar', inMuseum: 'No BioMuseu Xolotlcalli',
     iucnFilter: 'Status IUCN', clear: 'Limpar', searchAria: 'Buscar espécie',
     tapAgain: 'Toque novamente para abrir a ficha',
     zoomIn: 'Aproximar mapa', zoomOut: 'Afastar mapa', zoomReset: 'Redefinir zoom',
@@ -84,6 +91,8 @@ interface Props {
   locale: 'es' | 'en' | 'pt';
   speciesPathBase: string;
   legendNote?: string;
+  museumAjolotes?: MuseumAjolote[];
+  ajolotesPath?: string;
 }
 
 const IUCN_GROUPS = [
@@ -143,7 +152,7 @@ function smoothScrollTo(el: HTMLElement | null) {
   });
 }
 
-export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale, speciesPathBase, legendNote }: Props) {
+export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale, speciesPathBase, legendNote, museumAjolotes, ajolotesPath }: Props) {
   const tx = STRINGS[locale];
 
   const [mapSvg, setMapSvg] = useState<string | null>(null);
@@ -579,6 +588,8 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
           onClose={handleSheetClose}
           speciesPathBase={speciesPathBase}
           isCoarse={isCoarse}
+          museumAjolotes={museumAjolotes}
+          ajolotesPath={ajolotesPath}
         />
       )}
     </div>
@@ -667,11 +678,13 @@ interface SheetProps {
   onClose: () => void;
   speciesPathBase: string;
   isCoarse: boolean;
+  museumAjolotes?: MuseumAjolote[];
+  ajolotesPath?: string;
 }
 
 type Snap = 'half' | 'full';
 
-function SpeciesDetailSheet({ sp, locale, onClose, speciesPathBase, isCoarse }: SheetProps) {
+function SpeciesDetailSheet({ sp, locale, onClose, speciesPathBase, isCoarse, museumAjolotes, ajolotesPath }: SheetProps) {
   const tx = STRINGS[locale];
   const [isDrawer, setIsDrawer] = useState(isCoarse);
   const [snap, setSnap] = useState<Snap>('half');
@@ -758,7 +771,15 @@ function SpeciesDetailSheet({ sp, locale, onClose, speciesPathBase, isCoarse }: 
     lastDrag.current = null;
   }
 
-  const content = <DetailBody sp={sp} locale={locale} speciesPathBase={speciesPathBase} />;
+  const content = (
+    <DetailBody
+      sp={sp}
+      locale={locale}
+      speciesPathBase={speciesPathBase}
+      museumAjolotes={museumAjolotes}
+      ajolotesPath={ajolotesPath}
+    />
+  );
 
   if (!isDrawer) {
     return (
@@ -826,9 +847,22 @@ function SpeciesDetailSheet({ sp, locale, onClose, speciesPathBase, isCoarse }: 
   );
 }
 
-function DetailBody({ sp, locale, speciesPathBase }: { sp: SpeciesItem; locale: 'es' | 'en' | 'pt'; speciesPathBase: string }) {
+function DetailBody({
+  sp,
+  locale,
+  speciesPathBase,
+  museumAjolotes,
+  ajolotesPath,
+}: {
+  sp: SpeciesItem;
+  locale: 'es' | 'en' | 'pt';
+  speciesPathBase: string;
+  museumAjolotes?: MuseumAjolote[];
+  ajolotesPath?: string;
+}) {
   const tx = STRINGS[locale];
   const heroImage = HERO_IMAGE_FILE[sp.slug];
+  const ajolotesForSpecies = (museumAjolotes ?? []).filter((a) => a.speciesSlug === sp.slug);
   return (
     <div>
       <div class="relative w-full overflow-hidden bg-gradient-to-br from-mid-navy via-navy to-dark-navy">
@@ -885,6 +919,31 @@ function DetailBody({ sp, locale, speciesPathBase }: { sp: SpeciesItem; locale: 
               ))}
             </div>
           </div>
+        )}
+        {ajolotesForSpecies.length > 0 && ajolotesPath && (
+          <section class="mt-6">
+            <h4 class="mb-3 text-xs font-semibold uppercase tracking-wider text-teal/80">{tx.inMuseum}</h4>
+            <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {ajolotesForSpecies.map((a) => (
+                <a
+                  key={a.slug}
+                  href={`${ajolotesPath}#${a.slug}`}
+                  class="group block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-colors duration-200 hover:border-teal/50 hover:bg-white/[0.06]"
+                >
+                  <div class="aspect-square overflow-hidden bg-mid-navy">
+                    <img
+                      src={a.photoUrl}
+                      alt={a.alias}
+                      loading="lazy"
+                      decoding="async"
+                      class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <p class="px-3 py-2 text-sm font-medium text-white/85 group-hover:text-teal">{a.alias}</p>
+                </a>
+              ))}
+            </div>
+          </section>
         )}
         {sp.references.length > 0 && (
           <details class="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
