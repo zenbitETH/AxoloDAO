@@ -84,6 +84,9 @@
       transform 160ms var(--btn-ease),
       box-shadow 220ms var(--btn-ease);
   }
+  .btn-secondary--compact {
+    @apply px-5 py-2.5 text-sm;
+  }
   .btn-primary:focus-visible,
   .btn-secondary:focus-visible {
     outline: none;
@@ -873,4 +876,42 @@
   --wq-divider:        rgba(74, 54, 40, 0.10);
   --wq-row-bg:         rgba(74, 54, 40, 0.04);
   --wq-cell-bg:        #FFFFFF;
+}
+
+/* Hero Problem/Solution cards
+ * Always-visible static cards. Stronger surface + backdrop-blur so the cards
+ * read as anchored objects on top of the parallax axolotl (mobile especially).
+ */
+.hero-disclosure-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.125rem 1.25rem 1.25rem;
+  border-radius: 1.125rem;
+  background-color: rgba(7, 31, 41, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+[data-theme="light"] .hero-disclosure-item {
+  background-color: rgba(246, 239, 224, 0.72);
+  border-color: rgba(7, 31, 41, 0.10);
+}
+
+.hero-disclosure-headline {
+  font-family: 'Baloo 2', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: rgb(var(--text-rgb));
+  margin: 0;
+}
+
+.hero-disclosure-text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgb(var(--text-rgb) / 0.82);
+  margin: 0;
 }
