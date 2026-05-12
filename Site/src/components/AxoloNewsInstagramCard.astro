@@ -1,0 +1,95 @@
+---
+import { type Locale, t } from '@/i18n/strings';
+
+interface Item {
+  slug: string;
+  author: 'zenbit' | 'xolotlcalli' | 'ndali';
+  url: string;
+  image: string;
+  caption: { es: string; en: string; pt: string };
+  publishedAt: string;
+  weekNumber?: number;
+  podcastNumber?: number;
+}
+
+interface Props {
+  items: Item[];
+  locale: Locale;
+}
+
+const { items, locale } = Astro.props;
+
+// `items` arrives sorted newest-first; the latest snaps first in the rail.
+const handles = [
+  { user: 'zenbit.eth', url: 'https://www.instagram.com/zenbit.eth/' },
+  { user: 'xolotlcalli.mx', url: 'https://www.instagram.com/xolotlcalli.mx/' },
+  { user: 'ndali_centro_de_conexion', url: 'https://www.instagram.com/ndali_centro_de_conexion/' },
+];
+---
+
+<article class="glass glass-hover flex flex-col overflow-hidden rounded-3xl p-6">
+  <header class="mb-4">
+    <h3 class="font-display text-2xl">{t(locale, 'news.instagram.title')}</h3>
+    <p class="mt-1 line-clamp-1 text-sm text-white/70">{t(locale, 'news.instagram.subtitle')}</p>
+  </header>
+
+  {items.length > 0 ? (
+    <div class="pulso-rail -mx-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-2">
+      {items.map((it) => (
+        <a
+          href={it.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={it.caption[locale]}
+          class="group block w-[78%] max-w-[260px] flex-shrink-0 snap-start"
+        >
+          <div class="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+            <img
+              src={it.image}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+            {it.weekNumber !== undefined && (
+              <span class="absolute left-3 top-3 rounded-full bg-dark-navy/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-marfil backdrop-blur-sm">
+                Pulso #{it.weekNumber}
+              </span>
+            )}
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent p-3">
+              <p class="line-clamp-2 text-[11px] leading-snug text-white/95">
+                {it.caption[locale]}
+              </p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  ) : (
+    <p class="text-sm text-white/55">{t(locale, 'common.soon')}</p>
+  )}
+
+  <footer class="mt-5 flex flex-wrap items-center gap-2 text-sm">
+    <span class="text-white/65">{t(locale, 'news.instagram.follow')}:</span>
+    {handles.map((h) => (
+      <a
+        href={h.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full border border-teal/40 bg-teal/10 px-3 py-1 text-xs font-semibold text-teal hover:bg-teal/20"
+      >@{h.user}</a>
+    ))}
+  </footer>
+</article>
+
+<style>
+  /* Hide native scrollbar on the rail while keeping horizontal snap-scroll. */
+  .pulso-rail {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-padding-inline: 1.5rem;
+  }
+  .pulso-rail::-webkit-scrollbar {
+    display: none;
+  }
+</style>
