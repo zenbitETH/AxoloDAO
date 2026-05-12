@@ -1,0 +1,16 @@
+slug: uaq
+name: UAQ
+logoMode: text
+website: https://fcn.uaq.mx/
+role:
+  es: Universidad Autónoma de Querétaro
+  en: Universidad Autónoma de Querétaro
+  pt: Universidad Autónoma de Querétaro
+description:
+  es: Colaboración con la Universidad Autónoma de Querétaro a través de la Facultad de Ciencias Naturales y su Cuerpo Académico de Ecología y Diversidad Faunística (CAEyDF). Aporta capacidad de investigación, criterios técnicos y validación científica al ecosistema AxoloDAO.
+  en: Collaboration with the Universidad Autónoma de Querétaro through the Facultad de Ciencias Naturales and its Cuerpo Académico de Ecología y Diversidad Faunística (CAEyDF) — an academic group providing research capacity, technical criteria and scientific validation to the AxoloDAO ecosystem.
+  pt: Colaboração com a Universidad Autónoma de Querétaro através da Facultad de Ciencias Naturales e seu Cuerpo Académico de Ecología y Diversidad Faunística (CAEyDF) — um grupo acadêmico que contribui com capacidade de pesquisa, critérios técnicos e validação científica ao ecossistema da AxoloDAO.
+socials:
+  - platform: instagram
+    url: https://www.instagram.com/ecoydiv_faunistica.uaq/
+    handle: '@ecoydiv_faunistica.uaq'
