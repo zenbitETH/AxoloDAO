@@ -9,6 +9,13 @@ const social = z.object({
   handle: z.string().optional(),
 });
 
+const teamMember = z.object({
+  name: z.string(),
+  title: localeText,
+  photo: z.string().optional(),
+  socials: z.array(social).default([]),
+});
+
 const members = defineCollection({
   type: 'data',
   schema: z.object({
@@ -21,6 +28,7 @@ const members = defineCollection({
     icon: z.string().optional(),
     ens: z.string().optional(),
     accentColor: z.string().optional(),
+    team: z.array(teamMember).default([]),
   }),
 });
 
@@ -88,5 +96,19 @@ const species = defineCollection({
   }),
 });
 
-export const collections = { members, partners, projects, species };
+const news = defineCollection({
+  type: 'data',
+  schema: z.object({
+    slug: z.string(),
+    author: z.enum(['zenbit', 'xolotlcalli', 'ndali']),
+    url: z.string().url(),
+    image: z.string(),
+    caption: localeText,
+    publishedAt: z.string(),
+    weekNumber: z.number().optional(),
+    podcastNumber: z.number().optional(),
+  }),
+});
+
+export const collections = { members, partners, projects, species, news };
 export { STATE_CODES };

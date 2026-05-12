@@ -10,6 +10,7 @@ const home = localePath(locale);
 const links = [
   { href: `${home}#species`,             label: t(locale, 'nav.species') },
   { href: t(locale, 'xolotlcalli.path'), label: t(locale, 'nav.xolotlcalli') },
+  { href: t(locale, 'ajolotes.path'),    label: t(locale, 'nav.ajolotes') },
   { href: `${home}#projects`,            label: t(locale, 'nav.projects') },
 ];
 ---
@@ -62,11 +63,42 @@ const links = [
 <script>
   const btn = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
+  const MENU_STATE = 'axolodao:mobile-menu';
+
+  function isOpen() {
+    return menu ? !menu.classList.contains('hidden') : false;
+  }
+
+  function openMenu() {
+    if (!btn || !menu || isOpen()) return;
+    menu.classList.remove('hidden');
+    menu.classList.add('flex');
+    btn.setAttribute('aria-expanded', 'true');
+    history.pushState({ [MENU_STATE]: true }, '');
+  }
+
+  function closeMenu(viaPopstate = false) {
+    if (!btn || !menu || !isOpen()) return;
+    menu.classList.add('hidden');
+    menu.classList.remove('flex');
+    btn.setAttribute('aria-expanded', 'false');
+    if (!viaPopstate && history.state && (history.state as Record<string, unknown>)[MENU_STATE]) {
+      history.back();
+    }
+  }
+
   if (btn && menu) {
     btn.addEventListener('click', () => {
-      const open = menu.classList.toggle('hidden');
-      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
-      menu.classList.toggle('flex', !open);
+      if (isOpen()) closeMenu();
+      else openMenu();
+    });
+
+    menu.querySelectorAll('a[href]').forEach((link) => {
+      link.addEventListener('click', () => closeMenu());
+    });
+
+    window.addEventListener('popstate', () => {
+      if (isOpen()) closeMenu(true);
     });
   }
 </script>

@@ -22,3 +22,16 @@ socials:
   - platform: youtube
     url: https://youtube.com/@Xolotlcalli
     handle: '@Xolotlcalli'
+# Team members. Uncomment + duplicate entries to populate. Photos live in
+# Site/public/photos/team/ — see that folder's README for naming conventions.
+# team:
+#   - name: Nombre Apellido
+#     title:
+#       es: Curador
+#       en: Curator
+#       pt: Curador
+#     photo: /photos/team/xolotlcalli-nombre.webp
+#     socials:
+#       - platform: instagram
+#         url: https://instagram.com/handle
+#         handle: '@handle'

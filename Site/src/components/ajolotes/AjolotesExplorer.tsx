@@ -1,7 +1,8 @@
-import { useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'preact/hooks';
 import type { Baja, Bundle, Ejemplar, Locale, SpeciesCode } from './types';
 import type { Measurement } from '../waterQuality/types';
 import { useTheme, SPECIES_ORDER, stationOf } from './theme';
+import { aliasSlug } from './photos';
 import CoverHeader from './CoverHeader';
 import Toolbar from './Toolbar';
 import StationsList from './StationsList';
@@ -133,6 +134,24 @@ export default function AjolotesExplorer({ locale, bundle, water, paths }: Props
     }),
     [liveEjemplares, visibleBajas, showLarvario],
   );
+
+  // Deep-link: when the page loads with #<alias-slug> (e.g. linked from the
+  // species map modal), open that ejemplar's detail. Also listen for in-page
+  // hashchange so navigating between hashes on the same page works.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const openFromHash = () => {
+      const hash = window.location.hash.replace(/^#/, '');
+      if (!hash) return;
+      const match = liveEjemplares.find(
+        (e) => e.alias && aliasSlug(e.alias) === hash,
+      );
+      if (match) setActive(match);
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+    return () => window.removeEventListener('hashchange', openFromHash);
+  }, [liveEjemplares]);
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();

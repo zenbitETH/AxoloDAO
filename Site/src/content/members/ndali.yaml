@@ -16,3 +16,16 @@ socials:
   - platform: instagram
     url: https://instagram.com/ndali_centro_de_conexion
     handle: '@ndali_centro_de_conexion'
+# Team members. Uncomment + duplicate entries to populate. Photos live in
+# Site/public/photos/team/ — see that folder's README for naming conventions.
+# team:
+#   - name: Nombre Apellido
+#     title:
+#       es: Coordinador
+#       en: Coordinator
+#       pt: Coordenador
+#     photo: /photos/team/ndali-nombre.webp
+#     socials:
+#       - platform: instagram
+#         url: https://instagram.com/handle
+#         handle: '@handle'

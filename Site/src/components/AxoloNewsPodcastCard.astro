@@ -1,0 +1,72 @@
+---
+import { type Locale, t } from '@/i18n/strings';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const PLAYLIST_ID = 'PLv7U-stID9gtb-Tx_JKIXBWPdKl1spBnS';
+const PLAYLIST_URL = `https://www.youtube.com/playlist?list=${PLAYLIST_ID}`;
+// Playlist thumbnails are not directly accessible — the YT thumbnail CDN takes
+// a video id, not a playlist id. The onerror handler below hides a broken
+// thumbnail so we fall back to the static gradient + play button only.
+const THUMB = `https://i.ytimg.com/vi/${PLAYLIST_ID}/maxresdefault.jpg`;
+---
+
+<article class="glass glass-hover flex flex-col overflow-hidden rounded-3xl p-6">
+  <header class="mb-4">
+    <h3 class="font-display text-2xl">{t(locale, 'news.podcast.title')}</h3>
+    <p class="mt-1 line-clamp-1 text-sm text-white/70">{t(locale, 'news.podcast.subtitle')}</p>
+  </header>
+
+  <div
+    class="podcast-embed group relative aspect-video w-full cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-mid-navy via-navy to-dark-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal/70"
+    data-playlist-id={PLAYLIST_ID}
+    role="button"
+    tabindex="0"
+    aria-label={t(locale, 'news.podcast.play')}
+  >
+    <img
+      src={THUMB}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+      onerror="this.style.display='none'"
+    />
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="grid h-16 w-16 place-items-center rounded-full bg-rosa/90 text-white shadow-neon-rosa transition-transform duration-200 group-hover:scale-110">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-7 w-7 translate-x-0.5" aria-hidden="true">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-5 flex items-center justify-between">
+    <a
+      href={PLAYLIST_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-sm font-semibold text-teal hover:underline"
+    >{t(locale, 'news.podcast.cta')} →</a>
+  </footer>
+</article>
+
+<script>
+  // Click-to-play: zero 3rd-party scripts until the user opts in.
+  document.querySelectorAll<HTMLElement>('.podcast-embed').forEach((el) => {
+    const swap = () => {
+      const id = el.dataset.playlistId;
+      if (!id || el.dataset.loaded === '1') return;
+      el.dataset.loaded = '1';
+      el.innerHTML = `<iframe class="absolute inset-0 h-full w-full" src="https://www.youtube-nocookie.com/embed/videoseries?list=${id}&autoplay=1&rel=0" title="AxoloDAO Podcast" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+    };
+    el.addEventListener('click', swap);
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        swap();
+      }
+    });
+  });
+</script>
