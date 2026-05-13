@@ -27,12 +27,50 @@ const { id, locale } = Astro.props;
 </dialog>
 
 <script>
+  // showModal pushes a history marker so the browser back button / iOS
+  // back-swipe close the dialog. The popstate listener is only attached while
+  // a dialog is actually open, so a dormant Modal.astro script can't intercept
+  // popstate events meant for other patterns (e.g. the header menu).
+  const DIALOG_STATE = 'axolodao:dialog';
+
   document.querySelectorAll('dialog').forEach((dlg) => {
-    dlg.addEventListener('click', (e) => {
-      if (e.target === dlg) dlg.close();
+    const native = dlg as HTMLDialogElement;
+    let popstateHandler: ((e: PopStateEvent) => void) | null = null;
+    let consumedByBack = false;
+
+    const originalShowModal = native.showModal.bind(native);
+    native.showModal = () => {
+      originalShowModal();
+      consumedByBack = false;
+      history.pushState({ [DIALOG_STATE]: native.id || true }, '');
+      popstateHandler = (e) => {
+        // Only respond when OUR marker was popped — if a higher overlay was
+        // stacked on top of us and just closed, the new state still has our
+        // marker; leave us open.
+        const state = e.state as Record<string, unknown> | null;
+        if (state && state[DIALOG_STATE]) return;
+        consumedByBack = true;
+        native.close();
+      };
+      window.addEventListener('popstate', popstateHandler);
+    };
+
+    native.addEventListener('close', () => {
+      if (popstateHandler) {
+        window.removeEventListener('popstate', popstateHandler);
+        popstateHandler = null;
+      }
+      if (consumedByBack) return;
+      if (history.state && (history.state as Record<string, unknown>)[DIALOG_STATE]) {
+        history.back();
+      }
     });
-    dlg.querySelectorAll('[data-close]').forEach((btn) => {
-      btn.addEventListener('click', () => dlg.close());
+
+    native.addEventListener('click', (e) => {
+      if (e.target === native) native.close();
+    });
+    native.querySelectorAll('[data-close]').forEach((btn) => {
+      btn.addEventListener('click', () => native.close());
     });
   });
 </script>

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import MexicoMap from './MexicoMap';
+import { useBackToClose } from './useBackToClose';
 
 export interface SpeciesItem {
   slug: string;
@@ -367,6 +368,10 @@ export default function SpeciesExplorer({ species, mapSvgUrl, bboxesUrl, locale,
     setSelected(null);
     clearFocus();
   }
+
+  // Back-button / back-gesture closes the species detail sheet, mirroring the
+  // mobile-menu pattern in Header.astro.
+  useBackToClose(selected !== null, handleSheetClose, 'axolodao:species-sheet');
 
   function clearAll() {
     setIucnGroupFilter(null);

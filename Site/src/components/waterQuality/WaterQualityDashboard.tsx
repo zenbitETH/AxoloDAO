@@ -15,12 +15,15 @@ import ViewToggle from './ViewToggle';
 import TankGrid from './TankGrid';
 import TankCard from './TankCard';
 import RotatingHeroChart from './RotatingHeroChart';
+import type { Ejemplar } from '../ajolotes/types';
+import { useBackToClose } from '../useBackToClose';
 
 interface Props {
   locale: Locale;
   tanks: Tank[];
   parameters: ParameterCatalogEntry[];
   mondays: Measurement[];
+  ejemplares: Ejemplar[];
   allDataUrl: string;
 }
 
@@ -52,6 +55,7 @@ export default function WaterQualityDashboard({
   tanks,
   parameters,
   mondays,
+  ejemplares,
   allDataUrl,
 }: Props) {
   const t = STRINGS[locale];
@@ -241,6 +245,8 @@ export default function WaterQualityDashboard({
     setView('overview');
   }
 
+  useBackToClose(view === 'detail', onBack, 'axolodao:wq-detail');
+
   return (
     <section class="relative mx-auto max-w-6xl px-4 py-6 sm:py-8">
       {/* Overview */}
@@ -330,6 +336,7 @@ export default function WaterQualityDashboard({
             curr={currForDetail}
             history={historyForDetail}
             catalogForTank={catalogForSelected}
+            ejemplares={ejemplares}
             onBack={onBack}
             window={timeWindow}
             onWindowChange={setTimeWindow}
