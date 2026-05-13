@@ -100,7 +100,7 @@ export default function TankGrid({
                 class={`flex items-center rounded-xl px-3.5 py-2.5 text-left font-display text-[15px] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)] ${
                   activeParam === k
                     ? 'bg-[var(--wq-ink)] text-[var(--wq-surface)] shadow-sm'
-                    : 'bg-choco/90 text-cream hover:bg-[var(--wq-ink)]'
+                    : 'bg-choco/90 text-cream hover:bg-choco dark:hover:bg-choco'
                 }`}
                 title="Ver gráfica de este parámetro"
               >
@@ -122,9 +122,12 @@ export default function TankGrid({
                     ? 'ring-2 ring-amber-300/80'
                     : 'ring-1 ring-black/10';
                 return (
-                  <div
+                  <button
+                    type="button"
                     key={`${tk.id}-${k}`}
-                    class={`wq-on-accent relative flex flex-col justify-between rounded-xl px-3.5 py-2.5 text-left shadow-sm ${ringCls}`}
+                    onClick={() => onTankSelect(tk.id)}
+                    aria-label={`${tk.displayName} · ${paramLabel(locale, k)} — ver detalle`}
+                    class={`wq-on-accent group relative flex flex-col justify-between rounded-xl px-3.5 py-2.5 text-left shadow-sm transition hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)] ${ringCls}`}
                     style={{ backgroundColor: tk.accentColor }}
                   >
                     <div class="flex items-start justify-between gap-2">
@@ -147,7 +150,7 @@ export default function TankGrid({
                         <span class="opacity-60">sin rango</span>
                       )}
                     </div>
-                  </div>
+                  </button>
                 );
               })}
             </>

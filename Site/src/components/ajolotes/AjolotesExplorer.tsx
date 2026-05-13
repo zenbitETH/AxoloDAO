@@ -10,6 +10,7 @@ import EjemplarTable from './EjemplarTable';
 import BajasView from './BajasView';
 import EjemplarModal from './EjemplarModal';
 import TweaksPanel from './TweaksPanel';
+import { useBackToClose } from '../useBackToClose';
 
 interface Props {
   locale: Locale;
@@ -86,6 +87,11 @@ export default function AjolotesExplorer({ locale, bundle, water, paths }: Props
   const [showLarvario, setShowLarvario] = useState(true);
   const [selectedSpecies, setSelectedSpecies] = useState<SpeciesCode | null>(null);
   const [active, setActive] = useState<Ejemplar | null>(null);
+
+  // Back-button / back-gesture closes overlay-like views (ejemplar modal,
+  // bajas view) — same idiom as the mobile menu in Header.astro.
+  useBackToClose(active !== null, () => setActive(null), 'axolodao:ejemplar-modal');
+  useBackToClose(view === 'bajas', () => setView('ejemplares'), 'axolodao:bajas-view');
 
   // Drop deceased / off-colony specimens before any downstream component
   // sees them. Source xlsx still carries them; this filter is the boundary.

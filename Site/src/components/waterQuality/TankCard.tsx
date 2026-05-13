@@ -10,6 +10,9 @@ import ParameterTable from './ParameterTable';
 import HistoricalGrid from './HistoricalGrid';
 import WindowToggle from './WindowToggle';
 import { accentForTheme, useTheme } from './theme';
+import type { Ejemplar } from '../ajolotes/types';
+import { aliasSlug, ejemplarPhotoUrl } from '../ajolotes/photos';
+import AjoloteAvatar from '../ajolotes/AjoloteAvatar';
 
 interface Props {
   locale: Locale;
@@ -18,9 +21,22 @@ interface Props {
   curr: Measurement | null;
   history: Measurement[];
   catalogForTank: ParameterCatalogEntry[];
+  ejemplares: Ejemplar[];
   onBack: () => void;
   window: TimeWindow;
   onWindowChange: (w: TimeWindow) => void;
+}
+
+// Bundle stores pecera as "AM 1.1", "AM 1.2", "AM 2.1" etc., while tank IDs in
+// the water-quality data are "AM 1", "AM 2", and the unified "AM". Match by
+// prefix for the AM family (AM unified gets everything that starts with AM);
+// for AA and AD an exact match is sufficient.
+function ejemplarBelongsToTank(pecera: string | null, tankId: string): boolean {
+  if (!pecera) return false;
+  const p = pecera.trim();
+  if (tankId === 'AM') return p.startsWith('AM');
+  if (tankId === 'AM 1' || tankId === 'AM 2') return p.startsWith(tankId);
+  return p === tankId;
 }
 
 export default function TankCard({
@@ -30,6 +46,7 @@ export default function TankCard({
   curr,
   history,
   catalogForTank,
+  ejemplares,
   onBack,
   window: timeWindow,
   onWindowChange,
@@ -93,6 +110,60 @@ export default function TankCard({
           accent={accent}
         />
       </div>
+
+      {(() => {
+        const inTank = ejemplares.filter((e) => ejemplarBelongsToTank(e.pecera, tank.id));
+        if (inTank.length === 0) return null;
+        return (
+          <section class="border-t border-[var(--wq-divider)] px-4 py-5 sm:px-6">
+            <h3 class="mb-3 font-display text-lg" style={{ color: accent }}>
+              {t.specimensTitle}
+            </h3>
+            <ul class="flex flex-wrap gap-x-4 gap-y-3">
+              {inTank.map((e) => {
+                const photo = ejemplarPhotoUrl(e.alias);
+                const slug = aliasSlug(e.alias);
+                return (
+                  <li key={e.id ?? e.alias}>
+                    <a
+                      href={`/xolotlcalli/ajolotes#${slug}`}
+                      class="group flex w-[72px] flex-col items-center text-center focus:outline-none"
+                      aria-label={e.alias}
+                    >
+                      <span
+                        class="block overflow-hidden rounded-full ring-1 transition group-hover:ring-2 group-focus-visible:ring-2"
+                        style={{
+                          width: 64,
+                          height: 64,
+                          borderColor: `${accent}55`,
+                          // @ts-ignore — Preact accepts CSS var-style overrides via style
+                          '--tw-ring-color': accent,
+                        }}
+                      >
+                        {photo ? (
+                          <img
+                            src={photo}
+                            alt={e.alias}
+                            width={64}
+                            height={64}
+                            loading="lazy"
+                            class="h-full w-full object-cover"
+                          />
+                        ) : (
+                          <AjoloteAvatar alias={e.alias} size={64} accent={accent} />
+                        )}
+                      </span>
+                      <span class="mt-1.5 font-body text-[11px] leading-tight text-[var(--wq-ink)] group-hover:underline">
+                        {e.alias}
+                      </span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        );
+      })()}
 
       <section class="border-t border-[var(--wq-divider)] bg-[var(--wq-surface)] px-4 py-5 sm:px-6">
         <div class="mb-3 flex flex-wrap items-center justify-between gap-3">

@@ -154,7 +154,9 @@ export default function MultiSeriesChart({
     return m;
   }, [catalog, paramKey]);
 
-  // Compose line path strings, skipping null segments
+  // Compose line path strings. Null/missing weeks are skipped but do NOT break
+  // the line — the next valid point bridges across the gap with an L command so
+  // each station's series renders as one continuous polyline.
   function linePath(s: ChartSeries): string {
     const lookup = byDate.get(s.tankId);
     if (!lookup) return '';
@@ -162,10 +164,7 @@ export default function MultiSeriesChart({
     let prevHadValue = false;
     dates.forEach((d, i) => {
       const v = lookup.get(d);
-      if (v == null) {
-        prevHadValue = false;
-        return;
-      }
+      if (v == null) return;
       cmd.push(`${prevHadValue ? 'L' : 'M'} ${xAt(i).toFixed(2)} ${yAt(v).toFixed(2)}`);
       prevHadValue = true;
     });

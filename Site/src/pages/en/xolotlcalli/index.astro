@@ -6,13 +6,20 @@ import WaterQualityDashboard from '@components/waterQuality/WaterQualityDashboar
 import tanksRaw from '@/data/water-quality/tanks.json';
 import parametersRaw from '@/data/water-quality/parameters.json';
 import mondaysRaw from '@/data/water-quality/measurements-mondays.json';
+import bundleRaw from '@/data/ajolotes/bundle.json';
 import type { Tank, ParameterCatalogEntry, Measurement } from '@components/waterQuality/types';
+import type { Bundle, Ejemplar } from '@components/ajolotes/types';
 import { t } from '@/i18n/strings';
 
 const locale = 'en';
 const tanks = tanksRaw as unknown as Tank[];
 const parameters = parametersRaw as unknown as ParameterCatalogEntry[];
 const mondays = mondaysRaw as unknown as Measurement[];
+
+const HIDDEN_ALIASES = new Set(['Leucistica', 'Ajolobebe 3', 'Ajolobebe 4']);
+const ejemplares = (bundleRaw as unknown as Bundle).ejemplares.filter(
+  (e: Ejemplar) => !HIDDEN_ALIASES.has((e.alias ?? '').trim()),
+);
 
 const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
   .replace(/fill="white"/g, 'fill="currentColor"')
@@ -28,8 +35,10 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
 >
   <section class="wq-surface relative">
     <div class="mx-auto max-w-6xl px-4 pt-10 sm:pt-14">
-      <div class="wq-logo-mark text-choco dark:text-cream/90" aria-label="Xolotlcalli BioMuseum">
-        <Fragment set:html={logoSvg} />
+      <div class="flex justify-center sm:block">
+        <div class="wq-logo-mark text-choco dark:text-cream/90" aria-label="Xolotlcalli BioMuseum">
+          <Fragment set:html={logoSvg} />
+        </div>
       </div>
       <h1 class="mt-4 font-display text-3xl text-choco dark:text-cream sm:text-4xl">
         {t(locale, 'wq.title')}
@@ -37,12 +46,6 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
       <p class="mt-2 max-w-2xl font-body text-sm text-choco/70 dark:text-cream/70 sm:text-base">
         {t(locale, 'wq.subtitle')}
       </p>
-      <a
-        href={t(locale, 'ajolotes.path')}
-        class="mt-4 inline-flex items-center gap-1 rounded-full border border-choco/15 px-3.5 py-1.5 text-sm text-choco transition-colors duration-200 hover:bg-choco/5 dark:border-cream/15 dark:text-cream dark:hover:bg-cream/5"
-      >
-        {t(locale, 'ajolotes.cta')}
-      </a>
     </div>
     <WaterQualityDashboard
       client:load
@@ -50,6 +53,7 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
       tanks={tanks}
       parameters={parameters}
       mondays={mondays}
+      ejemplares={ejemplares}
       allDataUrl="/data/water-quality/measurements-all.json"
     />
   </section>
@@ -64,14 +68,23 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
   }
   .wq-logo-mark {
     display: inline-block;
-    height: 3.5rem;
+    width: 100%;
+    max-width: min(80vw, 320px);
   }
   .wq-logo-mark svg {
-    height: 100%;
-    width: auto;
+    width: 100%;
+    height: auto;
     display: block;
   }
   @media (min-width: 640px) {
-    .wq-logo-mark { height: 4rem; }
+    .wq-logo-mark {
+      width: auto;
+      max-width: none;
+      height: 4rem;
+    }
+    .wq-logo-mark svg {
+      height: 100%;
+      width: auto;
+    }
   }
 </style>
