@@ -1928,5 +1928,93 @@
       "tds"
     ],
     "note": null
+  },
+  {
+    "date": "2026-05-11",
+    "time": "08:20",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "xolotlcalli.axolodao.eth"
+    },
+    "values": {
+      "temp": 16.9,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": 35.8,
+      "kh": 35.8,
+      "ph": 7.9,
+      "po4": null,
+      "cond": 440,
+      "tds": 220
+    },
+    "alarms": [
+      "gh",
+      "ph",
+      "cond",
+      "tds"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-05-11",
+    "time": "08:20",
+    "tankId": "AM",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "xolotlcalli.axolodao.eth"
+    },
+    "values": {
+      "temp": 17,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": 53.7,
+      "kh": 35.8,
+      "ph": 7.8,
+      "po4": null,
+      "cond": 1700,
+      "tds": 850
+    },
+    "alarms": [
+      "gh",
+      "kh",
+      "ph"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-05-11",
+    "time": "08:20",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "xolotlcalli.axolodao.eth"
+    },
+    "values": {
+      "temp": 18.2,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": 107.4,
+      "kh": 142.72,
+      "ph": 8.9,
+      "po4": null,
+      "cond": 770,
+      "tds": 385
+    },
+    "alarms": [
+      "temp",
+      "gh",
+      "kh",
+      "ph",
+      "cond",
+      "tds"
+    ],
+    "note": " temperatura superficial"
   }
 ]
