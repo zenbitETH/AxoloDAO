@@ -825,6 +825,46 @@
   }
 }
 
+/* Ajolote specimen ribbon — flag overlay used to indicate clinical state
+   ("En cuarentena", etc.) on EjemplarCard photos. Two stacked animations:
+   a one-shot entrance (scale 0.88 → 1, opacity 0 → 1) and an infinite soft
+   pulse (scale 1 ↔ 1.06) that breathes attention onto the clinical state
+   without being a flashing alarm. Transform-origin is top-right so the
+   scale pulses from where the ribbon "attaches" to the card corner.
+   Hardware-accelerated (transform + opacity only); pulse disabled on
+   prefers-reduced-motion — entrance keeps a pure opacity fade. */
+.aj-ribbon {
+  transform-origin: 100% 0%;
+  animation:
+    aj-ribbon-in 360ms var(--aj-ease-out) both,
+    aj-ribbon-pulse 2.4s cubic-bezier(0.77, 0, 0.175, 1) 720ms infinite;
+  will-change: transform, opacity;
+}
+@keyframes aj-ribbon-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes aj-ribbon-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aj-ribbon {
+    animation: aj-ribbon-fade 200ms var(--aj-ease-out) both;
+    transform: none;
+  }
+  @keyframes aj-ribbon-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
 /* Ajolote charts — draw-on for line paths, rise-up for bars. The line-draw
    uses a generous dasharray so any reasonable chart-path length is covered;
    bars scale from the bottom edge. Both respect prefers-reduced-motion. */

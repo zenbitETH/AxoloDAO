@@ -102,8 +102,12 @@ const concepts: { slug: string; title: Tri; body: Tri }[] = [
         {locale === 'pt' && 'Uma carteira Ethereum é um par de chaves: uma chave pública (seu endereço, como um número de conta) e uma chave privada (um segredo que assina transações). Você guarda a chave privada; ninguém mais pode agir em seu nome.'}
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-3">
-        <a href="https://wallet.axolodao.org" target="_blank" rel="noopener noreferrer" class="btn-primary">wallet.axolodao.org</a>
-        <span class="badge-ocre">{t(locale, 'common.soon')}</span>
+        <span aria-disabled="true" class="btn-primary cursor-not-allowed opacity-60 line-through decoration-2">wallet.axolodao.org</span>
+        <span class="badge-rosa">
+          {locale === 'es' && 'En revisión'}
+          {locale === 'en' && 'Under review'}
+          {locale === 'pt' && 'Em revisão'}
+        </span>
       </div>
     </div>
   </Modal>
