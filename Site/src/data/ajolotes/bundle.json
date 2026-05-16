@@ -287,7 +287,7 @@
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
-      "alias": "Romulo",
+      "alias": "Rómulo",
       "id": "XOL-DU-NM-00-001-26",
       "pecera": "AD",
       "especie": "A. dumerilii",
@@ -554,7 +554,7 @@
       "frecuencia": "Lunes, Miercoles, Viernes",
       "notas": null
     },
-    "Romulo": {
+    "Rómulo": {
       "pecera": "AD",
       "especie": "A. dumerilii",
       "estadio": "Subadulto",
@@ -2528,7 +2528,7 @@
         "notas": null
       }
     ],
-    "Romulo": [
+    "Rómulo": [
       {
         "fecha": "2025-11-09",
         "autor": "lego-lvsg.axolodao.eth",
@@ -4374,7 +4374,7 @@
         "respuesta": null
       }
     ],
-    "Romulo": [
+    "Rómulo": [
       {
         "fecha": "2026-04-08",
         "hora": null,

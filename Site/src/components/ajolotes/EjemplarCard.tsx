@@ -21,6 +21,14 @@ const GENDER_CLASS: Record<'♀' | '♂' | '(?)', string> = {
   '(?)': 'text-[var(--wq-ink-muted)] text-[0.78em] tracking-tight font-medium ml-1',
 };
 
+// Mirrors the carousel's `specimenRibbons` map (Context/carousel/scripts/
+// generate-weekly.ts). Keyed by exact alias from bundle.json. Update weekly.
+const SPECIMEN_RIBBONS: Record<string, string> = {
+  Panchita: 'En cuarentena',
+  Rómulo: 'En cuarentena',
+  Chocoroll: 'En cuarentena',
+};
+
 function peceraLabel(locale: Locale, pecera: string | null | undefined): string {
   const raw = (pecera ?? '').trim();
   if (!raw) return '—';
@@ -65,6 +73,11 @@ export default function EjemplarCard({ ej, theme, locale, emphasis = 'neutral', 
       {/* Photo hero — square, fills card width */}
       <div class="relative aspect-square w-full overflow-hidden bg-[var(--wq-row-bg)]">
         <EjemplarPhoto alias={ej.alias} accent={ac} fill />
+        {SPECIMEN_RIBBONS[ej.alias] && (
+          <span class="aj-ribbon absolute right-2 top-2 whitespace-nowrap rounded-full bg-rosa px-3 py-1 font-display text-[10px] font-extrabold uppercase tracking-[0.14em] text-marfil shadow-[0_6px_14px_rgba(7,31,41,0.45),inset_0_-1px_0_rgba(0,0,0,0.18)]">
+            {SPECIMEN_RIBBONS[ej.alias]}
+          </span>
+        )}
       </div>
 
       {/* Info row */}
