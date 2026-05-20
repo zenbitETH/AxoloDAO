@@ -130,6 +130,39 @@ function indexOfHeader(headerRow, needles) {
   return -1;
 }
 
+// Alias normalization. The xlsx is the operational system of record but uses
+// inconsistent spellings across sheets — Dashboard ejemplares has 'Negra',
+// 'Chocorol', 'Romulo' while Plan / Alimentación / Historial use 'La negra',
+// 'Chocoroll', 'Rómulo'. The Site (photo manifest, deep-link anchors, modal
+// joins between sheets) expects a single canonical alias per specimen, so we
+// fold the variants here. When curators want to retire a normalization,
+// rename the source in the xlsx first, then drop the line below.
+const ALIAS_NORMALIZE = new Map([
+  ['Romulo', 'Rómulo'],
+  ['romulo', 'Rómulo'],
+  ['Chocorol', 'Chocoroll'],
+  ['Negra', 'La negra'],
+  ['mocca', 'Moka'],
+]);
+function normalizeAlias(s) {
+  if (s == null) return s;
+  const t = String(s).trim();
+  if (!t) return t;
+  return ALIAS_NORMALIZE.get(t) ?? t;
+}
+
+// Curator overrides for stale Dashboard ejemplares fields. The xlsx is the
+// system of record but the dashboard column can lag the actual colony state
+// (e.g. a specimen returned from cuarentena before the curator updated the
+// sheet). Each override patches a single field after the xlsx is read so the
+// next regen does not silently revert the live page. Drop an entry once the
+// xlsx catches up.
+const EJEMPLAR_OVERRIDES = new Map([
+  // Chocoroll returned from cuarentena to AM 2.2 (curator confirmed
+  // 2026-05-19); xlsx Dashboard + Bitacora still showing Cuarentena.
+  ['Chocoroll', { pecera: 'AM 2.2' }],
+]);
+
 // ---------------------------------------------------------------------------
 // Main
 
@@ -185,7 +218,7 @@ const knownAliases = new Set();
 for (let r = dashHdrIdx + 1; r < dashRows.length; r++) {
   const row = dashRows[r];
   if (!row || row.every((c) => c == null || c === '')) continue;
-  const alias = toStr(row[D.alias]);
+  const alias = normalizeAlias(toStr(row[D.alias]));
   if (!alias) continue;
   knownAliases.add(alias);
   ejemplares.push({
@@ -214,6 +247,12 @@ for (let r = dashHdrIdx + 1; r < dashRows.length; r++) {
     respuestaAlim: toStr(row[D.respuestaAlim]),
     alertaGastrica: toStr(row[D.alertaGastrica]),
   });
+}
+
+// Apply curator overrides (see EJEMPLAR_OVERRIDES above) after the xlsx read.
+for (const e of ejemplares) {
+  const patch = EJEMPLAR_OVERRIDES.get(e.alias);
+  if (patch) Object.assign(e, patch);
 }
 console.log(`[data-ajolotes] ejemplares: ${ejemplares.length}`);
 
@@ -260,7 +299,7 @@ const histUnknownAliases = new Set();
 for (let r = histHdrIdx + 1; r < histRows.length; r++) {
   const row = histRows[r];
   if (!row || row.every((c) => c == null || c === '')) continue;
-  const alias = toStr(row[H.alias]);
+  const alias = normalizeAlias(toStr(row[H.alias]));
   const fecha = toIsoDate(row[H.fecha]);
   if (!alias || !fecha) { histSkipped++; continue; }
   if (!knownAliases.has(alias) && !histUnknownAliases.has(alias)) {
@@ -328,7 +367,7 @@ let planUnknown = 0;
 for (let r = planHdrIdx + 1; r < planRows.length; r++) {
   const row = planRows[r];
   if (!row || row.every((c) => c == null || c === '')) continue;
-  const alias = toStr(row[P.alias]);
+  const alias = normalizeAlias(toStr(row[P.alias]));
   if (!alias) continue;
   if (!knownAliases.has(alias)) planUnknown++;
   planes[alias] = {
@@ -350,9 +389,15 @@ const alimRows = sheet('Alimentación 2.0');
 const alimHdrIdx = findHeaderRow(alimRows, ['fecha', 'alias', 'racion']);
 if (alimHdrIdx < 0) throw new Error('Alimentación 2.0: header row not found');
 const alimHdr = alimRows[alimHdrIdx];
+// Alimentación 2.0 column B header has been observed to corrupt away from
+// 'Hora' (e.g. '\]_Ñ¨P?0'); fall back to position 1 so a single corrupted
+// header cell does not drop the time column.
 const A = {
   fecha:     indexOfHeader(alimHdr, 'fecha'),
-  hora:      indexOfHeader(alimHdr, 'hora'),
+  hora:      (() => {
+    const i = indexOfHeader(alimHdr, 'hora');
+    return i >= 0 ? i : 1;
+  })(),
   autor:     indexOfHeader(alimHdr, 'autor principal'),
   alias:     indexOfHeader(alimHdr, 'alias'),
   tipo:      indexOfHeader(alimHdr, 'tipo de alimento'),
@@ -368,7 +413,12 @@ const alimUnknownAliases = new Set();
 for (let r = alimHdrIdx + 1; r < alimRows.length; r++) {
   const row = alimRows[r];
   if (!row || row.every((c) => c == null || c === '')) continue;
-  const alias = toStr(row[A.alias]);
+  const rawAlias = toStr(row[A.alias]);
+  // Combo entries (e.g. 'Tamal de dulce, Tascalate') stay as a single key but
+  // each component is normalized so the join with ejemplares still resolves.
+  const alias = rawAlias
+    ? rawAlias.split(',').map((s) => normalizeAlias(s.trim())).join(', ')
+    : rawAlias;
   const fecha = toIsoDate(row[A.fecha]);
   if (!alias || !fecha) { alimSkipped++; continue; }
   if (!knownAliases.has(alias)) alimUnknownAliases.add(alias);
@@ -411,7 +461,7 @@ const bajas = [];
 for (let r = bajaHdrIdx + 1; r < bajaRows.length; r++) {
   const row = bajaRows[r];
   if (!row || row.every((c) => c == null || c === '')) continue;
-  const nombre = toStr(row[B.nombre]);
+  const nombre = normalizeAlias(toStr(row[B.nombre]));
   if (!nombre) continue;
   bajas.push({
     fecha: toIsoDate(row[B.fecha]),
