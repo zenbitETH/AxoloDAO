@@ -1948,13 +1948,12 @@
       "ph": 7.9,
       "po4": null,
       "cond": 440,
-      "tds": 220
+      "tds": null
     },
     "alarms": [
       "gh",
       "ph",
-      "cond",
-      "tds"
+      "cond"
     ],
     "note": null
   },
@@ -2016,5 +2015,114 @@
       "tds"
     ],
     "note": " temperatura superficial"
+  },
+  {
+    "date": "2026-05-18",
+    "time": "10:00",
+    "tankId": "Llave",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": null,
+      "nh3": null,
+      "no2": 0,
+      "no3": 50,
+      "gh": 304.2,
+      "kh": 214.8,
+      "ph": 8.3,
+      "po4": null,
+      "cond": 880,
+      "tds": null
+    },
+    "alarms": [],
+    "note": null
+  },
+  {
+    "date": "2026-05-18",
+    "time": "10:00",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 17,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 10,
+      "gh": 17.9,
+      "kh": 17.9,
+      "ph": 8.7,
+      "po4": null,
+      "cond": 380,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-05-18",
+    "time": "10:00",
+    "tankId": "AM",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 16.7,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 20,
+      "gh": 35.8,
+      "kh": 35.8,
+      "ph": 8.2,
+      "po4": null,
+      "cond": 1740,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "kh",
+      "ph"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-05-18",
+    "time": "10:00",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "lego-lvsg.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 16.2,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 20,
+      "gh": 107.4,
+      "kh": 125.3,
+      "ph": 8.9,
+      "po4": null,
+      "cond": 840,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "kh",
+      "ph",
+      "cond"
+    ],
+    "note": null
   }
 ]

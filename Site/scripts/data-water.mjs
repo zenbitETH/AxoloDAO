@@ -329,8 +329,14 @@ measHeader.forEach((h, i) => {
   const k = paramKeyFromColumnHeader(h);
   if (k) colToParam.set(i, k);
 });
+// Calidad de agua header for column A has been observed to drift away from
+// 'Fecha' (e.g. accidental rename to 'Columna 1'); fall back to position 0
+// so a single corrupted cell does not zero out the entire dataset.
 const IDX_M = {
-  fecha:    measHeader.findIndex(h => (h ?? '').toString().toLowerCase() === 'fecha'),
+  fecha:    (() => {
+    const i = measHeader.findIndex(h => (h ?? '').toString().toLowerCase() === 'fecha');
+    return i >= 0 ? i : 0;
+  })(),
   hora:     measHeader.findIndex(h => (h ?? '').toString().toLowerCase() === 'hora'),
   author1:  measHeader.findIndex(h => (h ?? '').toString().toLowerCase().includes('autor principal')),
   author2:  measHeader.findIndex(h => (h ?? '').toString().toLowerCase().includes('autor secundario')),
