@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import type { Bundle, Ejemplar, Locale } from './types';
+import type { Bundle, BitacoraEntry, Ejemplar, Locale } from './types';
 import type { Measurement } from '../waterQuality/types';
 import {
   accent as accentFor,
@@ -14,14 +14,15 @@ import StageChip from './StageChip';
 import { classifyStage } from './stage';
 import ResumenTab from './tabs/ResumenTab';
 import BiometriaTab from './tabs/BiometriaTab';
-import HistorialTab from './tabs/HistorialTab';
+import EventosTab from './tabs/EventosTab';
 import AlimentacionTab from './tabs/AlimentacionTab';
 
-type TabId = 'resumen' | 'biometria' | 'medico' | 'alimentacion';
+type TabId = 'resumen' | 'biometria' | 'eventos' | 'alimentacion';
 
 interface Props {
   ej: Ejemplar;
   bundle: Bundle;
+  bitacora: BitacoraEntry[];
   theme: ThemeMode;
   locale: Locale;
   water: Measurement[];
@@ -44,7 +45,7 @@ function peceraLabel(locale: Locale, pecera: string | null | undefined): string 
   return raw;
 }
 
-export default function EjemplarModal({ ej, bundle, theme, locale, water, waterPath, onClose }: Props) {
+export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, water, waterPath, onClose }: Props) {
   const [tab, setTab] = useState<TabId>('resumen');
   const [mounted, setMounted] = useState(false);
   const ac = accentFor(ej.especie, theme);
@@ -70,12 +71,14 @@ export default function EjemplarModal({ ej, bundle, theme, locale, water, waterP
 
   const hist = (bundle.historial[ej.alias] ?? []).filter((h) => h.fecha);
   const alim = bundle.alimentacion[ej.alias] ?? [];
+  const tera = bundle.terapeutica?.[ej.alias] ?? [];
+  const baja = bundle.bajas.find((b) => b.nombre === ej.alias) ?? null;
   const plan = bundle.planes[ej.alias] ?? null;
 
   const tabs: { id: TabId; label: string }[] = [
     { id: 'resumen', label: s(locale, 'tab.resumen') },
     { id: 'biometria', label: s(locale, 'tab.biometria') },
-    { id: 'medico', label: s(locale, 'tab.medico') },
+    { id: 'eventos', label: s(locale, 'tab.eventos') },
     { id: 'alimentacion', label: s(locale, 'tab.alimentacion') },
   ];
 
@@ -132,6 +135,11 @@ export default function EjemplarModal({ ej, bundle, theme, locale, water, waterP
                 <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)} aria-label={genderTitle(locale, ej.genero)}>
                   {sym}
                 </span>
+                {(ej.pecera ?? '').trim() === 'Cuarentena' && (
+                  <span class="aj-ribbon aj-state-pulse inline-flex items-center self-center whitespace-nowrap rounded-full bg-rosa px-2.5 py-1 font-display text-[10px] font-extrabold uppercase tracking-[0.12em] text-marfil shadow-[0_4px_10px_rgba(7,31,41,0.4)]">
+                    {s(locale, 'modal.ribbon.cuarentena')}
+                  </span>
+                )}
               </h2>
               {ej.fenotipo && (
                 <p class="m-0 mt-1 truncate text-xs italic text-[var(--wq-ink-muted)] sm:text-sm">
@@ -228,7 +236,17 @@ export default function EjemplarModal({ ej, bundle, theme, locale, water, waterP
             />
           )}
           {tab === 'biometria' && <BiometriaTab hist={hist} accent={ac} locale={locale} />}
-          {tab === 'medico' && <HistorialTab hist={hist} accent={ac} locale={locale} />}
+          {tab === 'eventos' && (
+            <EventosTab
+              alias={ej.alias}
+              historial={hist}
+              terapeutica={tera}
+              bitacora={bitacora}
+              baja={baja}
+              accent={ac}
+              locale={locale}
+            />
+          )}
           {tab === 'alimentacion' && (
             <AlimentacionTab ej={ej} alim={alim} plan={plan} accent={ac} locale={locale} />
           )}

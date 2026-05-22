@@ -145,6 +145,8 @@ export const ALIAS_NORMALIZE = new Map([
   ['Negra', 'La negra'],
   ['negra', 'La negra'],
   ['mocca', 'Moka'],
+  ['Martin', 'Martín'],
+  ['martin', 'Martín'],
 ]);
 
 export function normalizeAlias(s) {

@@ -62,6 +62,9 @@ const PARAM_NAME_TO_KEY = {
   'tds': 'tds',
 };
 
+// Vanilla light-theme palette. The site applies a brighter dark-mode variant
+// via accentForTheme() on the client; the value stored here is the canonical
+// light-theme color and what downstream consumers (e.g. carousel) read.
 const SPECIES_ACCENT = {
   andersoni: '#B87333',
   mexicanum: '#2C5F7C',

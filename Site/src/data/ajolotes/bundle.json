@@ -79,7 +79,7 @@
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
-      "alias": "Martin",
+      "alias": "Martín",
       "id": "ESP-AMSL-1260",
       "pecera": "AM 5",
       "especie": "A. mexicanum",
@@ -422,7 +422,7 @@
       "frecuencia": "Lunes, Miercoles, Viernes",
       "notas": null
     },
-    "Martin": {
+    "Martín": {
       "pecera": "AM 1.2",
       "especie": "A. mexicanum",
       "estadio": "Juvenil",
@@ -1200,7 +1200,7 @@
         "notas": null
       }
     ],
-    "Martin": [
+    "Martín": [
       {
         "fecha": "2025-11-09",
         "autor": "lego-lvsg.axolodao.eth",
@@ -4368,7 +4368,7 @@
         "estado": "Activo"
       }
     ],
-    "Martin": [
+    "Martín": [
       {
         "fecha": "2026-02-27",
         "hora": 0.10875,
@@ -4931,7 +4931,7 @@
         "respuesta": null
       }
     ],
-    "Martin": [
+    "Martín": [
       {
         "fecha": "2026-04-08",
         "hora": 0.85875,

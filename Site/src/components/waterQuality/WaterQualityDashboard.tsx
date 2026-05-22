@@ -15,7 +15,7 @@ import ViewToggle from './ViewToggle';
 import TankGrid from './TankGrid';
 import TankCard from './TankCard';
 import RotatingHeroChart from './RotatingHeroChart';
-import type { Ejemplar } from '../ajolotes/types';
+import type { BitacoraEntry, Ejemplar } from '../ajolotes/types';
 import { useBackToClose } from '../useBackToClose';
 
 interface Props {
@@ -24,6 +24,7 @@ interface Props {
   parameters: ParameterCatalogEntry[];
   mondays: Measurement[];
   ejemplares: Ejemplar[];
+  bitacora: BitacoraEntry[];
   allDataUrl: string;
 }
 
@@ -56,6 +57,7 @@ export default function WaterQualityDashboard({
   parameters,
   mondays,
   ejemplares,
+  bitacora,
   allDataUrl,
 }: Props) {
   const t = STRINGS[locale];
@@ -337,6 +339,7 @@ export default function WaterQualityDashboard({
             history={historyForDetail}
             catalogForTank={catalogForSelected}
             ejemplares={ejemplares}
+            bitacora={bitacora}
             onBack={onBack}
             window={timeWindow}
             onWindowChange={setTimeWindow}

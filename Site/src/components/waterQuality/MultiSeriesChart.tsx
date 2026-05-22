@@ -173,14 +173,24 @@ export default function MultiSeriesChart({
 
   const ticks = computeTicks(yMin, yMax);
 
-  // Tooltip rows (when hovering)
+  // Tooltip rows (when hovering). Filter AM family by AM_UNIFICATION so the
+  // tooltip only lists the relevant tanks for that date: post-cutoff hides
+  // the historic AM 1 / AM 2 split, pre-cutoff hides the unified AM row.
+  const AM_UNIFICATION = '2026-04-28';
   const tooltipRows = hoverIdx >= 0
-    ? series.map((s) => {
-        const v = byDate.get(s.tankId)?.get(dates[hoverIdx]) ?? null;
-        const cat = catBy.get(s.tankId);
-        const status = statusOf(v, cat?.min ?? null, cat?.max ?? null);
-        return { tankId: s.tankId, label: s.label, color: s.color, value: v, status };
-      })
+    ? series
+        .filter((s) => {
+          const d = dates[hoverIdx];
+          if (d >= AM_UNIFICATION && (s.tankId === 'AM 1' || s.tankId === 'AM 2')) return false;
+          if (d <  AM_UNIFICATION && s.tankId === 'AM') return false;
+          return true;
+        })
+        .map((s) => {
+          const v = byDate.get(s.tankId)?.get(dates[hoverIdx]) ?? null;
+          const cat = catBy.get(s.tankId);
+          const status = statusOf(v, cat?.min ?? null, cat?.max ?? null);
+          return { tankId: s.tankId, label: s.label, color: s.color, value: v, status };
+        })
     : [];
 
   return (

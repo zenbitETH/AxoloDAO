@@ -7,14 +7,16 @@ import tanksRaw from '@/data/water-quality/tanks.json';
 import parametersRaw from '@/data/water-quality/parameters.json';
 import mondaysRaw from '@/data/water-quality/measurements-mondays.json';
 import bundleRaw from '@/data/ajolotes/bundle.json';
+import bitacoraRaw from '@/data/ops/bitacora-recent.json';
 import type { Tank, ParameterCatalogEntry, Measurement } from '@components/waterQuality/types';
-import type { Bundle, Ejemplar } from '@components/ajolotes/types';
+import type { Bundle, Ejemplar, BitacoraEntry } from '@components/ajolotes/types';
 import { t } from '@/i18n/strings';
 
 const locale = 'es';
 const tanks = tanksRaw as unknown as Tank[];
 const parameters = parametersRaw as unknown as ParameterCatalogEntry[];
 const mondays = mondaysRaw as unknown as Measurement[];
+const bitacora = bitacoraRaw as unknown as BitacoraEntry[];
 
 // Hide deceased / off-colony specimens — mirrors EJEMPLARES_HIDDEN_ALIASES in
 // AjolotesExplorer so the in-custody strip stays consistent with the explorer.
@@ -56,6 +58,7 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
       parameters={parameters}
       mondays={mondays}
       ejemplares={ejemplares}
+      bitacora={bitacora}
       allDataUrl="/data/water-quality/measurements-all.json"
     />
   </section>
