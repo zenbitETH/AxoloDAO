@@ -37,5 +37,6 @@ feeding: |-
 localityType: “laguna de Pátzcuaro, Michoacán, México, 2,055 pies de altitud”.
 characterizedBy: Dugè, 1870
 heroCardSvg: DumeriliiCard.svg
+markerSvg: dumerilii.svg
 accentColor: "#356340"
 endemic: true

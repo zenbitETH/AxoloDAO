@@ -40,9 +40,9 @@
     "speciesCode": "andersoni",
     "key": "gh",
     "unit": "mg/L",
-    "min": 50,
-    "max": 90,
-    "target": 75
+    "min": 20,
+    "max": 50,
+    "target": 35
   },
   {
     "tankId": "AA",

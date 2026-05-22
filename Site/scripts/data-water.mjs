@@ -17,6 +17,13 @@ import XLSX from 'xlsx';
 import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  toIsoDate,
+  toTimeString,
+  parseNumber,
+  findHeaderRow,
+  indexOfHeader,
+} from './lib/xlsx-utils.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
@@ -55,6 +62,9 @@ const PARAM_NAME_TO_KEY = {
   'tds': 'tds',
 };
 
+// Vanilla light-theme palette. The site applies a brighter dark-mode variant
+// via accentForTheme() on the client; the value stored here is the canonical
+// light-theme color and what downstream consumers (e.g. carousel) read.
 const SPECIES_ACCENT = {
   andersoni: '#B87333',
   mexicanum: '#2C5F7C',
@@ -168,44 +178,6 @@ function paramKeyFromColumnHeader(raw) {
   return paramKeyFromName(s);
 }
 
-function parseNumber(raw) {
-  if (raw == null) return null;
-  if (typeof raw === 'number') return Number.isFinite(raw) ? raw : null;
-  const s = String(raw).trim();
-  if (!s || s === '-' || s === '—') return null;
-  // "0.1-0.25" → midpoint 0.175
-  const range = s.match(/^(-?\d+(?:\.\d+)?)\s*[-–]\s*(-?\d+(?:\.\d+)?)$/);
-  if (range) {
-    const a = Number(range[1]);
-    const b = Number(range[2]);
-    if (Number.isFinite(a) && Number.isFinite(b)) return (a + b) / 2;
-  }
-  const n = Number(s.replace(/,/g, ''));
-  return Number.isFinite(n) ? n : null;
-}
-
-function pad2(n) { return String(n).padStart(2, '0'); }
-
-function toIsoDate(v) {
-  if (v == null) return null;
-  if (v instanceof Date) {
-    return `${v.getFullYear()}-${pad2(v.getMonth() + 1)}-${pad2(v.getDate())}`;
-  }
-  const d = new Date(v);
-  if (!isNaN(d.getTime())) {
-    return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
-  }
-  return null;
-}
-
-function toTimeString(v) {
-  if (v == null) return null;
-  if (v instanceof Date) return `${pad2(v.getHours())}:${pad2(v.getMinutes())}`;
-  const s = String(v).trim();
-  if (/^\d{1,2}:\d{2}(:\d{2})?$/.test(s)) return s.slice(0, 5);
-  return null;
-}
-
 function isMondayIso(iso) {
   if (!iso) return false;
   const [y, m, d] = iso.split('-').map(Number);
@@ -234,16 +206,110 @@ console.log(`[data-water] Reading ${XLSX_PATH}`);
 const wb = XLSX.readFile(XLSX_PATH, { cellDates: true });
 
 // --- Tanks -----------------------------------------------------------------
+// System metadata (dimensions, filter, cooling, aeration) is read from the
+// "Descripcion de sistemas" sheet so curators can update the spreadsheet
+// instead of editing this script. Tank IDs are matched via normalizeCatalogTankId.
+// AM has no aggregated row in the xlsx (only AM 1..AM 5 subsystems); we mirror
+// AM 1's metadata under 'AM' so the unified post-cutoff tank still has a system
+// block, same approach used below for the parameter catalog mirror.
+function multiline(s) {
+  return s == null ? null : String(s).replace(/\s*\n\s*/g, ' ').trim() || null;
+}
+
+const systemsSheet = wb.Sheets['Descripcion de sistemas'];
+const systemMap = new Map();
+if (systemsSheet) {
+  const sysRows = XLSX.utils.sheet_to_json(systemsSheet, { header: 1, defval: null, raw: true, blankrows: false });
+  const sysHdrIdx = findHeaderRow(sysRows, ['identificador', 'volumen nominal', 'tipo de filtro']);
+  if (sysHdrIdx < 0) {
+    console.warn('[data-water] Descripcion de sistemas: header row not found, falling back to no-system tanks');
+  } else {
+    const sysHdr = sysRows[sysHdrIdx];
+    const S = {
+      id:             indexOfHeader(sysHdr, 'identificador'),
+      volNominal:     indexOfHeader(sysHdr, 'volumen nominal'),
+      volEffective:   indexOfHeader(sysHdr, 'volumen efectivo'),
+      altoNominal:    indexOfHeader(sysHdr, 'alto (nominal)'),
+      altoEffective:  indexOfHeader(sysHdr, 'alto (efectivo)'),
+      largo:          indexOfHeader(sysHdr, 'largo'),
+      ancho:          indexOfHeader(sysHdr, 'ancho'),
+      tankType:       indexOfHeader(sysHdr, 'tipo de tanque'),
+      substrate:      indexOfHeader(sysHdr, 'tipo de sustrato'),
+      filterType:     indexOfHeader(sysHdr, 'tipo de filtro'),
+      filterDesc:     indexOfHeader(sysHdr, ['descripción (marca', 'descripcion (marca']),
+      filterFlow:     indexOfHeader(sysHdr, 'caudal del filtro'),
+      filterMaint:    indexOfHeader(sysHdr, 'fecha último mantenimiento'),
+      coolingType:    indexOfHeader(sysHdr, 'tipo sistema'),
+      coolingCap:     indexOfHeader(sysHdr, 'capacidad'),
+      coolingSet:     indexOfHeader(sysHdr, 'set point'),
+      coolingMaint:   indexOfHeader(sysHdr, 'fecha último mantenimiento.'),
+      aerationType:   indexOfHeader(sysHdr, 'tipo aireador'),
+      aerationFlow:   indexOfHeader(sysHdr, 'caudal aire'),
+    };
+    const round1 = (n) => (typeof n === 'number' ? Math.round(n * 10) / 10 : null);
+    for (let r = sysHdrIdx + 1; r < sysRows.length; r++) {
+      const row = sysRows[r];
+      if (!row || row.every((c) => c == null || c === '')) continue;
+      const rawId = (row[S.id] ?? '').toString().trim();
+      if (!rawId) continue;
+      const canonicalId = normalizeCatalogTankId(rawId);
+      if (!canonicalId) continue;
+      // Parent rows (rawId === canonicalId, e.g. "AD") win over subsystem rows
+      // (e.g. "AD 1.1") so the unified tank's metadata reflects the parent
+      // system spec, not whichever subsystem the curators listed last.
+      const isParentRow = rawId.replace(/\s+/g, ' ').toUpperCase() === canonicalId.toUpperCase();
+      if (!isParentRow && systemMap.has(canonicalId)) continue;
+      systemMap.set(canonicalId, {
+        dimensions: {
+          volumeNominalL:   round1(parseNumber(row[S.volNominal])),
+          volumeEffectiveL: round1(parseNumber(row[S.volEffective])),
+          heightNominalCm:  round1(parseNumber(row[S.altoNominal])),
+          heightEffectiveCm: round1(parseNumber(row[S.altoEffective])),
+          lengthCm:         round1(parseNumber(row[S.largo])),
+          widthCm:          round1(parseNumber(row[S.ancho])),
+        },
+        tankType:  multiline(row[S.tankType]),
+        substrate: multiline(row[S.substrate]),
+        filter: {
+          type:            multiline(row[S.filterType]),
+          description:     multiline(row[S.filterDesc]),
+          flow:            multiline(row[S.filterFlow]),
+          lastMaintenance: toIsoDate(row[S.filterMaint]),
+        },
+        cooling: {
+          type:            multiline(row[S.coolingType]),
+          capacity:        multiline(row[S.coolingCap]),
+          setpoint:        multiline(row[S.coolingSet]),
+          lastMaintenance: toIsoDate(row[S.coolingMaint]),
+        },
+        aeration: {
+          type:    multiline(row[S.aerationType]),
+          airflow: multiline(row[S.aerationFlow]),
+        },
+      });
+    }
+    // Mirror AM 1 → AM if no aggregated AM row exists in the xlsx (post-cutoff
+    // measurements use 'AM'; subsystem metadata under AM 1..AM 5 is otherwise
+    // unreachable from the unified tank in the UI).
+    if (!systemMap.has('AM') && systemMap.has('AM 1')) {
+      systemMap.set('AM', systemMap.get('AM 1'));
+    }
+  }
+} else {
+  console.warn('[data-water] Sheet "Descripcion de sistemas" not found, tanks.json system block will be null');
+}
+
 const tanks = Object.entries(TANK_META).map(([id, meta]) => ({
   id,
   ...meta,
   accentColor: SPECIES_ACCENT[meta.speciesCode] ?? '#4A3628',
+  system: systemMap.get(id) ?? null,
 }));
 writeFileSync(
   join(CONTENT_OUT, 'tanks.json'),
   JSON.stringify(tanks, null, 2) + '\n'
 );
-console.log(`[data-water] tanks.json: ${tanks.length} tanks`);
+console.log(`[data-water] tanks.json: ${tanks.length} tanks (${[...systemMap.keys()].length} with system metadata)`);
 
 // --- Parameters (catalog) --------------------------------------------------
 const catalogSheet = wb.Sheets['Catálogo de parámetros'];
@@ -317,6 +383,73 @@ console.log(`[data-water] parameters.json: ${parameters.length} catalog entries`
 
 const catalogLookup = new Map();
 for (const p of parameters) catalogLookup.set(`${p.tankId}|${p.key}`, { min: p.min, max: p.max });
+
+// --- Dashboard calidad de agua (curator-blessed summary) -------------------
+// `Estado Clínico` carries species-specific clinical judgment beyond the
+// catalog's min/max thresholds (e.g., a high NO3 that's clinically OK for
+// dumerilii but alarming for andersoni). Ingest as-is, do not recompute.
+// ID-sistemas is sticky: forward-fill from the previous non-empty row.
+const dashSheet = wb.Sheets['Dashboard calidad de agua'];
+const dashboardAgua = [];
+const estadoSet = new Set();
+if (dashSheet) {
+  const dashRowsRaw = XLSX.utils.sheet_to_json(dashSheet, { header: 1, defval: null, raw: true, blankrows: false });
+  const dashHdrIdx = findHeaderRow(dashRowsRaw, ['id-sistemas', 'parámetro', 'estado clínico']);
+  if (dashHdrIdx < 0) {
+    console.warn('[data-water] Dashboard calidad de agua: header row not found, skipping ingestion');
+  } else {
+    const dashHdr = dashRowsRaw[dashHdrIdx];
+    const G = {
+      tankId:        indexOfHeader(dashHdr, 'id-sistemas'),
+      species:       indexOfHeader(dashHdr, 'especie'),
+      param:         indexOfHeader(dashHdr, 'parámetro'),
+      unit:          indexOfHeader(dashHdr, 'unidad'),
+      rangeSafe:     indexOfHeader(dashHdr, 'rango seguro'),
+      promedio:      indexOfHeader(dashHdr, 'promedio'),
+      ultima:        indexOfHeader(dashHdr, 'última medición'),
+      estado:        indexOfHeader(dashHdr, 'estado clínico'),
+      min:           indexOfHeader(dashHdr, 'mínimo'),
+      max:           indexOfHeader(dashHdr, 'máximo'),
+    };
+    let stickyTankRaw = null;
+    for (let r = dashHdrIdx + 1; r < dashRowsRaw.length; r++) {
+      const row = dashRowsRaw[r];
+      if (!row || row.every((c) => c == null || c === '')) continue;
+      const rawId = (row[G.tankId] ?? '').toString().trim();
+      if (rawId) stickyTankRaw = rawId;
+      if (!stickyTankRaw) continue;
+      const tankId = normalizeCatalogTankId(stickyTankRaw);
+      if (!tankId || !TANK_META[tankId]) continue;
+      const paramKey = paramKeyFromName(row[G.param]);
+      if (!paramKey) {
+        console.warn(`[data-water] dashboard-agua: skipping unknown parameter "${row[G.param]}" on row ${r + 1}`);
+        continue;
+      }
+      const estado = (row[G.estado] ?? '').toString().trim() || null;
+      if (estado) estadoSet.add(estado);
+      dashboardAgua.push({
+        tankId,
+        speciesCode: speciesCodeFrom(row[G.species]),
+        paramKey,
+        unit: (row[G.unit] ?? '').toString().trim() || null,
+        rangeSafe: (row[G.rangeSafe] ?? '').toString().trim() || null,
+        promedioHistorico: parseNumber(row[G.promedio]),
+        ultimaMedicion: parseNumber(row[G.ultima]),
+        estadoClinico: estado,
+        limiteMin: parseNumber(row[G.min]),
+        limiteMax: parseNumber(row[G.max]),
+      });
+    }
+  }
+} else {
+  console.warn('[data-water] Sheet "Dashboard calidad de agua" not found, skipping ingestion');
+}
+writeFileSync(
+  join(CONTENT_OUT, 'dashboard-agua.json'),
+  JSON.stringify(dashboardAgua, null, 2) + '\n',
+);
+console.log(`[data-water] dashboard-agua.json: ${dashboardAgua.length} entries`);
+if (estadoSet.size) console.log(`[data-water]   distinct estadoClinico values: ${[...estadoSet].join(' | ')}`);
 
 // --- Measurements (Calidad de agua) ----------------------------------------
 const measSheet = wb.Sheets['Calidad de agua'];
