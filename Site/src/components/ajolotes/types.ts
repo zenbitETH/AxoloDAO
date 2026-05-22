@@ -120,11 +120,45 @@ export interface Baja {
   necropcia: string | null;       // "NA" | "En proceso" | descriptive
 }
 
+export interface TerapeuticaEntry {
+  fecha: string;                  // ISO
+  hora: number | null;            // Excel time fraction (0..1)
+  autor: string | null;
+  autor2: string | null;
+  ubicacion: string | null;
+  diagnostico: string | null;
+  pruebasLab: string | null;
+  tratamiento: string | null;
+  dosis: string | null;
+  via: string | null;
+  diaTratamiento: string | null;  // free-form: ISO date OR day-count text
+  observaciones: string | null;
+  estado: string | null;          // "Activo" | "Alta medica" | …
+}
+
+// Bitácora events live in a separate JSON (ops/bitacora-recent.json) and can
+// carry both an alias (per-ejemplar) and an ubicación (per-tank/system).
+export interface BitacoraEntry {
+  fecha: string;                  // ISO
+  hora: string | null;            // HH:MM
+  estado: string | null;
+  autorPrincipal: string | null;
+  autorSecundario: string | null;
+  categoria: string | null;
+  alias: string | null;           // may be comma-separated for multi-ejemplar events
+  ubicacion: string | null;
+  incidencia: string | null;
+  accion: string | null;
+  notas: string | null;
+  linkReporte: string | null;
+}
+
 export interface Bundle {
   ejemplares: Ejemplar[];
   historial: Record<string, HistorialEntry[]>;
   planes: Record<string, PlanAlimentacion>;
   alimentacion: Record<string, RegistroAlimentacion[]>;
+  terapeutica: Record<string, TerapeuticaEntry[]>;
   bajas: Baja[];
 }
 

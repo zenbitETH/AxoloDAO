@@ -22,6 +22,7 @@
     },
     "alarms": [
       "no3",
+      "gh",
       "kh",
       "ph",
       "po4"
@@ -1610,7 +1611,6 @@
       "tds": null
     },
     "alarms": [
-      "gh",
       "ph",
       "cond"
     ],
@@ -1640,6 +1640,7 @@
     "alarms": [
       "no2",
       "no3",
+      "gh",
       "ph",
       "cond"
     ],
@@ -1865,6 +1866,7 @@
       "tds": 160
     },
     "alarms": [
+      "gh",
       "ph",
       "cond",
       "tds"
@@ -1951,7 +1953,6 @@
       "tds": null
     },
     "alarms": [
-      "gh",
       "ph",
       "cond"
     ],

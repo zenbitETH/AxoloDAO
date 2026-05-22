@@ -24,6 +24,16 @@ import XLSX from 'xlsx';
 import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  toIsoDate,
+  toTimeFraction,
+  toNum,
+  toNumOrText,
+  toStr,
+  findHeaderRow,
+  indexOfHeader,
+  normalizeAlias,
+} from './lib/xlsx-utils.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
@@ -34,123 +44,6 @@ const OUT_DIR = resolve(SITE_ROOT, 'src/data/ajolotes');
 mkdirSync(OUT_DIR, { recursive: true });
 
 // ---------------------------------------------------------------------------
-// Helpers
-
-function pad2(n) { return String(n).padStart(2, '0'); }
-
-function toIsoDate(v) {
-  if (v == null || v === '') return null;
-  if (v instanceof Date) {
-    return `${v.getFullYear()}-${pad2(v.getMonth() + 1)}-${pad2(v.getDate())}`;
-  }
-  // Already an ISO-ish string
-  const s = String(v).trim();
-  if (/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
-  const d = new Date(s);
-  if (!isNaN(d.getTime())) {
-    return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
-  }
-  return null;
-}
-
-// Convert an Excel time cell (Date object on the 1899-12-30 epoch) into a 0..1
-// time-of-day fraction, matching the format already in bundle.json.
-function toTimeFraction(v) {
-  if (v == null || v === '') return null;
-  if (v instanceof Date) {
-    const epoch = Date.UTC(1899, 11, 30); // Excel's "zero" date
-    const utcMs = Date.UTC(v.getUTCFullYear(), v.getUTCMonth(), v.getUTCDate(),
-                            v.getUTCHours(), v.getUTCMinutes(), v.getUTCSeconds());
-    const dayMs = 24 * 60 * 60 * 1000;
-    const frac = ((utcMs - epoch) % dayMs) / dayMs;
-    if (!Number.isFinite(frac)) return null;
-    // Treat midnight on the epoch (no real time) as null
-    if (Math.abs(frac) < 1e-9 && v.getUTCFullYear() <= 1899) return null;
-    return frac;
-  }
-  if (typeof v === 'number' && Number.isFinite(v)) {
-    return v - Math.floor(v); // numeric Excel time
-  }
-  const s = String(v).trim();
-  const m = /^(\d{1,2}):(\d{2})(?::(\d{2}))?$/.exec(s);
-  if (m) {
-    const h = Number(m[1]), mn = Number(m[2]), sc = Number(m[3] ?? 0);
-    return (h * 3600 + mn * 60 + sc) / 86400;
-  }
-  return null;
-}
-
-function toNum(v) {
-  if (v == null || v === '') return null;
-  if (typeof v === 'number') return Number.isFinite(v) ? v : null;
-  const s = String(v).trim();
-  if (!s || s === '-' || s === '—' || s.toUpperCase() === 'NA') return null;
-  const n = Number(s.replace(/,/g, ''));
-  return Number.isFinite(n) ? n : null;
-}
-
-// Some columns (peso, longitud in Bajas; bcs in ejemplares/historial) accept
-// either a number or a free-text marker like "NA" or "Sin datos".
-function toNumOrText(v) {
-  if (v == null || v === '') return null;
-  if (typeof v === 'number') return Number.isFinite(v) ? v : null;
-  const s = String(v).trim();
-  if (!s) return null;
-  const n = Number(s.replace(/,/g, ''));
-  return Number.isFinite(n) ? n : s;
-}
-
-function toStr(v) {
-  if (v == null) return null;
-  const s = String(v).trim();
-  return s === '' ? null : s;
-}
-
-// Header row scanning: find the row index containing all of `markers`.
-function findHeaderRow(rows, markers) {
-  for (let r = 0; r < rows.length; r++) {
-    const row = rows[r];
-    if (!Array.isArray(row)) continue;
-    const cells = row.map((c) => (c ?? '').toString().toLowerCase());
-    if (markers.every((m) => cells.some((c) => c.includes(m.toLowerCase())))) {
-      return r;
-    }
-  }
-  return -1;
-}
-
-function indexOfHeader(headerRow, needles) {
-  const list = Array.isArray(needles) ? needles : [needles];
-  const norm = (s) => (s ?? '').toString().toLowerCase().replace(/\s+/g, ' ').trim();
-  for (const needle of list) {
-    const n = norm(needle);
-    const idx = headerRow.findIndex((h) => norm(h).includes(n));
-    if (idx >= 0) return idx;
-  }
-  return -1;
-}
-
-// Alias normalization. The xlsx is the operational system of record but uses
-// inconsistent spellings across sheets — Dashboard ejemplares has 'Negra',
-// 'Chocorol', 'Romulo' while Plan / Alimentación / Historial use 'La negra',
-// 'Chocoroll', 'Rómulo'. The Site (photo manifest, deep-link anchors, modal
-// joins between sheets) expects a single canonical alias per specimen, so we
-// fold the variants here. When curators want to retire a normalization,
-// rename the source in the xlsx first, then drop the line below.
-const ALIAS_NORMALIZE = new Map([
-  ['Romulo', 'Rómulo'],
-  ['romulo', 'Rómulo'],
-  ['Chocorol', 'Chocoroll'],
-  ['Negra', 'La negra'],
-  ['mocca', 'Moka'],
-]);
-function normalizeAlias(s) {
-  if (s == null) return s;
-  const t = String(s).trim();
-  if (!t) return t;
-  return ALIAS_NORMALIZE.get(t) ?? t;
-}
-
 // Curator overrides for stale Dashboard ejemplares fields. The xlsx is the
 // system of record but the dashboard column can lag the actual colony state
 // (e.g. a specimen returned from cuarentena before the curator updated the
@@ -483,8 +376,72 @@ bajas.sort((a, b) => {
 });
 console.log(`[data-ajolotes] bajas: ${bajas.length}`);
 
+// --- Terapéutica y Hospital ------------------------------------------------
+// Sheet schema: Fecha | Hora | Autor Principal | Autor Secundario | Alias del
+// Ejemplar | Ubicación | Diagnóstico/Motivo | Pruebas de Laboratorio |
+// Tratamiento | Dosis | Vía de Administración | Día de Tratamiento (date, not
+// number) | Observaciones del Paciente | Estado del Caso. ENS suffixes on
+// authors are stripped at render-time (matches Historial behavior).
+const teraRows = sheet('Terapéutica y Hospital');
+const teraHdrIdx = findHeaderRow(teraRows, ['fecha', 'alias', 'diagnóstico']);
+if (teraHdrIdx < 0) throw new Error('Terapéutica y Hospital: header row not found');
+const teraHdr = teraRows[teraHdrIdx];
+const T = {
+  fecha:          indexOfHeader(teraHdr, 'fecha'),
+  hora:           indexOfHeader(teraHdr, 'hora'),
+  autor:          indexOfHeader(teraHdr, 'autor principal'),
+  autor2:         indexOfHeader(teraHdr, 'autor secundario'),
+  alias:          indexOfHeader(teraHdr, 'alias'),
+  ubicacion:      indexOfHeader(teraHdr, 'ubicación'),
+  diagnostico:    indexOfHeader(teraHdr, 'diagnóstico'),
+  pruebasLab:     indexOfHeader(teraHdr, ['pruebas de laboratorio', 'pruebas de\nlaboratorio']),
+  tratamiento:    indexOfHeader(teraHdr, 'tratamiento'),
+  dosis:          indexOfHeader(teraHdr, 'dosis'),
+  via:            indexOfHeader(teraHdr, ['vía de administración', 'vía de\nadministración']),
+  diaTratamiento: indexOfHeader(teraHdr, ['día de tratamiento', 'día de\ntratamiento']),
+  observaciones:  indexOfHeader(teraHdr, ['observaciones del paciente', 'observaciones\ndel paciente']),
+  estado:         indexOfHeader(teraHdr, ['estado del caso', 'estado del\ncaso']),
+};
+
+const terapeutica = {};
+let teraSkipped = 0;
+const teraUnknownAliases = new Set();
+for (let r = teraHdrIdx + 1; r < teraRows.length; r++) {
+  const row = teraRows[r];
+  if (!row || row.every((c) => c == null || c === '')) continue;
+  const alias = normalizeAlias(toStr(row[T.alias]));
+  const fecha = toIsoDate(row[T.fecha]);
+  if (!alias || !fecha) { teraSkipped++; continue; }
+  if (!knownAliases.has(alias)) teraUnknownAliases.add(alias);
+  const entry = {
+    fecha,
+    hora: toTimeFraction(row[T.hora]),
+    autor: toStr(row[T.autor]),
+    autor2: toStr(row[T.autor2]),
+    ubicacion: toStr(row[T.ubicacion]),
+    diagnostico: toStr(row[T.diagnostico]),
+    pruebasLab: toStr(row[T.pruebasLab]),
+    tratamiento: toStr(row[T.tratamiento]),
+    dosis: toStr(row[T.dosis]),
+    via: toStr(row[T.via]),
+    diaTratamiento: toIsoDate(row[T.diaTratamiento]) ?? toStr(row[T.diaTratamiento]),
+    observaciones: toStr(row[T.observaciones]),
+    estado: toStr(row[T.estado]),
+  };
+  (terapeutica[alias] ??= []).push(entry);
+}
+for (const arr of Object.values(terapeutica)) {
+  arr.sort((a, b) => a.fecha.localeCompare(b.fecha));
+}
+const teraTotal = Object.values(terapeutica).reduce((n, arr) => n + arr.length, 0);
+console.log(`[data-ajolotes] terapeutica: ${teraTotal} entries across ${Object.keys(terapeutica).length} aliases`);
+if (teraSkipped) console.warn(`[data-ajolotes]   skipped ${teraSkipped} terapeutica rows (missing alias or fecha)`);
+if (teraUnknownAliases.size) {
+  console.warn(`[data-ajolotes]   terapeutica aliases not in Dashboard: ${[...teraUnknownAliases].join(', ')}`);
+}
+
 // --- Write -----------------------------------------------------------------
-const bundle = { ejemplares, planes, historial, alimentacion, bajas };
+const bundle = { ejemplares, planes, historial, terapeutica, alimentacion, bajas };
 writeFileSync(join(OUT_DIR, 'bundle.json'), JSON.stringify(bundle, null, 2) + '\n');
 console.log(`[data-ajolotes] wrote ${join(OUT_DIR, 'bundle.json')}`);
 console.log('[data-ajolotes] Done.');

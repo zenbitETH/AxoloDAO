@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
-import type { Baja, Bundle, Ejemplar, Locale, SpeciesCode } from './types';
+import type { Baja, BitacoraEntry, Bundle, Ejemplar, Locale, SpeciesCode } from './types';
 import type { Measurement } from '../waterQuality/types';
 import { useTheme, SPECIES_ORDER, stationOf } from './theme';
 import { aliasSlug } from './photos';
@@ -16,6 +16,7 @@ interface Props {
   locale: Locale;
   bundle: Bundle;
   water: Measurement[];
+  bitacora: BitacoraEntry[];      // bitacora-recent.json eagerly imported by the page shell
   // Locale-aware paths injected by the page shell so links keep their prefixes
   paths: {
     waterPath: string;            // back-link to the Xolotlcalli water dashboard
@@ -75,7 +76,7 @@ function synthLeucisticaBaja(ejemplares: Ejemplar[]): Baja | null {
   };
 }
 
-export default function AjolotesExplorer({ locale, bundle, water, paths }: Props) {
+export default function AjolotesExplorer({ locale, bundle, water, bitacora, paths }: Props) {
   const theme = useTheme();
   const [view, setView] = useState<'ejemplares' | 'bajas'>('ejemplares');
   const [viewDensity, setViewDensity] = useState<'gallery' | 'list'>('gallery');
@@ -235,6 +236,7 @@ export default function AjolotesExplorer({ locale, bundle, water, paths }: Props
         <EjemplarModal
           ej={active}
           bundle={bundle}
+          bitacora={bitacora}
           theme={theme}
           locale={locale}
           water={water}

@@ -3,13 +3,15 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import AjolotesExplorer from '@components/ajolotes/AjolotesExplorer';
 import bundleRaw from '@/data/ajolotes/bundle.json';
 import waterRaw from '@/data/water-quality/measurements-mondays.json';
-import type { Bundle } from '@components/ajolotes/types';
+import bitacoraRaw from '@/data/ops/bitacora-recent.json';
+import type { Bundle, BitacoraEntry } from '@components/ajolotes/types';
 import type { Measurement } from '@components/waterQuality/types';
 import { t } from '@/i18n/strings';
 
 const locale = 'en' as const;
 const bundle = bundleRaw as unknown as Bundle;
 const water = waterRaw as unknown as Measurement[];
+const bitacora = bitacoraRaw as unknown as BitacoraEntry[];
 
 const paths = {
   waterPath: t(locale, 'wq.path'),
@@ -28,7 +30,7 @@ const paths = {
   ogImage="/og-image-xolotlcalliajolotes.jpg"
 >
   <section class="aj-surface relative">
-    <AjolotesExplorer client:load locale={locale} bundle={bundle} water={water} paths={paths} />
+    <AjolotesExplorer client:load locale={locale} bundle={bundle} water={water} bitacora={bitacora} paths={paths} />
   </section>
 </BaseLayout>
 

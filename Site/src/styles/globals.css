@@ -865,6 +865,23 @@
   }
 }
 
+/* Active-state pulse — used on the Eventos tab's right-side state pill and
+   on the timeline dot when an event's tone is warn or alarm. Softer than
+   aj-ribbon-pulse since it can sit next to a lot of text. Also reused on
+   the en-cuarentena badge in the ajolotes list view. */
+.aj-state-pulse {
+  animation: aj-state-pulse 1.6s ease-in-out infinite;
+}
+@keyframes aj-state-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aj-state-pulse {
+    animation: none;
+  }
+}
+
 /* Ajolote charts — draw-on for line paths, rise-up for bars. The line-draw
    uses a generous dasharray so any reasonable chart-path length is covered;
    bars scale from the bottom edge. Both respect prefers-reduced-motion. */

@@ -1,0 +1,796 @@
+{
+  "actividades": [
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 1,
+      "actividad": "Encender luces y Mantenimiento de cristales",
+      "puntaje": "1 x ocasión",
+      "registro": "Inspección visual",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Limpiar los cristales de las peceras antes de que lleguen visitantes."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 2,
+      "actividad": "Inspección de ejemplares",
+      "puntaje": "1 x registro",
+      "registro": "Bitácora",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Revisar postura, branquias y flotabilidad de cada ajolote antes de estresarlos."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 3,
+      "actividad": "Barrer, trapear y limpiar instalaciones",
+      "puntaje": "3 x ocasión",
+      "registro": "Inspección visual",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Limpieza general de apertura."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 4,
+      "actividad": "Mantenimiento de plantas carnívoras",
+      "puntaje": "3 x día",
+      "registro": "Inspección visual",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Revisión diaria y riego según sus necesidades."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 5,
+      "actividad": "Revisar T°, pH y Conductividad (Lectura 1)",
+      "puntaje": "2 x sistema",
+      "registro": "Calidad de Agua",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Llenar bitácora \"Calidad de agua\"."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 6,
+      "actividad": "Lavar Tubifex (Primera lavada)",
+      "puntaje": "1 x ocasión",
+      "registro": "Inspección visual",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Obligatorio: Enjuagar intensamente hasta que el agua salga transparente para evitar carga bacteriana."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 7,
+      "actividad": "Alimentar Guppies",
+      "puntaje": "1 x ocasión",
+      "registro": "Inspección visual",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Las presas vivas deben ser alimentadas (\"gut-loading\") para ser nutritivas para los ajolotes. Dales una pizca pequeña a diario."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 8,
+      "actividad": "Alimentación y Preparación de Dietas",
+      "puntaje": "1 x ejemplar",
+      "registro": "Alimentación 2.0",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Purgar/picar lombriz, descongelar camarón. Alimentar según el Catálogo de Dietas."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 9,
+      "actividad": "Cambio de agua larvas",
+      "puntaje": "5 x ocasión",
+      "registro": "Bitácora",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Cambio de agua para las larvas (Vital)"
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 10,
+      "actividad": "Sifoneo post-alimentación",
+      "puntaje": "3 x sistema",
+      "registro": "Inspección visual",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Crítico: 15 minutos después de alimentar, sifonear rigurosamente cualquier sobrante y heces para proteger el biofiltro."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 11,
+      "actividad": "Revisión de resinas y niveles de filtros",
+      "puntaje": "1 x sistema",
+      "registro": "Bitácora",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Revisar desgaste de resinas (si están en uso) y rellenar agua evaporada si hay garrafones llenos."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 12,
+      "actividad": "Inventario de merch",
+      "puntaje": "3 x ocasión",
+      "registro": "Whatsapp",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Realizarlo en la hora de menor afluencia."
+    },
+    {
+      "seccion": "Turno matutino (Apertura)",
+      "orden": 13,
+      "actividad": "Cierre de Turno",
+      "puntaje": "2 x ocasión",
+      "registro": "Whatsapp",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial/\nOnline",
+      "notas": "Llenar bitácoras y enviar mensaje por WhatsApp/Discord: Entradas, ventas de merch, desglose de dinero dejado y caja chica."
+    },
+    {
+      "seccion": "Cambio de turno",
+      "orden": 14,
+      "actividad": "Revisar T°, pH y Conductividad (Lectura 2)",
+      "puntaje": "2 x sistema",
+      "registro": "Calidad de Agua",
+      "responsable": "AM / PM",
+      "modalidad": "Presencial",
+      "notas": "Toma de mediodía al hacer el empalme de turnos."
+    },
+    {
+      "seccion": "Cambio de turno",
+      "orden": 15,
+      "actividad": "Inspección de ejemplares",
+      "puntaje": "1 x registro",
+      "registro": "Bitácora",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "El turno entrante verifica que no existan signos de alarma."
+    },
+    {
+      "seccion": "Cambio de turno",
+      "orden": 16,
+      "actividad": "Briefing",
+      "puntaje": "3 x ocasión",
+      "registro": "Asistencia",
+      "responsable": "AM / PM",
+      "modalidad": "Presencial",
+      "notas": "Comentar pendientes y observaciones."
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 17,
+      "actividad": "Lavar Tubifex (Segunda lavada)",
+      "puntaje": "1 x ocasión",
+      "registro": "Inspección visual",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Segunda limpieza hasta que el agua sea transparente."
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 18,
+      "actividad": "Reintentos de Alimentación",
+      "puntaje": "1 x ejemplar",
+      "registro": "Alimentación 2.0",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Solo para los ejemplares que rechazaron en la mañana. Seguido de su sifoneo riguroso a los 15 minutos."
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 19,
+      "actividad": "Inventario de merch",
+      "puntaje": "3 x ocasión",
+      "registro": "Whatsapp",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "En un momento sin carga de trabajo."
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 20,
+      "actividad": "Revisar T°, pH y Conductividad (Lectura 3)",
+      "puntaje": "2 x sistema",
+      "registro": "Calidad de Agua",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Lectura final antes de cerrar."
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 21,
+      "actividad": "Alimentación de larvas",
+      "puntaje": "3 x ocasión",
+      "registro": "Alimentación 2.0",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Alimentación de ajolobebes"
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 22,
+      "actividad": "Llenado de Garrafones",
+      "puntaje": "1 x garrafón",
+      "registro": "Bitácora",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Al tardar 1h 20m, el turno de la tarde debe dejarlos listos/llenos para el día siguiente."
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 23,
+      "actividad": "Relleno de filtros",
+      "puntaje": "1 x filtro",
+      "registro": "Bitácora",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Reponer volumen de filtros por perdida de agua (evaporación o goteos), exclusivamente con agua de osmosis inversa"
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 24,
+      "actividad": "Barrer, trapear y limpiar",
+      "puntaje": "3 x ocasión",
+      "registro": "Inspección visual",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Limpieza profunda de cierre."
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 25,
+      "actividad": "Inventario de merch",
+      "puntaje": "3 x ocasión",
+      "registro": "Whatsapp",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Realizarlo en la hora de menor afluencia."
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 26,
+      "actividad": "Cierre de Turno",
+      "puntaje": "2 x ocasión",
+      "registro": "Whatsapp",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial/\nOnline",
+      "notas": "Llenar bitácoras y enviar mensaje por WhatsApp: Entradas, ventas de merch, desglose de dinero dejado y caja chica."
+    },
+    {
+      "seccion": "Turno vespertino",
+      "orden": 27,
+      "actividad": "Apagar luces",
+      "puntaje": "NA",
+      "registro": "NA",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": null
+    },
+    {
+      "seccion": "Calendario de actividades semanales",
+      "orden": null,
+      "actividad": "Cambio de agua Grande",
+      "puntaje": "10 x sistema",
+      "registro": "Bitácora",
+      "responsable": "Equipo en turno, Alex",
+      "modalidad": "Presencial",
+      "notas": "(20% máximo): Para TODOS los sistemas (AM 1, AM 2, AA y AD)"
+    },
+    {
+      "seccion": "Calendario de actividades semanales",
+      "orden": null,
+      "actividad": "Lavar esponjas de los filtros",
+      "puntaje": "2 x sistemas",
+      "registro": "Bitácora",
+      "responsable": "Equipo en turno, Alex",
+      "modalidad": "Presencial",
+      "notas": "Se realiza usando el agua vieja extraída de los sistemas"
+    },
+    {
+      "seccion": "Calendario de actividades semanales",
+      "orden": null,
+      "actividad": "Cotejo de inventario físico y digital.",
+      "puntaje": "5 x ocasión",
+      "registro": "Whatsapp",
+      "responsable": "Equipo en turno, Alex",
+      "modalidad": "Presencial",
+      "notas": "Cotejo de inventario físico y digital"
+    },
+    {
+      "seccion": "Calendario de actividades semanales",
+      "orden": null,
+      "actividad": "Pruebas de agua",
+      "puntaje": null,
+      "registro": "Calidad de Agua",
+      "responsable": "Equipo en turno, Alex",
+      "modalidad": "Presencial",
+      "notas": "Pruebas de agua completas"
+    },
+    {
+      "seccion": "Calendario de actividades semanales",
+      "orden": null,
+      "actividad": "Junta semanal gerencia",
+      "puntaje": "NA",
+      "registro": "NA",
+      "responsable": "Gerencia",
+      "modalidad": "Presencial/\nOnline",
+      "notas": null
+    },
+    {
+      "seccion": "Calendario de actividades semanales",
+      "orden": null,
+      "actividad": "Lunes de Mantenimiento",
+      "puntaje": "15 x asistencia de equipo",
+      "registro": "Asistencia",
+      "responsable": "Equipo en turno, Alex",
+      "modalidad": "Online",
+      "notas": "Live 9 pm"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Cotejo de inventario.",
+      "puntaje": "5 x ocasión",
+      "registro": "Whatsapp",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Cotejo de inventario físico y digital"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Pago de nónmina",
+      "puntaje": "NA",
+      "registro": "NA",
+      "responsable": "Alex, Habacuc, Juan C.",
+      "modalidad": "Online",
+      "notas": null
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Preparación de Holtfreter",
+      "puntaje": "1 x garrafón",
+      "registro": "Bitácora",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Preparacion de recetas para los siguientes cambios"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Cambios de agua (10%)",
+      "puntaje": "8 x sistema",
+      "registro": "Calidad de Agua",
+      "responsable": "Turno AM, Alex",
+      "modalidad": "Presencial",
+      "notas": "EXCLUSIVO para sistemas AM 1 y AM 2"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Requisición de material",
+      "puntaje": "2 x ocasión",
+      "registro": "Whatsapp",
+      "responsable": "Turno AM",
+      "modalidad": "Presencial",
+      "notas": "Requisición de insumos faltantes o a punto de agotarse"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Cambios de agua (10%)",
+      "puntaje": "8 x sistema",
+      "registro": "Calidad de Agua",
+      "responsable": "Turno AM, Alex",
+      "modalidad": "Presencial",
+      "notas": "EXCLUSIVO para sistemas AA y AD"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Cotejo de inventario.",
+      "puntaje": "5 x ocasión",
+      "registro": "Whatsapp",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Cotejo de inventario físico y digital"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Limpieza de aire acondicionado",
+      "puntaje": "3 x ocasión",
+      "registro": "Bitácora",
+      "responsable": "Turno PM",
+      "modalidad": "Presencial",
+      "notas": "Limpieza de filtros de aire acondicionado"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Alimentación grande de Daphnia para los Ajolobebés",
+      "puntaje": "4 x ocasión",
+      "registro": "Bitácora",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial",
+      "notas": "Alimentación con una cantidad de pulga suficiente para cubir el fin de semana"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Llenado de garrafones",
+      "puntaje": "1 x garrafón",
+      "registro": "Bitácora",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial",
+      "notas": "Llenado de garrafones en preparación para cambios de agua del lunes"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Preparación de Holtfreter",
+      "puntaje": "1 x garrafón",
+      "registro": "Bitácora",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial",
+      "notas": "Preparacion de recetas para los siguientes cambios"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "1 Etograma por miembro del equipo",
+      "puntaje": "7 x registro",
+      "registro": "Comportamiento 2.0",
+      "responsable": "Todos",
+      "modalidad": "Presencial/\nOnline",
+      "notas": "Etograma sobre 1 ejemplar, puede ser presencial u online"
+    },
+    {
+      "seccion": "Martes",
+      "orden": null,
+      "actividad": "Junta semanal de seguimiento",
+      "puntaje": "10 x asistencia",
+      "registro": "Asistencia",
+      "responsable": "Todos",
+      "modalidad": "Presencial/\nOnline",
+      "notas": "Junta semanal de seguimiento para equipo operativo"
+    },
+    {
+      "seccion": "Calendario de actividades mensuales",
+      "orden": null,
+      "actividad": "Pago físico o transferencia a proveedores",
+      "puntaje": "NA",
+      "registro": "NA",
+      "responsable": "Alex",
+      "modalidad": "Presencial/\nOnline",
+      "notas": null
+    },
+    {
+      "seccion": "Calendario de actividades mensuales",
+      "orden": null,
+      "actividad": "Pago de propinas",
+      "puntaje": "NA",
+      "registro": "NA",
+      "responsable": "Alex",
+      "modalidad": "Presencial/\nOnline",
+      "notas": null
+    },
+    {
+      "seccion": "Calendario de actividades mensuales",
+      "orden": null,
+      "actividad": "Solicitud de Merch adicional",
+      "puntaje": "NA",
+      "registro": "NA",
+      "responsable": "Alex",
+      "modalidad": "Presencial/\nOnline",
+      "notas": null
+    },
+    {
+      "seccion": "Calendario de actividades mensuales",
+      "orden": null,
+      "actividad": "Junta mensual con TODO el equipo",
+      "puntaje": "NA",
+      "registro": "NA",
+      "responsable": "Alex",
+      "modalidad": "Presencial/\nOnline",
+      "notas": null
+    },
+    {
+      "seccion": "Calendario de actividades mensuales",
+      "orden": null,
+      "actividad": "Historial Médico",
+      "puntaje": "30 x ejemplar",
+      "registro": "Historial Médico",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial",
+      "notas": null
+    },
+    {
+      "seccion": "Calendario de actividades mensuales",
+      "orden": null,
+      "actividad": "Biometría",
+      "puntaje": "40 x ejemplar",
+      "registro": "Historial Médico",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial",
+      "notas": null
+    },
+    {
+      "seccion": "Calendario de actividades mensuales",
+      "orden": null,
+      "actividad": "Cierre de contabilidad mensual",
+      "puntaje": "NA",
+      "registro": "NA",
+      "responsable": "Alex",
+      "modalidad": "Online",
+      "notas": null
+    },
+    {
+      "seccion": "Calendario de actividades mensuales",
+      "orden": null,
+      "actividad": "Informe de cierre para el pago a proveedores",
+      "puntaje": "NA",
+      "registro": "NA",
+      "responsable": "Alex",
+      "modalidad": "Online",
+      "notas": null
+    },
+    {
+      "seccion": "Actividades generales",
+      "orden": null,
+      "actividad": "Tour",
+      "puntaje": "3 x persona",
+      "registro": "Forms",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial",
+      "notas": null
+    },
+    {
+      "seccion": "Actividades generales",
+      "orden": null,
+      "actividad": "Venta de Mercancía",
+      "puntaje": "3 x articulo",
+      "registro": "Forms",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial",
+      "notas": null
+    },
+    {
+      "seccion": "Actividades generales",
+      "orden": null,
+      "actividad": "Detección de síntoma de alarma",
+      "puntaje": "50 x registro",
+      "registro": "Historial Médico",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial",
+      "notas": null
+    },
+    {
+      "seccion": "Actividades generales",
+      "orden": null,
+      "actividad": "Asistencia junta de proyecto especial",
+      "puntaje": "10 x ocasión",
+      "registro": "Junta semanal\nde seguimiento",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial",
+      "notas": null
+    },
+    {
+      "seccion": "Actividades generales",
+      "orden": null,
+      "actividad": "Tratamiento de ejemplares",
+      "puntaje": "30 x ocasión",
+      "registro": "Terapéutica y Hospital",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial",
+      "notas": null
+    },
+    {
+      "seccion": "Actividades generales",
+      "orden": null,
+      "actividad": "Detección de averia de sistema",
+      "puntaje": "20 x ocasión",
+      "registro": "Bitácora",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial/\nOnline",
+      "notas": null
+    },
+    {
+      "seccion": "Actividades generales",
+      "orden": null,
+      "actividad": "Actividad de proyecto especial",
+      "puntaje": "Variable",
+      "registro": "Junta semanal\nde seguimiento",
+      "responsable": "Equipo en turno",
+      "modalidad": "Presencial/\nOnline",
+      "notas": null
+    }
+  ],
+  "turnos": [
+    {
+      "dia": "Lunes",
+      "nombre": "Lupita",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "09:15",
+      "horaSalida": "17:15",
+      "totalHoras": 8
+    },
+    {
+      "dia": "Lunes",
+      "nombre": "Fer",
+      "turno": "Turno PM",
+      "modalidad": "Presencial",
+      "horaEntrada": "15:30",
+      "horaSalida": "19:00",
+      "totalHoras": 3.5
+    },
+    {
+      "dia": "Lunes",
+      "nombre": "Alex",
+      "turno": "Responsable",
+      "modalidad": "Presencial",
+      "horaEntrada": "08:15",
+      "horaSalida": "19:00",
+      "totalHoras": 10.75
+    },
+    {
+      "dia": "Lunes",
+      "nombre": "Alex",
+      "turno": "Responsable",
+      "modalidad": "Online",
+      "horaEntrada": "20:00",
+      "horaSalida": "22:00",
+      "totalHoras": 2
+    },
+    {
+      "dia": "Martes",
+      "nombre": "Lupita",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "07:15",
+      "horaSalida": "15:15",
+      "totalHoras": 8
+    },
+    {
+      "dia": "Martes",
+      "nombre": "Alexis",
+      "turno": "Turno PM",
+      "modalidad": "Presencial",
+      "horaEntrada": "14:00",
+      "horaSalida": "21:00",
+      "totalHoras": 7
+    },
+    {
+      "dia": "Miercoles",
+      "nombre": "Lupita",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "07:15",
+      "horaSalida": "15:15",
+      "totalHoras": 8
+    },
+    {
+      "dia": "Miercoles",
+      "nombre": "Alex",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "09:00",
+      "horaSalida": "15:30",
+      "totalHoras": 6.5
+    },
+    {
+      "dia": "Miercoles",
+      "nombre": "Alexis",
+      "turno": "Turno PM",
+      "modalidad": "Presencial",
+      "horaEntrada": "14:00",
+      "horaSalida": "21:00",
+      "totalHoras": 7
+    },
+    {
+      "dia": "Jueves",
+      "nombre": "Lupita",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "07:15",
+      "horaSalida": "15:15",
+      "totalHoras": 8
+    },
+    {
+      "dia": "Jueves",
+      "nombre": "Alex",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "09:00",
+      "horaSalida": "11:30",
+      "totalHoras": 2.5
+    },
+    {
+      "dia": "Jueves",
+      "nombre": "Alexis",
+      "turno": "Turno PM",
+      "modalidad": "Presencial",
+      "horaEntrada": "14:00",
+      "horaSalida": "21:00",
+      "totalHoras": 7
+    },
+    {
+      "dia": "Viernes",
+      "nombre": "Lupita",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "07:15",
+      "horaSalida": "15:15",
+      "totalHoras": 8
+    },
+    {
+      "dia": "Viernes",
+      "nombre": "Alex",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "09:00",
+      "horaSalida": "11:30",
+      "totalHoras": 2.5
+    },
+    {
+      "dia": "Viernes",
+      "nombre": "Fer",
+      "turno": "Turno PM",
+      "modalidad": "Presencial",
+      "horaEntrada": "15:00",
+      "horaSalida": "21:00",
+      "totalHoras": 6
+    },
+    {
+      "dia": "Sabado",
+      "nombre": "Alex",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "09:00",
+      "horaSalida": "14:00",
+      "totalHoras": 5
+    },
+    {
+      "dia": "Sabado",
+      "nombre": "Fer",
+      "turno": "AM / PM",
+      "modalidad": "Presencial",
+      "horaEntrada": "09:00",
+      "horaSalida": "19:00",
+      "totalHoras": 10
+    },
+    {
+      "dia": "Domingo",
+      "nombre": "Lupita",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "08:15",
+      "horaSalida": "16:15",
+      "totalHoras": 8
+    },
+    {
+      "dia": "Domingo",
+      "nombre": "Alex",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "09:00",
+      "horaSalida": "13:00",
+      "totalHoras": 4
+    },
+    {
+      "dia": "Domingo",
+      "nombre": "Alexis",
+      "turno": "Turno PM",
+      "modalidad": "Presencial",
+      "horaEntrada": "16:00",
+      "horaSalida": "19:00",
+      "totalHoras": 3
+    }
+  ]
+}
