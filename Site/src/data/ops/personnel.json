@@ -126,7 +126,7 @@
       "actividad": "Cierre de Turno",
       "puntaje": "2 x ocasión",
       "registro": "Whatsapp",
-      "responsable": "Turno PM",
+      "responsable": "Turno PM, Turno AM",
       "modalidad": "Presencial/\nOnline",
       "notas": "Llenar bitácoras y enviar mensaje por WhatsApp/Discord: Entradas, ventas de merch, desglose de dinero dejado y caja chica."
     },
@@ -545,7 +545,7 @@
       "orden": null,
       "actividad": "Tour",
       "puntaje": "3 x persona",
-      "registro": "Forms",
+      "registro": "MP",
       "responsable": "Equipo en turno",
       "modalidad": "Presencial",
       "notas": null
@@ -555,7 +555,7 @@
       "orden": null,
       "actividad": "Venta de Mercancía",
       "puntaje": "3 x articulo",
-      "registro": "Forms",
+      "registro": "MP",
       "responsable": "Equipo en turno",
       "modalidad": "Presencial",
       "notas": null

@@ -356,6 +356,7 @@ export default function TankCard({
             measurements={history}
             catalogForTank={catalogForTank}
             accent={accent}
+            bitacora={bitacora}
           />
         )}
       </section>

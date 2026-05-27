@@ -21,6 +21,8 @@ const AVAILABLE_PHOTOS: Record<string, 'webp' | 'jpg'> = {
   'pardo-macho': 'webp',
   romulo: 'webp',
   remo: 'webp',
+  'larva-1': 'webp',
+  'larva-2': 'webp',
 };
 
 export function aliasSlug(alias: string): string {

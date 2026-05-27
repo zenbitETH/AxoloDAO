@@ -1,4 +1,4 @@
-import { useState } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 import type {
   Locale,
   Measurement,
@@ -7,7 +7,9 @@ import type {
   Tank,
 } from './types';
 import { PARAM_KEYS } from './types';
-import MultiSeriesChart from './MultiSeriesChart';
+import MultiSeriesChart, { type ChartEvent } from './MultiSeriesChart';
+import type { BitacoraEntry } from '../ajolotes/types';
+import { cambiosDeAguaByTank } from '../../lib/timeline/cambios';
 
 interface Props {
   locale: Locale;
@@ -16,9 +18,22 @@ interface Props {
   catalogForTank: ParameterCatalogEntry[];
   // Themed accent (resolved by parent TankCard using useTheme()).
   accent: string;
+  bitacora: BitacoraEntry[];
 }
 
-export default function HistoricalGrid({ locale, tank, measurements, catalogForTank, accent }: Props) {
+export default function HistoricalGrid({ locale, tank, measurements, catalogForTank, accent, bitacora }: Props) {
+  // Same event list for every per-parameter chart in the grid — water changes
+  // are a maintenance event, not a param-specific reading.
+  const events = useMemo<ChartEvent[]>(() => {
+    return cambiosDeAguaByTank(bitacora, tank.id).map((c) => {
+      const loc = c.ubicacionReal !== tank.id ? ` · ${c.ubicacionReal}` : '';
+      return {
+        date: c.date,
+        label: 'Cambio de agua',
+        detail: `${c.accion}${loc} · ${c.date}${c.autor ? ` · ${c.autor}` : ''}`,
+      };
+    });
+  }, [bitacora, tank.id]);
   const catBy = new Map<ParamKey, ParameterCatalogEntry>();
   for (const c of catalogForTank) catBy.set(c.key, c);
 
@@ -63,6 +78,7 @@ export default function HistoricalGrid({ locale, tank, measurements, catalogForT
               onHighlight={setHighlight}
               ink={accent}
               bandColor={accent}
+              events={events}
             />
           </div>
         );

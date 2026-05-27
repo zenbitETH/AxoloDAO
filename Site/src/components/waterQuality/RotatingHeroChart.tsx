@@ -8,13 +8,16 @@ import type {
 } from './types';
 import { PARAM_KEYS } from './types';
 import { paramLabel, STRINGS } from './strings';
-import MultiSeriesChart, { type ChartSeries } from './MultiSeriesChart';
+import MultiSeriesChart, { type ChartSeries, type ChartEvent } from './MultiSeriesChart';
+import type { BitacoraEntry } from '../ajolotes/types';
+import { cambiosDeAguaByTank } from '../../lib/timeline/cambios';
 
 interface Props {
   locale: Locale;
   tanks: Tank[];                 // primary tanks only
   measurements: Measurement[];
   catalog: ParameterCatalogEntry[];
+  bitacora: BitacoraEntry[];
   // Focused parameter (from overview cell click). When present, pauses rotation.
   focusedParam?: ParamKey | null;
   onFocusChange?: (k: ParamKey | null) => void;
@@ -39,6 +42,7 @@ export default function RotatingHeroChart({
   tanks,
   measurements,
   catalog,
+  bitacora,
   focusedParam,
   onFocusChange,
 }: Props) {
@@ -124,6 +128,37 @@ export default function RotatingHeroChart({
   // Unit + display name from catalog (prefer first catalog entry for this param)
   const catEntry = catalog.find((c) => c.key === currentKey);
   const unit = catEntry?.unit ?? '';
+
+  // Aggregate cambio-de-agua events across the tanks that the hero chart is
+  // currently plotting, deduping by (date, tank). Same date across multiple
+  // tanks renders as one line; the tooltip lists each tank that had a change.
+  const events = useMemo<ChartEvent[]>(() => {
+    // Dedupe by (date, real ubicación) so an AM-family cambio that matches
+    // multiple AM-series tanks (AM 1, AM 2, AM) only emits a single line on
+    // the hero chart instead of three stacked ones.
+    const byKey = new Map<string, { date: string; line: string }>();
+    for (const tk of tanks) {
+      for (const c of cambiosDeAguaByTank(bitacora, tk.id)) {
+        const key = `${c.date}|${c.ubicacionReal}`;
+        if (byKey.has(key)) continue;
+        const line = `${c.ubicacionReal} · ${c.accion}${c.autor ? ` · ${c.autor}` : ''}`;
+        byKey.set(key, { date: c.date, line });
+      }
+    }
+    const byDate = new Map<string, string[]>();
+    for (const { date, line } of byKey.values()) {
+      const arr = byDate.get(date) ?? [];
+      arr.push(line);
+      byDate.set(date, arr);
+    }
+    return [...byDate.entries()]
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([date, lines]) => ({
+        date,
+        label: 'Cambio de agua',
+        detail: `${date}\n${lines.join('\n')}`,
+      }));
+  }, [tanks, bitacora]);
 
   function go(delta: number) {
     setPaused(true);
@@ -235,6 +270,7 @@ export default function RotatingHeroChart({
           showSafeBand={false}
           showLegend={true}
           showTitle={true}
+          events={events}
         />
       </div>
     </div>

@@ -288,6 +288,7 @@ export default function WaterQualityDashboard({
             measurements={weekMeasurements}
             prevMeasurements={prevWeekMeasurements}
             catalog={parameters}
+            ejemplares={ejemplares}
             onTankSelect={onTankSelect}
             onParamFocus={(k) => setFocusedParam(k)}
             activeParam={focusedParam}
@@ -308,6 +309,7 @@ export default function WaterQualityDashboard({
             tanks={primaryTanks}
             measurements={sourceMeasurements}
             catalog={parameters}
+            bitacora={bitacora}
             focusedParam={focusedParam}
             onFocusChange={setFocusedParam}
           />

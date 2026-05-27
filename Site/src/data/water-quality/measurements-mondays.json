@@ -2036,7 +2036,7 @@
       "ph": 8.3,
       "po4": null,
       "cond": 880,
-      "tds": null
+      "tds": 440
     },
     "alarms": [],
     "note": null
@@ -2060,12 +2060,13 @@
       "ph": 8.7,
       "po4": null,
       "cond": 380,
-      "tds": null
+      "tds": 190
     },
     "alarms": [
       "gh",
       "ph",
-      "cond"
+      "cond",
+      "tds"
     ],
     "note": null
   },
@@ -2088,7 +2089,7 @@
       "ph": 8.2,
       "po4": null,
       "cond": 1740,
-      "tds": null
+      "tds": 870
     },
     "alarms": [
       "gh",
@@ -2116,13 +2117,73 @@
       "ph": 8.9,
       "po4": null,
       "cond": 840,
-      "tds": null
+      "tds": 420
     },
     "alarms": [
       "gh",
       "kh",
       "ph",
+      "cond",
+      "tds"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-05-25",
+    "time": "10:30",
+    "tankId": "AM",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 15,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 20,
+      "gh": 71.6,
+      "kh": 35.8,
+      "ph": 7.9,
+      "po4": null,
+      "cond": 1870,
+      "tds": 935
+    },
+    "alarms": [
+      "temp",
+      "gh",
+      "kh",
+      "ph",
       "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-05-25",
+    "time": "10:30",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 16.6,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 10,
+      "gh": 107.4,
+      "kh": 214.8,
+      "ph": 8.7,
+      "po4": null,
+      "cond": 810,
+      "tds": 405
+    },
+    "alarms": [
+      "gh",
+      "ph",
+      "cond",
+      "tds"
     ],
     "note": null
   }
