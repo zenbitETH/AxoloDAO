@@ -48,7 +48,7 @@
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 2.855,
+      "ultimoConsumo": 5.83,
       "respuestaAlim": "Camarón azul",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
@@ -100,7 +100,7 @@
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 1.157,
+      "ultimoConsumo": 3.75,
       "respuestaAlim": "Camarón azul",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
@@ -126,7 +126,7 @@
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 1.157,
+      "ultimoConsumo": 3.75,
       "respuestaAlim": "Camarón azul",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
@@ -178,7 +178,7 @@
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "⚠️ REQUIERE ATENCIÓN",
-      "ultimoConsumo": 1.157,
+      "ultimoConsumo": 4.09,
       "respuestaAlim": "Camarón azul",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
@@ -256,7 +256,7 @@
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "SIN DATOS",
-      "ultimoConsumo": 2.036,
+      "ultimoConsumo": 4.22,
       "respuestaAlim": "Camarón azul",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
@@ -339,7 +339,7 @@
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
-      "alias": "Larvas",
+      "alias": "Larva 1",
       "id": null,
       "pecera": "AM larvas",
       "especie": "A. mexicanum",
@@ -365,7 +365,7 @@
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL"
     },
     {
-      "alias": "Larvas",
+      "alias": "Larva 2",
       "id": null,
       "pecera": "AM larvas",
       "especie": "A. mexicanum",
@@ -4727,6 +4727,16 @@
         "sobrante": 2.54,
         "consumo": 0.81,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 4.06,
+        "sobrante": 0.25,
+        "consumo": 1.905,
+        "respuesta": null
       }
     ],
     "Tascalate": [
@@ -4929,6 +4939,16 @@
         "sobrante": 2.54,
         "consumo": 0.81,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 4.06,
+        "sobrante": 0.25,
+        "consumo": 1.905,
+        "respuesta": null
       }
     ],
     "Martín": [
@@ -5091,6 +5111,16 @@
         "sobrante": 0.69,
         "consumo": 1.305,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 3.04,
+        "sobrante": 1.04,
+        "consumo": 1,
+        "respuesta": null
       }
     ],
     "Limon": [
@@ -5252,6 +5282,16 @@
         "racion": 3.3,
         "sobrante": 0.69,
         "consumo": 1.305,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 3.04,
+        "sobrante": 1.04,
+        "consumo": 1,
         "respuesta": null
       }
     ],
@@ -5435,6 +5475,16 @@
         "sobrante": 1.24,
         "consumo": 0.35,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 1.65,
+        "sobrante": 0,
+        "consumo": 1.65,
+        "respuesta": null
       }
     ],
     "La negra": [
@@ -5616,6 +5666,16 @@
         "racion": 4.29,
         "sobrante": 0.89,
         "consumo": 1.7,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 4.28,
+        "sobrante": 1.01,
+        "consumo": 1.635,
         "respuesta": null
       }
     ],
@@ -5799,6 +5859,16 @@
         "sobrante": 0.89,
         "consumo": 1.7,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 4.28,
+        "sobrante": 1.01,
+        "consumo": 1.635,
+        "respuesta": null
       }
     ],
     "Chocoroll": [
@@ -5920,6 +5990,16 @@
         "racion": 3.09,
         "sobrante": 1.02,
         "consumo": 1.035,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 3.04,
+        "sobrante": 0.73,
+        "consumo": 1.155,
         "respuesta": null
       }
     ],
@@ -6103,6 +6183,16 @@
         "sobrante": 1.02,
         "consumo": 1.035,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 3.04,
+        "sobrante": 0.73,
+        "consumo": 1.155,
+        "respuesta": null
       }
     ],
     "Remo": [
@@ -6265,6 +6355,16 @@
         "sobrante": 2.42,
         "consumo": 0.26,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 2.78,
+        "sobrante": 0,
+        "consumo": 2.78,
+        "respuesta": null
       }
     ],
     "Larvas": [
@@ -6406,6 +6506,26 @@
         "racion": 1.22,
         "sobrante": null,
         "consumo": null,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 1.27,
+        "sobrante": 0,
+        "consumo": 0.635,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 1.27,
+        "sobrante": 0,
+        "consumo": 0.635,
         "respuesta": null
       }
     ],

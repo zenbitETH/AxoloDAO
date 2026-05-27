@@ -13,6 +13,15 @@ export interface ChartSeries {
   points: { date: string; value: number | null }[];
 }
 
+// Annotation marker drawn behind the data series. Used today for "cambio de
+// agua" events from the bitácora — the chart stays generic so future event
+// kinds (treatments, filter swaps) can reuse the same hook.
+export interface ChartEvent {
+  date: string;
+  label: string;   // short legend label (e.g. "Cambio de agua")
+  detail: string;  // tooltip detail line (action text + tank + author + date)
+}
+
 interface Props {
   locale: Locale;
   paramKey: ParamKey;
@@ -30,6 +39,11 @@ interface Props {
   ink?: string;
   // dark-mode friendly band stroke
   bandColor?: string;
+  // Background event markers (e.g. cambios de agua). All events share the
+  // legend entry under `eventsLabel`. Hover within 4px reveals `detail` in the
+  // tooltip.
+  events?: ChartEvent[];
+  eventsLabel?: string;
 }
 
 const PAD = { top: 18, right: 14, bottom: 28, left: 44 };
@@ -48,10 +62,13 @@ export default function MultiSeriesChart({
   showTitle = true,
   ink,
   bandColor,
+  events,
+  eventsLabel,
 }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(640);
   const [internalHover, setInternalHover] = useState<string | null>(null);
+  const [hoveredEventIdx, setHoveredEventIdx] = useState<number>(-1);
 
   // Track container width for responsive sizing
   useEffect(() => {
@@ -120,6 +137,36 @@ export default function MultiSeriesChart({
     return PAD.top + innerH - ((v - yMin) / (yMax - yMin || 1)) * innerH;
   };
 
+  // Interpolated x for arbitrary ISO dates (used to position event markers
+  // that don't necessarily land on a sampling day). Outside the data range
+  // clamps to the nearest edge. Date diffs are in days, so the spacing
+  // reflects calendar gaps rather than just the sample index.
+  function xAtDate(iso: string): number {
+    if (dates.length === 0) return PAD.left + innerW / 2;
+    if (dates.length === 1) return xAt(0);
+    if (iso <= dates[0]) return xAt(0);
+    if (iso >= dates[dates.length - 1]) return xAt(dates.length - 1);
+    let lo = 0;
+    for (let i = 1; i < dates.length; i++) {
+      if (iso < dates[i]) { lo = i - 1; break; }
+      lo = i;
+    }
+    const hi = Math.min(lo + 1, dates.length - 1);
+    const tLo = Date.parse(dates[lo]);
+    const tHi = Date.parse(dates[hi]);
+    const tEv = Date.parse(iso);
+    const frac = tHi === tLo ? 0 : (tEv - tLo) / (tHi - tLo);
+    return xAt(lo) + (xAt(hi) - xAt(lo)) * frac;
+  }
+
+  // Pre-compute event x positions so the pointer handler and the renderer
+  // share the same coordinate.
+  const eventXs = useMemo(() => {
+    if (!events || events.length === 0) return [] as number[];
+    return events.map((e) => xAtDate(e.date));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [events, dates, width]);
+
   // Active hover date (controlled by parent or internal)
   const hoverDate = highlightDate !== undefined ? highlightDate : internalHover;
   const hoverIdx = hoverDate ? dates.indexOf(hoverDate) : -1;
@@ -139,10 +186,20 @@ export default function MultiSeriesChart({
     const d = dates[bestIdx] ?? null;
     setInternalHover(d);
     onHighlight?.(d);
+    // Independent event proximity check — within 4px of an event x reveals
+    // its tooltip row without affecting the data-date snap.
+    let evIdx = -1;
+    let evBest = 4;
+    for (let i = 0; i < eventXs.length; i++) {
+      const dx = Math.abs(x - eventXs[i]);
+      if (dx <= evBest) { evBest = dx; evIdx = i; }
+    }
+    setHoveredEventIdx(evIdx);
   }
   function handleLeave() {
     setInternalHover(null);
     onHighlight?.(null);
+    setHoveredEventIdx(-1);
   }
 
   // Catalog lookup (for status pip in tooltip rows)
@@ -259,6 +316,25 @@ export default function MultiSeriesChart({
           </>
         )}
 
+        {/* Background event markers (e.g. cambios de agua) — rendered after
+            grid lines but before the safe-band and series so data stays on
+            top. Same subtle white line for all events; the hover tooltip
+            distinguishes routine vs emergency by surfacing the accion text. */}
+        {events && events.length > 0 && events.map((ev, i) => (
+          <line
+            key={`ev-${i}-${ev.date}`}
+            x1={eventXs[i]}
+            x2={eventXs[i]}
+            y1={PAD.top}
+            y2={PAD.top + innerH}
+            stroke="#FFFFFF"
+            stroke-width={hoveredEventIdx === i ? 1.5 : 1}
+            stroke-linecap="round"
+            opacity={hoveredEventIdx === i ? 0.85 : 0.45}
+            pointer-events="none"
+          />
+        ))}
+
         {/* Optional safe-range band (single-series mode) */}
         {showSafeBand && catalog.length > 0 && series.length === 1 && (
           (() => {
@@ -335,7 +411,7 @@ export default function MultiSeriesChart({
       </svg>
 
       {/* Legend */}
-      {showLegend && series.length > 1 && (
+      {showLegend && (series.length > 1 || (events && events.length > 0)) && (
         <ul class="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-xs text-[var(--wq-ink-muted)]">
           {series.map((s) => (
             <li class="inline-flex items-center gap-1.5">
@@ -350,7 +426,49 @@ export default function MultiSeriesChart({
               <span class="font-body">{s.label}</span>
             </li>
           ))}
+          {events && events.length > 0 && (
+            <li class="inline-flex items-center gap-1.5">
+              <svg width="6" height="12" aria-hidden="true">
+                <line
+                  x1={3}
+                  x2={3}
+                  y1={1}
+                  y2={11}
+                  stroke="currentColor"
+                  stroke-width={1}
+                  stroke-linecap="round"
+                  opacity={0.7}
+                />
+              </svg>
+              <span class="font-body">{eventsLabel ?? 'Cambio de agua'}</span>
+            </li>
+          )}
         </ul>
+      )}
+
+      {/* Standalone event-hover tooltip — only when the data-series tooltip
+          isn't showing. When both fire (hover near a date with both a sample
+          and a nearby cambio), the cambio gets folded into the data tooltip
+          as a footer so they don't stack at the same screen position. */}
+      {hoveredEventIdx >= 0 && hoverIdx < 0 && events && events[hoveredEventIdx] && (
+        <div
+          class="pointer-events-none absolute z-10 max-w-[240px] rounded-lg border border-[var(--wq-divider)] bg-[var(--wq-surface)] px-3 py-2 text-xs shadow-xl"
+          style={{
+            left: clampTooltipLeft(eventXs[hoveredEventIdx], width, 220),
+            top: PAD.top - 4,
+            transform: 'translate(-50%, 0)',
+          }}
+        >
+          <div class="mb-1 flex items-center gap-1.5 font-display text-[10px] uppercase tracking-wider text-[var(--wq-ink-muted)]">
+            <svg width="6" height="10" aria-hidden="true">
+              <line x1={3} x2={3} y1={1} y2={9} stroke="currentColor" stroke-width={1} stroke-linecap="round" />
+            </svg>
+            {eventsLabel ?? 'Cambio de agua'}
+          </div>
+          <div class="font-body text-[var(--wq-ink)] leading-snug whitespace-pre-line">
+            {events[hoveredEventIdx].detail}
+          </div>
+        </div>
       )}
 
       {/* Floating multi-series tooltip (visible on hover) */}
@@ -394,6 +512,19 @@ export default function MultiSeriesChart({
               </li>
             ))}
           </ul>
+          {hoveredEventIdx >= 0 && events && events[hoveredEventIdx] && (
+            <div class="mt-2 border-t border-[var(--wq-divider)] pt-1.5">
+              <div class="mb-0.5 flex items-center gap-1.5 font-display text-[10px] uppercase tracking-wider text-[var(--wq-ink-muted)]">
+                <svg width="6" height="10" aria-hidden="true">
+                  <line x1={3} x2={3} y1={1} y2={9} stroke="currentColor" stroke-width={1} stroke-linecap="round" />
+                </svg>
+                {eventsLabel ?? 'Cambio de agua'}
+              </div>
+              <div class="font-body text-[11px] leading-snug text-[var(--wq-ink)] whitespace-pre-line">
+                {events[hoveredEventIdx].detail}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
