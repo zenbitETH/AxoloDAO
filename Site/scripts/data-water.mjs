@@ -473,9 +473,27 @@ const IDX_M = {
   hora:     measHeader.findIndex(h => (h ?? '').toString().toLowerCase() === 'hora'),
   author1:  measHeader.findIndex(h => (h ?? '').toString().toLowerCase().includes('autor principal')),
   author2:  measHeader.findIndex(h => (h ?? '').toString().toLowerCase().includes('autor secundario')),
-  pecera:   measHeader.findIndex(h => (h ?? '').toString().toLowerCase() === 'pecera'),
+  // The tank/system column was historically labeled 'Pecera' but the curators
+  // renamed it to 'Ubicación' in mid-2026. Accept either spelling so the rename
+  // does not silently zero out the dataset (every row would otherwise skip at
+  // `if (!rawTank) continue` below, producing 0 rows with no warning).
+  pecera:   measHeader.findIndex(h => {
+    const s = (h ?? '').toString().toLowerCase().trim();
+    return s === 'pecera' || s === 'ubicación' || s === 'ubicacion';
+  }),
   noteCol:  measHeader.findIndex(h => (h ?? '').toString().toLowerCase().trim() === 'nota'),
 };
+
+// Hard-fail if the tank column is missing. Without this guard a future header
+// rename re-introduces the silent-wipe failure mode: 0 measurements written and
+// the historical JSON clobbered, with no error surfaced to the curator.
+if (IDX_M.pecera < 0) {
+  throw new Error(
+    '[data-water] "Calidad de agua": tank/location column not found ' +
+    '(looked for "Pecera" / "Ubicación"). Header row was: ' +
+    JSON.stringify(measHeader)
+  );
+}
 
 const allMeasurements = [];
 let skippedNoDate = 0;
