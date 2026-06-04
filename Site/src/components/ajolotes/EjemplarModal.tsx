@@ -181,14 +181,27 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
                 </p>
               )}
             </div>
-            <button
-              type="button"
-              onClick={onClose}
-              class="aj-press relative grid h-9 w-9 flex-shrink-0 place-items-center rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)]/60 text-2xl leading-none text-[var(--wq-ink)] backdrop-blur transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[var(--wq-row-bg)] active:scale-[0.92]"
-              aria-label={s(locale, 'modal.close')}
-            >
-              ×
-            </button>
+            <div class="flex flex-shrink-0 items-center gap-2">
+              <a
+                href="https://xovi-testnet.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="aj-press inline-flex h-9 items-center gap-1.5 rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)]/60 px-3 font-body text-xs font-semibold text-[var(--wq-ink)] backdrop-blur transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[var(--wq-row-bg)] active:scale-[0.92]"
+                aria-label={s(locale, 'xovi.clip')}
+                title={s(locale, 'xovi.clip')}
+              >
+                <img src="/logos/xovi.svg" alt="" width={18} height={18} class="h-[18px] w-[18px]" />
+                <span class="whitespace-nowrap">{s(locale, 'xovi.clip')}</span>
+              </a>
+              <button
+                type="button"
+                onClick={onClose}
+                class="aj-press relative grid h-9 w-9 place-items-center rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)]/60 text-2xl leading-none text-[var(--wq-ink)] backdrop-blur transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[var(--wq-row-bg)] active:scale-[0.92]"
+                aria-label={s(locale, 'modal.close')}
+              >
+                ×
+              </button>
+            </div>
           </div>
         </div>
 

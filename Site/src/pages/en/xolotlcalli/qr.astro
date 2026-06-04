@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import QrSheet from '@components/QrSheet.astro';
+
+const locale = 'en';
+---
+
+<BaseLayout
+  locale={locale}
+  title="QR codes — Xolotlcalli BioMuseum"
+  description="Printable sheet of QR codes for the Xolotlcalli BioMuseum stations."
+  ogImage="/og-image-xolotlcalli.jpg"
+>
+  <QrSheet locale={locale} />
+</BaseLayout>

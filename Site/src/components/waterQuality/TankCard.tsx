@@ -1,3 +1,4 @@
+import { useEffect } from 'preact/hooks';
 import type {
   Locale,
   Measurement,
@@ -6,6 +7,7 @@ import type {
   TimeWindow,
 } from './types';
 import { speciesLabel, STRINGS } from './strings';
+import { AM_AQUARIUMS } from './amAquariums';
 import ParameterTable from './ParameterTable';
 import HistoricalGrid from './HistoricalGrid';
 import WindowToggle from './WindowToggle';
@@ -28,6 +30,9 @@ interface Props {
   onBack: () => void;
   window: TimeWindow;
   onWindowChange: (w: TimeWindow) => void;
+  // When the AM detail is opened from a QR/hash deep-link (#AM1 … #AM-larvas),
+  // the targeted aquarium anchor so its tile scrolls into view and pulses.
+  focusedAquarium?: string | null;
 }
 
 const TONE_COLOR: Record<TimelineTone, string> = {
@@ -70,11 +75,35 @@ function SystemTile({
   );
 }
 
+// Visible deep-link chip for a station / aquarium. Clicking sets the URL hash
+// (e.g. #AM1) — the dashboard's hashchange listener opens + focuses it, and the
+// address bar then carries the shareable /xolotlcalli#AM1 link the QR encodes.
+function AnchorChip({ anchor, title }: { anchor: string; title: string }) {
+  return (
+    <a
+      href={`#${anchor}`}
+      title={title}
+      class="inline-flex items-center gap-1 rounded-md border border-[var(--wq-divider)] bg-[var(--wq-cell-bg)] px-1.5 py-0.5 font-mono text-[10px] text-[var(--wq-ink-muted)] no-underline transition hover:text-[var(--wq-ink)]"
+    >
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+      </svg>
+      #{anchor}
+    </a>
+  );
+}
+
 function ejemplarBelongsToTank(pecera: string | null, tankId: string): boolean {
   if (!pecera) return false;
   const p = pecera.trim();
+  // The unified AM card collects every AM aquarium (AM1–AM5, AM Larvas).
   if (tankId === 'AM') return p.startsWith('AM');
-  if (tankId === 'AM 1' || tankId === 'AM 2') return p.startsWith(tankId);
+  // Historical AM 1 / AM 2 cards: match space-insensitively so canonical
+  // "AM1"/"AM2" peceras still resolve to the pre-unification columns.
+  if (tankId === 'AM 1' || tankId === 'AM 2') {
+    return p.replace(/\s+/g, '').startsWith(tankId.replace(/\s+/g, ''));
+  }
   return p === tankId;
 }
 
@@ -102,6 +131,7 @@ export default function TankCard({
   onBack,
   window: timeWindow,
   onWindowChange,
+  focusedAquarium,
 }: Props) {
   const t = STRINGS[locale];
   const note = tank.note?.[locale];
@@ -112,6 +142,14 @@ export default function TankCard({
   // The top border always uses the saturated light-mode tone — it's a wide
   // block of color and both themes handle it well.
   const borderAccent = tank.accentColor;
+
+  // Scroll the targeted AM aquarium tile into view when the detail was opened
+  // from a QR/hash deep-link (#AM1 … #AM-larvas).
+  useEffect(() => {
+    if (!focusedAquarium || typeof document === 'undefined') return;
+    const el = document.getElementById(focusedAquarium);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, [focusedAquarium]);
 
   return (
     <article
@@ -135,6 +173,11 @@ export default function TankCard({
             {speciesLabel(locale, tank.speciesCode)}
             {tank.volumeL ? ` · ${tank.volumeL} L` : ''}
           </p>
+          {['AA', 'AD', 'AM'].includes(tank.id) && (
+            <div class="mt-1.5">
+              <AnchorChip anchor={tank.id} title={t.anchorLink} />
+            </div>
+          )}
           {note && (
             <p
               class="mt-2 inline-flex rounded-md px-2 py-0.5 font-body text-[11px]"
@@ -144,13 +187,26 @@ export default function TankCard({
             </p>
           )}
         </div>
-        <button
-          type="button"
-          onClick={onBack}
-          class="rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)] px-3 py-1.5 font-body text-xs text-[var(--wq-ink)] transition hover:bg-[var(--wq-ink)]/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)]"
-        >
-          ← {t.back}
-        </button>
+        <div class="flex flex-shrink-0 items-center gap-2">
+          <a
+            href="https://xovi-testnet.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)] px-3 py-1.5 font-body text-xs font-semibold text-[var(--wq-ink)] transition hover:bg-[var(--wq-ink)]/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)]"
+            aria-label={t.xoviClip}
+            title={t.xoviClip}
+          >
+            <img src="/logos/xovi.svg" alt="" width={16} height={16} class="h-4 w-4" />
+            {t.xoviClip}
+          </a>
+          <button
+            type="button"
+            onClick={onBack}
+            class="rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)] px-3 py-1.5 font-body text-xs text-[var(--wq-ink)] transition hover:bg-[var(--wq-ink)]/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)]"
+          >
+            ← {t.back}
+          </button>
+        </div>
       </header>
 
       <div class="px-4 py-4 sm:px-6 sm:py-5">
@@ -205,6 +261,9 @@ export default function TankCard({
       )}
 
       {(() => {
+        // AM renders per-aquarium tiles (the section below) instead of a flat
+        // list, so each aquarium keeps its own anchor + axolotl distribution.
+        if (tank.id === 'AM') return null;
         const inTank = ejemplares.filter(
           (e) => ejemplarBelongsToTank(e.pecera, tank.id) || ejemplarInCuarentenaForTank(e, tank.id),
         );
@@ -265,6 +324,92 @@ export default function TankCard({
           </section>
         );
       })()}
+
+      {tank.id === 'AM' && (
+        <section class="border-t border-[var(--wq-divider)] px-4 py-5 sm:px-6">
+          <h3 class="mb-3 font-display text-lg" style={{ color: accent }}>
+            {t.aquariumsTitle}
+          </h3>
+          <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {AM_AQUARIUMS.map((aq) => {
+              const members = ejemplares.filter(
+                (e) => (e.pecera ?? '').trim() === aq.id,
+              );
+              const focused = focusedAquarium === aq.anchor;
+              return (
+                <div
+                  key={aq.id}
+                  id={aq.anchor}
+                  class={`scroll-mt-24 rounded-xl border bg-[var(--wq-cell-bg)] p-3 transition ${focused ? 'aj-state-pulse ring-2' : ''}`}
+                  style={{
+                    borderColor: focused ? accent : 'var(--wq-divider)',
+                    // @ts-ignore — Preact accepts CSS var-style overrides via style
+                    '--tw-ring-color': accent,
+                  }}
+                >
+                  <div class="mb-2 flex items-center justify-between gap-2">
+                    <span class="font-display text-sm font-semibold" style={{ color: accent }}>
+                      {aq.label}
+                    </span>
+                    <div class="flex items-center gap-1.5">
+                      {aq.volumeL != null && (
+                        <span class="text-[10px] text-[var(--wq-ink-muted)]">{aq.volumeL} L</span>
+                      )}
+                      <AnchorChip anchor={aq.anchor} title={t.anchorLink} />
+                    </div>
+                  </div>
+                  {members.length === 0 ? (
+                    <p class="m-0 text-[11px] text-[var(--wq-ink-muted)]">—</p>
+                  ) : (
+                    <ul class="m-0 flex list-none flex-wrap gap-x-3 gap-y-2 p-0">
+                      {members.map((e) => {
+                        const photo = ejemplarPhotoUrl(e.alias);
+                        const slug = aliasSlug(e.alias);
+                        return (
+                          <li key={e.id ?? e.alias}>
+                            <a
+                              href={`/xolotlcalli/ajolotes#${slug}`}
+                              class="group flex w-[64px] flex-col items-center text-center focus:outline-none"
+                              aria-label={e.alias}
+                            >
+                              <span
+                                class="block overflow-hidden rounded-full ring-1 transition group-hover:ring-2 group-focus-visible:ring-2"
+                                style={{
+                                  width: 52,
+                                  height: 52,
+                                  borderColor: `${accent}55`,
+                                  // @ts-ignore — Preact accepts CSS var-style overrides via style
+                                  '--tw-ring-color': accent,
+                                }}
+                              >
+                                {photo ? (
+                                  <img
+                                    src={photo}
+                                    alt={e.alias}
+                                    width={52}
+                                    height={52}
+                                    loading="lazy"
+                                    class="h-full w-full object-cover"
+                                  />
+                                ) : (
+                                  <AjoloteAvatar alias={e.alias} size={52} accent={accent} />
+                                )}
+                              </span>
+                              <span class="mt-1 font-body text-[10px] leading-tight text-[var(--wq-ink)] group-hover:underline">
+                                {e.alias}
+                              </span>
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {(() => {
         // Eventos del sistema panel shows only system-level entries — incidents,
