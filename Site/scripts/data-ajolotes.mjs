@@ -51,9 +51,31 @@ mkdirSync(OUT_DIR, { recursive: true });
 // next regen does not silently revert the live page. Drop an entry once the
 // xlsx catches up.
 const EJEMPLAR_OVERRIDES = new Map([
-  // Chocoroll returned from cuarentena to AM 2.2 (curator confirmed
-  // 2026-05-19); xlsx Dashboard + Bitacora still showing Cuarentena.
-  ['Chocoroll', { pecera: 'AM 2.2' }],
+  // Field-level curator patches for stale Dashboard columns. Currently empty —
+  // the AM aquarium distribution moved to AM_PECERA below. Add entries here when
+  // a non-pecera field lags the live colony state.
+]);
+
+// Canonical AM-station aquarium distribution. The xlsx "pecera actual" column
+// carries inconsistent values (AM 1, AM 2.2, No encontrado, …), but the real
+// layout is five aquariums (AM1–AM5) plus a larvae tank (AM Larvas) on one
+// unified 360 L recirculating system. This map is the source of truth for the
+// per-aquarium detail views, the QR anchors and the Xovi distribution — the UI
+// reads `pecera` directly. Keep it in sync with the curator's physical tank
+// labels; once the xlsx column emits these exact values it becomes a no-op
+// safety net. Supersedes the former Chocoroll → "AM 2.2" override.
+const AM_PECERA = new Map([
+  ['Tamal de dulce', 'AM1'],
+  ['Tascalate',      'AM1'],
+  ['Chocoroll',      'AM2'],
+  ['Limon',          'AM2'],
+  ['Pardo Macho',    'AM3'],
+  ['Parda',          'AM4'],
+  ['La negra',       'AM4'],
+  ['Martín',         'AM5'],
+  ['Goldy',          'AM5'],
+  ['Larva 1',        'AM Larvas'],
+  ['Larva 2',        'AM Larvas'],
 ]);
 
 // ---------------------------------------------------------------------------
@@ -76,13 +98,15 @@ function sheet(name) {
 
 // --- Ejemplares ------------------------------------------------------------
 const dashRows = sheet('Dashboard ejemplares');
-const dashHdrIdx = findHeaderRow(dashRows, ['alias', 'pecera', 'especie']);
+// Header row identified by alias + especie (resilient to the 2026 rename of the
+// "Pecera actual" column to "Ubicación").
+const dashHdrIdx = findHeaderRow(dashRows, ['alias', 'especie']);
 if (dashHdrIdx < 0) throw new Error('Dashboard ejemplares: header row not found');
 const dashHdr = dashRows[dashHdrIdx];
 const D = {
   alias:           indexOfHeader(dashHdr, 'alias'),
   id:              indexOfHeader(dashHdr, 'id de ejemplar'),
-  pecera:          indexOfHeader(dashHdr, 'pecera actual'),
+  pecera:          indexOfHeader(dashHdr, ['pecera actual', 'ubicación']),
   especie:         indexOfHeader(dashHdr, 'especie'),
   genero:          indexOfHeader(dashHdr, 'género'),
   marcas:          indexOfHeader(dashHdr, 'marcas'),
@@ -142,10 +166,22 @@ for (let r = dashHdrIdx + 1; r < dashRows.length; r++) {
   });
 }
 
-// Apply curator overrides (see EJEMPLAR_OVERRIDES above) after the xlsx read.
+// Apply curator overrides (see EJEMPLAR_OVERRIDES above) after the xlsx read,
+// then normalize AM-station ejemplares to their canonical aquarium (AM_PECERA)
+// and collapse the unified A. dumerilii system to canonical "AD".
 for (const e of ejemplares) {
   const patch = EJEMPLAR_OVERRIDES.get(e.alias);
   if (patch) Object.assign(e, patch);
+  const amPecera = AM_PECERA.get(e.alias);
+  if (amPecera) {
+    e.pecera = amPecera;
+  } else {
+    // The A. dumerilii system is one unified tank: "AD Gral.", "AD 1.1", etc.
+    // collapse to canonical "AD" so those ejemplares (e.g. Remo) appear in the
+    // AD tank detail. Mirrors normalizeTankId() in data-water.mjs.
+    const p = (e.pecera ?? '').trim();
+    if (/^AD\b/i.test(p) && p !== 'AD') e.pecera = 'AD';
+  }
 }
 console.log(`[data-ajolotes] ejemplares: ${ejemplares.length}`);
 

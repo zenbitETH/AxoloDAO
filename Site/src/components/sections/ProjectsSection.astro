@@ -34,8 +34,14 @@ const projects = order
         <h3 class="font-display text-3xl">{p.data.name}</h3>
         <p class="mt-2 text-sm text-white/60">{p.data.blurb[locale]}</p>
         <p class="mt-6 leading-relaxed text-white/85">{p.data.description[locale]}</p>
-        <div class="mt-8">
-          {p.data.url ? (
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          {p.data.links && p.data.links.length > 0 ? (
+            p.data.links.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class={link.variant === 'secondary' ? 'btn-secondary' : 'btn-primary'}>
+                {link.label[locale]}
+              </a>
+            ))
+          ) : p.data.url ? (
             <a href={p.data.url} target="_blank" rel="noopener noreferrer" class="btn-primary">
               {p.data.cta?.[locale] ?? t(locale, 'projects.cta')}
             </a>

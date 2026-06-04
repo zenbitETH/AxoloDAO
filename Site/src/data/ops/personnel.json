@@ -636,8 +636,8 @@
       "turno": "Turno AM",
       "modalidad": "Presencial",
       "horaEntrada": "07:00",
-      "horaSalida": "14:00",
-      "totalHoras": 7
+      "horaSalida": "15:00",
+      "totalHoras": 8
     },
     {
       "dia": "Martes",
@@ -645,16 +645,16 @@
       "turno": "Turno PM",
       "modalidad": "Presencial",
       "horaEntrada": "12:45",
-      "horaSalida": "21:00",
-      "totalHoras": 8.25
+      "horaSalida": "20:00",
+      "totalHoras": 7.25
     },
     {
       "dia": "Miercoles",
       "nombre": "Lupita",
       "turno": "Turno AM",
       "modalidad": "Presencial",
-      "horaEntrada": "07:15",
-      "horaSalida": "15:15",
+      "horaEntrada": "07:00",
+      "horaSalida": "15:00",
       "totalHoras": 8
     },
     {
@@ -662,9 +662,9 @@
       "nombre": "Alex",
       "turno": "Turno AM",
       "modalidad": "Presencial",
-      "horaEntrada": "09:00",
-      "horaSalida": "15:30",
-      "totalHoras": 6.5
+      "horaEntrada": "07:00",
+      "horaSalida": "10:00",
+      "totalHoras": 3
     },
     {
       "dia": "Miercoles",
@@ -672,16 +672,16 @@
       "turno": "Turno PM",
       "modalidad": "Presencial",
       "horaEntrada": "12:45",
-      "horaSalida": "21:00",
-      "totalHoras": 8.25
+      "horaSalida": "20:00",
+      "totalHoras": 7.25
     },
     {
       "dia": "Jueves",
       "nombre": "Lupita",
       "turno": "Turno AM",
       "modalidad": "Presencial",
-      "horaEntrada": "07:15",
-      "horaSalida": "15:15",
+      "horaEntrada": "07:00",
+      "horaSalida": "15:00",
       "totalHoras": 8
     },
     {
@@ -699,44 +699,35 @@
       "turno": "Turno PM",
       "modalidad": "Presencial",
       "horaEntrada": "12:45",
-      "horaSalida": "21:00",
-      "totalHoras": 8.25
+      "horaSalida": "20:00",
+      "totalHoras": 7.25
     },
     {
       "dia": "Viernes",
       "nombre": "Lupita",
       "turno": "Turno AM",
       "modalidad": "Presencial",
-      "horaEntrada": "07:15",
-      "horaSalida": "15:15",
-      "totalHoras": 8
-    },
-    {
-      "dia": "Viernes",
-      "nombre": "Alex",
-      "turno": "Turno AM",
-      "modalidad": "Presencial",
-      "horaEntrada": "09:00",
-      "horaSalida": "11:30",
-      "totalHoras": 2.5
-    },
-    {
-      "dia": "Viernes",
-      "nombre": "Mayren",
-      "turno": "Turno PM",
-      "modalidad": "Presencial",
-      "horaEntrada": "12:45",
-      "horaSalida": "21:00",
-      "totalHoras": 8.25
-    },
-    {
-      "dia": "Sabado",
-      "nombre": "Alex",
-      "turno": "Turno AM",
-      "modalidad": "Presencial",
-      "horaEntrada": "09:00",
+      "horaEntrada": "07:00",
       "horaSalida": "14:00",
-      "totalHoras": 5
+      "totalHoras": 7
+    },
+    {
+      "dia": "Viernes",
+      "nombre": "Alex",
+      "turno": "Turno AM",
+      "modalidad": "Presencial",
+      "horaEntrada": "09:00",
+      "horaSalida": "11:30",
+      "totalHoras": 2.5
+    },
+    {
+      "dia": "Viernes",
+      "nombre": "Mayren",
+      "turno": "Turno PM",
+      "modalidad": "Presencial",
+      "horaEntrada": "12:45",
+      "horaSalida": "20:00",
+      "totalHoras": 7.25
     },
     {
       "dia": "Sabado",
@@ -752,9 +743,9 @@
       "nombre": "Lupita",
       "turno": "Turno AM",
       "modalidad": "Presencial",
-      "horaEntrada": "09:15",
+      "horaEntrada": "09:00",
       "horaSalida": "14:00",
-      "totalHoras": 4.75
+      "totalHoras": 5
     },
     {
       "dia": "Domingo",

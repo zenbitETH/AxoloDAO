@@ -1,0 +1,169 @@
+---
+// Printable QR sheet for the Biomuseo Xolotlcalli stations. Each composition is
+// QR + station number + "Escanea y conoce más", framed in the species' dedicated
+// color. Scanning opens the station / AM-aquarium detail on the water dashboard
+// via its hash anchor (#AA, #AD, #AM1 … #AM-larvas — see WaterQualityDashboard).
+import QRCode from 'qrcode';
+import type { Locale } from '@/i18n/strings';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+// Species → dedicated accent (mirrors tanks.json accentColor + the light-mode
+// palette in waterQuality/theme.ts).
+const SPECIES_COLOR: Record<string, string> = {
+  andersoni: '#B87333',
+  mexicanum: '#2C5F7C',
+  dumerilii: '#3E6B4A',
+};
+
+type Target = { anchor: string; label: string; species: keyof typeof SPECIES_COLOR; sci: string };
+const TARGETS: Target[] = [
+  { anchor: 'AA', label: 'AA', species: 'andersoni', sci: 'Ambystoma andersoni' },
+  { anchor: 'AM1', label: 'AM1', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
+  { anchor: 'AM2', label: 'AM2', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
+  { anchor: 'AM3', label: 'AM3', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
+  { anchor: 'AM4', label: 'AM4', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
+  { anchor: 'AM5', label: 'AM5', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
+  { anchor: 'AM-larvas', label: 'AM Larvas', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
+  { anchor: 'AD', label: 'AD', species: 'dumerilii', sci: 'Ambystoma dumerilii' },
+];
+
+const SITE = Astro.site ?? new URL('https://axolodao.org');
+
+const cards = await Promise.all(
+  TARGETS.map(async (tgt) => {
+    const url = new URL(`/xolotlcalli#${tgt.anchor}`, SITE).href;
+    const svg = await QRCode.toString(url, {
+      type: 'svg',
+      margin: 1,
+      errorCorrectionLevel: 'M',
+      color: { dark: '#11202A', light: '#FFFFFF' },
+    });
+    return { ...tgt, url, svg, color: SPECIES_COLOR[tgt.species] };
+  }),
+);
+
+const COPY = {
+  es: {
+    title: 'Códigos QR · Estaciones',
+    intro:
+      'Imprime y coloca cada código junto a su pecera. Al escanear abre la ficha de la estación en axolodao.org.',
+    cta: 'Escanea y conoce más',
+    print: 'Imprimir',
+  },
+  en: {
+    title: 'QR codes · Stations',
+    intro:
+      'Print and place each code next to its tank. Scanning opens the station page on axolodao.org.',
+    cta: 'Scan to learn more',
+    print: 'Print',
+  },
+  pt: {
+    title: 'Códigos QR · Estações',
+    intro:
+      'Imprima e coloque cada código ao lado de seu aquário. Ao escanear abre a ficha da estação em axolodao.org.',
+    cta: 'Escaneie e saiba mais',
+    print: 'Imprimir',
+  },
+}[locale];
+---
+
+<section class="qr-surface">
+  <div class="mx-auto max-w-5xl px-4 py-10 sm:py-14">
+    <header class="qr-head mb-8">
+      <h1 class="font-display text-3xl text-choco dark:text-cream sm:text-4xl">{COPY.title}</h1>
+      <p class="mt-2 max-w-2xl font-body text-sm text-choco/70 dark:text-cream/70">{COPY.intro}</p>
+    </header>
+
+    <div class="qr-grid grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+      {cards.map((card) => (
+        <article class="qr-card" style={`--c:${card.color}`}>
+          <div class="qr-card__head">
+            <span class="qr-card__station">{card.label}</span>
+            <span class="qr-card__sci">{card.sci}</span>
+          </div>
+          <div class="qr-card__code" set:html={card.svg} />
+          <p class="qr-card__cta">{COPY.cta}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .qr-surface {
+    background-color: #f6efe0;
+    min-height: 100vh;
+  }
+  [data-theme='dark'] .qr-surface {
+    background-color: #11202a;
+  }
+  .qr-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: #ffffff;
+    border: 2px solid var(--c);
+    box-shadow: 0 6px 18px rgba(7, 31, 41, 0.14);
+  }
+  .qr-card__head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.6rem 0.85rem;
+    background: var(--c);
+    color: #f6efe0;
+  }
+  .qr-card__station {
+    font-family: var(--font-display, ui-sans-serif), sans-serif;
+    font-weight: 800;
+    font-size: 1.35rem;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .qr-card__sci {
+    font-style: italic;
+    font-size: 0.7rem;
+    opacity: 0.92;
+  }
+  .qr-card__code {
+    padding: 0.85rem;
+    background: #ffffff;
+  }
+  .qr-card__code svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .qr-card__cta {
+    margin: 0;
+    padding: 0 0.85rem 0.85rem;
+    text-align: center;
+    background: #ffffff;
+    color: var(--c);
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+  @media print {
+    header.site-header,
+    footer,
+    .qr-head {
+      display: none !important;
+    }
+    .qr-surface {
+      background: #ffffff !important;
+      min-height: 0;
+    }
+    .qr-card {
+      break-inside: avoid;
+      box-shadow: none;
+    }
+    .qr-grid {
+      gap: 0.75rem !important;
+    }
+  }
+</style>

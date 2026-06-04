@@ -24,7 +24,7 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0
+    "target": 0.05
   },
   {
     "tankId": "AA",
@@ -40,27 +40,27 @@
     "speciesCode": "andersoni",
     "key": "gh",
     "unit": "mg/L",
-    "min": 20,
-    "max": 50,
-    "target": 35
+    "min": 100,
+    "max": 150,
+    "target": 125
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "kh",
     "unit": "mg/L",
-    "min": 15,
-    "max": 70,
-    "target": 50
+    "min": 70,
+    "max": 120,
+    "target": 95
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "ph",
     "unit": "-",
-    "min": 7,
-    "max": 7.5,
-    "target": 7.2
+    "min": 7.6,
+    "max": 8,
+    "target": 7.8
   },
   {
     "tankId": "AA",
@@ -69,16 +69,16 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.5,
-    "target": 0
+    "target": 0.25
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "key": "cond",
     "unit": "µS/cm",
-    "min": 180,
-    "max": 220,
-    "target": 200
+    "min": 300,
+    "max": 450,
+    "target": 375
   },
   {
     "tankId": "AA",
@@ -87,7 +87,7 @@
     "unit": "mg/L",
     "min": 70,
     "max": 150,
-    "target": 100
+    "target": 110
   },
   {
     "tankId": "AM 1",
@@ -114,7 +114,7 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0
+    "target": 0.05
   },
   {
     "tankId": "AM 1",
@@ -132,7 +132,7 @@
     "unit": "mg/L",
     "min": 125,
     "max": 250,
-    "target": 180
+    "target": 187.5
   },
   {
     "tankId": "AM 1",
@@ -148,9 +148,9 @@
     "speciesCode": "mexicanum",
     "key": "ph",
     "unit": "-",
-    "min": 7,
-    "max": 7.5,
-    "target": 7.2
+    "min": 7.4,
+    "max": 7.8,
+    "target": 7.6
   },
   {
     "tankId": "AM 1",
@@ -159,19 +159,19 @@
     "unit": "mg/L",
     "min": 0,
     "max": 1,
-    "target": 0
+    "target": 0.5
   },
   {
     "tankId": "AM 1",
     "speciesCode": "mexicanum",
     "key": "cond",
     "unit": "µS/cm",
-    "min": 1500,
-    "max": 1800,
-    "target": 1650
+    "min": 700,
+    "max": 1100,
+    "target": 900
   },
   {
-    "tankId": "AM 2",
+    "tankId": "AM 1",
     "speciesCode": "mexicanum",
     "key": "tds",
     "unit": "mg/L",
@@ -204,7 +204,7 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0
+    "target": 0.05
   },
   {
     "tankId": "AM 2",
@@ -222,7 +222,7 @@
     "unit": "mg/L",
     "min": 125,
     "max": 250,
-    "target": 180
+    "target": 187.5
   },
   {
     "tankId": "AM 2",
@@ -238,9 +238,9 @@
     "speciesCode": "mexicanum",
     "key": "ph",
     "unit": "-",
-    "min": 7,
-    "max": 7.5,
-    "target": 7.2
+    "min": 7.4,
+    "max": 7.8,
+    "target": 7.6
   },
   {
     "tankId": "AM 2",
@@ -249,13 +249,22 @@
     "unit": "mg/L",
     "min": 0,
     "max": 1,
-    "target": 0
+    "target": 0.5
   },
   {
     "tankId": "AM 2",
     "speciesCode": "mexicanum",
     "key": "cond",
     "unit": "µS/cm",
+    "min": 700,
+    "max": 1100,
+    "target": 900
+  },
+  {
+    "tankId": "AM 2",
+    "speciesCode": "mexicanum",
+    "key": "tds",
+    "unit": "mg/L",
     "min": 1500,
     "max": 1800,
     "target": 1650
@@ -285,7 +294,7 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0
+    "target": 0.05
   },
   {
     "tankId": "AD",
@@ -301,9 +310,9 @@
     "speciesCode": "dumerilii",
     "key": "gh",
     "unit": "mg/L",
-    "min": 70,
-    "max": 100,
-    "target": 75
+    "min": 180,
+    "max": 250,
+    "target": 215
   },
   {
     "tankId": "AD",
@@ -319,9 +328,9 @@
     "speciesCode": "dumerilii",
     "key": "ph",
     "unit": "-",
-    "min": 8,
+    "min": 7.8,
     "max": 8.5,
-    "target": 8.2
+    "target": 8.15
   },
   {
     "tankId": "AD",
@@ -330,7 +339,7 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.5,
-    "target": 0
+    "target": 0.25
   },
   {
     "tankId": "AD",
@@ -348,7 +357,7 @@
     "unit": "mg/L",
     "min": 180,
     "max": 300,
-    "target": 230
+    "target": 240
   },
   {
     "tankId": "AM",
@@ -375,7 +384,7 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0
+    "target": 0.05
   },
   {
     "tankId": "AM",
@@ -393,7 +402,7 @@
     "unit": "mg/L",
     "min": 125,
     "max": 250,
-    "target": 180
+    "target": 187.5
   },
   {
     "tankId": "AM",
@@ -409,9 +418,9 @@
     "speciesCode": "mexicanum",
     "key": "ph",
     "unit": "-",
-    "min": 7,
-    "max": 7.5,
-    "target": 7.2
+    "min": 7.4,
+    "max": 7.8,
+    "target": 7.6
   },
   {
     "tankId": "AM",
@@ -420,13 +429,22 @@
     "unit": "mg/L",
     "min": 0,
     "max": 1,
-    "target": 0
+    "target": 0.5
   },
   {
     "tankId": "AM",
     "speciesCode": "mexicanum",
     "key": "cond",
     "unit": "µS/cm",
+    "min": 700,
+    "max": 1100,
+    "target": 900
+  },
+  {
+    "tankId": "AM",
+    "speciesCode": "mexicanum",
+    "key": "tds",
+    "unit": "mg/L",
     "min": 1500,
     "max": 1800,
     "target": 1650

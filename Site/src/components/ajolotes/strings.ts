@@ -52,6 +52,7 @@ export const STRINGS: Record<Locale, Dict> = {
     'card.semarnat.tooltip': 'Identificador del registro SEMARNAT',
     // Modal
     'modal.close': 'Cerrar',
+    'xovi.clip': 'Ver en Xovi',
     'modal.ribbon.cuarentena': 'En cuarentena',
     'tab.resumen': 'Resumen',
     'tab.biometria': 'Biometría',
@@ -268,6 +269,7 @@ export const STRINGS: Record<Locale, Dict> = {
     'card.semarnat': 'SEMARNAT ID',
     'card.semarnat.tooltip': 'SEMARNAT registry identifier',
     'modal.close': 'Close',
+    'xovi.clip': 'View on Xovi',
     'modal.ribbon.cuarentena': 'In quarantine',
     'tab.resumen': 'Summary',
     'tab.biometria': 'Biometry',
@@ -476,6 +478,7 @@ export const STRINGS: Record<Locale, Dict> = {
     'card.semarnat': 'SEMARNAT ID',
     'card.semarnat.tooltip': 'Identificador do registro SEMARNAT',
     'modal.close': 'Fechar',
+    'xovi.clip': 'Ver no Xovi',
     'modal.ribbon.cuarentena': 'Em quarentena',
     'tab.resumen': 'Resumo',
     'tab.biometria': 'Biometria',
