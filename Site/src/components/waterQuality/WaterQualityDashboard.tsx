@@ -15,6 +15,7 @@ import ViewToggle from './ViewToggle';
 import TankGrid from './TankGrid';
 import TankCard from './TankCard';
 import RotatingHeroChart from './RotatingHeroChart';
+import { AM_AQUARIUM_BY_ANCHOR } from './amAquariums';
 import type { BitacoraEntry, Ejemplar } from '../ajolotes/types';
 import { useBackToClose } from '../useBackToClose';
 
@@ -78,6 +79,7 @@ export default function WaterQualityDashboard({
   const [mondaysOnly, setMondaysOnly] = useState(true);
   const [timeWindow, setTimeWindow] = useState<TimeWindow>(12);
   const [focusedParam, setFocusedParam] = useState<ParamKey | null>(null);
+  const [focusedAquarium, setFocusedAquarium] = useState<string | null>(null);
 
   const [allData, setAllData] = useState<Measurement[] | null>(null);
   const [allDataLoading, setAllDataLoading] = useState(false);
@@ -114,6 +116,33 @@ export default function WaterQualityDashboard({
       url.searchParams.delete('param');
       window.history.replaceState({}, '', url.toString());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // QR / hash deep-link entry: `#AA`, `#AD`, `#AM` open that tank; `#AM1`…`#AM5`
+  // and `#AM-larvas` open the AM detail focused on that aquarium tile. Mirrors
+  // the ajolotes explorer hash pattern so printed QR codes resolve on load.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const openFromHash = () => {
+      const hash = window.location.hash.replace(/^#/, '');
+      if (!hash) return;
+      const aquarium = AM_AQUARIUM_BY_ANCHOR[hash];
+      if (aquarium) {
+        setTankId('AM');
+        setFocusedAquarium(aquarium.anchor);
+        setView('detail');
+        return;
+      }
+      if (tanks.some((t) => t.id === hash)) {
+        setTankId(hash);
+        setFocusedAquarium(null);
+        setView('detail');
+      }
+    };
+    openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+    return () => window.removeEventListener('hashchange', openFromHash);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -240,6 +269,7 @@ export default function WaterQualityDashboard({
 
   function onTankSelect(id: string) {
     setTankId(id);
+    setFocusedAquarium(null);
     setView('detail');
     if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -345,6 +375,7 @@ export default function WaterQualityDashboard({
             onBack={onBack}
             window={timeWindow}
             onWindowChange={setTimeWindow}
+            focusedAquarium={focusedAquarium}
           />
         )}
       </div>

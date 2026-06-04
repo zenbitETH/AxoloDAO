@@ -124,6 +124,79 @@ for (let r = bitHdrIdx + 1; r < bitRows.length; r++) {
     linkReporte: toStr(row[B.linkReporte]),
   });
 }
+
+// --- Bitacora de mantenimiento de agua -------------------------------------
+// Dedicated water-maintenance log (water changes, solution prep, garrafón
+// fills, filter top-ups). Merged into the same bitácora feed as the main sheet
+// so it surfaces (a) on the water charts via cambiosDeAguaByTank — which keys
+// off `accion` ~ /cambio de agua/i — and (b) in each tank's "Eventos del
+// sistema" panel, whose filter admits any row with a category matching
+// /mantenimiento/. Excel truncates the sheet name to 31 chars.
+const MAINT_SHEET = 'Bitacora de mantenimiento de ag';
+
+// Map the maintenance `Ubicación` to a canonical tank token so the merged
+// events match the chart/timeline tank filters. Recipe-prefixed locations
+// ("Holtfreter AA") fold to their tank; "AM larvas" stays in the AM family;
+// specimen-level / pantry rows (Romulo, Golden, garrafón fills) pass through.
+function normalizeMaintUbicacion(raw) {
+  if (!raw) return null;
+  const up = raw.trim().toUpperCase();
+  if (/AM\s*LARVAS/.test(up)) return 'AM larvas';
+  if (/\bAA\b/.test(up)) return 'AA';
+  if (/\bAD\b/.test(up)) return 'AD';
+  if (/\bAM\b/.test(up)) return 'AM';
+  return raw.trim();
+}
+
+let maintCount = 0;
+let maintSkipped = 0;
+if (wb.Sheets[MAINT_SHEET]) {
+  const mRows = sheet(MAINT_SHEET);
+  const mHdrIdx = findHeaderRow(mRows, ['fecha', 'evento']);
+  if (mHdrIdx < 0) throw new Error(`${MAINT_SHEET}: header row not found`);
+  const mHdr = mRows[mHdrIdx];
+  const M = {
+    fecha:    indexOfHeader(mHdr, 'fecha'),
+    hora:     indexOfHeader(mHdr, 'hora'),
+    autor:    indexOfHeader(mHdr, 'autor principal'),
+    autor2:   indexOfHeader(mHdr, 'autor secundario'),
+    evento:   indexOfHeader(mHdr, 'evento'),
+    ubic:     indexOfHeader(mHdr, 'ubicación'),
+    cantidad: indexOfHeader(mHdr, 'cantidad'),
+    solucion: indexOfHeader(mHdr, 'solución'),
+    notas:    indexOfHeader(mHdr, 'notas'),
+  };
+  for (let r = mHdrIdx + 1; r < mRows.length; r++) {
+    const row = mRows[r];
+    if (!row || row.every((c) => c == null || c === '')) continue;
+    const fecha = toIsoDate(row[M.fecha]);
+    if (!fecha) { maintSkipped++; continue; }
+    const evento = toStr(row[M.evento]);
+    const cantidad = toNum(row[M.cantidad]);
+    const solucion = toStr(row[M.solucion]);
+    // Keep the event word ("Cambio de agua") at the front of `accion` so the
+    // chart's cambiosDeAguaByTank picks real water changes up automatically.
+    const accion = [evento, cantidad != null ? `${cantidad} L` : null, solucion]
+      .filter(Boolean)
+      .join(' · ');
+    bitacora.push({
+      fecha,
+      hora: toHHMM(row[M.hora]),
+      estado: null,
+      autorPrincipal: toStr(row[M.autor]),
+      autorSecundario: toStr(row[M.autor2]),
+      categoria: 'Mantenimiento de agua',
+      alias: null,
+      ubicacion: normalizeMaintUbicacion(toStr(row[M.ubic])),
+      incidencia: evento,
+      accion: accion || null,
+      notas: toStr(row[M.notas]),
+      linkReporte: null,
+    });
+    maintCount++;
+  }
+}
+
 bitacora.sort((a, b) => (a.fecha + (a.hora ?? '')).localeCompare(b.fecha + (b.hora ?? '')));
 
 // 90-day window for the eagerly-imported recent file. Uses the most-recent
@@ -150,7 +223,9 @@ writeFileSync(
 );
 console.log(`[data-ops] bitacora.json: ${bitacora.length} events (full history)`);
 console.log(`[data-ops] bitacora-recent.json: ${bitacoraRecent.length} events (90-day window ending ${latestIso})`);
+console.log(`[data-ops]   includes ${maintCount} water-maintenance events (Mantenimiento de agua)`);
 if (bitSkipped) console.warn(`[data-ops]   skipped ${bitSkipped} bitacora rows (missing fecha)`);
+if (maintSkipped) console.warn(`[data-ops]   skipped ${maintSkipped} water-maintenance rows (missing fecha)`);
 
 // --- Calendario de actividades --------------------------------------------
 // The sheet uses section header rows (e.g. "Turno matutino (Apertura)") whose

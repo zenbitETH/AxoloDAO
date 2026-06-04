@@ -127,7 +127,8 @@ function normalizeTankId(raw, isoDate) {
   if (!s) return null;
   const compact = s.replace(/\s+/g, ' ').toUpperCase();
 
-  if (/^AD[\s-]*\d+\.\d+$/.test(compact) || compact === 'AD') return 'AD';
+  // Unified A. dumerilii tank: "AD", "AD 1.1", "AD-1.2", "AD Gral." → "AD".
+  if (/^AD\b/.test(compact)) return 'AD';
 
   const post = isoDate >= AM_UNIFICATION;
 
@@ -149,7 +150,7 @@ function normalizeCatalogTankId(raw) {
   if (!s) return null;
   const compact = s.replace(/\s+/g, ' ').toUpperCase();
 
-  if (/^AD[\s-]*\d+\.\d+$/.test(compact) || compact === 'AD') return 'AD';
+  if (/^AD\b/.test(compact)) return 'AD';
   if (compact === 'AM') return 'AM';
   if (compact === 'AM 1' || /^AM[\s-]*1\.\d+$/.test(compact)) return 'AM 1';
   if (compact === 'AM 2' || /^AM[\s-]*2\.\d+$/.test(compact)) return 'AM 2';

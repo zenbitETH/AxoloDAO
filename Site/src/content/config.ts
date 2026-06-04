@@ -58,6 +58,15 @@ const projects = defineCollection({
     description: localeText,
     url: z.string().url().optional(),
     cta: localeTextOptional.optional(),
+    links: z
+      .array(
+        z.object({
+          label: localeText,
+          url: z.string().url(),
+          variant: z.enum(['primary', 'secondary']).default('primary'),
+        }),
+      )
+      .optional(),
     icon: z.string().optional(),
     accent: z.enum(['teal', 'rosa', 'ocre', 'marfil']).default('teal'),
     contributors: z.array(z.string()).default([]),

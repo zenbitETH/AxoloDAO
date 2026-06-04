@@ -1,20 +1,33 @@
 slug: axolovision
-name: Axolovision
+name: Xovi
 status: wip
 accent: teal
-url: https://www.youtube.com/@Xolotlcalli/streams
+icon: /logos/xovi.svg
 contributors:
   - xolotlcalli
   - zenbit
 blurb:
-  es: Transmisión continua de los ajolotes con interacciones onchain en vivo.
-  en: 24/7 axolotl livestream with live onchain interactions.
-  pt: Transmissão contínua dos axolotes com interações onchain ao vivo.
+  es: "Conservación participativa onchain: observa la transmisión, detecta comportamientos y gana recompensas cuidando a los ajolotes."
+  en: "Onchain participatory conservation: watch the livestream, spot behaviours and earn rewards caring for the axolotls."
+  pt: "Conservação participativa onchain: assista à transmissão, detecte comportamentos e ganhe recompensas cuidando dos axolotes."
 description:
-  es: Axolovision es una transmisión en YouTube desde el BioMuseo Xolotlcalli, en desarrollo, que combinará el monitoreo permanente de los ajolotes con dinámicas onchain durante la transmisión. Los espectadores podrán disparar acciones, votaciones y registros que queden asentados en la cadena.
-  en: Axolovision is a YouTube livestream from the Xolotlcalli BioMuseum, under development, that will pair continuous monitoring of the axolotls with live onchain dynamics. Viewers will be able to trigger actions, votes and on-record events that settle on chain.
-  pt: A Axolovision é uma transmissão no YouTube desde o BioMuseu Xolotlcalli, em desenvolvimento, que combinará o monitoramento contínuo dos axolotes com dinâmicas onchain ao vivo. Espectadores poderão disparar ações, votações e registros que se assentem na cadeia.
+  es: "Xovi (antes Axolovision) es la capa de interacción onchain de AxoloDAO sobre la transmisión 24/7 del BioMuseo Xolotlcalli. Los espectadores detectan comportamientos de los ajolotes en vivo, los envían como clips, la comunidad los valida y cada contribución queda registrada en Ethereum/Base mediante atestaciones EAS y recompensas semanales en token XOVI. Las suscripciones Aliado y Guardián funcionan como adopción remota de ajolotes —un apoyo recurrente que financia el cuidado de la colonia— junto a un nivel gratuito Visitante siempre abierto."
+  en: "Xovi (formerly Axolovision) is AxoloDAO's onchain interaction layer over the 24/7 livestream from the Xolotlcalli BioMuseum. Viewers detect axolotl behaviours live, submit them as clips, the community validates them, and every contribution is recorded on Ethereum/Base through EAS attestations and weekly XOVI token rewards. The Aliado and Guardián subscriptions work as remote axolotl adoption —recurring support that funds the colony's care— alongside an always-open free Visitante tier."
+  pt: "Xovi (antes Axolovision) é a camada de interação onchain da AxoloDAO sobre a transmissão 24/7 do BioMuseu Xolotlcalli. Os espectadores detectam comportamentos dos axolotes ao vivo, enviam-nos como clipes, a comunidade os valida e cada contribuição fica registrada em Ethereum/Base por meio de atestações EAS e recompensas semanais no token XOVI. As assinaturas Aliado e Guardián funcionam como adoção remota de axolotes —um apoio recorrente que financia o cuidado da colônia— junto a um nível gratuito Visitante sempre aberto."
 cta:
-  es: Ver transmisión
-  en: Watch live
-  pt: Assistir ao vivo
+  es: Conoce Xovi
+  en: Discover Xovi
+  pt: Conheça o Xovi
+links:
+  - label:
+      es: Quiero ser Xovi tester
+      en: I want to be a Xovi tester
+      pt: Quero ser testador Xovi
+    url: https://xovi.axolodao.org/
+    variant: primary
+  - label:
+      es: Ver demo
+      en: View demo
+      pt: Ver demo
+    url: https://xovi-testnet.vercel.app/
+    variant: secondary
