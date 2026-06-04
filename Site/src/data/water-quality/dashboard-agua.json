@@ -5,11 +5,11 @@
     "paramKey": "temp",
     "unit": "°C",
     "rangeSafe": "15-20",
-    "promedioHistorico": 17.64308943,
-    "ultimaMedicion": 17.5,
+    "promedioHistorico": 17.6256,
+    "ultimaMedicion": 15.7,
     "estadoClinico": "✅ ESTABLE",
     "limiteMin": 15,
-    "limiteMax": 18
+    "limiteMax": 20
   },
   {
     "tankId": "AA",
@@ -52,36 +52,36 @@
     "speciesCode": "andersoni",
     "paramKey": "gh",
     "unit": "mg/L",
-    "rangeSafe": "20-50",
+    "rangeSafe": "100-150",
     "promedioHistorico": 80.23636364,
     "ultimaMedicion": 107.5,
-    "estadoClinico": "⚠️ ALARMA CLÍNICA",
-    "limiteMin": 20,
-    "limiteMax": 50
+    "estadoClinico": "✅ ESTABLE",
+    "limiteMin": 100,
+    "limiteMax": 150
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "paramKey": "kh",
     "unit": "mg/L",
-    "rangeSafe": "15-70",
+    "rangeSafe": "70-120",
     "promedioHistorico": 61.68021739,
     "ultimaMedicion": 53.7,
     "estadoClinico": "⚠️ ALARMA CLÍNICA",
-    "limiteMin": 15,
-    "limiteMax": 50
+    "limiteMin": 70,
+    "limiteMax": 120
   },
   {
     "tankId": "AA",
     "speciesCode": "andersoni",
     "paramKey": "ph",
     "unit": "-",
-    "rangeSafe": "7-7.5",
-    "promedioHistorico": 8.216949153,
-    "ultimaMedicion": 8.2,
+    "rangeSafe": "7.6-8",
+    "promedioHistorico": 8.2175,
+    "ultimaMedicion": 8.4,
     "estadoClinico": "⚠️ ALARMA CLÍNICA",
-    "limiteMin": 7,
-    "limiteMax": 7.5
+    "limiteMin": 7.6,
+    "limiteMax": 8
   },
   {
     "tankId": "AA",
@@ -100,12 +100,12 @@
     "speciesCode": "andersoni",
     "paramKey": "cond",
     "unit": "µS/cm",
-    "rangeSafe": "180-220",
-    "promedioHistorico": 758.0550459,
-    "ultimaMedicion": 450,
+    "rangeSafe": "300-450",
+    "promedioHistorico": 755.2072072,
+    "ultimaMedicion": 740,
     "estadoClinico": "⚠️ ALARMA CLÍNICA",
-    "limiteMin": 180,
-    "limiteMax": 220
+    "limiteMin": 300,
+    "limiteMax": 450
   },
   {
     "tankId": "AA",
@@ -196,12 +196,12 @@
     "speciesCode": "mexicanum",
     "paramKey": "ph",
     "unit": "-",
-    "rangeSafe": "7-7.5",
+    "rangeSafe": "7.4-7.8",
     "promedioHistorico": 8.231075269,
     "ultimaMedicion": 7.9,
-    "estadoClinico": "✅ ESTABLE",
+    "estadoClinico": "⚠️ ALARMA CLÍNICA",
     "limiteMin": 7.4,
-    "limiteMax": 8
+    "limiteMax": 7.8
   },
   {
     "tankId": "AM 1",
@@ -220,12 +220,12 @@
     "speciesCode": "mexicanum",
     "paramKey": "cond",
     "unit": "µS/cm",
-    "rangeSafe": "1500-1800",
+    "rangeSafe": "700-1100",
     "promedioHistorico": 1666.17284,
     "ultimaMedicion": 1800,
-    "estadoClinico": "🟡 ADVERTENCIA",
-    "limiteMin": 1500,
-    "limiteMax": 1800
+    "estadoClinico": "⚠️ ALARMA CLÍNICA",
+    "limiteMin": 700,
+    "limiteMax": 1100
   },
   {
     "tankId": "AM 1",
@@ -235,9 +235,9 @@
     "rangeSafe": "1500-1800",
     "promedioHistorico": 911.6666667,
     "ultimaMedicion": 915,
-    "estadoClinico": "⚠️ ALARMA CLÍNICA",
-    "limiteMin": 1500,
-    "limiteMax": 1800
+    "estadoClinico": "✅ ESTABLE",
+    "limiteMin": 350,
+    "limiteMax": 1000
   },
   {
     "tankId": "AM 2",
@@ -316,12 +316,12 @@
     "speciesCode": "mexicanum",
     "paramKey": "ph",
     "unit": "-",
-    "rangeSafe": "7-7.5",
+    "rangeSafe": "7.4-7.8",
     "promedioHistorico": 8.185339806,
     "ultimaMedicion": 7.8,
-    "estadoClinico": "✅ ESTABLE",
+    "estadoClinico": "🟡 ADVERTENCIA",
     "limiteMin": 7.4,
-    "limiteMax": 8
+    "limiteMax": 7.8
   },
   {
     "tankId": "AM 2",
@@ -340,12 +340,12 @@
     "speciesCode": "mexicanum",
     "paramKey": "cond",
     "unit": "µS/cm",
-    "rangeSafe": "1500-1800",
+    "rangeSafe": "700-1100",
     "promedioHistorico": 1646.987342,
     "ultimaMedicion": 1790,
-    "estadoClinico": "✅ ESTABLE",
-    "limiteMin": 1500,
-    "limiteMax": 1800
+    "estadoClinico": "⚠️ ALARMA CLÍNICA",
+    "limiteMin": 700,
+    "limiteMax": 1100
   },
   {
     "tankId": "AM 2",
@@ -355,9 +355,9 @@
     "rangeSafe": "1500-1800",
     "promedioHistorico": 911.6666667,
     "ultimaMedicion": 910,
-    "estadoClinico": "⚠️ ALARMA CLÍNICA",
-    "limiteMin": 1500,
-    "limiteMax": 1800
+    "estadoClinico": "✅ ESTABLE",
+    "limiteMin": 350,
+    "limiteMax": 1000
   },
   {
     "tankId": "AD",
@@ -365,8 +365,8 @@
     "paramKey": "temp",
     "unit": "°C",
     "rangeSafe": "15-18",
-    "promedioHistorico": 16.6220339,
-    "ultimaMedicion": 16.2,
+    "promedioHistorico": 16.61,
+    "ultimaMedicion": 16.3,
     "estadoClinico": "✅ ESTABLE",
     "limiteMin": 15,
     "limiteMax": 18
@@ -412,12 +412,12 @@
     "speciesCode": "dumerilii",
     "paramKey": "gh",
     "unit": "mg/L",
-    "rangeSafe": "70-100",
+    "rangeSafe": "180-250",
     "promedioHistorico": 101.3724138,
     "ultimaMedicion": 89.5,
-    "estadoClinico": "✅ ESTABLE",
-    "limiteMin": 70,
-    "limiteMax": 100
+    "estadoClinico": "⚠️ ALARMA CLÍNICA",
+    "limiteMin": 180,
+    "limiteMax": 250
   },
   {
     "tankId": "AD",
@@ -436,11 +436,11 @@
     "speciesCode": "dumerilii",
     "paramKey": "ph",
     "unit": "-",
-    "rangeSafe": "8-8.5",
-    "promedioHistorico": 8.63725,
-    "ultimaMedicion": 8.7,
+    "rangeSafe": "7.8-8.5",
+    "promedioHistorico": 8.636639344,
+    "ultimaMedicion": 8.6,
     "estadoClinico": "⚠️ ALARMA CLÍNICA",
-    "limiteMin": 8,
+    "limiteMin": 7.8,
     "limiteMax": 8.5
   },
   {
@@ -461,8 +461,8 @@
     "paramKey": "cond",
     "unit": "µS/cm",
     "rangeSafe": "400-500",
-    "promedioHistorico": 1390.738739,
-    "ultimaMedicion": 720,
+    "promedioHistorico": 1380.814159,
+    "ultimaMedicion": 830,
     "estadoClinico": "⚠️ ALARMA CLÍNICA",
     "limiteMin": 400,
     "limiteMax": 500
