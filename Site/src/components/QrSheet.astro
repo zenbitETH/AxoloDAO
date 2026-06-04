@@ -53,6 +53,7 @@ const COPY = {
       'Imprime y coloca cada código junto a su pecera. Al escanear abre la ficha de la estación en axolodao.org.',
     cta: 'Escanea y conoce más',
     print: 'Imprimir',
+    pdf: 'Descargar PDF (tabloide)',
   },
   en: {
     title: 'QR codes · Stations',
@@ -60,6 +61,7 @@ const COPY = {
       'Print and place each code next to its tank. Scanning opens the station page on axolodao.org.',
     cta: 'Scan to learn more',
     print: 'Print',
+    pdf: 'Download PDF (tabloid)',
   },
   pt: {
     title: 'Códigos QR · Estações',
@@ -67,15 +69,30 @@ const COPY = {
       'Imprima e coloque cada código ao lado de seu aquário. Ao escanear abre a ficha da estação em axolodao.org.',
     cta: 'Escaneie e saiba mais',
     print: 'Imprimir',
+    pdf: 'Baixar PDF (tabloide)',
   },
 }[locale];
 ---
 
 <section class="qr-surface">
   <div class="mx-auto max-w-5xl px-4 py-10 sm:py-14">
-    <header class="qr-head mb-8">
-      <h1 class="font-display text-3xl text-choco dark:text-cream sm:text-4xl">{COPY.title}</h1>
-      <p class="mt-2 max-w-2xl font-body text-sm text-choco/70 dark:text-cream/70">{COPY.intro}</p>
+    <header class="qr-head mb-8 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h1 class="font-display text-3xl text-choco dark:text-cream sm:text-4xl">{COPY.title}</h1>
+        <p class="mt-2 max-w-2xl font-body text-sm text-choco/70 dark:text-cream/70">{COPY.intro}</p>
+      </div>
+      <a
+        href="/xolotlcalli-qr-tabloid.pdf"
+        download
+        class="no-print inline-flex items-center gap-2 rounded-full bg-choco px-5 py-2.5 font-body text-sm font-semibold text-cream shadow-sm transition hover:brightness-110"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        {COPY.pdf}
+      </a>
     </header>
 
     <div class="qr-grid grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
