@@ -33,3 +33,6 @@ Context/
 
 # Private water-telemetry seed kit (input to a separate private repo)
 water-telemetry-seed/
+
+# Local-only Claude entrypoint (content lives in private axolodao-brain repo)
+CLAUDE.local.md
