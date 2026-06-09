@@ -2272,5 +2272,117 @@
       "cond"
     ],
     "note": null
+  },
+  {
+    "date": "2026-06-08",
+    "time": "11:20",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 17.1,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": 161.1,
+      "kh": 107.4,
+      "ph": 8.5,
+      "po4": null,
+      "cond": 970,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-06-08",
+    "time": "11:20",
+    "tankId": "AM",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 17.4,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 40,
+      "gh": 107.4,
+      "kh": 53.7,
+      "ph": 8.1,
+      "po4": null,
+      "cond": 1610,
+      "tds": null
+    },
+    "alarms": [
+      "no3",
+      "gh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-06-08",
+    "time": "11:20",
+    "tankId": "AM Larvas",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 18,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 0,
+      "gh": 53.7,
+      "kh": 71.6,
+      "ph": 8.14,
+      "po4": null,
+      "cond": 2160,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-06-08",
+    "time": "11:20",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": null
+    },
+    "values": {
+      "temp": 17.3,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 10,
+      "gh": 161.1,
+      "kh": 161.1,
+      "ph": 8.5,
+      "po4": null,
+      "cond": 800,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "cond"
+    ],
+    "note": "Temperatura superficial"
   }
 ]

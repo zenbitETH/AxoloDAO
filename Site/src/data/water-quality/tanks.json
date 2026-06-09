@@ -156,6 +156,21 @@
     }
   },
   {
+    "id": "AM Larvas",
+    "speciesCode": "mexicanum",
+    "scientificName": "Ambystoma mexicanum",
+    "displayName": "Pecera AM Larvas",
+    "volumeL": null,
+    "primary": true,
+    "note": {
+      "es": "Acuario de larvas de A. mexicanum; umbrales compartidos con AM",
+      "en": "A. mexicanum larvae aquarium; thresholds shared with AM",
+      "pt": "Aquário de larvas de A. mexicanum; limiares compartilhados com AM"
+    },
+    "accentColor": "#2C5F7C",
+    "system": null
+  },
+  {
     "id": "AD",
     "speciesCode": "dumerilii",
     "scientificName": "Ambystoma dumerilii",
