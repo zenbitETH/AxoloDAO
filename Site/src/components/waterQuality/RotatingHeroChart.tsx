@@ -32,6 +32,9 @@ const SERIES_STYLE: Record<string, { color: string; dashed?: boolean; brighter?:
   'AM 1': { color: '#2C5F7C' },
   'AM 2': { color: '#5AA0C8', dashed: true, brighter: true },
   'AM':   { color: '#2C5F7C' },
+  // A. mexicanum larvae aquarium: own series, kept in the mexicanum blue family
+  // but lighter + dashed so it reads as distinct from the solid 'AM' adult line.
+  'AM Larvas': { color: '#8ECAE6', dashed: true, brighter: true },
   'AD':   { color: '#3E6B4A' },
 };
 

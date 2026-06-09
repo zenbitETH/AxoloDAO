@@ -90,6 +90,16 @@ const AM_UNIFICATION_NOTE = {
   pt: 'Unificado desde 2026-04-28 (5 sub-aquários × 72 L)',
 };
 
+// AM Larvas is the A. mexicanum larvae aquarium. The curators began logging its
+// water quality in 2026-W24 but it has no rows of its own in the catalog/systems
+// sheets, so it inherits the unified AM thresholds (same species) — see the
+// AM → AM Larvas catalog mirror below. Volume is unset until the team adds it.
+const AM_LARVAS_NOTE = {
+  es: 'Acuario de larvas de A. mexicanum; umbrales compartidos con AM',
+  en: 'A. mexicanum larvae aquarium; thresholds shared with AM',
+  pt: 'Aquário de larvas de A. mexicanum; limiares compartilhados com AM',
+};
+
 // Single source of truth for tank metadata. Subsystems (AD 1.x, AM 1.x, AM 2.x)
 // are not listed as distinct tanks; the normalizer below collapses them into
 // their parents. AM 1 / AM 2 remain primary so their pre-cutoff history can
@@ -99,6 +109,7 @@ const TANK_META = {
   'AM 1':    { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM 1', volumeL: 67,  primary: true,  note: null },
   'AM 2':    { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM 2', volumeL: 67,  primary: true,  note: null },
   'AM':      { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM',   volumeL: 360, primary: true,  note: AM_UNIFICATION_NOTE },
+  'AM Larvas': { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM Larvas', volumeL: null, primary: true, note: AM_LARVAS_NOTE },
   'AD':      { speciesCode: 'dumerilii', scientificName: 'Ambystoma dumerilii', displayName: 'Pecera AD',   volumeL: 252, primary: true,  note: AD_UNIFICATION_NOTE },
   'Llave':   { speciesCode: 'control',   scientificName: null,                   displayName: 'Control (Llave)', volumeL: null, primary: false, note: null },
   'Guppies': { speciesCode: 'guppies',   scientificName: null,                   displayName: 'Guppies',         volumeL: null, primary: false, note: null },
@@ -127,8 +138,13 @@ function normalizeTankId(raw, isoDate) {
   if (!s) return null;
   const compact = s.replace(/\s+/g, ' ').toUpperCase();
 
-  // Unified A. dumerilii tank: "AD", "AD 1.1", "AD-1.2", "AD Gral." → "AD".
-  if (/^AD\b/.test(compact)) return 'AD';
+  // Unified A. dumerilii tank: "AD", "AD 1.1", "AD-1.2", "AD1.2", "AD Gral." → "AD".
+  // The `\d` alternative catches the no-space "AD1.2" variant: `/^AD\b/` alone has
+  // no word boundary between "D" and a digit, so it silently dropped those rows.
+  if (/^AD(\b|\d)/.test(compact)) return 'AD';
+
+  // A. mexicanum larvae aquarium: its own series with AM thresholds (catalog mirror).
+  if (/^AM\s*LARVAS?$/.test(compact)) return 'AM Larvas';
 
   const post = isoDate >= AM_UNIFICATION;
 
@@ -150,7 +166,8 @@ function normalizeCatalogTankId(raw) {
   if (!s) return null;
   const compact = s.replace(/\s+/g, ' ').toUpperCase();
 
-  if (/^AD\b/.test(compact)) return 'AD';
+  if (/^AD(\b|\d)/.test(compact)) return 'AD';
+  if (/^AM\s*LARVAS?$/.test(compact)) return 'AM Larvas';
   if (compact === 'AM') return 'AM';
   if (compact === 'AM 1' || /^AM[\s-]*1\.\d+$/.test(compact)) return 'AM 1';
   if (compact === 'AM 2' || /^AM[\s-]*2\.\d+$/.test(compact)) return 'AM 2';
@@ -374,6 +391,16 @@ const amKeysPresent = new Set(parameters.filter(p => p.tankId === 'AM').map(p =>
 for (const p of parameters.filter(p => p.tankId === 'AM 1')) {
   if (amKeysPresent.has(p.key)) continue;
   parameters.push({ ...p, tankId: 'AM' });
+}
+
+// AM Larvas (A. mexicanum larvae) has no catalog rows of its own; mirror the now
+// fully-populated 'AM' bands under 'AM Larvas' so its measurements get the same
+// alarm evaluation. Runs after the AM 1 → AM mirror so 'AM' is complete. Skip any
+// param the team later defines explicitly under AM Larvas.
+const amLarvasKeysPresent = new Set(parameters.filter(p => p.tankId === 'AM Larvas').map(p => p.key));
+for (const p of parameters.filter(p => p.tankId === 'AM')) {
+  if (amLarvasKeysPresent.has(p.key)) continue;
+  parameters.push({ ...p, tankId: 'AM Larvas' });
 }
 
 writeFileSync(
