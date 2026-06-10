@@ -103,13 +103,14 @@ function latestWater(tankIds) {
   return null;
 }
 
-function metricCell(x, label, value, unit, isAlarm, accent) {
-  const valColor = isAlarm ? "#ffcf72" : "#ffffff";
-  const dot = isAlarm ? `<circle cx="${x}" cy="960" r="5" fill="#ffcf72"/>` : "";
+function metricCell(x, label, value, unit, isAlarm, species) {
+  // Value in the species colour; out-of-range stays amber (a welfare signal).
+  const valColor = isAlarm ? "#ffd24d" : species;
+  const dot = isAlarm ? `<circle cx="${x}" cy="960" r="5" fill="#ffd24d"/>` : "";
   return `
     ${dot}
-    <text x="${x + (isAlarm ? 14 : 0)}" y="966" font-size="22" font-weight="700" fill="${accent}" letter-spacing="0.5">${esc(label)}</text>
-    <text x="${x}" y="1006" font-size="34" font-weight="800" fill="${valColor}">${esc(fmt(value))}<tspan font-size="20" font-weight="500" fill="#cfe8e8"> ${esc(unit)}</tspan></text>`;
+    <text x="${x + (isAlarm ? 14 : 0)}" y="966" font-size="22" font-weight="700" fill="#f2f8f8" letter-spacing="0.5">${esc(label)}</text>
+    <text x="${x}" y="1006" font-size="35" font-weight="800" fill="${valColor}">${esc(fmt(value))}<tspan font-size="20" font-weight="700" fill="#e6f1f1"> ${esc(unit)}</tspan></text>`;
 }
 
 function avatarSvg(cx, cy, r, dataUri, alias, accent, id) {
@@ -127,62 +128,64 @@ function avatarSvg(cx, cy, r, dataUri, alias, accent, id) {
 
 function buildSvg(o, avatarBySlug) {
   const sp = SPECIES[o.species];
-  const light = lighten(sp.accent, 0.38);
+  // Species hue for titles / axolotl names / water values — lifted toward white so
+  // it stays legible as TEXT over the video (the pure colour stays on solid fills:
+  // accent bar, avatar ring). No background band — a drop shadow carries legibility.
+  const accent = lighten(sp.accent, 0.32);
+  const TXT = "#f2f8f8"; // near-white for descriptions
   const specimens = ejemplares.filter(e => e.pecera === o.pecera);
 
   // Top-right: one avatar column per on-camera axolotl (photo + name + género + fenotipo).
   const cy = 74;
   const r = 52;
   const colW = 300;
-  const baseX = 1816;
+  const baseX = 1778; // rightmost column centre — keeps the longest subtitle title-safe
   const columns = specimens
     .map((s, i) => {
       const cx = baseX - (specimens.length - 1 - i) * colW;
       const av = avatarSvg(cx, cy, r, avatarBySlug[aliasSlug(s.alias)], s.alias, sp.accent, `av-${o.code}-${i}`);
-      const g = genero(s.genero);
+      // género (Hembra/Macho/Sin sexar) shown as a WORD, not a ♀/♂ symbol: the
+      // symbol isn't in Baloo 2 or the Montserrat latin subset, and a missing glyph
+      // makes resvg fall the WHOLE text run back to a default font (only "Remo" —
+      // Sin sexar, no symbol — stayed correct). A word keeps género without breaking
+      // the font. Name = pure Baloo 2; subtitle = género word + fenotipo, Montserrat.
+      const sexo = s.genero === "Hembra" ? "Hembra" : s.genero === "Macho" ? "Macho" : "";
+      const sub0 = [sexo, shortFeno(s.fenotipo)].filter(Boolean).join(" · ");
+      const subtitle = sub0.length > 24 ? `${sub0.slice(0, 23)}…` : sub0; // never runs off the 1920 edge
       return `${av}
-    <text x="${cx}" y="160" text-anchor="middle" font-family="${TITLE_FONT}" font-size="24" font-weight="700" fill="#ffffff">${esc(s.alias)}${g ? ` ${g}` : ""}</text>
-    <text x="${cx}" y="184" text-anchor="middle" font-size="18" fill="${light}" opacity="0.95">${esc(shortFeno(s.fenotipo))}</text>`;
+    <text x="${cx}" y="160" text-anchor="middle" font-family="${TITLE_FONT}" font-size="26" font-weight="800" fill="${accent}">${esc(s.alias)}</text>
+    <text x="${cx}" y="186" text-anchor="middle" font-size="18" font-weight="700" fill="${TXT}" opacity="0.97">${esc(subtitle)}</text>`;
     })
     .join("");
 
   const w = latestWater(o.water);
   const alarms = new Set(w?.alarms ?? []);
   const cells = METRICS.map(([key, label, unit], i) =>
-    metricCell(48 + i * 158, label, w?.values?.[key], unit, alarms.has(key), light),
+    metricCell(48 + i * 158, label, w?.values?.[key], unit, alarms.has(key), accent),
   ).join("");
   const provenance = w
     ? `Medición ${esc(w.date)} · ${esc(shortActor(w.authors?.main))}${w.usedTank !== o.water[0] ? ` · sistema ${esc(w.usedTank)}` : ""}`
     : "Sin medición reciente";
   const locality = `${o.volumeL ? `${o.volumeL} L · ` : ""}${esc(sp.lake)}`;
 
+  // No shade band — a soft dark drop shadow keeps the (species-coloured) text and
+  // avatars legible directly over the livestream, so the video is never dimmed.
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="${DESC_FONT}">
   <defs>
-    <linearGradient id="topedge" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#06222b" stop-opacity="0.68"/>
-      <stop offset="1" stop-color="#06222b" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="botedge" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#06222b" stop-opacity="0.68"/>
-      <stop offset="1" stop-color="#06222b" stop-opacity="0"/>
-    </linearGradient>
+    <filter id="ds" x="-6%" y="-6%" width="112%" height="112%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3.2" flood-color="#01121a" flood-opacity="0.95"/>
+    </filter>
   </defs>
-
-  <!-- Solid scrim where the text sits (legibility over any video) + a soft inner
-       edge fading toward the clear middle. -->
-  <rect x="0" y="0" width="1920" height="196" fill="#06222b" opacity="0.68"/>
-  <rect x="0" y="196" width="1920" height="44" fill="url(#topedge)"/>
-  <rect x="0" y="0" width="10" height="196" fill="${sp.accent}"/>
-  <text x="40" y="66" font-family="${TITLE_FONT}" font-size="46" font-weight="800" fill="${light}" letter-spacing="0.5">${esc(o.station)}</text>
-  <text x="42" y="108" font-size="27" fill="#eaf3f3" opacity="0.95"><tspan font-style="italic">${esc(sp.sci)}</tspan> · ${esc(sp.common)}</text>
-  <text x="42" y="142" font-size="22" fill="${light}" opacity="0.92">${locality}</text>
-  ${columns}
-
-  <rect x="0" y="880" width="1920" height="44" fill="url(#botedge)"/>
-  <rect x="0" y="924" width="1920" height="156" fill="#06222b" opacity="0.68"/>
-  ${cells}
-  <text x="1872" y="958" text-anchor="end" font-size="20" fill="${light}" opacity="0.72" letter-spacing="1">CALIDAD DEL AGUA</text>
-  <text x="1872" y="1006" text-anchor="end" font-size="22" font-weight="600" fill="#e8f6f6" opacity="0.85">${provenance}</text>
+  <g filter="url(#ds)">
+    <rect x="0" y="20" width="9" height="150" rx="4" fill="${sp.accent}"/>
+    <text x="40" y="66" font-family="${TITLE_FONT}" font-size="48" font-weight="800" fill="${accent}" letter-spacing="0.5">${esc(o.station)}</text>
+    <text x="42" y="108" font-size="27" font-weight="700" fill="${TXT}" opacity="0.97">${esc(sp.sci)} · ${esc(sp.common)}</text>
+    <text x="42" y="142" font-size="22" font-weight="700" fill="${TXT}" opacity="0.88">${locality}</text>
+    ${columns}
+    ${cells}
+    <text x="1872" y="958" text-anchor="end" font-size="20" font-weight="700" fill="${TXT}" opacity="0.82" letter-spacing="1">CALIDAD DEL AGUA</text>
+    <text x="1872" y="1006" text-anchor="end" font-size="22" font-weight="700" fill="${TXT}" opacity="0.92">${provenance}</text>
+  </g>
 </svg>
 `;
 }
