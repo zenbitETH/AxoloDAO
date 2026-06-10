@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <linearGradient id="top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#06222b" stop-opacity="0.84"/>
+      <stop offset="1" stop-color="#06222b" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bot" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#06222b" stop-opacity="0.88"/>
+      <stop offset="1" stop-color="#06222b" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="156" fill="url(#top)"/>
+  <text x="48" y="60" font-size="38" font-weight="800" fill="#34eeb6" letter-spacing="1">Acuario AM 1</text>
+  <text x="48" y="100" font-size="25" font-style="italic" fill="#e8f6f6" opacity="0.8">Ambystoma mexicanum</text>
+  <text x="1872" y="56" text-anchor="end" font-size="32" font-weight="800" fill="#ffffff">Tamal de dulce  ·  Tascalate</text>
+  <text x="1872" y="94" text-anchor="end" font-size="22" fill="#ffcf72" opacity="0.92">2 ejemplares</text>
+
+  <rect x="0" y="924" width="1920" height="156" fill="url(#bot)"/>
+  
+    
+    <text x="48" y="966" font-size="22" font-weight="700" fill="#34eeb6" letter-spacing="0.5">Temp</text>
+    <text x="48" y="1006" font-size="34" font-weight="800" fill="#ffffff">17<tspan font-size="20" font-weight="500" fill="#cfe8e8"> °C</tspan></text>
+    <circle cx="206" cy="960" r="5" fill="#ffcf72"/>
+    <text x="220" y="966" font-size="22" font-weight="700" fill="#34eeb6" letter-spacing="0.5">pH</text>
+    <text x="206" y="1006" font-size="34" font-weight="800" fill="#ffcf72">8<tspan font-size="20" font-weight="500" fill="#cfe8e8"> </tspan></text>
+    
+    <text x="364" y="966" font-size="22" font-weight="700" fill="#34eeb6" letter-spacing="0.5">NH₃</text>
+    <text x="364" y="1006" font-size="34" font-weight="800" fill="#ffffff">0<tspan font-size="20" font-weight="500" fill="#cfe8e8"> </tspan></text>
+    
+    <text x="522" y="966" font-size="22" font-weight="700" fill="#34eeb6" letter-spacing="0.5">NO₂</text>
+    <text x="522" y="1006" font-size="34" font-weight="800" fill="#ffffff">0.1<tspan font-size="20" font-weight="500" fill="#cfe8e8"> </tspan></text>
+    
+    <text x="680" y="966" font-size="22" font-weight="700" fill="#34eeb6" letter-spacing="0.5">NO₃</text>
+    <text x="680" y="1006" font-size="34" font-weight="800" fill="#ffffff">10<tspan font-size="20" font-weight="500" fill="#cfe8e8"> </tspan></text>
+    <circle cx="838" cy="960" r="5" fill="#ffcf72"/>
+    <text x="852" y="966" font-size="22" font-weight="700" fill="#34eeb6" letter-spacing="0.5">GH</text>
+    <text x="838" y="1006" font-size="34" font-weight="800" fill="#ffcf72">53.7<tspan font-size="20" font-weight="500" fill="#cfe8e8"> </tspan></text>
+    <circle cx="996" cy="960" r="5" fill="#ffcf72"/>
+    <text x="1010" y="966" font-size="22" font-weight="700" fill="#34eeb6" letter-spacing="0.5">KH</text>
+    <text x="996" y="1006" font-size="34" font-weight="800" fill="#ffcf72">35.8<tspan font-size="20" font-weight="500" fill="#cfe8e8"> </tspan></text>
+    <circle cx="1154" cy="960" r="5" fill="#ffcf72"/>
+    <text x="1168" y="966" font-size="22" font-weight="700" fill="#34eeb6" letter-spacing="0.5">Cond</text>
+    <text x="1154" y="1006" font-size="34" font-weight="800" fill="#ffcf72">2030<tspan font-size="20" font-weight="500" fill="#cfe8e8"> µS</tspan></text>
+  <text x="1872" y="958" text-anchor="end" font-size="20" fill="#34eeb6" opacity="0.7" letter-spacing="1">CALIDAD DEL AGUA</text>
+  <text x="1872" y="1006" text-anchor="end" font-size="22" font-weight="600" fill="#e8f6f6" opacity="0.85">Medición 2026-04-27 · lego-lvsg</text>
+</svg>
