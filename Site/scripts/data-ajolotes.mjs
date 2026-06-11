@@ -56,24 +56,26 @@ const EJEMPLAR_OVERRIDES = new Map([
   // a non-pecera field lags the live colony state.
 ]);
 
-// Canonical AM-station aquarium distribution. The xlsx "pecera actual" column
-// carries inconsistent values (AM 1, AM 2.2, No encontrado, …), but the real
-// layout is five aquariums (AM1–AM5) plus a larvae tank (AM Larvas) on one
-// unified 360 L recirculating system. This map is the source of truth for the
+// Canonical AM-station aquarium distribution. The xlsx "Ubicación" column carries
+// the curator's raw per-animal location (AM 1 / AM 3 / Cuarentena / …), but the
+// live museum layout is curated here: four aquariums (AM1–AM4) plus a larvae tank
+// (AM Larvas) on one unified recirculating system (consolidated from 5 to 4 —
+// two aquariums were merged). This map is the source of truth for the
 // per-aquarium detail views, the QR anchors and the Xovi distribution — the UI
-// reads `pecera` directly. Keep it in sync with the curator's physical tank
-// labels; once the xlsx column emits these exact values it becomes a no-op
-// safety net. Supersedes the former Chocoroll → "AM 2.2" override.
+// reads `pecera` directly. An animal whose workbook location is "Cuarentena"
+// keeps its home aquarium here and is flagged `enCuarentena` below so the tile
+// shows it is temporarily out. Keep it in sync with the curator's physical tank
+// labels.
 const AM_PECERA = new Map([
   ['Tamal de dulce', 'AM1'],
   ['Tascalate',      'AM1'],
-  ['Chocoroll',      'AM2'],
-  ['Limon',          'AM2'],
-  ['Pardo Macho',    'AM3'],
-  ['Parda',          'AM4'],
-  ['La negra',       'AM4'],
-  ['Martín',         'AM5'],
-  ['Goldy',          'AM5'],
+  ['Parda',          'AM1'],
+  ['La negra',       'AM1'],
+  ['Pardo Macho',    'AM2'],
+  ['Goldy',          'AM3'],
+  ['Chocoroll',      'AM3'],
+  ['Martín',         'AM4'],
+  ['Limon',          'AM4'],
   ['Larva 1',        'AM Larvas'],
   ['Larva 2',        'AM Larvas'],
 ]);
@@ -163,6 +165,7 @@ for (let r = dashHdrIdx + 1; r < dashRows.length; r++) {
     ultimoConsumo: toNum(row[D.ultimoConsumo]),
     respuestaAlim: toStr(row[D.respuestaAlim]),
     alertaGastrica: toStr(row[D.alertaGastrica]),
+    enCuarentena: false,
   });
 }
 
@@ -174,6 +177,13 @@ for (const e of ejemplares) {
   if (patch) Object.assign(e, patch);
   const amPecera = AM_PECERA.get(e.alias);
   if (amPecera) {
+    // An AM animal whose workbook location is "Cuarentena" keeps its assigned
+    // home aquarium but is flagged so the station tile renders the "en
+    // cuarentena" ribbon. Self-clears once the curator moves it back in the xlsx.
+    const xlsxLoc = (e.pecera ?? '').trim();
+    if (xlsxLoc && xlsxLoc !== amPecera && /cuarentena/i.test(xlsxLoc)) {
+      e.enCuarentena = true;
+    }
     e.pecera = amPecera;
   } else {
     // The A. dumerilii system is one unified tank: "AD Gral.", "AD 1.1", etc.

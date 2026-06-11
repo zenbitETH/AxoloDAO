@@ -24,7 +24,10 @@ export function speciesToWq(s: SpeciesCode | string | null | undefined): WqSpeci
 export interface Ejemplar {
   alias: string;
   id: string | null;
-  pecera: string | null;
+  pecera: string | null;        // canonical home aquarium / station
+  // True when the animal's home aquarium (pecera) is assigned but it is
+  // physically out in cuarentena — surfaced as a ribbon on the station tile.
+  enCuarentena?: boolean;
   especie: SpeciesCode;
   genero: string | null;          // "Hembra" | "Macho" | "Sin sexar" | …
   marcas: string | null;

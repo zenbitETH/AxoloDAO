@@ -1,10 +1,13 @@
 ---
 // Printable QR sheet for the Biomuseo Xolotlcalli stations. Each composition is
-// QR + station number + "Escanea y conoce más", framed in the species' dedicated
-// color. Scanning opens the station / AM-aquarium detail on the water dashboard
-// via its hash anchor (#AA, #AD, #AM1 … #AM-larvas — see WaterQualityDashboard).
+// QR + label + "Escanea y conoce más", framed in a dedicated color. Tank cards
+// open the station / AM-aquarium detail on the water dashboard via its hash
+// anchor (#AA, #AD, #AM1 … #AM-larvas — see WaterQualityDashboard); the extra
+// cards link to the home-page species map (#mapa) and the Xovi viewer. Each card
+// can be exported to PNG/SVG (see the <script> below).
 import QRCode from 'qrcode';
 import type { Locale } from '@/i18n/strings';
+import { AM_AQUARIUMS } from './waterQuality/amAquariums';
 
 interface Props {
   locale: Locale;
@@ -19,32 +22,8 @@ const SPECIES_COLOR: Record<string, string> = {
   dumerilii: '#3E6B4A',
 };
 
-type Target = { anchor: string; label: string; species: keyof typeof SPECIES_COLOR; sci: string };
-const TARGETS: Target[] = [
-  { anchor: 'AA', label: 'AA', species: 'andersoni', sci: 'Ambystoma andersoni' },
-  { anchor: 'AM1', label: 'AM1', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
-  { anchor: 'AM2', label: 'AM2', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
-  { anchor: 'AM3', label: 'AM3', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
-  { anchor: 'AM4', label: 'AM4', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
-  { anchor: 'AM5', label: 'AM5', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
-  { anchor: 'AM-larvas', label: 'AM Larvas', species: 'mexicanum', sci: 'Ambystoma mexicanum' },
-  { anchor: 'AD', label: 'AD', species: 'dumerilii', sci: 'Ambystoma dumerilii' },
-];
-
 const SITE = Astro.site ?? new URL('https://axolodao.org');
-
-const cards = await Promise.all(
-  TARGETS.map(async (tgt) => {
-    const url = new URL(`/xolotlcalli#${tgt.anchor}`, SITE).href;
-    const svg = await QRCode.toString(url, {
-      type: 'svg',
-      margin: 1,
-      errorCorrectionLevel: 'M',
-      color: { dark: '#11202A', light: '#FFFFFF' },
-    });
-    return { ...tgt, url, svg, color: SPECIES_COLOR[tgt.species] };
-  }),
-);
+const stationUrl = (anchor: string) => new URL(`/xolotlcalli#${anchor}`, SITE).href;
 
 const COPY = {
   es: {
@@ -53,6 +32,10 @@ const COPY = {
       'Imprime y coloca cada código junto a su pecera. Al escanear abre la ficha de la estación en axolodao.org.',
     cta: 'Escanea y conoce más',
     print: 'Imprimir',
+    exportPng: 'Descargar PNG de',
+    exportSvg: 'Descargar SVG de',
+    mapLabel: 'Mapa',
+    mapSubtitle: 'Mapa de especies',
   },
   en: {
     title: 'QR codes · Stations',
@@ -60,6 +43,10 @@ const COPY = {
       'Print and place each code next to its tank. Scanning opens the station page on axolodao.org.',
     cta: 'Scan to learn more',
     print: 'Print',
+    exportPng: 'Download PNG of',
+    exportSvg: 'Download SVG of',
+    mapLabel: 'Map',
+    mapSubtitle: 'Species map',
   },
   pt: {
     title: 'Códigos QR · Estações',
@@ -67,8 +54,53 @@ const COPY = {
       'Imprima e coloque cada código ao lado de seu aquário. Ao escanear abre a ficha da estação em axolodao.org.',
     cta: 'Escaneie e saiba mais',
     print: 'Imprimir',
+    exportPng: 'Baixar PNG de',
+    exportSvg: 'Baixar SVG de',
+    mapLabel: 'Mapa',
+    mapSubtitle: 'Mapa de espécies',
   },
 }[locale];
+
+type CardSpec = { anchor: string; label: string; sci: string; color: string; url: string };
+
+// Tank stations — one QR per aquarium. AM cards derive from AM_AQUARIUMS so the
+// printable QRs, the hash anchors and the per-aquarium detail tiles stay in
+// lockstep (single source of truth).
+const stationSpecs: CardSpec[] = [
+  { anchor: 'AA', label: 'AA', sci: 'Ambystoma andersoni', color: SPECIES_COLOR.andersoni, url: stationUrl('AA') },
+  ...AM_AQUARIUMS.map((aq) => ({
+    anchor: aq.anchor,
+    label: aq.label,
+    sci: 'Ambystoma mexicanum',
+    color: SPECIES_COLOR.mexicanum,
+    url: stationUrl(aq.anchor),
+  })),
+  { anchor: 'AD', label: 'AD', sci: 'Ambystoma dumerilii', color: SPECIES_COLOR.dumerilii, url: stationUrl('AD') },
+];
+
+// Extra destinations (not tank stations): the species map on the home page and
+// the Xovi viewer (production + testnet). Same card format; the destination URL
+// is shown as the subtitle so the two Xovi cards are self-distinguishing. The
+// Xovi teal is darkened from the logo (#059C9C) so the cream header text stays
+// legible against it.
+const XOVI_TEAL = '#047A7A';
+const extraSpecs: CardSpec[] = [
+  { anchor: 'mapa', label: COPY.mapLabel, sci: COPY.mapSubtitle, color: '#4A3628', url: new URL('/#mapa', SITE).href },
+  { anchor: 'xovi', label: 'Xovi', sci: 'xovi.axolodao.org', color: XOVI_TEAL, url: 'https://xovi.axolodao.org/' },
+  { anchor: 'xovi-testnet', label: 'Xovi Testnet', sci: 'xovi-testnet.vercel.app', color: XOVI_TEAL, url: 'https://xovi-testnet.vercel.app/' },
+];
+
+const cards = await Promise.all(
+  [...stationSpecs, ...extraSpecs].map(async (spec) => {
+    const svg = await QRCode.toString(spec.url, {
+      type: 'svg',
+      margin: 1,
+      errorCorrectionLevel: 'M',
+      color: { dark: '#11202A', light: '#FFFFFF' },
+    });
+    return { ...spec, svg };
+  }),
+);
 ---
 
 <section class="qr-surface">
@@ -80,10 +112,23 @@ const COPY = {
 
     <div class="qr-grid grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
       {cards.map((card) => (
-        <article class="qr-card" style={`--c:${card.color}`}>
+        <article
+          class="qr-card"
+          style={`--c:${card.color}`}
+          data-anchor={card.anchor}
+          data-label={card.label}
+          data-sci={card.sci}
+          data-color={card.color}
+        >
           <div class="qr-card__head">
-            <span class="qr-card__station">{card.label}</span>
-            <span class="qr-card__sci">{card.sci}</span>
+            <div class="qr-card__head-text">
+              <span class="qr-card__station">{card.label}</span>
+              <span class="qr-card__sci">{card.sci}</span>
+            </div>
+            <div class="qr-card__export">
+              <button type="button" class="qr-card__btn" data-export="png" aria-label={`${COPY.exportPng} ${card.label}`}>PNG</button>
+              <button type="button" class="qr-card__btn" data-export="svg" aria-label={`${COPY.exportSvg} ${card.label}`}>SVG</button>
+            </div>
           </div>
           <div class="qr-card__code" set:html={card.svg} />
           <p class="qr-card__cta">{COPY.cta}</p>
@@ -112,14 +157,59 @@ const COPY = {
   }
   .qr-card__head {
     display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
     padding: 0.6rem 0.85rem;
     background: var(--c);
     color: #f6efe0;
   }
+  .qr-card__head-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+  /* Per-card export controls — screen only, hidden when printing the sheet. */
+  .qr-card__export {
+    display: flex;
+    flex-shrink: 0;
+    gap: 0.25rem;
+  }
+  .qr-card__btn {
+    cursor: pointer;
+    border: 0;
+    border-radius: 0.35rem;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--c);
+    padding: 0.15rem 0.4rem;
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    transition: background-color 0.15s ease, transform 0.05s ease;
+  }
+  .qr-card__btn:hover {
+    background: #ffffff;
+  }
+  .qr-card__btn:active {
+    transform: translateY(1px);
+  }
+  .qr-card__btn:disabled {
+    opacity: 0.5;
+    cursor: progress;
+  }
+  .qr-card__btn:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 1px;
+  }
   .qr-card__station {
-    font-family: var(--font-display, ui-sans-serif), sans-serif;
+    /* Display font (Baloo 2) — loaded globally in BaseLayout, mirrors the
+       Tailwind `font-display` token. The previous var(--font-display) is never
+       defined, so it silently fell back to the default sans-serif. */
+    font-family: 'Baloo 2', system-ui, sans-serif;
     font-weight: 800;
     font-size: 1.35rem;
     line-height: 1;
@@ -151,7 +241,8 @@ const COPY = {
   @media print {
     header.site-header,
     footer,
-    .qr-head {
+    .qr-head,
+    .qr-card__export {
       display: none !important;
     }
     .qr-surface {
@@ -167,3 +258,173 @@ const COPY = {
     }
   }
 </style>
+
+<script>
+  // Per-card export: each station card can be saved as a high-res PNG (rendered
+  // on a canvas so the Baloo 2 / Montserrat text matches the on-screen card) or
+  // as a standalone vector SVG. The QR itself is the page's inline <svg>, reused
+  // verbatim in both outputs so the encoded URL is identical to what's printed.
+  const CARD_W = 320;
+  const HEADER_H = 64;
+  const QR_PAD = 16;
+  const CTA_H = 42;
+  const QR_SIZE = CARD_W - QR_PAD * 2;
+  const CARD_H = HEADER_H + QR_PAD + QR_SIZE + CTA_H;
+  const RADIUS = 16;
+  const BORDER = 2;
+
+  const xmlEscape = (s: string) =>
+    s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] as string));
+
+  function qrParts(card: HTMLElement) {
+    const svg = card.querySelector<SVGSVGElement>('.qr-card__code svg');
+    return {
+      viewBox: svg?.getAttribute('viewBox') ?? '0 0 25 25',
+      inner: svg?.innerHTML ?? '',
+    };
+  }
+
+  function qrStandaloneSvg(card: HTMLElement, sizePx: number) {
+    const { viewBox, inner } = qrParts(card);
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${sizePx}" height="${sizePx}" viewBox="${viewBox}" shape-rendering="crispEdges">${inner}</svg>`;
+  }
+
+  function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
+    const anyCtx = ctx as unknown as { roundRect?: (x: number, y: number, w: number, h: number, r: number) => void };
+    if (typeof anyCtx.roundRect === 'function') {
+      ctx.beginPath();
+      anyCtx.roundRect(x, y, w, h, r);
+      return;
+    }
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  const loadImage = (src: string) =>
+    new Promise<HTMLImageElement>((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+
+  function download(blob: Blob, filename: string) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  function cardSvg(card: HTMLElement) {
+    const color = card.dataset.color ?? '#11202A';
+    const label = card.dataset.label ?? '';
+    const sci = card.dataset.sci ?? '';
+    const cta = card.querySelector('.qr-card__cta')?.textContent?.trim() ?? '';
+    const { viewBox, inner } = qrParts(card);
+    const ctaY = HEADER_H + QR_PAD + QR_SIZE + 26;
+    // @import lets the SVG render Baloo 2 / Montserrat when opened in a browser;
+    // it degrades to system fonts in offline editors (the QR stays exact either way).
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${CARD_W}" height="${CARD_H}" viewBox="0 0 ${CARD_W} ${CARD_H}">
+  <defs><style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&amp;family=Montserrat:ital,wght@0,700;1,400&amp;display=swap');
+    .qr-st{font-family:'Baloo 2','Montserrat',system-ui,sans-serif;font-weight:800}
+    .qr-sci{font-family:'Montserrat',system-ui,sans-serif;font-style:italic}
+    .qr-cta{font-family:'Montserrat',system-ui,sans-serif;font-weight:700}
+  </style></defs>
+  <clipPath id="qr-clip"><rect x="1" y="1" width="${CARD_W - 2}" height="${CARD_H - 2}" rx="${RADIUS}"/></clipPath>
+  <g clip-path="url(#qr-clip)">
+    <rect width="${CARD_W}" height="${CARD_H}" fill="#ffffff"/>
+    <rect width="${CARD_W}" height="${HEADER_H}" fill="${color}"/>
+    <text class="qr-st" x="14" y="36" font-size="26" fill="#f6efe0">${xmlEscape(label)}</text>
+    <text class="qr-sci" x="14" y="54" font-size="13" fill="#f6efe0" opacity="0.92">${xmlEscape(sci)}</text>
+    <svg x="${QR_PAD}" y="${HEADER_H + QR_PAD}" width="${QR_SIZE}" height="${QR_SIZE}" viewBox="${viewBox}">${inner}</svg>
+    <text class="qr-cta" x="${CARD_W / 2}" y="${ctaY}" font-size="15" text-anchor="middle" fill="${color}">${xmlEscape(cta)}</text>
+  </g>
+  <rect x="1" y="1" width="${CARD_W - 2}" height="${CARD_H - 2}" rx="${RADIUS}" fill="none" stroke="${color}" stroke-width="${BORDER}"/>
+</svg>`;
+  }
+
+  async function cardPng(card: HTMLElement, scale = 3): Promise<Blob | null> {
+    const color = card.dataset.color ?? '#11202A';
+    const label = card.dataset.label ?? '';
+    const sci = card.dataset.sci ?? '';
+    const cta = card.querySelector('.qr-card__cta')?.textContent?.trim() ?? '';
+    const canvas = document.createElement('canvas');
+    canvas.width = CARD_W * scale;
+    canvas.height = CARD_H * scale;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return null;
+    ctx.scale(scale, scale);
+    try {
+      await Promise.all([
+        document.fonts.load("800 26px 'Baloo 2'"),
+        document.fonts.load("italic 13px 'Montserrat'"),
+        document.fonts.load("700 15px 'Montserrat'"),
+      ]);
+    } catch {
+      // fonts will fall back; QR + layout still render
+    }
+    ctx.save();
+    roundRect(ctx, BORDER / 2, BORDER / 2, CARD_W - BORDER, CARD_H - BORDER, RADIUS);
+    ctx.clip();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, CARD_W, CARD_H);
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, CARD_W, HEADER_H);
+    ctx.fillStyle = '#f6efe0';
+    ctx.textBaseline = 'alphabetic';
+    ctx.font = "800 26px 'Baloo 2', system-ui, sans-serif";
+    ctx.fillText(label, 14, 36);
+    ctx.globalAlpha = 0.92;
+    ctx.font = "italic 13px 'Montserrat', sans-serif";
+    ctx.fillText(sci, 14, 54);
+    ctx.globalAlpha = 1;
+    const qrImg = await loadImage(
+      'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(qrStandaloneSvg(card, Math.round(QR_SIZE * scale))),
+    );
+    ctx.drawImage(qrImg, QR_PAD, HEADER_H + QR_PAD, QR_SIZE, QR_SIZE);
+    ctx.fillStyle = color;
+    ctx.font = "700 15px 'Montserrat', sans-serif";
+    ctx.textAlign = 'center';
+    ctx.fillText(cta, CARD_W / 2, HEADER_H + QR_PAD + QR_SIZE + 26);
+    ctx.textAlign = 'start';
+    ctx.restore();
+    roundRect(ctx, BORDER / 2, BORDER / 2, CARD_W - BORDER, CARD_H - BORDER, RADIUS);
+    ctx.lineWidth = BORDER;
+    ctx.strokeStyle = color;
+    ctx.stroke();
+    return new Promise((resolve) => canvas.toBlob((b) => resolve(b), 'image/png'));
+  }
+
+  document.querySelectorAll<HTMLElement>('.qr-card').forEach((card) => {
+    const base = 'qr-estacion-' + (card.dataset.anchor ?? 'estacion');
+    card.querySelectorAll<HTMLButtonElement>('[data-export]').forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const kind = btn.getAttribute('data-export');
+        btn.disabled = true;
+        try {
+          if (kind === 'svg') {
+            download(new Blob([cardSvg(card)], { type: 'image/svg+xml' }), base + '.svg');
+          } else {
+            const blob = await cardPng(card);
+            if (blob) download(blob, base + '.png');
+          }
+        } catch (err) {
+          console.error('[qr-export]', err);
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    });
+  });
+</script>
