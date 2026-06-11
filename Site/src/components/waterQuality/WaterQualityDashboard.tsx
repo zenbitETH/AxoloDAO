@@ -119,7 +119,7 @@ export default function WaterQualityDashboard({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // QR / hash deep-link entry: `#AA`, `#AD`, `#AM` open that tank; `#AM1`…`#AM5`
+  // QR / hash deep-link entry: `#AA`, `#AD`, `#AM` open that tank; `#AM1`…`#AM4`
   // and `#AM-larvas` open the AM detail focused on that aquarium tile. Mirrors
   // the ajolotes explorer hash pattern so printed QR codes resolve on load.
   useEffect(() => {

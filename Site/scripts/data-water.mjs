@@ -81,13 +81,15 @@ const AD_UNIFICATION_NOTE = {
 };
 
 // AM 1 + AM 2 were physically unified into a single recirculating system on
-// 2026-04-28. Pre-cutoff readings keep the AM 1 / AM 2 distinction; from this
-// date onward the Excel writes a single 'AM' row per measurement.
+// 2026-04-28; the display layout was later consolidated from 5 to 4 aquariums
+// (AM1–AM4) plus a larvae tank. Pre-cutoff readings keep the AM 1 / AM 2
+// distinction; from this date onward the Excel writes a single 'AM' row per
+// measurement.
 const AM_UNIFICATION = '2026-04-28';
 const AM_UNIFICATION_NOTE = {
-  es: 'Unificado desde 2026-04-28 (5 acuarios × 72 L)',
-  en: 'Unified since 2026-04-28 (5 sub-aquariums × 72 L)',
-  pt: 'Unificado desde 2026-04-28 (5 sub-aquários × 72 L)',
+  es: 'Unificado desde 2026-04-28 (4 acuarios)',
+  en: 'Unified since 2026-04-28 (4 sub-aquariums)',
+  pt: 'Unificado desde 2026-04-28 (4 sub-aquários)',
 };
 
 // AM Larvas is the A. mexicanum larvae aquarium. The curators began logging its
@@ -108,7 +110,13 @@ const TANK_META = {
   'AA':      { speciesCode: 'andersoni', scientificName: 'Ambystoma andersoni', displayName: 'Pecera AA',   volumeL: 106, primary: true,  note: null },
   'AM 1':    { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM 1', volumeL: 67,  primary: true,  note: null },
   'AM 2':    { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM 2', volumeL: 67,  primary: true,  note: null },
-  'AM':      { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM',   volumeL: 360, primary: true,  note: AM_UNIFICATION_NOTE },
+  // volumeL 453 = sum of the four AM aquariums (AM1 252 + AM2/AM3/AM4 67 each; see
+  // amAquariums.ts). A closed recirculating loop holds at least the water in its
+  // tanks, so 453 is the FLOOR — the true total is likely higher once the sump +
+  // plumbing are counted. PLACEHOLDER pending the curator's confirmation in the
+  // control operativo on Mon 2026-06-15; update then (or wire it to read an
+  // aggregate "AM" row from Descripción de sistemas).
+  'AM':      { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM',   volumeL: 453, primary: true,  note: AM_UNIFICATION_NOTE },
   'AM Larvas': { speciesCode: 'mexicanum', scientificName: 'Ambystoma mexicanum', displayName: 'Pecera AM Larvas', volumeL: null, primary: true, note: AM_LARVAS_NOTE },
   'AD':      { speciesCode: 'dumerilii', scientificName: 'Ambystoma dumerilii', displayName: 'Pecera AD',   volumeL: 252, primary: true,  note: AD_UNIFICATION_NOTE },
   'Llave':   { speciesCode: 'control',   scientificName: null,                   displayName: 'Control (Llave)', volumeL: null, primary: false, note: null },

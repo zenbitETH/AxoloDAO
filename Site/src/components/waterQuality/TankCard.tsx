@@ -42,10 +42,10 @@ const TONE_COLOR: Record<TimelineTone, string> = {
   muted: 'rgba(128,128,128,0.55)',
 };
 
-// Bundle stores pecera as "AM 1.1", "AM 1.2", "AM 2.1" etc., while tank IDs in
-// the water-quality data are "AM 1", "AM 2", and the unified "AM". Match by
-// prefix for the AM family (AM unified gets everything that starts with AM);
-// for AA and AD an exact match is sufficient.
+// Bundle stores pecera as "AM1".."AM4" / "AM Larvas", while tank IDs in the
+// water-quality data are "AM 1", "AM 2", and the unified "AM". Match by prefix
+// for the AM family (AM unified gets everything that starts with AM); for AA and
+// AD an exact match is sufficient.
 function SystemTile({
   title,
   value,
@@ -94,10 +94,22 @@ function AnchorChip({ anchor, title }: { anchor: string; title: string }) {
   );
 }
 
+// Shared "en cuarentena" badge — rendered by both the flat specimen list and the
+// AM per-aquarium tiles so the wording, color and a11y stay in one place. `size`
+// only changes the footprint (flat list = sm, denser AM tile = xs).
+function CuarentenaRibbon({ size = 'sm' }: { size?: 'sm' | 'xs' }) {
+  const footprint = size === 'xs' ? 'w-full text-[8px]' : 'w-16 text-[9px]';
+  return (
+    <span class={`aj-ribbon aj-state-pulse mt-1 inline-flex items-center justify-center rounded-md bg-rosa px-1 py-0.5 font-display font-extrabold uppercase tracking-[0.04em] leading-tight text-marfil shadow-[0_2px_6px_rgba(7,31,41,0.35)] ${footprint}`}>
+      En cuarentena
+    </span>
+  );
+}
+
 function ejemplarBelongsToTank(pecera: string | null, tankId: string): boolean {
   if (!pecera) return false;
   const p = pecera.trim();
-  // The unified AM card collects every AM aquarium (AM1–AM5, AM Larvas).
+  // The unified AM card collects every AM aquarium (AM1–AM4, AM Larvas).
   if (tankId === 'AM') return p.startsWith('AM');
   // Historical AM 1 / AM 2 cards: match space-insensitively so canonical
   // "AM1"/"AM2" peceras still resolve to the pre-unification columns.
@@ -308,11 +320,7 @@ export default function TankCard({
                           <AjoloteAvatar alias={e.alias} size={64} accent={accent} />
                         )}
                       </span>
-                      {inCuarentena && (
-                        <span class="aj-ribbon aj-state-pulse mt-1 inline-flex w-16 items-center justify-center rounded-md bg-rosa px-1 py-0.5 font-display text-[9px] font-extrabold uppercase tracking-[0.04em] leading-tight text-marfil shadow-[0_2px_6px_rgba(7,31,41,0.35)]">
-                          En cuarentena
-                        </span>
-                      )}
+                      {inCuarentena && <CuarentenaRibbon size="sm" />}
                       <span class="mt-1 font-body text-[11px] leading-tight text-[var(--wq-ink)] group-hover:underline">
                         {e.alias}
                       </span>
@@ -332,6 +340,10 @@ export default function TankCard({
           </h3>
           <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {AM_AQUARIUMS.map((aq) => {
+              // Membership is an exact pecera match. AM animals temporarily in
+              // cuarentena keep their home aquarium (set via AM_PECERA, flagged
+              // enCuarentena) so they still appear here; a mexicanum left at raw
+              // "Cuarentena" and NOT in AM_PECERA would not surface on any tile.
               const members = ejemplares.filter(
                 (e) => (e.pecera ?? '').trim() === aq.id,
               );
@@ -365,12 +377,13 @@ export default function TankCard({
                       {members.map((e) => {
                         const photo = ejemplarPhotoUrl(e.alias);
                         const slug = aliasSlug(e.alias);
+                        const inCuarentena = !!e.enCuarentena;
                         return (
                           <li key={e.id ?? e.alias}>
                             <a
                               href={`/xolotlcalli/ajolotes#${slug}`}
                               class="group flex w-[64px] flex-col items-center text-center focus:outline-none"
-                              aria-label={e.alias}
+                              aria-label={inCuarentena ? `${e.alias} — en cuarentena` : e.alias}
                             >
                               <span
                                 class="block overflow-hidden rounded-full ring-1 transition group-hover:ring-2 group-focus-visible:ring-2"
@@ -389,12 +402,13 @@ export default function TankCard({
                                     width={52}
                                     height={52}
                                     loading="lazy"
-                                    class="h-full w-full object-cover"
+                                    class={`h-full w-full object-cover ${inCuarentena ? 'opacity-85 saturate-[0.75]' : ''}`}
                                   />
                                 ) : (
                                   <AjoloteAvatar alias={e.alias} size={52} accent={accent} />
                                 )}
                               </span>
+                              {inCuarentena && <CuarentenaRibbon size="xs" />}
                               <span class="mt-1 font-body text-[10px] leading-tight text-[var(--wq-ink)] group-hover:underline">
                                 {e.alias}
                               </span>

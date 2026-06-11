@@ -118,12 +118,12 @@
     "speciesCode": "mexicanum",
     "scientificName": "Ambystoma mexicanum",
     "displayName": "Pecera AM",
-    "volumeL": 360,
+    "volumeL": 453,
     "primary": true,
     "note": {
-      "es": "Unificado desde 2026-04-28 (5 acuarios × 72 L)",
-      "en": "Unified since 2026-04-28 (5 sub-aquariums × 72 L)",
-      "pt": "Unificado desde 2026-04-28 (5 sub-aquários × 72 L)"
+      "es": "Unificado desde 2026-04-28 (4 acuarios)",
+      "en": "Unified since 2026-04-28 (4 sub-aquariums)",
+      "pt": "Unificado desde 2026-04-28 (4 sub-aquários)"
     },
     "accentColor": "#2C5F7C",
     "system": {

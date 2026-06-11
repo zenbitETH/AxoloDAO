@@ -43,8 +43,8 @@ const UNIT: Partial<Record<ParamKey, string>> = {
 };
 
 // Map ejemplar.pecera → water-quality tankId.
-// "AA"/"AD" map directly. Every AM aquarium (AM1–AM5, AM Larvas) shares the one
-// unified 360 L recirculating system, so they all resolve to the "AM" tank.
+// "AA"/"AD" map directly. Every AM aquarium (AM1–AM4, AM Larvas) shares the one
+// unified recirculating system, so they all resolve to the "AM" tank.
 function tankIdFor(pecera: string | null): string | null {
   if (!pecera || pecera === 'NA') return null;
   const trimmed = pecera.trim();
