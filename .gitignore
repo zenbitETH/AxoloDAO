@@ -27,6 +27,7 @@ Thumbs.db
 
 # Local-only Claude tooling (not for public repo)
 .claude/
+CLAUDE.local.md
 
 # Local-only operational data (xlsx exports, working files)
 Context/
