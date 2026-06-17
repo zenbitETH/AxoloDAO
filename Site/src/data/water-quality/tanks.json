@@ -48,12 +48,12 @@
     "accentColor": "#2C5F7C",
     "system": {
       "dimensions": {
-        "volumeNominalL": 67.2,
-        "volumeEffectiveL": 53.6,
-        "heightNominalCm": 19.8,
-        "heightEffectiveCm": 15.8,
-        "lengthCm": 58.2,
-        "widthCm": 58.3
+        "volumeNominalL": 252,
+        "volumeEffectiveL": 226.8,
+        "heightNominalCm": 35,
+        "heightEffectiveCm": 31.5,
+        "lengthCm": 120,
+        "widthCm": 60
       },
       "tankType": "Cristal+porcelanato",
       "substrate": "NA",
@@ -128,12 +128,12 @@
     "accentColor": "#2C5F7C",
     "system": {
       "dimensions": {
-        "volumeNominalL": 67.2,
-        "volumeEffectiveL": 53.6,
-        "heightNominalCm": 19.8,
-        "heightEffectiveCm": 15.8,
-        "lengthCm": 58.2,
-        "widthCm": 58.3
+        "volumeNominalL": 252,
+        "volumeEffectiveL": 226.8,
+        "heightNominalCm": 35,
+        "heightEffectiveCm": 31.5,
+        "lengthCm": 120,
+        "widthCm": 60
       },
       "tankType": "Cristal+porcelanato",
       "substrate": "NA",

@@ -58,26 +58,29 @@ const EJEMPLAR_OVERRIDES = new Map([
 
 // Canonical AM-station aquarium distribution. The xlsx "Ubicación" column carries
 // the curator's raw per-animal location (AM 1 / AM 3 / Cuarentena / …), but the
-// live museum layout is curated here: four aquariums (AM1–AM4) plus a larvae tank
-// (AM Larvas) on one unified recirculating system (consolidated from 5 to 4 —
-// two aquariums were merged). This map is the source of truth for the
-// per-aquarium detail views, the QR anchors and the Xovi distribution — the UI
-// reads `pecera` directly. An animal whose workbook location is "Cuarentena"
-// keeps its home aquarium here and is flagged `enCuarentena` below so the tile
-// shows it is temporarily out. Keep it in sync with the curator's physical tank
-// labels.
+// live museum layout is curated here: four aquariums (AM1–AM4) on one unified
+// recirculating system. As of 2026-06-15 the two larvae moved into AM3 — the
+// adult that was there (Chocoroll) moved to AM1 and Goldy went to Cuarentena — so
+// the standalone larvae aquarium is retired from the occupancy list. Its water is
+// still logged separately as the "AM Larvas" system (kept for reference in
+// data-water.mjs / the water dashboard); only the per-animal occupancy moves to
+// AM3 here. This map is the source of truth for the per-aquarium detail views,
+// the QR anchors and the Xovi distribution — the UI reads `pecera` directly. An
+// animal whose workbook location is "Cuarentena" keeps its home aquarium here and
+// is flagged `enCuarentena` below so the tile shows it is temporarily out (drop
+// the entry entirely once it has no AM home, e.g. Goldy). Keep it in sync with
+// the curator's physical tank labels.
 const AM_PECERA = new Map([
   ['Tamal de dulce', 'AM1'],
   ['Tascalate',      'AM1'],
   ['Parda',          'AM1'],
   ['La negra',       'AM1'],
+  ['Chocoroll',      'AM1'],
   ['Pardo Macho',    'AM2'],
-  ['Goldy',          'AM3'],
-  ['Chocoroll',      'AM3'],
+  ['Larva 1',        'AM3'],
+  ['Larva 2',        'AM3'],
   ['Martín',         'AM4'],
   ['Limon',          'AM4'],
-  ['Larva 1',        'AM Larvas'],
-  ['Larva 2',        'AM Larvas'],
 ]);
 
 // ---------------------------------------------------------------------------
