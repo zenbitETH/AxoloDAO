@@ -2,8 +2,8 @@
 /**
  * data-water.mjs
  *
- * Reads Context/Control operativo AxoloDAO.xlsx (gitignored, maintained by the
- * Biomuseo Xolotlcalli team) and emits JSON for the water-quality dashboard:
+ * Reads the operations workbook (path from the AXOLODAO_XLSX env var, maintained
+ * by the Biomuseo Xolotlcalli team) and emits JSON for the water-quality dashboard:
  *
  *   Site/src/data/water-quality/tanks.json
  *   Site/src/data/water-quality/parameters.json
@@ -23,12 +23,12 @@ import {
   parseNumber,
   findHeaderRow,
   indexOfHeader,
+  resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
-const REPO_ROOT = resolve(SITE_ROOT, '..');
-const XLSX_PATH = resolve(REPO_ROOT, 'Context/Control operativo AxoloDAO.xlsx');
+const XLSX_PATH = resolveXlsxPath();
 
 const CONTENT_OUT = resolve(SITE_ROOT, 'src/data/water-quality');
 const PUBLIC_OUT  = resolve(SITE_ROOT, 'public/data/water-quality');
@@ -224,7 +224,7 @@ function statusOf(value, min, max) {
 
 if (!existsSync(XLSX_PATH)) {
   console.error(`[data-water] ERROR: xlsx not found at ${XLSX_PATH}`);
-  console.error('[data-water] Place the file at Context/Control operativo AxoloDAO.xlsx and re-run.');
+  console.error('[data-water] Set AXOLODAO_XLSX to the operations workbook path and re-run.');
   process.exit(1);
 }
 

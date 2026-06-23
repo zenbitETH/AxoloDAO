@@ -7,6 +7,27 @@
  * as the existing water/ajolotes pipelines.
  */
 
+import { resolve } from 'node:path';
+
+/**
+ * Absolute path to the operations workbook ("Control operativo AxoloDAO.xlsx").
+ *
+ * The workbook is maintained outside this repo, so its location is supplied at
+ * run time via the AXOLODAO_XLSX environment variable (absolute, or resolved
+ * relative to CWD). These data:* scripts are dev-only and never run in
+ * CI/build, so there is no in-repo default — set AXOLODAO_XLSX before running.
+ */
+export function resolveXlsxPath() {
+  const p = process.env.AXOLODAO_XLSX;
+  if (!p) {
+    throw new Error(
+      'AXOLODAO_XLSX is not set. Point it at the operations workbook ' +
+        '("Control operativo AxoloDAO.xlsx") and re-run.',
+    );
+  }
+  return resolve(p);
+}
+
 export function pad2(n) {
   return String(n).padStart(2, '0');
 }
