@@ -1,3 +1,4 @@
+import { useState } from 'preact/hooks';
 import type { Ejemplar, HistorialEntry, Locale } from '../types';
 import { type ParsedStatus } from '../theme';
 import { s } from '../strings';
@@ -35,6 +36,42 @@ function latestBiometricDate(hist: HistorialEntry[]): string | null {
   return (withBio?.fecha ?? sorted[0]?.fecha) ?? null;
 }
 
+// Friendly curator narrative: breve shown by default, extendida revealed via
+// "leer más". Keyed per specimen at the call site so the toggle resets when the
+// modal switches ejemplar.
+function DescripcionBlock({
+  descripcion,
+  accent,
+  locale,
+}: {
+  descripcion: { breve: string; extendida: string };
+  accent: string;
+  locale: Locale;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const hasExtendida = Boolean(
+    descripcion.extendida && descripcion.extendida !== descripcion.breve,
+  );
+  return (
+    <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
+      <p class="m-0 text-sm leading-relaxed text-[var(--wq-ink)]">
+        {expanded && hasExtendida ? descripcion.extendida : descripcion.breve}
+      </p>
+      {hasExtendida && (
+        <button
+          type="button"
+          aria-expanded={expanded}
+          onClick={() => setExpanded((v) => !v)}
+          class="mt-2 text-[11px] font-semibold uppercase tracking-[0.08em]"
+          style={{ color: accent }}
+        >
+          {expanded ? s(locale, 'resumen.leerMenos') : s(locale, 'resumen.leerMas')}
+        </button>
+      )}
+    </section>
+  );
+}
+
 export default function ResumenTab({
   ej,
   hist,
@@ -50,6 +87,16 @@ export default function ResumenTab({
 
   return (
     <div class="flex flex-col gap-3.5">
+      {/* Friendly curator description (curated copy, not from the workbook) */}
+      {ej.descripcion && ej.descripcion.breve && (
+        <DescripcionBlock
+          key={ej.alias}
+          descripcion={ej.descripcion}
+          accent={accent}
+          locale={locale}
+        />
+      )}
+
       {/* Estado clínico */}
       <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
         <h3 class="m-0 mb-3 font-display text-base font-bold tracking-tight text-[var(--wq-ink)]">

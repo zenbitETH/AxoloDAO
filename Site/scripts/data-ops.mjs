@@ -2,7 +2,7 @@
 /**
  * data-ops.mjs
  *
- * Reads operational sheets from Context/Control operativo AxoloDAO.xlsx that
+ * Reads operational sheets from the operations workbook (path from the AXOLODAO_XLSX env var) that
  * are NOT tied to a single specimen or tank schema:
  *
  *   - Bitacora                  → site/src/data/ops/bitacora-recent.json (last 90 days)
@@ -31,12 +31,12 @@ import {
   indexOfHeader,
   normalizeAlias,
   pad2,
+  resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
-const REPO_ROOT = resolve(SITE_ROOT, '..');
-const XLSX_PATH = resolve(REPO_ROOT, 'Context/Control operativo AxoloDAO.xlsx');
+const XLSX_PATH = resolveXlsxPath();
 
 const CONTENT_OUT = resolve(SITE_ROOT, 'src/data/ops');
 const PUBLIC_OUT  = resolve(SITE_ROOT, 'public/data/ops');

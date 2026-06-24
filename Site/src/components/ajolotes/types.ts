@@ -35,6 +35,11 @@ export interface Ejemplar {
   edad: string | null;            // free-text e.g. "5 años"
   estadio: string | null;
 
+  // Friendly curator narrative (curated copy, not from the workbook). breve =
+  // 2–3 sentences shown by default; extendida = full paragraph revealed via
+  // "leer más" in the Resumen tab.
+  descripcion?: { breve: string; extendida: string } | null;
+
   // biometry snapshot
   peso: number | null;
   lt: number | null;              // longitud total (cm)

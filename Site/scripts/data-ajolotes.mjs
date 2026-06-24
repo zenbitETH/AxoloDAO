@@ -2,7 +2,7 @@
 /**
  * data-ajolotes.mjs
  *
- * Reads Context/Control operativo AxoloDAO.xlsx and emits the bundle.json that
+ * Reads the operations workbook (path from the AXOLODAO_XLSX env var) and emits the bundle.json that
  * powers the per-axolotl Ajolotes Explorer:
  *
  *   Site/src/data/ajolotes/bundle.json
@@ -33,12 +33,12 @@ import {
   findHeaderRow,
   indexOfHeader,
   normalizeAlias,
+  resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
-const REPO_ROOT = resolve(SITE_ROOT, '..');
-const XLSX_PATH = resolve(REPO_ROOT, 'Context/Control operativo AxoloDAO.xlsx');
+const XLSX_PATH = resolveXlsxPath();
 
 const OUT_DIR = resolve(SITE_ROOT, 'src/data/ajolotes');
 mkdirSync(OUT_DIR, { recursive: true });
@@ -54,6 +54,72 @@ const EJEMPLAR_OVERRIDES = new Map([
   // Field-level curator patches for stale Dashboard columns. Currently empty —
   // the AM aquarium distribution moved to AM_PECERA below. Add entries here when
   // a non-pecera field lags the live colony state.
+]);
+
+// Friendly per-axolotl narrative for the ajolotes-explorer "Resumen" tab. This
+// is curated copy maintained by the curator (NOT in the xlsx), keyed by
+// canonical alias (post-normalizeAlias, e.g. "La negra", "Chocoroll",
+// "Pardo Macho", "Limon"). breve = 2–3 sentences; extendida = full paragraph.
+const EJEMPLAR_DESCRIPCIONES = new Map([
+  // Chocoroll's narrative uses gender-neutral wording (its sex is recorded as
+  // "Sin sexar" in the Dashboard) and describes its arrival illness/recovery in
+  // general terms to match the medical record.
+  ['Panchita', {
+    breve: 'Panchita es la veterana de la familia. A sus 5 años es la más larga y robusta de todas, y también la más glotona: jamás le dice que no a la comida. Ve poco por una pequeña catarata, pero eso no le resta ni una pizca de encanto.',
+    extendida: 'Con 5 años a cuestas, Panchita es nuestra ejemplar más veterana y, sin duda, la más imponente: es la más larga y rellenita de todo el grupo. La vida le ha dejado un par de marcas de guerra —de joven sus hermanos le arrancaron una branquia y hoy una pequeña catarata nubla uno de sus ojos—, pero ella las lleva con orgullo. Como su vista ya no es la de antes, cazar no se le da muy bien… aunque su apetito no conoce límites: Panchita es, oficialmente, la más glotona de la casa. Tierna, tranquila y siempre lista para comer, es la gran matriarca de la familia.',
+  }],
+  ['Remo', {
+    breve: 'Remo es nuestro dumerilii más grande y el rey indiscutible de la noche. De carácter fuerte y temperamento intenso, prefiere moverse cuando todos duermen. ¿Hembra o macho? ¡Todavía es un misterio!',
+    extendida: 'Remo es el más grande de nuestros dumerilíes y tiene una personalidad a la altura de su tamaño: decidido, territorial y con mucho carácter. Es un auténtico ser nocturno que cobra vida cuando cae la noche y todos los demás descansan. Guarda además un pequeño secreto que aún no hemos podido resolver: todavía no sabemos si es hembra o macho, así que de momento sigue siendo todo un enigma con branquias. Imponente y con un temperamento que no pasa desapercibido, Remo siempre se hace notar.',
+  }],
+  ['Rómulo', {
+    breve: 'Rómulo es el más pequeño de los dumerilíes, pero también el más cachetón y travieso. Su pasatiempo favorito es darle mordiditas a su hermano. Es un poco delicado de salud, pero tiene un espíritu enorme.',
+    extendida: 'No te dejes engañar por su tamaño: Rómulo es el más pequeño de los dumerilíes, pero también el más rellenito y cachetón de todos. Es travieso por naturaleza y tiene una debilidad muy particular: no se resiste a darle mordiditas a su hermano cada vez que tiene la oportunidad. Es un poco delicado de salud —de vez en cuando le aparece algún hongo—, así que siempre lo consentimos con cuidados extra. Pequeño, juguetón y muy querido, Rómulo se gana el corazón de todos los que lo conocen.',
+  }],
+  ['La negra', {
+    breve: 'Negra todavía busca nombre definitivo, pero su carácter ya está más que claro: es una hembra serena, tranquila y muy sociable, que se lleva de maravilla con todos los demás ajolotes.',
+    extendida: 'Negra es la calma hecha ajolote. De temperamento sereno y nada conflictivo, convive sin problemas con cualquiera de sus compañeros: es de esas que siempre llevan la fiesta en paz. Por ahora su nombre es solo provisional, mientras encontramos el definitivo, pero su personalidad apacible y amistosa ya se ganó un lugar en la familia.',
+  }],
+  ['Parda', {
+    breve: 'Parda es otra de nuestras hembras tranquilas: dulce y pacífica. Tiene una peculiaridad entrañable: cuando la alimentamos con pinza, casi nunca le atina al bocado. Su nombre, por ahora, también es provisional.',
+    extendida: 'Parda comparte con Negra ese carácter calmado que tanto nos gusta: es serena, pacífica y fácil de llevar. Eso sí, tiene un detalle que saca una sonrisa: a la hora de comer con pinza, su puntería deja mucho que desear y casi nunca atrapa el bocado a la primera. Todavía lleva un nombre provisional, pero su torpeza encantadora la hace inolvidable.',
+  }],
+  ['Tamal de dulce', {
+    breve: 'Tamal de dulce es nuestra Ambystoma mexicanum más rellenita. Antes fue mascota, tiene un dedito chueco y es la dueña absoluta del refugio: no deja entrar a nadie más. Tierna pero territorial, es todo un personaje.',
+    extendida: 'Tamal de dulce es nuestra Ambystoma mexicanum más gordita y una de las más carismáticas. Llegó tras haber sido mascota y carga con algunas marcas de su pasado: un dedito chueco y un daño nervioso permanente en las branquias, secuela de unas quemaduras por amoniaco. Nada de eso le ha quitado el carácter: es la dueña y señora del refugio, y no le hace ninguna gracia que otro ajolote intente entrar en sus dominios. Tan peculiar es que, en una ocasión en que coincidió por accidente con el macho, él llegó incluso a liberar un espermatóforo para cortejarla. Consentida, territorial y con muchísima personalidad, Tamal de dulce no pasa desapercibida.',
+  }],
+  ['Tascalate', {
+    breve: 'Tascalate es la más tímida de nuestras hembras. De color algo apagado y piel delicada, es discreta y reservada. Su vecina Tamal de dulce no pierde ocasión para quitarle la comida.',
+    extendida: 'Tascalate es la más tímida de todas nuestras hembras: prefiere pasar desapercibida y quedarse en su rincón. Su color es un poco más opaco que el del resto y su piel es delicada, así que la cuidamos con especial atención. Tiene además un rasgo que la hace única: uno de los dedos de su pata delantera izquierda es más corto que los demás. Por su carácter reservado, muchas veces le toca la peor parte a la hora de comer, porque Tamal de dulce siempre se las arregla para quitarle el bocado. Discreta y delicada, Tascalate se gana el cariño poco a poco.',
+  }],
+  ['Pardo Macho', {
+    breve: 'Pardo macho es nuestro único machito y todo un caballero reservado. Es súper tímido, no le gusta que lo toquen y, aun así, destaca por ser bastante más grande que el promedio.',
+    extendida: 'Pardo macho tiene un papel muy especial en la familia: es nuestro único macho. De temperamento sumamente tímido, valora su espacio y no disfruta para nada que lo toquen, así que preferimos admirarlo de lejos. A pesar de su timidez, impone: es un macho notablemente grande para el promedio de su especie. Tranquilo, imponente y un poco huraño, Pardo macho es el discreto galán del grupo.',
+  }],
+  ['Larva 1', {
+    breve: 'Larva 1, todavía sin nombre oficial, es la más grande de nuestras larvas. Tiene un apetito enorme y, de vez en cuando, no resiste hacerle un poco de bullying a su hermano.',
+    extendida: 'Larva 1 es la mayor de nuestras dos pequeñas larvas, y se le nota: es la más grande y la que come con más ganas. Con esa energía de sobra, a veces se pone juguetona (o un poquito abusiva) y le hace bullying a su hermano menor. Aún lleva un nombre provisional mientras crece y nos muestra su personalidad, pero promete dar mucho de qué hablar.',
+  }],
+  ['Larva 2', {
+    breve: 'Larva 2 es la más pequeñita de la familia. Tímida y discreta, su pasatiempo favorito es esconderse. Por ahora, su nombre también es provisional.',
+    extendida: 'Larva 2 es la benjamina de la casa: la más pequeña de todas nuestras larvas. De carácter reservado, le encanta buscar rinconcitos donde esconderse y observar el mundo desde un lugar seguro, sobre todo cuando su hermana mayor anda con ganas de juego. Todavía espera su nombre definitivo, pero su ternura de criatura diminuta ya conquista a todos.',
+  }],
+  ['Limon', {
+    breve: 'A Limón le mordieron las branquias de joven —el culpable fue Martín—, así que ahora luce unas más grandes que otras, un look de lo más original. Es el segundo más remilgoso para comer.',
+    extendida: 'Limón tiene una historia que se le nota a primera vista: de joven le mordieron las branquias (el responsable fue Martín, que se llevó media branquia de un mordisco) y, desde entonces, presume unas branquias más grandes que otras. Lejos de afearlo, esa asimetría lo hace inconfundible. A la hora de comer es bastante exigente: ostenta el título del segundo más remilgoso de la casa. Original y con carácter, Limón se hace querer.',
+  }],
+  ['Martín', {
+    breve: 'Martín es nuestro pequeño gran personaje: de tamaño enano, pero con mucho temperamento. Tan pronto está tranquilo como se pone bravucón con los más chiquitos. Siempre tiene hambre, aunque su pancita le da algún problema.',
+    extendida: 'Martín demuestra que el tamaño no lo es todo: es nuestro ajolote enano, pequeñito pero con una personalidad de armas tomar. Tiene un humor cambiante: a ratos es de lo más tranquilo y a ratos se pone peleonero, eso sí, sobre todo con los más pequeños que él. Es muy comelón y nunca le falta apetito, aunque su estómago no siempre se lo agradece, pues suele tener problemas digestivos, así que vigilamos de cerca su alimentación. Travieso e impredecible, Martín siempre da de qué hablar.',
+  }],
+  ['Goldy', {
+    breve: 'Goldy es nuestro campeón de lo remilgoso: el más exigente de todos para comer. Es delgadito, crece despacio y es el más tímido de los juveniles. Un consentido que necesita paciencia y cariño.',
+    extendida: 'Goldy se lleva el primer lugar en una categoría muy particular: es el más remilgoso de todos a la hora de comer, lo que explica que esté delgadito y que crezca más despacio que el resto. Además es el más tímido de nuestros juveniles, así que, entre su carácter reservado y su apetito selectivo, es uno de los que más mimos y paciencia requieren. Pero esa fragilidad es justo lo que lo hace tan especial: Goldy es el consentido que a todos nos dan ganas de cuidar.',
+  }],
+  ['Chocoroll', {
+    breve: 'Chocoroll es de nuestros juveniles más grandes y tiene un sello inconfundible: un pedacito extra en la cola que lo hace único. Llegó muy frágil y enfermo, pero con paciencia y cuidados hoy está fuerte y completamente recuperado.',
+    extendida: 'Chocoroll es pura historia de superación. Llegó a casa muy frágil y enfermo, pero con mucha paciencia y cuidados logró recuperarse por completo; hoy es un ajolote fuerte y lleno de vida. Es de los más grandes de nuestros juveniles y presume un detalle que lo distingue del resto: un pequeño pedacito extra en la cola, su sello personal e inconfundible. Todavía no sabemos si es hembra o macho, así que sigue siendo un pequeño enigma con mucha personalidad y una historia que vale la pena contar.',
+  }],
 ]);
 
 // Canonical AM-station aquarium distribution. The xlsx "Ubicación" column carries
@@ -88,7 +154,7 @@ const AM_PECERA = new Map([
 
 if (!existsSync(XLSX_PATH)) {
   console.error(`[data-ajolotes] ERROR: xlsx not found at ${XLSX_PATH}`);
-  console.error('[data-ajolotes] Place the file at Context/Control operativo AxoloDAO.xlsx and re-run.');
+  console.error('[data-ajolotes] Set AXOLODAO_XLSX to the operations workbook path and re-run.');
   process.exit(1);
 }
 
@@ -178,6 +244,8 @@ for (let r = dashHdrIdx + 1; r < dashRows.length; r++) {
 for (const e of ejemplares) {
   const patch = EJEMPLAR_OVERRIDES.get(e.alias);
   if (patch) Object.assign(e, patch);
+  // Attach the friendly curator narrative (null when none is curated yet).
+  e.descripcion = EJEMPLAR_DESCRIPCIONES.get(e.alias) ?? null;
   const amPecera = AM_PECERA.get(e.alias);
   if (amPecera) {
     // An AM animal whose workbook location is "Cuarentena" keeps its assigned
@@ -195,6 +263,14 @@ for (const e of ejemplares) {
     const p = (e.pecera ?? '').trim();
     if (/^AD\b/i.test(p) && p !== 'AD') e.pecera = 'AD';
   }
+}
+
+// Surface any curated descripcion whose alias matched no ejemplar (e.g. a
+// Dashboard re-spelling like "Limón" vs "Limon") instead of silently dropping it.
+const descMatched = new Set(ejemplares.filter((e) => e.descripcion).map((e) => e.alias));
+const descOrphans = [...EJEMPLAR_DESCRIPCIONES.keys()].filter((k) => !descMatched.has(k));
+if (descOrphans.length) {
+  console.warn(`[data-ajolotes]   descripcion keys with no matching ejemplar: ${descOrphans.join(', ')}`);
 }
 console.log(`[data-ajolotes] ejemplares: ${ejemplares.length}`);
 
