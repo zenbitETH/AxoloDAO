@@ -39,6 +39,10 @@ const partners = defineCollection({
     name: z.string(),
     role: localeText,
     description: localeText,
+    // Drives accent colour: academic → teal, government → rosa.
+    kind: z.enum(['academic', 'government']).default('academic'),
+    // Short ribbon/pleca tag shown at the top of every card.
+    ribbon: localeTextOptional.optional(),
     featured: z.boolean().default(false),
     featuredLabel: localeTextOptional.optional(),
     socials: z.array(social).default([]),

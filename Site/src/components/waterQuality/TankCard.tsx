@@ -477,7 +477,7 @@ export default function TankCard({
                     <p class="m-0 mt-1 text-sm text-[var(--wq-ink)]">{ev.title}</p>
                     {ev.authors.main && (
                       <p class="m-0 mt-0.5 font-mono text-[10px] text-[var(--wq-ink-muted)]">
-                        {ev.authors.main.replace('.axolodao.eth', '')}
+                        {ev.authors.main}
                       </p>
                     )}
                   </div>

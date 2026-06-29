@@ -1,11 +1,17 @@
 slug: uaq
-name: UAQ
-logoMode: text
+name: UAQ · CAEyDF
+kind: academic
+ribbon:
+  es: Proyectos con A. velasci
+  en: Projects on A. velasci
+  pt: Projetos com A. velasci
+logo: /logos/caeydf.svg
+logoMode: image
 website: https://fcn.uaq.mx/
 role:
-  es: Universidad Autónoma de Querétaro
-  en: Universidad Autónoma de Querétaro
-  pt: Universidad Autónoma de Querétaro
+  es: Universidad Autónoma de Querétaro · Facultad de Ciencias Naturales
+  en: Universidad Autónoma de Querétaro · Faculty of Natural Sciences
+  pt: Universidad Autónoma de Querétaro · Faculdade de Ciências Naturais
 description:
   es: Colaboración con la Universidad Autónoma de Querétaro a través de la Facultad de Ciencias Naturales y su Cuerpo Académico de Ecología y Diversidad Faunística (CAEyDF). Aporta capacidad de investigación, criterios técnicos y validación científica al ecosistema AxoloDAO.
   en: Collaboration with the Universidad Autónoma de Querétaro through the Facultad de Ciencias Naturales and its Cuerpo Académico de Ecología y Diversidad Faunística (CAEyDF) — an academic group providing research capacity, technical criteria and scientific validation to the AxoloDAO ecosystem.

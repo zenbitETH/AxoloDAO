@@ -120,7 +120,7 @@ export default function BiometriaTab({ hist, accent, locale }: Props) {
                     </td>
                     <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 tabular-nums text-[var(--wq-ink)]">{fmt(h.bcs, 1)}</td>
                     <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 font-mono text-[11px] text-[var(--wq-ink-muted)]">
-                      {(h.autor || '').replace('.axolodao.eth', '')}
+                      {h.autor || '—'}
                     </td>
                   </tr>
                 ))}

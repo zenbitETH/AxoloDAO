@@ -5,6 +5,7 @@ import { s } from './strings';
 interface Props {
   locale: Locale;
   theme: ThemeMode;
+  logoSvg: string;
   totalEjemplares: number;
   totalBajas: number;
   speciesCounts: Record<SpeciesCode, number>;
@@ -18,6 +19,7 @@ interface Props {
 export default function CoverHeader({
   locale,
   theme,
+  logoSvg,
   totalEjemplares,
   totalBajas,
   speciesCounts,
@@ -30,18 +32,15 @@ export default function CoverHeader({
   return (
     <section class="mx-auto flex max-w-[1240px] flex-col items-start justify-between gap-8 px-6 pb-2 pt-9 sm:flex-row">
       <div class="max-w-[720px]">
-        <p class="m-0 mb-2.5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
-          <span
-            class="inline-block h-1.5 w-1.5 rounded-full bg-teal"
-            style={{ boxShadow: '0 0 8px var(--teal, #009C9C)' }}
-            aria-hidden="true"
-          />
-          {s(locale, 'cover.eyebrow')}
-        </p>
-        <h1 class="m-0 mb-2 font-display text-4xl font-bold leading-[1.05] tracking-tight text-[var(--wq-ink)] sm:text-5xl">
+        <div
+          class="wq-logo-mark mb-3 text-choco dark:text-cream/90"
+          aria-label="Biomuseo Xolotlcalli"
+          dangerouslySetInnerHTML={{ __html: logoSvg }}
+        />
+        <h1 class="m-0 mb-1 font-display text-2xl text-[var(--wq-ink)] sm:text-3xl">
           {s(locale, 'cover.title')}
         </h1>
-        <p class="m-0 max-w-[56ch] text-base leading-relaxed text-[var(--wq-ink-muted)] sm:text-lg">
+        <p class="m-0 max-w-[56ch] font-body text-sm text-[var(--wq-ink)]/70">
           {s(locale, 'cover.sub')}
         </p>
         <a

@@ -376,12 +376,12 @@ function EventRow({ event, accent, locale }: RowProps) {
         {(event.authors.main || event.authors.secondary) && (
           <footer class="mt-2.5 flex items-center gap-2 text-[11px] text-[var(--wq-ink-muted)]">
             {event.authors.main && (
-              <span class="font-mono">{event.authors.main.replace('.axolodao.eth', '')}</span>
+              <span class="font-mono">{event.authors.main}</span>
             )}
             {event.authors.secondary && (
               <>
                 <span class="opacity-50">·</span>
-                <span class="font-mono">{event.authors.secondary.replace('.axolodao.eth', '')}</span>
+                <span class="font-mono">{event.authors.secondary}</span>
               </>
             )}
           </footer>

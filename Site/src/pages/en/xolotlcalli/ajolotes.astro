@@ -1,4 +1,6 @@
 ---
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import AjolotesExplorer from '@components/ajolotes/AjolotesExplorer';
 import bundleRaw from '@/data/ajolotes/bundle.json';
@@ -12,6 +14,11 @@ const locale = 'en' as const;
 const bundle = bundleRaw as unknown as Bundle;
 const water = waterRaw as unknown as Measurement[];
 const bitacora = bitacoraRaw as unknown as BitacoraEntry[];
+
+const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
+  .replace(/fill="white"/g, 'fill="currentColor"')
+  .replace(/<svg([^>]*?)\swidth="\d+"/, '<svg$1')
+  .replace(/<svg([^>]*?)\sheight="\d+"/, '<svg$1');
 
 const paths = {
   waterPath: t(locale, 'wq.path'),
@@ -30,7 +37,7 @@ const paths = {
   ogImage="/og-image-xolotlcalliajolotes.jpg"
 >
   <section class="aj-surface relative">
-    <AjolotesExplorer client:load locale={locale} bundle={bundle} water={water} bitacora={bitacora} paths={paths} />
+    <AjolotesExplorer client:load locale={locale} bundle={bundle} water={water} bitacora={bitacora} logoSvg={logoSvg} paths={paths} />
   </section>
 </BaseLayout>
 
@@ -41,5 +48,26 @@ const paths = {
   }
   [data-theme='dark'] .aj-surface {
     background-color: #11202A;
+  }
+  .wq-logo-mark {
+    display: inline-block;
+    width: 100%;
+    max-width: min(68vw, 240px);
+  }
+  .wq-logo-mark svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  @media (min-width: 640px) {
+    .wq-logo-mark {
+      width: auto;
+      max-width: none;
+      height: 3rem;
+    }
+    .wq-logo-mark svg {
+      height: 100%;
+      width: auto;
+    }
   }
 </style>

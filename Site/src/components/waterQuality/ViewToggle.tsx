@@ -7,24 +7,19 @@ interface Props {
   onMondaysToggle: (v: boolean) => void;
 }
 
-// Top-level "Solo lunes" toggle. Affects both the overview cell values and
-// the detail historical charts. The time-window selector used to live here
-// too but moved into TankCard so it sits next to the charts it controls.
+// "Solo lunes" data-scope toggle, colocated with the date selector and sized to
+// match the test-type chip (same line height + text size).
 export default function ViewToggle({ locale, mondaysOnly, onMondaysToggle }: Props) {
   const t = STRINGS[locale];
   return (
-    <div class="flex flex-wrap items-center gap-3">
-      <label class="flex cursor-pointer items-center gap-2 rounded-full bg-[var(--wq-surface-2)] px-3 py-1.5 text-sm text-[var(--wq-ink)] shadow-sm ring-1 ring-[var(--wq-divider)]">
-        <input
-          type="checkbox"
-          checked={mondaysOnly}
-          onChange={(e) => onMondaysToggle((e.target as HTMLInputElement).checked)}
-          class="h-4 w-4 accent-current"
-        />
-        <span class="font-body">
-          {mondaysOnly ? t.mondaysOnly : t.allMeasurements}
-        </span>
-      </label>
-    </div>
+    <label class="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-[var(--wq-surface-2)] px-3 py-1 text-xs text-[var(--wq-ink)] shadow-sm ring-1 ring-[var(--wq-divider)]">
+      <input
+        type="checkbox"
+        checked={mondaysOnly}
+        onChange={(e) => onMondaysToggle((e.target as HTMLInputElement).checked)}
+        class="h-3.5 w-3.5 accent-current"
+      />
+      <span class="font-body">{mondaysOnly ? t.mondaysOnly : t.allMeasurements}</span>
+    </label>
   );
 }

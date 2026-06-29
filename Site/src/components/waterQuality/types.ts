@@ -94,3 +94,9 @@ export type Status = 'ok' | 'warn' | 'alarm';
 export type Trend = 'up' | 'down' | 'equal';
 
 export type TimeWindow = 4 | 12 | 26 | 'all';
+
+// Derived water-test classification for the per-week header chip. There is no
+// test-type field in the source data, so this is computed on the site from the
+// calendar (isMonday) plus any emergency/incident bitácora event on the test
+// date — see deriveTestType in WaterQualityDashboard.
+export type TestType = 'mantenimiento' | 'control' | 'emergencia';

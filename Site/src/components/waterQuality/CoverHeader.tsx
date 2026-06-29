@@ -1,6 +1,7 @@
-import type { Locale, Measurement } from './types';
+import type { Locale, Measurement, TestType } from './types';
 import { STRINGS } from './strings';
 import WeekNav from './WeekNav';
+import ViewToggle from './ViewToggle';
 
 interface Props {
   locale: Locale;
@@ -9,6 +10,15 @@ interface Props {
   canNext: boolean;
   onPrev: () => void;
   onNext: () => void;
+  // Brand block, moved into the island so it shares one row with the week nav.
+  logoSvg: string;
+  title: string;
+  subtitle: string;
+  // Derived per-week classification for the chip under the date.
+  testType: TestType;
+  // "Solo lunes" data-scope toggle, colocated with the date selector.
+  mondaysOnly: boolean;
+  onMondaysToggle: (v: boolean) => void;
   // Optional metadata: the freshest measurement of the week
   latest?: Measurement | null;
   summary?: { ok: number; warn: number; alarm: number };
@@ -21,14 +31,31 @@ export default function CoverHeader({
   canNext,
   onPrev,
   onNext,
+  logoSvg,
+  title,
+  subtitle,
+  testType,
+  mondaysOnly,
+  onMondaysToggle,
   latest,
   summary,
 }: Props) {
   const t = STRINGS[locale];
   return (
-    <div class="flex flex-col items-center gap-3 py-2 text-center">
-      <p class="font-display text-2xl text-[var(--wq-ink)] sm:text-3xl">{t.coverTitle}</p>
-      <div class="mt-1">
+    <div class="flex flex-col items-center gap-5 py-1 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+      {/* Left — brand block */}
+      <div class="flex min-w-0 flex-col items-center text-center sm:items-start sm:text-left">
+        <div
+          class="wq-logo-mark text-choco dark:text-cream/90"
+          aria-label="Biomuseo Xolotlcalli"
+          dangerouslySetInnerHTML={{ __html: logoSvg }}
+        />
+        <h1 class="mt-3 font-display text-2xl text-[var(--wq-ink)] sm:text-3xl">{title}</h1>
+        <p class="mt-1 max-w-md font-body text-sm text-[var(--wq-ink)]/70">{subtitle}</p>
+      </div>
+
+      {/* Right — week nav, test-type chip, author, legend */}
+      <div class="flex flex-shrink-0 flex-col items-center gap-2 sm:items-end">
         <WeekNav
           locale={locale}
           weekIso={weekIso}
@@ -37,21 +64,44 @@ export default function CoverHeader({
           onPrev={onPrev}
           onNext={onNext}
         />
-      </div>
-      {latest?.authors?.main && (
-        <p class="font-mono text-[11px] text-[var(--wq-ink)]/45">
-          {latest.authors.main}
-          {latest.authors.secondary ? ` · ${latest.authors.secondary}` : ''}
-        </p>
-      )}
-      {summary && (summary.ok + summary.warn + summary.alarm > 0) && (
-        <div class="mt-1 flex flex-wrap items-center justify-center gap-2 text-[11px]">
-          <SummaryChip count={summary.ok}    tone="ok"    label={t.statusOk} />
-          <SummaryChip count={summary.warn}  tone="warn"  label={t.statusWarn} />
-          <SummaryChip count={summary.alarm} tone="alarm" label={t.statusAlarm} />
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:justify-end">
+          <TestTypeChip type={testType} locale={locale} />
+          <ViewToggle locale={locale} mondaysOnly={mondaysOnly} onMondaysToggle={onMondaysToggle} />
         </div>
-      )}
+        {latest?.authors?.main && (
+          <p class="font-mono text-[11px] text-[var(--wq-ink)]/45">
+            {latest.authors.main}
+            {latest.authors.secondary ? ` · ${latest.authors.secondary}` : ''}
+          </p>
+        )}
+        {summary && summary.ok + summary.warn + summary.alarm > 0 && (
+          <div class="flex flex-wrap items-center gap-2 text-[11px] sm:justify-end">
+            <SummaryChip count={summary.ok} tone="ok" label={t.statusOk} />
+            <SummaryChip count={summary.warn} tone="warn" label={t.statusWarn} />
+            <SummaryChip count={summary.alarm} tone="alarm" label={t.statusAlarm} />
+          </div>
+        )}
+      </div>
     </div>
+  );
+}
+
+const TEST_CHIP: Record<TestType, { key: 'testMantenimiento' | 'testControl' | 'testEmergencia'; cls: string; dot: string }> = {
+  mantenimiento: { key: 'testMantenimiento', cls: 'bg-teal/15 text-teal', dot: 'bg-teal' },
+  control: { key: 'testControl', cls: 'bg-ocre/20 text-ocre', dot: 'bg-ocre' },
+  emergencia: { key: 'testEmergencia', cls: 'bg-rosa/15 text-rosa', dot: 'bg-rosa wq-pulse' },
+};
+
+function TestTypeChip({ type, locale }: { type: TestType; locale: Locale }) {
+  const t = STRINGS[locale];
+  const cfg = TEST_CHIP[type];
+  return (
+    <span
+      class={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-display text-xs font-semibold uppercase tracking-wide ${cfg.cls}`}
+    >
+      <span class={`inline-block h-1.5 w-1.5 rounded-full ${cfg.dot}`} aria-hidden="true" />
+      {t[cfg.key]}
+    </span>
   );
 }
 

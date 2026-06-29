@@ -157,8 +157,17 @@ function normalizeTankId(raw, isoDate) {
   const post = isoDate >= AM_UNIFICATION;
 
   if (compact === 'AM') return post ? 'AM' : null;
-  if (compact === 'AM 1' || /^AM[\s-]*1\.\d+$/.test(compact)) return post ? 'AM' : 'AM 1';
-  if (compact === 'AM 2' || /^AM[\s-]*2\.\d+$/.test(compact)) return post ? 'AM' : 'AM 2';
+  // AM 1 .. AM 5 (with optional ".x" decimals) are sub-aquariums of the single
+  // recirculating AM system. Post-unification they all fold into the unified
+  // 'AM' water reading; pre-cutoff only AM 1 / AM 2 existed as separate columns.
+  // (Previously only AM 1 / AM 2 were handled, so AM 3 / AM 4 readings were
+  // silently dropped as unknown tanks.)
+  const amMatch = /^AM[\s-]*([0-5])(\.\d+)?$/.exec(compact);
+  if (amMatch) {
+    if (post) return 'AM';
+    const n = amMatch[1];
+    return n === '1' ? 'AM 1' : n === '2' ? 'AM 2' : null;
+  }
 
   if (compact === 'AA') return 'AA';
   if (compact === 'LLAVE') return 'Llave';

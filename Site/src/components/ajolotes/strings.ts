@@ -10,8 +10,8 @@ export const STRINGS: Record<Locale, Dict> = {
   es: {
     // Cover
     'cover.eyebrow': 'Biomuseo Xolotlcalli · Ajolotes',
-    'cover.title': 'Ejemplares vivos en custodia',
-    'cover.sub': 'Registro abierto de ejemplares del género Ambystoma bajo cuidado del Biomuseo Xolotlcalli. Cada ficha integra biometría, evaluación física, plan alimentario y registros diarios de consumo.',
+    'cover.title': 'Ajolotes del Biomuseo',
+    'cover.sub': 'Ejemplares vivos en custodia',
     'cover.glance.ejemplares': 'ejemplares',
     'cover.glance.especies': 'especies',
     'cover.glance.bajas': 'Bajas',
@@ -233,8 +233,8 @@ export const STRINGS: Record<Locale, Dict> = {
   },
   en: {
     'cover.eyebrow': 'Xolotlcalli BioMuseum · Axolotls',
-    'cover.title': 'Living specimens in custody',
-    'cover.sub': 'Open registry of Ambystoma specimens under the care of the Xolotlcalli BioMuseum. Each record integrates biometry, physical exams, feeding plan, and daily consumption logs.',
+    'cover.title': 'Axolotls of the Biomuseo',
+    'cover.sub': 'Living specimens in custody',
     'cover.glance.ejemplares': 'specimens',
     'cover.glance.especies': 'species',
     'cover.glance.bajas': 'In memoriam',
@@ -444,8 +444,8 @@ export const STRINGS: Record<Locale, Dict> = {
   },
   pt: {
     'cover.eyebrow': 'BioMuseu Xolotlcalli · Axolotes',
-    'cover.title': 'Exemplares vivos sob custódia',
-    'cover.sub': 'Registro aberto de exemplares do gênero Ambystoma sob cuidado do BioMuseu Xolotlcalli. Cada ficha integra biometria, avaliação física, plano alimentar e registros diários de consumo.',
+    'cover.title': 'Axolotes do Biomuseu',
+    'cover.sub': 'Exemplares vivos sob custódia',
     'cover.glance.ejemplares': 'exemplares',
     'cover.glance.especies': 'espécies',
     'cover.glance.bajas': 'In memoriam',

@@ -17,6 +17,7 @@ interface Props {
   bundle: Bundle;
   water: Measurement[];
   bitacora: BitacoraEntry[];      // bitacora-recent.json eagerly imported by the page shell
+  logoSvg: string;                // Xolotlcalli wordmark, injected by the page shell
   // Locale-aware paths injected by the page shell so links keep their prefixes
   paths: {
     waterPath: string;            // back-link to the Xolotlcalli water dashboard
@@ -76,7 +77,7 @@ function synthLeucisticaBaja(ejemplares: Ejemplar[]): Baja | null {
   };
 }
 
-export default function AjolotesExplorer({ locale, bundle, water, bitacora, paths }: Props) {
+export default function AjolotesExplorer({ locale, bundle, water, bitacora, logoSvg, paths }: Props) {
   const theme = useTheme();
   const [view, setView] = useState<'ejemplares' | 'bajas'>('ejemplares');
   const [viewDensity, setViewDensity] = useState<'gallery' | 'list'>('gallery');
@@ -183,6 +184,7 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, path
         <CoverHeader
           locale={locale}
           theme={theme}
+          logoSvg={logoSvg}
           totalEjemplares={totals.total}
           totalBajas={totals.bajas}
           speciesCounts={speciesCounts}

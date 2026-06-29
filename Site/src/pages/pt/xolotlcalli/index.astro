@@ -36,19 +36,6 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
   ogImage="/og-image-xolotlcalli.jpg"
 >
   <section class="wq-surface relative">
-    <div class="mx-auto max-w-6xl px-4 pt-10 sm:pt-14">
-      <div class="flex justify-center sm:block">
-        <div class="wq-logo-mark text-choco dark:text-cream/90" aria-label="BioMuseu Xolotlcalli">
-          <Fragment set:html={logoSvg} />
-        </div>
-      </div>
-      <h1 class="mt-4 font-display text-3xl text-choco dark:text-cream sm:text-4xl">
-        {t(locale, 'wq.title')}
-      </h1>
-      <p class="mt-2 max-w-2xl font-body text-sm text-choco/70 dark:text-cream/70 sm:text-base">
-        {t(locale, 'wq.subtitle')}
-      </p>
-    </div>
     <WaterQualityDashboard
       client:load
       locale={locale}
@@ -58,6 +45,9 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
       ejemplares={ejemplares}
       bitacora={bitacora}
       allDataUrl="/data/water-quality/measurements-all.json"
+      logoSvg={logoSvg}
+      title={t(locale, 'wq.title')}
+      subtitle={t(locale, 'wq.subtitle')}
     />
   </section>
 </BaseLayout>
@@ -72,7 +62,7 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
   .wq-logo-mark {
     display: inline-block;
     width: 100%;
-    max-width: min(80vw, 320px);
+    max-width: min(68vw, 240px);
   }
   .wq-logo-mark svg {
     width: 100%;
@@ -83,7 +73,7 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
     .wq-logo-mark {
       width: auto;
       max-width: none;
-      height: 4rem;
+      height: 3rem;
     }
     .wq-logo-mark svg {
       height: 100%;

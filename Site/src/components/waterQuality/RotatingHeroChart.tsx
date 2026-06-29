@@ -21,6 +21,8 @@ interface Props {
   // Focused parameter (from overview cell click). When present, pauses rotation.
   focusedParam?: ParamKey | null;
   onFocusChange?: (k: ParamKey | null) => void;
+  // When false, the cambio-de-agua vertical markers are hidden (overview toggle).
+  showEvents?: boolean;
 }
 
 // Each tank gets a fixed line style. Pre-2026-04-28 the AM system was split
@@ -48,6 +50,7 @@ export default function RotatingHeroChart({
   bitacora,
   focusedParam,
   onFocusChange,
+  showEvents = true,
 }: Props) {
   const t = STRINGS[locale];
 
@@ -273,7 +276,7 @@ export default function RotatingHeroChart({
           showSafeBand={false}
           showLegend={true}
           showTitle={true}
-          events={events}
+          events={showEvents ? events : []}
         />
       </div>
     </div>

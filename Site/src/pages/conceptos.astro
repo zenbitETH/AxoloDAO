@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ConceptsSection from '@components/sections/ConceptsSection.astro';
+import { t } from '@/i18n/strings';
+
+const locale = 'es';
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${t(locale, 'concepts.title')} — AxoloDAO`}
+  description={t(locale, 'concepts.subtitle')}
+>
+  <ConceptsSection locale={locale} />
+</BaseLayout>

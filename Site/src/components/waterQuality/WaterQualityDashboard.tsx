@@ -5,16 +5,17 @@ import type {
   ParameterCatalogEntry,
   ParamKey,
   Tank,
+  TestType,
   TimeWindow,
 } from './types';
 import { PARAM_KEYS } from './types';
 import { STRINGS } from './strings';
 import { statusOf } from './status';
 import CoverHeader from './CoverHeader';
-import ViewToggle from './ViewToggle';
 import TankGrid from './TankGrid';
 import TankCard from './TankCard';
 import RotatingHeroChart from './RotatingHeroChart';
+import WaterLogTable from './WaterLogTable';
 import { AM_AQUARIUM_BY_ANCHOR } from './amAquariums';
 import type { BitacoraEntry, Ejemplar } from '../ajolotes/types';
 import { useBackToClose } from '../useBackToClose';
@@ -27,6 +28,10 @@ interface Props {
   ejemplares: Ejemplar[];
   bitacora: BitacoraEntry[];
   allDataUrl: string;
+  // Brand block (logo + title + subtitle) rendered inside the header row.
+  logoSvg: string;
+  title: string;
+  subtitle: string;
 }
 
 // AM 1 + AM 2 were physically unified into a single 360 L recirculating system
@@ -52,6 +57,28 @@ function shiftWeek(iso: string, weeks: number): string {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 }
 
+// Tanks hidden from the per-week results grid (but kept on the historical
+// chart). AM Larvas merged into AM3 on 2026-06-15, so it no longer warrants its
+// own current-week column — its water is still logged and charted separately.
+const GRID_HIDDEN_TANKS = new Set(['AM Larvas']);
+
+// The source data has no test-type field, so derive it on the site. The weekly
+// Monday test is ALWAYS the routine maintenance test ("Lunes de Mantenimiento")
+// — it is never relabeled, even if an emergency water change also happened that
+// week. Only off-schedule (non-Monday) tests can be a control spot-check or, if
+// a genuine emergency bitácora entry exists on that date, an emergency test.
+const EMERGENCY_RE = /emergencia|accidente de sistema/i;
+function deriveTestType(latest: Measurement | null, bitacora: BitacoraEntry[]): TestType {
+  if (!latest) return 'mantenimiento';
+  if (latest.isMonday) return 'mantenimiento';
+  const emergency = bitacora.some(
+    (e) =>
+      e.fecha === latest.date &&
+      EMERGENCY_RE.test(`${e.categoria ?? ''} ${e.incidencia ?? ''} ${e.accion ?? ''} ${e.notas ?? ''}`),
+  );
+  return emergency ? 'emergencia' : 'control';
+}
+
 export default function WaterQualityDashboard({
   locale,
   tanks,
@@ -60,6 +87,9 @@ export default function WaterQualityDashboard({
   ejemplares,
   bitacora,
   allDataUrl,
+  logoSvg,
+  title,
+  subtitle,
 }: Props) {
   const t = STRINGS[locale];
   const primaryTanks = useMemo(() => tanks.filter((tk) => tk.primary), [tanks]);
@@ -77,6 +107,7 @@ export default function WaterQualityDashboard({
   );
   const [tankId, setTankId] = useState<string | null>(null);
   const [mondaysOnly, setMondaysOnly] = useState(true);
+  const [showWaterChanges, setShowWaterChanges] = useState(true);
   const [timeWindow, setTimeWindow] = useState<TimeWindow>(12);
   const [focusedParam, setFocusedParam] = useState<ParamKey | null>(null);
   const [focusedAquarium, setFocusedAquarium] = useState<string | null>(null);
@@ -91,7 +122,8 @@ export default function WaterQualityDashboard({
   const visibleTanksForWeek = useMemo(() => {
     const post = weekIso >= AM_UNIFICATION;
     return primaryTanks.filter((tk) =>
-      post ? tk.id !== 'AM 1' && tk.id !== 'AM 2' : tk.id !== 'AM',
+      !GRID_HIDDEN_TANKS.has(tk.id) &&
+      (post ? tk.id !== 'AM 1' && tk.id !== 'AM 2' : tk.id !== 'AM'),
     );
   }, [primaryTanks, weekIso]);
 
@@ -167,6 +199,14 @@ export default function WaterQualityDashboard({
     return sourceMeasurements.filter((m) => m.date >= start && m.date < end);
   }, [sourceMeasurements, weekIso]);
 
+  // Grid columns adapt to the selected week: only show tanks that actually have
+  // a reading that week (on top of the AM-cutoff and AM-Larvas rules), so no
+  // empty "—" columns appear for tanks that weren't tested.
+  const gridTanks = useMemo(() => {
+    const present = new Set(weekMeasurements.map((m) => m.tankId));
+    return visibleTanksForWeek.filter((tk) => present.has(tk.id));
+  }, [visibleTanksForWeek, weekMeasurements]);
+
   const prevWeekIso = useMemo(() => shiftWeek(weekIso, -1), [weekIso]);
   const prevWeekMeasurements = useMemo(() => {
     const start = prevWeekIso;
@@ -226,6 +266,8 @@ export default function WaterQualityDashboard({
       (b.date + (b.time ?? '')).localeCompare(a.date + (a.time ?? '')),
     )[0];
   }, [weekMeasurements]);
+
+  const testType = useMemo(() => deriveTestType(latestOfWeek, bitacora), [latestOfWeek, bitacora]);
 
   const selectedTank = tankId ? tanks.find((tk) => tk.id === tankId) ?? null : null;
   const catalogForSelected = useMemo(
@@ -293,7 +335,7 @@ export default function WaterQualityDashboard({
         }}
         aria-hidden={view !== 'overview'}
       >
-        <div class="mb-6">
+        <div class="mb-5">
           <CoverHeader
             locale={locale}
             weekIso={weekIso}
@@ -301,6 +343,12 @@ export default function WaterQualityDashboard({
             canNext={canNext}
             onPrev={onPrev}
             onNext={onNext}
+            logoSvg={logoSvg}
+            title={title}
+            subtitle={subtitle}
+            testType={testType}
+            mondaysOnly={mondaysOnly}
+            onMondaysToggle={setMondaysOnly}
             latest={latestOfWeek}
             summary={weekSummary}
           />
@@ -314,7 +362,7 @@ export default function WaterQualityDashboard({
         ) : (
           <TankGrid
             locale={locale}
-            tanks={visibleTanksForWeek}
+            tanks={gridTanks}
             measurements={weekMeasurements}
             prevMeasurements={prevWeekMeasurements}
             catalog={parameters}
@@ -325,13 +373,17 @@ export default function WaterQualityDashboard({
           />
         )}
 
-        {/* Trend chart + view toggle, below the table */}
-        <div class="mt-6 flex justify-end sm:mt-8">
-          <ViewToggle
-            locale={locale}
-            mondaysOnly={mondaysOnly}
-            onMondaysToggle={setMondaysOnly}
-          />
+        {/* Trend chart + water-change marker toggle, below the table */}
+        <div class="mt-6 flex flex-wrap items-center justify-end gap-3 sm:mt-8">
+          <label class="flex cursor-pointer items-center gap-2 rounded-full bg-[var(--wq-surface-2)] px-3 py-1.5 text-sm text-[var(--wq-ink)] shadow-sm ring-1 ring-[var(--wq-divider)]">
+            <input
+              type="checkbox"
+              checked={showWaterChanges}
+              onChange={(e) => setShowWaterChanges((e.target as HTMLInputElement).checked)}
+              class="h-4 w-4 accent-current"
+            />
+            <span class="font-body">{t.showChanges}</span>
+          </label>
         </div>
         <div class="mt-3">
           <RotatingHeroChart
@@ -342,12 +394,21 @@ export default function WaterQualityDashboard({
             bitacora={bitacora}
             focusedParam={focusedParam}
             onFocusChange={setFocusedParam}
+            showEvents={showWaterChanges}
           />
         </div>
 
         {allDataLoading && (
           <p class="mt-3 text-right font-body text-xs text-[var(--wq-ink-muted)]">{t.loading}</p>
         )}
+
+        <WaterLogTable
+          locale={locale}
+          tanks={primaryTanks}
+          measurements={sourceMeasurements}
+          bitacora={bitacora}
+          weekIso={weekIso}
+        />
       </div>
 
       {/* Detail */}

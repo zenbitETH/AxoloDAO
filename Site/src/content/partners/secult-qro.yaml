@@ -1,6 +1,12 @@
 slug: secult-qro
 name: SECULT Querétaro
-logoMode: text
+kind: government
+ribbon:
+  es: Validación pública
+  en: Public validation
+  pt: Validação pública
+logo: /logos/secult.png
+logoMode: image
 website: https://queretaro.gob.mx/web/cultura
 role:
   es: Secretaría de Cultura del Estado de Querétaro

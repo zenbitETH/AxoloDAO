@@ -1,5 +1,10 @@
 slug: semarnat
 name: SEMARNAT
+kind: government
+ribbon:
+  es: Marco institucional
+  en: Institutional framework
+  pt: Marco institucional
 logoMode: text
 website: https://www.gob.mx/semarnat
 role:

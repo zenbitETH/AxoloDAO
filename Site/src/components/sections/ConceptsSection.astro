@@ -1,0 +1,171 @@
+---
+import Modal from '@components/Modal.astro';
+import { type Locale, t } from '@/i18n/strings';
+import { CONCEPTS, type ConceptCategory, type ConceptPersona } from '@/lib/concepts';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const CATEGORIES: ConceptCategory[] = ['tecnologia', 'biologia', 'comportamiento', 'sistema'];
+const PERSONAS: ConceptPersona[] = ['visitante', 'cripto', 'biologo', 'operador'];
+
+const CAT_ACCENT: Record<ConceptCategory, { tile: string; tag: string }> = {
+  tecnologia: { tile: 'bg-teal/15 text-teal', tag: 'border-teal/40 text-teal' },
+  biologia: { tile: 'bg-emerald-500/15 text-emerald-300', tag: 'border-emerald-500/40 text-emerald-300' },
+  comportamiento: { tile: 'bg-ocre/20 text-ocre', tag: 'border-ocre/40 text-ocre' },
+  sistema: { tile: 'bg-rosa/15 text-rosa', tag: 'border-rosa/40 text-rosa' },
+};
+
+const personaLabel = (p: ConceptPersona) => t(locale, `concepts.persona.${p}`);
+const byCategory = (c: ConceptCategory) => CONCEPTS.filter((x) => x.category === c);
+---
+
+<section id="conceptos" class="scroll-mt-24 py-16">
+  <div class="container-wide">
+    <header class="max-w-3xl">
+      <h1 class="font-display text-4xl font-bold sm:text-5xl">{t(locale, 'concepts.title')}</h1>
+      <p class="mt-3 text-lg text-white/70">{t(locale, 'concepts.subtitle')}</p>
+      <p class="mt-2 text-sm text-white/50">{t(locale, 'concepts.lead')}</p>
+    </header>
+
+    {/* Filters */}
+    <div class="mt-8 space-y-4" id="concept-filters">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="mr-1 text-xs font-semibold uppercase tracking-wider text-white/40">{t(locale, 'concepts.filter.theme')}</span>
+        <button type="button" class="concept-chip is-active" data-filter="theme" data-value="all" aria-pressed="true">{t(locale, 'concepts.filter.all')}</button>
+        {CATEGORIES.map((c) => (
+          <button type="button" class="concept-chip" data-filter="theme" data-value={c} aria-pressed="false">{t(locale, `concepts.cat.${c}`)}</button>
+        ))}
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="mr-1 text-xs font-semibold uppercase tracking-wider text-white/40">{t(locale, 'concepts.filter.persona')}</span>
+        <button type="button" class="concept-chip is-active" data-filter="persona" data-value="all" aria-pressed="true">{t(locale, 'concepts.filter.all')}</button>
+        {PERSONAS.map((p) => (
+          <button type="button" class="concept-chip" data-filter="persona" data-value={p} aria-pressed="false">{personaLabel(p)}</button>
+        ))}
+      </div>
+    </div>
+
+    {/* Category sections */}
+    <div class="mt-12 space-y-14">
+      {CATEGORIES.map((cat) => (
+        <section class="concept-cat" data-category={cat}>
+          <h2 class="mb-6 flex items-center gap-3 font-display text-2xl">
+            <span class={`grid h-9 w-9 place-items-center rounded-xl ${CAT_ACCENT[cat].tile}`} aria-hidden="true">●</span>
+            {t(locale, `concepts.cat.${cat}`)}
+          </h2>
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {byCategory(cat).map((c) => (
+              <button
+                type="button"
+                data-modal={`concept-${c.slug}`}
+                class="concept-card glass glass-hover group rounded-3xl p-6 text-left"
+                data-category={c.category}
+                data-personas={c.personas.join(' ')}
+              >
+                <div class={`mb-4 grid h-12 w-12 place-items-center rounded-2xl text-2xl ${CAT_ACCENT[cat].tile}`}>{c.icon}</div>
+                <h3 class="font-display text-xl text-white">{c.title[locale]}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-white/70">{c.summary[locale]}</p>
+                <div class="mt-4 flex flex-wrap gap-1.5">
+                  {c.personas.map((p) => (
+                    <span class={`rounded-full border px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide ${CAT_ACCENT[cat].tag}`}>{personaLabel(p)}</span>
+                  ))}
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
+      ))}
+      <p id="concept-empty" class="hidden py-10 text-center text-white/50">{t(locale, 'concepts.empty')}</p>
+    </div>
+  </div>
+
+  {CONCEPTS.map((c) => (
+    <Modal id={`concept-${c.slug}`} locale={locale}>
+      <div class="pt-8">
+        <div class="flex items-center gap-4">
+          <div class={`grid h-14 w-14 place-items-center rounded-2xl text-3xl ${CAT_ACCENT[c.category].tile}`}>{c.icon}</div>
+          <div>
+            <span class={`mb-1 inline-block rounded-full border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${CAT_ACCENT[c.category].tag}`}>
+              {t(locale, `concepts.cat.${c.category}`)}
+            </span>
+            <h3 class="font-display text-3xl">{c.title[locale]}</h3>
+          </div>
+        </div>
+        <div class="mt-6 space-y-4 leading-relaxed text-white/85">
+          {c.body[locale].split('\n\n').map((para) => <p>{para}</p>)}
+        </div>
+        {c.refs && c.refs.length > 0 && (
+          <div class="mt-6 border-t border-white/10 pt-4">
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-white/40">{t(locale, 'concepts.refs')}</p>
+            <div class="flex flex-wrap gap-2">
+              {c.refs.map((r) => (
+                <span class="rounded-full border border-white/15 px-3 py-1 text-xs text-white/60">{r}</span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </Modal>
+  ))}
+</section>
+
+<style>
+  .concept-chip {
+    border-radius: 9999px;
+    border: 1px solid rgb(255 255 255 / 0.15);
+    padding: 0.3rem 0.85rem;
+    font-size: 0.8rem;
+    color: rgb(255 255 255 / 0.7);
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+  }
+  .concept-chip:hover { color: rgb(255 255 255 / 0.95); }
+  .concept-chip.is-active {
+    background-color: #009C9C;
+    border-color: #009C9C;
+    color: #071F29;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  const root = document.getElementById('concept-filters');
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.concept-card'));
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('.concept-cat'));
+  const empty = document.getElementById('concept-empty');
+  const state = { theme: 'all', persona: 'all' };
+
+  function apply() {
+    let anyVisible = false;
+    for (const card of cards) {
+      const cat = card.dataset.category ?? '';
+      const personas = (card.dataset.personas ?? '').split(' ');
+      const visible =
+        (state.theme === 'all' || cat === state.theme) &&
+        (state.persona === 'all' || personas.includes(state.persona));
+      card.classList.toggle('hidden', !visible);
+      if (visible) anyVisible = true;
+    }
+    for (const sec of sections) {
+      const visibleCards = sec.querySelectorAll('.concept-card:not(.hidden)').length;
+      sec.classList.toggle('hidden', visibleCards === 0);
+    }
+    if (empty) empty.classList.toggle('hidden', anyVisible);
+  }
+
+  root?.querySelectorAll<HTMLButtonElement>('.concept-chip').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter as 'theme' | 'persona';
+      const value = chip.dataset.value ?? 'all';
+      state[filter] = value;
+      root
+        .querySelectorAll<HTMLButtonElement>(`.concept-chip[data-filter="${filter}"]`)
+        .forEach((c) => {
+          const active = c === chip;
+          c.classList.toggle('is-active', active);
+          c.setAttribute('aria-pressed', String(active));
+        });
+      apply();
+    });
+  });
+</script>

@@ -1,10 +1,10 @@
 slug: inteli
 name: Inteli
-featured: true
-featuredLabel:
-  es: Socio en Investigación y Desarrollo
-  en: R&D partner
-  pt: Parceiro em Pesquisa e Desenvolvimento
+kind: academic
+ribbon:
+  es: Investigación y desarrollo
+  en: Research & development
+  pt: Pesquisa e desenvolvimento
 logo: /logos/inteli.svg
 website: https://www.inteli.edu.br
 role:
