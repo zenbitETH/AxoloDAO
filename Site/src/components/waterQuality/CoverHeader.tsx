@@ -22,6 +22,8 @@ interface Props {
   // Optional metadata: the freshest measurement of the week
   latest?: Measurement | null;
   summary?: { ok: number; warn: number; alarm: number };
+  // The week's podcast episode (number + archive URL) for further water-test context.
+  podcastEpisode?: { n: number; url: string } | null;
 }
 
 export default function CoverHeader({
@@ -39,6 +41,7 @@ export default function CoverHeader({
   onMondaysToggle,
   latest,
   summary,
+  podcastEpisode,
 }: Props) {
   const t = STRINGS[locale];
   return (
@@ -73,6 +76,19 @@ export default function CoverHeader({
             {t.lastReading}: {formatShortDate(locale, latest.date)}
             {latest.time ? ` · ${latest.time}` : ''}
           </p>
+        )}
+        {podcastEpisode && (
+          <a
+            href={podcastEpisode.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1 font-body text-[11px] text-teal underline decoration-dotted underline-offset-2 transition hover:opacity-80"
+          >
+            {t.podcastInsight} · Ep. {podcastEpisode.n}
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
         )}
         {latest?.authors?.main && (
           <p class="font-mono text-[11px] text-[var(--wq-ink)]/45">

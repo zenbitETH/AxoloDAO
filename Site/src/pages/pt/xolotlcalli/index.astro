@@ -11,12 +11,14 @@ import bitacoraRaw from '@/data/ops/bitacora-recent.json';
 import type { Tank, ParameterCatalogEntry, Measurement } from '@components/waterQuality/types';
 import type { Bundle, Ejemplar, BitacoraEntry } from '@components/ajolotes/types';
 import { t } from '@/i18n/strings';
+import { podcastByWeek, PODCAST_PLAYLIST_URL } from '@/lib/podcast';
 
 const locale = 'pt';
 const tanks = tanksRaw as unknown as Tank[];
 const parameters = parametersRaw as unknown as ParameterCatalogEntry[];
 const mondays = mondaysRaw as unknown as Measurement[];
 const bitacora = bitacoraRaw as unknown as BitacoraEntry[];
+const podcastMap = await podcastByWeek();
 
 const HIDDEN_ALIASES = new Set(['Leucistica', 'Ajolobebe 3', 'Ajolobebe 4']);
 const ejemplares = (bundleRaw as unknown as Bundle).ejemplares.filter(
@@ -45,6 +47,8 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
       ejemplares={ejemplares}
       bitacora={bitacora}
       allDataUrl="/data/water-quality/measurements-all.json"
+      podcastByWeek={podcastMap}
+      podcastUrl={PODCAST_PLAYLIST_URL}
       logoSvg={logoSvg}
       title={t(locale, 'wq.title')}
       subtitle={t(locale, 'wq.subtitle')}
