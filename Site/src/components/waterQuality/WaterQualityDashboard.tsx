@@ -9,7 +9,7 @@ import type {
   TimeWindow,
 } from './types';
 import { PARAM_KEYS } from './types';
-import { STRINGS } from './strings';
+import { isoWeekNumber, STRINGS } from './strings';
 import { statusOf } from './status';
 import CoverHeader from './CoverHeader';
 import TankGrid from './TankGrid';
@@ -28,6 +28,11 @@ interface Props {
   ejemplares: Ejemplar[];
   bitacora: BitacoraEntry[];
   allDataUrl: string;
+  // Water-test context: ISO/Pulso week number -> podcast episode number, per-episode deep links,
+  // and the podcast archive URL as a fallback.
+  podcastByWeek?: Record<number, number>;
+  episodeUrls?: Record<number, string>;
+  podcastUrl?: string | null;
   // Brand block (logo + title + subtitle) rendered inside the header row.
   logoSvg: string;
   title: string;
@@ -87,6 +92,9 @@ export default function WaterQualityDashboard({
   ejemplares,
   bitacora,
   allDataUrl,
+  podcastByWeek,
+  episodeUrls,
+  podcastUrl,
   logoSvg,
   title,
   subtitle,
@@ -269,6 +277,24 @@ export default function WaterQualityDashboard({
 
   const testType = useMemo(() => deriveTestType(latestOfWeek, bitacora), [latestOfWeek, bitacora]);
 
+  // The week's podcast episode for "further insight on the water tests". Exact from the Pulso
+  // content map; extrapolated (podcast is weekly, 1:1 with the Pulso week) for weeks past the last
+  // published Pulso — e.g. the current week. Links to the podcast archive (playlist).
+  const podcastEpisode = useMemo<{ n: number; url: string } | null>(() => {
+    if (!podcastByWeek) return null;
+    const wk = isoWeekNumber(weekIso);
+    let n = podcastByWeek[wk];
+    if (n == null) {
+      const weeks = Object.keys(podcastByWeek).map(Number);
+      if (weeks.length === 0) return null;
+      const maxWk = Math.max(...weeks);
+      n = wk - (maxWk - podcastByWeek[maxWk]); // apply the real, data-derived week↔episode offset
+    }
+    if (n < 1) return null;
+    const url = episodeUrls?.[n] ?? podcastUrl; // per-episode deep link, else the archive playlist
+    return url ? { n, url } : null;
+  }, [podcastByWeek, episodeUrls, podcastUrl, weekIso]);
+
   const selectedTank = tankId ? tanks.find((tk) => tk.id === tankId) ?? null : null;
   const catalogForSelected = useMemo(
     () => (selectedTank ? parameters.filter((p) => p.tankId === selectedTank.id) : []),
@@ -351,6 +377,7 @@ export default function WaterQualityDashboard({
             onMondaysToggle={setMondaysOnly}
             latest={latestOfWeek}
             summary={weekSummary}
+            podcastEpisode={podcastEpisode}
           />
         </div>
 

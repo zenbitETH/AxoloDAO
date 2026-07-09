@@ -48,6 +48,8 @@ export const STRINGS: Record<Locale, Dict> = {
     historyTitle: 'Histórico',
     historyEmpty: 'Sin datos en este rango.',
     emptyWeek: 'Sin pruebas registradas esta semana.',
+    lastReading: 'Última medición',
+    podcastInsight: 'Más en el podcast',
     safeRange: 'Rango seguro',
     loading: 'Cargando…',
     specimensTitle: 'Ejemplares',
@@ -127,6 +129,8 @@ export const STRINGS: Record<Locale, Dict> = {
     historyTitle: 'History',
     historyEmpty: 'No data in this range.',
     emptyWeek: 'No tests recorded this week.',
+    lastReading: 'Latest reading',
+    podcastInsight: 'More on the podcast',
     safeRange: 'Safe range',
     loading: 'Loading…',
     specimensTitle: 'Specimens',
@@ -206,6 +210,8 @@ export const STRINGS: Record<Locale, Dict> = {
     historyTitle: 'Histórico',
     historyEmpty: 'Sem dados neste intervalo.',
     emptyWeek: 'Sem testes registrados esta semana.',
+    lastReading: 'Última medição',
+    podcastInsight: 'Mais no podcast',
     safeRange: 'Faixa segura',
     loading: 'Carregando…',
     specimensTitle: 'Exemplares',
@@ -270,6 +276,17 @@ export function formatShortDate(locale: Locale, iso: string): string {
   const [, m, d] = iso.split('-').map(Number);
   const month = monthLabel(locale, m - 1).slice(0, 3);
   return `${d} ${month}`;
+}
+
+// ISO-8601 week number of a YYYY-MM-DD date. This is the same numbering the Pulso
+// posts use (`weekNumber`), so the dashboard's "Semana N" matches Pulso N.
+export function isoWeekNumber(iso: string): number {
+  const [y, m, d] = iso.split('-').map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  const day = date.getUTCDay() || 7; // Sun=7
+  date.setUTCDate(date.getUTCDate() + 4 - day); // shift to the week's Thursday
+  const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+  return Math.ceil(((date.getTime() - yearStart.getTime()) / 86_400_000 + 1) / 7);
 }
 
 export function formatNumber(value: number | null, key: ParamKey): string {
