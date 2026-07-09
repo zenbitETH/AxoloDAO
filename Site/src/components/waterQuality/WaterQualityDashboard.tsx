@@ -28,8 +28,10 @@ interface Props {
   ejemplares: Ejemplar[];
   bitacora: BitacoraEntry[];
   allDataUrl: string;
-  // Water-test context: ISO/Pulso week number -> podcast episode number, + the podcast archive URL.
+  // Water-test context: ISO/Pulso week number -> podcast episode number, per-episode deep links,
+  // and the podcast archive URL as a fallback.
   podcastByWeek?: Record<number, number>;
+  episodeUrls?: Record<number, string>;
   podcastUrl?: string | null;
   // Brand block (logo + title + subtitle) rendered inside the header row.
   logoSvg: string;
@@ -91,6 +93,7 @@ export default function WaterQualityDashboard({
   bitacora,
   allDataUrl,
   podcastByWeek,
+  episodeUrls,
   podcastUrl,
   logoSvg,
   title,
@@ -278,7 +281,7 @@ export default function WaterQualityDashboard({
   // content map; extrapolated (podcast is weekly, 1:1 with the Pulso week) for weeks past the last
   // published Pulso — e.g. the current week. Links to the podcast archive (playlist).
   const podcastEpisode = useMemo<{ n: number; url: string } | null>(() => {
-    if (!podcastUrl || !podcastByWeek) return null;
+    if (!podcastByWeek) return null;
     const wk = isoWeekNumber(weekIso);
     let n = podcastByWeek[wk];
     if (n == null) {
@@ -287,8 +290,10 @@ export default function WaterQualityDashboard({
       const maxWk = Math.max(...weeks);
       n = wk - (maxWk - podcastByWeek[maxWk]); // apply the real, data-derived week↔episode offset
     }
-    return n >= 1 ? { n, url: podcastUrl } : null;
-  }, [podcastByWeek, podcastUrl, weekIso]);
+    if (n < 1) return null;
+    const url = episodeUrls?.[n] ?? podcastUrl; // per-episode deep link, else the archive playlist
+    return url ? { n, url } : null;
+  }, [podcastByWeek, episodeUrls, podcastUrl, weekIso]);
 
   const selectedTank = tankId ? tanks.find((tk) => tk.id === tankId) ?? null : null;
   const catalogForSelected = useMemo(
