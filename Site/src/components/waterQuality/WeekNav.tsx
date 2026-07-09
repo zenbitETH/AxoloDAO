@@ -1,5 +1,5 @@
 import type { Locale } from './types';
-import { formatWeekDate, STRINGS } from './strings';
+import { formatWeekDate, isoWeekNumber, STRINGS } from './strings';
 
 interface Props {
   locale: Locale;
@@ -27,7 +27,7 @@ export default function WeekNav({ locale, weekIso, canPrev, canNext, onPrev, onN
       </button>
       <div class="flex flex-col items-center leading-tight">
         <span class="font-body text-[10px] uppercase tracking-wider text-[var(--wq-ink-muted)]">
-          {t.week}
+          {t.week} {isoWeekNumber(weekIso)}
         </span>
         <span class="font-display text-base text-[var(--wq-ink)]">
           {formatWeekDate(locale, weekIso)}

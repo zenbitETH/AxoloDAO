@@ -1,5 +1,5 @@
 import type { Locale, Measurement, TestType } from './types';
-import { STRINGS } from './strings';
+import { formatShortDate, STRINGS } from './strings';
 import WeekNav from './WeekNav';
 import ViewToggle from './ViewToggle';
 
@@ -68,6 +68,12 @@ export default function CoverHeader({
           <TestTypeChip type={testType} locale={locale} />
           <ViewToggle locale={locale} mondaysOnly={mondaysOnly} onMondaysToggle={onMondaysToggle} />
         </div>
+        {latest && (
+          <p class="font-body text-[11px] text-[var(--wq-ink)]/55 tabular-nums">
+            {t.lastReading}: {formatShortDate(locale, latest.date)}
+            {latest.time ? ` · ${latest.time}` : ''}
+          </p>
+        )}
         {latest?.authors?.main && (
           <p class="font-mono text-[11px] text-[var(--wq-ink)]/45">
             {latest.authors.main}
