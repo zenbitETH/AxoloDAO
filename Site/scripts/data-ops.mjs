@@ -30,6 +30,7 @@ import {
   findHeaderRow,
   indexOfHeader,
   normalizeAlias,
+  loadEmbargoNames,
   pad2,
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
@@ -42,6 +43,22 @@ const CONTENT_OUT = resolve(SITE_ROOT, 'src/data/ops');
 const PUBLIC_OUT  = resolve(SITE_ROOT, 'public/data/ops');
 mkdirSync(CONTENT_OUT, { recursive: true });
 mkdirSync(PUBLIC_OUT, { recursive: true });
+
+// Embargo: withheld specimen names (operator env / untracked config, never
+// hardcoded). The bitácora feed is serialized into the client island, so a
+// withheld name must not appear in any entry field. isEmbargoedAlias matches a
+// single normalized alias; textMentionsEmbargoed does an accent/case-insensitive
+// substring check for free-text fields (notas, ubicación, …).
+const EMBARGO = loadEmbargoNames(__dirname);
+const isEmbargoedAlias = (s) =>
+  EMBARGO.has((normalizeAlias(toStr(s)) ?? '').trim().toLowerCase());
+const stripDiacritics = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '');
+const EMBARGO_TEXT = [...EMBARGO].map((n) => stripDiacritics(n)).filter(Boolean);
+const textMentionsEmbargoed = (v) => {
+  if (typeof v !== 'string' || !v) return false;
+  const t = stripDiacritics(v.toLowerCase());
+  return EMBARGO_TEXT.some((n) => t.includes(n));
+};
 
 // Convert an Excel time fraction (0..1) or a Date back to a HH:MM string.
 // Bitácora and turnos use date-as-time cells (epoch 1899-12-30 + hours);
@@ -77,11 +94,16 @@ function sheet(name) {
 
 // --- Bitacora --------------------------------------------------------------
 const bitRows = sheet('Bitacora');
-const bitHdrIdx = findHeaderRow(bitRows, ['fecha', 'categoría del evento', 'alias']);
+// The Bitacora header's first cell ("Fecha") occasionally arrives blank/whitespace
+// from the live sheet (a stray edit), which used to break the whole ingest.
+// Detect the header by columns that are always present, and fall back to column 0
+// for the date — it is always the first column of this sheet.
+const bitHdrIdx = findHeaderRow(bitRows, ['categoría del evento', 'alias']);
 if (bitHdrIdx < 0) throw new Error('Bitacora: header row not found');
 const bitHdr = bitRows[bitHdrIdx];
+const bitFechaIdx = indexOfHeader(bitHdr, 'fecha');
 const B = {
-  fecha:           indexOfHeader(bitHdr, 'fecha'),
+  fecha:           bitFechaIdx >= 0 ? bitFechaIdx : 0,
   hora:            indexOfHeader(bitHdr, 'hora'),
   estado:          indexOfHeader(bitHdr, ['estado del caso', 'estado del\ncaso']),
   autorPrincipal:  indexOfHeader(bitHdr, 'autor principal'),
@@ -196,6 +218,27 @@ if (wb.Sheets[MAINT_SHEET]) {
     maintCount++;
   }
 }
+
+// Embargo scrub: strip a withheld specimen from the bitácora feed entirely.
+// Remove the withheld component from a comma-listed alias (keeping co-listed
+// specimens like Remo), drop the entry if it was scoped only to the withheld
+// specimen, and drop any entry that still mentions the withheld name in a
+// free-text field. Applies to both the full and 90-day outputs.
+let bitEmbargoed = 0;
+const bitacoraPublic = [];
+for (const e of bitacora) {
+  if (e.alias) {
+    const parts = e.alias.split(',').map((s) => s.trim()).filter(Boolean);
+    const kept = parts.filter((p) => !isEmbargoedAlias(p));
+    if (parts.length && kept.length === 0) { bitEmbargoed++; continue; } // entry was withheld-only
+    e.alias = kept.length ? kept.join(', ') : null;
+  }
+  if (Object.values(e).some(textMentionsEmbargoed)) { bitEmbargoed++; continue; }
+  bitacoraPublic.push(e);
+}
+if (bitEmbargoed > 0) console.log(`[data-ops] bitacora entries withheld (embargo): ${bitEmbargoed}`);
+bitacora.length = 0;
+bitacora.push(...bitacoraPublic);
 
 bitacora.sort((a, b) => (a.fecha + (a.hora ?? '')).localeCompare(b.fecha + (b.hora ?? '')));
 

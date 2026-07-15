@@ -23,7 +23,7 @@ const podcastEpisodeUrls = episodeUrls();
 
 // Hide deceased / off-colony specimens — mirrors EJEMPLARES_HIDDEN_ALIASES in
 // AjolotesExplorer so the in-custody strip stays consistent with the explorer.
-const HIDDEN_ALIASES = new Set(['Leucistica', 'Ajolobebe 3', 'Ajolobebe 4']);
+const HIDDEN_ALIASES = new Set(['Leucistica', 'Rómulo', 'Panchita', 'Goldy', 'Ajolobebe 3', 'Ajolobebe 4']);
 const ejemplares = (bundleRaw as unknown as Bundle).ejemplares.filter(
   (e: Ejemplar) => !HIDDEN_ALIASES.has((e.alias ?? '').trim()),
 );

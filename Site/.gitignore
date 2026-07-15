@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # vercel
 .vercel
+
+# operator-only embargo config for data-ajolotes ingest (never committed)
+scripts/.embargo.json
