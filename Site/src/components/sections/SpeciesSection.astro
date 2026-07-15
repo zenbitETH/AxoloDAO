@@ -39,7 +39,7 @@ const speciesPathBase = localePath(locale, 'especies/');
 // Mirrors the hidden-alias filter used by AjolotesExplorer so memorialized /
 // off-colony specimens don't surface from the map. Only ajolotes with an
 // available photo (per components/ajolotes/photos.ts manifest) are included.
-const HIDDEN_AJOLOTE_ALIASES = new Set(['Leucistica', 'Ajolobebe 3', 'Ajolobebe 4']);
+const HIDDEN_AJOLOTE_ALIASES = new Set(['Leucistica', 'Rómulo', 'Panchita', 'Goldy', 'Ajolobebe 3', 'Ajolobebe 4']);
 type RawEjemplar = { alias: string | null; especie: string };
 const museumAjolotes = (bundle.ejemplares as RawEjemplar[])
   .map((e) => {

@@ -7,7 +7,8 @@
  * as the existing water/ajolotes pipelines.
  */
 
-import { resolve } from 'node:path';
+import { resolve, join } from 'node:path';
+import { readFileSync, existsSync } from 'node:fs';
 
 /**
  * Absolute path to the operations workbook ("Control operativo AxoloDAO.xlsx").
@@ -175,4 +176,32 @@ export function normalizeAlias(s) {
   const t = String(s).trim();
   if (!t) return t;
   return ALIAS_NORMALIZE.get(t) ?? t;
+}
+
+/**
+ * Names whose records are temporarily withheld from the public output (an
+ * embargo). Sourced from the AXOLODAO_EMBARGO_BAJAS env var (comma-separated)
+ * and/or an untracked <scriptDir>/.embargo.json ({ "bajas": [...] }), so no
+ * withheld name is hardcoded in version control. Returns a Set of normalized,
+ * lowercased names to match against normalizeAlias(value).toLowerCase().
+ */
+export function loadEmbargoNames(scriptDir) {
+  const set = new Set();
+  const add = (s) => {
+    const t = (normalizeAlias(toStr(s)) ?? '').trim().toLowerCase();
+    if (t) set.add(t);
+  };
+  (process.env.AXOLODAO_EMBARGO_BAJAS ?? '').split(',').forEach(add);
+  if (scriptDir) {
+    const cfg = join(scriptDir, '.embargo.json');
+    if (existsSync(cfg)) {
+      try {
+        const parsed = JSON.parse(readFileSync(cfg, 'utf8'));
+        (Array.isArray(parsed) ? parsed : parsed.bajas ?? []).forEach(add);
+      } catch {
+        // Ignore a malformed optional config rather than fail the ingest.
+      }
+    }
+  }
+  return set;
 }

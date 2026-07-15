@@ -72,9 +72,20 @@ export default function CoverHeader({
           <ViewToggle locale={locale} mondaysOnly={mondaysOnly} onMondaysToggle={onMondaysToggle} />
         </div>
         {latest && (
-          <p class="font-body text-[11px] text-[var(--wq-ink)]/55 tabular-nums">
-            {t.lastReading}: {formatShortDate(locale, latest.date)}
-            {latest.time ? ` · ${latest.time}` : ''}
+          <p class="font-body text-[11px] text-[var(--wq-ink)]/55">
+            <span class="tabular-nums">
+              {t.lastReading}: {formatShortDate(locale, latest.date)}
+              {latest.time ? ` · ${latest.time}` : ''}
+            </span>
+            {latest.authors?.main && (
+              <>
+                <span class="px-1 text-[var(--wq-ink)]/30">/</span>
+                <span class="font-mono text-[var(--wq-ink)]/45">
+                  {latest.authors.main}
+                  {latest.authors.secondary ? ` · ${latest.authors.secondary}` : ''}
+                </span>
+              </>
+            )}
           </p>
         )}
         {podcastEpisode && (
@@ -89,12 +100,6 @@ export default function CoverHeader({
               <path d="M7 17L17 7M17 7H8M17 7v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
-        )}
-        {latest?.authors?.main && (
-          <p class="font-mono text-[11px] text-[var(--wq-ink)]/45">
-            {latest.authors.main}
-            {latest.authors.secondary ? ` · ${latest.authors.secondary}` : ''}
-          </p>
         )}
         {summary && summary.ok + summary.warn + summary.alarm > 0 && (
           <div class="flex flex-wrap items-center gap-2 text-[11px] sm:justify-end">

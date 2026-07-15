@@ -33,6 +33,7 @@ import {
   findHeaderRow,
   indexOfHeader,
   normalizeAlias,
+  loadEmbargoNames,
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
 
@@ -499,7 +500,20 @@ bajas.sort((a, b) => {
   if (b.fecha == null) return -1;
   return a.fecha.localeCompare(b.fecha);
 });
-console.log(`[data-ajolotes] bajas: ${bajas.length}`);
+
+// Embargo filter: some records are temporarily withheld from the public bundle
+// until an operational precondition is met (tracked outside version control).
+// The withheld names are NOT hardcoded here — they come from the operator env
+// (AXOLODAO_EMBARGO_BAJAS) or an untracked scripts/.embargo.json (see
+// loadEmbargoNames), so the source stays neutral and the value lives outside
+// version control. Names are matched against the normalized name, lowercased.
+const embargoBajas = loadEmbargoNames(__dirname);
+const isEmbargoedName = (name) =>
+  embargoBajas.has((normalizeAlias(toStr(name)) ?? '').trim().toLowerCase());
+const publicBajas = bajas.filter((b) => !isEmbargoedName(b.nombre));
+const withheld = bajas.length - publicBajas.length;
+if (withheld > 0) console.log(`[data-ajolotes] bajas withheld (embargo): ${withheld}`);
+console.log(`[data-ajolotes] bajas: ${publicBajas.length}`);
 
 // --- Terapéutica y Hospital ------------------------------------------------
 // Sheet schema: Fecha | Hora | Autor Principal | Autor Secundario | Alias del
@@ -566,7 +580,20 @@ if (teraUnknownAliases.size) {
 }
 
 // --- Write -----------------------------------------------------------------
-const bundle = { ejemplares, planes, historial, terapeutica, alimentacion, bajas };
+// Embargo (continued): also strip embargoed specimens from the live roster and
+// their per-name detail dictionaries. The client island serializes the WHOLE
+// bundle for hydration, so a withheld name must leave no trace anywhere in the
+// artifact — not just the bajas array. Uses the same list as the bajas filter.
+const publicEjemplares = ejemplares.filter((e) => !isEmbargoedName(e.alias));
+for (const dict of [planes, historial, terapeutica, alimentacion]) {
+  for (const key of Object.keys(dict)) {
+    if (isEmbargoedName(key)) delete dict[key];
+  }
+}
+const strippedEjemplares = ejemplares.length - publicEjemplares.length;
+if (strippedEjemplares > 0) console.log(`[data-ajolotes] ejemplares withheld (embargo): ${strippedEjemplares}`);
+
+const bundle = { ejemplares: publicEjemplares, planes, historial, terapeutica, alimentacion, bajas: publicBajas };
 writeFileSync(join(OUT_DIR, 'bundle.json'), JSON.stringify(bundle, null, 2) + '\n');
 console.log(`[data-ajolotes] wrote ${join(OUT_DIR, 'bundle.json')}`);
 console.log('[data-ajolotes] Done.');

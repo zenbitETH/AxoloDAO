@@ -21,7 +21,7 @@ const bitacora = bitacoraRaw as unknown as BitacoraEntry[];
 const podcastMap = await podcastByWeek();
 const podcastEpisodeUrls = episodeUrls();
 
-const HIDDEN_ALIASES = new Set(['Leucistica', 'Ajolobebe 3', 'Ajolobebe 4']);
+const HIDDEN_ALIASES = new Set(['Leucistica', 'Rómulo', 'Panchita', 'Goldy', 'Ajolobebe 3', 'Ajolobebe 4']);
 const ejemplares = (bundleRaw as unknown as Bundle).ejemplares.filter(
   (e: Ejemplar) => !HIDDEN_ALIASES.has((e.alias ?? '').trim()),
 );

@@ -39,21 +39,21 @@ function applyTheme(t: 'light' | 'dark') {
 }
 
 // Public Bajas wall is curated to named, individually-tracked specimens that
-// are part of the current Xolotlcalli memorial scope. The xlsx contains
+// are part of the current Xolotlcalli memorial scope. The xlsx also holds
 // historical entries (Golden, Moka, Guajolote, Jaffy) plus unnamed mexicanum
-// larvae; these are filtered here rather than removed from source so the raw
-// operativo file stays the system of record. Update this list when curators
-// add a new memorialized specimen.
-const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica']);
-const isVisibleBaja = (b: { nombre: string | null }) =>
-  BAJAS_VISIBLE_NAMES.has((b.nombre ?? '').trim());
+// larvae, still under memorial-scope review; these are filtered here rather
+// than removed from source so the raw operativo file stays the system of
+// record. Update this list when curators memorialize a new specimen.
+const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica', 'Panchita', 'Goldy']);
 
-// Aliases hidden from the live Ajolotes Explorer because the specimens are
-// no longer in the colony: Leucistica passed (memorial in Bajas); Ajolobebe 3
-// and 4 did not survive (their deaths are reflected in the larvae bajas which
-// the public wall already filters out). Cleared once the Monday xlsx update
-// drops them from the active ejemplares sheet.
-const EJEMPLARES_HIDDEN_ALIASES = new Set(['Leucistica', 'Ajolobebe 3', 'Ajolobebe 4']);
+// Aliases hidden from the live Ajolotes Explorer. Leucistica, Panchita and
+// Goldy are shown on the Bajas view instead. Rómulo is temporarily withheld
+// from every public view for a separate operational reason (tracked in the
+// ingest embargo config), independent of the Bajas curation; Remo is a
+// different specimen and stays in AD. Ajolobebe 3 and 4 are covered by the
+// larvae bajas the public view already filters out. Each entry clears once the
+// operativo drops it from the active ejemplares sheet.
+const EJEMPLARES_HIDDEN_ALIASES = new Set(['Leucistica', 'Rómulo', 'Panchita', 'Goldy', 'Ajolobebe 3', 'Ajolobebe 4']);
 const isHiddenEjemplar = (e: Ejemplar) =>
   EJEMPLARES_HIDDEN_ALIASES.has((e.alias ?? '').trim());
 
@@ -76,6 +76,49 @@ function synthLeucisticaBaja(ejemplares: Ejemplar[]): Baja | null {
     necropcia: null,
   };
 }
+
+// Synthesize Baja entries for Panchita and Goldy from their latest ejemplar
+// snapshot. Panchita is on the operativo Bajas sheet but without a cause yet;
+// Goldy is not on it at all. Synthesizing here lets the memorial carry the
+// curated cause + biometrics now; these shadow any later xlsx row via the
+// synth-preferred merge in visibleBajas. Each becomes removable once the
+// operativo records the same fields.
+function synthPanchitaBaja(ejemplares: Ejemplar[]): Baja | null {
+  const e = ejemplares.find((x) => (x.alias ?? '').trim() === 'Panchita');
+  if (!e) return null;
+  return {
+    fecha: '2026-07-08',
+    nombre: 'Panchita',
+    peso: e.peso,
+    longitud: e.lt,
+    edad: e.edad,
+    causa: 'Complicaciones por saprolegniasis branquial crónica e infección secundaria',
+    necropcia: 'En proceso',
+  };
+}
+
+function synthGoldyBaja(ejemplares: Ejemplar[]): Baja | null {
+  const e = ejemplares.find((x) => (x.alias ?? '').trim() === 'Goldy');
+  if (!e) return null;
+  return {
+    fecha: '2026-07-13',
+    nombre: 'Goldy',
+    peso: e.peso,
+    longitud: e.lt,
+    edad: e.edad,
+    causa: 'Complicaciones post-parasitosis; caquexia (bajo peso)',
+    necropcia: null,
+  };
+}
+
+// Curated synthetic bajas keyed by name. When a name in BAJAS_VISIBLE_NAMES has
+// a synth entry, it is preferred over the raw operativo row so the memorial
+// shows the curated cause/biometrics; names without one fall back to the xlsx.
+const SYNTH_BAJAS: Record<string, (ejemplares: Ejemplar[]) => Baja | null> = {
+  Leucistica: synthLeucisticaBaja,
+  Panchita: synthPanchitaBaja,
+  Goldy: synthGoldyBaja,
+};
 
 export default function AjolotesExplorer({ locale, bundle, water, bitacora, logoSvg, paths }: Props) {
   const theme = useTheme();
@@ -102,15 +145,21 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
     [bundle.ejemplares],
   );
 
-  // Curated public memorial: Loncho + Leucistica. If the xlsx has not yet
-  // recorded Leucistica's death, synthesize an entry from her ejemplar row
-  // (next Monday's xlsx update will shadow this synthetic entry).
+  // Curated public memorial. For each visible name, prefer a curated synthetic
+  // entry (so the wall shows the curated cause + biometrics even when the xlsx
+  // row is missing or lacks a cause); otherwise fall back to the operativo row.
   const visibleBajas = useMemo<Baja[]>(() => {
-    const fromData = bundle.bajas.filter(isVisibleBaja);
-    const hasLeucistica = fromData.some((b: Baja) => (b.nombre ?? '').trim() === 'Leucistica');
-    if (hasLeucistica) return fromData;
-    const synth = synthLeucisticaBaja(bundle.ejemplares);
-    return synth ? [...fromData, synth] : fromData;
+    const out: Baja[] = [];
+    for (const nombre of BAJAS_VISIBLE_NAMES) {
+      const synth = SYNTH_BAJAS[nombre]?.(bundle.ejemplares) ?? null;
+      if (synth) {
+        out.push(synth);
+        continue;
+      }
+      const fromData = bundle.bajas.find((b: Baja) => (b.nombre ?? '').trim() === nombre);
+      if (fromData) out.push(fromData);
+    }
+    return out;
   }, [bundle.bajas, bundle.ejemplares]);
 
   // Per-species counts mirror exactly what the gallery renders, so the cover
