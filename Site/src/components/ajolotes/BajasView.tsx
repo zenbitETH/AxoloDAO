@@ -1,12 +1,14 @@
 import { useMemo, useState } from 'preact/hooks';
-import type { Baja, Locale } from './types';
+import type { Baja, Bundle, Locale } from './types';
 import { s } from './strings';
 import BajaCard from './BajaCard';
 
 interface Props {
   bajas: Baja[];
+  bundle: Bundle;
   locale: Locale;
   onBack: () => void;
+  onSelect: (baja: Baja) => void;
 }
 
 function simplifyCausa(c: string | null | undefined): string {
@@ -25,7 +27,7 @@ function simplifyCausa(c: string | null | undefined): string {
 // Curation (which bajas are public, synthetic Leucistica injection, etc.)
 // happens in the parent AjolotesExplorer. This component trusts the prop.
 
-export default function BajasView({ bajas, locale, onBack }: Props) {
+export default function BajasView({ bajas, bundle, locale, onBack, onSelect }: Props) {
   const [search, setSearch] = useState('');
 
   const filtered = useMemo(() => {
@@ -127,7 +129,13 @@ export default function BajasView({ bajas, locale, onBack }: Props) {
         style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}
       >
         {ordered.map((b, i) => (
-          <BajaCard key={i} baja={b} locale={locale} />
+          <BajaCard
+            key={b.nombre || i}
+            baja={b}
+            bundle={bundle}
+            locale={locale}
+            onSelect={onSelect}
+          />
         ))}
         {ordered.length === 0 && (
           <p class="m-0 col-span-full py-5 text-center text-sm text-[var(--wq-ink-muted)]">

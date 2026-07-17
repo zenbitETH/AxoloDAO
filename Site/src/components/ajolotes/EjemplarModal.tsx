@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import type { Bundle, BitacoraEntry, Ejemplar, Locale } from './types';
+import type { Baja, Bundle, BitacoraEntry, Ejemplar, Locale } from './types';
 import type { Measurement } from '../waterQuality/types';
 import {
   accent as accentFor,
@@ -12,10 +12,12 @@ import { commonName, genderTitle, s } from './strings';
 import EjemplarPhoto from './EjemplarPhoto';
 import StageChip from './StageChip';
 import { classifyStage } from './stage';
+import { aliasSlug } from './photos';
 import ResumenTab from './tabs/ResumenTab';
 import BiometriaTab from './tabs/BiometriaTab';
 import EventosTab from './tabs/EventosTab';
 import AlimentacionTab from './tabs/AlimentacionTab';
+import { necroStatus } from './memorial';
 
 type TabId = 'resumen' | 'biometria' | 'eventos' | 'alimentacion';
 
@@ -28,6 +30,11 @@ interface Props {
   water: Measurement[];
   waterPath: string;
   onClose: () => void;
+  // Memorial ("In memoriam") mode: opened from the Bajas wall. Softens the
+  // portrait, swaps live status chips for the death record, and prefers the
+  // curated `baja` over the raw bundle row (which may lack a cause).
+  memorial?: boolean;
+  baja?: Baja | null;
 }
 
 const GENDER_CLASS: Record<'♀' | '♂' | '(?)', string> = {
@@ -45,9 +52,22 @@ function peceraLabel(locale: Locale, pecera: string | null | undefined): string 
   return raw;
 }
 
-export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, water, waterPath, onClose }: Props) {
+export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, water, waterPath, onClose, memorial = false, baja: bajaProp = null }: Props) {
   const [tab, setTab] = useState<TabId>('resumen');
   const [mounted, setMounted] = useState(false);
+  // Shareable per-specimen deep-link (the hash the on-load handler reopens).
+  const [copied, setCopied] = useState(false);
+  const copyMemorialLink = () => {
+    if (typeof window === 'undefined') return;
+    const url = `${window.location.origin}${window.location.pathname}#${aliasSlug(ej.alias)}`;
+    try {
+      void navigator.clipboard?.writeText(url);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // clipboard unavailable (insecure context) — no-op
+    }
+  };
   const ac = accentFor(ej.especie, theme);
   const isLarva = (ej.alias ?? '').toLowerCase().includes('ajolobebe');
 
@@ -72,7 +92,8 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
   const hist = (bundle.historial[ej.alias] ?? []).filter((h) => h.fecha);
   const alim = bundle.alimentacion[ej.alias] ?? [];
   const tera = bundle.terapeutica?.[ej.alias] ?? [];
-  const baja = bundle.bajas.find((b) => b.nombre === ej.alias) ?? null;
+  const baja = bajaProp ?? bundle.bajas.find((b) => b.nombre === ej.alias) ?? null;
+  const { done: necroDone, pending: necroPending, text: necropcia } = necroStatus(baja);
   const plan = bundle.planes[ej.alias] ?? null;
 
   const tabs: { id: TabId; label: string }[] = [
@@ -117,7 +138,10 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
             class="pointer-events-none absolute inset-y-0 right-0 w-[40%] sm:w-[55%]"
             aria-hidden="true"
           >
-            <div class="relative h-full w-full">
+            <div
+              class="relative h-full w-full"
+              style={memorial ? { filter: 'grayscale(0.5) sepia(0.12)' } : undefined}
+            >
               <EjemplarPhoto alias={ej.alias} accent={ac} fill />
             </div>
             <div
@@ -135,11 +159,16 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
                 <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)} aria-label={genderTitle(locale, ej.genero)}>
                   {sym}
                 </span>
-                {(ej.pecera ?? '').trim() === 'Cuarentena' && (
+                {memorial ? (
+                  <span class="inline-flex items-center gap-1.5 self-center whitespace-nowrap rounded-full border border-[#8B6F47]/50 bg-[#8B6F47]/15 px-2.5 py-1 font-display text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#8B6F47]">
+                    <span aria-hidden="true">🕯️</span>
+                    {s(locale, 'modal.memorial.badge')}
+                  </span>
+                ) : (ej.pecera ?? '').trim() === 'Cuarentena' ? (
                   <span class="aj-ribbon aj-state-pulse inline-flex items-center self-center whitespace-nowrap rounded-full bg-rosa px-2.5 py-1 font-display text-[10px] font-extrabold uppercase tracking-[0.12em] text-marfil shadow-[0_4px_10px_rgba(7,31,41,0.4)]">
                     {s(locale, 'modal.ribbon.cuarentena')}
                   </span>
-                )}
+                ) : null}
               </h2>
               {ej.fenotipo && (
                 <p class="m-0 mt-1 truncate text-xs italic text-[var(--wq-ink-muted)] sm:text-sm">
@@ -182,17 +211,34 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
               )}
             </div>
             <div class="flex flex-shrink-0 items-center gap-2">
-              <a
-                href="https://xovi-testnet.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="aj-press inline-flex h-9 items-center gap-1.5 rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)]/60 px-3 font-body text-xs font-semibold text-[var(--wq-ink)] backdrop-blur transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[var(--wq-row-bg)] active:scale-[0.92]"
-                aria-label={s(locale, 'xovi.clip')}
-                title={s(locale, 'xovi.clip')}
-              >
-                <img src="/logos/xovi.svg" alt="" width={18} height={18} class="h-[18px] w-[18px]" />
-                <span class="whitespace-nowrap">{s(locale, 'xovi.clip')}</span>
-              </a>
+              {!memorial && (
+                <a
+                  href="https://xovi-testnet.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="aj-press inline-flex h-9 items-center gap-1.5 rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)]/60 px-3 font-body text-xs font-semibold text-[var(--wq-ink)] backdrop-blur transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[var(--wq-row-bg)] active:scale-[0.92]"
+                  aria-label={s(locale, 'xovi.clip')}
+                  title={s(locale, 'xovi.clip')}
+                >
+                  <img src="/logos/xovi.svg" alt="" width={18} height={18} class="h-[18px] w-[18px]" />
+                  <span class="whitespace-nowrap">{s(locale, 'xovi.clip')}</span>
+                </a>
+              )}
+              {memorial && (
+                <button
+                  type="button"
+                  onClick={copyMemorialLink}
+                  class="aj-press inline-flex h-9 items-center gap-1.5 rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)]/60 px-3 font-body text-xs font-semibold text-[var(--wq-ink)] backdrop-blur transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[var(--wq-row-bg)] active:scale-[0.92]"
+                  aria-label={s(locale, 'bajas.copyLink')}
+                  title={s(locale, 'bajas.copyLink')}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width={2} stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-4 w-4">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                  </svg>
+                  <span class="whitespace-nowrap">{copied ? s(locale, 'bajas.copied') : s(locale, 'bajas.copyLink')}</span>
+                </button>
+              )}
               <button
                 type="button"
                 onClick={onClose}
@@ -204,6 +250,56 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
             </div>
           </div>
         </div>
+
+        {/* Memorial record band — only in In-Memoriam mode. Surfaces the death
+            date, age and cause + necropsy status above the (unchanged) tabs. */}
+        {memorial && baja && (
+          <div class="flex flex-shrink-0 flex-col gap-2 border-b border-[var(--wq-divider)] bg-[#8B6F47]/[0.06] px-5 py-3 sm:px-6">
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+              <span class="inline-flex items-center gap-1.5 font-display font-bold text-[#8B6F47]">
+                <span aria-hidden="true">🕯️</span>
+                {s(locale, 'bajas.memorial.badge')}
+              </span>
+              {baja.fecha && <span class="font-mono text-[var(--wq-ink)]">{baja.fecha}</span>}
+              {baja.edad && (
+                <span class="text-[var(--wq-ink-muted)]">
+                  <span class="opacity-40" aria-hidden="true">· </span>
+                  {s(locale, 'bajas.memorial.edad')}:{' '}
+                  <span class="text-[var(--wq-ink)]">{baja.edad}</span>
+                </span>
+              )}
+              <span
+                class={`ml-auto inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] ${
+                  necroDone
+                    ? 'border-[#10B981]/40 text-[#10B981]'
+                    : necroPending
+                      ? 'border-[#FBBF24]/40 text-[#FBBF24]'
+                      : 'border-[var(--wq-divider)] text-[var(--wq-ink-muted)]'
+                }`}
+              >
+                <span
+                  class="inline-block h-1.5 w-1.5 shrink-0 rounded-full"
+                  style={{ backgroundColor: necroDone ? '#10B981' : necroPending ? '#FBBF24' : 'currentColor' }}
+                />
+                <span class="max-w-[42vw] truncate sm:max-w-[300px]" title={necroDone ? necropcia : undefined}>
+                  {necroDone
+                    ? s(locale, 'bajas.necro.done') + necropcia
+                    : necroPending
+                      ? s(locale, 'bajas.necro.pending')
+                      : s(locale, 'bajas.necro.none')}
+                </span>
+              </span>
+            </div>
+            {baja.causa && (
+              <p class="m-0 text-sm leading-snug text-[var(--wq-ink)]">
+                <span class="mr-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
+                  {s(locale, 'bajas.causa')}
+                </span>
+                {baja.causa}
+              </p>
+            )}
+          </div>
+        )}
 
         {/* Tabs */}
         <nav

@@ -66,8 +66,8 @@ const EJEMPLAR_DESCRIPCIONES = new Map([
   // "Sin sexar" in the Dashboard) and describes its arrival illness/recovery in
   // general terms to match the medical record.
   ['Panchita', {
-    breve: 'Panchita es la veterana de la familia. A sus 5 años es la más larga y robusta de todas, y también la más glotona: jamás le dice que no a la comida. Ve poco por una pequeña catarata, pero eso no le resta ni una pizca de encanto.',
-    extendida: 'Con 5 años a cuestas, Panchita es nuestra ejemplar más veterana y, sin duda, la más imponente: es la más larga y rellenita de todo el grupo. La vida le ha dejado un par de marcas de guerra —de joven sus hermanos le arrancaron una branquia y hoy una pequeña catarata nubla uno de sus ojos—, pero ella las lleva con orgullo. Como su vista ya no es la de antes, cazar no se le da muy bien… aunque su apetito no conoce límites: Panchita es, oficialmente, la más glotona de la casa. Tierna, tranquila y siempre lista para comer, es la gran matriarca de la familia.',
+    breve: 'Panchita fue la veterana de la familia. A sus 5 años era la más larga y robusta de todas, y también la más glotona: jamás le decía que no a la comida. Veía poco por una pequeña catarata, pero eso no le restaba ni una pizca de encanto.',
+    extendida: 'Con 5 años a cuestas, Panchita fue nuestra ejemplar más veterana y, sin duda, la más imponente: era la más larga y rellenita de todo el grupo. La vida le dejó un par de marcas de guerra —de joven sus hermanos le arrancaron una branquia y una pequeña catarata nublaba uno de sus ojos—, pero ella las llevaba con orgullo. Como su vista ya no era la de antes, cazar no se le daba muy bien… aunque su apetito no conocía límites: Panchita fue, oficialmente, la más glotona de la casa. Tierna, tranquila y siempre lista para comer, fue la gran matriarca de la familia.',
   }],
   ['Remo', {
     breve: 'Remo es nuestro dumerilii más grande y el rey indiscutible de la noche. De carácter fuerte y temperamento intenso, prefiere moverse cuando todos duermen. ¿Hembra o macho? ¡Todavía es un misterio!',
@@ -114,8 +114,8 @@ const EJEMPLAR_DESCRIPCIONES = new Map([
     extendida: 'Martín demuestra que el tamaño no lo es todo: es nuestro ajolote enano, pequeñito pero con una personalidad de armas tomar. Tiene un humor cambiante: a ratos es de lo más tranquilo y a ratos se pone peleonero, eso sí, sobre todo con los más pequeños que él. Es muy comelón y nunca le falta apetito, aunque su estómago no siempre se lo agradece, pues suele tener problemas digestivos, así que vigilamos de cerca su alimentación. Travieso e impredecible, Martín siempre da de qué hablar.',
   }],
   ['Goldy', {
-    breve: 'Goldy es nuestro campeón de lo remilgoso: el más exigente de todos para comer. Es delgadito, crece despacio y es el más tímido de los juveniles. Un consentido que necesita paciencia y cariño.',
-    extendida: 'Goldy se lleva el primer lugar en una categoría muy particular: es el más remilgoso de todos a la hora de comer, lo que explica que esté delgadito y que crezca más despacio que el resto. Además es el más tímido de nuestros juveniles, así que, entre su carácter reservado y su apetito selectivo, es uno de los que más mimos y paciencia requieren. Pero esa fragilidad es justo lo que lo hace tan especial: Goldy es el consentido que a todos nos dan ganas de cuidar.',
+    breve: 'Goldy fue nuestro campeón de lo remilgoso: el más exigente de todos para comer. Era delgadito, crecía despacio y era el más tímido de los juveniles. Un consentido que necesitaba paciencia y cariño.',
+    extendida: 'Goldy se llevaba el primer lugar en una categoría muy particular: fue el más remilgoso de todos a la hora de comer, lo que explicaba que estuviera delgadito y que creciera más despacio que el resto. Además fue el más tímido de nuestros juveniles, así que, entre su carácter reservado y su apetito selectivo, fue uno de los que más mimos y paciencia requerían. Pero esa fragilidad es justo lo que lo hizo tan especial: Goldy fue el consentido que a todos nos daban ganas de cuidar.',
   }],
   ['Chocoroll', {
     breve: 'Chocoroll es de nuestros juveniles más grandes y tiene un sello inconfundible: un pedacito extra en la cola que lo hace único. Llegó muy frágil y enfermo, pero con paciencia y cuidados hoy está fuerte y completamente recuperado.',

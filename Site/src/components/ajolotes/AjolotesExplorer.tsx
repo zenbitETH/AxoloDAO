@@ -3,6 +3,7 @@ import type { Baja, BitacoraEntry, Bundle, Ejemplar, Locale, SpeciesCode } from 
 import type { Measurement } from '../waterQuality/types';
 import { useTheme, SPECIES_ORDER, stationOf } from './theme';
 import { aliasSlug } from './photos';
+import { memorialEjemplar } from './memorial';
 import CoverHeader from './CoverHeader';
 import Toolbar from './Toolbar';
 import StationsList from './StationsList';
@@ -131,7 +132,11 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
   // a curator-side power-user toggle, not a public-default safeguard.
   const [showLarvario, setShowLarvario] = useState(true);
   const [selectedSpecies, setSelectedSpecies] = useState<SpeciesCode | null>(null);
-  const [active, setActive] = useState<Ejemplar | null>(null);
+  // The open profile modal. `baja` is set only when opened from the Bajas wall,
+  // which flips the modal into In-Memoriam mode.
+  const [active, setActive] = useState<{ ej: Ejemplar; baja?: Baja | null } | null>(null);
+  const openEjemplar = (ej: Ejemplar) => setActive({ ej });
+  const openBaja = (b: Baja) => setActive({ ej: memorialEjemplar(bundle, b), baja: b });
 
   // Back-button / back-gesture closes overlay-like views (ejemplar modal,
   // bajas view) — same idiom as the mobile menu in Header.astro.
@@ -203,12 +208,19 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
       const match = liveEjemplares.find(
         (e) => e.alias && aliasSlug(e.alias) === hash,
       );
-      if (match) setActive(match);
+      if (match) {
+        setActive({ ej: match });
+        return;
+      }
+      // Deep-link to a memorialized specimen (e.g. #panchita after death): fall
+      // back to the Bajas wall so shareable profile links keep resolving.
+      const bajaMatch = visibleBajas.find((b) => b.nombre && aliasSlug(b.nombre) === hash);
+      if (bajaMatch) setActive({ ej: memorialEjemplar(bundle, bajaMatch), baja: bajaMatch });
     };
     openFromHash();
     window.addEventListener('hashchange', openFromHash);
     return () => window.removeEventListener('hashchange', openFromHash);
-  }, [liveEjemplares]);
+  }, [liveEjemplares, visibleBajas, bundle]);
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -263,7 +275,7 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
           theme={theme}
           locale={locale}
           selectedSpecies={selectedSpecies}
-          onSelect={setActive}
+          onSelect={openEjemplar}
         />
       )}
 
@@ -275,17 +287,23 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
           theme={theme}
           locale={locale}
           selectedSpecies={selectedSpecies}
-          onSelect={setActive}
+          onSelect={openEjemplar}
         />
       )}
 
       {view === 'bajas' && (
-        <BajasView bajas={visibleBajas} locale={locale} onBack={() => setView('ejemplares')} />
+        <BajasView
+          bajas={visibleBajas}
+          bundle={bundle}
+          locale={locale}
+          onBack={() => setView('ejemplares')}
+          onSelect={openBaja}
+        />
       )}
 
       {active && (
         <EjemplarModal
-          ej={active}
+          ej={active.ej}
           bundle={bundle}
           bitacora={bitacora}
           theme={theme}
@@ -293,6 +311,8 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
           water={water}
           waterPath={paths.waterPath}
           onClose={() => setActive(null)}
+          memorial={active.baja != null}
+          baja={active.baja ?? null}
         />
       )}
 
