@@ -222,6 +222,8 @@ export const STRINGS: Record<Locale, Dict> = {
     'bajas.memorial.firstRecord': 'Primer registro',
     'bajas.memorial.lastRecord': 'Último registro',
     'bajas.memorial.weightTrend': 'Tendencia de peso',
+    'bajas.copyLink': 'Copiar enlace',
+    'bajas.copied': '¡Enlace copiado!',
     'modal.memorial.badge': 'En memoria',
     // Tweaks
     'tweaks.title': 'Ajustes',
@@ -444,6 +446,8 @@ export const STRINGS: Record<Locale, Dict> = {
     'bajas.memorial.firstRecord': 'First record',
     'bajas.memorial.lastRecord': 'Last record',
     'bajas.memorial.weightTrend': 'Weight trend',
+    'bajas.copyLink': 'Copy link',
+    'bajas.copied': 'Link copied!',
     'modal.memorial.badge': 'In memoriam',
     'tweaks.title': 'Settings',
     'tweaks.theme': 'Theme',

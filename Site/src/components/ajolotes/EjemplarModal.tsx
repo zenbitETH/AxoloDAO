@@ -12,6 +12,7 @@ import { commonName, genderTitle, s } from './strings';
 import EjemplarPhoto from './EjemplarPhoto';
 import StageChip from './StageChip';
 import { classifyStage } from './stage';
+import { aliasSlug } from './photos';
 import ResumenTab from './tabs/ResumenTab';
 import BiometriaTab from './tabs/BiometriaTab';
 import EventosTab from './tabs/EventosTab';
@@ -54,6 +55,19 @@ function peceraLabel(locale: Locale, pecera: string | null | undefined): string 
 export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, water, waterPath, onClose, memorial = false, baja: bajaProp = null }: Props) {
   const [tab, setTab] = useState<TabId>('resumen');
   const [mounted, setMounted] = useState(false);
+  // Shareable per-specimen deep-link (the hash the on-load handler reopens).
+  const [copied, setCopied] = useState(false);
+  const copyMemorialLink = () => {
+    if (typeof window === 'undefined') return;
+    const url = `${window.location.origin}${window.location.pathname}#${aliasSlug(ej.alias)}`;
+    try {
+      void navigator.clipboard?.writeText(url);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      // clipboard unavailable (insecure context) — no-op
+    }
+  };
   const ac = accentFor(ej.especie, theme);
   const isLarva = (ej.alias ?? '').toLowerCase().includes('ajolobebe');
 
@@ -209,6 +223,21 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
                   <img src="/logos/xovi.svg" alt="" width={18} height={18} class="h-[18px] w-[18px]" />
                   <span class="whitespace-nowrap">{s(locale, 'xovi.clip')}</span>
                 </a>
+              )}
+              {memorial && (
+                <button
+                  type="button"
+                  onClick={copyMemorialLink}
+                  class="aj-press inline-flex h-9 items-center gap-1.5 rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)]/60 px-3 font-body text-xs font-semibold text-[var(--wq-ink)] backdrop-blur transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[var(--wq-row-bg)] active:scale-[0.92]"
+                  aria-label={s(locale, 'bajas.copyLink')}
+                  title={s(locale, 'bajas.copyLink')}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width={2} stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="h-4 w-4">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                  </svg>
+                  <span class="whitespace-nowrap">{copied ? s(locale, 'bajas.copied') : s(locale, 'bajas.copyLink')}</span>
+                </button>
               )}
               <button
                 type="button"
