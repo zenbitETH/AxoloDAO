@@ -77,11 +77,15 @@ export interface MemorialProfile {
   hasFeeding: boolean;
 }
 
-// The real ejemplar row when the baja still survives in the bundle (Panchita,
-// Goldy). Rowless bajas (Leucistica, Loncho) return null → rebuilt below.
+// The real ejemplar row for a baja. Deceased specimens are filtered out of the
+// live `ejemplares` roster at ingest, so their final snapshot lives in
+// `bajasSnapshots` — check both. (`ejemplares` stays first only so a name that
+// somehow appears in both resolves to the live row.) Rowless bajas (Loncho and
+// the unnamed larvae) return null → rebuilt by synthEjemplarFromBaja below.
 export function bundleEjemplarFor(bundle: Bundle, nombre: string): Ejemplar | null {
   const key = nombre.trim();
-  return bundle.ejemplares.find((e) => (e.alias ?? '').trim() === key) ?? null;
+  const matches = (e: Ejemplar) => (e.alias ?? '').trim() === key;
+  return bundle.ejemplares.find(matches) ?? bundle.bajasSnapshots?.find(matches) ?? null;
 }
 
 // Rebuild a minimal Ejemplar for a rowless baja so EjemplarModal can render its

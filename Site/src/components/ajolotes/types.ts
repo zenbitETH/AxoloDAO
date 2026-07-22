@@ -162,7 +162,15 @@ export interface BitacoraEntry {
 }
 
 export interface Bundle {
+  /** Live roster only — deceased and embargoed specimens are filtered at ingest. */
   ejemplares: Ejemplar[];
+  /**
+   * Last known snapshot of each deceased (non-embargoed) specimen. Kept separate
+   * from `ejemplares` so nothing renders them as alive, while the In-Memoriam
+   * wall can still read their final biometrics. Optional: a bundle generated
+   * before this field existed still parses.
+   */
+  bajasSnapshots?: Ejemplar[];
   historial: Record<string, HistorialEntry[]>;
   planes: Record<string, PlanAlimentacion>;
   alimentacion: Record<string, RegistroAlimentacion[]>;
