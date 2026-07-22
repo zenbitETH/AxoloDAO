@@ -526,6 +526,36 @@ const withheld = bajas.length - publicBajas.length;
 if (withheld > 0) console.log(`[data-ajolotes] bajas withheld (embargo): ${withheld}`);
 console.log(`[data-ajolotes] bajas: ${publicBajas.length}`);
 
+// Deceased filter: the Dashboard sheet is a roster snapshot and does NOT clear a
+// row when an axolotl dies, so a specimen can appear in BOTH ejemplares (alive)
+// and Bajas (dead). Filtering here — at the bundle boundary — is what makes the
+// fix hold for every consumer, not just this site: Xovi fetches bundle.json over
+// HTTPS and had no bajas filter at all (it was serving the deceased Panchita as a
+// selectable clip target), and the /covers roster fetch has none either. Match on
+// the normalized+lowercased alias, the same key the embargo filter uses.
+//
+// Uses the FULL bajas list, not publicBajas: an embargoed death still means the
+// animal is dead, and the embargo filter already strips its roster row too — so
+// the outcome is identical either way, and this stays correct if that changes.
+const deceasedNames = new Set(
+  bajas.map((b) => (normalizeAlias(toStr(b.nombre)) ?? '').trim().toLowerCase()).filter(Boolean),
+);
+
+// Curator override for deaths not yet recorded in the Bajas sheet. This exists
+// only to bridge the lag between an animal dying and the xlsx being updated —
+// DELETE a name from here the moment its Bajas row lands, or it will mask a real
+// roster entry forever. Kept in the ingest (not in a component) so every consumer
+// inherits it; the per-component HIDDEN_AJOLOTE_ALIASES sets are the pattern this
+// replaces. Goldy: announced deceased in ep18 / Pulso W29, no Bajas row as of
+// 2026-07-22.
+const DECEASED_NOT_IN_BAJAS = ['Goldy'];
+for (const n of DECEASED_NOT_IN_BAJAS) {
+  const key = (normalizeAlias(toStr(n)) ?? '').trim().toLowerCase();
+  if (key) deceasedNames.add(key);
+}
+const isDeceasedName = (name) =>
+  deceasedNames.has((normalizeAlias(toStr(name)) ?? '').trim().toLowerCase());
+
 // --- Terapéutica y Hospital ------------------------------------------------
 // Sheet schema: Fecha | Hora | Autor Principal | Autor Secundario | Alias del
 // Ejemplar | Ubicación | Diagnóstico/Motivo | Pruebas de Laboratorio |
@@ -595,16 +625,49 @@ if (teraUnknownAliases.size) {
 // their per-name detail dictionaries. The client island serializes the WHOLE
 // bundle for hydration, so a withheld name must leave no trace anywhere in the
 // artifact — not just the bajas array. Uses the same list as the bajas filter.
-const publicEjemplares = ejemplares.filter((e) => !isEmbargoedName(e.alias));
+//
+// A live roster entry must survive BOTH gates: not embargoed, and not deceased.
+// The per-name detail dictionaries keep their embargo-only strip — a deceased
+// specimen's history stays in the bundle on purpose, because the In Memoriam
+// surface reads it; only the LIVE roster drops them.
+const publicEjemplares = ejemplares.filter((e) => !isEmbargoedName(e.alias) && !isDeceasedName(e.alias));
 for (const dict of [planes, historial, terapeutica, alimentacion]) {
   for (const key of Object.keys(dict)) {
     if (isEmbargoedName(key)) delete dict[key];
   }
 }
-const strippedEjemplares = ejemplares.length - publicEjemplares.length;
-if (strippedEjemplares > 0) console.log(`[data-ajolotes] ejemplares withheld (embargo): ${strippedEjemplares}`);
+// Last known snapshot of each deceased specimen: OUT of the live roster, but
+// still IN the bundle. The In-Memoriam wall renders its biometrics from these
+// rows (memorial.ts bundleEjemplarFor, AjolotesExplorer SYNTH_BAJAS), and Goldy
+// has no Bajas row at all — dropping them outright would erase him from the
+// memorial. Embargoed names are excluded so a withheld death still leaves no
+// trace anywhere in the artifact.
+const bajasSnapshots = ejemplares.filter((e) => isDeceasedName(e.alias) && !isEmbargoedName(e.alias));
+console.log(`[data-ajolotes] bajasSnapshots: ${bajasSnapshots.length}`);
 
-const bundle = { ejemplares: publicEjemplares, planes, historial, terapeutica, alimentacion, bajas: publicBajas };
+const strippedEjemplares = ejemplares.length - publicEjemplares.length;
+if (strippedEjemplares > 0) console.log(`[data-ajolotes] ejemplares withheld (embargo + deceased): ${strippedEjemplares}`);
+// Nag only about deaths the embargo is NOT already handling: those are rows the
+// curator still has to clear from the Dashboard sheet.
+const stillListed = ejemplares
+  .filter((e) => isDeceasedName(e.alias) && !isEmbargoedName(e.alias))
+  .map((e) => e.alias);
+if (stillListed.length > 0) {
+  console.warn(
+    `[data-ajolotes] deceased specimens removed from the live roster: ${stillListed.join(', ')} ` +
+      '— clear their rows from the Dashboard sheet so this filter becomes a no-op.',
+  );
+}
+
+const bundle = {
+  ejemplares: publicEjemplares,
+  bajasSnapshots,
+  planes,
+  historial,
+  terapeutica,
+  alimentacion,
+  bajas: publicBajas,
+};
 writeFileSync(join(OUT_DIR, 'bundle.json'), JSON.stringify(bundle, null, 2) + '\n');
 console.log(`[data-ajolotes] wrote ${join(OUT_DIR, 'bundle.json')}`);
 console.log('[data-ajolotes] Done.');

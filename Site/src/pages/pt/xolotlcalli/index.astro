@@ -9,7 +9,7 @@ import mondaysRaw from '@/data/water-quality/measurements-mondays.json';
 import bundleRaw from '@/data/ajolotes/bundle.json';
 import bitacoraRaw from '@/data/ops/bitacora-recent.json';
 import type { Tank, ParameterCatalogEntry, Measurement } from '@components/waterQuality/types';
-import type { Bundle, Ejemplar, BitacoraEntry } from '@components/ajolotes/types';
+import type { Bundle, BitacoraEntry } from '@components/ajolotes/types';
 import { t } from '@/i18n/strings';
 import { podcastByWeek, episodeUrls, PODCAST_PLAYLIST_URL } from '@/lib/podcast';
 
@@ -21,10 +21,9 @@ const bitacora = bitacoraRaw as unknown as BitacoraEntry[];
 const podcastMap = await podcastByWeek();
 const podcastEpisodeUrls = episodeUrls();
 
-const HIDDEN_ALIASES = new Set(['Leucistica', 'Rómulo', 'Panchita', 'Goldy', 'Ajolobebe 3', 'Ajolobebe 4']);
-const ejemplares = (bundleRaw as unknown as Bundle).ejemplares.filter(
-  (e: Ejemplar) => !HIDDEN_ALIASES.has((e.alias ?? '').trim()),
-);
+// `bundle.ejemplares` is the LIVE roster by construction: data-ajolotes.mjs
+// filters deceased + embargoed specimens at ingest, so no per-page list is needed.
+const ejemplares = (bundleRaw as unknown as Bundle).ejemplares;
 
 const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
   .replace(/fill="white"/g, 'fill="currentColor"')

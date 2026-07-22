@@ -1,37 +1,6 @@
 {
   "ejemplares": [
     {
-      "alias": "Panchita",
-      "id": "AA-AMANIA-220-23",
-      "pecera": "AA",
-      "especie": "A. andersoni",
-      "genero": "Hembra",
-      "marcas": "Carece de branquia izquierda superior",
-      "fenotipo": "Jaspeado oscuro",
-      "edad": "5 años",
-      "estadio": "Adulto",
-      "peso": 144,
-      "lt": 26.5,
-      "lhc": 13.73,
-      "icc": 0.7737931312,
-      "propCabezaCuerpo": 0.316824472,
-      "propColaCuerpo": 0.9300801165,
-      "asimetria": "0.09589041096",
-      "temp": 15.8,
-      "bcs": "Sin datos",
-      "alertaConductual": "",
-      "anomalia": "",
-      "estadoBio": "⚠️ REQUIERE ATENCIÓN",
-      "ultimoConsumo": 1.27,
-      "respuestaAlim": "Camarón azul",
-      "alertaGastrica": "🟢 ACEPTACIÓN NORMAL",
-      "enCuarentena": false,
-      "descripcion": {
-        "breve": "Panchita fue la veterana de la familia. A sus 5 años era la más larga y robusta de todas, y también la más glotona: jamás le decía que no a la comida. Veía poco por una pequeña catarata, pero eso no le restaba ni una pizca de encanto.",
-        "extendida": "Con 5 años a cuestas, Panchita fue nuestra ejemplar más veterana y, sin duda, la más imponente: era la más larga y rellenita de todo el grupo. La vida le dejó un par de marcas de guerra —de joven sus hermanos le arrancaron una branquia y una pequeña catarata nublaba uno de sus ojos—, pero ella las llevaba con orgullo. Como su vista ya no era la de antes, cazar no se le daba muy bien… aunque su apetito no conocía límites: Panchita fue, oficialmente, la más glotona de la casa. Tierna, tranquila y siempre lista para comer, fue la gran matriarca de la familia."
-      }
-    },
-    {
       "alias": "Tamal de dulce",
       "id": "AM-AXOLKALI-123-23",
       "pecera": "AM1",
@@ -249,37 +218,6 @@
       }
     },
     {
-      "alias": "Goldy",
-      "id": "AXPIMVSAJ3/165",
-      "pecera": "Cuarentena",
-      "especie": "A. mexicanum",
-      "genero": "Sin sexar",
-      "marcas": null,
-      "fenotipo": "Albino dorado",
-      "edad": null,
-      "estadio": "Subadulto",
-      "peso": 10,
-      "lt": 12.9,
-      "lhc": 7.37,
-      "icc": 0.4658336629,
-      "propCabezaCuerpo": 0.3894165536,
-      "propColaCuerpo": 0.750339213,
-      "asimetria": "Sin datos",
-      "temp": 16.5,
-      "bcs": "Sin datos",
-      "alertaConductual": "",
-      "anomalia": "",
-      "estadoBio": "⚠️ REQUIERE ATENCIÓN",
-      "ultimoConsumo": 1.157,
-      "respuestaAlim": "Camarón azul",
-      "alertaGastrica": "🟢 ACEPTACIÓN NORMAL",
-      "enCuarentena": false,
-      "descripcion": {
-        "breve": "Goldy fue nuestro campeón de lo remilgoso: el más exigente de todos para comer. Era delgadito, crecía despacio y era el más tímido de los juveniles. Un consentido que necesitaba paciencia y cariño.",
-        "extendida": "Goldy se llevaba el primer lugar en una categoría muy particular: fue el más remilgoso de todos a la hora de comer, lo que explicaba que estuviera delgadito y que creciera más despacio que el resto. Además fue el más tímido de nuestros juveniles, así que, entre su carácter reservado y su apetito selectivo, fue uno de los que más mimos y paciencia requerían. Pero esa fragilidad es justo lo que lo hizo tan especial: Goldy fue el consentido que a todos nos daban ganas de cuidar."
-      }
-    },
-    {
       "alias": "Chocoroll",
       "id": "ESP-AMSM-1261",
       "pecera": "AM1",
@@ -401,6 +339,70 @@
       "descripcion": {
         "breve": "Larva 2 es la más pequeñita de la familia. Tímida y discreta, su pasatiempo favorito es esconderse. Por ahora, su nombre también es provisional.",
         "extendida": "Larva 2 es la benjamina de la casa: la más pequeña de todas nuestras larvas. De carácter reservado, le encanta buscar rinconcitos donde esconderse y observar el mundo desde un lugar seguro, sobre todo cuando su hermana mayor anda con ganas de juego. Todavía espera su nombre definitivo, pero su ternura de criatura diminuta ya conquista a todos."
+      }
+    }
+  ],
+  "bajasSnapshots": [
+    {
+      "alias": "Panchita",
+      "id": "AA-AMANIA-220-23",
+      "pecera": "AA",
+      "especie": "A. andersoni",
+      "genero": "Hembra",
+      "marcas": "Carece de branquia izquierda superior",
+      "fenotipo": "Jaspeado oscuro",
+      "edad": "5 años",
+      "estadio": "Adulto",
+      "peso": 144,
+      "lt": 26.5,
+      "lhc": 13.73,
+      "icc": 0.7737931312,
+      "propCabezaCuerpo": 0.316824472,
+      "propColaCuerpo": 0.9300801165,
+      "asimetria": "0.09589041096",
+      "temp": 15.8,
+      "bcs": "Sin datos",
+      "alertaConductual": "",
+      "anomalia": "",
+      "estadoBio": "⚠️ REQUIERE ATENCIÓN",
+      "ultimoConsumo": 1.27,
+      "respuestaAlim": "Camarón azul",
+      "alertaGastrica": "🟢 ACEPTACIÓN NORMAL",
+      "enCuarentena": false,
+      "descripcion": {
+        "breve": "Panchita fue la veterana de la familia. A sus 5 años era la más larga y robusta de todas, y también la más glotona: jamás le decía que no a la comida. Veía poco por una pequeña catarata, pero eso no le restaba ni una pizca de encanto.",
+        "extendida": "Con 5 años a cuestas, Panchita fue nuestra ejemplar más veterana y, sin duda, la más imponente: era la más larga y rellenita de todo el grupo. La vida le dejó un par de marcas de guerra —de joven sus hermanos le arrancaron una branquia y una pequeña catarata nublaba uno de sus ojos—, pero ella las llevaba con orgullo. Como su vista ya no era la de antes, cazar no se le daba muy bien… aunque su apetito no conocía límites: Panchita fue, oficialmente, la más glotona de la casa. Tierna, tranquila y siempre lista para comer, fue la gran matriarca de la familia."
+      }
+    },
+    {
+      "alias": "Goldy",
+      "id": "AXPIMVSAJ3/165",
+      "pecera": "Cuarentena",
+      "especie": "A. mexicanum",
+      "genero": "Sin sexar",
+      "marcas": null,
+      "fenotipo": "Albino dorado",
+      "edad": null,
+      "estadio": "Subadulto",
+      "peso": 10,
+      "lt": 12.9,
+      "lhc": 7.37,
+      "icc": 0.4658336629,
+      "propCabezaCuerpo": 0.3894165536,
+      "propColaCuerpo": 0.750339213,
+      "asimetria": "Sin datos",
+      "temp": 16.5,
+      "bcs": "Sin datos",
+      "alertaConductual": "",
+      "anomalia": "",
+      "estadoBio": "⚠️ REQUIERE ATENCIÓN",
+      "ultimoConsumo": 1.157,
+      "respuestaAlim": "Camarón azul",
+      "alertaGastrica": "🟢 ACEPTACIÓN NORMAL",
+      "enCuarentena": false,
+      "descripcion": {
+        "breve": "Goldy fue nuestro campeón de lo remilgoso: el más exigente de todos para comer. Era delgadito, crecía despacio y era el más tímido de los juveniles. Un consentido que necesitaba paciencia y cariño.",
+        "extendida": "Goldy se llevaba el primer lugar en una categoría muy particular: fue el más remilgoso de todos a la hora de comer, lo que explicaba que estuviera delgadito y que creciera más despacio que el resto. Además fue el más tímido de nuestros juveniles, así que, entre su carácter reservado y su apetito selectivo, fue uno de los que más mimos y paciencia requerían. Pero esa fragilidad es justo lo que lo hizo tan especial: Goldy fue el consentido que a todos nos daban ganas de cuidar."
       }
     }
   ],

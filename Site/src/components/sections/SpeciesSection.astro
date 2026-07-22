@@ -36,15 +36,14 @@ const speciesData = all
 const speciesPathBase = localePath(locale, 'especies/');
 
 // Build the list of BioMuseo ajolotes shown inside each species detail modal.
-// Mirrors the hidden-alias filter used by AjolotesExplorer so memorialized /
-// off-colony specimens don't surface from the map. Only ajolotes with an
-// available photo (per components/ajolotes/photos.ts manifest) are included.
-const HIDDEN_AJOLOTE_ALIASES = new Set(['Leucistica', 'Rómulo', 'Panchita', 'Goldy', 'Ajolobebe 3', 'Ajolobebe 4']);
+// `bundle.ejemplares` is the LIVE roster by construction (data-ajolotes.mjs
+// filters deceased + embargoed at ingest), so no hidden-alias list is needed
+// here. Only ajolotes with an available photo (per components/ajolotes/photos.ts
+// manifest) are included.
 type RawEjemplar = { alias: string | null; especie: string };
 const museumAjolotes = (bundle.ejemplares as RawEjemplar[])
   .map((e) => {
     if (!e.alias) return null;
-    if (HIDDEN_AJOLOTE_ALIASES.has(e.alias)) return null;
     const photoUrl = ejemplarPhotoUrl(e.alias);
     if (!photoUrl) return null;
     return {

@@ -47,16 +47,13 @@ function applyTheme(t: 'light' | 'dark') {
 // record. Update this list when curators memorialize a new specimen.
 const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica', 'Panchita', 'Goldy']);
 
-// Aliases hidden from the live Ajolotes Explorer. Leucistica, Panchita and
-// Goldy are shown on the Bajas view instead. Rómulo is temporarily withheld
-// from every public view for a separate operational reason (tracked in the
-// ingest embargo config), independent of the Bajas curation; Remo is a
-// different specimen and stays in AD. Ajolobebe 3 and 4 are covered by the
-// larvae bajas the public view already filters out. Each entry clears once the
-// operativo drops it from the active ejemplares sheet.
-const EJEMPLARES_HIDDEN_ALIASES = new Set(['Leucistica', 'Rómulo', 'Panchita', 'Goldy', 'Ajolobebe 3', 'Ajolobebe 4']);
-const isHiddenEjemplar = (e: Ejemplar) =>
-  EJEMPLARES_HIDDEN_ALIASES.has((e.alias ?? '').trim());
+// NOTE: the per-component hidden-alias list that used to live here is gone.
+// `bundle.ejemplares` is now the LIVE roster by construction — data-ajolotes.mjs
+// filters deceased (Bajas sheet + DECEASED_NOT_IN_BAJAS) and embargoed names at
+// ingest, so every consumer inherits it. That matters beyond this file: Xovi and
+// the /covers generator fetch the same bundle over HTTPS and never had a copy of
+// this list, which is how a deceased specimen was still being offered as a clip
+// target. If a deceased specimen reappears here, fix the ingest, not this file.
 
 const isAjolobebe = (e: Ejemplar) =>
   (e.alias ?? '').toLowerCase().includes('ajolobebe');
@@ -128,7 +125,7 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
   const [search, setSearch] = useState('');
   // Default ON so the surviving larvae (Ajolobebe 1 + 2) appear in the main
   // gallery without requiring the curator tweak. The unsurvived siblings are
-  // already excluded via EJEMPLARES_HIDDEN_ALIASES, so this gate is now only
+  // already excluded by the ingest-level deceased filter, so this gate is only
   // a curator-side power-user toggle, not a public-default safeguard.
   const [showLarvario, setShowLarvario] = useState(true);
   const [selectedSpecies, setSelectedSpecies] = useState<SpeciesCode | null>(null);
@@ -143,20 +140,22 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
   useBackToClose(active !== null, () => setActive(null), 'axolodao:ejemplar-modal');
   useBackToClose(view === 'bajas', () => setView('ejemplares'), 'axolodao:bajas-view');
 
-  // Drop deceased / off-colony specimens before any downstream component
-  // sees them. Source xlsx still carries them; this filter is the boundary.
-  const liveEjemplares = useMemo<Ejemplar[]>(
-    () => bundle.ejemplares.filter((e: Ejemplar) => !isHiddenEjemplar(e)),
-    [bundle.ejemplares],
-  );
+  // `bundle.ejemplares` is already the live roster (see the note above the
+  // imports) — kept as a named binding so the downstream reads stay readable.
+  const liveEjemplares = bundle.ejemplares;
 
   // Curated public memorial. For each visible name, prefer a curated synthetic
   // entry (so the wall shows the curated cause + biometrics even when the xlsx
   // row is missing or lacks a cause); otherwise fall back to the operativo row.
   const visibleBajas = useMemo<Baja[]>(() => {
+    // The synths read a deceased specimen's LAST snapshot, which the ingest now
+    // moves out of the live roster into `bajasSnapshots` — search both, or every
+    // synth returns null and Goldy (who has no operativo Bajas row at all)
+    // disappears from the memorial entirely.
+    const snapshots = [...bundle.ejemplares, ...(bundle.bajasSnapshots ?? [])];
     const out: Baja[] = [];
     for (const nombre of BAJAS_VISIBLE_NAMES) {
-      const synth = SYNTH_BAJAS[nombre]?.(bundle.ejemplares) ?? null;
+      const synth = SYNTH_BAJAS[nombre]?.(snapshots) ?? null;
       if (synth) {
         out.push(synth);
         continue;
@@ -165,7 +164,7 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
       if (fromData) out.push(fromData);
     }
     return out;
-  }, [bundle.bajas, bundle.ejemplares]);
+  }, [bundle.bajas, bundle.ejemplares, bundle.bajasSnapshots]);
 
   // Per-species counts mirror exactly what the gallery renders, so the cover
   // cards always agree with `totals.total`. When the Larvario tweak is off,
