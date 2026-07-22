@@ -57,6 +57,17 @@ const EJEMPLAR_OVERRIDES = new Map([
   // a non-pecera field lags the live colony state.
 ]);
 
+// Display-name renames applied to FREE-TEXT fields (feeding-response notes, etc.)
+// so a specimen's current name reads consistently in prose too — the structured
+// alias join is already folded by ALIAS_NORMALIZE, but that never touches prose.
+// Kept separate from ALIAS_NORMALIZE on purpose: that map also folds spelling
+// variants (Negra → La negra) which must NOT be substituted into prose. Whole-word
+// only, so "Larva 1" → "Patito" never catches "Larva 2" / "Larvas". Drop a rule
+// once the curator renames the source in the xlsx.
+const TEXT_RENAMES = [[/\bLarva 1\b/g, 'Patito']];
+const renameInText = (s) =>
+  typeof s === 'string' ? TEXT_RENAMES.reduce((t, [re, to]) => t.replace(re, to), s) : s;
+
 // Friendly per-axolotl narrative for the ajolotes-explorer "Resumen" tab. This
 // is curated copy maintained by the curator (NOT in the xlsx), keyed by
 // canonical alias (post-normalizeAlias, e.g. "La negra", "Chocoroll",
@@ -97,9 +108,9 @@ const EJEMPLAR_DESCRIPCIONES = new Map([
     breve: 'Pardo macho es nuestro único machito y todo un caballero reservado. Es súper tímido, no le gusta que lo toquen y, aun así, destaca por ser bastante más grande que el promedio.',
     extendida: 'Pardo macho tiene un papel muy especial en la familia: es nuestro único macho. De temperamento sumamente tímido, valora su espacio y no disfruta para nada que lo toquen, así que preferimos admirarlo de lejos. A pesar de su timidez, impone: es un macho notablemente grande para el promedio de su especie. Tranquilo, imponente y un poco huraño, Pardo macho es el discreto galán del grupo.',
   }],
-  ['Larva 1', {
-    breve: 'Larva 1, todavía sin nombre oficial, es la más grande de nuestras larvas. Tiene un apetito enorme y, de vez en cuando, no resiste hacerle un poco de bullying a su hermano.',
-    extendida: 'Larva 1 es la mayor de nuestras dos pequeñas larvas, y se le nota: es la más grande y la que come con más ganas. Con esa energía de sobra, a veces se pone juguetona (o un poquito abusiva) y le hace bullying a su hermano menor. Aún lleva un nombre provisional mientras crece y nos muestra su personalidad, pero promete dar mucho de qué hablar.',
+  ['Patito', {
+    breve: 'Patito es la más grande de nuestras dos larvas. Tiene un apetito enorme y, de vez en cuando, no resiste hacerle un poco de bullying a su hermano menor.',
+    extendida: 'Patito es la mayor de nuestras dos pequeñas larvas, y se le nota: es la más grande y la que come con más ganas. Con esa energía de sobra, a veces se pone juguetona (o un poquito abusiva) y le hace bullying a su hermano menor. Todavía está creciendo y mostrándonos toda su personalidad, pero ya promete dar mucho de qué hablar.',
   }],
   ['Larva 2', {
     breve: 'Larva 2 es la más pequeñita de la familia. Tímida y discreta, su pasatiempo favorito es esconderse. Por ahora, su nombre también es provisional.',
@@ -144,7 +155,7 @@ const AM_PECERA = new Map([
   ['La negra',       'AM1'],
   ['Chocoroll',      'AM1'],
   ['Pardo Macho',    'AM2'],
-  ['Larva 1',        'AM3'],
+  ['Patito',         'AM3'],
   ['Larva 2',        'AM3'],
   ['Martín',         'AM4'],
   ['Limon',          'AM4'],
@@ -449,7 +460,7 @@ for (let r = alimHdrIdx + 1; r < alimRows.length; r++) {
     racion: toNum(row[A.racion]),
     sobrante: toNum(row[A.sobrante]),
     consumo: toNum(row[A.consumo]),
-    respuesta: toStr(row[A.respuesta]),
+    respuesta: renameInText(toStr(row[A.respuesta])),
   };
   (alimentacion[alias] ??= []).push(entry);
 }

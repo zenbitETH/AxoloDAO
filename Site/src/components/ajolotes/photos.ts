@@ -21,7 +21,7 @@ const AVAILABLE_PHOTOS: Record<string, 'webp' | 'jpg'> = {
   'pardo-macho': 'webp',
   romulo: 'webp',
   remo: 'webp',
-  'larva-1': 'webp',
+  patito: 'webp',
   'larva-2': 'webp',
 };
 

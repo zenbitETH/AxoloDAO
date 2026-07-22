@@ -1,0 +1,114 @@
+---
+import { type Locale, t } from '@/i18n/strings';
+import {
+  XOVI_SUBSCRIBE_URL,
+  TIER_META,
+  supportersByTier,
+  type SupporterTier,
+} from '@/data/supporters';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+// Full literal Tailwind class strings per tier (so the JIT compiler keeps them).
+// Aliado = ocre (the mid tier), Guardián = teal (the flagship), echoing Xovi.
+const TIER_STYLE: Record<SupporterTier, {
+  badge: string; glyph: string; card: string; avatar: string; btn: string;
+}> = {
+  aliado: {
+    badge: 'badge-ocre',
+    glyph: '●',
+    card: 'ring-1 ring-ocre/15',
+    avatar: 'bg-ocre/15 text-ocre ring-1 ring-ocre/30',
+    btn: 'btn-secondary w-full',
+  },
+  guardian: {
+    badge: 'badge-teal',
+    glyph: '◆',
+    card: 'ring-1 ring-teal/25 shadow-neon-teal/10',
+    avatar: 'bg-teal/15 text-teal ring-1 ring-teal/30',
+    btn: 'btn-primary w-full',
+  },
+};
+
+const TIERS: SupporterTier[] = ['aliado', 'guardian'];
+
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+---
+
+<section id="apadrina" class="scroll-mt-20 py-16">
+  <div class="container-wide">
+    <header class="mb-12 max-w-2xl">
+      <h2 class="font-display text-4xl font-bold sm:text-5xl">{t(locale, 'supporters.title')}</h2>
+      <p class="mt-3 text-white/70">{t(locale, 'supporters.subtitle')}</p>
+    </header>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {TIERS.map((tier) => {
+        const style = TIER_STYLE[tier];
+        const people = supportersByTier(tier);
+        return (
+          <div class={`glass ${style.card} flex flex-col rounded-3xl p-8`}>
+            <div class="flex items-center justify-between gap-3">
+              <span class={style.badge}>
+                <span aria-hidden="true">{style.glyph}</span>
+                {t(locale, `supporters.${tier}.name`)}
+              </span>
+              <span class="font-display text-2xl font-bold">
+                ${TIER_META[tier].priceMxn}
+                <span class="text-sm font-normal text-white/55"> MXN{t(locale, 'supporters.perMonth')}</span>
+              </span>
+            </div>
+
+            <p class="mt-3 text-sm text-white/75">{t(locale, `supporters.${tier}.tagline`)}</p>
+
+            <div class="mt-6 flex-1">
+              {people.length > 0 ? (
+                <>
+                  <h3 class="text-xs font-semibold uppercase tracking-wider text-white/50">
+                    {t(locale, `supporters.${tier}.current`)}
+                  </h3>
+                  <ul class="mt-3 flex flex-wrap gap-2">
+                    {people.map((p) => (
+                      <li class="inline-flex items-center gap-2 rounded-full bg-white/5 py-1.5 pl-1.5 pr-4">
+                        {p.logo ? (
+                          <img src={p.logo} alt={p.name} class="h-8 w-8 rounded-full object-contain" />
+                        ) : (
+                          <span class={`grid h-8 w-8 place-items-center rounded-full text-xs font-bold ${style.avatar}`}>
+                            {initials(p.name)}
+                          </span>
+                        )}
+                        <span class="text-sm font-medium text-white/90">{p.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : (
+                <p class="rounded-2xl border border-dashed border-white/15 bg-white/[0.02] p-4 text-sm text-white/70">
+                  {t(locale, `supporters.${tier}.empty`)}
+                </p>
+              )}
+            </div>
+
+            <a
+              href={XOVI_SUBSCRIBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`mt-6 ${style.btn}`}
+            >
+              {t(locale, `supporters.${tier}.cta`)}
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        );
+      })}
+    </div>
+
+    <p class="mt-6 text-xs text-white/45">{t(locale, 'supporters.foot')}</p>
+  </div>
+</section>

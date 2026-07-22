@@ -169,6 +169,12 @@ export const ALIAS_NORMALIZE = new Map([
   ['mocca', 'Moka'],
   ['Martin', 'Martín'],
   ['martin', 'Martín'],
+  // Rename: the larva formerly logged as "Larva 1" now has a permanent name,
+  // "Patito". The xlsx still uses "Larva 1" across every sheet (Dashboard,
+  // Alimentación, Terapéutica, …); folding it here canonicalizes the specimen to
+  // "Patito" on the Site while keeping all cross-sheet joins intact. Drop this
+  // line once the curator renames "Larva 1" → "Patito" in the workbook itself.
+  ['Larva 1', 'Patito'],
 ]);
 
 export function normalizeAlias(s) {
