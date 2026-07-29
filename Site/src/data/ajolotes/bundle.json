@@ -7778,6 +7778,26 @@
         "sobrante": 0,
         "consumo": 2.3,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.56,
+        "sobrante": 0,
+        "consumo": 2.56,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 4.2,
+        "sobrante": 0.13,
+        "consumo": 4.07,
+        "respuesta": null
       }
     ],
     "Tascalate": [
@@ -8290,6 +8310,26 @@
         "sobrante": 0,
         "consumo": 1.71,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.11,
+        "sobrante": 0,
+        "consumo": 2.11,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.78,
+        "sobrante": 1.05,
+        "consumo": 1.73,
+        "respuesta": null
       }
     ],
     "Chocoroll": [
@@ -8741,6 +8781,26 @@
         "racion": 1.99,
         "sobrante": 0,
         "consumo": 1.99,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.11,
+        "sobrante": 0,
+        "consumo": 2.11,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.26,
+        "sobrante": 1.24,
+        "consumo": 2.02,
         "respuesta": null
       }
     ],
@@ -9244,6 +9304,26 @@
         "sobrante": 0,
         "consumo": 1.84,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.94,
+        "sobrante": 0,
+        "consumo": 1.94,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.14,
+        "sobrante": 0.4,
+        "consumo": 2.74,
+        "respuesta": null
       }
     ],
     "Parda": [
@@ -9735,6 +9815,26 @@
         "racion": 1.74,
         "sobrante": 0,
         "consumo": 1.74,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.73,
+        "sobrante": 0,
+        "consumo": 1.73,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.19,
+        "sobrante": 0.59,
+        "consumo": 2.6,
         "respuesta": null
       }
     ],
@@ -10628,6 +10728,46 @@
         "sobrante": 0,
         "consumo": 0.86,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.27,
+        "sobrante": 0,
+        "consumo": 1.27,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.31,
+        "sobrante": 0,
+        "consumo": 1.31,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.6,
+        "sobrante": 0,
+        "consumo": 1.6,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.65,
+        "sobrante": 0.27,
+        "consumo": 1.38,
+        "respuesta": null
       }
     ],
     "Pardo Macho": [
@@ -11099,6 +11239,26 @@
         "racion": 1.97,
         "sobrante": 0,
         "consumo": 1.97,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.73,
+        "sobrante": 0.13,
+        "consumo": 1.6,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.69,
+        "sobrante": 2.24,
+        "consumo": 1.45,
         "respuesta": null
       }
     ],
@@ -11581,6 +11741,26 @@
         "racion": 1.45,
         "sobrante": 0,
         "consumo": 1.45,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.35,
+        "sobrante": 0,
+        "consumo": 1.35,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.51,
+        "sobrante": 0.18,
+        "consumo": 1.33,
         "respuesta": null
       }
     ],
@@ -12134,6 +12314,26 @@
         "sobrante": 0,
         "consumo": 0.9,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 0.87,
+        "sobrante": 0,
+        "consumo": 0.87,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.32,
+        "sobrante": 0,
+        "consumo": 1.32,
+        "respuesta": null
       }
     ],
     "Remo": [
@@ -12636,6 +12836,26 @@
         "sobrante": 0.4,
         "consumo": 2.71,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.18,
+        "sobrante": 0,
+        "consumo": 3.18,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 4.44,
+        "sobrante": 0.29,
+        "consumo": 4.15,
+        "respuesta": null
       }
     ],
     "Sansón": [
@@ -12667,6 +12887,26 @@
         "racion": 3.19,
         "sobrante": 0,
         "consumo": 3.19,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.05,
+        "sobrante": 0,
+        "consumo": 3.05,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 4.77,
+        "sobrante": 0.65,
+        "consumo": 4.12,
         "respuesta": null
       }
     ],
