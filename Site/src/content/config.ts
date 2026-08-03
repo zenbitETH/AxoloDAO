@@ -116,10 +116,23 @@ const news = defineCollection({
     author: z.enum(['zenbit', 'xolotlcalli', 'ndali']),
     url: z.string().url(),
     image: z.string(),
+    // Rail proxy for the video-first chapters (lunes, ajolote). Small and
+    // low-bitrate on purpose — the publish-quality master goes to Instagram, not
+    // into this repo's history. `poster` falls back to `image` when absent.
+    video: z.string().optional(),
+    poster: z.string().optional(),
     caption: localeText,
     publishedAt: z.string(),
     weekNumber: z.number().optional(),
     podcastNumber: z.number().optional(),
+    // Which of the week's four chapters this post is. `semanal` is the pre-W31
+    // format: ONE post that carried the census, the water table and the podcast
+    // together. Defaulting the fourteen archive entries to `axolonews` would have
+    // been a small lie about what they contained, so they get their own value —
+    // and the default keeps every one of them valid with no edit.
+    chapter: z
+      .enum(['semanal', 'lunes', 'axolonews', 'podcast', 'ajolote'])
+      .default('semanal'),
   }),
 });
 
