@@ -29,6 +29,20 @@ export interface NewsItem {
 export const CHAPTER_ORDER: readonly Chapter[] = ['lunes', 'axolonews', 'podcast', 'ajolote'];
 
 /**
+ * Which chapter becomes the week's face, in preference order.
+ *
+ * NOT "the newest". The card used to show whichever chapter landed last, which
+ * meant the week changed face three times: Monday's maintenance video is the only
+ * chapter with a thumbnail built for the 3:4 profile crop, and by Tuesday it had
+ * been replaced by a carousel cover. The week now keeps the strongest image it
+ * has and the chips carry everything else.
+ *
+ * The two video chapters lead because a poster frame is chosen; a carousel cover
+ * is whatever slide 1 happens to be.
+ */
+export const HERO_PRIORITY: readonly Chapter[] = ['lunes', 'ajolote', 'podcast', 'axolonews'];
+
+/**
  * Which account publishes which chapter, per
  * `context/plans/2026-07-30-pulso-distribucion-reels.md` §1: each chapter goes to
  * the account that did that work, so Xolotlcalli speaks for the animals and the
@@ -102,12 +116,17 @@ export function groupByWeek(items: NewsItem[]): PulsoWeek[] {
   return [...groups.entries()]
     .map(([key, group]) => {
       const chapters = [...group].sort((a, b) => rank(a.chapter) - rank(b.chapter));
-      // Newest by date; ties break on publishing order so the result is stable.
-      const hero = [...group].sort(
-        (a, b) =>
-          (a.publishedAt < b.publishedAt ? 1 : a.publishedAt > b.publishedAt ? -1 : 0) ||
-          rank(b.chapter) - rank(a.chapter),
-      )[0];
+      // The week's face: the best image it has, per HERO_PRIORITY. A legacy
+      // `semanal` week matches nothing there and falls through to newest-first,
+      // which for a one-post week is simply that post.
+      const byPriority = HERO_PRIORITY.map(c => group.find(x => x.chapter === c)).find(Boolean);
+      const hero =
+        byPriority ??
+        [...group].sort(
+          (a, b) =>
+            (a.publishedAt < b.publishedAt ? 1 : a.publishedAt > b.publishedAt ? -1 : 0) ||
+            rank(b.chapter) - rank(a.chapter),
+        )[0];
       const latest = group.reduce((m, x) => (x.publishedAt > m ? x.publishedAt : m), group[0].publishedAt);
       return {
         key,
