@@ -7,11 +7,14 @@ import { type Locale, t } from '@/i18n/strings';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
+// One card per post. Widened to 12 because four posts a week means six cards is
+// a week and a half; twelve is three full weeks, and the rail has its own
+// navigation now rather than relying on the visitor discovering it scrolls.
 const all = await getCollection('news');
 const items = all
   .map((n) => n.data)
-  .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : -1))
-  .slice(0, 6);
+  .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : a.publishedAt > b.publishedAt ? -1 : 0))
+  .slice(0, 12);
 ---
 
 <section id="news" class="scroll-mt-20 py-16">

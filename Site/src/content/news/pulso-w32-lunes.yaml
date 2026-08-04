@@ -1,0 +1,17 @@
+slug: pulso-w32-lunes
+author: xolotlcalli
+chapter: lunes
+url: https://www.instagram.com/reel/DbmW9MtN5aY/
+# Not Instagram's og:image. For a Reel that is a 640x640 square crop of a frame
+# the platform picked; this poster is the video's own first frame, cropped to the
+# 3:4 the profile grid actually uses.
+image: /photos/news/pulso-w32-lunes.jpg
+video: /videos/news/pulso-w32-lunes.mp4
+poster: /photos/news/pulso-w32-lunes.jpg
+caption:
+  es: "Pulso AxoloDAO · Semana 32 — Lunes de Mantenimiento con las pruebas de agua de las dos peceras: la conductividad de AM volvió a rango y los nitratos de AD bajaron a 10 mg/L, mientras el pH sigue alto en ambas; censo de once ejemplares, seis estables y cuatro en seguimiento."
+  en: "Pulso AxoloDAO · Week 32 — Monday maintenance with water tests for both tanks: AM conductivity is back in range and AD nitrates dropped to 10 mg/L, while pH stays high in both; census of eleven specimens, six stable and four under closer watch."
+  pt: "Pulso AxoloDAO · Semana 32 — segunda de manutenção com os testes de água dos dois aquários: a condutividade de AM voltou à faixa e os nitratos de AD caíram para 10 mg/L, enquanto o pH segue alto em ambos; censo de onze exemplares, seis estáveis e quatro em acompanhamento."
+publishedAt: '2026-08-03'
+weekNumber: 32
+podcastNumber: 21
