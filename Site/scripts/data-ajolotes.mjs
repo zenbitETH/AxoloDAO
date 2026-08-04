@@ -485,6 +485,9 @@ const B = {
   edad:      indexOfHeader(bajaHdr, 'edad'),
   causa:     indexOfHeader(bajaHdr, 'causa'),
   necropcia: indexOfHeader(bajaHdr, 'necropcia'),
+  // Read but NOT published: bajas[] carries no id. It exists solely to
+  // cross-check the name join below.
+  id:        indexOfHeader(bajaHdr, 'id'),
 };
 
 const bajas = [];
@@ -540,6 +543,48 @@ console.log(`[data-ajolotes] bajas: ${publicBajas.length}`);
 const deceasedNames = new Set(
   bajas.map((b) => (normalizeAlias(toStr(b.nombre)) ?? '').trim().toLowerCase()).filter(Boolean),
 );
+
+// GUARD: a death row whose registry ID belongs to a specimen the Dashboard still
+// lists as alive.
+//
+// This join is by NAME. `publicEjemplares` and `bajasSnapshots` are complementary
+// sets over that one predicate, so swapping which name is "the dead one" moves a
+// specimen from the roster to the memorial and another the other way, and the
+// COUNTS DO NOT CHANGE. There is no numeric signal. That makes a single wrong
+// name in Bajas silently publish a living animal as dead and a dead one as alive
+// — the exact pair of claims this file exists to prevent.
+//
+// The IDs are the only independent evidence, so they get a vote: if a death row
+// carries the ID of someone still on the Dashboard, the two sources disagree
+// about who died and the ingest refuses rather than picking one.
+{
+  const liveById = new Map(
+    ejemplares
+      .map((e) => [(toStr(e.id) ?? '').trim().toUpperCase(), e])
+      .filter(([id]) => id),
+  );
+  const conflicts = [];
+  for (let r = bajaHdrIdx + 1; r < bajaRows.length; r++) {
+    const row = bajaRows[r];
+    if (!row) continue;
+    const bajaId = B.id >= 0 ? (toStr(row[B.id]) ?? '').trim().toUpperCase() : '';
+    if (!bajaId) continue;
+    const live = liveById.get(bajaId);
+    if (!live) continue;
+    const bajaName = (normalizeAlias(toStr(row[B.nombre])) ?? '').trim();
+    // Same name on both sides means the Dashboard simply has not been closed out
+    // yet, which is normal and already handled by the name gate.
+    if (bajaName && bajaName.toLowerCase() === (live.alias ?? '').trim().toLowerCase()) continue;
+    conflicts.push(`  Bajas "${bajaName}" lleva el ID ${bajaId}, que el Dashboard asigna a "${live.alias}" (${live.pecera ?? 'sin pecera'})`);
+  }
+  if (conflicts.length) {
+    console.warn(
+      `[data-ajolotes] AVISO: ${conflicts.length} fila(s) de Bajas con ID de un ejemplar del Dashboard:\n${conflicts.join('\n')}\n` +
+      `  El cruce de fallecidos es por NOMBRE, asi que un nombre equivocado aqui intercambia quien sale al muro y quien al roster SIN cambiar ningun conteo.\n` +
+      `  Corrige el ID en la hoja, no el nombre.`,
+    );
+  }
+}
 
 // Curator override for deaths not yet recorded in the Bajas sheet. This exists
 // only to bridge the lag between an animal dying and the xlsx being updated —
