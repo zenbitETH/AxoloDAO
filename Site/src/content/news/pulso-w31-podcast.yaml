@@ -1,0 +1,16 @@
+slug: pulso-w31-podcast
+author: zenbit
+chapter: podcast
+url: https://www.instagram.com/p/DbewyKDDQMl/?img_index=1
+image: /photos/news/pulso-w31-podcast.jpg
+# The carousel's own slide 1 is a 45 s animated cover, so this "carousel" has a
+# video to play on hover just like a Reel does.
+video: /videos/news/pulso-w31-podcast.mp4
+poster: /photos/news/pulso-w31-podcast.jpg
+caption:
+  es: "Pulso AxoloDAO · Semana 31 — el podcast 20 estrena la verificación de comportamientos en vivo, habla del primer ajolote fósil nombrado en México y abre las pruebas de agua de la semana."
+  en: "Pulso AxoloDAO · Week 31 — podcast 20 premieres live behaviour verification, covers the first fossil axolotl named in Mexico, and opens up the week's water tests."
+  pt: "Pulso AxoloDAO · Semana 31 — o podcast 20 estreia a verificação de comportamentos ao vivo, fala do primeiro axolote fóssil nomeado no México e abre os testes de água da semana."
+publishedAt: '2026-07-29'
+weekNumber: 31
+podcastNumber: 20

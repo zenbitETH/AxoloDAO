@@ -1,11 +1,11 @@
 // The Pulso AxoloDAO week, as the home rail understands it.
 //
-// Until W31 the Pulso was one Instagram post a week and the rail was a flat list
-// of them. Since W32 it is four — Monday maintenance, Tuesday AxoloNews,
-// Wednesday podcast, Friday axolotl of the week — published from two different
-// accounts. A flat rail would advance four times faster and "Pulso #32" would
-// stop naming anything, so the rail groups by week and the chapters become chips
-// inside the week's card.
+// Since W32 the Pulso is four posts a week — Monday maintenance, Tuesday
+// AxoloNews, Wednesday podcast, Friday axolotl of the week — published from two
+// accounts. They were briefly grouped into one card per week with a chip strip;
+// that traded away the thing each post is actually worth, which is its own image.
+// Every chapter now gets a full card of its own, and the rail gained explicit
+// navigation to carry the extra length.
 
 export type Chapter = 'semanal' | 'lunes' | 'axolonews' | 'podcast' | 'ajolote';
 export type Author = 'zenbit' | 'xolotlcalli' | 'ndali';
@@ -27,20 +27,6 @@ export interface NewsItem {
 /** The four weekly chapters in publishing order. `semanal` is not one of them —
  *  it is the archive format, and a `semanal` week renders without a chip strip. */
 export const CHAPTER_ORDER: readonly Chapter[] = ['lunes', 'axolonews', 'podcast', 'ajolote'];
-
-/**
- * Which chapter becomes the week's face, in preference order.
- *
- * NOT "the newest". The card used to show whichever chapter landed last, which
- * meant the week changed face three times: Monday's maintenance video is the only
- * chapter with a thumbnail built for the 3:4 profile crop, and by Tuesday it had
- * been replaced by a carousel cover. The week now keeps the strongest image it
- * has and the chips carry everything else.
- *
- * The two video chapters lead because a poster frame is chosen; a carousel cover
- * is whatever slide 1 happens to be.
- */
-export const HERO_PRIORITY: readonly Chapter[] = ['lunes', 'ajolote', 'podcast', 'axolonews'];
 
 /**
  * Which account publishes which chapter, per
@@ -70,72 +56,5 @@ export const CHAPTER_ACCENT: Record<Chapter, string> = {
   ajolote: 'bg-rosa/90 text-marfil',
 };
 
-export interface PulsoWeek {
-  /** Stable key — `weekNumber` alone collides across years. */
-  key: string;
-  weekNumber?: number;
-  year: number;
-  /** Newest chapter of the week: the card's image and its main link. */
-  hero: NewsItem;
-  /** Every chapter published this week, in CHAPTER_ORDER. */
-  chapters: NewsItem[];
-  /** Newest publishedAt in the group — what the rail sorts on. */
-  latest: string;
-}
-
-const yearOf = (iso: string) => Number(iso.slice(0, 4));
-
-/**
- * Group posts into weeks, newest week first, chapters in publishing order.
- *
- * A week has no `publishedAt` of its own — its chapters span Monday to Friday —
- * so it sorts on the newest chapter it holds. That is also what makes a
- * mid-week group behave: on a Monday the week has exactly one chapter and sorts
- * to the front on that chapter's date, which is correct.
- *
- * Posts with no `weekNumber` (there are none today, but the field is optional)
- * each become their own single-chapter group rather than being dropped.
- */
-export function groupByWeek(items: NewsItem[]): PulsoWeek[] {
-  const groups = new Map<string, NewsItem[]>();
-  for (const it of items) {
-    const key =
-      it.weekNumber === undefined
-        ? `solo:${it.slug}`
-        : `${yearOf(it.publishedAt)}-W${String(it.weekNumber).padStart(2, '0')}`;
-    const bucket = groups.get(key);
-    if (bucket) bucket.push(it);
-    else groups.set(key, [it]);
-  }
-
-  const rank = (c: Chapter) => {
-    const i = CHAPTER_ORDER.indexOf(c);
-    return i === -1 ? CHAPTER_ORDER.length : i;
-  };
-
-  return [...groups.entries()]
-    .map(([key, group]) => {
-      const chapters = [...group].sort((a, b) => rank(a.chapter) - rank(b.chapter));
-      // The week's face: the best image it has, per HERO_PRIORITY. A legacy
-      // `semanal` week matches nothing there and falls through to newest-first,
-      // which for a one-post week is simply that post.
-      const byPriority = HERO_PRIORITY.map(c => group.find(x => x.chapter === c)).find(Boolean);
-      const hero =
-        byPriority ??
-        [...group].sort(
-          (a, b) =>
-            (a.publishedAt < b.publishedAt ? 1 : a.publishedAt > b.publishedAt ? -1 : 0) ||
-            rank(b.chapter) - rank(a.chapter),
-        )[0];
-      const latest = group.reduce((m, x) => (x.publishedAt > m ? x.publishedAt : m), group[0].publishedAt);
-      return {
-        key,
-        weekNumber: hero.weekNumber,
-        year: yearOf(latest),
-        hero,
-        chapters,
-        latest,
-      };
-    })
-    .sort((a, b) => (a.latest < b.latest ? 1 : a.latest > b.latest ? -1 : 0));
-}
+/** Short chapter label for the card badge, keyed off i18n at render time. */
+export const CHAPTER_KEY = (c: Chapter) => `news.chapter.short.${c}` as const;

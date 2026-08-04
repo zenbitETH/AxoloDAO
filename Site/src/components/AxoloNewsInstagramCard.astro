@@ -1,21 +1,20 @@
 ---
 import { type Locale, t } from '@/i18n/strings';
-import { CHAPTER_ACCENT, CHAPTER_ORDER, type PulsoWeek } from '@/lib/pulso';
+import { CHAPTER_ACCENT, type NewsItem } from '@/lib/pulso';
 
 interface Props {
-  weeks: PulsoWeek[];
+  items: NewsItem[];
   locale: Locale;
 }
 
-const { weeks, locale } = Astro.props;
+const { items, locale } = Astro.props;
 
-// `weeks` arrives sorted newest-first; the latest snaps first in the rail.
+// `items` arrives sorted newest-first; the latest snaps first in the rail.
 //
-// The card is a <div>, not an <a>. Each week now holds up to four Instagram
-// permalinks across two accounts, and nesting four links inside one would break
-// the focus order and leave the card with a single aria-label describing four
-// destinations. So the media links to the week's newest chapter — one tap still
-// reaches the freshest post — and the chapter chips are its siblings.
+// One card per post. They were briefly grouped one-card-per-week with a chip
+// strip, which kept the rail short but spent three of every four posts as a
+// text pill — and every chapter now ships with its own poster or video, which is
+// the whole reason anyone stops scrolling.
 const handles = [
   { user: 'zenbit.eth', url: 'https://www.instagram.com/zenbit.eth/' },
   { user: 'xolotlcalli.mx', url: 'https://www.instagram.com/xolotlcalli.mx/' },
@@ -24,96 +23,88 @@ const handles = [
 ---
 
 <article class="glass glass-hover flex flex-col overflow-hidden rounded-3xl p-6">
-  <header class="mb-4">
-    <h3 class="font-display text-2xl">{t(locale, 'news.instagram.title')}</h3>
-    <p class="mt-1 line-clamp-1 text-sm text-white/70">{t(locale, 'news.instagram.subtitle')}</p>
+  <header class="mb-4 flex items-start justify-between gap-4">
+    <div class="min-w-0">
+      <h3 class="font-display text-2xl">{t(locale, 'news.instagram.title')}</h3>
+      <p class="mt-1 line-clamp-1 text-sm text-white/70">{t(locale, 'news.instagram.subtitle')}</p>
+    </div>
+
+    <!-- Rail navigation. With four posts a week the rail runs well past the
+         viewport, and a horizontal scroll container gives a mouse user no
+         affordance at all: no visible scrollbar, no wheel axis. -->
+    <div class="flex flex-shrink-0 gap-1.5" data-rail-nav>
+      <button
+        type="button"
+        data-rail-prev
+        aria-label={t(locale, 'news.instagram.prev')}
+        aria-controls="pulso-rail"
+        class="grid h-8 w-8 place-items-center rounded-full border border-white/15 text-marfil transition hover:border-teal/60 hover:bg-teal/15 disabled:pointer-events-none disabled:opacity-30"
+      >←</button>
+      <button
+        type="button"
+        data-rail-next
+        aria-label={t(locale, 'news.instagram.next')}
+        aria-controls="pulso-rail"
+        class="grid h-8 w-8 place-items-center rounded-full border border-white/15 text-marfil transition hover:border-teal/60 hover:bg-teal/15 disabled:pointer-events-none disabled:opacity-30"
+      >→</button>
+    </div>
   </header>
 
-  {weeks.length > 0 ? (
-    <div class="pulso-rail -mx-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-2">
-      {weeks.map((w) => {
-        const published = new Map(w.chapters.map((c) => [c.chapter, c]));
-        // A `semanal` week is the pre-W31 archive format: one post that carried
-        // everything. It gets no chip strip, because there is nothing to pick.
-        const showChips = !published.has('semanal');
-        const hero = w.hero;
-        return (
-          <div class="group w-[78%] max-w-[260px] flex-shrink-0 snap-start">
-            <a
-              href={hero.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={hero.caption[locale]}
-              class="block"
-            >
-              <div class="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-                {hero.video ? (
-                  <video
-                    src={hero.video}
-                    poster={hero.poster ?? hero.image}
-                    muted
-                    loop
-                    playsinline
-                    preload="none"
-                    aria-label={t(locale, 'news.instagram.playVideo')}
-                    data-rail-video
-                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  />
-                ) : (
-                  <img
-                    src={hero.image}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  />
-                )}
-                {w.weekNumber !== undefined && (
-                  <span class="absolute left-3 top-3 rounded-full bg-dark-navy/85 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-marfil backdrop-blur-sm">
-                    Pulso #{w.weekNumber}
-                  </span>
-                )}
-                {hero.video && (
-                  <span class="pointer-events-none absolute right-3 top-3 grid h-7 w-7 place-items-center rounded-full bg-dark-navy/80 text-[10px] text-marfil backdrop-blur-sm">▶</span>
-                )}
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent p-3">
-                  <p class="line-clamp-2 text-[11px] leading-snug text-white/95">
-                    {hero.caption[locale]}
-                  </p>
-                </div>
-              </div>
-            </a>
-
-            {showChips && (
-              <div class="mt-2 flex flex-wrap gap-1.5">
-                {CHAPTER_ORDER.map((c) => {
-                  const post = published.get(c);
-                  // Short label on the chip, full name in the accessible name:
-                  // "Ajolote de la semana" wraps a four-chip strip onto two rows.
-                  const label = t(locale, `news.chapter.short.${c}`);
-                  const full = t(locale, `news.chapter.${c}`);
-                  return post ? (
-                    <a
-                      href={post.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Pulso ${w.weekNumber} · ${full}`}
-                      class={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider transition-opacity hover:opacity-80 ${CHAPTER_ACCENT[c]}`}
-                    >{label}</a>
-                  ) : (
-                    // Not published yet. Shown rather than hidden so a Monday
-                    // reads as "one of four is up", not as a one-post week.
-                    <span
-                      aria-hidden="true"
-                      class="rounded-full border border-white/15 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white/30"
-                    >{label}</span>
-                  );
-                })}
-              </div>
+  {items.length > 0 ? (
+    <div
+      id="pulso-rail"
+      class="pulso-rail -mx-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-2"
+      tabindex="0"
+      role="group"
+      aria-label={t(locale, 'news.instagram.title')}
+    >
+      {items.map((it) => (
+        <a
+          href={it.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={it.caption[locale]}
+          class="group block w-[78%] max-w-[260px] flex-shrink-0 snap-start"
+        >
+          <div class="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+            {it.video ? (
+              <video
+                src={it.video}
+                poster={it.poster ?? it.image}
+                muted
+                loop
+                playsinline
+                preload="none"
+                data-rail-video
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+              />
+            ) : (
+              <img
+                src={it.image}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+              />
             )}
+
+            <!-- One badge, not a strip: week and chapter in a single chip. -->
+            <span class={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider backdrop-blur-sm ${CHAPTER_ACCENT[it.chapter]}`}>
+              {it.weekNumber !== undefined ? `#${it.weekNumber} · ` : ''}{t(locale, `news.chapter.short.${it.chapter}`)}
+            </span>
+
+            {it.video && (
+              <span class="pointer-events-none absolute right-3 top-3 grid h-7 w-7 place-items-center rounded-full bg-dark-navy/80 text-[10px] text-marfil backdrop-blur-sm" aria-hidden="true">▶</span>
+            )}
+
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent p-3">
+              <p class="line-clamp-2 text-[11px] leading-snug text-white/95">
+                {it.caption[locale]}
+              </p>
+            </div>
           </div>
-        );
-      })}
+        </a>
+      ))}
     </div>
   ) : (
     <p class="text-sm text-white/55">{t(locale, 'common.soon')}</p>
@@ -142,21 +133,56 @@ const handles = [
   .pulso-rail::-webkit-scrollbar {
     display: none;
   }
+  .pulso-rail:focus-visible {
+    outline: 2px solid rgb(0 156 156);
+    outline-offset: 4px;
+    border-radius: 1rem;
+  }
 </style>
 
 <script>
-  // Rail video playback. `preload="none"` means nothing is fetched until the
-  // visitor engages, which is the whole point — a rail of six autoplaying videos
-  // is a mobile-data decision the site should not make on someone's behalf.
-  //
-  // Fine pointers play on hover/focus. Coarse pointers play only the card the
-  // rail has snapped to, and only when the visitor has not asked for reduced
-  // motion.
-  const videos = Array.from(
-    document.querySelectorAll<HTMLVideoElement>('video[data-rail-video]'),
-  );
+  const rail = document.getElementById('pulso-rail');
 
-  if (videos.length) {
+  if (rail) {
+    // ── Navigation ──────────────────────────────────────────────────────
+    // Scroll by one card, measured from the DOM rather than hardcoded: the card
+    // is a percentage width, so it differs per viewport.
+    const step = () => {
+      const card = rail.querySelector<HTMLElement>(':scope > a');
+      const gap = parseFloat(getComputedStyle(rail).columnGap || '12');
+      return card ? card.getBoundingClientRect().width + gap : rail.clientWidth * 0.8;
+    };
+    const prev = document.querySelector<HTMLButtonElement>('[data-rail-prev]');
+    const next = document.querySelector<HTMLButtonElement>('[data-rail-next]');
+    const go = (dir: number) => rail.scrollBy({ left: dir * step(), behavior: 'smooth' });
+
+    prev?.addEventListener('click', () => go(-1));
+    next?.addEventListener('click', () => go(1));
+
+    // Disable the ends so the buttons say where you are, not just what they do.
+    const sync = () => {
+      const max = rail.scrollWidth - rail.clientWidth - 1;
+      if (prev) prev.disabled = rail.scrollLeft <= 0;
+      if (next) next.disabled = rail.scrollLeft >= max;
+    };
+    rail.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+
+    // The rail is focusable, so arrow keys have to work once it is focused.
+    rail.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+    });
+
+    // ── Hover playback ──────────────────────────────────────────────────
+    // Every chapter that has motion plays it: the Monday and Friday Reels, and
+    // the Wednesday carousel, whose slide 1 is a 45 s animated cover.
+    //
+    // `preload="none"` means nothing is fetched until the visitor engages —
+    // twelve autoplaying videos is a mobile-data decision the site should not
+    // make on someone's behalf.
+    const videos = Array.from(rail.querySelectorAll<HTMLVideoElement>('video[data-rail-video]'));
     const finePointer = window.matchMedia('(pointer: fine)');
     const stillMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -171,13 +197,14 @@ const handles = [
 
     if (finePointer.matches) {
       for (const v of videos) {
-        const card = v.closest('.snap-start') ?? v;
+        const card = v.closest('a') ?? v;
         card.addEventListener('pointerenter', () => play(v));
         card.addEventListener('focusin', () => play(v));
         card.addEventListener('pointerleave', () => stop(v));
         card.addEventListener('focusout', () => stop(v));
       }
     } else {
+      // Coarse pointer: only the card the rail has snapped to plays.
       const io = new IntersectionObserver(
         (entries) => {
           for (const e of entries) {
@@ -186,7 +213,7 @@ const handles = [
             else stop(v);
           }
         },
-        { threshold: 0.75 },
+        { root: rail, threshold: 0.75 },
       );
       for (const v of videos) io.observe(v);
     }

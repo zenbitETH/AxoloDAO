@@ -2,18 +2,19 @@
 import { getCollection } from 'astro:content';
 import AxoloNewsInstagramCard from '@components/AxoloNewsInstagramCard.astro';
 import AxoloNewsPodcastCard from '@components/AxoloNewsPodcastCard.astro';
-import { groupByWeek } from '@/lib/pulso';
 import { type Locale, t } from '@/i18n/strings';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
-// Six WEEKS, not six posts. Since W32 the Pulso is four posts a week, so a flat
-// slice(0, 6) would show a week and a half and "Pulso #32" would stop reading as
-// one thing. groupByWeek folds the chapters back into their week and sorts on
-// the newest chapter each one holds.
+// One card per post. Widened to 12 because four posts a week means six cards is
+// a week and a half; twelve is three full weeks, and the rail has its own
+// navigation now rather than relying on the visitor discovering it scrolls.
 const all = await getCollection('news');
-const weeks = groupByWeek(all.map((n) => n.data)).slice(0, 6);
+const items = all
+  .map((n) => n.data)
+  .sort((a, b) => (a.publishedAt < b.publishedAt ? 1 : a.publishedAt > b.publishedAt ? -1 : 0))
+  .slice(0, 12);
 ---
 
 <section id="news" class="scroll-mt-20 py-16">
@@ -24,7 +25,7 @@ const weeks = groupByWeek(all.map((n) => n.data)).slice(0, 6);
     </header>
 
     <div class="grid gap-6 md:grid-cols-2 md:items-start">
-      <AxoloNewsInstagramCard weeks={weeks} locale={locale} />
+      <AxoloNewsInstagramCard items={items} locale={locale} />
       <AxoloNewsPodcastCard locale={locale} />
     </div>
   </div>
