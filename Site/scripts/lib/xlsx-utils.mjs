@@ -163,6 +163,10 @@ export function indexOfHeader(headerRow, needles) {
 export const ALIAS_NORMALIZE = new Map([
   ['Romulo', 'Rómulo'],
   ['romulo', 'Rómulo'],
+  // Bookkeeping variant of the same specimen. The cross-sheet joins in this
+  // ingest are by name, so both spellings must canonicalize to one.
+  ['Romualdo', 'Rómulo'],
+  ['romualdo', 'Rómulo'],
   ['Chocorol', 'Chocoroll'],
   ['Negra', 'La negra'],
   ['negra', 'La negra'],

@@ -30,6 +30,7 @@ import {
   findHeaderRow,
   indexOfHeader,
   normalizeAlias,
+  ALIAS_NORMALIZE,
   loadEmbargoNames,
   pad2,
   resolveXlsxPath,
@@ -53,6 +54,21 @@ const EMBARGO = loadEmbargoNames(__dirname);
 const isEmbargoedAlias = (s) =>
   EMBARGO.has((normalizeAlias(toStr(s)) ?? '').trim().toLowerCase());
 const stripDiacritics = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+// A renamed specimen keeps its old name in two places ALIAS_NORMALIZE cannot
+// reach: free-text `notas` written by the operator, and `ubicacion` when a tank
+// is labelled after its occupant. Both are public surfaces, so the log would
+// show two names for one animal. Whole-word only, and the entry is never
+// dropped: the clinical record stays, just under one name.
+const canonicalizeProse = (v) => {
+  if (typeof v !== 'string' || !v) return v;
+  let out = v;
+  for (const [from, to] of ALIAS_NORMALIZE) {
+    if (from === to) continue;
+    out = out.replace(new RegExp(`\\b${from.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'g'), to);
+  }
+  return out;
+};
 const EMBARGO_TEXT = [...EMBARGO].map((n) => stripDiacritics(n)).filter(Boolean);
 const textMentionsEmbargoed = (v) => {
   if (typeof v !== 'string' || !v) return false;
@@ -139,10 +155,10 @@ for (let r = bitHdrIdx + 1; r < bitRows.length; r++) {
     autorSecundario: toStr(row[B.autorSecundario]),
     categoria: toStr(row[B.categoria]),
     alias,
-    ubicacion: toStr(row[B.ubicacion]),
+    ubicacion: canonicalizeProse(toStr(row[B.ubicacion])),
     incidencia: toStr(row[B.incidencia]),
     accion: toStr(row[B.accion]),
-    notas: toStr(row[B.notas]),
+    notas: canonicalizeProse(toStr(row[B.notas])),
     linkReporte: toStr(row[B.linkReporte]),
   });
 }
@@ -209,7 +225,7 @@ if (wb.Sheets[MAINT_SHEET]) {
       autorSecundario: toStr(row[M.autor2]),
       categoria: 'Mantenimiento de agua',
       alias: null,
-      ubicacion: normalizeMaintUbicacion(toStr(row[M.ubic])),
+      ubicacion: canonicalizeProse(normalizeMaintUbicacion(toStr(row[M.ubic]))),
       incidencia: evento,
       accion: accion || null,
       notas: toStr(row[M.notas]),

@@ -37,3 +37,7 @@ water-telemetry-seed/
 
 # Local-only Claude entrypoint (content lives in private axolodao-brain repo)
 CLAUDE.local.md
+
+# Scratch/debug scripts (leading underscore) — never publish: they hardcode
+# absolute paths into the private operations workbook.
+Site/scripts/_*.mjs

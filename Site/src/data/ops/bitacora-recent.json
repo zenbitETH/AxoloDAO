@@ -94,7 +94,7 @@
     "ubicacion": "AM 4",
     "incidencia": "Comportamiento normal",
     "accion": null,
-    "notas": "La negra mantiene posturas elevadas del pecho con apoyo de patas",
+    "notas": "La La negra mantiene posturas elevadas del pecho con apoyo de patas",
     "linkReporte": null
   },
   {
@@ -136,7 +136,7 @@
     "ubicacion": "AM 5",
     "incidencia": "Flotabilidad anormal / Arqueo, Irritacion cutanea",
     "accion": null,
-    "notas": "Martin tiene un poco de flotabilidad con irritacion recurrente tras incidente de valors elevados de amonia",
+    "notas": "Martín tiene un poco de flotabilidad con irritacion recurrente tras incidente de valors elevados de amonia",
     "linkReporte": null
   },
   {
@@ -174,7 +174,7 @@
     "autorPrincipal": "lups-plantae.axolodao.eth",
     "autorSecundario": null,
     "categoria": "Apertura de turno",
-    "alias": "Romualdo",
+    "alias": "Rómulo",
     "ubicacion": "AD",
     "incidencia": "Cambio de coloracion, Retención de muda / Descamación, Crecimiento algodonoso / Manchas blancas (Saprolegnia), Nado persistente",
     "accion": null,
@@ -216,11 +216,11 @@
     "autorPrincipal": "lups-plantae.axolodao.eth",
     "autorSecundario": null,
     "categoria": "Apertura de turno",
-    "alias": "Romualdo",
+    "alias": "Rómulo",
     "ubicacion": "Cuarentena",
     "incidencia": "Flotabilidad anormal / Arqueo",
     "accion": null,
-    "notas": "Se transfiere a Romualdo a cuarentena por flotabilidad anormal persistente, el comportamiento cesa en separo y hay respuesta favorable a alimentacion con tubifex. Se registra un leve desprendimiento de la muda en la cola con una ligera presencia de sangre",
+    "notas": "Se transfiere a Rómulo a cuarentena por flotabilidad anormal persistente, el comportamiento cesa en separo y hay respuesta favorable a alimentacion con tubifex. Se registra un leve desprendimiento de la muda en la cola con una ligera presencia de sangre",
     "linkReporte": null
   },
   {
@@ -384,7 +384,7 @@
     "autorPrincipal": "lups-plantae.axolodao.eth",
     "autorSecundario": null,
     "categoria": "Apertura de turno",
-    "alias": "Romualdo",
+    "alias": "Rómulo",
     "ubicacion": "Cuarentena",
     "incidencia": "Retención de muda / Descamación",
     "accion": "Cuarentena",
@@ -566,7 +566,7 @@
     "autorPrincipal": "xolotlcalli.axolodao.eth",
     "autorSecundario": null,
     "categoria": "Accidente de Ejemplar",
-    "alias": "Romualdo",
+    "alias": "Rómulo",
     "ubicacion": "Cuarentena",
     "incidencia": "Crecimiento algodonoso / Manchas blancas (Saprolegnia), Cambio de coloracion",
     "accion": "Cuarentena, Notificación a veterinario",
@@ -1155,7 +1155,7 @@
     "autorSecundario": null,
     "categoria": "Mantenimiento de agua",
     "alias": null,
-    "ubicacion": "Romualdo",
+    "ubicacion": "Rómulo",
     "incidencia": "Cambio de agua",
     "accion": "Cambio de agua · 1 L",
     "notas": "Agua de pecera A. dumerilii despues de cambio de agua del sistema",
@@ -1239,7 +1239,7 @@
     "autorSecundario": null,
     "categoria": "Mantenimiento de agua",
     "alias": null,
-    "ubicacion": "Romualdo",
+    "ubicacion": "Rómulo",
     "incidencia": "Cambio de agua",
     "accion": "Cambio de agua · 1 L",
     "notas": "Agua de pecera A. dumerilii despues de cambio de agua del sistema",
@@ -1435,7 +1435,7 @@
     "autorSecundario": null,
     "categoria": "Mantenimiento de agua",
     "alias": null,
-    "ubicacion": "Romualdo",
+    "ubicacion": "Rómulo",
     "incidencia": "Cambio de agua",
     "accion": "Cambio de agua · 1 L · Personalizada",
     "notas": "1/2 ultima receta nueva + 1/2 OR",
@@ -4560,7 +4560,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Nado persistente",
     "accion": "Solo observación",
-    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y Negra",
+    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y La La negra",
     "linkReporte": null
   },
   {
@@ -4574,7 +4574,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Nado persistente",
     "accion": "Solo observación",
-    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y Negra",
+    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y La La negra",
     "linkReporte": null
   },
   {
@@ -4588,7 +4588,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Nado persistente",
     "accion": "Solo observación",
-    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y Negra",
+    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y La La negra",
     "linkReporte": null
   },
   {
@@ -4602,7 +4602,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Nado persistente",
     "accion": "Solo observación",
-    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y Negra",
+    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y La La negra",
     "linkReporte": null
   },
   {
@@ -7220,7 +7220,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Comportamiento normal",
     "accion": "Modificación/Adición de equipo",
-    "notas": "Prueba de luces fuera. Los ejemplares de AM1 se notan mas comodos. Chocorrol y la Negra son los ajolotes un un mayor tiempo fuera desde el apagado de luces aprox. 1 hora y 30 minutos y 20 minutos para el segundo. El resto de ajolotes logra permanecer fuera un periodo aproximado de 10 minutos continuos.",
+    "notas": "Prueba de luces fuera. Los ejemplares de AM1 se notan mas comodos. Chocorrol y la La La negra son los ajolotes un un mayor tiempo fuera desde el apagado de luces aprox. 1 hora y 30 minutos y 20 minutos para el segundo. El resto de ajolotes logra permanecer fuera un periodo aproximado de 10 minutos continuos.",
     "linkReporte": null
   },
   {
@@ -9096,7 +9096,7 @@
     "ubicacion": "AM 1",
     "incidencia": null,
     "accion": null,
-    "notas": "La negra sufre un breve atoro dentro de una de las tejas por falta de espacio, se procede a detener el tpur y liberarla ya que mostraba signos de estrés e incomodidad, y necesidad de oxígeno. Posterior al evento permaneció tranquilam pero con poco movimiento y después se reincorporó a los refugios. Se sugiere grandemente hacer la sustitución del material y diseñar espacios más cómodos para los ajolotes",
+    "notas": "La La negra sufre un breve atoro dentro de una de las tejas por falta de espacio, se procede a detener el tpur y liberarla ya que mostraba signos de estrés e incomodidad, y necesidad de oxígeno. Posterior al evento permaneció tranquilam pero con poco movimiento y después se reincorporó a los refugios. Se sugiere grandemente hacer la sustitución del material y diseñar espacios más cómodos para los ajolotes",
     "linkReporte": null
   },
   {
