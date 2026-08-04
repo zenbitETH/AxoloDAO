@@ -174,20 +174,6 @@
     "autorPrincipal": "lups-plantae.axolodao.eth",
     "autorSecundario": null,
     "categoria": "Apertura de turno",
-    "alias": "Rómulo",
-    "ubicacion": "AD",
-    "incidencia": "Cambio de coloracion, Retención de muda / Descamación, Crecimiento algodonoso / Manchas blancas (Saprolegnia), Nado persistente",
-    "accion": null,
-    "notas": "Se encuentra al ejemplar con una coloracion muy clara con respecto a lo habitual; ademas se percibe presencia de carga grande de lo que parece ser retencion de muda en la parte final de la cola. Mantiene un nado activo constante",
-    "linkReporte": null
-  },
-  {
-    "fecha": "2026-05-07",
-    "hora": "07:40",
-    "estado": "Resuelto",
-    "autorPrincipal": "lups-plantae.axolodao.eth",
-    "autorSecundario": null,
-    "categoria": "Apertura de turno",
     "alias": "Remo",
     "ubicacion": "AD",
     "incidencia": "Crecimiento algodonoso / Manchas blancas (Saprolegnia)",
@@ -207,20 +193,6 @@
     "incidencia": "Comportamiento normal",
     "accion": null,
     "notas": "Laslarvas continuan creciento y alimenntandose de tubifex favorablemente",
-    "linkReporte": null
-  },
-  {
-    "fecha": "2026-05-07",
-    "hora": "09:34",
-    "estado": "Resuelto",
-    "autorPrincipal": "lups-plantae.axolodao.eth",
-    "autorSecundario": null,
-    "categoria": "Apertura de turno",
-    "alias": "Rómulo",
-    "ubicacion": "Cuarentena",
-    "incidencia": "Flotabilidad anormal / Arqueo",
-    "accion": null,
-    "notas": "Se transfiere a Rómulo a cuarentena por flotabilidad anormal persistente, el comportamiento cesa en separo y hay respuesta favorable a alimentacion con tubifex. Se registra un leve desprendimiento de la muda en la cola con una ligera presencia de sangre",
     "linkReporte": null
   },
   {
@@ -375,20 +347,6 @@
     "incidencia": "\"Falla de equipo (Filtro, chiller, bomba)\"",
     "accion": null,
     "notas": "La bomba de agua se encuentra sin funcionar, se procede a arreglar y equilibrar sistema",
-    "linkReporte": null
-  },
-  {
-    "fecha": "2026-05-11",
-    "hora": "09:10",
-    "estado": "Resuelto",
-    "autorPrincipal": "lups-plantae.axolodao.eth",
-    "autorSecundario": null,
-    "categoria": "Apertura de turno",
-    "alias": "Rómulo",
-    "ubicacion": "Cuarentena",
-    "incidencia": "Retención de muda / Descamación",
-    "accion": "Cuarentena",
-    "notas": "Ejemplar bajo cuidados puntuales en area de cuarentena con personal biomuseo",
     "linkReporte": null
   },
   {
@@ -555,20 +513,6 @@
     "alias": "Chocoroll",
     "ubicacion": "Cuarentena",
     "incidencia": "Retención de muda / Descamación, Crecimiento algodonoso / Manchas blancas (Saprolegnia)",
-    "accion": "Cuarentena, Notificación a veterinario",
-    "notas": "Se traslada a ubicación secundaria para tratamiento",
-    "linkReporte": null
-  },
-  {
-    "fecha": "2026-05-14",
-    "hora": "21:00",
-    "estado": "Requiere acción",
-    "autorPrincipal": "xolotlcalli.axolodao.eth",
-    "autorSecundario": null,
-    "categoria": "Accidente de Ejemplar",
-    "alias": "Rómulo",
-    "ubicacion": "Cuarentena",
-    "incidencia": "Crecimiento algodonoso / Manchas blancas (Saprolegnia), Cambio de coloracion",
     "accion": "Cuarentena, Notificación a veterinario",
     "notas": "Se traslada a ubicación secundaria para tratamiento",
     "linkReporte": null
@@ -1149,20 +1093,6 @@
   },
   {
     "fecha": "2026-06-01",
-    "hora": "15:20",
-    "estado": null,
-    "autorPrincipal": "lups-plantae.axolodao.eth",
-    "autorSecundario": null,
-    "categoria": "Mantenimiento de agua",
-    "alias": null,
-    "ubicacion": "Rómulo",
-    "incidencia": "Cambio de agua",
-    "accion": "Cambio de agua · 1 L",
-    "notas": "Agua de pecera A. dumerilii despues de cambio de agua del sistema",
-    "linkReporte": null
-  },
-  {
-    "fecha": "2026-06-01",
     "hora": "15:40",
     "estado": null,
     "autorPrincipal": "May",
@@ -1229,20 +1159,6 @@
     "incidencia": "Cambio de agua",
     "accion": "Cambio de agua · 1 L · Holtfreter 20%",
     "notas": null,
-    "linkReporte": null
-  },
-  {
-    "fecha": "2026-06-02",
-    "hora": "08:20",
-    "estado": null,
-    "autorPrincipal": "lups-plantae.axolodao.eth",
-    "autorSecundario": null,
-    "categoria": "Mantenimiento de agua",
-    "alias": null,
-    "ubicacion": "Rómulo",
-    "incidencia": "Cambio de agua",
-    "accion": "Cambio de agua · 1 L",
-    "notas": "Agua de pecera A. dumerilii despues de cambio de agua del sistema",
     "linkReporte": null
   },
   {
@@ -1425,20 +1341,6 @@
     "incidencia": "Cambio de agua",
     "accion": "Cambio de agua · 1 L · Holtfreter 20%",
     "notas": null,
-    "linkReporte": null
-  },
-  {
-    "fecha": "2026-06-03",
-    "hora": "09:55",
-    "estado": null,
-    "autorPrincipal": "lups-plantae.axolodao.eth",
-    "autorSecundario": null,
-    "categoria": "Mantenimiento de agua",
-    "alias": null,
-    "ubicacion": "Rómulo",
-    "incidencia": "Cambio de agua",
-    "accion": "Cambio de agua · 1 L · Personalizada",
-    "notas": "1/2 ultima receta nueva + 1/2 OR",
     "linkReporte": null
   },
   {
