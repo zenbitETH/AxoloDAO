@@ -1,0 +1,14 @@
+slug: pulso-w32-axolonews
+author: zenbit
+chapter: axolonews
+url: https://www.instagram.com/p/DbpRJT3jVGq/?img_index=1
+# Carousel, so no hover video: this chapter's slide 1 is a static cover, unlike
+# the podcast deck whose first slide is a 45 s animation.
+image: /photos/news/pulso-w32-axolonews.jpg
+caption:
+  es: "Pulso AxoloDAO · Semana 32 — AxoloNews: los nematodos volvieron y esta vez fueron dos, Chocoroll y Limón, los dos en seguimiento; el gen que ordena la regeneración se llama SP8 y sin él el ajolote regenera desordenado; y el IMPI confirmó que el ajolote nunca fue mascota del Mundial."
+  en: "Pulso AxoloDAO · Week 32 — AxoloNews: the nematodes are back, this time in two animals, Chocoroll and Limón, both under watch; the gene that gives regeneration its order is called SP8, and without it an axolotl regrows out of order; and Mexico's patent office confirmed the axolotl was never a World Cup mascot."
+  pt: "Pulso AxoloDAO · Semana 32 — AxoloNews: os nematódeos voltaram, desta vez em dois animais, Chocoroll e Limón, ambos em acompanhamento; o gene que dá ordem à regeneração se chama SP8 e, sem ele, o axolote regenera fora de ordem; e o instituto de patentes do México confirmou que o axolote nunca foi mascote da Copa."
+publishedAt: '2026-08-04'
+weekNumber: 32
+podcastNumber: 21
