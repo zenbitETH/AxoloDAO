@@ -1,8 +1,11 @@
 // The Pulso AxoloDAO week, as the home rail understands it.
 //
 // Since W32 the Pulso is four posts a week — Monday maintenance, Tuesday
-// AxoloNews, Wednesday podcast, Friday axolotl of the week — published from two
-// accounts. They were briefly grouped into one card per week with a chip strip;
+// AxoloNews, Thursday podcast, Friday axolotl of the week — published from two
+// accounts. (The podcast chapter sat on Wednesday until the show itself moved to
+// Wednesday 9 PM; its clips cannot exist before the episode airs, so the post
+// moved to Thursday. `chapter` values are not day names, so nothing here changed
+// but this sentence.) They were briefly grouped into one card per week with a chip strip;
 // that traded away the thing each post is actually worth, which is its own image.
 // Every chapter now gets a full card of its own, and the rail gained explicit
 // navigation to carry the extra length.

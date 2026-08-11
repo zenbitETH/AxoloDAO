@@ -1,0 +1,17 @@
+slug: pulso-w33-lunes
+author: xolotlcalli
+chapter: lunes
+url: https://www.instagram.com/p/Db4jljENzfR/
+# Not Instagram's og:image, which for this post is a 640x640 square crop the
+# platform picked. This poster is the video's own frame 0 cropped to the 3:4 the
+# profile grid actually uses, so the whole dashboard survives the trim.
+image: /photos/news/pulso-w33-lunes.jpg
+video: /videos/news/pulso-w33-lunes.mp4
+poster: /photos/news/pulso-w33-lunes.jpg
+caption:
+  es: "Pulso AxoloDAO · Semana 33 — Lunes de Mantenimiento con las pruebas de agua de las dos peceras: la temperatura subió más de un grado en ambas y arrastró la conductividad consigo, que se salió de rango en AM y sigue muy alta en AD; amoniaco y nitritos en cero, el pH alto en las dos, y censo de once ejemplares."
+  en: "Pulso AxoloDAO · Week 33 — Monday maintenance with water tests for both tanks: temperature rose more than a degree in each and pulled conductivity up with it, out of range in AM and still very high in AD; ammonia and nitrites at zero, pH high in both, and a census of eleven specimens."
+  pt: "Pulso AxoloDAO · Semana 33 — segunda de manutenção com os testes de água dos dois aquários: a temperatura subiu mais de um grau em ambos e puxou a condutividade junto, fora da faixa em AM e ainda muito alta em AD; amônia e nitritos em zero, pH alto nos dois, e censo de onze exemplares."
+publishedAt: '2026-08-10'
+weekNumber: 33
+podcastNumber: 22
