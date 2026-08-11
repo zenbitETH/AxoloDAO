@@ -1,0 +1,16 @@
+slug: pulso-w32-podcast
+author: zenbit
+chapter: podcast
+url: https://www.instagram.com/p/DbuH4VYDYSQ/?img_index=1
+image: /photos/news/pulso-w32-podcast.jpg
+# "Carousel" does not mean "no motion": this deck's slide 1 is a 45 s animated
+# cover, so the card plays on hover exactly like a Reel does.
+video: /videos/news/pulso-w32-podcast.mp4
+poster: /photos/news/pulso-w32-podcast.jpg
+caption:
+  es: "Pulso AxoloDAO · Semana 32 — el podcast 21 dedica diez minutos al gen SP8, que le da la orden a la regeneración, y ocho al mito del ajolote como mascota del Mundial; también repasa el agua de la semana y dictamina al aire un comportamiento nuevo de Xovi."
+  en: "Pulso AxoloDAO · Week 32 — podcast 21 spends ten minutes on SP8, the gene that gives regeneration its order, and eight on the myth of the axolotl as a World Cup mascot; it also runs through the week's water and rules on a new Xovi behaviour live on air."
+  pt: "Pulso AxoloDAO · Semana 32 — o podcast 21 dedica dez minutos ao gene SP8, que dá a ordem à regeneração, e oito ao mito do axolote como mascote da Copa; também revisa a água da semana e julga ao vivo um comportamento novo do Xovi."
+publishedAt: '2026-08-06'
+weekNumber: 32
+podcastNumber: 21
