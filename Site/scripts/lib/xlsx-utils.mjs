@@ -154,12 +154,21 @@ export function indexOfHeader(headerRow, needles) {
 }
 
 // Alias normalization. The xlsx is the operational system of record but uses
-// inconsistent spellings across sheets — Dashboard ejemplares has 'Negra',
-// 'Chocorol', 'Romulo' while Plan / Alimentación / Historial use 'La negra',
-// 'Chocoroll', 'Rómulo'. The Site (photo manifest, deep-link anchors, modal
+// inconsistent spellings across sheets — Dashboard ejemplares had 'Negra',
+// 'Chocorol', 'Romulo' while Plan / Alimentación / Historial used 'La negra',
+// 'Chocorrol', 'Rómulo'. The Site (photo manifest, deep-link anchors, modal
 // joins between sheets) expects a single canonical alias per specimen, so we
 // fold the variants here. When curators want to retire a normalization,
 // rename the source in the xlsx first, then drop the line below.
+//
+// ⚠ Folding here does NOT protect the workbook's own formulas. `Dashboard
+// ejemplares` pulls each specimen's biometry with
+// `FILTER('Historial medico'!D:D = $A<row>)`, which resolves against the raw
+// text long before this map runs. A split alias therefore breaks the Sheet while
+// the Site still looks coherent: on 2026-08-14 'Chocorol' in column A missed ten
+// modern 'Chocorrol' rows and published a December weight, and 'Negra' missed
+// 'La negra' entirely and published SIN DATOS against ten measurements. Both were
+// fixed in column A, not here.
 export const ALIAS_NORMALIZE = new Map([
   ['Romulo', 'Rómulo'],
   ['romulo', 'Rómulo'],
@@ -167,7 +176,17 @@ export const ALIAS_NORMALIZE = new Map([
   // ingest are by name, so both spellings must canonicalize to one.
   ['Romualdo', 'Rómulo'],
   ['romualdo', 'Rómulo'],
-  ['Chocorol', 'Chocoroll'],
+  // 'Chocorrol' (double R) is the original and, since 2026-08-15, the definitive
+  // spelling: podcasts 09, 10 and 21 and the pulso-w20/w21 rail entries all use
+  // it. 'Chocoroll' was drift that reached the Historial and the Xovi roster.
+  // The workbook itself is now consistent; these two lines cover anything typed
+  // from memory, and the Xovi clip feed, which keeps 'Chocoroll' because the
+  // verified clip's hash is derived from the alias it was submitted with.
+  ['Chocorol', 'Chocorrol'],
+  ['Chocoroll', 'Chocorrol'],
+  ['chocorol', 'Chocorrol'],
+  ['chocoroll', 'Chocorrol'],
+  ['chocorrol', 'Chocorrol'],
   ['Negra', 'La negra'],
   ['negra', 'La negra'],
   ['mocca', 'Moka'],

@@ -103,22 +103,22 @@
       "fenotipo": "Melanoide",
       "edad": null,
       "estadio": "Adulto",
-      "peso": null,
-      "lt": null,
-      "lhc": null,
-      "icc": null,
-      "propCabezaCuerpo": null,
-      "propColaCuerpo": null,
-      "asimetria": "Sin datos",
-      "temp": null,
+      "peso": 54,
+      "lt": 20.66,
+      "lhc": 9.9,
+      "icc": 0.6123543514,
+      "propCabezaCuerpo": 0.2080808081,
+      "propColaCuerpo": 1.086868687,
+      "asimetria": "0.1428571429",
+      "temp": 17.2,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
-      "estadoBio": "SIN DATOS",
-      "ultimoConsumo": 2.036,
-      "respuestaAlim": "Camarón azul",
-      "alertaGastrica": "🟢 ACEPTACIÓN NORMAL",
-      "enCuarentena": true,
+      "estadoBio": "⚠️ REQUIERE ATENCIÓN",
+      "ultimoConsumo": null,
+      "respuestaAlim": "Sin datos",
+      "alertaGastrica": "SIN DATOS",
+      "enCuarentena": false,
       "descripcion": {
         "breve": "Negra todavía busca nombre definitivo, pero su carácter ya está más que claro: es una hembra serena, tranquila y muy sociable, que se lleva de maravilla con todos los demás ajolotes.",
         "extendida": "Negra es la calma hecha ajolote. De temperamento sereno y nada conflictivo, convive sin problemas con cualquiera de sus compañeros: es de esas que siempre llevan la fiesta en paz. Por ahora su nombre es solo provisional, mientras encontramos el definitivo, pero su personalidad apacible y amistosa ya se ganó un lugar en la familia."
@@ -218,7 +218,7 @@
       }
     },
     {
-      "alias": "Chocoroll",
+      "alias": "Chocorrol",
       "id": "ESP-AMSM-1261",
       "pecera": "AM1",
       "especie": "A. mexicanum",
@@ -226,15 +226,15 @@
       "marcas": null,
       "fenotipo": "Melanoide",
       "edad": null,
-      "estadio": "Subadulto",
-      "peso": 27,
-      "lt": 17,
-      "lhc": null,
-      "icc": 0.5495623855,
-      "propCabezaCuerpo": null,
-      "propColaCuerpo": null,
-      "asimetria": "Sin datos",
-      "temp": null,
+      "estadio": "Adulto",
+      "peso": 53,
+      "lt": 18.65,
+      "lhc": 9.56,
+      "icc": 0.8170325543,
+      "propCabezaCuerpo": 0.2364016736,
+      "propColaCuerpo": 0.9508368201,
+      "asimetria": "0.1621621622",
+      "temp": 17.2,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
@@ -244,8 +244,8 @@
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL",
       "enCuarentena": false,
       "descripcion": {
-        "breve": "Chocoroll es de nuestros juveniles más grandes y tiene un sello inconfundible: un pedacito extra en la cola que lo hace único. Llegó muy frágil y enfermo, pero con paciencia y cuidados hoy está fuerte y completamente recuperado.",
-        "extendida": "Chocoroll es pura historia de superación. Llegó a casa muy frágil y enfermo, pero con mucha paciencia y cuidados logró recuperarse por completo; hoy es un ajolote fuerte y lleno de vida. Es de los más grandes de nuestros juveniles y presume un detalle que lo distingue del resto: un pequeño pedacito extra en la cola, su sello personal e inconfundible. Todavía no sabemos si es hembra o macho, así que sigue siendo un pequeño enigma con mucha personalidad y una historia que vale la pena contar."
+        "breve": "Chocorrol es de nuestros juveniles más grandes y tiene un sello inconfundible: un pedacito extra en la cola que lo hace único. Llegó muy frágil y enfermo, pero con paciencia y cuidados hoy está fuerte y completamente recuperado.",
+        "extendida": "Chocorrol es pura historia de superación. Llegó a casa muy frágil y enfermo, pero con mucha paciencia y cuidados logró recuperarse por completo; hoy es un ajolote fuerte y lleno de vida. Es de los más grandes de nuestros juveniles y presume un detalle que lo distingue del resto: un pequeño pedacito extra en la cola, su sello personal e inconfundible. Todavía no sabemos si es hembra o macho, así que sigue siendo un pequeño enigma con mucha personalidad y una historia que vale la pena contar."
       }
     },
     {
@@ -404,7 +404,7 @@
       "frecuencia": "Entre semana",
       "notas": null
     },
-    "Chocoroll": {
+    "Chocorrol": {
       "pecera": "AM 1.2",
       "especie": "A. mexicanum",
       "estadio": "Subadulto",
@@ -1924,7 +1924,7 @@
         "notas": null
       }
     ],
-    "Chocoroll": [
+    "Chocorrol": [
       {
         "fecha": "2025-11-09",
         "autor": "lego-lvsg.axolodao.eth",
@@ -4866,6 +4866,21 @@
         "diaTratamiento": "2026-02-02",
         "observaciones": null,
         "estado": null
+      },
+      {
+        "fecha": "2026-08-13",
+        "hora": 0.7545833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Flotación anormal, Irritación de piel / Descamación",
+        "pruebasLab": null,
+        "tratamiento": "Stress guard",
+        "dosis": null,
+        "via": "Tópica",
+        "diaTratamiento": null,
+        "observaciones": "Se ingresa a Tamal al área de terapia por flotación anormal e irritación cutánea",
+        "estado": null
       }
     ],
     "Tascalate": [
@@ -4975,7 +4990,7 @@
         "estado": null
       }
     ],
-    "Chocoroll": [
+    "Chocorrol": [
       {
         "fecha": "2026-02-27",
         "hora": 0.10875,
@@ -5232,158 +5247,6 @@
         "estado": null
       }
     ],
-    "La negra": [
-      {
-        "fecha": "2026-02-27",
-        "hora": 0.10875,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM 4",
-        "diagnostico": null,
-        "pruebasLab": null,
-        "tratamiento": null,
-        "dosis": null,
-        "via": null,
-        "diaTratamiento": null,
-        "observaciones": null,
-        "estado": "Alta medica"
-      },
-      {
-        "fecha": "2026-03-18",
-        "hora": 0.9629166666666666,
-        "autor": "lego-lvsg.axolodao.eth",
-        "autor2": "xolotlcalli.axolodao.eth",
-        "ubicacion": "AM 4",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Desparacitante",
-        "dosis": "Veterinario",
-        "via": "Oral",
-        "diaTratamiento": "2026-02-09",
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-06-22",
-        "hora": 0.7198611111111111,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": "xolotlcalli.axolodao.eth",
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Fenbendazol",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": null,
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-07-16",
-        "hora": 0.7059722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Fenbendazol",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-01",
-        "observaciones": "Segunda dosis de desparacitantes. Los ejemplares se mantiene con dieta a base de tilapia y croquetas plus",
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-01",
-        "hora": 0.5879166666666666,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Irritación de piel / Descamación",
-        "pruebasLab": null,
-        "tratamiento": "Gentamicina 10 mg/ml",
-        "dosis": "0.01 ml",
-        "via": "Subdermica",
-        "diaTratamiento": "2026-03-01",
-        "observaciones": null,
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-01",
-        "hora": 0.5879166666666666,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Fenbendazol",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-02",
-        "observaciones": "Aumento de dosis por baja eficiencia del medicamento",
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-03",
-        "hora": 0.6295833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Ivermectina 0.1 mg/ml",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-01",
-        "observaciones": "Cambio de medicamento, formulado en dosis seguras para ajolotes",
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-03",
-        "hora": 0.5879166666666666,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Irritación de piel / Descamación",
-        "pruebasLab": null,
-        "tratamiento": "Gentamicina 10 mg/ml",
-        "dosis": "0.01 ml",
-        "via": "Subdermica",
-        "diaTratamiento": "2026-03-02",
-        "observaciones": null,
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-06",
-        "hora": 0.8379166666666666,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": "May",
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Irritación de piel / Descamación",
-        "pruebasLab": null,
-        "tratamiento": "Gentamicina 10 mg/ml",
-        "dosis": "0.01 ml",
-        "via": "Subdermica",
-        "diaTratamiento": "2026-03-03",
-        "observaciones": null,
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-10",
-        "hora": 0.6295833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Ivermectina 0.1 mg/ml",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-02",
-        "observaciones": null,
-        "estado": null
-      }
-    ],
     "Parda": [
       {
         "fecha": "2026-02-27",
@@ -5570,6 +5433,128 @@
         "hora": 0.5879166666666666,
         "autor": "xolotlcalli.axolodao.eth",
         "autor2": null,
+        "ubicacion": "AM 1",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Fenbendazol",
+        "dosis": null,
+        "via": "Oral",
+        "diaTratamiento": "2026-02-02",
+        "observaciones": "Aumento de dosis por baja eficiencia del medicamento",
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-03",
+        "hora": 0.6295833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AM 1",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Ivermectina 0.1 mg/ml",
+        "dosis": null,
+        "via": "Oral",
+        "diaTratamiento": "2026-02-01",
+        "observaciones": "Cambio de medicamento, formulado en dosis seguras para ajolotes",
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.6295833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AM 1",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Ivermectina 0.1 mg/ml",
+        "dosis": null,
+        "via": "Oral",
+        "diaTratamiento": "2026-02-02",
+        "observaciones": null,
+        "estado": null
+      }
+    ],
+    "La negra": [
+      {
+        "fecha": "2026-02-27",
+        "hora": 0.10875,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AM 4",
+        "diagnostico": null,
+        "pruebasLab": null,
+        "tratamiento": null,
+        "dosis": null,
+        "via": null,
+        "diaTratamiento": null,
+        "observaciones": null,
+        "estado": "Alta medica"
+      },
+      {
+        "fecha": "2026-03-18",
+        "hora": 0.9629166666666666,
+        "autor": "lego-lvsg.axolodao.eth",
+        "autor2": "xolotlcalli.axolodao.eth",
+        "ubicacion": "AM 4",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Desparacitante",
+        "dosis": "Veterinario",
+        "via": "Oral",
+        "diaTratamiento": "2026-02-09",
+        "observaciones": null,
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-06-22",
+        "hora": 0.7198611111111111,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "xolotlcalli.axolodao.eth",
+        "ubicacion": "AM 1",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Fenbendazol",
+        "dosis": null,
+        "via": "Oral",
+        "diaTratamiento": null,
+        "observaciones": null,
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-07-16",
+        "hora": 0.7059722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AM 1",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Fenbendazol",
+        "dosis": null,
+        "via": "Oral",
+        "diaTratamiento": "2026-02-01",
+        "observaciones": "Segunda dosis de desparacitantes. Los ejemplares se mantiene con dieta a base de tilapia y croquetas plus",
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-01",
+        "hora": 0.5879166666666666,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Irritación de piel / Descamación",
+        "pruebasLab": null,
+        "tratamiento": "Gentamicina 10 mg/ml",
+        "dosis": "0.01 ml",
+        "via": "Subdermica",
+        "diaTratamiento": "2026-03-01",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-01",
+        "hora": 0.5879166666666666,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
         "ubicacion": "Cuarentena",
         "diagnostico": "Nematodos",
         "pruebasLab": null,
@@ -5593,6 +5578,36 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-01",
         "observaciones": "Cambio de medicamento, formulado en dosis seguras para ajolotes. Se aprecia una dismunición de capa blanquecina en ojos pero con aumento de eliminación de muda",
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-03",
+        "hora": 0.5879166666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Irritación de piel / Descamación",
+        "pruebasLab": null,
+        "tratamiento": "Gentamicina 10 mg/ml",
+        "dosis": "0.01 ml",
+        "via": "Subdermica",
+        "diaTratamiento": "2026-03-02",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-06",
+        "hora": 0.8379166666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Irritación de piel / Descamación",
+        "pruebasLab": null,
+        "tratamiento": "Gentamicina 10 mg/ml",
+        "dosis": "0.01 ml",
+        "via": "Subdermica",
+        "diaTratamiento": "2026-03-03",
+        "observaciones": null,
         "estado": null
       },
       {
@@ -7803,6 +7818,21 @@
       },
       {
         "fecha": "2026-06-26",
+        "hora": 0.8275,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AA",
+        "diagnostico": null,
+        "pruebasLab": null,
+        "tratamiento": "Stress guard",
+        "dosis": "5 ml/80L",
+        "via": "Topica",
+        "diaTratamiento": "2026-05-05",
+        "observaciones": null,
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-06-26",
         "hora": 0.8004166666666667,
         "autor": "lups-plantae.axolodao.eth",
         "autor2": null,
@@ -7829,21 +7859,6 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-04",
         "observaciones": "Baño con azul de metileno",
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-06-26",
-        "hora": 0.8275,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AA",
-        "diagnostico": null,
-        "pruebasLab": null,
-        "tratamiento": "Stress guard",
-        "dosis": "5 ml/80L",
-        "via": "Topica",
-        "diaTratamiento": "2026-05-05",
-        "observaciones": null,
         "estado": "Activo"
       },
       {
@@ -7890,21 +7905,6 @@
         "diaTratamiento": "2026-10-03",
         "observaciones": null,
         "estado": null
-      },
-      {
-        "fecha": "2026-07-01",
-        "hora": 0.8309722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": "May",
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Infección bacteriana",
-        "pruebasLab": "Patología",
-        "tratamiento": "Enrofloxacina 50 mg/ml",
-        "dosis": "0.02 ml cada 24 hrs",
-        "via": "Subdérmica",
-        "diaTratamiento": "2026-07-01",
-        "observaciones": "Medicamento recetado al ejemplar por el veterinario, en la visita médica se toman muestras de fluidos para enviarlos a patología. Inflamación visible por acumulación de líquidos en cavidad abdominal (ascitis). Durante las aplicaciones del medicamento se experimenta una inflamación posterior a las inyecciones que se reducen con el paso de las horas",
-        "estado": "Activo"
       },
       {
         "fecha": "2026-07-01",
@@ -7967,22 +7967,7 @@
         "estado": "Activo"
       },
       {
-        "fecha": "2026-07-02",
-        "hora": 0.7684722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Infección bacteriana",
-        "pruebasLab": null,
-        "tratamiento": "Baño hipertónico",
-        "dosis": "Inmersión de 24 hrs.",
-        "via": "Tópica",
-        "diaTratamiento": "2026-03-01",
-        "observaciones": "El ejemplar parece mostrar cierta incomodidad pero mantiene un movimiento reducido, en el primer tratamiento no se registra diferencia de pesos. Con recomendacion del veterinario se opta por extender el tratamiento con periodos de descanso entre las aplicaciones",
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-07-02",
+        "fecha": "2026-07-01",
         "hora": 0.8309722222222222,
         "autor": "lups-plantae.axolodao.eth",
         "autor2": "May",
@@ -7992,8 +7977,8 @@
         "tratamiento": "Enrofloxacina 50 mg/ml",
         "dosis": "0.02 ml cada 24 hrs",
         "via": "Subdérmica",
-        "diaTratamiento": "2026-07-02",
-        "observaciones": null,
+        "diaTratamiento": "2026-07-01",
+        "observaciones": "Medicamento recetado al ejemplar por el veterinario, en la visita médica se toman muestras de fluidos para enviarlos a patología. Inflamación visible por acumulación de líquidos en cavidad abdominal (ascitis). Durante las aplicaciones del medicamento se experimenta una inflamación posterior a las inyecciones que se reducen con el paso de las horas",
         "estado": "Activo"
       },
       {
@@ -8058,6 +8043,36 @@
       },
       {
         "fecha": "2026-07-02",
+        "hora": 0.8309722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Infección bacteriana",
+        "pruebasLab": "Patología",
+        "tratamiento": "Enrofloxacina 50 mg/ml",
+        "dosis": "0.02 ml cada 24 hrs",
+        "via": "Subdérmica",
+        "diaTratamiento": "2026-07-02",
+        "observaciones": null,
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-07-02",
+        "hora": 0.7684722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Infección bacteriana",
+        "pruebasLab": null,
+        "tratamiento": "Baño hipertónico",
+        "dosis": "Inmersión de 24 hrs.",
+        "via": "Tópica",
+        "diaTratamiento": "2026-03-01",
+        "observaciones": "El ejemplar parece mostrar cierta incomodidad pero mantiene un movimiento reducido, en el primer tratamiento no se registra diferencia de pesos. Con recomendacion del veterinario se opta por extender el tratamiento con periodos de descanso entre las aplicaciones",
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-07-02",
         "hora": 0.5809722222222222,
         "autor": "lups-plantae.axolodao.eth",
         "autor2": null,
@@ -8113,21 +8128,6 @@
         "dosis": "1 gota en cada ojo cada 12 hrs",
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-01",
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-07-03",
-        "hora": 0.8309722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": "May",
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Infección bacteriana",
-        "pruebasLab": "Patología",
-        "tratamiento": "Enrofloxacina 50 mg/ml",
-        "dosis": "0.02 ml cada 24 hrs",
-        "via": "Subdérmica",
-        "diaTratamiento": "2026-07-03",
         "observaciones": null,
         "estado": "Activo"
       },
@@ -8193,6 +8193,21 @@
       },
       {
         "fecha": "2026-07-03",
+        "hora": 0.8309722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Infección bacteriana",
+        "pruebasLab": "Patología",
+        "tratamiento": "Enrofloxacina 50 mg/ml",
+        "dosis": "0.02 ml cada 24 hrs",
+        "via": "Subdérmica",
+        "diaTratamiento": "2026-07-03",
+        "observaciones": null,
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-07-03",
         "hora": 0.5809722222222222,
         "autor": "lups-plantae.axolodao.eth",
         "autor2": null,
@@ -8248,36 +8263,6 @@
         "dosis": "1 gota en cada ojo cada 12 hrs",
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-02",
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-07-04",
-        "hora": 0.6108333333333333,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Infección bacteriana",
-        "pruebasLab": null,
-        "tratamiento": "Baño hipertónico",
-        "dosis": "Inmersión de 24 hrs.",
-        "via": "Tópica",
-        "diaTratamiento": "2026-03-02",
-        "observaciones": "Tras la exposición a los baños de sales el ejemplar presenta cierta descamación en distintas regiones del cuerpo y un aclaramiento en áreas como de la parte inicial a intermedia de la cabeza. Se registra una pérdida de peso de acuerdo a la esperada",
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-07-04",
-        "hora": 0.8309722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": "May",
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Infección bacteriana",
-        "pruebasLab": "Patología",
-        "tratamiento": "Enrofloxacina 50 mg/ml",
-        "dosis": "0.02 ml cada 24 hrs",
-        "via": "Subdérmica",
-        "diaTratamiento": "2026-07-04",
         "observaciones": null,
         "estado": "Activo"
       },
@@ -8343,6 +8328,36 @@
       },
       {
         "fecha": "2026-07-04",
+        "hora": 0.8309722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Infección bacteriana",
+        "pruebasLab": "Patología",
+        "tratamiento": "Enrofloxacina 50 mg/ml",
+        "dosis": "0.02 ml cada 24 hrs",
+        "via": "Subdérmica",
+        "diaTratamiento": "2026-07-04",
+        "observaciones": null,
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-07-04",
+        "hora": 0.6108333333333333,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Infección bacteriana",
+        "pruebasLab": null,
+        "tratamiento": "Baño hipertónico",
+        "dosis": "Inmersión de 24 hrs.",
+        "via": "Tópica",
+        "diaTratamiento": "2026-03-02",
+        "observaciones": "Tras la exposición a los baños de sales el ejemplar presenta cierta descamación en distintas regiones del cuerpo y un aclaramiento en áreas como de la parte inicial a intermedia de la cabeza. Se registra una pérdida de peso de acuerdo a la esperada",
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-07-04",
         "hora": 0.5809722222222222,
         "autor": "lups-plantae.axolodao.eth",
         "autor2": null,
@@ -8398,21 +8413,6 @@
         "dosis": "1 gota en cada ojo cada 12 hrs",
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-03",
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-07-05",
-        "hora": 0.8309722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": "May",
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Infección bacteriana",
-        "pruebasLab": "Patología",
-        "tratamiento": "Enrofloxacina 50 mg/ml",
-        "dosis": "0.02 ml cada 24 hrs",
-        "via": "Subdérmica",
-        "diaTratamiento": "2026-07-05",
         "observaciones": null,
         "estado": "Activo"
       },
@@ -8478,6 +8478,21 @@
       },
       {
         "fecha": "2026-07-05",
+        "hora": 0.8309722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Infección bacteriana",
+        "pruebasLab": "Patología",
+        "tratamiento": "Enrofloxacina 50 mg/ml",
+        "dosis": "0.02 ml cada 24 hrs",
+        "via": "Subdérmica",
+        "diaTratamiento": "2026-07-05",
+        "observaciones": null,
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-07-05",
         "hora": 0.5809722222222222,
         "autor": "lups-plantae.axolodao.eth",
         "autor2": null,
@@ -8533,36 +8548,6 @@
         "dosis": "1 gota en cada ojo cada 12 hrs",
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-04",
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-07-06",
-        "hora": 0.7594444444444445,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Infección bacteriana",
-        "pruebasLab": null,
-        "tratamiento": "Baño hipertónico",
-        "dosis": "Inmersión de 24 hrs.",
-        "via": "Tópica",
-        "diaTratamiento": "2026-03-03",
-        "observaciones": "Mezcla de sales (consultar en bitácora de mantenimiento de agua). Con el tratamiento el ejemplar logra reducir el peso conforme a lo esperado por el veterinario (127 g a 119 g)",
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-07-06",
-        "hora": 0.8309722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": "May",
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Infección bacteriana",
-        "pruebasLab": "Patología",
-        "tratamiento": "Enrofloxacina 50 mg/ml",
-        "dosis": "0.02 ml cada 24 hrs",
-        "via": "Subdérmica",
-        "diaTratamiento": "2026-07-06",
         "observaciones": null,
         "estado": "Activo"
       },
@@ -8624,6 +8609,36 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-06",
         "observaciones": null,
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-07-06",
+        "hora": 0.8309722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Infección bacteriana",
+        "pruebasLab": "Patología",
+        "tratamiento": "Enrofloxacina 50 mg/ml",
+        "dosis": "0.02 ml cada 24 hrs",
+        "via": "Subdérmica",
+        "diaTratamiento": "2026-07-06",
+        "observaciones": null,
+        "estado": "Activo"
+      },
+      {
+        "fecha": "2026-07-06",
+        "hora": 0.7594444444444445,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Infección bacteriana",
+        "pruebasLab": null,
+        "tratamiento": "Baño hipertónico",
+        "dosis": "Inmersión de 24 hrs.",
+        "via": "Tópica",
+        "diaTratamiento": "2026-03-03",
+        "observaciones": "Mezcla de sales (consultar en bitácora de mantenimiento de agua). Con el tratamiento el ejemplar logra reducir el peso conforme a lo esperado por el veterinario (127 g a 119 g)",
         "estado": "Activo"
       },
       {
@@ -8845,598 +8860,6 @@
     ]
   },
   "alimentacion": {
-    "La negra": [
-      {
-        "fecha": "2026-04-08",
-        "hora": 0.85875,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 3.296,
-        "sobrante": 1.26,
-        "consumo": 2.036,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-04-10",
-        "hora": 0.98375,
-        "autor": "lego-lvsg.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 1.74,
-        "sobrante": 0.31,
-        "consumo": 1.43,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-04-14",
-        "hora": 0.6920833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Camarón",
-        "racion": 1.05,
-        "sobrante": 0,
-        "consumo": 1.05,
-        "respuesta": "Camarón azul"
-      },
-      {
-        "fecha": "2026-04-15",
-        "hora": 0.8955555555555555,
-        "autor": "Practicante",
-        "tipo": "Guppie",
-        "racion": 0.63,
-        "sobrante": 0,
-        "consumo": 0.63,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-04-21",
-        "hora": 0.09763888888888889,
-        "autor": "Practicante",
-        "tipo": "Lombriz roja",
-        "racion": 0.23,
-        "sobrante": 0,
-        "consumo": 0.23,
-        "respuesta": "lombriz"
-      },
-      {
-        "fecha": "2026-04-23",
-        "hora": 0.01361111111111111,
-        "autor": "Practicante",
-        "tipo": "Lombriz roja",
-        "racion": 0.23,
-        "sobrante": 0,
-        "consumo": 0.23,
-        "respuesta": "lombriz"
-      },
-      {
-        "fecha": "2026-04-28",
-        "hora": 0.9552777777777778,
-        "autor": "Practicante",
-        "tipo": "Lombriz roja",
-        "racion": 0.22,
-        "sobrante": 0.22,
-        "consumo": 0,
-        "respuesta": "lombriz"
-      },
-      {
-        "fecha": "2026-04-29",
-        "hora": null,
-        "autor": "Practicante",
-        "tipo": "Tubifex",
-        "racion": 7.66,
-        "sobrante": 0.66,
-        "consumo": 7,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-04",
-        "hora": null,
-        "autor": "lego-lvsg.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": null,
-        "sobrante": 1.015,
-        "consumo": null,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-05",
-        "hora": 0.9018055555555555,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 2.4,
-        "sobrante": 2.16,
-        "consumo": 0.24,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-06",
-        "hora": 0.9198611111111111,
-        "autor": "Practicante",
-        "tipo": "Tubifex",
-        "racion": 1.15,
-        "sobrante": 1.2,
-        "consumo": -0.05,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-06",
-        "hora": 0.9198611111111111,
-        "autor": "Practicante",
-        "tipo": "Tubifex",
-        "racion": 1.15,
-        "sobrante": 1.2,
-        "consumo": -0.05,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-08",
-        "hora": 0.6990277777777778,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Lombriz roja",
-        "racion": 1.11,
-        "sobrante": 0,
-        "consumo": 1.11,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-12",
-        "hora": 0.6920833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 5.15,
-        "sobrante": 3,
-        "consumo": 1.075,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-14",
-        "hora": 0.98375,
-        "autor": "Practicante",
-        "tipo": "Tubifex",
-        "racion": 1.36,
-        "sobrante": 0.46,
-        "consumo": 0.9,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-17",
-        "hora": 0.8844444444444445,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 5.85,
-        "sobrante": 3.65,
-        "consumo": 1.1,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-19",
-        "hora": 0.7059722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 5.41,
-        "sobrante": 1.27,
-        "consumo": 2.07,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-20",
-        "hora": 0.73375,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 4.29,
-        "sobrante": 0.89,
-        "consumo": 1.7,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-22",
-        "hora": 0.67125,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 4.28,
-        "sobrante": 1.01,
-        "consumo": 1.635,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-25",
-        "hora": 0.8170833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 4.3,
-        "sobrante": 0.63,
-        "consumo": 1.835,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-27",
-        "hora": 0.6747222222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 2.69,
-        "sobrante": 0.45,
-        "consumo": 1.12,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-05-29",
-        "hora": 0.73375,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 4.45,
-        "sobrante": 0.18,
-        "consumo": 2.135,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-01",
-        "hora": 0.7927777777777778,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 4.83,
-        "sobrante": 0,
-        "consumo": 2.415,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-03",
-        "hora": 0.6643055555555556,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 5.04,
-        "sobrante": 0,
-        "consumo": 2.52,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-05",
-        "hora": 0.8448611111111111,
-        "autor": "May",
-        "tipo": "Tubifex",
-        "racion": 4.57,
-        "sobrante": 0.85,
-        "consumo": 1.86,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-07",
-        "hora": 0.73375,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 5.06,
-        "sobrante": 0,
-        "consumo": 2.53,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-09",
-        "hora": 0.6504166666666666,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 5.01,
-        "sobrante": 2.11,
-        "consumo": 1.45,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-10",
-        "hora": 0.8504166666666667,
-        "autor": "May",
-        "tipo": "Tubifex",
-        "racion": 3.06,
-        "sobrante": 0.5,
-        "consumo": 1.28,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-12",
-        "hora": 0.6358333333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 10.89,
-        "sobrante": 0,
-        "consumo": 2.7225,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-14",
-        "hora": 0.7379166666666667,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 8.31,
-        "sobrante": 0,
-        "consumo": 2.0775,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-16",
-        "hora": 0.7406944444444444,
-        "autor": "May",
-        "tipo": "Tubifex",
-        "racion": 11.33,
-        "sobrante": 0,
-        "consumo": 2.266,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-17",
-        "hora": 0.6851388888888889,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 15.18,
-        "sobrante": 3.04,
-        "consumo": 2.428,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-18",
-        "hora": 0.6920833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 3.04,
-        "sobrante": 0,
-        "consumo": 0.608,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-22",
-        "hora": 0.9177777777777778,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Guppie",
-        "racion": 6.07,
-        "sobrante": 4.895,
-        "consumo": 0.235,
-        "respuesta": "31 guppies - 6 ingeridos en el recinto"
-      },
-      {
-        "fecha": "2026-06-22",
-        "hora": 0.8865277777777778,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 4.07,
-        "sobrante": 2.48,
-        "consumo": 0.318,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-23",
-        "hora": 0.7108333333333333,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Guppie",
-        "racion": 6.07,
-        "sobrante": 6.07,
-        "consumo": 0,
-        "respuesta": "25 en recinto"
-      },
-      {
-        "fecha": "2026-06-24",
-        "hora": 0.8240277777777778,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 3.03,
-        "sobrante": 0,
-        "consumo": 0.606,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-25",
-        "hora": 0.6594444444444445,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 10.22,
-        "sobrante": 0,
-        "consumo": 2.044,
-        "respuesta": "Se observa a La Negra comiendo"
-      },
-      {
-        "fecha": "2026-06-26",
-        "hora": 0.6434722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 10.04,
-        "sobrante": 0,
-        "consumo": 2.008,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-06-29",
-        "hora": 0.8830555555555556,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tubifex",
-        "racion": 15.11,
-        "sobrante": 0,
-        "consumo": 3.022,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-01",
-        "hora": 0.9420833333333334,
-        "autor": "May",
-        "tipo": "Tilapia",
-        "racion": 3.2,
-        "sobrante": 1.07,
-        "consumo": 2.13,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-03",
-        "hora": 0.8719444444444444,
-        "autor": "May",
-        "tipo": "Tilapia",
-        "racion": 2.45,
-        "sobrante": 1.04,
-        "consumo": 1.41,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-07",
-        "hora": 0.73375,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Guppie",
-        "racion": 0.29,
-        "sobrante": 0,
-        "consumo": 0.29,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-08",
-        "hora": 0.8170833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 2.13,
-        "sobrante": 0,
-        "consumo": 2.13,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-10",
-        "hora": 0.8448611111111111,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 2.22,
-        "sobrante": 0.09,
-        "consumo": 2.13,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-12",
-        "hora": 0.73375,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Croquetas",
-        "racion": 0.1,
-        "sobrante": 0,
-        "consumo": 0.1,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-13",
-        "hora": 0.8379166666666666,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 2.24,
-        "sobrante": 0.74,
-        "consumo": 1.5,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-15",
-        "hora": 0.8309722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 2.04,
-        "sobrante": 0,
-        "consumo": 2.04,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-17",
-        "hora": 0.8379166666666666,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 2.03,
-        "sobrante": 1.73,
-        "consumo": 0.3,
-        "respuesta": "Ejemplar dentro de teja"
-      },
-      {
-        "fecha": "2026-07-20",
-        "hora": 0.8309722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 1.84,
-        "sobrante": 0,
-        "consumo": 1.84,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-22",
-        "hora": 0.8344444444444444,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 1.94,
-        "sobrante": 0,
-        "consumo": 1.94,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-24",
-        "hora": 0.89,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 3.14,
-        "sobrante": 0.4,
-        "consumo": 2.74,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-28",
-        "hora": 0.83375,
-        "autor": "May",
-        "tipo": "Tilapia",
-        "racion": 2.63,
-        "sobrante": 0.68,
-        "consumo": 1.95,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-30",
-        "hora": 0.8309722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 2.68,
-        "sobrante": 2.68,
-        "consumo": 0,
-        "respuesta": "Inicialmente repondió positivamente a la alimentación y 15 minutos después haber concluido vomitó el alimento con restos de alimentación del día martes 28/07/26 (alimento digerido o parcialmente digerido). La consistencia era muy similar a lo que se observa en las excretas y el color típico de la tilapia"
-      },
-      {
-        "fecha": "2026-08-04",
-        "hora": 0.8795833333333334,
-        "autor": "May",
-        "tipo": "Tilapia",
-        "racion": 2.6,
-        "sobrante": 2.14,
-        "consumo": 0.46,
-        "respuesta": "El ejemplar se muestra estresado"
-      },
-      {
-        "fecha": "2026-08-06",
-        "hora": 0.8726388888888889,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Guppie",
-        "racion": 0.22,
-        "sobrante": 0,
-        "consumo": 0.22,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-08-06",
-        "hora": 0.8379166666666666,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 2.06,
-        "sobrante": 1.51,
-        "consumo": 0.55,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-08-07",
-        "hora": 0.8518055555555556,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Guppie",
-        "racion": 0.46,
-        "sobrante": 0,
-        "consumo": 0.46,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-08-07",
-        "hora": 0.8518055555555556,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 0.7,
-        "sobrante": 0.27,
-        "consumo": 0.43,
-        "respuesta": null
-      }
-    ],
     "Tamal de dulce": [
       {
         "fecha": "2026-04-08",
@@ -9969,6 +9392,16 @@
         "respuesta": null
       },
       {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.3,
+        "sobrante": 0.3,
+        "consumo": 0,
+        "respuesta": "No se observó que comiera croquetas (Qualis)"
+      },
+      {
         "fecha": "2026-08-04",
         "hora": 0.8795833333333334,
         "autor": "May",
@@ -9997,6 +9430,26 @@
         "sobrante": 1.16,
         "consumo": 0.63,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.84,
+        "sobrante": 1.35,
+        "consumo": 1.49,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 4.19,
+        "sobrante": 4.19,
+        "consumo": 0,
+        "respuesta": "El jemplar muestra total apattia por l alimento. Se muestra demasiado estresada"
       }
     ],
     "Tascalate": [
@@ -10551,6 +10004,16 @@
         "respuesta": null
       },
       {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.3,
+        "sobrante": 0,
+        "consumo": 0.3,
+        "respuesta": "Croqueta qualis"
+      },
+      {
         "fecha": "2026-08-04",
         "hora": 0.8795833333333334,
         "autor": "May",
@@ -10579,9 +10042,29 @@
         "sobrante": 1.18,
         "consumo": 0,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.93,
+        "sobrante": 0.63,
+        "consumo": 1.3,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.02,
+        "sobrante": 0.63,
+        "consumo": 2.39,
+        "respuesta": null
       }
     ],
-    "Chocoroll": [
+    "Chocorrol": [
       {
         "fecha": "2026-04-08",
         "hora": 0.85875,
@@ -11073,6 +10556,16 @@
         "respuesta": null
       },
       {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.3,
+        "sobrante": 0,
+        "consumo": 0.3,
+        "respuesta": "Croqueta qualis"
+      },
+      {
         "fecha": "2026-08-04",
         "hora": 0.8795833333333334,
         "autor": "May",
@@ -11100,6 +10593,658 @@
         "racion": 0.82,
         "sobrante": 0.11,
         "consumo": 0.71,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.16,
+        "sobrante": 0.2,
+        "consumo": 1.96,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3,
+        "sobrante": 0.08,
+        "consumo": 2.92,
+        "respuesta": null
+      }
+    ],
+    "La negra": [
+      {
+        "fecha": "2026-04-08",
+        "hora": 0.85875,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 3.296,
+        "sobrante": 1.26,
+        "consumo": 2.036,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-04-10",
+        "hora": 0.98375,
+        "autor": "lego-lvsg.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.74,
+        "sobrante": 0.31,
+        "consumo": 1.43,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-04-14",
+        "hora": 0.6920833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Camarón",
+        "racion": 1.05,
+        "sobrante": 0,
+        "consumo": 1.05,
+        "respuesta": "Camarón azul"
+      },
+      {
+        "fecha": "2026-04-15",
+        "hora": 0.8955555555555555,
+        "autor": "Practicante",
+        "tipo": "Guppie",
+        "racion": 0.63,
+        "sobrante": 0,
+        "consumo": 0.63,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-04-21",
+        "hora": 0.09763888888888889,
+        "autor": "Practicante",
+        "tipo": "Lombriz roja",
+        "racion": 0.23,
+        "sobrante": 0,
+        "consumo": 0.23,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-23",
+        "hora": 0.01361111111111111,
+        "autor": "Practicante",
+        "tipo": "Lombriz roja",
+        "racion": 0.23,
+        "sobrante": 0,
+        "consumo": 0.23,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-28",
+        "hora": 0.9552777777777778,
+        "autor": "Practicante",
+        "tipo": "Lombriz roja",
+        "racion": 0.22,
+        "sobrante": 0.22,
+        "consumo": 0,
+        "respuesta": "lombriz"
+      },
+      {
+        "fecha": "2026-04-29",
+        "hora": null,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 7.66,
+        "sobrante": 0.66,
+        "consumo": 7,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-04",
+        "hora": null,
+        "autor": "lego-lvsg.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": null,
+        "sobrante": 1.015,
+        "consumo": null,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-05",
+        "hora": 0.9018055555555555,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 2.4,
+        "sobrante": 2.16,
+        "consumo": 0.24,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-06",
+        "hora": 0.9198611111111111,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 1.15,
+        "sobrante": 1.2,
+        "consumo": -0.05,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-06",
+        "hora": 0.9198611111111111,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 1.15,
+        "sobrante": 1.2,
+        "consumo": -0.05,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-08",
+        "hora": 0.6990277777777778,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Lombriz roja",
+        "racion": 1.11,
+        "sobrante": 0,
+        "consumo": 1.11,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-12",
+        "hora": 0.6920833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 5.15,
+        "sobrante": 3,
+        "consumo": 1.075,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-14",
+        "hora": 0.98375,
+        "autor": "Practicante",
+        "tipo": "Tubifex",
+        "racion": 1.36,
+        "sobrante": 0.46,
+        "consumo": 0.9,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-17",
+        "hora": 0.8844444444444445,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 5.85,
+        "sobrante": 3.65,
+        "consumo": 1.1,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-19",
+        "hora": 0.7059722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 5.41,
+        "sobrante": 1.27,
+        "consumo": 2.07,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-20",
+        "hora": 0.73375,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 4.29,
+        "sobrante": 0.89,
+        "consumo": 1.7,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-22",
+        "hora": 0.67125,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 4.28,
+        "sobrante": 1.01,
+        "consumo": 1.635,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 4.3,
+        "sobrante": 0.63,
+        "consumo": 1.835,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-27",
+        "hora": 0.6747222222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 2.69,
+        "sobrante": 0.45,
+        "consumo": 1.12,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-05-29",
+        "hora": 0.73375,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 4.45,
+        "sobrante": 0.18,
+        "consumo": 2.135,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-01",
+        "hora": 0.7927777777777778,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 4.83,
+        "sobrante": 0,
+        "consumo": 2.415,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-03",
+        "hora": 0.6643055555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 5.04,
+        "sobrante": 0,
+        "consumo": 2.52,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-05",
+        "hora": 0.8448611111111111,
+        "autor": "May",
+        "tipo": "Tubifex",
+        "racion": 4.57,
+        "sobrante": 0.85,
+        "consumo": 1.86,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-07",
+        "hora": 0.73375,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 5.06,
+        "sobrante": 0,
+        "consumo": 2.53,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-09",
+        "hora": 0.6504166666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 5.01,
+        "sobrante": 2.11,
+        "consumo": 1.45,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-10",
+        "hora": 0.8504166666666667,
+        "autor": "May",
+        "tipo": "Tubifex",
+        "racion": 3.06,
+        "sobrante": 0.5,
+        "consumo": 1.28,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-12",
+        "hora": 0.6358333333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 10.89,
+        "sobrante": 0,
+        "consumo": 2.7225,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-14",
+        "hora": 0.7379166666666667,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 8.31,
+        "sobrante": 0,
+        "consumo": 2.0775,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-16",
+        "hora": 0.7406944444444444,
+        "autor": "May",
+        "tipo": "Tubifex",
+        "racion": 11.33,
+        "sobrante": 0,
+        "consumo": 2.266,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-17",
+        "hora": 0.6851388888888889,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 15.18,
+        "sobrante": 3.04,
+        "consumo": 2.428,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-18",
+        "hora": 0.6920833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 3.04,
+        "sobrante": 0,
+        "consumo": 0.608,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-22",
+        "hora": 0.9177777777777778,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Guppie",
+        "racion": 6.07,
+        "sobrante": 4.895,
+        "consumo": 0.235,
+        "respuesta": "31 guppies - 6 ingeridos en el recinto"
+      },
+      {
+        "fecha": "2026-06-22",
+        "hora": 0.8865277777777778,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 4.07,
+        "sobrante": 2.48,
+        "consumo": 0.318,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-23",
+        "hora": 0.7108333333333333,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Guppie",
+        "racion": 6.07,
+        "sobrante": 6.07,
+        "consumo": 0,
+        "respuesta": "25 en recinto"
+      },
+      {
+        "fecha": "2026-06-24",
+        "hora": 0.8240277777777778,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.03,
+        "sobrante": 0,
+        "consumo": 0.606,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-25",
+        "hora": 0.6594444444444445,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 10.22,
+        "sobrante": 0,
+        "consumo": 2.044,
+        "respuesta": "Se observa a La Negra comiendo"
+      },
+      {
+        "fecha": "2026-06-26",
+        "hora": 0.6434722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 10.04,
+        "sobrante": 0,
+        "consumo": 2.008,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-06-29",
+        "hora": 0.8830555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tubifex",
+        "racion": 15.11,
+        "sobrante": 0,
+        "consumo": 3.022,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-01",
+        "hora": 0.9420833333333334,
+        "autor": "May",
+        "tipo": "Tilapia",
+        "racion": 3.2,
+        "sobrante": 1.07,
+        "consumo": 2.13,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-03",
+        "hora": 0.8719444444444444,
+        "autor": "May",
+        "tipo": "Tilapia",
+        "racion": 2.45,
+        "sobrante": 1.04,
+        "consumo": 1.41,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-07",
+        "hora": 0.73375,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Guppie",
+        "racion": 0.29,
+        "sobrante": 0,
+        "consumo": 0.29,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-08",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.13,
+        "sobrante": 0,
+        "consumo": 2.13,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-10",
+        "hora": 0.8448611111111111,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.22,
+        "sobrante": 0.09,
+        "consumo": 2.13,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-12",
+        "hora": 0.73375,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.1,
+        "sobrante": 0,
+        "consumo": 0.1,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-13",
+        "hora": 0.8379166666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.24,
+        "sobrante": 0.74,
+        "consumo": 1.5,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-15",
+        "hora": 0.8309722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.04,
+        "sobrante": 0,
+        "consumo": 2.04,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-17",
+        "hora": 0.8379166666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.03,
+        "sobrante": 1.73,
+        "consumo": 0.3,
+        "respuesta": "Ejemplar dentro de teja"
+      },
+      {
+        "fecha": "2026-07-20",
+        "hora": 0.8309722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.84,
+        "sobrante": 0,
+        "consumo": 1.84,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-22",
+        "hora": 0.8344444444444444,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.94,
+        "sobrante": 0,
+        "consumo": 1.94,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-24",
+        "hora": 0.89,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.14,
+        "sobrante": 0.4,
+        "consumo": 2.74,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-28",
+        "hora": 0.83375,
+        "autor": "May",
+        "tipo": "Tilapia",
+        "racion": 2.63,
+        "sobrante": 0.68,
+        "consumo": 1.95,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-07-30",
+        "hora": 0.8309722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.68,
+        "sobrante": 2.68,
+        "consumo": 0,
+        "respuesta": "Inicialmente repondió positivamente a la alimentación y 15 minutos después haber concluido vomitó el alimento con restos de alimentación del día martes 28/07/26 (alimento digerido o parcialmente digerido). La consistencia era muy similar a lo que se observa en las excretas y el color típico de la tilapia"
+      },
+      {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.33,
+        "sobrante": 0,
+        "consumo": 0.33,
+        "respuesta": "Croqueta qualis"
+      },
+      {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.75,
+        "sobrante": 0.52,
+        "consumo": 0.23,
+        "respuesta": "Croqueta plus"
+      },
+      {
+        "fecha": "2026-08-04",
+        "hora": 0.8795833333333334,
+        "autor": "May",
+        "tipo": "Tilapia",
+        "racion": 2.6,
+        "sobrante": 2.14,
+        "consumo": 0.46,
+        "respuesta": "El ejemplar se muestra estresado"
+      },
+      {
+        "fecha": "2026-08-06",
+        "hora": 0.8726388888888889,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Guppie",
+        "racion": 0.22,
+        "sobrante": 0,
+        "consumo": 0.22,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-06",
+        "hora": 0.8379166666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.06,
+        "sobrante": 1.51,
+        "consumo": 0.55,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-07",
+        "hora": 0.8518055555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Guppie",
+        "racion": 0.46,
+        "sobrante": 0,
+        "consumo": 0.46,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-07",
+        "hora": 0.8518055555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 0.7,
+        "sobrante": 0.27,
+        "consumo": 0.43,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.76,
+        "sobrante": 0.91,
+        "consumo": 0.85,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.33,
+        "sobrante": 0.83,
+        "consumo": 1.5,
         "respuesta": null
       }
     ],
@@ -11635,6 +11780,16 @@
         "respuesta": null
       },
       {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.3,
+        "sobrante": 0,
+        "consumo": 0.3,
+        "respuesta": "No se observó que comiera croquetas (Qualis)"
+      },
+      {
         "fecha": "2026-08-04",
         "hora": 0.8795833333333334,
         "autor": "May",
@@ -11662,6 +11817,26 @@
         "racion": 1.2,
         "sobrante": 1.2,
         "consumo": 0,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.19,
+        "sobrante": 0.26,
+        "consumo": 1.93,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.11,
+        "sobrante": 0,
+        "consumo": 3.11,
         "respuesta": null
       }
     ],
@@ -12647,6 +12822,26 @@
         "respuesta": null
       },
       {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.305,
+        "sobrante": 0.15,
+        "consumo": 0.155,
+        "respuesta": "Croqueta qualis"
+      },
+      {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.305,
+        "sobrante": 0.15,
+        "consumo": 0.155,
+        "respuesta": "Croqueta qualis"
+      },
+      {
         "fecha": "2026-08-04",
         "hora": 0.8795833333333334,
         "autor": "May",
@@ -12705,6 +12900,46 @@
         "sobrante": 1.64,
         "consumo": 0,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.62,
+        "sobrante": 0,
+        "consumo": 1.62,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.62,
+        "sobrante": 1.33,
+        "consumo": 0.29,
+        "respuesta": "Larva 2 muestra apatía al alimento después de los procesos de manipulación para desparasitar"
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.88,
+        "sobrante": 0.11,
+        "consumo": 1.77,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.89,
+        "sobrante": 1.53,
+        "consumo": 0.36,
+        "respuesta": "Larva 2 se mustra demasiado nerviosa para comer. BBusca activamente refugiarse dentro del coco"
       }
     ],
     "Pardo Macho": [
@@ -13219,6 +13454,16 @@
         "respuesta": null
       },
       {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.29,
+        "sobrante": 0.29,
+        "consumo": 0,
+        "respuesta": "Croqueta qualis, no se vio comer al ajolote"
+      },
+      {
         "fecha": "2026-08-04",
         "hora": 0.8795833333333334,
         "autor": "May",
@@ -13246,6 +13491,26 @@
         "racion": 0.96,
         "sobrante": 0.64,
         "consumo": 0.32,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.22,
+        "sobrante": 1.33,
+        "consumo": 0.89,
+        "respuesta": "Macho no muestra mucho apetito"
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.15,
+        "sobrante": 1.08,
+        "consumo": 2.07,
         "respuesta": null
       }
     ],
@@ -13781,6 +14046,16 @@
         "respuesta": null
       },
       {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.425,
+        "sobrante": 0.43,
+        "consumo": -0.005,
+        "respuesta": "Croqueta qualis"
+      },
+      {
         "fecha": "2026-08-04",
         "hora": 0.8795833333333334,
         "autor": "May",
@@ -13808,6 +14083,26 @@
         "racion": 0.96,
         "sobrante": 0,
         "consumo": 0.96,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.76,
+        "sobrante": 0,
+        "consumo": 1.76,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.68,
+        "sobrante": 0.16,
+        "consumo": 1.52,
         "respuesta": null
       }
     ],
@@ -14413,6 +14708,16 @@
         "respuesta": "Martín comió todas las croquetas, Limón no logró comer solo"
       },
       {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.425,
+        "sobrante": 0,
+        "consumo": 0.425,
+        "respuesta": "Croqueta qualis, no se vio comer al ajolote"
+      },
+      {
         "fecha": "2026-08-04",
         "hora": 0.8795833333333334,
         "autor": "May",
@@ -14440,6 +14745,26 @@
         "racion": 0.98,
         "sobrante": 0,
         "consumo": 0.98,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.72,
+        "sobrante": 0,
+        "consumo": 1.72,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.23,
+        "sobrante": 0,
+        "consumo": 2.23,
         "respuesta": null
       }
     ],
@@ -14995,6 +15320,26 @@
         "respuesta": null
       },
       {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.57,
+        "sobrante": 0.45,
+        "consumo": 0.12,
+        "respuesta": "Croquetas plus"
+      },
+      {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.5,
+        "sobrante": 0.5,
+        "consumo": 0,
+        "respuesta": "Croquetas qualis"
+      },
+      {
         "fecha": "2026-08-04",
         "hora": 0.8795833333333334,
         "autor": "May",
@@ -15022,6 +15367,26 @@
         "racion": 2.74,
         "sobrante": 0.67,
         "consumo": 2.07,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.54,
+        "sobrante": 0,
+        "consumo": 2.54,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 5.66,
+        "sobrante": 1.31,
+        "consumo": 4.35,
         "respuesta": null
       }
     ],
@@ -15107,6 +15472,26 @@
         "respuesta": null
       },
       {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.38,
+        "sobrante": 0.38,
+        "consumo": 0,
+        "respuesta": "Croquetas plus"
+      },
+      {
+        "fecha": "2026-08-03",
+        "hora": 0.8205555555555556,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.34,
+        "sobrante": 0.34,
+        "consumo": 0,
+        "respuesta": "Croquetas qualis"
+      },
+      {
         "fecha": "2026-08-04",
         "hora": 0.8795833333333334,
         "autor": "May",
@@ -15134,6 +15519,26 @@
         "racion": 2.72,
         "sobrante": 0.15,
         "consumo": 2.57,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.8795833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.59,
+        "sobrante": 0,
+        "consumo": 2.59,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-12",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.87,
+        "sobrante": 0,
+        "consumo": 3.87,
         "respuesta": null
       }
     ],
