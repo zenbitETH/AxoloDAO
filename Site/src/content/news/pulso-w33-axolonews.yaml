@@ -1,0 +1,19 @@
+slug: pulso-w33-axolonews
+# Published from @zenbit.eth, not the chapter's default author. `author` is the
+# record of who posted it, not the distribution plan.
+author: zenbit
+chapter: axolonews
+url: https://www.instagram.com/p/Db8t3TlCeEO/
+# Not Instagram's og:image. The deck is 4:5 and the profile grid shows a 3:4
+# centre crop of it, so the poster is slide 1's own first frame cropped the way
+# the grid actually crops it.
+image: /photos/news/pulso-w33-axolonews.jpg
+video: /videos/news/pulso-w33-axolonews.mp4
+poster: /photos/news/pulso-w33-axolonews.jpg
+caption:
+  es: "Pulso AxoloDAO · Semana 33 — AxoloNews con el convenio firmado con la Secretaría de Cultura de Querétaro por el ajolote serrano de la Sierra Gorda; la cola de Tamal, que se volvió a abrir sin causa registrada; el agua, que subió de temperatura y entró en rango; la segunda ronda de ivermectina en la colonia; y Chocorrol, que subió de cuarenta y ocho a cincuenta y tres gramos."
+  en: "Pulso AxoloDAO · Week 33 — AxoloNews with the agreement signed with Querétaro's Ministry of Culture for the mountain axolotl of the Sierra Gorda; Tamal's tail, reopened with no recorded cause; the water, warmer and back in range; the second round of ivermectin across the colony; and Chocorrol, up from forty-eight to fifty-three grams."
+  pt: "Pulso AxoloDAO · Semana 33 — AxoloNews com o convênio assinado com a Secretaria de Cultura de Querétaro pelo axolote serrano da Sierra Gorda; a cauda de Tamal, que voltou a abrir sem causa registrada; a água, que subiu de temperatura e entrou na faixa; a segunda rodada de ivermectina na colônia; e Chocorrol, que subiu de quarenta e oito para cinquenta e três gramas."
+publishedAt: '2026-08-12'
+weekNumber: 33
+podcastNumber: 22

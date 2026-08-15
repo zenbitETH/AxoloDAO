@@ -1,0 +1,16 @@
+slug: pulso-w33-podcast
+author: zenbit
+chapter: podcast
+url: https://www.instagram.com/p/DcAHTrVDcmE/
+image: /photos/news/pulso-w33-podcast.jpg
+# "Carousel" does not mean "no motion": this deck's slide 1 is an animated cover,
+# so the card plays on hover exactly like a Reel does.
+video: /videos/news/pulso-w33-podcast.mp4
+poster: /photos/news/pulso-w33-podcast.jpg
+caption:
+  es: "Pulso AxoloDAO · Semana 33 — el podcast 22 en diecinueve clips: el convenio con la Secretaría de Cultura y la cola de Tamal que se volvió a abrir; cómo se sexa un ajolote sin cortarlo y qué separa a una población sana de una endogámica; el museo comunitario de Pinal de Amoles; la temperatura que se subió a propósito y el pH que sigue sin entenderse; y el dictamen al aire de la lesión de Tamal, clip por clip."
+  en: "Pulso AxoloDAO · Week 33 — podcast 22 in nineteen clips: the agreement with the Ministry of Culture and Tamal's reopened tail; how to sex an axolotl without cutting it, and what separates a healthy population from an inbred one; the community museum of Pinal de Amoles; the temperature raised on purpose and the pH still not understood; and Tamal's injury ruled on live, clip by clip."
+  pt: "Pulso AxoloDAO · Semana 33 — o podcast 22 em dezenove clipes: o convênio com a Secretaria de Cultura e a cauda de Tamal que voltou a abrir; como se sexa um axolote sem cortá-lo e o que separa uma população saudável de uma endogâmica; o museu comunitário de Pinal de Amoles; a temperatura elevada de propósito e o pH que continua sem explicação; e o laudo ao vivo da lesão de Tamal, clipe por clipe."
+publishedAt: '2026-08-13'
+weekNumber: 33
+podcastNumber: 22

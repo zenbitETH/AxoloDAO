@@ -1,0 +1,17 @@
+slug: pulso-w33-ajolote
+author: xolotlcalli
+chapter: ajolote
+url: https://www.instagram.com/p/DcEUujvNWs8/
+# Not Instagram's og:image, which for this Reel is a 640x640 square crop the
+# platform picked. This poster is the video's own frame 0 cropped to the 3:4 the
+# profile grid actually uses, so the name and the chrome survive the trim.
+image: /photos/news/pulso-w33-ajolote.jpg
+video: /videos/news/pulso-w33-ajolote.mp4
+poster: /photos/news/pulso-w33-ajolote.jpg
+caption:
+  es: "Pulso AxoloDAO · Semana 33 — Ajolote de la Semana: Chocorrol, melanoide de la pecera AM 1, subió de cuarenta y ocho a cincuenta y tres gramos entre el 22 de julio y el 10 de agosto; del 9 al 13 la bitácora le registró flotación, nado en círculos y dificultad para subir a respirar, y el 12 se notificó al veterinario; su asimetría branquial es de 16.2 por ciento y su aleteo branquial, dieciséis por minuto, quedó verificado en Xovi."
+  en: "Pulso AxoloDAO · Week 33 — Axolotl of the Week: Chocorrol, a melanoid from tank AM 1, went from forty-eight to fifty-three grams between 22 July and 10 August; from the 9th to the 13th the log recorded floating, circling and difficulty surfacing to breathe, and on the 12th the vet was notified; its branchial asymmetry is 16.2 per cent and its gill flutter, sixteen per minute, was verified on Xovi."
+  pt: "Pulso AxoloDAO · Semana 33 — Axolote da Semana: Chocorrol, melanoide do aquário AM 1, subiu de quarenta e oito para cinquenta e três gramas entre 22 de julho e 10 de agosto; de 9 a 13 o diário registrou flutuação, nado em círculos e dificuldade para subir e respirar, e no dia 12 o veterinário foi notificado; sua assimetria branquial é de 16,2 por cento e seu batimento branquial, dezesseis por minuto, foi verificado no Xovi."
+publishedAt: '2026-08-15'
+weekNumber: 33
+podcastNumber: 22

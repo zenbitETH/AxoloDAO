@@ -70,10 +70,10 @@ const renameInText = (s) =>
 
 // Friendly per-axolotl narrative for the ajolotes-explorer "Resumen" tab. This
 // is curated copy maintained by the curator (NOT in the xlsx), keyed by
-// canonical alias (post-normalizeAlias, e.g. "La negra", "Chocoroll",
+// canonical alias (post-normalizeAlias, e.g. "La negra", "Chocorrol",
 // "Pardo Macho", "Limon"). breve = 2–3 sentences; extendida = full paragraph.
 const EJEMPLAR_DESCRIPCIONES = new Map([
-  // Chocoroll's narrative uses gender-neutral wording (its sex is recorded as
+  // Chocorrol's narrative uses gender-neutral wording (its sex is recorded as
   // "Sin sexar" in the Dashboard) and describes its arrival illness/recovery in
   // general terms to match the medical record.
   ['Panchita', {
@@ -128,9 +128,9 @@ const EJEMPLAR_DESCRIPCIONES = new Map([
     breve: 'Goldy fue nuestro campeón de lo remilgoso: el más exigente de todos para comer. Era delgadito, crecía despacio y era el más tímido de los juveniles. Un consentido que necesitaba paciencia y cariño.',
     extendida: 'Goldy se llevaba el primer lugar en una categoría muy particular: fue el más remilgoso de todos a la hora de comer, lo que explicaba que estuviera delgadito y que creciera más despacio que el resto. Además fue el más tímido de nuestros juveniles, así que, entre su carácter reservado y su apetito selectivo, fue uno de los que más mimos y paciencia requerían. Pero esa fragilidad es justo lo que lo hizo tan especial: Goldy fue el consentido que a todos nos daban ganas de cuidar.',
   }],
-  ['Chocoroll', {
-    breve: 'Chocoroll es de nuestros juveniles más grandes y tiene un sello inconfundible: un pedacito extra en la cola que lo hace único. Llegó muy frágil y enfermo, pero con paciencia y cuidados hoy está fuerte y completamente recuperado.',
-    extendida: 'Chocoroll es pura historia de superación. Llegó a casa muy frágil y enfermo, pero con mucha paciencia y cuidados logró recuperarse por completo; hoy es un ajolote fuerte y lleno de vida. Es de los más grandes de nuestros juveniles y presume un detalle que lo distingue del resto: un pequeño pedacito extra en la cola, su sello personal e inconfundible. Todavía no sabemos si es hembra o macho, así que sigue siendo un pequeño enigma con mucha personalidad y una historia que vale la pena contar.',
+  ['Chocorrol', {
+    breve: 'Chocorrol es de nuestros juveniles más grandes y tiene un sello inconfundible: un pedacito extra en la cola que lo hace único. Llegó muy frágil y enfermo, pero con paciencia y cuidados hoy está fuerte y completamente recuperado.',
+    extendida: 'Chocorrol es pura historia de superación. Llegó a casa muy frágil y enfermo, pero con mucha paciencia y cuidados logró recuperarse por completo; hoy es un ajolote fuerte y lleno de vida. Es de los más grandes de nuestros juveniles y presume un detalle que lo distingue del resto: un pequeño pedacito extra en la cola, su sello personal e inconfundible. Todavía no sabemos si es hembra o macho, así que sigue siendo un pequeño enigma con mucha personalidad y una historia que vale la pena contar.',
   }],
 ]);
 
@@ -138,7 +138,7 @@ const EJEMPLAR_DESCRIPCIONES = new Map([
 // the curator's raw per-animal location (AM 1 / AM 3 / Cuarentena / …), but the
 // live museum layout is curated here: four aquariums (AM1–AM4) on one unified
 // recirculating system. As of 2026-06-15 the two larvae moved into AM3 — the
-// adult that was there (Chocoroll) moved to AM1 and Goldy went to Cuarentena — so
+// adult that was there (Chocorrol) moved to AM1 and Goldy went to Cuarentena — so
 // the standalone larvae aquarium is retired from the occupancy list. Its water is
 // still logged separately as the "AM Larvas" system (kept for reference in
 // data-water.mjs / the water dashboard); only the per-animal occupancy moves to
@@ -153,7 +153,7 @@ const AM_PECERA = new Map([
   ['Tascalate',      'AM1'],
   ['Parda',          'AM1'],
   ['La negra',       'AM1'],
-  ['Chocoroll',      'AM1'],
+  ['Chocorrol',      'AM1'],
   ['Pardo Macho',    'AM2'],
   ['Patito',         'AM3'],
   ['Larva 2',        'AM3'],

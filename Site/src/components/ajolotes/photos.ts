@@ -14,7 +14,7 @@ const AVAILABLE_PHOTOS: Record<string, 'webp' | 'jpg'> = {
   martin: 'webp',
   limon: 'webp',
   goldy: 'webp',
-  chocoroll: 'webp',
+  chocorrol: 'webp',
   parda: 'webp',
   leucistica: 'webp',
   'la-negra': 'webp',
