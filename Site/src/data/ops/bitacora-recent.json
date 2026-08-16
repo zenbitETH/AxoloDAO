@@ -561,6 +561,20 @@
   },
   {
     "fecha": "2026-06-01",
+    "hora": "15:20",
+    "estado": null,
+    "autorPrincipal": "lups-plantae.axolodao.eth",
+    "autorSecundario": null,
+    "categoria": "Mantenimiento de agua",
+    "alias": null,
+    "ubicacion": "Romualdo",
+    "incidencia": "Cambio de agua",
+    "accion": "Cambio de agua · 1 L",
+    "notas": "Agua de pecera A. dumerilii despues de cambio de agua del sistema",
+    "linkReporte": null
+  },
+  {
+    "fecha": "2026-06-01",
     "hora": "15:40",
     "estado": null,
     "autorPrincipal": "May",
@@ -627,6 +641,20 @@
     "incidencia": "Cambio de agua",
     "accion": "Cambio de agua · 1 L · Holtfreter 20%",
     "notas": null,
+    "linkReporte": null
+  },
+  {
+    "fecha": "2026-06-02",
+    "hora": "08:20",
+    "estado": null,
+    "autorPrincipal": "lups-plantae.axolodao.eth",
+    "autorSecundario": null,
+    "categoria": "Mantenimiento de agua",
+    "alias": null,
+    "ubicacion": "Romualdo",
+    "incidencia": "Cambio de agua",
+    "accion": "Cambio de agua · 1 L",
+    "notas": "Agua de pecera A. dumerilii despues de cambio de agua del sistema",
     "linkReporte": null
   },
   {
@@ -809,6 +837,20 @@
     "incidencia": "Cambio de agua",
     "accion": "Cambio de agua · 1 L · Holtfreter 20%",
     "notas": null,
+    "linkReporte": null
+  },
+  {
+    "fecha": "2026-06-03",
+    "hora": "09:55",
+    "estado": null,
+    "autorPrincipal": "lups-plantae.axolodao.eth",
+    "autorSecundario": null,
+    "categoria": "Mantenimiento de agua",
+    "alias": null,
+    "ubicacion": "Romualdo",
+    "incidencia": "Cambio de agua",
+    "accion": "Cambio de agua · 1 L · Personalizada",
+    "notas": "1/2 ultima receta nueva + 1/2 OR",
     "linkReporte": null
   },
   {
@@ -3930,7 +3972,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Nado persistente",
     "accion": "Solo observación",
-    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y La La negra",
+    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y Negra",
     "linkReporte": null
   },
   {
@@ -3944,7 +3986,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Nado persistente",
     "accion": "Solo observación",
-    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y La La negra",
+    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y Negra",
     "linkReporte": null
   },
   {
@@ -3958,7 +4000,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Nado persistente",
     "accion": "Solo observación",
-    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y La La negra",
+    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y Negra",
     "linkReporte": null
   },
   {
@@ -3972,7 +4014,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Nado persistente",
     "accion": "Solo observación",
-    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y La La negra",
+    "notas": "Todos los ejemplares mantienen un nado constante durante todo el día, sobre todo Chocorrol, Tascalate, Tamal y Negra",
     "linkReporte": null
   },
   {
@@ -6590,7 +6632,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Comportamiento normal",
     "accion": "Modificación/Adición de equipo",
-    "notas": "Prueba de luces fuera. Los ejemplares de AM1 se notan mas comodos. Chocorrol y la La La negra son los ajolotes un un mayor tiempo fuera desde el apagado de luces aprox. 1 hora y 30 minutos y 20 minutos para el segundo. El resto de ajolotes logra permanecer fuera un periodo aproximado de 10 minutos continuos.",
+    "notas": "Prueba de luces fuera. Los ejemplares de AM1 se notan mas comodos. Chocorrol y la Negra son los ajolotes un un mayor tiempo fuera desde el apagado de luces aprox. 1 hora y 30 minutos y 20 minutos para el segundo. El resto de ajolotes logra permanecer fuera un periodo aproximado de 10 minutos continuos.",
     "linkReporte": null
   },
   {
@@ -8480,7 +8522,7 @@
     "ubicacion": "AM 1",
     "incidencia": null,
     "accion": null,
-    "notas": "La La negra sufre un breve atoro dentro de una de las tejas por falta de espacio, se procede a detener el tpur y liberarla ya que mostraba signos de estrés e incomodidad, y necesidad de oxígeno. Posterior al evento permaneció tranquilam pero con poco movimiento y después se reincorporó a los refugios. Se sugiere grandemente hacer la sustitución del material y diseñar espacios más cómodos para los ajolotes",
+    "notas": "La negra sufre un breve atoro dentro de una de las tejas por falta de espacio, se procede a detener el tpur y liberarla ya que mostraba signos de estrés e incomodidad, y necesidad de oxígeno. Posterior al evento permaneció tranquilam pero con poco movimiento y después se reincorporó a los refugios. Se sugiere grandemente hacer la sustitución del material y diseñar espacios más cómodos para los ajolotes",
     "linkReporte": null
   },
   {
@@ -9600,7 +9642,7 @@
     "ubicacion": "AM 1",
     "incidencia": "Retención de muda / Descamación",
     "accion": "Notificación a veterinario",
-    "notas": "Se percibe una anomalia en los ojos del ejemplar, parece ser retención de muda. Se da aviso al veterinario sobre la condición de la La negra",
+    "notas": "Se percibe una anomalia en los ojos del ejemplar, parece ser retención de muda. Se da aviso al veterinario sobre la condición de la negra",
     "linkReporte": null
   },
   {
@@ -10636,7 +10678,7 @@
     "ubicacion": "Cuarentena",
     "incidencia": null,
     "accion": "Cambio de agua rutinario",
-    "notas": "Se cambia el agua de la La La negra en cuarentena. El ejemplar se muestra letárgico",
+    "notas": "Se cambia el agua de la Negra en cuarentena. El ejemplar se muestra letárgico",
     "linkReporte": null
   },
   {
@@ -11112,7 +11154,7 @@
     "ubicacion": "Cuarentena",
     "incidencia": null,
     "accion": "Limpieza / Lavado de equipo",
-    "notas": "Se realizo el cambio de agua del recinto de cuarentena de la La La negra. El ejemplar está muy quieto",
+    "notas": "Se realizo el cambio de agua del recinto de cuarentena de la Negra. El ejemplar está muy quieto",
     "linkReporte": null
   },
   {
@@ -11252,7 +11294,7 @@
     "ubicacion": "Cuarentena",
     "incidencia": null,
     "accion": "Limpieza / Lavado de equipo",
-    "notas": "Se realizo el cambio de agua del recinto de cuarentena de la La La negra. El ejemplar está muy quieto",
+    "notas": "Se realizo el cambio de agua del recinto de cuarentena de la Negra. El ejemplar está muy quieto",
     "linkReporte": null
   },
   {
