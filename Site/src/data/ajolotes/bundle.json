@@ -10,14 +10,14 @@
       "fenotipo": "Leucístico",
       "edad": null,
       "estadio": "Adulto",
-      "peso": 109,
+      "peso": 112,
       "lt": 26.94,
       "lhc": 12.46,
-      "icc": 0.5574856897,
+      "icc": 0.5728293325,
       "propCabezaCuerpo": 0.2407704655,
       "propColaCuerpo": 1.16211878,
       "asimetria": "0.05263157895",
-      "temp": 17.2,
+      "temp": 17.15,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
@@ -41,18 +41,18 @@
       "fenotipo": "Silvestre",
       "edad": null,
       "estadio": "Adulto",
-      "peso": 57,
+      "peso": 53,
       "lt": 18.97,
       "lhc": 9.58,
-      "icc": 0.8349738283,
+      "icc": 0.7763791736,
       "propCabezaCuerpo": 0.2004175365,
       "propColaCuerpo": 0.9801670146,
       "asimetria": "0.1136363636",
-      "temp": 17.2,
+      "temp": 17.15,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
-      "estadoBio": "✅ ESTABLE",
+      "estadoBio": "⚠️ REQUIERE ATENCIÓN",
       "ultimoConsumo": 2.855,
       "respuestaAlim": "Camarón azul",
       "alertaGastrica": "🟢 ACEPTACIÓN NORMAL",
@@ -72,14 +72,14 @@
       "fenotipo": "Silvestre",
       "edad": null,
       "estadio": "Adulto",
-      "peso": 62,
+      "peso": 59,
       "lt": 19.42,
       "lhc": 10.46,
-      "icc": 0.8465332341,
+      "icc": 0.8055719486,
       "propCabezaCuerpo": 0.190248566,
       "propColaCuerpo": 0.8565965583,
       "asimetria": "0.06097560976",
-      "temp": 17.2,
+      "temp": 17.15,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
@@ -110,14 +110,14 @@
       "propCabezaCuerpo": 0.2080808081,
       "propColaCuerpo": 1.086868687,
       "asimetria": "0.1428571429",
-      "temp": 17.2,
+      "temp": 17.15,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
       "estadoBio": "⚠️ REQUIERE ATENCIÓN",
-      "ultimoConsumo": null,
-      "respuestaAlim": "Sin datos",
-      "alertaGastrica": "SIN DATOS",
+      "ultimoConsumo": 2.036,
+      "respuestaAlim": "Camarón azul",
+      "alertaGastrica": "🟢 ACEPTACIÓN NORMAL",
       "enCuarentena": false,
       "descripcion": {
         "breve": "Negra todavía busca nombre definitivo, pero su carácter ya está más que claro: es una hembra serena, tranquila y muy sociable, que se lleva de maravilla con todos los demás ajolotes.",
@@ -134,14 +134,14 @@
       "fenotipo": "Silvestre",
       "edad": null,
       "estadio": "Adulto",
-      "peso": 68,
+      "peso": 61,
       "lt": 22.16,
       "lhc": 10.83,
-      "icc": 0.6248843449,
+      "icc": 0.5605580153,
       "propCabezaCuerpo": 0.2557710065,
       "propColaCuerpo": 1.046168052,
       "asimetria": "0.007692307692",
-      "temp": 17.2,
+      "temp": 17.15,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
@@ -165,14 +165,14 @@
       "fenotipo": "Leucístico",
       "edad": null,
       "estadio": "Subadulto",
-      "peso": 37,
+      "peso": 43,
       "lt": 12.25,
       "lhc": 7.74,
-      "icc": 2.012766789,
+      "icc": 2.339161404,
       "propCabezaCuerpo": 0.2493540052,
       "propColaCuerpo": 0.5826873385,
       "asimetria": "0",
-      "temp": 17.2,
+      "temp": 17.15,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
@@ -196,14 +196,14 @@
       "fenotipo": "Silvestre",
       "edad": null,
       "estadio": "Subadulto",
-      "peso": 31,
+      "peso": 33,
       "lt": 15.8,
       "lhc": 8.24,
-      "icc": 0.7859418829,
+      "icc": 0.8366478108,
       "propCabezaCuerpo": 0.2026699029,
       "propColaCuerpo": 0.9174757282,
       "asimetria": "0.3727810651",
-      "temp": 17.2,
+      "temp": 17.15,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
@@ -227,14 +227,14 @@
       "fenotipo": "Melanoide",
       "edad": null,
       "estadio": "Adulto",
-      "peso": 53,
+      "peso": 62,
       "lt": 18.65,
       "lhc": 9.56,
-      "icc": 0.8170325543,
+      "icc": 0.9557739315,
       "propCabezaCuerpo": 0.2364016736,
       "propColaCuerpo": 0.9508368201,
       "asimetria": "0.1621621622",
-      "temp": 17.2,
+      "temp": 17.15,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
@@ -258,14 +258,14 @@
       "fenotipo": "Verde oliva / Pardo uniforme",
       "edad": "1 año 5 mes",
       "estadio": "Adulto",
-      "peso": 100,
+      "peso": 112,
       "lt": 22.15,
       "lhc": 12.1,
-      "icc": 0.9201927523,
+      "icc": 1.030615883,
       "propCabezaCuerpo": 0.2396694215,
       "propColaCuerpo": 0.8305785124,
       "asimetria": "0.02713178295",
-      "temp": 18.2,
+      "temp": 18.1,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
@@ -289,14 +289,14 @@
       "fenotipo": "Silvestre",
       "edad": null,
       "estadio": "Larva",
-      "peso": 26,
+      "peso": 32,
       "lt": 2,
       "lhc": 6.95,
-      "icc": 325,
+      "icc": 400,
       "propCabezaCuerpo": 0.2460431655,
       "propColaCuerpo": -0.7122302158,
       "asimetria": "0.01481481481",
-      "temp": 17.2,
+      "temp": 17.15,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
@@ -327,7 +327,7 @@
       "propCabezaCuerpo": 0.2484756098,
       "propColaCuerpo": -0.6951219512,
       "asimetria": "0.01515151515",
-      "temp": 17.2,
+      "temp": 17.15,
       "bcs": "Sin datos",
       "alertaConductual": "",
       "anomalia": "",
@@ -380,7 +380,7 @@
       "estadio": "Juvenil",
       "dietaBase": "Lunes: Pellets.\nMar a Vie: Lombriz picada.",
       "planB": "Lombriz picada de composta a la medida de su boca.",
-      "porcion": "3.7",
+      "porcion": "4.3",
       "frecuencia": "Entre semana",
       "notas": "Sifonear rigurosamente cualquier sobrante a los 15 minutos para que el amoniaco no suba a los adultos (AM 1.1)."
     },
@@ -390,7 +390,7 @@
       "estadio": "Juvenil",
       "dietaBase": "Lunes: Pellets.\nMar a Vie: Lombriz picada.",
       "planB": "Lombriz picada de composta a la medida de su boca.",
-      "porcion": "3.1",
+      "porcion": "3.3",
       "frecuencia": "Entre semana",
       "notas": null
     },
@@ -857,6 +857,36 @@
         "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
+        "extremidades": "Amputación reciente / Herida abierta: Daño por traumatismo o mordida",
+        "cola": null,
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": "Lesión de mordida en la parte dorsal de la cola, cercana hacia la parte terminal de la misma"
+      },
+      {
+        "fecha": "2026-08-19",
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "temp": null,
+        "peso": 109,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
+        "cabeza": null,
+        "cuerpo": "Eritema / Petequias: Enrojecimiento o hemorragias en la piel",
         "extremidades": null,
         "cola": null,
         "comportamiento": null,
@@ -865,14 +895,14 @@
         "subcategoria": null,
         "tipo": null,
         "justificacion": null,
-        "notas": null
+        "notas": "Peso del ejemplar tras rechazo a alimento, se le ofrece diferentes fuentes de comida y muestra apatía. Se realiza procedimiento de alimentación por sonda"
       },
       {
-        "fecha": "2026-08-19",
+        "fecha": "2026-08-25",
         "autor": "lups-plantae.axolodao.eth",
         "autor2": null,
-        "temp": null,
-        "peso": 109,
+        "temp": 17.15,
+        "peso": 112,
         "lt": null,
         "lhc": null,
         "largoCabeza": null,
@@ -895,7 +925,7 @@
         "subcategoria": null,
         "tipo": null,
         "justificacion": null,
-        "notas": "Peso del ejemplar tras rechazo a alimento, se le ofrece diferentes fuentes de comida y muestra apatía. Se realiza procedimiento de alimentación por sonda"
+        "notas": null
       }
     ],
     "Tascalate": [
@@ -1175,6 +1205,36 @@
         "autor2": null,
         "temp": 17.2,
         "peso": 57,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
+        "cabeza": null,
+        "cuerpo": null,
+        "extremidades": null,
+        "cola": null,
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "temp": 17.15,
+        "peso": 53,
         "lt": null,
         "lhc": null,
         "largoCabeza": null,
@@ -1537,6 +1597,36 @@
         "autor2": null,
         "temp": 17.2,
         "peso": 37,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
+        "cabeza": null,
+        "cuerpo": null,
+        "extremidades": null,
+        "cola": null,
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "temp": 17.15,
+        "peso": 43,
         "lt": null,
         "lhc": null,
         "largoCabeza": null,
@@ -1952,6 +2042,36 @@
         "tipo": null,
         "justificacion": null,
         "notas": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "temp": 17.15,
+        "peso": 33,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
+        "cabeza": null,
+        "cuerpo": null,
+        "extremidades": null,
+        "cola": null,
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": null
       }
     ],
     "Chocorrol": [
@@ -2344,6 +2464,36 @@
         "tipo": null,
         "justificacion": null,
         "notas": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": "lups-plantae.axolodao.eth",
+        "temp": 17.15,
+        "peso": 62,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
+        "cabeza": "Ojos - Reabsorción ocular: Pliegue de piel que cubre el ojo, Branquias - Crecimiento algodonoso",
+        "cuerpo": null,
+        "extremidades": null,
+        "cola": "\"Cola bifurcada: Duplicación o ramificación de la cola, a menudo ligada a exposición a agroquímicos y metales pesados\"",
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": null
       }
     ],
     "La negra": [
@@ -2605,6 +2755,36 @@
         "brazo": null,
         "branqIzq": null,
         "branqDer": null,
+        "cabeza": "Ojos - Reabsorción ocular: Pliegue de piel que cubre el ojo",
+        "cuerpo": null,
+        "extremidades": null,
+        "cola": null,
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": "Los ojos del ejemplar se muestran opacos al igual que su piel"
+      },
+      {
+        "fecha": "2026-08-10",
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "temp": 17.2,
+        "peso": 54,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
         "cabeza": null,
         "cuerpo": null,
         "extremidades": null,
@@ -2618,10 +2798,10 @@
         "notas": null
       },
       {
-        "fecha": "2026-08-10",
+        "fecha": "2026-08-25",
         "autor": "lups-plantae.axolodao.eth",
         "autor2": null,
-        "temp": 17.2,
+        "temp": 17.15,
         "peso": 54,
         "lt": null,
         "lhc": null,
@@ -2918,6 +3098,36 @@
         "tipo": null,
         "justificacion": null,
         "notas": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "temp": 17.15,
+        "peso": 59,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
+        "cabeza": null,
+        "cuerpo": null,
+        "extremidades": null,
+        "cola": null,
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": null
       }
     ],
     "Pardo Macho": [
@@ -3151,7 +3361,7 @@
         "branqDer": 1.3,
         "cabeza": null,
         "cuerpo": null,
-        "extremidades": null,
+        "extremidades": "Amputación reciente / Herida abierta: Daño por traumatismo o mordida",
         "cola": null,
         "comportamiento": null,
         "bcs": null,
@@ -3159,7 +3369,7 @@
         "subcategoria": null,
         "tipo": null,
         "justificacion": null,
-        "notas": null
+        "notas": "Corte en sanación en cola procedente de manipulación veterinaria"
       },
       {
         "fecha": "2026-08-03",
@@ -3197,6 +3407,36 @@
         "autor2": null,
         "temp": 17.2,
         "peso": 68,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
+        "cabeza": null,
+        "cuerpo": null,
+        "extremidades": null,
+        "cola": null,
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "temp": 17.15,
+        "peso": 61,
         "lt": null,
         "lhc": null,
         "largoCabeza": null,
@@ -3372,6 +3612,36 @@
         "tipo": null,
         "justificacion": null,
         "notas": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "temp": 17.15,
+        "peso": 32,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
+        "cabeza": null,
+        "cuerpo": null,
+        "extremidades": null,
+        "cola": null,
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": null
       }
     ],
     "Larva 2": [
@@ -3500,6 +3770,36 @@
         "autor": "lups-plantae.axolodao.eth",
         "autor2": null,
         "temp": 17.2,
+        "peso": 18,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
+        "cabeza": null,
+        "cuerpo": null,
+        "extremidades": null,
+        "cola": null,
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "temp": 17.15,
         "peso": 18,
         "lt": null,
         "lhc": null,
@@ -3863,6 +4163,36 @@
         "autor2": null,
         "temp": 18.2,
         "peso": 100,
+        "lt": null,
+        "lhc": null,
+        "largoCabeza": null,
+        "anchoCabeza": null,
+        "interaxial": null,
+        "anchoCuerpo": null,
+        "tibia": null,
+        "femur": null,
+        "antebrazo": null,
+        "brazo": null,
+        "branqIzq": null,
+        "branqDer": null,
+        "cabeza": null,
+        "cuerpo": null,
+        "extremidades": null,
+        "cola": null,
+        "comportamiento": null,
+        "bcs": null,
+        "categoria": null,
+        "subcategoria": null,
+        "tipo": null,
+        "justificacion": null,
+        "notas": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": "lups-plantae.axolodao.eth",
+        "temp": 18.1,
+        "peso": 112,
         "lt": null,
         "lhc": null,
         "largoCabeza": null,
@@ -4716,13 +5046,13 @@
     ]
   },
   "terapeutica": {
-    "Chocorrol": [
+    "Tascalate": [
       {
         "fecha": "2026-02-27",
         "hora": 0.10875,
         "autor": "xolotlcalli.axolodao.eth",
         "autor2": null,
-        "ubicacion": "AM 2",
+        "ubicacion": "AM 1",
         "diagnostico": null,
         "pruebasLab": null,
         "tratamiento": null,
@@ -4730,172 +5060,22 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-03-18",
         "hora": 0.9629166666666666,
         "autor": "lego-lvsg.axolodao.eth",
         "autor2": "xolotlcalli.axolodao.eth",
-        "ubicacion": "AM 2",
+        "ubicacion": "AM 1",
         "diagnostico": "Nematodos",
         "pruebasLab": null,
         "tratamiento": "Desparacitante",
         "dosis": "Veterinario",
         "via": "Oral",
-        "diaTratamiento": "2026-02-06",
+        "diaTratamiento": "2026-02-03",
         "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-05-11",
-        "hora": 0.31708333333333333,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Saprolegniasis",
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "25 mg/L (5 min.)",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-01",
-        "observaciones": null,
-        "estado": "Alta medica"
-      },
-      {
-        "fecha": "2026-05-12",
-        "hora": 0.31708333333333333,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Saprolegniasis",
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "25 mg/L (5 min.)",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-02",
-        "observaciones": null,
-        "estado": "Alta medica"
-      },
-      {
-        "fecha": "2026-05-13",
-        "hora": 0.31708333333333333,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Saprolegniasis",
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "25 mg/L (5 min.)",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-03",
-        "observaciones": null,
-        "estado": "Alta medica"
-      },
-      {
-        "fecha": "2026-05-14",
-        "hora": 0.31708333333333333,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Saprolegniasis",
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "25 mg/L (5 min.)",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-04",
-        "observaciones": null,
-        "estado": "Alta medica"
-      },
-      {
-        "fecha": "2026-05-15",
-        "hora": 0.31708333333333333,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Saprolegniasis",
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "25 mg/L (5 min.)",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-05",
-        "observaciones": null,
-        "estado": "Alta medica"
-      },
-      {
-        "fecha": "2026-05-16",
-        "hora": 0.31708333333333333,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Saprolegniasis",
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "25 mg/L (5 min.)",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-06",
-        "observaciones": null,
-        "estado": "Alta medica"
-      },
-      {
-        "fecha": "2026-05-17",
-        "hora": 0.31708333333333333,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Saprolegniasis",
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "25 mg/L (5 min.)",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-07",
-        "observaciones": null,
-        "estado": "Alta medica"
-      },
-      {
-        "fecha": "2026-05-18",
-        "hora": 0.31708333333333333,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Saprolegniasis",
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "25 mg/L (5 min.)",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-08",
-        "observaciones": null,
-        "estado": "Alta medica"
-      },
-      {
-        "fecha": "2026-05-19",
-        "hora": 0.31708333333333333,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Saprolegniasis",
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "25 mg/L (5 min.)",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-09",
-        "observaciones": null,
-        "estado": "Alta medica"
-      },
-      {
-        "fecha": "2026-05-20",
-        "hora": 0.31708333333333333,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Saprolegniasis",
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "25 mg/L (5 min.)",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-10",
-        "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -4910,7 +5090,309 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
+      },
+      {
+        "fecha": "2026-07-16",
+        "hora": 0.7059722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AM 1",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Fenbendazol",
+        "dosis": null,
+        "via": "Oral",
+        "diaTratamiento": "2026-02-01",
+        "observaciones": "Segunda dosis de desparacitantes. Los ejemplares se mantiene con dieta a base de tilapia y croquetas plus",
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-01",
+        "hora": 0.5879166666666666,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AM 1",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Fenbendazol",
+        "dosis": null,
+        "via": "Oral",
+        "diaTratamiento": "2026-02-02",
+        "observaciones": "Aumento de dosis por baja eficiencia del medicamento",
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-03",
+        "hora": 0.6295833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AM 1",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Ivermectina 0.1 mg/ml",
+        "dosis": null,
+        "via": "Oral",
+        "diaTratamiento": "2026-02-01",
+        "observaciones": "Cambio de medicamento, formulado en dosis seguras para ajolotes",
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-10",
+        "hora": 0.6295833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AM 1",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Ivermectina 0.1 mg/ml",
+        "dosis": null,
+        "via": "Oral",
+        "diaTratamiento": "2026-02-02",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-20",
+        "hora": 0.8379166666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Azul de metileno",
+        "dosis": "Baño 0.2 ml x L (1 hr.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-03-01",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.85875,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Azul de metileno",
+        "dosis": "Baño 0.2 ml x L (1 hr.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-03-02",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-22",
+        "hora": null,
+        "autor": "May",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Azul de metileno",
+        "dosis": "Baño 0.2 ml x L (1 hr.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-03-03",
+        "observaciones": null,
+        "estado": null
+      }
+    ],
+    "Chocorrol": [
+      {
+        "fecha": "2026-02-27",
+        "hora": 0.10875,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AM 2",
+        "diagnostico": null,
+        "pruebasLab": null,
+        "tratamiento": null,
+        "dosis": null,
+        "via": null,
+        "diaTratamiento": null,
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-03-18",
+        "hora": 0.9629166666666666,
+        "autor": "lego-lvsg.axolodao.eth",
+        "autor2": "xolotlcalli.axolodao.eth",
+        "ubicacion": "AM 2",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Desparacitante",
+        "dosis": "Veterinario",
+        "via": "Oral",
+        "diaTratamiento": "2026-02-06",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-05-11",
+        "hora": 0.31708333333333333,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Itraconazol",
+        "dosis": "25 mg/L (5 min.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-10-01",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-05-12",
+        "hora": 0.31708333333333333,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Itraconazol",
+        "dosis": "25 mg/L (5 min.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-10-02",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-05-13",
+        "hora": 0.31708333333333333,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Itraconazol",
+        "dosis": "25 mg/L (5 min.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-10-03",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-05-14",
+        "hora": 0.31708333333333333,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Itraconazol",
+        "dosis": "25 mg/L (5 min.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-10-04",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-05-15",
+        "hora": 0.31708333333333333,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Itraconazol",
+        "dosis": "25 mg/L (5 min.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-10-05",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-05-16",
+        "hora": 0.31708333333333333,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Itraconazol",
+        "dosis": "25 mg/L (5 min.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-10-06",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-05-17",
+        "hora": 0.31708333333333333,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Itraconazol",
+        "dosis": "25 mg/L (5 min.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-10-07",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-05-18",
+        "hora": 0.31708333333333333,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Itraconazol",
+        "dosis": "25 mg/L (5 min.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-10-08",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-05-19",
+        "hora": 0.31708333333333333,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Itraconazol",
+        "dosis": "25 mg/L (5 min.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-10-09",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-05-20",
+        "hora": 0.31708333333333333,
+        "autor": "xolotlcalli.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Itraconazol",
+        "dosis": "25 mg/L (5 min.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-10-10",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-06-22",
+        "hora": 0.7198611111111111,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "xolotlcalli.axolodao.eth",
+        "ubicacion": "AM 1",
+        "diagnostico": "Nematodos",
+        "pruebasLab": null,
+        "tratamiento": "Fenbendazol",
+        "dosis": null,
+        "via": "Oral",
+        "diaTratamiento": null,
+        "observaciones": null,
+        "estado": null
       },
       {
         "fecha": "2026-07-16",
@@ -4986,6 +5468,36 @@
         "diaTratamiento": "2026-03-01",
         "observaciones": null,
         "estado": null
+      },
+      {
+        "fecha": "2026-08-20",
+        "hora": 0.8379166666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Azul de metileno",
+        "dosis": "Baño 0.2 ml x L (1 hr.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-03-02",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.85875,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Saprolegniasis",
+        "pruebasLab": null,
+        "tratamiento": "Azul de metileno",
+        "dosis": "Baño 0.2 ml x L (1 hr.)",
+        "via": "Topica",
+        "diaTratamiento": "2026-03-03",
+        "observaciones": null,
+        "estado": null
       }
     ],
     "Tamal de dulce": [
@@ -5002,7 +5514,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-03-18",
@@ -5017,7 +5529,7 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -5032,7 +5544,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": "Posible ingesta de cuerpo extraño por el ejemplar y en relacion comportamiento de arqueo (observado por primera vez el 21/06/26 por May). El veterinario sugiere que si continua con la sintomatología es necesario realizar rayos x y aplicar procedimientos para la expulsion del cuerpo extraño",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -5047,7 +5559,7 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-16",
@@ -5063,21 +5575,6 @@
         "diaTratamiento": "2026-02-01",
         "observaciones": "Segunda dosis de desparacitantes. Los ejemplares se mantiene con dieta a base de tilapia y croquetas plus",
         "estado": null
-      },
-      {
-        "fecha": "2026-07-31",
-        "hora": 0.5879166666666666,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Fembendazol",
-        "dosis": "Pendiente confirmar",
-        "via": "Sondeo oral",
-        "diaTratamiento": "2026-03-01",
-        "observaciones": null,
-        "estado": "Activo"
       },
       {
         "fecha": "2026-08-01",
@@ -5195,7 +5692,7 @@
         "tratamiento": "Ceftazidima 1g/3ml dilución 1/10",
         "dosis": "0.07 ml c/48 hrs",
         "via": "Subdérmica",
-        "diaTratamiento": "2026-03-01",
+        "diaTratamiento": "2026-04-01",
         "observaciones": null,
         "estado": null
       },
@@ -5210,7 +5707,7 @@
         "tratamiento": "Ceftazidima 1g/3ml dilución 1/10",
         "dosis": "0.07 ml c/48 hrs",
         "via": "Subdérmica",
-        "diaTratamiento": "2026-03-02",
+        "diaTratamiento": "2026-04-02",
         "observaciones": null,
         "estado": null
       },
@@ -5225,114 +5722,22 @@
         "tratamiento": "Ceftazidima 1g/3ml dilución 1/10",
         "dosis": "0.07 ml c/48 hrs",
         "via": "Subdérmica",
-        "diaTratamiento": "2026-03-03",
+        "diaTratamiento": "2026-04-03",
         "observaciones": null,
         "estado": null
-      }
-    ],
-    "Tascalate": [
-      {
-        "fecha": "2026-02-27",
-        "hora": 0.10875,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM 1",
-        "diagnostico": null,
-        "pruebasLab": null,
-        "tratamiento": null,
-        "dosis": null,
-        "via": null,
-        "diaTratamiento": null,
-        "observaciones": null,
-        "estado": "Alta medica"
       },
       {
-        "fecha": "2026-03-18",
-        "hora": 0.9629166666666666,
-        "autor": "lego-lvsg.axolodao.eth",
-        "autor2": "xolotlcalli.axolodao.eth",
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Desparacitante",
-        "dosis": "Veterinario",
-        "via": "Oral",
-        "diaTratamiento": "2026-02-03",
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-06-22",
-        "hora": 0.7198611111111111,
+        "fecha": "2026-08-21",
+        "hora": 0.8865277777777778,
         "autor": "lups-plantae.axolodao.eth",
-        "autor2": "xolotlcalli.axolodao.eth",
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
+        "autor2": "May",
+        "ubicacion": "Cuarentena",
+        "diagnostico": "Flotación anormal, Irritación de piel / Descamación",
         "pruebasLab": null,
-        "tratamiento": "Fenbendazol",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": null,
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-07-16",
-        "hora": 0.7059722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Fenbendazol",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-01",
-        "observaciones": "Segunda dosis de desparacitantes. Los ejemplares se mantiene con dieta a base de tilapia y croquetas plus",
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-01",
-        "hora": 0.5879166666666666,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Fenbendazol",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-02",
-        "observaciones": "Aumento de dosis por baja eficiencia del medicamento",
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-03",
-        "hora": 0.6295833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Ivermectina 0.1 mg/ml",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-01",
-        "observaciones": "Cambio de medicamento, formulado en dosis seguras para ajolotes",
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-10",
-        "hora": 0.6295833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AM 1",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Ivermectina 0.1 mg/ml",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-02",
+        "tratamiento": "Ceftazidima 1g/3ml dilución 1/10",
+        "dosis": "0.07 ml c/48 hrs",
+        "via": "Subdérmica",
+        "diaTratamiento": "2026-04-04",
         "observaciones": null,
         "estado": null
       }
@@ -5351,7 +5756,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-02-27",
@@ -5366,7 +5771,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-03-18",
@@ -5381,7 +5786,7 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-10",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-04-13",
@@ -5396,7 +5801,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-01",
         "observaciones": "Flotabilidad no detectada durante cuarentena y mejora en la respuesta a alimentación. Presencia de lo que parece ser pelusa en branquias",
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-13",
@@ -5411,7 +5816,7 @@
         "via": "Topica",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-14",
@@ -5426,7 +5831,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-02",
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-14",
@@ -5441,7 +5846,7 @@
         "via": "Topica",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-15",
@@ -5456,7 +5861,7 @@
         "via": "Topica",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-15",
@@ -5471,7 +5876,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-03",
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-17",
@@ -5486,7 +5891,7 @@
         "via": "Topica",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -5501,7 +5906,7 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-16",
@@ -5578,7 +5983,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-03-18",
@@ -5593,7 +5998,7 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-09",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -5608,7 +6013,7 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-16",
@@ -5730,7 +6135,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-03-18",
@@ -5745,7 +6150,7 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-11",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -5760,7 +6165,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-01",
         "observaciones": "Se registra la incidencia de una lesion en macho pardo en manipulacion para administrar el desparasitante, ocasionando un corte en la parte superior de la cola hacia el final de la misma. A manera preventiva se acondiciona el agua con el producto stress guard de la marca Seachem",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -5775,7 +6180,7 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-16",
@@ -5852,7 +6257,7 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-16",
@@ -5929,7 +6334,7 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-16",
@@ -6006,7 +6411,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-03-18",
@@ -6021,7 +6426,7 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -6036,7 +6441,7 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-16",
@@ -6113,7 +6518,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-03-18",
@@ -6128,7 +6533,7 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -6143,7 +6548,7 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-16",
@@ -6220,7 +6625,7 @@
         "via": "Subdermica",
         "diaTratamiento": "2026-02-02",
         "observaciones": "Segunda ronda de tratamiento (inyecciones de gentamicina) para dumeriliis.",
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-02-27",
@@ -6235,7 +6640,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-03-18",
@@ -6250,7 +6655,7 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-13",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-03-30",
@@ -6265,7 +6670,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-01",
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-01",
@@ -6280,7 +6685,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-02",
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-02",
@@ -6295,7 +6700,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-03",
         "observaciones": "Se observa presencia de restos de piel en agua derivado del tratamiento y una mejora en el color del ejemplar",
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-05",
@@ -6310,7 +6715,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-01",
         "observaciones": "Mejoro en coloración",
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-05-28",
@@ -6325,7 +6730,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-29",
@@ -6340,7 +6745,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-02",
         "observaciones": "Desprendimiento de pelusa con ayuda de remoción manual con isopos",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-30",
@@ -6355,7 +6760,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-31",
@@ -6370,7 +6775,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-04",
         "observaciones": "Desprendimiento de pelusa con ayuda de remoción manual con isopos. Se observa inicialmente una cobertura considerable en branquias, mayormente en en una muy invadida",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-01",
@@ -6385,7 +6790,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-05",
         "observaciones": "Desprendimiento de pelusa con ayuda de remoción manual con isopos",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-02",
@@ -6400,7 +6805,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-03",
@@ -6415,7 +6820,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-07",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-04",
@@ -6430,7 +6835,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-08",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-05",
@@ -6445,7 +6850,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-09",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-06",
@@ -6460,7 +6865,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-10",
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-06-11",
@@ -6475,7 +6880,7 @@
         "via": "Topica",
         "diaTratamiento": "1/x",
         "observaciones": "El ejemplar se rasca mucho",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-12",
@@ -6490,7 +6895,7 @@
         "via": "Topica",
         "diaTratamiento": "2/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-13",
@@ -6505,7 +6910,7 @@
         "via": "Topica",
         "diaTratamiento": "2/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-14",
@@ -6520,7 +6925,7 @@
         "via": "Topica",
         "diaTratamiento": "3/x",
         "observaciones": "Durante el bano de sal Remo comienza a presentar respiracion bucal",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-16",
@@ -6535,7 +6940,7 @@
         "via": "Topica",
         "diaTratamiento": "4/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-17",
@@ -6550,7 +6955,7 @@
         "via": "Topica",
         "diaTratamiento": "5/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-18",
@@ -6565,7 +6970,7 @@
         "via": "Topica",
         "diaTratamiento": "6/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-19",
@@ -6580,7 +6985,7 @@
         "via": "Topica",
         "diaTratamiento": "1/x",
         "observaciones": "Aplicacion de gota directa en lesión localizada en el lado izquierdo de la cabeza (parte superior) del ejemplar",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-19",
@@ -6595,7 +7000,7 @@
         "via": "Topica",
         "diaTratamiento": "7/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-20",
@@ -6610,7 +7015,7 @@
         "via": "Topica",
         "diaTratamiento": "8/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-21",
@@ -6625,7 +7030,7 @@
         "via": "Topica",
         "diaTratamiento": "9/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -6640,7 +7045,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-01",
         "observaciones": "A manera preventiva posterior a la manipulacion de los ejemplares se acondiciona el agua con el producto señalado por los 5 días siguientes considerando la sugerencia del veterinario",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -6655,7 +7060,7 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-23",
@@ -6670,7 +7075,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-24",
@@ -6685,7 +7090,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-25",
@@ -6700,7 +7105,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-26",
@@ -6715,7 +7120,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-08",
@@ -6730,7 +7135,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-05-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-09",
@@ -6745,7 +7150,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-05-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-10",
@@ -6760,7 +7165,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-05-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-11",
@@ -6775,7 +7180,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-05-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-12",
@@ -6790,7 +7195,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-05-05",
         "observaciones": "El ejemplar  se aggita despues del tratamiennto. Se observa cierta tendenncia a rascarse.",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-16",
@@ -6820,7 +7225,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-03-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-20",
@@ -6835,7 +7240,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-03-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-21",
@@ -6850,7 +7255,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-03-03",
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-08-01",
@@ -6888,188 +7293,6 @@
         "autor": "lups-plantae.axolodao.eth",
         "autor2": null,
         "ubicacion": "AD",
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Ivermectina 0.1 mg/ml",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-02",
-        "observaciones": null,
-        "estado": null
-      }
-    ],
-    "Sanson": [
-      {
-        "fecha": "2026-06-10",
-        "hora": null,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": "xolotlcalli.axolodao.eth",
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Infección bacteriana",
-        "pruebasLab": "Enviado a patologia",
-        "tratamiento": "Gentamicina (100 mg/ml)",
-        "dosis": "0.03 ml cada 72 hrs.",
-        "via": "Subdermica",
-        "diaTratamiento": "2026-03-01",
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-06-13",
-        "hora": null,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": "May",
-        "ubicacion": "Cuarentena",
-        "diagnostico": "Infección bacteriana",
-        "pruebasLab": null,
-        "tratamiento": "Gentamicina (100 mg/ml)",
-        "dosis": "0.03 ml cada 72 hrs.",
-        "via": "Subdermica",
-        "diaTratamiento": "2026-03-02",
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-06-22",
-        "hora": 0.8170833333333334,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": "lups-plantae.axolodao.eth",
-        "ubicacion": null,
-        "diagnostico": null,
-        "pruebasLab": null,
-        "tratamiento": "Stress guard",
-        "dosis": "5 ml/80L",
-        "via": "Topica",
-        "diaTratamiento": "2026-05-01",
-        "observaciones": "A manera preventiva posterior a la manipulacion de los ejemplares se acondiciona el agua con el producto señalado por los 5 días siguientes considerando la sugerencia del veterinario",
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-06-22",
-        "hora": 0.7198611111111111,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": "xolotlcalli.axolodao.eth",
-        "ubicacion": null,
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Fenbendazol",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": null,
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-06-23",
-        "hora": 0.8448611111111111,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": null,
-        "diagnostico": null,
-        "pruebasLab": null,
-        "tratamiento": "Stress guard",
-        "dosis": "5 ml/80L",
-        "via": "Topica",
-        "diaTratamiento": "2026-05-02",
-        "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-06-26",
-        "hora": 0.85875,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": "May",
-        "ubicacion": null,
-        "diagnostico": null,
-        "pruebasLab": null,
-        "tratamiento": "Gentamicina",
-        "dosis": "0.04 ml cada 72 hrs.",
-        "via": "Subdérmica",
-        "diaTratamiento": "2026-03-01",
-        "observaciones": null,
-        "estado": null
-      },
-      {
-        "fecha": "2026-06-29",
-        "hora": 0.8795833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": null,
-        "diagnostico": null,
-        "pruebasLab": null,
-        "tratamiento": "Itraconazol",
-        "dosis": "100 mg/2L",
-        "via": "Topica",
-        "diaTratamiento": "2026-10-03",
-        "observaciones": null,
-        "estado": null
-      },
-      {
-        "fecha": "2026-06-29",
-        "hora": 0.36916666666666664,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": null,
-        "diagnostico": null,
-        "pruebasLab": null,
-        "tratamiento": "Gentamicina",
-        "dosis": "0.04 ml cada 72 hrs.",
-        "via": "Subdérmica",
-        "diaTratamiento": "2026-03-02",
-        "observaciones": null,
-        "estado": null
-      },
-      {
-        "fecha": "2026-07-16",
-        "hora": 0.7059722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": null,
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Fenbendazol",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-01",
-        "observaciones": "Segunda dosis de desparacitantes. Los ejemplares se mantiene con dieta a base de tilapia y croquetas plus",
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-01",
-        "hora": 0.5879166666666666,
-        "autor": "xolotlcalli.axolodao.eth",
-        "autor2": null,
-        "ubicacion": null,
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Fenbendazol",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-02",
-        "observaciones": "Aumento de dosis por baja eficiencia del medicamento",
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-03",
-        "hora": 0.6295833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": null,
-        "diagnostico": "Nematodos",
-        "pruebasLab": null,
-        "tratamiento": "Ivermectina 0.1 mg/ml",
-        "dosis": null,
-        "via": "Oral",
-        "diaTratamiento": "2026-02-01",
-        "observaciones": "Cambio de medicamento, formulado en dosis seguras para ajolotes",
-        "estado": null
-      },
-      {
-        "fecha": "2026-08-10",
-        "hora": 0.6295833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": null,
         "diagnostico": "Nematodos",
         "pruebasLab": null,
         "tratamiento": "Ivermectina 0.1 mg/ml",
@@ -7094,7 +7317,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-03-18",
@@ -7109,7 +7332,7 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-04-02",
@@ -7124,7 +7347,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-01",
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-05",
@@ -7139,7 +7362,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-02",
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-08",
@@ -7154,7 +7377,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-03",
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-17",
@@ -7169,7 +7392,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-03-01",
         "observaciones": "Se ingresa a ejemplar a tratamiento para controlar la presencia de pelusa algodonosa en branquias registradas el día anterior como medida de mitigar el crecimiento del patógeno",
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-05-04",
@@ -7184,7 +7407,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-05-04",
         "observaciones": "Se observa una inflamación persistente en el ojo derecho del ejemplar. El posible traumatismo deriva en infección ocular",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-05",
@@ -7199,7 +7422,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-05-05",
         "observaciones": "El ojo continua con inflamacion que deriva de una infeccion por traumatismo. Aplicacion realizada por Roberto",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-06",
@@ -7214,7 +7437,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-05-06",
         "observaciones": "El ojo continua con inflamacion que deriva de una infeccion por traumatismo. Se realiza una aplicacionn extra (07/05/2026 la inflamacon continua). Aplicacion realizada por Roberto",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-15",
@@ -7229,7 +7452,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-16",
@@ -7244,7 +7467,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-17",
@@ -7259,7 +7482,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-18",
@@ -7274,7 +7497,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-19",
@@ -7289,7 +7512,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-20",
@@ -7304,7 +7527,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-27",
@@ -7319,7 +7542,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2001-07-01",
         "observaciones": "El ojo de Panchita parece ir mejorando, se ve menos iflamado pero con dano irreversible, se percibe una capa blannca que se desprende durante el tratamiento",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-05-27",
@@ -7334,7 +7557,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2001-07-01",
         "observaciones": "El ojo de Panchita parece ir mejorando, se ve menos iflamado pero con dano irreversible, se percibe una capa blannca que se desprende durante el tratamiento",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-01",
@@ -7349,7 +7572,7 @@
         "via": "Subdermica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-01",
@@ -7364,7 +7587,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": "El ojo de Panchita parece ir mejorando, se ve menos iflamado pero con dano irreversible, se percibe una capa blannca que se desprende durante el tratamiento",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-01",
@@ -7379,7 +7602,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": "El ojo de Panchita parece ir mejorando, se ve menos iflamado pero con dano irreversible, se percibe una capa blannca que se desprende durante el tratamiento",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-02",
@@ -7394,7 +7617,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-02",
@@ -7409,7 +7632,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-02",
@@ -7424,7 +7647,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-02",
@@ -7439,7 +7662,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-03",
@@ -7454,7 +7677,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-03",
@@ -7469,7 +7692,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-03",
@@ -7484,7 +7707,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-03",
@@ -7499,7 +7722,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-04",
@@ -7514,7 +7737,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-04",
@@ -7529,22 +7752,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
-      },
-      {
-        "fecha": "2026-06-04",
-        "hora": 0.6434722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "autor2": null,
-        "ubicacion": "AA",
-        "diagnostico": "Traumatismo / Amputación, Infección bacteriana",
-        "pruebasLab": null,
-        "tratamiento": "Oftaconazol Santgar (ketoconazol) 1g en 10 g",
-        "dosis": "1 gota en ojo afectado cada 12 hrs (en forma de unguento)",
-        "via": "Oftálmica",
-        "diaTratamiento": "x/x",
-        "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-04",
@@ -7554,12 +7762,27 @@
         "ubicacion": "AA",
         "diagnostico": "Traumatismo / Amputación, Infección bacteriana",
         "pruebasLab": null,
+        "tratamiento": "Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "dosis": "1 gota en ojo afectado cada 12 hrs (en forma de unguento)",
+        "via": "Oftálmica",
+        "diaTratamiento": "x/x",
+        "observaciones": null,
+        "estado": null
+      },
+      {
+        "fecha": "2026-06-04",
+        "hora": 0.6434722222222222,
+        "autor": "lups-plantae.axolodao.eth",
+        "autor2": null,
+        "ubicacion": "AA",
+        "diagnostico": "Traumatismo / Amputación, Infección bacteriana",
+        "pruebasLab": null,
         "tratamiento": "Proxiflo Santgar (ciprofloxacina) 3 mg/ml",
         "dosis": "1 gota en ojo afectado cada 12 hrs",
         "via": "Oftálmica",
         "diaTratamiento": "x/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-11",
@@ -7574,7 +7797,7 @@
         "via": "Topica",
         "diaTratamiento": "1/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-12",
@@ -7589,7 +7812,7 @@
         "via": "Topica",
         "diaTratamiento": "2/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-13",
@@ -7604,7 +7827,7 @@
         "via": "Topica",
         "diaTratamiento": "2/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-14",
@@ -7619,7 +7842,7 @@
         "via": "Topica",
         "diaTratamiento": "3/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-16",
@@ -7634,7 +7857,7 @@
         "via": "Topica",
         "diaTratamiento": "4/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-17",
@@ -7649,7 +7872,7 @@
         "via": "Topica",
         "diaTratamiento": "5/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-18",
@@ -7664,7 +7887,7 @@
         "via": "Topica",
         "diaTratamiento": "6/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-19",
@@ -7679,7 +7902,7 @@
         "via": "Topica",
         "diaTratamiento": "1/x",
         "observaciones": "Aplicacion de gota en lesión detectada en la barbilla (cercana a comisura de la cavidad bucal). Se realiza seguimiento tras la deteccion rugosidad adherida en su piel",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-19",
@@ -7694,7 +7917,7 @@
         "via": "Topica",
         "diaTratamiento": "7/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-20",
@@ -7709,7 +7932,7 @@
         "via": "Topica",
         "diaTratamiento": "8/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-21",
@@ -7724,7 +7947,7 @@
         "via": "Topica",
         "diaTratamiento": "9/x",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -7739,7 +7962,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-01",
         "observaciones": "A manera preventiva posterior a la manipulacion de los ejemplares se acondiciona el agua con el producto señalado por los 5 días siguientes considerando la sugerencia del veterinario",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -7754,7 +7977,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": "Revision del ojo de Panchita por el veterinario, comenta que ha perdido el ojo y que se debe mantener bajo observacion por posible desprendimiento de la estructura por lo que se puede presentar infeccion y necesitar antibiotico",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-22",
@@ -7769,7 +7992,7 @@
         "via": "Oral",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-23",
@@ -7784,7 +8007,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-01",
         "observaciones": "Baño con magic",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-23",
@@ -7799,7 +8022,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-01",
         "observaciones": "Baño con azul de metileno",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-23",
@@ -7814,7 +8037,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-24",
@@ -7829,7 +8052,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-02",
         "observaciones": "Baño con magic",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-24",
@@ -7844,7 +8067,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-02",
         "observaciones": "Baño con azul de metileno",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-24",
@@ -7859,7 +8082,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-25",
@@ -7874,7 +8097,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-25",
@@ -7889,7 +8112,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-03",
         "observaciones": "Baño con magic",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-25",
@@ -7904,7 +8127,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-03",
         "observaciones": "Baño con azul de metileno",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-26",
@@ -7919,7 +8142,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-26",
@@ -7934,7 +8157,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-04",
         "observaciones": "Baño con magic",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-26",
@@ -7949,7 +8172,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-05-04",
         "observaciones": "Baño con azul de metileno",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-27",
@@ -7964,7 +8187,7 @@
         "via": "Topica",
         "diaTratamiento": "2026-10-01",
         "observaciones": "Baño con itraconazol. Se le retiraron 3 algodonosidades de las branquias derechas. El ejemplar se mantuvo muy reactivo durante todo el tratamiento.",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-06-28",
@@ -8009,7 +8232,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-01",
@@ -8024,7 +8247,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-01",
@@ -8039,7 +8262,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-01",
@@ -8054,7 +8277,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-01",
@@ -8069,7 +8292,7 @@
         "via": "Subdérmica",
         "diaTratamiento": "2026-07-01",
         "observaciones": "Medicamento recetado al ejemplar por el veterinario, en la visita médica se toman muestras de fluidos para enviarlos a patología. Inflamación visible por acumulación de líquidos en cavidad abdominal (ascitis). Durante las aplicaciones del medicamento se experimenta una inflamación posterior a las inyecciones que se reducen con el paso de las horas",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-02",
@@ -8084,7 +8307,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-02",
@@ -8099,7 +8322,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-02",
@@ -8114,7 +8337,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-02",
@@ -8129,7 +8352,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-02",
@@ -8144,7 +8367,7 @@
         "via": "Subdérmica",
         "diaTratamiento": "2026-07-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-02",
@@ -8159,7 +8382,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-03-01",
         "observaciones": "El ejemplar parece mostrar cierta incomodidad pero mantiene un movimiento reducido, en el primer tratamiento no se registra diferencia de pesos. Con recomendacion del veterinario se opta por extender el tratamiento con periodos de descanso entre las aplicaciones",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-02",
@@ -8174,7 +8397,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-02",
@@ -8189,7 +8412,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-02",
@@ -8204,7 +8427,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-02",
@@ -8219,7 +8442,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-01",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-03",
@@ -8234,7 +8457,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-03",
@@ -8249,7 +8472,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-03",
@@ -8264,7 +8487,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-03",
@@ -8279,7 +8502,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-03",
@@ -8294,7 +8517,7 @@
         "via": "Subdérmica",
         "diaTratamiento": "2026-07-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-03",
@@ -8309,7 +8532,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-03",
@@ -8324,7 +8547,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-03",
@@ -8339,7 +8562,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-03",
@@ -8354,7 +8577,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-02",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-04",
@@ -8369,7 +8592,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-04",
@@ -8384,7 +8607,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-04",
@@ -8399,7 +8622,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-04",
@@ -8414,7 +8637,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-04",
@@ -8429,7 +8652,7 @@
         "via": "Subdérmica",
         "diaTratamiento": "2026-07-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-04",
@@ -8444,7 +8667,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-03-02",
         "observaciones": "Tras la exposición a los baños de sales el ejemplar presenta cierta descamación en distintas regiones del cuerpo y un aclaramiento en áreas como de la parte inicial a intermedia de la cabeza. Se registra una pérdida de peso de acuerdo a la esperada",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-04",
@@ -8459,7 +8682,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-04",
@@ -8474,7 +8697,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-04",
@@ -8489,7 +8712,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-04",
@@ -8504,7 +8727,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-03",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-05",
@@ -8519,7 +8742,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-05",
@@ -8534,7 +8757,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-05",
@@ -8549,7 +8772,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-05",
@@ -8564,7 +8787,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-05",
@@ -8579,7 +8802,7 @@
         "via": "Subdérmica",
         "diaTratamiento": "2026-07-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-05",
@@ -8594,7 +8817,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-05",
@@ -8609,7 +8832,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-05",
@@ -8624,7 +8847,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-05",
@@ -8639,7 +8862,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-04",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-06",
@@ -8654,7 +8877,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-06",
@@ -8669,7 +8892,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-06",
@@ -8684,7 +8907,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-06",
@@ -8699,7 +8922,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-06",
@@ -8714,7 +8937,7 @@
         "via": "Subdérmica",
         "diaTratamiento": "2026-07-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-06",
@@ -8729,7 +8952,7 @@
         "via": "Tópica",
         "diaTratamiento": "2026-03-03",
         "observaciones": "Mezcla de sales (consultar en bitácora de mantenimiento de agua). Con el tratamiento el ejemplar logra reducir el peso conforme a lo esperado por el veterinario (127 g a 119 g)",
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-06",
@@ -8744,7 +8967,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-06",
@@ -8759,7 +8982,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-06",
@@ -8774,7 +8997,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-06",
@@ -8789,7 +9012,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-05",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-07",
@@ -8804,7 +9027,7 @@
         "via": "Subdérmica",
         "diaTratamiento": "2026-07-07",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-07",
@@ -8819,7 +9042,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-07",
@@ -8834,7 +9057,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-07",
@@ -8849,7 +9072,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       },
       {
         "fecha": "2026-07-07",
@@ -8864,7 +9087,7 @@
         "via": "Oftálmica",
         "diaTratamiento": "2026-07-06",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       }
     ],
     "Larvas": [
@@ -8881,7 +9104,7 @@
         "via": "Topica",
         "diaTratamiento": null,
         "observaciones": "Colocación de concentrado de almendro de manera preventiva",
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-04-17",
@@ -8896,7 +9119,7 @@
         "via": "Topica",
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       }
     ],
     "Goldy": [
@@ -8913,7 +9136,7 @@
         "via": null,
         "diaTratamiento": null,
         "observaciones": null,
-        "estado": "Alta medica"
+        "estado": null
       },
       {
         "fecha": "2026-03-18",
@@ -8928,7 +9151,7 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-07",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       }
     ],
     "Leucistica": [
@@ -8945,7 +9168,7 @@
         "via": "Oral",
         "diaTratamiento": "2026-02-08",
         "observaciones": null,
-        "estado": "Activo"
+        "estado": null
       }
     ]
   },
@@ -9630,6 +9853,36 @@
         "sobrante": 1.04,
         "consumo": 0,
         "respuesta": "Se le ofrecieron algunos trozos de tilapia al animal. Los masticaba y escupia"
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.06,
+        "sobrante": 1.92,
+        "consumo": 0.14,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-24",
+        "hora": 0.9316666666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.37,
+        "sobrante": 0,
+        "consumo": 0.37,
+        "respuesta": "Croquetas qualis"
+      },
+      {
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.5,
+        "sobrante": 0.69,
+        "consumo": 1.81,
+        "respuesta": null
       }
     ],
     "Tascalate": [
@@ -10272,6 +10525,26 @@
         "sobrante": 0.55,
         "consumo": 2.12,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.69,
+        "sobrante": 2.25,
+        "consumo": 0.44,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.01,
+        "sobrante": 0.84,
+        "consumo": 2.17,
+        "respuesta": null
       }
     ],
     "Chocorrol": [
@@ -10854,6 +11127,26 @@
         "sobrante": 0,
         "consumo": 1.9,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.86,
+        "sobrante": 0.55,
+        "consumo": 2.31,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.58,
+        "sobrante": 2.75,
+        "consumo": 0.83,
+        "respuesta": null
       }
     ],
     "La negra": [
@@ -11235,7 +11528,7 @@
         "racion": 10.22,
         "sobrante": 0,
         "consumo": 2.044,
-        "respuesta": "Se observa a La Negra comiendo"
+        "respuesta": "Se observa a La negra comiendo"
       },
       {
         "fecha": "2026-06-26",
@@ -11525,6 +11818,26 @@
         "racion": 2.84,
         "sobrante": 0.96,
         "consumo": 1.88,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.72,
+        "sobrante": 2.24,
+        "consumo": 0.48,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.32,
+        "sobrante": 2.98,
+        "consumo": 0.34,
         "respuesta": null
       }
     ],
@@ -12147,6 +12460,26 @@
         "racion": 2.77,
         "sobrante": 0,
         "consumo": 2.77,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.79,
+        "sobrante": 2.46,
+        "consumo": 0.33,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.64,
+        "sobrante": 2.93,
+        "consumo": 0.71,
         "respuesta": null
       }
     ],
@@ -13310,6 +13643,46 @@
         "sobrante": 0.68,
         "consumo": 0.73,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.97,
+        "sobrante": 1.21,
+        "consumo": 0.76,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.72,
+        "sobrante": 1.07,
+        "consumo": 0.65,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.51,
+        "sobrante": 0.43,
+        "consumo": 1.08,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.25,
+        "sobrante": 0.6,
+        "consumo": 0.65,
+        "respuesta": null
       }
     ],
     "Pardo Macho": [
@@ -13922,6 +14295,26 @@
         "sobrante": 2.93,
         "consumo": 0,
         "respuesta": "El ejemplar no muestra apetito"
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 2.98,
+        "sobrante": 1.48,
+        "consumo": 1.5,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 3.11,
+        "sobrante": 1.63,
+        "consumo": 1.48,
+        "respuesta": null
       }
     ],
     "Limon": [
@@ -14543,6 +14936,36 @@
         "racion": 2.11,
         "sobrante": 0.64,
         "consumo": 1.47,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.71,
+        "sobrante": 0,
+        "consumo": 1.71,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-24",
+        "hora": 0.9316666666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.4,
+        "sobrante": 0,
+        "consumo": 0.4,
+        "respuesta": "Croquetas qualis"
+      },
+      {
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.8,
+        "sobrante": 0,
+        "consumo": 1.8,
         "respuesta": null
       }
     ],
@@ -15236,6 +15659,36 @@
         "sobrante": 0.58,
         "consumo": 1.5,
         "respuesta": null
+      },
+      {
+        "fecha": "2026-08-21",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.56,
+        "sobrante": 0,
+        "consumo": 1.56,
+        "respuesta": null
+      },
+      {
+        "fecha": "2026-08-24",
+        "hora": 0.9316666666666666,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Croquetas",
+        "racion": 0.42,
+        "sobrante": 0,
+        "consumo": 0.42,
+        "respuesta": "Croquetas qualis"
+      },
+      {
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
+        "autor": "lups-plantae.axolodao.eth",
+        "tipo": "Tilapia",
+        "racion": 1.52,
+        "sobrante": 0,
+        "consumo": 1.52,
+        "respuesta": null
       }
     ],
     "Remo": [
@@ -15888,167 +16341,25 @@
         "sobrante": 0.6,
         "consumo": 3.35,
         "respuesta": null
-      }
-    ],
-    "Sansón": [
-      {
-        "fecha": "2026-07-13",
-        "hora": 0.8379166666666666,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 2.55,
-        "sobrante": 0,
-        "consumo": 2.55,
-        "respuesta": "Sansón"
       },
       {
-        "fecha": "2026-07-17",
-        "hora": 0.8379166666666666,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 3.31,
-        "sobrante": 0,
-        "consumo": 3.31,
-        "respuesta": "Sanson"
-      },
-      {
-        "fecha": "2026-07-20",
-        "hora": 0.8309722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 3.19,
-        "sobrante": 0,
-        "consumo": 3.19,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-22",
-        "hora": 0.8344444444444444,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 3.05,
-        "sobrante": 0,
-        "consumo": 3.05,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-24",
-        "hora": 0.89,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 4.77,
-        "sobrante": 0.65,
-        "consumo": 4.12,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-28",
-        "hora": 0.83375,
-        "autor": "May",
-        "tipo": "Tilapia",
-        "racion": 4.23,
-        "sobrante": 1.51,
-        "consumo": 2.72,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-30",
-        "hora": 0.8309722222222222,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 3.03,
-        "sobrante": 1.06,
-        "consumo": 1.97,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-07-31",
-        "hora": 0.9073611111111111,
-        "autor": "May",
-        "tipo": "Croquetas",
-        "racion": 0.32,
-        "sobrante": 0.32,
-        "consumo": 0,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-08-03",
-        "hora": 0.8205555555555556,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Croquetas",
-        "racion": 0.38,
-        "sobrante": 0.38,
-        "consumo": 0,
-        "respuesta": "Croquetas plus"
-      },
-      {
-        "fecha": "2026-08-03",
-        "hora": 0.8205555555555556,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Croquetas",
-        "racion": 0.34,
-        "sobrante": 0.34,
-        "consumo": 0,
-        "respuesta": "Croquetas qualis"
-      },
-      {
-        "fecha": "2026-08-04",
-        "hora": 0.8795833333333334,
-        "autor": "May",
-        "tipo": "Tilapia",
-        "racion": 3.63,
-        "sobrante": 0.95,
-        "consumo": 2.68,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-08-06",
-        "hora": 0.8379166666666666,
-        "autor": "May",
-        "tipo": "Tilapia",
-        "racion": 3.2,
-        "sobrante": 0.45,
-        "consumo": 2.75,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-08-07",
-        "hora": 0.8518055555555556,
-        "autor": "May",
-        "tipo": "Tilapia",
-        "racion": 2.72,
-        "sobrante": 0.15,
-        "consumo": 2.57,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-08-10",
-        "hora": 0.8795833333333334,
-        "autor": "lups-plantae.axolodao.eth",
-        "tipo": "Tilapia",
-        "racion": 2.59,
-        "sobrante": 0,
-        "consumo": 2.59,
-        "respuesta": null
-      },
-      {
-        "fecha": "2026-08-12",
+        "fecha": "2026-08-21",
         "hora": 0.8170833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
-        "racion": 3.87,
-        "sobrante": 0,
-        "consumo": 3.87,
+        "racion": 4.12,
+        "sobrante": 2.17,
+        "consumo": 1.95,
         "respuesta": null
       },
       {
-        "fecha": "2026-08-14",
-        "hora": 0.8275,
+        "fecha": "2026-08-25",
+        "hora": 0.8170833333333334,
         "autor": "lups-plantae.axolodao.eth",
         "tipo": "Tilapia",
-        "racion": 3.58,
-        "sobrante": 0.08,
-        "consumo": 3.5,
+        "racion": 4.84,
+        "sobrante": 1.61,
+        "consumo": 3.23,
         "respuesta": null
       }
     ],
