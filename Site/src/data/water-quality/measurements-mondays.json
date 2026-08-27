@@ -16,14 +16,13 @@
       "gh": 60,
       "kh": 90,
       "ph": 8,
-      "po4": 5,
+      "po4": null,
       "cond": null,
       "tds": null
     },
     "alarms": [
       "no3",
-      "gh",
-      "po4"
+      "gh"
     ],
     "note": null
   },
@@ -44,13 +43,12 @@
       "gh": 60,
       "kh": 80,
       "ph": 7.8,
-      "po4": 5,
+      "po4": null,
       "cond": null,
       "tds": null
     },
     "alarms": [
-      "gh",
-      "po4"
+      "gh"
     ],
     "note": null
   },
@@ -71,13 +69,12 @@
       "gh": null,
       "kh": null,
       "ph": 8,
-      "po4": 5,
+      "po4": null,
       "cond": null,
       "tds": null
     },
     "alarms": [
-      "ph",
-      "po4"
+      "ph"
     ],
     "note": null
   },
@@ -98,13 +95,11 @@
       "gh": null,
       "kh": null,
       "ph": 8,
-      "po4": 5,
+      "po4": null,
       "cond": null,
       "tds": null
     },
-    "alarms": [
-      "po4"
-    ],
+    "alarms": [],
     "note": null
   },
   {
@@ -209,13 +204,12 @@
       "gh": null,
       "kh": null,
       "ph": 8.2,
-      "po4": 5,
+      "po4": null,
       "cond": 624,
       "tds": null
     },
     "alarms": [
       "ph",
-      "po4",
       "cond"
     ],
     "note": null
@@ -237,13 +231,11 @@
       "gh": null,
       "kh": null,
       "ph": 8,
-      "po4": 5,
+      "po4": null,
       "cond": 488,
       "tds": null
     },
-    "alarms": [
-      "po4"
-    ],
+    "alarms": [],
     "note": null
   },
   {
@@ -396,13 +388,12 @@
       "gh": null,
       "kh": 120,
       "ph": 9,
-      "po4": 5,
+      "po4": null,
       "cond": 870,
       "tds": null
     },
     "alarms": [
       "ph",
-      "po4",
       "cond"
     ],
     "note": null
@@ -424,13 +415,12 @@
       "gh": null,
       "kh": null,
       "ph": 8.8,
-      "po4": 5,
+      "po4": null,
       "cond": 1200,
       "tds": null
     },
     "alarms": [
       "ph",
-      "po4",
       "cond"
     ],
     "note": null
@@ -452,13 +442,12 @@
       "gh": null,
       "kh": null,
       "ph": 9,
-      "po4": 5,
+      "po4": null,
       "cond": 820,
       "tds": null
     },
     "alarms": [
-      "ph",
-      "po4"
+      "ph"
     ],
     "note": null
   },
@@ -479,13 +468,12 @@
       "gh": null,
       "kh": null,
       "ph": 9,
-      "po4": 5,
+      "po4": null,
       "cond": 900,
       "tds": null
     },
     "alarms": [
       "ph",
-      "po4",
       "cond"
     ],
     "note": null
@@ -507,14 +495,13 @@
       "gh": null,
       "kh": 100,
       "ph": 9.18,
-      "po4": 1.2,
+      "po4": null,
       "cond": 385,
       "tds": null
     },
     "alarms": [
       "no3",
-      "ph",
-      "po4"
+      "ph"
     ],
     "note": null
   },
@@ -535,14 +522,13 @@
       "gh": null,
       "kh": 130,
       "ph": 9.18,
-      "po4": 1.2,
+      "po4": null,
       "cond": 519,
       "tds": null
     },
     "alarms": [
       "kh",
       "ph",
-      "po4",
       "cond"
     ],
     "note": null
@@ -564,7 +550,7 @@
       "gh": null,
       "kh": 140,
       "ph": 9.18,
-      "po4": 0.21,
+      "po4": null,
       "cond": 449,
       "tds": null
     },
@@ -592,7 +578,7 @@
       "gh": null,
       "kh": 120,
       "ph": 9.1,
-      "po4": 0.3,
+      "po4": null,
       "cond": 473,
       "tds": null
     },
@@ -619,13 +605,12 @@
       "gh": null,
       "kh": 90.78,
       "ph": null,
-      "po4": 0.9,
+      "po4": null,
       "cond": 1883,
       "tds": null
     },
     "alarms": [
       "kh",
-      "po4",
       "cond"
     ],
     "note": null
@@ -647,7 +632,7 @@
       "gh": null,
       "kh": 108.58,
       "ph": null,
-      "po4": 0.15,
+      "po4": null,
       "cond": 1212,
       "tds": null
     },
@@ -675,7 +660,7 @@
       "gh": null,
       "kh": 108.58,
       "ph": null,
-      "po4": 0.15,
+      "po4": null,
       "cond": 1269,
       "tds": null
     },
@@ -703,7 +688,7 @@
       "gh": null,
       "kh": 110.36,
       "ph": null,
-      "po4": 0.09,
+      "po4": null,
       "cond": 783,
       "tds": null
     },
@@ -729,7 +714,7 @@
       "gh": null,
       "kh": 74.76,
       "ph": 7.4,
-      "po4": 0.3,
+      "po4": null,
       "cond": 1506,
       "tds": null
     },
@@ -756,7 +741,7 @@
       "gh": null,
       "kh": 64.08,
       "ph": 7.4,
-      "po4": 0.3,
+      "po4": null,
       "cond": 1322,
       "tds": null
     },
@@ -783,7 +768,7 @@
       "gh": null,
       "kh": 69.42,
       "ph": 7.4,
-      "po4": 0.3,
+      "po4": null,
       "cond": 1247,
       "tds": null
     },
@@ -810,7 +795,7 @@
       "gh": null,
       "kh": 138.84,
       "ph": 8,
-      "po4": 0.3,
+      "po4": null,
       "cond": 2306,
       "tds": null
     },
@@ -837,14 +822,13 @@
       "gh": null,
       "kh": 71.2,
       "ph": 7.5,
-      "po4": 13.15,
+      "po4": null,
       "cond": null,
       "tds": null
     },
     "alarms": [
       "nh3",
-      "ph",
-      "po4"
+      "ph"
     ],
     "note": null
   },
@@ -865,7 +849,7 @@
       "gh": null,
       "kh": 49.84,
       "ph": 7.7,
-      "po4": 10.5,
+      "po4": null,
       "cond": null,
       "tds": null
     },
@@ -873,8 +857,7 @@
       "temp",
       "nh3",
       "no2",
-      "kh",
-      "po4"
+      "kh"
     ],
     "note": "Estancamiento de agua por evaporación en el filtro "
   },
@@ -895,15 +878,14 @@
       "gh": null,
       "kh": 55.18,
       "ph": 7.4,
-      "po4": 10.5,
+      "po4": null,
       "cond": null,
       "tds": null
     },
     "alarms": [
       "temp",
       "nh3",
-      "no2",
-      "po4"
+      "no2"
     ],
     "note": null
   },
@@ -924,14 +906,13 @@
       "gh": null,
       "kh": 149.52,
       "ph": 8.15,
-      "po4": 13.15,
+      "po4": null,
       "cond": null,
       "tds": null
     },
     "alarms": [
       "nh3",
-      "kh",
-      "po4"
+      "kh"
     ],
     "note": null
   },
@@ -952,7 +933,7 @@
       "gh": null,
       "kh": 49.81,
       "ph": 7.7,
-      "po4": 0.3,
+      "po4": null,
       "cond": null,
       "tds": null
     },
@@ -979,7 +960,7 @@
       "gh": null,
       "kh": 55.18,
       "ph": 7.7,
-      "po4": 0.3,
+      "po4": null,
       "cond": null,
       "tds": null
     },
@@ -1005,7 +986,7 @@
       "gh": null,
       "kh": 55.18,
       "ph": 7.7,
-      "po4": 0.3,
+      "po4": null,
       "cond": null,
       "tds": null
     },
@@ -1032,7 +1013,7 @@
       "gh": null,
       "kh": 140.62,
       "ph": 8.15,
-      "po4": 0.3,
+      "po4": null,
       "cond": null,
       "tds": null
     },
@@ -1058,7 +1039,7 @@
       "gh": null,
       "kh": 39.16,
       "ph": 7.5,
-      "po4": 0.3,
+      "po4": null,
       "cond": 1786,
       "tds": null
     },
@@ -1086,7 +1067,7 @@
       "gh": null,
       "kh": 58.74,
       "ph": 7.5,
-      "po4": 0.3,
+      "po4": null,
       "cond": 2508,
       "tds": null
     },
@@ -1114,7 +1095,7 @@
       "gh": null,
       "kh": 40.94,
       "ph": 7.5,
-      "po4": 0.3,
+      "po4": null,
       "cond": 2636,
       "tds": null
     },
@@ -1143,13 +1124,12 @@
       "gh": null,
       "kh": 129.94,
       "ph": 8.2,
-      "po4": 0.7,
+      "po4": null,
       "cond": 3618,
       "tds": null
     },
     "alarms": [
       "kh",
-      "po4",
       "cond"
     ],
     "note": null
@@ -1171,7 +1151,7 @@
       "gh": null,
       "kh": 44.5,
       "ph": 7.5,
-      "po4": 0.3,
+      "po4": null,
       "cond": 1374,
       "tds": null
     },
@@ -1201,7 +1181,7 @@
       "gh": null,
       "kh": 39.16,
       "ph": 7,
-      "po4": 0.3,
+      "po4": null,
       "cond": 2030,
       "tds": null
     },
@@ -1232,7 +1212,7 @@
       "gh": null,
       "kh": 39.16,
       "ph": 7,
-      "po4": 0.3,
+      "po4": null,
       "cond": 2208,
       "tds": null
     },
@@ -1263,7 +1243,7 @@
       "gh": null,
       "kh": 110.36,
       "ph": 8,
-      "po4": 0.3,
+      "po4": null,
       "cond": 2024,
       "tds": null
     },
@@ -1510,7 +1490,7 @@
       "gh": 89.5,
       "kh": 161,
       "ph": 8.7,
-      "po4": 0.25,
+      "po4": null,
       "cond": 1640,
       "tds": null
     },
@@ -1538,7 +1518,7 @@
       "gh": 89.5,
       "kh": 35,
       "ph": 7.9,
-      "po4": 0.25,
+      "po4": null,
       "cond": 3410,
       "tds": null
     },
@@ -1569,7 +1549,7 @@
       "gh": 89.5,
       "kh": 18,
       "ph": 7.9,
-      "po4": 0.5,
+      "po4": null,
       "cond": 3060,
       "tds": null
     },
@@ -1600,7 +1580,7 @@
       "gh": 35.8,
       "kh": 16,
       "ph": 7.8,
-      "po4": 0.25,
+      "po4": null,
       "cond": 840,
       "tds": null
     },
@@ -1741,7 +1721,7 @@
       "gh": 17.9,
       "kh": 17.9,
       "ph": 7.9,
-      "po4": 0.25,
+      "po4": null,
       "cond": 390,
       "tds": null
     },
@@ -1770,7 +1750,7 @@
       "gh": 53.7,
       "kh": 35.8,
       "ph": 8,
-      "po4": 0.5,
+      "po4": null,
       "cond": 2030,
       "tds": null
     },
@@ -1799,7 +1779,7 @@
       "gh": 53.7,
       "kh": 35.8,
       "ph": 8,
-      "po4": 0.5,
+      "po4": null,
       "cond": 1750,
       "tds": null
     },
@@ -1828,7 +1808,7 @@
       "gh": 71.6,
       "kh": 107.4,
       "ph": 8.5,
-      "po4": 0,
+      "po4": null,
       "cond": 530,
       "tds": null
     },
@@ -1858,13 +1838,12 @@
       "ph": 8.3,
       "po4": null,
       "cond": 320,
-      "tds": 160
+      "tds": null
     },
     "alarms": [
       "gh",
       "kh",
-      "ph",
-      "tds"
+      "ph"
     ],
     "note": null
   },
@@ -1887,14 +1866,13 @@
       "ph": 7.9,
       "po4": null,
       "cond": 1790,
-      "tds": 895
+      "tds": null
     },
     "alarms": [
       "gh",
       "kh",
       "ph",
-      "cond",
-      "tds"
+      "cond"
     ],
     "note": null
   },
@@ -1917,14 +1895,13 @@
       "ph": 8.7,
       "po4": null,
       "cond": 660,
-      "tds": 330
+      "tds": null
     },
     "alarms": [
       "gh",
       "kh",
       "ph",
-      "cond",
-      "tds"
+      "cond"
     ],
     "note": null
   },
@@ -1974,13 +1951,12 @@
       "ph": 7.8,
       "po4": null,
       "cond": 1700,
-      "tds": 850
+      "tds": null
     },
     "alarms": [
       "gh",
       "kh",
-      "cond",
-      "tds"
+      "cond"
     ],
     "note": null
   },
@@ -2003,15 +1979,14 @@
       "ph": 8.9,
       "po4": null,
       "cond": 770,
-      "tds": 385
+      "tds": null
     },
     "alarms": [
       "temp",
       "gh",
       "kh",
       "ph",
-      "cond",
-      "tds"
+      "cond"
     ],
     "note": " temperatura superficial"
   },
@@ -2034,7 +2009,7 @@
       "ph": 8.3,
       "po4": null,
       "cond": 880,
-      "tds": 440
+      "tds": null
     },
     "alarms": [],
     "note": null
@@ -2058,13 +2033,12 @@
       "ph": 8.7,
       "po4": null,
       "cond": 380,
-      "tds": 190
+      "tds": null
     },
     "alarms": [
       "gh",
       "kh",
-      "ph",
-      "tds"
+      "ph"
     ],
     "note": null
   },
@@ -2087,14 +2061,13 @@
       "ph": 8.2,
       "po4": null,
       "cond": 1740,
-      "tds": 870
+      "tds": null
     },
     "alarms": [
       "gh",
       "kh",
       "ph",
-      "cond",
-      "tds"
+      "cond"
     ],
     "note": null
   },
@@ -2117,14 +2090,13 @@
       "ph": 8.9,
       "po4": null,
       "cond": 840,
-      "tds": 420
+      "tds": null
     },
     "alarms": [
       "gh",
       "kh",
       "ph",
-      "cond",
-      "tds"
+      "cond"
     ],
     "note": null
   },
@@ -2147,15 +2119,14 @@
       "ph": 7.9,
       "po4": null,
       "cond": 1870,
-      "tds": 935
+      "tds": null
     },
     "alarms": [
       "temp",
       "gh",
       "kh",
       "ph",
-      "cond",
-      "tds"
+      "cond"
     ],
     "note": null
   },
@@ -2178,13 +2149,12 @@
       "ph": 8.7,
       "po4": null,
       "cond": 810,
-      "tds": 405
+      "tds": null
     },
     "alarms": [
       "gh",
       "ph",
-      "cond",
-      "tds"
+      "cond"
     ],
     "note": null
   },
@@ -3035,7 +3005,7 @@
       "ph",
       "cond"
     ],
-    "note": null
+    "note": "1170"
   },
   {
     "date": "2026-08-10",
@@ -3064,7 +3034,7 @@
       "ph",
       "cond"
     ],
-    "note": null
+    "note": "2980"
   },
   {
     "date": "2026-08-17",
@@ -3091,7 +3061,7 @@
       "kh",
       "cond"
     ],
-    "note": "Mediciones de pH con reactivo de gotas"
+    "note": "2830"
   },
   {
     "date": "2026-08-17",
@@ -3118,6 +3088,59 @@
       "no3",
       "ph"
     ],
-    "note": "Mediciones de pH con reactivo de gotas"
+    "note": "1080"
+  },
+  {
+    "date": "2026-08-24",
+    "time": "10:50",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "XOVI bot"
+    },
+    "values": {
+      "temp": 17.6,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 10,
+      "gh": 232.7,
+      "kh": 125.3,
+      "ph": 8,
+      "po4": null,
+      "cond": 2870,
+      "tds": null
+    },
+    "alarms": [
+      "kh",
+      "cond"
+    ],
+    "note": "2870"
+  },
+  {
+    "date": "2026-08-24",
+    "time": "10:50",
+    "tankId": "AM",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "XOVI bot"
+    },
+    "values": {
+      "temp": 16.55,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 40,
+      "gh": 196.9,
+      "kh": 71.6,
+      "ph": 7.5,
+      "po4": null,
+      "cond": 1090,
+      "tds": null
+    },
+    "alarms": [
+      "no3"
+    ],
+    "note": "1090"
   }
 ]
