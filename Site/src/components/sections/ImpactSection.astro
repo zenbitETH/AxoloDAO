@@ -24,10 +24,6 @@ const stats: Stat[] = [
       <p class="mt-3 text-sm text-white/70 sm:text-base">{t(locale, 'impact.subtitle')}</p>
     </header>
 
-    <p class="impact-since mb-6 text-center font-mono text-sm uppercase tracking-[0.25em] text-teal sm:text-base">
-      {t(locale, 'impact.sinceLabel')}
-    </p>
-
     <div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
       {stats.map((s) => (
         s.href ? (
@@ -67,16 +63,10 @@ const stats: Stat[] = [
   }
 
   /* Staggered entry — eyebrow first, then each card 60ms behind the last */
-  .impact-since,
   .impact-card {
     opacity: 0;
     transform: translateY(8px);
     animation: impact-rise 420ms var(--impact-ease) forwards;
-  }
-  .impact-since {
-    transform: translateY(4px);
-    animation-duration: 360ms;
-    animation-delay: 40ms;
   }
   .impact-card:nth-child(1) { animation-delay: 120ms; }
   .impact-card:nth-child(2) { animation-delay: 180ms; }
@@ -145,7 +135,6 @@ const stats: Stat[] = [
 
   /* Reduced motion: keep meaning, lose movement */
   @media (prefers-reduced-motion: reduce) {
-    .impact-since,
     .impact-card {
       opacity: 1;
       transform: none;
