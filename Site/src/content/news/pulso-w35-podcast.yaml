@@ -1,0 +1,17 @@
+slug: pulso-w35-podcast
+author: zenbit
+chapter: podcast
+url: https://www.instagram.com/p/DcmN8XYiSCp/
+image: /photos/news/pulso-w35-podcast.jpg
+# La slide 1 del mazo es una portada animada de 30 s, así que la tarjeta se
+# reproduce al pasar el cursor igual que un Reel. El .mp4 es el proxy de 540p
+# (0.8 MB), nunca el máster de 21 MB: git no olvida un blob.
+video: /videos/news/pulso-w35-podcast.mp4
+poster: /photos/news/pulso-w35-podcast.jpg
+caption:
+  es: "Pulso AxoloDAO · Semana 35 — el podcast 23 en diecinueve clips, primera emisión del ciclo quincenal: llegó un andersoni, el primero desde Panchita, y su agua es de la llave a propósito; a Tamal se le infectó la cola tras desparasitarla y a Patito le salió un crecimiento algodonoso en la branquia; la salamandra tigre también regenera, pero tarda de 155 a 180 días y le quedan anomalías en el hueso; un acuario de California le abre una sala al ajolote; y el potenciómetro estaba descalibrado medio punto hacia arriba, así que el pH que llevaba cinco episodios sin explicación pudo ser en parte el aparato."
+  en: "Pulso AxoloDAO · Week 35 — podcast 23 in nineteen clips, the first biweekly episode: an andersoni arrived, the first since Panchita, and its water is tap water on purpose; Tamal's tail became infected after deworming and Patito developed a cottony growth on a gill; the tiger salamander also regenerates, but takes 155 to 180 days and is left with bone anomalies; a California aquarium is opening an axolotl gallery; and the pH meter was off by half a point, so the pH that went five episodes unexplained may have been the instrument."
+  pt: "Pulso AxoloDAO · Semana 35 — o podcast 23 em dezenove clipes, primeira emissão do ciclo quinzenal: chegou um andersoni, o primeiro desde Panchita, e sua água é de torneira de propósito; a cauda de Tamal infeccionou após a desparasitação e Patito teve um crescimento algodonoso numa brânquia; a salamandra-tigre também regenera, mas leva de 155 a 180 dias e fica com anomalias ósseas; um aquário da Califórnia abre uma sala ao axolote; e o potenciômetro estava descalibrado meio ponto, então o pH que passou cinco episódios sem explicação pode ter sido o aparelho."
+publishedAt: '2026-08-27'
+weekNumber: 35
+podcastNumber: 23
