@@ -25,9 +25,3 @@ links:
       pt: Quero ser testador Xovi
     url: https://xovi.axolodao.org/
     variant: primary
-  - label:
-      es: Ver demo
-      en: View demo
-      pt: Ver demo
-    url: https://xovi-testnet.vercel.app/
-    variant: secondary

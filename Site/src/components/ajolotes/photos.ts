@@ -8,6 +8,7 @@ const PHOTO_BASE = '/photos/ajolotes';
 // Slugs of available photos. Keep in sync with files in
 // Site/public/photos/ajolotes/ — see that folder's README.md.
 const AVAILABLE_PHOTOS: Record<string, 'webp' | 'jpg'> = {
+  'andersoni-1': 'webp',
   panchita: 'webp',
   'tamal-de-dulce': 'webp',
   tascalate: 'webp',
