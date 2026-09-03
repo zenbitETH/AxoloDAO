@@ -166,9 +166,9 @@ onchain layer that will anchor it.
  BioMuseo Xolotlcalli ──► operations workbook ──► Site data:* scripts ──► axolodao.org
    tanks · specimens                                                       (public record)
         │
-        └── 24/7 stream ──► Xovi · xovi.axolodao.org ──► operator + verifier queues
-                                                                │
-                                                                ▼
+        └── daily 9:00–21:00 stream ──► Xovi · xovi.axolodao.org ──► operator + verifier queues
+                                                                            │
+                                                                            ▼
                                         AxoloDAO System · private Foundry repository
                                         4 frozen EAS schemas · weekly Merkle root
                                         built and tested · nothing deployed · pre-audit
@@ -185,10 +185,11 @@ forms, no accounts, no wallet connection. See [`Site/README.md`](./Site/README.m
 inputs and their outputs.
 
 **Xovi captures observations.** [xovi.axolodao.org](https://xovi.axolodao.org/) is the interaction layer
-over the 24/7 stream from the biomuseum: operators record water cycles and readings, viewers submit clips of
-axolotl behaviour, and human verifiers confirm them before anything is treated as a fact. Machine-produced
-values enter as *proposals*, never as confirmed records. Xovi is pre-launch; no XOVI token has been issued
-and no Xovi-specific contract is deployed.
+over the biomuseum's daily livestream, 9:00 to 21:00 (Mexico City), with recordings available any time:
+operators record water cycles and readings, viewers submit clips of axolotl behaviour, and human verifiers
+confirm them before anything is treated as a fact. Machine-produced values enter as *proposals*, never as
+confirmed records. Xovi is pre-launch; no XOVI token has been issued and no Xovi-specific contract is
+deployed.
 
 **The AxoloDAO onchain system is a private Foundry repository.** It holds the access manager (ENS-bound
 roles), the record registry and its validator, the EAS attestor and a weekly Merkle batcher. It is **built
