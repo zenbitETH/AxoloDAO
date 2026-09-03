@@ -198,6 +198,14 @@ export const ALIAS_NORMALIZE = new Map([
   // "Patito" on the Site while keeping all cross-sheet joins intact. Drop this
   // line once the curator renames "Larva 1" → "Patito" in the workbook itself.
   ['Larva 1', 'Patito'],
+  // The A. andersoni that arrived in AA in August 2026 is logged as
+  // "Andersonii 1" — two i's — across Dashboard, Alimentación 2.0 and Bitacora.
+  // The species is andersoni, one i, so the working alias carries a typo into
+  // every surface that prints it. Folded here (not in the sheet) so the
+  // cross-sheet joins keep matching the raw text. Drop this line when the
+  // specimen gets its permanent name, or when column A is corrected.
+  ['Andersonii 1', 'Andersoni 1'],
+  ['andersonii 1', 'Andersoni 1'],
 ]);
 
 export function normalizeAlias(s) {
@@ -205,6 +213,26 @@ export function normalizeAlias(s) {
   const t = String(s).trim();
   if (!t) return t;
   return ALIAS_NORMALIZE.get(t) ?? t;
+}
+
+// Species spelling drift, same idea as ALIAS_NORMALIZE but for the `Especie`
+// column. The Site types the species as the exact workbook literal
+// (`SpeciesCode` in components/ajolotes/types.ts) and `speciesToWq()` matches it
+// with ===, so a single stray character silently downgrades a specimen to the
+// 'na' palette, drops it out of the species tally, and unlinks it from its
+// species sheet. Keep this to real misspellings of the three species on site.
+export const SPECIES_NORMALIZE = new Map([
+  // Ambystoma andersoni Krebs & Brandon, 1984 — one i. The Dashboard row for the
+  // August 2026 arrival types it with two.
+  ['A. andersonii', 'A. andersoni'],
+  ['A. Andersonii', 'A. andersoni'],
+]);
+
+export function normalizeEspecie(s) {
+  if (s == null) return s;
+  const t = String(s).trim();
+  if (!t) return t;
+  return SPECIES_NORMALIZE.get(t) ?? t;
 }
 
 /**
