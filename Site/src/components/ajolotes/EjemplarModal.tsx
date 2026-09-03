@@ -213,7 +213,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
             <div class="flex flex-shrink-0 items-center gap-2">
               {!memorial && (
                 <a
-                  href="https://xovi-testnet.vercel.app/"
+                  href="https://xovi.axolodao.org"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="aj-press inline-flex h-9 items-center gap-1.5 rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)]/60 px-3 font-body text-xs font-semibold text-[var(--wq-ink)] backdrop-blur transition-[transform,background-color,border-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-[var(--wq-row-bg)] active:scale-[0.92]"
