@@ -33,6 +33,7 @@ import {
   findHeaderRow,
   indexOfHeader,
   normalizeAlias,
+  normalizeEspecie,
   loadEmbargoNames,
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
@@ -179,6 +180,17 @@ function sheet(name) {
   return XLSX.utils.sheet_to_json(sh, { header: 1, defval: null, raw: true, blankrows: false });
 }
 
+// Same as sheet(), for a tab the workbook is allowed to not have. A curator
+// deleting a tab must not take the other five sheets down with it: the ingest
+// says out loud what it lost and keeps going, so water, roster and bitácora
+// still refresh. A tab that IS present but malformed still throws — that is a
+// different failure and must not be swallowed.
+function optionalSheet(name) {
+  const sh = wb.Sheets[name];
+  if (!sh) return null;
+  return XLSX.utils.sheet_to_json(sh, { header: 1, defval: null, raw: true, blankrows: false });
+}
+
 // --- Ejemplares ------------------------------------------------------------
 const dashRows = sheet('Dashboard ejemplares');
 // Header row identified by alias + especie (resilient to the 2026 rename of the
@@ -225,7 +237,7 @@ for (let r = dashHdrIdx + 1; r < dashRows.length; r++) {
     alias,
     id: toStr(row[D.id]),
     pecera: toStr(row[D.pecera]),
-    especie: toStr(row[D.especie]),
+    especie: normalizeEspecie(toStr(row[D.especie])),
     genero: toStr(row[D.genero]),
     marcas: toStr(row[D.marcas]),
     fenotipo: toStr(row[D.fenotipo]),
@@ -376,43 +388,55 @@ if (histUnknownAliases.size) {
 }
 
 // --- Planes ----------------------------------------------------------------
-const planRows = sheet('Plan de alimentación');
-const planHdrIdx = findHeaderRow(planRows, ['alias', 'frecuencia']);
-if (planHdrIdx < 0) throw new Error('Plan de alimentación: header row not found');
-const planHdr = planRows[planHdrIdx];
-const P = {
-  alias:      indexOfHeader(planHdr, 'alias'),
-  pecera:     indexOfHeader(planHdr, 'pecera'),
-  especie:    indexOfHeader(planHdr, 'especie'),
-  estadio:    indexOfHeader(planHdr, 'estadio'),
-  dietaBase:  indexOfHeader(planHdr, 'dieta base'),
-  planB:      indexOfHeader(planHdr, 'plan b'),
-  porcion:    indexOfHeader(planHdr, 'porción'),
-  frecuencia: indexOfHeader(planHdr, 'frecuencia'),
-  notas:      indexOfHeader(planHdr, 'notas'),
-};
-
+// Optional since 2026-09: the curator deleted the 'Plan de alimentación' tab
+// from the workbook. It is the only source for the feeding-plan block in each
+// specimen modal, so when it is gone that block simply does not render — the
+// ingest must not invent one, and must not take the rest of the run down.
+const planRows = optionalSheet('Plan de alimentación');
 const planes = {};
-let planUnknown = 0;
-for (let r = planHdrIdx + 1; r < planRows.length; r++) {
-  const row = planRows[r];
-  if (!row || row.every((c) => c == null || c === '')) continue;
-  const alias = normalizeAlias(toStr(row[P.alias]));
-  if (!alias) continue;
-  if (!knownAliases.has(alias)) planUnknown++;
-  planes[alias] = {
-    pecera: toStr(row[P.pecera]),
-    especie: toStr(row[P.especie]),
-    estadio: toStr(row[P.estadio]),
-    dietaBase: toStr(row[P.dietaBase]),
-    planB: toStr(row[P.planB]),
-    porcion: toStr(row[P.porcion]),
-    frecuencia: toStr(row[P.frecuencia]),
-    notas: toStr(row[P.notas]),
+if (!planRows) {
+  console.warn(
+    '[data-ajolotes] AVISO: la hoja "Plan de alimentación" no está en el libro. ' +
+      'planes queda vacío y el bloque de plan alimenticio desaparece de TODAS las fichas. ' +
+      'Si la hoja se renombró, actualiza el nombre aquí; si se retiró a propósito, esto es lo esperado.',
+  );
+} else {
+  const planHdrIdx = findHeaderRow(planRows, ['alias', 'frecuencia']);
+  if (planHdrIdx < 0) throw new Error('Plan de alimentación: header row not found');
+  const planHdr = planRows[planHdrIdx];
+  const P = {
+    alias:      indexOfHeader(planHdr, 'alias'),
+    pecera:     indexOfHeader(planHdr, 'pecera'),
+    especie:    indexOfHeader(planHdr, 'especie'),
+    estadio:    indexOfHeader(planHdr, 'estadio'),
+    dietaBase:  indexOfHeader(planHdr, 'dieta base'),
+    planB:      indexOfHeader(planHdr, 'plan b'),
+    porcion:    indexOfHeader(planHdr, 'porción'),
+    frecuencia: indexOfHeader(planHdr, 'frecuencia'),
+    notas:      indexOfHeader(planHdr, 'notas'),
   };
+
+  let planUnknown = 0;
+  for (let r = planHdrIdx + 1; r < planRows.length; r++) {
+    const row = planRows[r];
+    if (!row || row.every((c) => c == null || c === '')) continue;
+    const alias = normalizeAlias(toStr(row[P.alias]));
+    if (!alias) continue;
+    if (!knownAliases.has(alias)) planUnknown++;
+    planes[alias] = {
+      pecera: toStr(row[P.pecera]),
+      especie: normalizeEspecie(toStr(row[P.especie])),
+      estadio: toStr(row[P.estadio]),
+      dietaBase: toStr(row[P.dietaBase]),
+      planB: toStr(row[P.planB]),
+      porcion: toStr(row[P.porcion]),
+      frecuencia: toStr(row[P.frecuencia]),
+      notas: toStr(row[P.notas]),
+    };
+  }
+  if (planUnknown) console.warn(`[data-ajolotes]   ${planUnknown} plan rows for aliases not in Dashboard`);
 }
 console.log(`[data-ajolotes] planes: ${Object.keys(planes).length}`);
-if (planUnknown) console.warn(`[data-ajolotes]   ${planUnknown} plan rows for aliases not in Dashboard`);
 
 // --- Alimentación ----------------------------------------------------------
 const alimRows = sheet('Alimentación 2.0');

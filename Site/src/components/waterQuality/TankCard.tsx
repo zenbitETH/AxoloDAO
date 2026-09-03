@@ -201,7 +201,7 @@ export default function TankCard({
         </div>
         <div class="flex flex-shrink-0 items-center gap-2">
           <a
-            href="https://xovi-testnet.vercel.app/"
+            href="https://xovi.axolodao.org"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-1.5 rounded-full border border-[var(--wq-divider)] bg-[var(--wq-surface)] px-3 py-1.5 font-body text-xs font-semibold text-[var(--wq-ink)] transition hover:bg-[var(--wq-ink)]/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--wq-ink)]"
