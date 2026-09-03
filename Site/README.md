@@ -186,7 +186,7 @@ Hand-editable **content** is `src/content/{members,partners,projects,news}/`, pl
 
 `/xolotlcalli/qr` renders a printable sheet of QR cards, one per station, from
 `src/components/QrSheet.astro`. Each tank card is a QR + label + call to action in its species accent colour;
-the three extra cards use their own brand colours (source: `src/components/QrSheet.astro:70-90`, 2026-09-02).
+the two extra cards use their own brand colours (source: `src/components/QrSheet.astro:70-89`, 2026-09-03).
 Every card can be exported individually to PNG or SVG from the browser. The sheet is printed and a card is
 placed next to its aquarium; a visitor scanning it lands directly on that station's detail view.
 
@@ -197,10 +197,12 @@ placed next to its aquarium; a visitor scanning it lands directly on that statio
 | AD — *Ambystoma dumerilii* | `#AD` | `/xolotlcalli#AD` |
 | Mapa | `#mapa` | `/#mapa` — the species map on the home page |
 | Xovi | — | `https://xovi.axolodao.org/` |
-| Xovi Testnet | — | `https://xovi-testnet.vercel.app/` |
 
-Nine cards in total: six tank stations plus three extra destinations (source:
-`src/components/QrSheet.astro`, 2026-09-02).
+Eight cards in total: six tank stations plus two extra destinations (source:
+`src/components/QrSheet.astro`, 2026-09-03). There used to be a ninth, `Xovi
+Testnet`, pointing at `xovi-testnet.vercel.app`. It was dropped: this sheet gets
+printed and taped next to an aquarium, which is the worst place to leave a
+pointer at a test deployment.
 
 Two invariants keep the printed paper and the running site in lockstep:
 
