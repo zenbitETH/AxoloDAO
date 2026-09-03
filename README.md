@@ -1,3 +1,19 @@
+<!-- STAGING HEADER — STRIP THIS COMMENT BEFORE COMMITTING TO THE PUBLIC REPO
+---
+title: AxoloDAO — root README (one added section: System and Xovi)
+audience: Kira (Protocol Engineer, Zenbit)
+date: 2026-09-02
+status: draft for review
+---
+Rationale for the comment wrapper: this file ships to a PUBLIC repository, where a rendered
+`audience:` frontmatter block would be both meaningless to readers and an unnecessary disclosure.
+The dossier frontmatter is preserved here for the review pass and MUST NOT be committed.
+GATE (run before any commit to the public repo; must return nothing):
+    grep -n "STAGING HEADER" README.md Site/README.md
+The single-view diagram for this artifact sits inside the added "6. System and Xovi" section,
+because a diagram bolted above the project title would break the README it belongs to.
+-->
+
 # 🧬 AxoloDAO
 
 AxoloDAO is a **[microDAO](./Docs/English/Concepts/4.%20MicroDAOs.md)** — an onchain organization built on ENS identity, Safe treasury, and EAS attestations — dedicated to advancing **[conservation and scientific research for Ambystoma species in Mexico](https://paragraph.com/@zenbit-2/we-are-axolodao)** through public digital infrastructure, collaborative governance, and transparent onchain/offchain coordination. This repository documents the conceptual, technical, and governance foundations of the AxoloDAO system.
@@ -15,7 +31,11 @@ AxoloDAO connects conservation actors, researchers, and communities around a sha
 
 ## ⚠️ 2. The Conservation Crisis of the Genus *Ambystoma*
 
-The genus *Ambystoma* encompasses approximately **32 salamander species across North America**, with **17 species in Mexico** and **16 endemic to the country** — representing over **50% of global genus diversity**. Despite this, Mexico contributes only a small fraction of global scientific publications on *Ambystoma* and holds no patents derived from its endemic biodiversity. The Mexican axolotl (*Ambystoma mexicanum*) alone accounts for a disproportionate share of worldwide research output, consolidating its role as a dominant biomedical model organism.
+The genus *Ambystoma* encompasses approximately **32 salamander species across North America**, of which
+**17 occur in Mexico** and **16 are endemic to the country** — approximately half of the genus (the North
+American and endemic counts are approximate and not individually sourced here; the Mexican count matches the
+17 species sheets published on this site, source: `Site/src/content/species/`, measured 2026-09-02). Despite
+this, Mexico contributes only a small fraction of global scientific publications on *Ambystoma*. The Mexican axolotl (*Ambystoma mexicanum*) alone accounts for a disproportionate share of worldwide research output, consolidating its role as a dominant biomedical model organism.
 
 ### Systemic Extinction Pressures
 
@@ -59,12 +79,16 @@ Through this architecture, daily conservation operations become persistent, sear
 
 ### Onchain Integration Layer
 
-AxoloDAO leverages:
+AxoloDAO's architecture is built on:
 
 - **Smart contracts** to register specimens, habitats, and research metadata
 - **Onchain attestations (EAS)** to validate provenance from accredited actors
 - **ENS-based decentralized identities** for institutions and conservation nodes
 - **Programmable treasuries (Safe)** for impact-based resource allocation
+
+The ENS identities and the Safe treasury are live today (§5). The specimen registry and the attestation
+layer are built and tested, but **nothing is deployed or registered on any chain as of 2026-09-02** — see
+§6.
 
 By aligning verifiable data capture with governance and finance, conservation becomes transparent, auditable, and collaborative public infrastructure.
 
@@ -119,17 +143,67 @@ AxoloDAO operates through ENS-based identities and modular organizational nodes.
 
 | ENS Domain | Resolved Address | Role |
 |---|---|---|
-| [axolodao.eth](https://app.ens.domains/axolodao.eth) | `0xcF1aeb4152F01e7643f772F4A08E0e791160B96B` | Primary administrative identity |
+| [axolodao.eth](https://app.ens.domains/axolodao.eth) | resolve via ENS | Primary administrative identity |
 | [treasury.axolodao.eth](https://app.ens.domains/treasury.axolodao.eth) | `0xbDF701408aD237faA2d5d3177ae257aF35265dbb` | Safe multisig treasury (OP Mainnet) |
-| [zenbit.axolodao.eth](https://app.ens.domains/zenbit.axolodao.eth) | `0xeCB4C1245665e8A1F43826355aaB0Dd6bF336e05` | Infrastructure and system design node |
-| [xolotlcalli.axolodao.eth](https://app.ens.domains/xolotlcalli.axolodao.eth) | `0xB5B5d7ba8c4474F66F7F86A348B1cE303a4BA02e` | Conservation and biomuseum node |
+| [zenbit.axolodao.eth](https://app.ens.domains/zenbit.axolodao.eth) | resolve via ENS | Infrastructure and system design node |
+| [xolotlcalli.axolodao.eth](https://app.ens.domains/xolotlcalli.axolodao.eth) | resolve via ENS | Conservation and biomuseum node |
 | [ndali.axolodao.eth](https://app.ens.domains/ndali.axolodao.eth) | — | Community articulation and coordination node |
 | [lups-plantae.axolodao.eth](https://app.ens.domains/lups-plantae.axolodao.eth) | — | Additional participant node |
 | [lego-lvsg.axolodao.eth](https://app.ens.domains/lego-lvsg.axolodao.eth) | — | Additional participant node |
 
-As of March 2026, the treasury (`treasury.axolodao.eth`) has executed 94 transactions on OP Mainnet. Through combined contributions from Zenbit and the AxoloDAO treasury, over 60% of Biomuseum Xolotlcalli's operational infrastructure has been funded onchain.
+The treasury (`treasury.axolodao.eth`) is a Safe multisig on OP Mainnet — 2/3 by internal decision, 2/4
+onchain while the fourth signer is retired. Its transaction history is public and can be read directly from
+the Safe. Zenbit and the AxoloDAO treasury have both funded parts of Biomuseum Xolotlcalli's operational
+infrastructure onchain; the share is not currently published because no measured, sourced figure exists for
+it.
 
-## 🤝 6. Onchain Members
+## 🧩 6. System and Xovi
+
+Three surfaces carry the same record: a public site that renders it, an application that captures it, and an
+onchain layer that will anchor it.
+
+```text
+ BioMuseo Xolotlcalli ──► operations workbook ──► Site data:* scripts ──► axolodao.org
+   tanks · specimens                                                       (public record)
+        │
+        └── daily 9:00–21:00 stream ──► Xovi · xovi.axolodao.org ──► operator + verifier queues
+                                                                            │
+                                                                            ▼
+                                        AxoloDAO System · private Foundry repository
+                                        4 frozen EAS schemas · weekly Merkle root
+                                        built and tested · nothing deployed · pre-audit
+```
+
+**The site is the render source of truth.** Every public **operational** figure on axolodao.org — water
+quality, the bitácora and the specimen roster — is generated from the Biomuseo's operations workbook by the
+`data:water`, `data:ajolotes` and `data:ops` scripts in `Site/scripts/` and committed as JSON — the
+build never reaches a live database. Today that is 1,128 water-quality measurements (source:
+`Site/public/data/water-quality/measurements-all.json`, measured 2026-09-02), 1,229 operations-log entries
+(source: `Site/public/data/ops/bitacora.json`, measured 2026-09-02) and 11 ejemplares in the current bundle
+(source: `Site/src/data/ajolotes/bundle.json`, measured 2026-09-02). The site holds no visitor identity: no
+forms, no accounts, no wallet connection. See [`Site/README.md`](./Site/README.md) for the scripts, their
+inputs and their outputs.
+
+**Xovi captures observations.** [xovi.axolodao.org](https://xovi.axolodao.org/) is the interaction layer
+over the biomuseum's daily livestream, 9:00 to 21:00 (Mexico City), with recordings available any time:
+operators record water cycles and readings, viewers submit clips of axolotl behaviour, and human verifiers
+confirm them before anything is treated as a fact. Machine-produced values enter as *proposals*, never as
+confirmed records. Xovi is pre-launch; no XOVI token has been issued and no Xovi-specific contract is
+deployed.
+
+**The AxoloDAO onchain system is a private Foundry repository.** It holds the access manager (ENS-bound
+roles), the record registry and its validator, the EAS attestor and a weekly Merkle batcher. It is **built
+and tested (45 tests pass, 1 fork test skipped without an RPC; no CI); nothing is deployed or registered on
+any chain as of 2026-09-02**; it is Sepolia-deployable, and Base mainnet comes only after an external audit
+and ratification of the `SpecimenObserved` / `CareEventLogged` vocabulary by Xolotlcalli. The repository is private and is not linked from here.
+
+**Four canonical EAS schemas were frozen on 2026-07-18:** `TankReading`, `WaterQualitySummary`,
+`SpecimenObserved` and `CareEventLogged`. Their UIDs are *chain-independent* — the UID is
+`keccak256(schemaString, resolver = address(0), revocable = true)`, and neither a chain id nor a contract
+address enters the hash, so one schema has exactly one UID on every chain and independent implementations
+converge on it without coordinating. None of the four is registered on any chain as of 2026-09-02.
+
+## 🤝 7. Onchain Members
 
 ### Zenbit / [`zenbit.axolodao.eth`](https://app.ens.domains/zenbit.axolodao.eth)
 Digital public infrastructure contributor and system design lead.
@@ -161,7 +235,7 @@ Community articulation and stakeholder coordination node.
 - [`lego-lvsg.axolodao.eth`](https://app.ens.domains/lego-lvsg.axolodao.eth)
 
 
-## 🏫 7. Offchain Affiliations & Collaborations
+## 🏫 8. Offchain Affiliations & Collaborations
 
 ### Academic Body of Ecology and Wildlife Diversity (CAEyDF)
 Research and scientific collaboration for ecology, biodiversity, and species-conservation frameworks.
@@ -187,17 +261,18 @@ Public-sector collaboration connecting conservation with cultural and community 
 ---
 
 ### São Paulo Institute of Technology and Leadership (INTELI)
-System design and research collaboration partner.
+Academic collaboration; origin of the student prototypes that seeded the onchain system design. Not a
+registration or sign-off gate for any part of the system.
 
 - [Instagram](https://www.instagram.com/inteli_edu/)
 
 
-## 📚 8. Related Articles & Materials
+## 📚 9. Related Articles & Materials
 
 - [How to onboard startups into Ethereum](https://paragraph.com/@zenbit-2/how-to-onboard-startups-into-ethereum)
 - [Zenbit x Axolotarium collaboration](https://paragraph.com/@zenbit-2/zenbit-axolotarium-collaboration)
 - [We are AxoloDAO](https://paragraph.com/@zenbit-2/we-are-axolodao)
-- [Startupchain — ETHGlobal New York showcase](https://ethglobal.com/showcase/startupchain-0fyf5)
+- [StartupChain — ENS "Best use of ENS", 3rd place, ETHGlobal New York 2025](https://ethglobal.com/showcase/startupchain-0fyf5)
 - [AxoloDAO system with INTELI slides](https://www.figma.com/deck/YvgHJYW8NET5hYxjF9XBw5/Proyecto-Sistema-AxoloDAO?node-id=84-15&t=ivsicLqyXdn7cgKO-1)
 
 ### 📂 Documentation Structure
@@ -211,7 +286,7 @@ This repository includes a `Docs/` directory with language-specific subfolders:
 Each folder contains conceptual documentation and system descriptions.
 
 
-## 📬 9. Contact
+## 📬 10. Contact
 
 `hola@axolodao.org`
 
