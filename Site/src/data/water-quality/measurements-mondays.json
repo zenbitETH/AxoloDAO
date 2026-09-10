@@ -3005,7 +3005,7 @@
       "ph",
       "cond"
     ],
-    "note": "1170"
+    "note": null
   },
   {
     "date": "2026-08-10",
@@ -3034,7 +3034,7 @@
       "ph",
       "cond"
     ],
-    "note": "2980"
+    "note": null
   },
   {
     "date": "2026-08-17",
@@ -3061,7 +3061,7 @@
       "kh",
       "cond"
     ],
-    "note": "2830"
+    "note": null
   },
   {
     "date": "2026-08-17",
@@ -3088,7 +3088,7 @@
       "no3",
       "ph"
     ],
-    "note": "1080"
+    "note": null
   },
   {
     "date": "2026-08-24",
@@ -3115,7 +3115,7 @@
       "kh",
       "cond"
     ],
-    "note": "2870"
+    "note": null
   },
   {
     "date": "2026-08-24",
@@ -3141,7 +3141,7 @@
     "alarms": [
       "no3"
     ],
-    "note": "1090"
+    "note": null
   },
   {
     "date": "2026-08-31",
@@ -3169,7 +3169,7 @@
       "kh",
       "cond"
     ],
-    "note": "3040"
+    "note": "Medicon pH con kit gotas"
   },
   {
     "date": "2026-08-31",
@@ -3193,7 +3193,7 @@
       "tds": null
     },
     "alarms": [],
-    "note": "1100"
+    "note": "Medicon pH con kit gotas"
   },
   {
     "date": "2026-08-31",
@@ -3223,6 +3223,90 @@
       "kh",
       "cond"
     ],
-    "note": "1180"
+    "note": "Medicon pH con kit gotas"
+  },
+  {
+    "date": "2026-09-07",
+    "time": "11:32",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "XOVI bot"
+    },
+    "values": {
+      "temp": 17.7,
+      "nh3": 0.25,
+      "no2": 2,
+      "no3": 30,
+      "gh": 268.5,
+      "kh": 161.1,
+      "ph": 8.5,
+      "po4": null,
+      "cond": 1010,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "no2",
+      "no3",
+      "gh",
+      "kh",
+      "ph",
+      "cond"
+    ],
+    "note": "Medicon pH con kit gotas"
+  },
+  {
+    "date": "2026-09-07",
+    "time": "11:32",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "XOVI bot"
+    },
+    "values": {
+      "temp": 17.9,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 5,
+      "gh": 250.6,
+      "kh": 125.3,
+      "ph": 8,
+      "po4": null,
+      "cond": 2830,
+      "tds": null
+    },
+    "alarms": [
+      "gh",
+      "kh",
+      "cond"
+    ],
+    "note": "Medicon pH con kit gotas"
+  },
+  {
+    "date": "2026-09-07",
+    "time": "11:32",
+    "tankId": "AM",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "XOVI bot"
+    },
+    "values": {
+      "temp": 16.8,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 10,
+      "gh": 214.8,
+      "kh": 71.6,
+      "ph": 7.5,
+      "po4": null,
+      "cond": 1050,
+      "tds": null
+    },
+    "alarms": [],
+    "note": "Medicon pH con kit gotas"
   }
 ]
