@@ -3,7 +3,7 @@ import type { Baja, BitacoraEntry, Bundle, Ejemplar, Locale, SpeciesCode } from 
 import type { Measurement } from '../waterQuality/types';
 import { useTheme, SPECIES_ORDER, stationOf } from './theme';
 import { aliasSlug } from './photos';
-import { memorialEjemplar } from './memorial';
+import { memorialEjemplar, withFechaFix } from './memorial';
 import CoverHeader from './CoverHeader';
 import Toolbar from './Toolbar';
 import StationsList from './StationsList';
@@ -45,7 +45,11 @@ function applyTheme(t: 'light' | 'dark') {
 // larvae, still under memorial-scope review; these are filtered here rather
 // than removed from source so the raw operativo file stays the system of
 // record. Update this list when curators memorialize a new specimen.
-const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica', 'Panchita', 'Goldy']);
+// 'Andersoni 1' se memorializa el 2026-09-16. El nombre va con la grafía que
+// produce el ingest, no con la del registro: la hoja escribe «Andersonii 1» con
+// doble i, y `visibleBajas` empareja por nombre EXACTO contra bundle.bajas, así
+// que la grafía del registro no encontraría nada y la tarjeta no aparecería.
+const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica', 'Panchita', 'Goldy', 'Andersoni 1']);
 
 // NOTE: the per-component hidden-alias list that used to live here is gone.
 // `bundle.ejemplares` is now the LIVE roster by construction — data-ajolotes.mjs
@@ -155,13 +159,16 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
     const snapshots = [...bundle.ejemplares, ...(bundle.bajasSnapshots ?? [])];
     const out: Baja[] = [];
     for (const nombre of BAJAS_VISIBLE_NAMES) {
+      // `withFechaFix` va en los DOS caminos, no sólo en el de la fila cruda: si
+      // mañana alguien le agrega una entrada curada a un nombre con fecha
+      // corregida, la corrección tiene que seguir aplicando. Ver memorial.ts.
       const synth = SYNTH_BAJAS[nombre]?.(snapshots) ?? null;
       if (synth) {
-        out.push(synth);
+        out.push(withFechaFix(synth));
         continue;
       }
       const fromData = bundle.bajas.find((b: Baja) => (b.nombre ?? '').trim() === nombre);
-      if (fromData) out.push(fromData);
+      if (fromData) out.push(withFechaFix(fromData));
     }
     return out;
   }, [bundle.bajas, bundle.ejemplares, bundle.bajasSnapshots]);

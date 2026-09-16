@@ -158,8 +158,8 @@ const AM_PECERA = new Map([
   ['Pardo Macho',    'AM2'],
   ['Patito',         'AM3'],
   ['Larva 2',        'AM3'],
-  ['Martín',         'AM4'],
-  ['Limon',          'AM4'],
+  ['Martín',         'AM2'],
+  ['Limon',          'AM1'],
 ]);
 
 // ---------------------------------------------------------------------------
