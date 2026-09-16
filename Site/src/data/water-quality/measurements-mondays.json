@@ -3308,5 +3308,93 @@
     },
     "alarms": [],
     "note": "Medicon pH con kit gotas"
+  },
+  {
+    "date": "2026-09-14",
+    "time": "10:50",
+    "tankId": "AA",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "XOVI bot"
+    },
+    "values": {
+      "temp": 18.1,
+      "nh3": 0.25,
+      "no2": 0.5,
+      "no3": 80,
+      "gh": 232.7,
+      "kh": 196.9,
+      "ph": 8.1,
+      "po4": null,
+      "cond": 840,
+      "tds": null
+    },
+    "alarms": [
+      "nh3",
+      "no2",
+      "no3",
+      "gh",
+      "kh",
+      "ph",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-09-14",
+    "time": "10:50",
+    "tankId": "AD",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "XOVI bot"
+    },
+    "values": {
+      "temp": 18.1,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 10,
+      "gh": 250.6,
+      "kh": 125.3,
+      "ph": 8.2,
+      "po4": null,
+      "cond": 2890,
+      "tds": null
+    },
+    "alarms": [
+      "temp",
+      "gh",
+      "kh",
+      "cond"
+    ],
+    "note": null
+  },
+  {
+    "date": "2026-09-14",
+    "time": "10:50",
+    "tankId": "AM",
+    "isMonday": true,
+    "authors": {
+      "main": "lups-plantae.axolodao.eth",
+      "secondary": "XOVI bot"
+    },
+    "values": {
+      "temp": 17.1,
+      "nh3": 0,
+      "no2": 0,
+      "no3": 40,
+      "gh": 214.8,
+      "kh": 71.6,
+      "ph": 8,
+      "po4": null,
+      "cond": 890,
+      "tds": null
+    },
+    "alarms": [
+      "no3",
+      "ph"
+    ],
+    "note": null
   }
 ]

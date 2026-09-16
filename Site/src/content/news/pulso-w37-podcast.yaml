@@ -1,0 +1,18 @@
+slug: pulso-w37-podcast
+author: zenbit
+chapter: podcast
+url: https://www.instagram.com/p/DdW2UW1FiB-/
+# Portada tomada del og:image de Instagram, la imagen principal del post.
+image: /photos/news/pulso-w37-podcast.jpg
+# La slide 1 del mazo es una portada animada de 30 s, así que la tarjeta se
+# reproduce al pasar el cursor igual que un Reel. El .mp4 es el proxy de 540p
+# (0.8 MB), nunca el máster de 21 MB: git no olvida un blob.
+video: /videos/news/pulso-w37-podcast.mp4
+poster: /photos/news/pulso-w37-podcast.jpg
+caption:
+  es: "Pulso AxoloDAO · Semana 37 — el podcast 24 en dieciocho clips, casi entero sobre parásitos: llegan dos andersoni más y los tres traen nematodos; ya funciona una granja de guppies para criar alimento sin parásitos; el fenbendazol y la ivermectina, lo que funcionó y lo que les cayó mal, sin bajas relacionadas; por qué la ivermectina lleva receta y un foro no sustituye al veterinario; el andersoni con agua de la llave, en un sistema que todavía no cicla; y los recintos con ajolotes en México, con la recomendación de visitarlos sin flash y sin ruido."
+  en: "Pulso AxoloDAO · Week 37 — podcast 24 in eighteen clips, almost entirely about parasites: two more andersoni arrive and all three carry nematodes; a guppy farm is now running to raise parasite-free food; fenbendazole and ivermectin, what worked and what did not agree with them, with no related deaths; why ivermectin needs a prescription and a forum is no substitute for a vet; the andersoni on tap water, in a system that has not cycled yet; and the venues with axolotls in Mexico, with the advice to visit them without flash and without noise."
+  pt: "Pulso AxoloDAO · Semana 37 — o podcast 24 em dezoito clipes, quase todo sobre parasitas: chegam mais dois andersoni e os três trazem nematoides; já funciona uma criação de guppies para produzir alimento sem parasitas; o fenbendazol e a ivermectina, o que funcionou e o que lhes fez mal, sem mortes relacionadas; por que a ivermectina exige receita e um fórum não substitui o veterinário; o andersoni com água da torneira, num sistema que ainda não ciclou; e os espaços com axolotes no México, com a recomendação de visitá-los sem flash e sem ruído."
+publishedAt: '2026-09-16'
+weekNumber: 37
+podcastNumber: 24

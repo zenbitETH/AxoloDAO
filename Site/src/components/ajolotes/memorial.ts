@@ -23,7 +23,36 @@ const BAJA_SPECIES_HINT: Record<string, SpeciesCode> = {
   Loncho: 'A. mexicanum',
   Panchita: 'A. andersoni',
   Goldy: 'A. mexicanum',
+  // Las bajas del bundle no traen columna de especie —el ingest no la emite—, y
+  // esta ya no tiene fila en el Dashboard, así que sin esta pista `resolveEspecie`
+  // devuelve null y la tarjeta sale sin especie. El registro la escribe
+  // «A. andersonii», con doble i; el código canónico lleva una.
+  'Andersoni 1': 'A. andersoni',
 };
+
+// Fechas corregidas a mano, por nombre. La Hoja guarda la baja de Andersoni 1
+// como 2026-05-09 porque se capturó en día/mes y quedó almacenada como mes/día:
+// el fallecimiento fue el 5 de septiembre de 2026. Lo confirma el founder y lo
+// sostiene la bitácora pública de este mismo sitio, que tiene 17 entradas de ese
+// ejemplar entre el 25 de agosto y el 3 de septiembre —todas posteriores a la
+// fecha almacenada— incluida una incidencia de flotabilidad el 1 de septiembre.
+//
+// Esto NO corrige la Hoja, que sigue siendo el sistema de registro. Cuando
+// alguien arregle la celda, se borra esta entrada y el dato real fluye solo.
+//
+// ⚠ Una fecha con día ≤ 12 es ambigua y este error es invisible en ella. En el
+// registro son ambiguas las de Panchita, Goldy, Romualdo, Leucistica y Loncho.
+// Las larvas del 15 y 16 de abril prueban que el almacenamiento NO invierte
+// siempre: no existe un mes 15.
+const BAJA_FECHA_FIX: Record<string, string> = {
+  'Andersoni 1': '2026-09-05',
+};
+
+/** La baja con su fecha corregida, si hay corrección curada para ese nombre. */
+export function withFechaFix<T extends Baja>(baja: T): T {
+  const fix = BAJA_FECHA_FIX[(baja.nombre ?? '').trim()];
+  return fix ? { ...baja, fecha: fix } : baja;
+}
 
 // Single source of truth for a baja's species, used by both the modal-synth
 // path and deriveMemorial so they can never disagree: the real ejemplar row
