@@ -25,6 +25,7 @@ import {
   indexOfHeader,
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
+import { isReaderBotAuthor } from './lib/reader-bot.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
@@ -545,11 +546,8 @@ if (IDX_M.pecera < 0) {
 // by tube order), so they must never be published as a measurement. They are marked by
 // Autor principal === "XOVI bot". Match ONLY the main author: the verified human rows carry
 // "XOVI bot" as Autor SECUNDARIO (the Xovi -> Sheet sync) and must keep flowing.
-// Spelling must stay identical to CONTROL_BOT_AUTHOR in axolodao-brain
-// tools/overlays/sync-control.mjs.
-const READER_BOT_AUTHOR = 'xovi bot';
-const isReaderBotRow = row =>
-  IDX_M.author1 >= 0 && (row[IDX_M.author1] ?? '').toString().trim().toLowerCase() === READER_BOT_AUTHOR;
+// The spelling lives in lib/reader-bot.mjs, pinned by scripts/test-data-water-bot.mjs.
+const isReaderBotRow = row => IDX_M.author1 >= 0 && isReaderBotAuthor(row[IDX_M.author1]);
 
 const allMeasurements = [];
 let skippedNoDate = 0;
