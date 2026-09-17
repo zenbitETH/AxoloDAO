@@ -25,6 +25,7 @@ import {
   indexOfHeader,
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
+import { isReaderBotAuthor } from './lib/reader-bot.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
@@ -540,9 +541,18 @@ if (IDX_M.pecera < 0) {
   );
 }
 
+// Rows written by the colorimetric reader ("XOVI bot sin Lupita") live in the same tab as
+// the curator's readings, but they are UNVERIFIED machine readings (dry-run, station assumed
+// by tube order), so they must never be published as a measurement. They are marked by
+// Autor principal === "XOVI bot". Match ONLY the main author: the verified human rows carry
+// "XOVI bot" as Autor SECUNDARIO (the Xovi -> Sheet sync) and must keep flowing.
+// The spelling lives in lib/reader-bot.mjs, pinned by scripts/test-data-water-bot.mjs.
+const isReaderBotRow = row => IDX_M.author1 >= 0 && isReaderBotAuthor(row[IDX_M.author1]);
+
 const allMeasurements = [];
 let skippedNoDate = 0;
 let skippedUnknownTank = 0;
+let skippedReaderRows = 0;
 const unknownTankSamples = new Set();
 
 for (let r = 1; r < measRowsRaw.length; r++) {
@@ -551,6 +561,8 @@ for (let r = 1; r < measRowsRaw.length; r++) {
 
   const rawTank = (row[IDX_M.pecera] ?? '').toString().trim();
   if (!rawTank) continue;
+
+  if (isReaderBotRow(row)) { skippedReaderRows++; continue; }
 
   const iso = toIsoDate(row[IDX_M.fecha]);
   if (!iso) { skippedNoDate++; continue; }
@@ -607,6 +619,7 @@ writeFileSync(
 console.log(`[data-water] measurements-mondays.json: ${mondays.length} rows`);
 console.log(`[data-water] measurements-all.json: ${allMeasurements.length} rows`);
 if (skippedNoDate) console.warn(`[data-water] skipped ${skippedNoDate} rows (no date)`);
+if (skippedReaderRows) console.log(`[data-water] skipped ${skippedReaderRows} reader-bot rows (Autor principal "XOVI bot", unverified)`);
 if (skippedUnknownTank) {
   console.warn(`[data-water] skipped ${skippedUnknownTank} rows (unknown tank id). Samples: ${[...unknownTankSamples].join(', ')}`);
 }
