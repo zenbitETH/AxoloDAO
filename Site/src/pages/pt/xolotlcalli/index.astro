@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ClosureBanner from '@components/ClosureBanner.astro';
 import WaterQualityDashboard from '@components/waterQuality/WaterQualityDashboard';
 import tanksRaw from '@/data/water-quality/tanks.json';
 import parametersRaw from '@/data/water-quality/parameters.json';
@@ -12,6 +13,7 @@ import type { Tank, ParameterCatalogEntry, Measurement } from '@components/water
 import type { Bundle, BitacoraEntry } from '@components/ajolotes/types';
 import { t } from '@/i18n/strings';
 import { podcastByWeek, episodeUrls, PODCAST_PLAYLIST_URL } from '@/lib/podcast';
+import { ANIMALS_AWAY_FROM_MUSEUM } from '@/lib/closure';
 
 const locale = 'pt';
 const tanks = tanksRaw as unknown as Tank[];
@@ -23,7 +25,10 @@ const podcastEpisodeUrls = episodeUrls();
 
 // `bundle.ejemplares` is the LIVE roster by construction: data-ajolotes.mjs
 // filters deceased + embargoed specimens at ingest, so no per-page list is needed.
-const ejemplares = (bundleRaw as unknown as Bundle).ejemplares;
+// While every axolotl is outside the museum, the stations list nobody:
+// a tank's specimens and the per-aquarium tiles would place animals where they are not.
+// The registry (/xolotlcalli/ajolotes) keeps every record.
+const ejemplares = ANIMALS_AWAY_FROM_MUSEUM ? [] : (bundleRaw as unknown as Bundle).ejemplares;
 
 const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
   .replace(/fill="white"/g, 'fill="currentColor"')
@@ -53,7 +58,9 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
       logoSvg={logoSvg}
       title={t(locale, 'wq.title')}
       subtitle={t(locale, 'wq.subtitle')}
-    />
+    >
+      <ClosureBanner locale={locale} />
+    </WaterQualityDashboard>
   </section>
 </BaseLayout>
 

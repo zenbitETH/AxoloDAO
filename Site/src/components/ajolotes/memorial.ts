@@ -28,6 +28,7 @@ const BAJA_SPECIES_HINT: Record<string, SpeciesCode> = {
   // devuelve null y la tarjeta sale sin especie. El registro la escribe
   // «A. andersonii», con doble i; el código canónico lleva una.
   'Andersoni 1': 'A. andersoni',
+  'Larva 2': 'A. mexicanum',
 };
 
 // Fechas corregidas a mano, por nombre. La Hoja guarda la baja de Andersoni 1

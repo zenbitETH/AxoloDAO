@@ -1,0 +1,89 @@
+---
+import { type Locale, t } from '@/i18n/strings';
+import { CLOSURE, assertBannerMatchesDates } from '@/lib/closure';
+
+// Shown only on the museum's two pages, the water dashboard and the registry, right
+// under their header blocks: the pages pass it into their islands as a child.
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+if (CLOSURE.active) assertBannerMatchesDates(locale);
+const show = CLOSURE.active || CLOSURE.quarantine;
+---
+
+{show && (
+  <!-- No role="alert" or aria-live: being in the DOM is enough, and a live region
+       would be announced again on every visit. -->
+  <aside
+    class="closure-card mb-6 rounded-2xl px-5 py-4 sm:px-6 print:hidden"
+    aria-label={CLOSURE.quarantine ? t(locale, 'closure.quarantine.aria') : undefined}
+  >
+    {CLOSURE.quarantine && (
+      <p class="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-3">
+        <strong class="font-display text-lg leading-snug">{t(locale, 'closure.quarantine.pill')}</strong>
+        <span class="text-sm">{t(locale, 'closure.quarantine.context')}</span>
+      </p>
+    )}
+    {CLOSURE.active && (
+      <p
+        class:list={[
+          'flex flex-col gap-1 text-sm sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4',
+          CLOSURE.quarantine && 'closure-rule mt-3 pt-3',
+        ]}
+      >
+        <span>{t(locale, 'closure.banner.text')}</span>
+        <a
+          href="https://xovi.axolodao.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="closure-link w-fit font-semibold underline underline-offset-4 focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+        >
+          {t(locale, 'closure.banner.link')}
+        </a>
+      </p>
+    )}
+  </aside>
+)}
+
+<style>
+  /* One red for both themes: white text on it is 5.2:1, and its edge is at least 3:1
+     against the dark and the cream page. The site's rose is too light for white text. */
+  .closure-card {
+    /* Colours set here, not with text-white: the light theme remaps that utility to ink. */
+    color: #fff;
+    background: #c8324f;
+    animation: closure-pulse 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  }
+  .closure-link {
+    color: #fff;
+    text-decoration-color: rgb(255 255 255 / 0.6);
+    outline-color: #fff;
+  }
+  .closure-link:hover {
+    text-decoration-color: #fff;
+  }
+  .closure-rule {
+    border-top: 1px solid rgb(255 255 255 / 0.28);
+  }
+  /* The whole card pulses: a ring that leaves the card and fades. */
+  @keyframes closure-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgb(200 50 79 / 0.55);
+    }
+    70%,
+    100% {
+      box-shadow: 0 0 0 14px rgb(200 50 79 / 0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .closure-card {
+      animation: none;
+    }
+  }
+  /* Forced colours drop the background: keep the card's edge. */
+  @media (forced-colors: active) {
+    .closure-card {
+      border: 2px solid CanvasText;
+    }
+  }
+</style>

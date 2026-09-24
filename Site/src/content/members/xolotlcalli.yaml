@@ -9,19 +9,19 @@ role:
   en: Conservation & field practice
   pt: Conservação e prática de campo
 description:
-  es: BioMuseo en Querétaro dedicado al cuidado, exhibición y reproducción ex situ de Ambystoma. Opera la jornada semanal Maintenance Monday y articula educación pública con investigación.
-  en: BioMuseum in Querétaro dedicated to care, exhibition and ex-situ reproduction of Ambystoma. Hosts the weekly Maintenance Monday session and bridges public education with research.
-  pt: BioMuseu em Querétaro dedicado ao cuidado, exibição e reprodução ex-situ de Ambystoma. Conduz a sessão semanal Maintenance Monday e conecta educação pública com pesquisa.
+  es: "Museo de ajolotes en Querétaro dedicado al cuidado, la reproducción ex situ y la divulgación de Ambystoma. Articula educación pública con investigación y publica sus pruebas de agua, cada lectura con su fecha."
+  en: "Axolotl museum in Querétaro dedicated to the care, ex-situ reproduction and public outreach of Ambystoma. It bridges public education with research and publishes its water tests, each reading dated."
+  pt: "Museu de axolotes em Querétaro dedicado ao cuidado, à reprodução ex situ e à divulgação de Ambystoma. Conecta educação pública com pesquisa e publica seus testes de água, cada leitura com sua data."
 socials:
   - platform: instagram
-    url: https://instagram.com/xolotlcalli.mx
-    handle: '@xolotlcalli.mx'
+    url: https://instagram.com/axolodao
+    handle: '@axolodao'
   - platform: x
     url: https://x.com/Xolotlcalli_mx
     handle: '@Xolotlcalli_mx'
   - platform: youtube
-    url: https://youtube.com/@Xolotlcalli
-    handle: '@Xolotlcalli'
+    url: https://youtube.com/@axolodao
+    handle: '@axolodao'
 # Team members. Uncomment + duplicate entries to populate. Photos live in
 # Site/public/photos/team/ — see that folder's README for naming conventions.
 # team:
