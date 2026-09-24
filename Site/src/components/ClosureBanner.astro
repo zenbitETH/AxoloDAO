@@ -2,6 +2,8 @@
 import { type Locale, t } from '@/i18n/strings';
 import { CLOSURE, assertBannerMatchesDates } from '@/lib/closure';
 
+// Shown only on the museum's two pages, the water dashboard and the registry, right
+// under their header blocks: the pages pass it into their islands as a child.
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
@@ -10,139 +12,78 @@ const show = CLOSURE.active || CLOSURE.quarantine;
 ---
 
 {show && (
-  <div class="closure-wrap container-wide relative z-10 print:hidden">
-    <!-- No role="alert" or aria-live: the banner is on every page and would be announced
-         again on each navigation. Being in the DOM is enough. -->
-    <aside
-      class="closure-banner rounded-2xl px-5 py-4 sm:px-6"
-      aria-label={CLOSURE.quarantine ? t(locale, 'closure.quarantine.aria') : undefined}
-    >
-      {CLOSURE.quarantine && (
-        <p class="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3">
-          <strong class="closure-pill inline-flex w-fit items-center gap-2.5 rounded-2xl px-3.5 py-1.5 text-sm font-semibold sm:rounded-full">
-            <span class="closure-dot" aria-hidden="true"></span>
-            {t(locale, 'closure.quarantine.pill')}
-          </strong>
-          <span class="closure-ink text-sm">{t(locale, 'closure.quarantine.context')}</span>
-        </p>
-      )}
-      {CLOSURE.active && (
-        <p
-          class:list={[
-            'closure-muted flex flex-col gap-1 text-sm sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4',
-            CLOSURE.quarantine && 'closure-rule mt-3 pt-3',
-          ]}
+  <!-- No role="alert" or aria-live: being in the DOM is enough, and a live region
+       would be announced again on every visit. -->
+  <aside
+    class="closure-card mb-6 rounded-2xl px-5 py-4 sm:px-6 print:hidden"
+    aria-label={CLOSURE.quarantine ? t(locale, 'closure.quarantine.aria') : undefined}
+  >
+    {CLOSURE.quarantine && (
+      <p class="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-3">
+        <strong class="font-display text-lg leading-snug">{t(locale, 'closure.quarantine.pill')}</strong>
+        <span class="text-sm">{t(locale, 'closure.quarantine.context')}</span>
+      </p>
+    )}
+    {CLOSURE.active && (
+      <p
+        class:list={[
+          'flex flex-col gap-1 text-sm sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4',
+          CLOSURE.quarantine && 'closure-rule mt-3 pt-3',
+        ]}
+      >
+        <span>{t(locale, 'closure.banner.text')}</span>
+        <a
+          href="https://xovi.axolodao.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="closure-link w-fit font-semibold underline underline-offset-4 focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
-          <span>{t(locale, 'closure.banner.text')}</span>
-          <a
-            href="https://xovi.axolodao.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="closure-link w-fit font-semibold underline underline-offset-4 focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-          >
-            {t(locale, 'closure.banner.link')}
-          </a>
-        </p>
-      )}
-    </aside>
-  </div>
+          {t(locale, 'closure.banner.link')}
+        </a>
+      </p>
+    )}
+  </aside>
 )}
 
 <style>
-  /* The header's blurred fade covers the first 3.5rem of the page at scroll 0, so the
-     banner starts below it instead of being blurred by it. */
-  .closure-wrap {
-    padding-top: 3rem;
+  /* One red for both themes: white text on it is 5.2:1, and its edge is at least 3:1
+     against the dark and the cream page. The site's rose is too light for white text. */
+  .closure-card {
+    /* Colours set here, not with text-white: the light theme remaps that utility to ink. */
+    color: #fff;
+    background: #c8324f;
+    animation: closure-pulse 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
   }
-
-  /* A solid surface: the hero art behind the page must never run through the text. */
-  .closure-banner {
-    background: rgb(7 31 41 / 0.86);
-    box-shadow: inset 0 0 0 1px rgb(244 232 200 / 0.12), 0 12px 32px -18px rgb(0 0 0 / 0.6);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-  .closure-ink { color: rgb(244 232 200 / 0.92); }
-  .closure-muted { color: rgb(244 232 200 / 0.72); }
-  .closure-rule { border-top: 1px solid rgb(244 232 200 / 0.1); }
-
-  :global([data-theme='light']) .closure-banner {
-    background: rgb(246 239 224 / 0.92);
-    box-shadow: inset 0 0 0 1px rgb(74 54 40 / 0.14), 0 12px 32px -20px rgb(74 54 40 / 0.45);
-  }
-  :global([data-theme='light']) .closure-ink { color: rgb(74 54 40 / 0.95); }
-  :global([data-theme='light']) .closure-muted { color: rgb(74 54 40 / 0.78); }
-  :global([data-theme='light']) .closure-rule { border-top-color: rgb(74 54 40 / 0.12); }
-
-  /* Brand teal on the dark surface; a darker teal on cream, where #009C9C is under AA. */
   .closure-link {
-    --link: #009c9c;
-    color: var(--link);
-    text-decoration-color: rgb(0 156 156 / 0.4);
-    outline-color: var(--link);
+    color: #fff;
+    text-decoration-color: rgb(255 255 255 / 0.6);
+    outline-color: #fff;
   }
-  .closure-link:hover { text-decoration-color: var(--link); }
-  :global([data-theme='light']) .closure-link {
-    --link: #00706f;
-    text-decoration-color: rgb(0 112 111 / 0.4);
+  .closure-link:hover {
+    text-decoration-color: #fff;
   }
-
-  /* The disclosure is the one loud element: a rose pill with a pulsing dot. Rose is the
-     site's attention colour; the darker shade keeps AA contrast on the light surface. */
-  .closure-pill {
-    --pill: #f07a8f;
-    color: var(--pill);
-    background: rgb(232 93 117 / 0.14);
-    box-shadow: inset 0 0 0 1px rgb(232 93 117 / 0.5);
+  .closure-rule {
+    border-top: 1px solid rgb(255 255 255 / 0.28);
   }
-  :global([data-theme='light']) .closure-pill {
-    --pill: #a82b45;
-    background: rgb(168 43 69 / 0.08);
-    box-shadow: inset 0 0 0 1px rgb(168 43 69 / 0.4);
-  }
-
-  .closure-dot {
-    position: relative;
-    width: 0.5rem;
-    height: 0.5rem;
-    flex: none;
-    border-radius: 9999px;
-    background: var(--pill);
-  }
-  .closure-dot::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: var(--pill);
-    animation: closure-pulse 1.8s cubic-bezier(0.23, 1, 0.32, 1) infinite;
-  }
+  /* The whole card pulses: a ring that leaves the card and fades. */
   @keyframes closure-pulse {
     0% {
-      transform: scale(1);
-      opacity: 0.6;
+      box-shadow: 0 0 0 0 rgb(200 50 79 / 0.55);
     }
     70%,
     100% {
-      transform: scale(2.8);
-      opacity: 0;
+      box-shadow: 0 0 0 14px rgb(200 50 79 / 0);
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .closure-dot::after {
+    .closure-card {
       animation: none;
     }
   }
-  /* Forced colours drop box-shadows and backgrounds: keep the pill's outline and dot. */
+  /* Forced colours drop the background: keep the card's edge. */
   @media (forced-colors: active) {
-    .closure-banner,
-    .closure-pill {
-      border: 1px solid CanvasText;
-    }
-    .closure-dot,
-    .closure-dot::after {
-      forced-color-adjust: none;
-      background: CanvasText;
+    .closure-card {
+      border: 2px solid CanvasText;
     }
   }
 </style>

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
+import type { ComponentChildren } from 'preact';
 import type {
   Locale,
   Measurement,
@@ -37,6 +38,9 @@ interface Props {
   logoSvg: string;
   title: string;
   subtitle: string;
+  // Rendered under the header block, in the overview: the page passes the museum's
+  // closure card here, so it sits inside the dashboard rather than above the site.
+  children?: ComponentChildren;
 }
 
 // AM 1 + AM 2 were physically unified into a single 360 L recirculating system
@@ -98,6 +102,7 @@ export default function WaterQualityDashboard({
   logoSvg,
   title,
   subtitle,
+  children,
 }: Props) {
   const t = STRINGS[locale];
   const primaryTanks = useMemo(() => tanks.filter((tk) => tk.primary), [tanks]);
@@ -373,6 +378,8 @@ export default function WaterQualityDashboard({
             podcastEpisode={podcastEpisode}
           />
         </div>
+
+        {children}
 
         {/* Tank grid */}
         {weekMeasurements.length === 0 ? (

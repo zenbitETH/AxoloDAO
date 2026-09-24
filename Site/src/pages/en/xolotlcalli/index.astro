@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ClosureBanner from '@components/ClosureBanner.astro';
 import WaterQualityDashboard from '@components/waterQuality/WaterQualityDashboard';
 import tanksRaw from '@/data/water-quality/tanks.json';
 import parametersRaw from '@/data/water-quality/parameters.json';
@@ -57,7 +58,9 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
       logoSvg={logoSvg}
       title={t(locale, 'wq.title')}
       subtitle={t(locale, 'wq.subtitle')}
-    />
+    >
+      <ClosureBanner locale={locale} />
+    </WaterQualityDashboard>
   </section>
 </BaseLayout>
 

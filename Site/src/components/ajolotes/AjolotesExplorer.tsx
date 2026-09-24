@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
+import type { ComponentChildren } from 'preact';
 import type { Baja, BitacoraEntry, Bundle, Ejemplar, Locale, SpeciesCode } from './types';
 import type { Measurement } from '../waterQuality/types';
 import { useTheme, SPECIES_ORDER, stationOf } from './theme';
@@ -24,6 +25,9 @@ interface Props {
     waterPath: string;            // back-link to the Xolotlcalli water dashboard
     ajolotesByLocale: Record<Locale, string>;
   };
+  // Rendered under the header block, in both views: the page passes the museum's
+  // closure card here.
+  children?: ComponentChildren;
 }
 
 // Apply theme by writing to <html> + localStorage so the global ThemeToggle
@@ -122,7 +126,7 @@ const SYNTH_BAJAS: Record<string, (ejemplares: Ejemplar[]) => Baja | null> = {
   Goldy: synthGoldyBaja,
 };
 
-export default function AjolotesExplorer({ locale, bundle, water, bitacora, logoSvg, paths }: Props) {
+export default function AjolotesExplorer({ locale, bundle, water, bitacora, logoSvg, paths, children }: Props) {
   const theme = useTheme();
   const [view, setView] = useState<'ejemplares' | 'bajas'>('ejemplares');
   const [viewDensity, setViewDensity] = useState<'gallery' | 'list'>('gallery');
@@ -262,6 +266,8 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
           waterPath={paths.waterPath}
         />
       )}
+
+      {children && <div class="mx-auto max-w-[1240px] px-6 pt-4">{children}</div>}
 
       {view === 'ejemplares' && (
         <Toolbar
