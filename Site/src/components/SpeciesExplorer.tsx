@@ -107,10 +107,12 @@ const IUCN_GROUPS = [
 type IucnGroupKey = typeof IUCN_GROUPS[number]['key'];
 
 const XOLOTLCALLI_ONSITE = new Set(['andersoni', 'dumerilii', 'mexicanum']);
+// While the museum is closed the onsite half of this badge is false; it returns with the
+// reopening, and XOLOTLCALLI_ONSITE follows the list Xolotlcalli confirms then.
 const ONSITE_LABELS: Record<'es' | 'en' | 'pt', string> = {
-  es: 'Disponibles en línea y en el BioMuseo Xolotlcalli',
-  en: 'Available online and onsite at BioMuseo Xolotlcalli',
-  pt: 'Disponíveis online e no BioMuseo Xolotlcalli',
+  es: 'Disponibles en línea, en el archivo de Xovi',
+  en: 'Available online, in the Xovi archive',
+  pt: 'Disponíveis online, no arquivo do Xovi',
 };
 
 const LOCALIZED_FOR_ZOOM: Record<string, string[]> = {

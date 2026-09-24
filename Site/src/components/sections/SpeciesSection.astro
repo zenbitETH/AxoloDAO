@@ -4,6 +4,7 @@ import SpeciesExplorer from '@components/SpeciesExplorer';
 import { type Locale, localePath, t } from '@/i18n/strings';
 import bundle from '@/data/ajolotes/bundle.json';
 import { ejemplarPhotoUrl, aliasSlug } from '@components/ajolotes/photos';
+import { ANIMALS_AWAY_FROM_MUSEUM } from '@/lib/closure';
 
 const mapSvgUrl = '/map/mexico-interactive.svg';
 const bboxesUrl = '/map/state-bboxes.json';
@@ -41,7 +42,9 @@ const speciesPathBase = localePath(locale, 'especies/');
 // here. Only ajolotes with an available photo (per components/ajolotes/photos.ts
 // manifest) are included.
 type RawEjemplar = { alias: string | null; especie: string };
-const museumAjolotes = (bundle.ejemplares as RawEjemplar[])
+// While the axolotls are outside the museum nobody is "in the museum": the species modal drops that grid
+// until the reopening. The registry keeps every record.
+const museumAjolotes = ANIMALS_AWAY_FROM_MUSEUM ? [] : (bundle.ejemplares as RawEjemplar[])
   .map((e) => {
     if (!e.alias) return null;
     const photoUrl = ejemplarPhotoUrl(e.alias);

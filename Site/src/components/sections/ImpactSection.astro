@@ -8,9 +8,10 @@ const TX_URL = 'https://optimistic.etherscan.io/address/0xbdf701408ad237faa2d5d3
 const ETH_URL = 'https://debank.com/profile/0xbdf701408ad237faa2d5d3177ae257af35265dbb';
 
 type Stat = { key: string; href?: string; external?: boolean };
+// The custody card (species and specimens in custody) is off while the museum is closed:
+// nobody is counted until Xolotlcalli confirms who returns. It comes back with that figure.
 const stats: Stat[] = [
   { key: 'species', href: '#mapa' },
-  { key: 'custody', href: t(locale, 'ajolotes.path') },
   { key: 'visitors' },
   { key: 'tx', href: TX_URL, external: true },
   { key: 'eth', href: ETH_URL, external: true },
@@ -24,7 +25,7 @@ const stats: Stat[] = [
       <p class="mt-3 text-sm text-white/70 sm:text-base">{t(locale, 'impact.subtitle')}</p>
     </header>
 
-    <div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
+    <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
       {stats.map((s) => (
         s.href ? (
           <a
@@ -72,7 +73,6 @@ const stats: Stat[] = [
   .impact-card:nth-child(2) { animation-delay: 180ms; }
   .impact-card:nth-child(3) { animation-delay: 240ms; }
   .impact-card:nth-child(4) { animation-delay: 300ms; }
-  .impact-card:nth-child(5) { animation-delay: 360ms; }
 
   @keyframes impact-rise {
     to {
