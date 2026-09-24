@@ -7,12 +7,6 @@ type Dict = Record<string, string>;
 
 export const STRINGS: Record<Locale, Dict> = {
   es: {
-    // Renovation series, carried verbatim from the comms closure strings. Label and
-    // note always travel together.
-    renovationTitle: 'Serie de renovación',
-    renovationNote: 'Lecturas de los sistemas durante la remodelación, desde el 22 de septiembre. Es una serie nueva: no se promedia ni se compara con las lecturas anteriores al cierre.',
-    renovationColStation: 'Sistema',
-    closedSeriesLine: 'Serie cerrada el 22 de septiembre. Las lecturas siguientes están en la serie de renovación.',
     coverTitle: 'Lunes de Mantenimiento',
     coverSubtitle: 'Pruebas de Agua',
     testMantenimiento: 'Lunes de Mantenimiento',
@@ -94,10 +88,6 @@ export const STRINGS: Record<Locale, Dict> = {
     'month.8': 'septiembre', 'month.9': 'octubre', 'month.10': 'noviembre', 'month.11': 'diciembre',
   },
   en: {
-    renovationTitle: 'Renovation series',
-    renovationNote: 'Readings from the systems during the renovation, from 22 September. It is a new series: it is never averaged with or compared to the readings taken before the closure.',
-    renovationColStation: 'System',
-    closedSeriesLine: 'Series closed on 22 September. Later readings are in the renovation series.',
     coverTitle: 'Maintenance Monday',
     coverSubtitle: 'Water Tests',
     testMantenimiento: 'Maintenance Monday',
@@ -179,10 +169,6 @@ export const STRINGS: Record<Locale, Dict> = {
     'month.8': 'September', 'month.9': 'October', 'month.10': 'November', 'month.11': 'December',
   },
   pt: {
-    renovationTitle: 'Série de renovação',
-    renovationNote: 'Leituras dos sistemas durante a reforma, desde 22 de setembro. É uma série nova: não entra em médias nem em comparações com as leituras anteriores ao fechamento.',
-    renovationColStation: 'Sistema',
-    closedSeriesLine: 'Série encerrada em 22 de setembro. As leituras seguintes estão na série de renovação.',
     coverTitle: 'Segunda de Manutenção',
     coverSubtitle: 'Testes de Água',
     testMantenimiento: 'Segunda de Manutenção',

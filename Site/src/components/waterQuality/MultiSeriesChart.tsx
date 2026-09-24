@@ -44,9 +44,6 @@ interface Props {
   // tooltip.
   events?: ChartEvent[];
   eventsLabel?: string;
-  // Tooltip status pip against the catalog range. Off for series that have no range of
-  // their own (the renovation series), where every value would read as "in range".
-  showStatus?: boolean;
 }
 
 const PAD = { top: 18, right: 14, bottom: 28, left: 44 };
@@ -67,7 +64,6 @@ export default function MultiSeriesChart({
   bandColor,
   events,
   eventsLabel,
-  showStatus = true,
 }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(640);
@@ -502,7 +498,7 @@ export default function MultiSeriesChart({
                 <span class="inline-flex items-center gap-1 tabular-nums text-[var(--wq-ink)]">
                   {r.value == null ? '—' : formatNumber(r.value, paramKey)}
                   <span class="opacity-50">{unit}</span>
-                  {showStatus && r.value != null && (
+                  {r.value != null && (
                     <span
                       class={`ml-1 inline-block h-1.5 w-1.5 rounded-full ${
                         r.status === 'ok' ? 'bg-emerald-500'

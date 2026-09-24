@@ -90,27 +90,6 @@ export interface Measurement {
   note: string | null;
 }
 
-// The renovation series (data/water-quality/renovation-series.json): readings from the
-// closure on, from their own stations. Deliberately not a Measurement, so it cannot be
-// passed to the components that draw the series from before the closure.
-export interface RenovationStation {
-  id: string;
-  label: string; // names a system, never a specimen
-  slot: number; // colour slot, the station's place in the allowlist
-}
-export interface RenovationReading {
-  date: string; // ISO YYYY-MM-DD
-  time: string | null;
-  stationId: string;
-  authors: { main: string | null; secondary: string | null };
-  values: Record<ParamKey, number | null>;
-}
-export interface RenovationSeriesData {
-  from: string; // closure.json closedOn
-  stations: RenovationStation[];
-  readings: RenovationReading[];
-}
-
 export type Status = 'ok' | 'warn' | 'alarm';
 export type Trend = 'up' | 'down' | 'equal';
 

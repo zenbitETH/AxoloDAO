@@ -26,22 +26,21 @@ function median(xs) {
 }
 
 /**
- * rows: [{ id, series, station, date, time, value }]. `series` keeps the two sides of the
- * closure apart: a baseline never mixes them. Returns the swapped pairs, each as
+ * rows: [{ id, station, date, time, value }]. Returns the swapped pairs, each as
  * { date, time, a, b } with the two row ids and station names.
  */
 export function findLabelSwaps(rows) {
   const usable = rows.filter(r => r.station && typeof r.value === 'number' && Number.isFinite(r.value));
-  const batchOf = r => `${r.series}|${r.date}|${r.time ?? ''}`;
+  const batchOf = r => `${r.date}|${r.time ?? ''}`;
   const byStation = new Map();
   for (const r of usable) {
-    const k = `${r.series}|${r.station}`;
+    const k = r.station;
     if (!byStation.has(k)) byStation.set(k, []);
     byStation.get(k).push(r);
   }
   const baseline = r => {
     const d = dayNumber(r.date);
-    const others = (byStation.get(`${r.series}|${r.station}`) ?? [])
+    const others = (byStation.get(r.station) ?? [])
       .filter(o => batchOf(o) !== batchOf(r) && Math.abs(dayNumber(o.date) - d) <= WINDOW_DAYS)
       .map(o => o.value);
     return others.length >= MIN_SAMPLES ? median(others) : null;

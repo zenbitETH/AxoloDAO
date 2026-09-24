@@ -4,7 +4,6 @@ import type {
   Measurement,
   ParameterCatalogEntry,
   ParamKey,
-  RenovationSeriesData,
   Tank,
   TestType,
   TimeWindow,
@@ -17,7 +16,6 @@ import TankGrid from './TankGrid';
 import TankCard from './TankCard';
 import RotatingHeroChart from './RotatingHeroChart';
 import WaterLogTable from './WaterLogTable';
-import RenovationSeries from './RenovationSeries';
 import { AM_AQUARIUM_BY_ANCHOR } from './amAquariums';
 import type { BitacoraEntry, Ejemplar } from '../ajolotes/types';
 import { useBackToClose } from '../useBackToClose';
@@ -39,9 +37,6 @@ interface Props {
   logoSvg: string;
   title: string;
   subtitle: string;
-  // Readings from the closure on (data/water-quality/renovation-series.json). Kept out of
-  // every prop above so the two series never share a chart, a week or a summary.
-  renovation: RenovationSeriesData;
 }
 
 // AM 1 + AM 2 were physically unified into a single 360 L recirculating system
@@ -103,7 +98,6 @@ export default function WaterQualityDashboard({
   logoSvg,
   title,
   subtitle,
-  renovation,
 }: Props) {
   const t = STRINGS[locale];
   const primaryTanks = useMemo(() => tanks.filter((tk) => tk.primary), [tanks]);
@@ -428,14 +422,6 @@ export default function WaterQualityDashboard({
           <p class="mt-3 text-right font-body text-xs text-[var(--wq-ink-muted)]">{t.loading}</p>
         )}
 
-        {renovation.readings.length > 0 && (
-          <p class="mt-3 font-body text-xs text-[var(--wq-ink-muted)]">
-            <a href="#renovation-series-title" class="underline decoration-[var(--wq-divider)] underline-offset-4 hover:decoration-current">
-              {t.closedSeriesLine}
-            </a>
-          </p>
-        )}
-
         <WaterLogTable
           locale={locale}
           tanks={primaryTanks}
@@ -443,8 +429,6 @@ export default function WaterQualityDashboard({
           bitacora={bitacora}
           weekIso={weekIso}
         />
-
-        <RenovationSeries locale={locale} series={renovation} catalog={parameters} />
       </div>
 
       {/* Detail */}
