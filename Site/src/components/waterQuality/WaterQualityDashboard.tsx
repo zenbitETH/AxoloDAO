@@ -4,6 +4,7 @@ import type {
   Measurement,
   ParameterCatalogEntry,
   ParamKey,
+  RenovationSeriesData,
   Tank,
   TestType,
   TimeWindow,
@@ -16,6 +17,7 @@ import TankGrid from './TankGrid';
 import TankCard from './TankCard';
 import RotatingHeroChart from './RotatingHeroChart';
 import WaterLogTable from './WaterLogTable';
+import RenovationSeries from './RenovationSeries';
 import { AM_AQUARIUM_BY_ANCHOR } from './amAquariums';
 import type { BitacoraEntry, Ejemplar } from '../ajolotes/types';
 import { useBackToClose } from '../useBackToClose';
@@ -37,6 +39,9 @@ interface Props {
   logoSvg: string;
   title: string;
   subtitle: string;
+  // Readings from the closure on (data/water-quality/renovation-series.json). Kept out of
+  // every prop above so the two series never share a chart, a week or a summary.
+  renovation: RenovationSeriesData;
 }
 
 // AM 1 + AM 2 were physically unified into a single 360 L recirculating system
@@ -98,6 +103,7 @@ export default function WaterQualityDashboard({
   logoSvg,
   title,
   subtitle,
+  renovation,
 }: Props) {
   const t = STRINGS[locale];
   const primaryTanks = useMemo(() => tanks.filter((tk) => tk.primary), [tanks]);
@@ -277,20 +283,13 @@ export default function WaterQualityDashboard({
 
   const testType = useMemo(() => deriveTestType(latestOfWeek, bitacora), [latestOfWeek, bitacora]);
 
-  // The week's podcast episode for "further insight on the water tests". Exact from the Pulso
-  // content map; extrapolated (podcast is weekly, 1:1 with the Pulso week) for weeks past the last
-  // published Pulso — e.g. the current week. Links to the podcast archive (playlist).
+  // The week's podcast episode for "further insight on the water tests", only when the Pulso
+  // content records one for that week. It is not extrapolated: the podcast is every two weeks
+  // now, and a guessed number named episodes that did not exist yet.
   const podcastEpisode = useMemo<{ n: number; url: string } | null>(() => {
     if (!podcastByWeek) return null;
-    const wk = isoWeekNumber(weekIso);
-    let n = podcastByWeek[wk];
-    if (n == null) {
-      const weeks = Object.keys(podcastByWeek).map(Number);
-      if (weeks.length === 0) return null;
-      const maxWk = Math.max(...weeks);
-      n = wk - (maxWk - podcastByWeek[maxWk]); // apply the real, data-derived week↔episode offset
-    }
-    if (n < 1) return null;
+    const n = podcastByWeek[isoWeekNumber(weekIso)];
+    if (n == null || n < 1) return null;
     const url = episodeUrls?.[n] ?? podcastUrl; // per-episode deep link, else the archive playlist
     return url ? { n, url } : null;
   }, [podcastByWeek, episodeUrls, podcastUrl, weekIso]);
@@ -429,6 +428,14 @@ export default function WaterQualityDashboard({
           <p class="mt-3 text-right font-body text-xs text-[var(--wq-ink-muted)]">{t.loading}</p>
         )}
 
+        {renovation.readings.length > 0 && (
+          <p class="mt-3 font-body text-xs text-[var(--wq-ink-muted)]">
+            <a href="#renovation-series-title" class="underline decoration-[var(--wq-divider)] underline-offset-4 hover:decoration-current">
+              {t.closedSeriesLine}
+            </a>
+          </p>
+        )}
+
         <WaterLogTable
           locale={locale}
           tanks={primaryTanks}
@@ -436,6 +443,8 @@ export default function WaterQualityDashboard({
           bitacora={bitacora}
           weekIso={weekIso}
         />
+
+        <RenovationSeries locale={locale} series={renovation} catalog={parameters} />
       </div>
 
       {/* Detail */}
