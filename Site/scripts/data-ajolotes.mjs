@@ -37,6 +37,9 @@ import {
   loadEmbargoNames,
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
+import { refuseWhileClosed } from './lib/closure.mjs';
+
+refuseWhileClosed('data-ajolotes');
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');

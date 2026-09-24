@@ -17,7 +17,7 @@
     "data:ajolotes": "node scripts/data-ajolotes.mjs",
     "data:ops": "node scripts/data-ops.mjs",
     "data:all": "npm run data:map && npm run data:species && npm run data:tables && npm run data:water && npm run data:ajolotes && npm run data:ops",
-    "test:data-water": "node scripts/test-data-water-bot.mjs"
+    "test:data-water": "node scripts/test-data-water-bot.mjs && node scripts/test-data-water-closure.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

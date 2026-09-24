@@ -9,6 +9,12 @@
  *   Site/src/data/water-quality/parameters.json
  *   Site/src/data/water-quality/measurements-mondays.json   (default view)
  *   Site/public/data/water-quality/measurements-all.json    (lazy-fetched)
+ *   Site/src/data/water-quality/renovation-series.json      (from the closure on)
+ *
+ * The museum closed on closure.json `closedOn`. Readings dated before it are the
+ * series the dashboard has always shown; readings from that day on are a separate
+ * renovation series, only from the stations in lib/renovation-stations.mjs, and
+ * never merged into, averaged with or compared to the earlier one.
  *
  * Run manually each Monday after the team updates the xlsx:
  *   npm run data:water
@@ -26,6 +32,10 @@ import {
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
 import { isReaderBotAuthor } from './lib/reader-bot.mjs';
+import { RENOVATION_STATIONS, renovationStationFor } from './lib/renovation-stations.mjs';
+import { readClosure } from './lib/closure.mjs';
+import { SWAP_PARAM, findLabelSwaps } from './lib/label-swaps.mjs';
+import { findOutOfOrderRows } from './lib/date-order.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
@@ -35,6 +45,14 @@ const CONTENT_OUT = resolve(SITE_ROOT, 'src/data/water-quality');
 const PUBLIC_OUT  = resolve(SITE_ROOT, 'public/data/water-quality');
 mkdirSync(CONTENT_OUT, { recursive: true });
 mkdirSync(PUBLIC_OUT, { recursive: true });
+
+// The closure boundary is read from the file the site's banner reads, so the two can
+// never disagree about the day the series split.
+const { closedOn: CLOSED_ON } = readClosure();
+// One colour per station in the renovation chart (RenovationSeries.tsx), fixed by the
+// station's place in lib/renovation-stations.mjs; a fourth station needs a design decision,
+// not a generated colour.
+const RENOVATION_MAX_STATIONS = 3;
 
 // ---------------------------------------------------------------------------
 // Domain maps
@@ -490,11 +508,7 @@ if (dashSheet) {
 } else {
   console.warn('[data-water] Sheet "Dashboard calidad de agua" not found, skipping ingestion');
 }
-writeFileSync(
-  join(CONTENT_OUT, 'dashboard-agua.json'),
-  JSON.stringify(dashboardAgua, null, 2) + '\n',
-);
-console.log(`[data-water] dashboard-agua.json: ${dashboardAgua.length} entries`);
+// Written after the measurements are read: see writeDashboardAgua below.
 if (estadoSet.size) console.log(`[data-water]   distinct estadoClinico values: ${[...estadoSet].join(' | ')}`);
 
 // --- Measurements (Calidad de agua) ----------------------------------------
@@ -549,11 +563,37 @@ if (IDX_M.pecera < 0) {
 // The spelling lives in lib/reader-bot.mjs, pinned by scripts/test-data-water-bot.mjs.
 const isReaderBotRow = row => IDX_M.author1 >= 0 && isReaderBotAuthor(row[IDX_M.author1]);
 
+// Every row's date in sheet order, for the two checks that read the whole tab.
+const rowDates = measRowsRaw.map((row, r) => (r === 0 || !row ? null : toIsoDate(row[IDX_M.fecha])));
+const outOfOrder = findOutOfOrderRows(rowDates);
+const omittedOutOfOrder = [];
+
+// The workbook computes 'Dashboard calidad de agua' over every date, so once the tab has a
+// row from the closure on, that summary averages the two series together, for good. From
+// then on the file stays as committed, from before the closure, whatever closure.json says.
+const rowsFromClosureOn = rowDates.filter(d => d && d >= CLOSED_ON).length;
+if (rowsFromClosureOn) {
+  console.log(`[data-water] dashboard-agua.json: left as committed (the workbook's summary spans ${rowsFromClosureOn} rows from ${CLOSED_ON} on)`);
+} else {
+  writeFileSync(
+    join(CONTENT_OUT, 'dashboard-agua.json'),
+    JSON.stringify(dashboardAgua, null, 2) + '\n',
+  );
+  console.log(`[data-water] dashboard-agua.json: ${dashboardAgua.length} entries`);
+}
+
 const allMeasurements = [];
+const renovationReadings = [];
 let skippedNoDate = 0;
 let skippedUnknownTank = 0;
 let skippedReaderRows = 0;
+let skippedPostClosure = 0;
 const unknownTankSamples = new Set();
+const postClosureSamples = new Set();
+
+// First pass: every row that could be published, with the series it belongs to. Nothing
+// is published until the suspected label swaps are known (lib/label-swaps.mjs).
+const candidates = [];
 
 for (let r = 1; r < measRowsRaw.length; r++) {
   const row = measRowsRaw[r];
@@ -566,6 +606,31 @@ for (let r = 1; r < measRowsRaw.length; r++) {
 
   const iso = toIsoDate(row[IDX_M.fecha]);
   if (!iso) { skippedNoDate++; continue; }
+  if (outOfOrder.has(r)) { omittedOutOfOrder.push(`${iso} ${toTimeString(row[IDX_M.hora]) ?? ''} ${rawTank}`); continue; }
+
+  const values = Object.fromEntries(PARAM_KEYS.map(k => [k, null]));
+  for (const [colIdx, paramKey] of colToParam) {
+    values[paramKey] = parseNumber(row[colIdx]);
+  }
+  const authors = {
+    main: (row[IDX_M.author1] ?? null) || null,
+    secondary: (row[IDX_M.author2] ?? null) || null,
+  };
+
+  // From the closure on, a row is either a renovation reading from a listed station or it
+  // is not published. It never reaches normalizeTankId, which would fold an "AD 2" or an
+  // "AM 5" into the series from before the closure. The note is left out on purpose.
+  if (iso >= CLOSED_ON) {
+    const station = renovationStationFor(rawTank);
+    if (!station) {
+      skippedPostClosure++;
+      if (postClosureSamples.size < 10) postClosureSamples.add(rawTank);
+      continue;
+    }
+    if (PARAM_KEYS.every(k => values[k] == null)) continue;
+    candidates.push({ series: 'renovation', station: station.id, label: rawTank, date: iso, time: toTimeString(row[IDX_M.hora]), authors, values });
+    continue;
+  }
 
   const tankId = normalizeTankId(rawTank, iso);
   if (!tankId || !TANK_META[tankId]) {
@@ -574,10 +639,6 @@ for (let r = 1; r < measRowsRaw.length; r++) {
     continue;
   }
 
-  const values = Object.fromEntries(PARAM_KEYS.map(k => [k, null]));
-  for (const [colIdx, paramKey] of colToParam) {
-    values[paramKey] = parseNumber(row[colIdx]);
-  }
   if (PARAM_KEYS.every(k => values[k] == null)) continue;
 
   const alarms = [];
@@ -588,22 +649,63 @@ for (let r = 1; r < measRowsRaw.length; r++) {
     if (s !== 'ok') alarms.push(k);
   }
 
-  allMeasurements.push({
+  candidates.push({
+    series: 'before',
+    station: tankId,
+    label: rawTank,
     date: iso,
     time: toTimeString(row[IDX_M.hora]),
-    tankId,
-    isMonday: isMondayIso(iso),
-    authors: {
-      main: (row[IDX_M.author1] ?? null) || null,
-      secondary: (row[IDX_M.author2] ?? null) || null,
+    measurement: {
+      date: iso,
+      time: toTimeString(row[IDX_M.hora]),
+      tankId,
+      isMonday: isMondayIso(iso),
+      authors,
+      values,
+      alarms,
+      note: (row[IDX_M.noteCol] != null ? String(row[IDX_M.noteCol]) : null),
     },
-    values,
-    alarms,
-    note: (row[IDX_M.noteCol] != null ? String(row[IDX_M.noteCol]) : null),
   });
 }
 
+// Second pass: omit both rows of every suspected swap, then publish the rest.
+candidates.forEach((c, i) => { c.id = i; });
+const swaps = findLabelSwaps(candidates.map(c => ({
+  id: c.id, series: c.series, station: c.station, date: c.date, time: c.time,
+  value: (c.measurement?.values ?? c.values)[SWAP_PARAM],
+})));
+const omitted = new Set(swaps.flatMap(p => [p.a.id, p.b.id]));
+for (const c of candidates) {
+  if (omitted.has(c.id)) continue;
+  if (c.series === 'before') allMeasurements.push(c.measurement);
+  else renovationReadings.push({ date: c.date, time: c.time, stationId: c.station, authors: c.authors, values: c.values });
+}
+
 allMeasurements.sort((a, b) => (a.date + (a.time ?? '')).localeCompare(b.date + (b.time ?? '')));
+renovationReadings.sort((a, b) => (a.date + (a.time ?? '')).localeCompare(b.date + (b.time ?? '')));
+
+// Hard guards: the two series cannot touch, whatever the workbook says.
+const leaked = allMeasurements.filter(m => m.date >= CLOSED_ON);
+if (leaked.length) {
+  throw new Error(`[data-water] ${leaked.length} rows dated on or after ${CLOSED_ON} reached the series from before the closure`);
+}
+const stationIds = [...RENOVATION_STATIONS.values()].map(s => s.id);
+if (new Set(stationIds).size !== stationIds.length) {
+  throw new Error('[data-water] lib/renovation-stations.mjs: two stations share an id');
+}
+const collided = stationIds.filter(id => TANK_META[id]);
+if (collided.length) {
+  throw new Error(`[data-water] renovation station ids reuse tank ids from before the closure: ${collided.join(', ')}`);
+}
+// A station's colour slot is its place in the allowlist, so it never changes between builds.
+const allowlisted = [...RENOVATION_STATIONS.values()];
+if (allowlisted.length > RENOVATION_MAX_STATIONS) {
+  throw new Error(`[data-water] lib/renovation-stations.mjs lists ${allowlisted.length} stations; the chart has ${RENOVATION_MAX_STATIONS} colours`);
+}
+const seenStations = new Set(renovationReadings.map(r => r.stationId));
+const renovationStations = allowlisted
+  .map(({ id, label }, slot) => ({ id, label, slot }))
+  .filter(s => seenStations.has(s.id));
 
 const mondays = allMeasurements.filter(m => m.isMonday);
 
@@ -616,10 +718,26 @@ writeFileSync(
   JSON.stringify(allMeasurements) + '\n'
 );
 
+// Always written, even empty, so the pages' import never fails.
+writeFileSync(
+  join(CONTENT_OUT, 'renovation-series.json'),
+  JSON.stringify({ from: CLOSED_ON, stations: renovationStations, readings: renovationReadings }, null, 2) + '\n'
+);
+
 console.log(`[data-water] measurements-mondays.json: ${mondays.length} rows`);
 console.log(`[data-water] measurements-all.json: ${allMeasurements.length} rows`);
 if (skippedNoDate) console.warn(`[data-water] skipped ${skippedNoDate} rows (no date)`);
+if (omittedOutOfOrder.length) {
+  console.warn(`[data-water] omitted ${omittedOutOfOrder.length} rows dated out of the tab's order: ${omittedOutOfOrder.join('; ')}`);
+}
+if (swaps.length) {
+  console.warn(`[data-water] omitted ${omitted.size} rows as ${swaps.length} suspected label swaps (${SWAP_PARAM}): ${swaps.map(p => `${p.date} ${p.time ?? ''} ${p.a.station} <> ${p.b.station}`).join('; ')}`);
+}
 if (skippedReaderRows) console.log(`[data-water] skipped ${skippedReaderRows} reader-bot rows (Autor principal "XOVI bot", unverified)`);
+console.log(`[data-water] renovation-series.json: ${renovationReadings.length} readings from ${renovationStations.length} stations (from ${CLOSED_ON})`);
+if (skippedPostClosure) {
+  console.warn(`[data-water] skipped ${skippedPostClosure} rows dated on or after ${CLOSED_ON} (no renovation station). Samples: ${[...postClosureSamples].join(', ')}`);
+}
 if (skippedUnknownTank) {
   console.warn(`[data-water] skipped ${skippedUnknownTank} rows (unknown tank id). Samples: ${[...unknownTankSamples].join(', ')}`);
 }

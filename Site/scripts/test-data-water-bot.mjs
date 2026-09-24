@@ -13,7 +13,7 @@
  *   node scripts/test-data-water-bot.mjs
  */
 import XLSX from 'xlsx';
-import { cpSync, existsSync, mkdtempSync, readFileSync, rmSync, symlinkSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
@@ -69,6 +69,9 @@ const trackedBefore = digest(trackedOut);
 const scratch = mkdtempSync(join(tmpdir(), 'data-water-bot-'));
 try {
   cpSync(SCRIPTS, join(scratch, 'scripts'), { recursive: true });
+  // data-water.mjs reads the closure boundary from the Site's closure.json.
+  mkdirSync(join(scratch, 'src/data'), { recursive: true });
+  cpSync(join(SITE, 'src/data/closure.json'), join(scratch, 'src/data/closure.json'));
   symlinkSync(join(SITE, 'node_modules'), join(scratch, 'node_modules'), process.platform === 'win32' ? 'junction' : 'dir');
   const workbook = join(scratch, 'fixture-control.xlsx');
   writeWorkbook(workbook);
