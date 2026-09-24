@@ -53,7 +53,9 @@ function applyTheme(t: 'light' | 'dark') {
 // produce el ingest, no con la del registro: la hoja escribe «Andersonii 1» con
 // doble i, y `visibleBajas` empareja por nombre EXACTO contra bundle.bajas, así
 // que la grafía del registro no encontraría nada y la tarjeta no aparecería.
-const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica', 'Panchita', 'Goldy', 'Andersoni 1']);
+// 'Larva 2' se memorializa el 2026-09-24: murió el 23 de septiembre, con la causa todavía
+// desconocida, y la Hoja aún no registra la baja; su entrada sale de synthLarva2Baja.
+const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica', 'Panchita', 'Goldy', 'Andersoni 1', 'Larva 2']);
 
 // NOTE: the per-component hidden-alias list that used to live here is gone.
 // `bundle.ejemplares` is now the LIVE roster by construction — data-ajolotes.mjs
@@ -117,6 +119,24 @@ function synthGoldyBaja(ejemplares: Ejemplar[]): Baja | null {
   };
 }
 
+// Larva 2 died on 2026-09-23, during the closure; the cause is not known yet. The roster
+// is frozen while the museum is closed, so its record was moved out of the live list by
+// hand and data-ajolotes.mjs lists it as deceased. The entry is removable once the
+// operativo Bajas sheet records the same date and a cause.
+function synthLarva2Baja(ejemplares: Ejemplar[]): Baja | null {
+  const e = ejemplares.find((x) => (x.alias ?? '').trim() === 'Larva 2');
+  if (!e) return null;
+  return {
+    fecha: '2026-09-23',
+    nombre: 'Larva 2',
+    peso: e.peso,
+    longitud: e.lt,
+    edad: e.edad,
+    causa: 'Desconocida por ahora',
+    necropcia: null,
+  };
+}
+
 // Curated synthetic bajas keyed by name. When a name in BAJAS_VISIBLE_NAMES has
 // a synth entry, it is preferred over the raw operativo row so the memorial
 // shows the curated cause/biometrics; names without one fall back to the xlsx.
@@ -124,6 +144,7 @@ const SYNTH_BAJAS: Record<string, (ejemplares: Ejemplar[]) => Baja | null> = {
   Leucistica: synthLeucisticaBaja,
   Panchita: synthPanchitaBaja,
   Goldy: synthGoldyBaja,
+  'Larva 2': synthLarva2Baja,
 };
 
 export default function AjolotesExplorer({ locale, bundle, water, bitacora, logoSvg, paths, children }: Props) {

@@ -280,37 +280,6 @@
       }
     },
     {
-      "alias": "Larva 2",
-      "id": null,
-      "pecera": "AM3",
-      "especie": "A. mexicanum",
-      "genero": "Sin sexar",
-      "marcas": null,
-      "fenotipo": "Silvestre",
-      "edad": null,
-      "estadio": "Larva",
-      "peso": 18,
-      "lt": 2,
-      "lhc": 6.8,
-      "icc": 225,
-      "propCabezaCuerpo": 0.2573529412,
-      "propColaCuerpo": -0.7058823529,
-      "asimetria": "0.05882352941",
-      "temp": 17.15,
-      "bcs": "Sin datos",
-      "alertaConductual": "",
-      "anomalia": "",
-      "estadoBio": "✅ ESTABLE",
-      "ultimoConsumo": 0.21,
-      "respuestaAlim": "Sin datos",
-      "alertaGastrica": "🟢 ACEPTACIÓN NORMAL",
-      "enCuarentena": false,
-      "descripcion": {
-        "breve": "Larva 2 es la más pequeñita de la familia. Tímida y discreta, su pasatiempo favorito es esconderse. Por ahora, su nombre también es provisional.",
-        "extendida": "Larva 2 es la benjamina de la casa: la más pequeña de todas nuestras larvas. De carácter reservado, le encanta buscar rinconcitos donde esconderse y observar el mundo desde un lugar seguro, sobre todo cuando su hermana mayor anda con ganas de juego. Todavía espera su nombre definitivo, pero su ternura de criatura diminuta ya conquista a todos."
-      }
-    },
-    {
       "alias": "Remo",
       "id": "XOL-DU-NM-00-002-26",
       "pecera": "AD",
@@ -342,7 +311,39 @@
       }
     }
   ],
-  "bajasSnapshots": [],
+  "bajasSnapshots": [
+    {
+      "alias": "Larva 2",
+      "id": null,
+      "pecera": "AM3",
+      "especie": "A. mexicanum",
+      "genero": "Sin sexar",
+      "marcas": null,
+      "fenotipo": "Silvestre",
+      "edad": null,
+      "estadio": "Larva",
+      "peso": 18,
+      "lt": 2,
+      "lhc": 6.8,
+      "icc": 225,
+      "propCabezaCuerpo": 0.2573529412,
+      "propColaCuerpo": -0.7058823529,
+      "asimetria": "0.05882352941",
+      "temp": 17.15,
+      "bcs": "Sin datos",
+      "alertaConductual": "",
+      "anomalia": "",
+      "estadoBio": "✅ ESTABLE",
+      "ultimoConsumo": 0.21,
+      "respuestaAlim": "Sin datos",
+      "alertaGastrica": "🟢 ACEPTACIÓN NORMAL",
+      "enCuarentena": false,
+      "descripcion": {
+        "breve": "Larva 2 es la más pequeñita de la familia. Tímida y discreta, su pasatiempo favorito es esconderse. Por ahora, su nombre también es provisional.",
+        "extendida": "Larva 2 es la benjamina de la casa: la más pequeña de todas nuestras larvas. De carácter reservado, le encanta buscar rinconcitos donde esconderse y observar el mundo desde un lugar seguro, sobre todo cuando su hermana mayor anda con ganas de juego. Todavía espera su nombre definitivo, pero su ternura de criatura diminuta ya conquista a todos."
+      }
+    }
+  ],
   "planes": {},
   "historial": {
     "Tamal de dulce": [
