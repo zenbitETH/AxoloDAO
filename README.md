@@ -216,8 +216,8 @@ Digital public infrastructure contributor and system design lead.
 ### Xolotlcalli BioMuseum / [`xolotlcalli.axolodao.eth`](https://app.ens.domains/xolotlcalli.axolodao.eth)
 Conservation and field-practice node connected to biodiversity operations.
 
-- [Instagram](https://www.instagram.com/xolotlcalli.mx/)
-- [Youtube](https://www.youtube.com/@Xolotlcalli)
+- [Instagram](https://www.instagram.com/axolodao/)
+- [Youtube](https://www.youtube.com/@axolodao)
 - [X](https://x.com/Xolotlcalli_mx)
 
 ---

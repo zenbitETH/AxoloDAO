@@ -37,6 +37,9 @@ import {
   loadEmbargoNames,
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
+import { refuseWhileClosed } from './lib/closure.mjs';
+
+refuseWhileClosed('data-ajolotes');
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
@@ -617,7 +620,9 @@ const deceasedNames = new Set(
 // inherits it; the per-component HIDDEN_AJOLOTE_ALIASES sets are the pattern this
 // replaces. Goldy: announced deceased in ep18 / Pulso W29, no Bajas row as of
 // 2026-07-22.
-const DECEASED_NOT_IN_BAJAS = ['Goldy'];
+// 'Larva 2' died on 2026-09-23 (cause not known yet); listed here until the Bajas sheet
+// records the death, so a later run cannot put the larva back in the live roster.
+const DECEASED_NOT_IN_BAJAS = ['Goldy', 'Larva 2'];
 for (const n of DECEASED_NOT_IN_BAJAS) {
   const key = (normalizeAlias(toStr(n)) ?? '').trim().toLowerCase();
   if (key) deceasedNames.add(key);

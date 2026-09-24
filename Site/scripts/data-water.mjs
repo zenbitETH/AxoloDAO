@@ -10,6 +10,11 @@
  *   Site/src/data/water-quality/measurements-mondays.json   (default view)
  *   Site/public/data/water-quality/measurements-all.json    (lazy-fetched)
  *
+ * Two kinds of suspicious rows are omitted, never corrected, and named in the log:
+ * a batch whose labels look swapped (lib/label-swaps.mjs) and a run of rows dated
+ * out of the tab's order (lib/date-order.mjs). They stay in the workbook, which is
+ * the record, until someone fixes them there.
+ *
  * Run manually each Monday after the team updates the xlsx:
  *   npm run data:water
  */
@@ -25,6 +30,9 @@ import {
   indexOfHeader,
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
+import { isReaderBotAuthor } from './lib/reader-bot.mjs';
+import { SWAP_PARAM, findLabelSwaps } from './lib/label-swaps.mjs';
+import { findOutOfOrderRows } from './lib/date-order.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
@@ -540,10 +548,28 @@ if (IDX_M.pecera < 0) {
   );
 }
 
+// Rows written by the colorimetric reader ("XOVI bot sin Lupita") live in the same tab as
+// the curator's readings, but they are UNVERIFIED machine readings (dry-run, station assumed
+// by tube order), so they must never be published as a measurement. They are marked by
+// Autor principal === "XOVI bot". Match ONLY the main author: the verified human rows carry
+// "XOVI bot" as Autor SECUNDARIO (the Xovi -> Sheet sync) and must keep flowing.
+// The spelling lives in lib/reader-bot.mjs, pinned by scripts/test-data-water-bot.mjs.
+const isReaderBotRow = row => IDX_M.author1 >= 0 && isReaderBotAuthor(row[IDX_M.author1]);
+
+// Every row's date in sheet order, for the two checks that read the whole tab.
+const rowDates = measRowsRaw.map((row, r) => (r === 0 || !row ? null : toIsoDate(row[IDX_M.fecha])));
+const outOfOrder = findOutOfOrderRows(rowDates);
+const omittedOutOfOrder = [];
+
 const allMeasurements = [];
 let skippedNoDate = 0;
 let skippedUnknownTank = 0;
+let skippedReaderRows = 0;
 const unknownTankSamples = new Set();
+
+// First pass: every row that could be published. Nothing is published until the
+// suspected label swaps are known (lib/label-swaps.mjs).
+const candidates = [];
 
 for (let r = 1; r < measRowsRaw.length; r++) {
   const row = measRowsRaw[r];
@@ -552,8 +578,20 @@ for (let r = 1; r < measRowsRaw.length; r++) {
   const rawTank = (row[IDX_M.pecera] ?? '').toString().trim();
   if (!rawTank) continue;
 
+  if (isReaderBotRow(row)) { skippedReaderRows++; continue; }
+
   const iso = toIsoDate(row[IDX_M.fecha]);
   if (!iso) { skippedNoDate++; continue; }
+  if (outOfOrder.has(r)) { omittedOutOfOrder.push(`${iso} ${toTimeString(row[IDX_M.hora]) ?? ''} ${rawTank}`); continue; }
+
+  const values = Object.fromEntries(PARAM_KEYS.map(k => [k, null]));
+  for (const [colIdx, paramKey] of colToParam) {
+    values[paramKey] = parseNumber(row[colIdx]);
+  }
+  const authors = {
+    main: (row[IDX_M.author1] ?? null) || null,
+    secondary: (row[IDX_M.author2] ?? null) || null,
+  };
 
   const tankId = normalizeTankId(rawTank, iso);
   if (!tankId || !TANK_META[tankId]) {
@@ -562,10 +600,6 @@ for (let r = 1; r < measRowsRaw.length; r++) {
     continue;
   }
 
-  const values = Object.fromEntries(PARAM_KEYS.map(k => [k, null]));
-  for (const [colIdx, paramKey] of colToParam) {
-    values[paramKey] = parseNumber(row[colIdx]);
-  }
   if (PARAM_KEYS.every(k => values[k] == null)) continue;
 
   const alarms = [];
@@ -576,19 +610,33 @@ for (let r = 1; r < measRowsRaw.length; r++) {
     if (s !== 'ok') alarms.push(k);
   }
 
-  allMeasurements.push({
+  candidates.push({
+    station: tankId,
     date: iso,
     time: toTimeString(row[IDX_M.hora]),
-    tankId,
-    isMonday: isMondayIso(iso),
-    authors: {
-      main: (row[IDX_M.author1] ?? null) || null,
-      secondary: (row[IDX_M.author2] ?? null) || null,
+    measurement: {
+      date: iso,
+      time: toTimeString(row[IDX_M.hora]),
+      tankId,
+      isMonday: isMondayIso(iso),
+      authors,
+      values,
+      alarms,
+      note: (row[IDX_M.noteCol] != null ? String(row[IDX_M.noteCol]) : null),
     },
-    values,
-    alarms,
-    note: (row[IDX_M.noteCol] != null ? String(row[IDX_M.noteCol]) : null),
   });
+}
+
+// Second pass: omit both rows of every suspected swap, then publish the rest.
+candidates.forEach((c, i) => { c.id = i; });
+const swaps = findLabelSwaps(candidates.map(c => ({
+  id: c.id, station: c.station, date: c.date, time: c.time,
+  value: c.measurement.values[SWAP_PARAM],
+})));
+const omitted = new Set(swaps.flatMap(p => [p.a.id, p.b.id]));
+for (const c of candidates) {
+  if (omitted.has(c.id)) continue;
+  allMeasurements.push(c.measurement);
 }
 
 allMeasurements.sort((a, b) => (a.date + (a.time ?? '')).localeCompare(b.date + (b.time ?? '')));
@@ -607,6 +655,13 @@ writeFileSync(
 console.log(`[data-water] measurements-mondays.json: ${mondays.length} rows`);
 console.log(`[data-water] measurements-all.json: ${allMeasurements.length} rows`);
 if (skippedNoDate) console.warn(`[data-water] skipped ${skippedNoDate} rows (no date)`);
+if (omittedOutOfOrder.length) {
+  console.warn(`[data-water] omitted ${omittedOutOfOrder.length} rows dated out of the tab's order: ${omittedOutOfOrder.join('; ')}`);
+}
+if (swaps.length) {
+  console.warn(`[data-water] omitted ${omitted.size} rows as ${swaps.length} suspected label swaps (${SWAP_PARAM}): ${swaps.map(p => `${p.date} ${p.time ?? ''} ${p.a.station} <> ${p.b.station}`).join('; ')}`);
+}
+if (skippedReaderRows) console.log(`[data-water] skipped ${skippedReaderRows} reader-bot rows (Autor principal "XOVI bot", unverified)`);
 if (skippedUnknownTank) {
   console.warn(`[data-water] skipped ${skippedUnknownTank} rows (unknown tank id). Samples: ${[...unknownTankSamples].join(', ')}`);
 }

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
+import type { ComponentChildren } from 'preact';
 import type {
   Locale,
   Measurement,
@@ -37,6 +38,9 @@ interface Props {
   logoSvg: string;
   title: string;
   subtitle: string;
+  // Rendered under the header block, in the overview: the page passes the museum's
+  // closure card here, so it sits inside the dashboard rather than above the site.
+  children?: ComponentChildren;
 }
 
 // AM 1 + AM 2 were physically unified into a single 360 L recirculating system
@@ -98,6 +102,7 @@ export default function WaterQualityDashboard({
   logoSvg,
   title,
   subtitle,
+  children,
 }: Props) {
   const t = STRINGS[locale];
   const primaryTanks = useMemo(() => tanks.filter((tk) => tk.primary), [tanks]);
@@ -277,20 +282,13 @@ export default function WaterQualityDashboard({
 
   const testType = useMemo(() => deriveTestType(latestOfWeek, bitacora), [latestOfWeek, bitacora]);
 
-  // The week's podcast episode for "further insight on the water tests". Exact from the Pulso
-  // content map; extrapolated (podcast is weekly, 1:1 with the Pulso week) for weeks past the last
-  // published Pulso — e.g. the current week. Links to the podcast archive (playlist).
+  // The week's podcast episode for "further insight on the water tests", only when the Pulso
+  // content records one for that week. It is not extrapolated: the podcast is every two weeks
+  // now, and a guessed number named episodes that did not exist yet.
   const podcastEpisode = useMemo<{ n: number; url: string } | null>(() => {
     if (!podcastByWeek) return null;
-    const wk = isoWeekNumber(weekIso);
-    let n = podcastByWeek[wk];
-    if (n == null) {
-      const weeks = Object.keys(podcastByWeek).map(Number);
-      if (weeks.length === 0) return null;
-      const maxWk = Math.max(...weeks);
-      n = wk - (maxWk - podcastByWeek[maxWk]); // apply the real, data-derived week↔episode offset
-    }
-    if (n < 1) return null;
+    const n = podcastByWeek[isoWeekNumber(weekIso)];
+    if (n == null || n < 1) return null;
     const url = episodeUrls?.[n] ?? podcastUrl; // per-episode deep link, else the archive playlist
     return url ? { n, url } : null;
   }, [podcastByWeek, episodeUrls, podcastUrl, weekIso]);
@@ -380,6 +378,8 @@ export default function WaterQualityDashboard({
             podcastEpisode={podcastEpisode}
           />
         </div>
+
+        {children}
 
         {/* Tank grid */}
         {weekMeasurements.length === 0 ? (
