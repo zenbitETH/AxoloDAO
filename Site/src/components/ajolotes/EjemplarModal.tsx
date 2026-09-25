@@ -17,9 +17,10 @@ import ResumenTab from './tabs/ResumenTab';
 import BiometriaTab from './tabs/BiometriaTab';
 import EventosTab from './tabs/EventosTab';
 import AlimentacionTab from './tabs/AlimentacionTab';
+import PostmortemTab from './tabs/PostmortemTab';
 import { necroStatus } from './memorial';
 
-type TabId = 'resumen' | 'biometria' | 'eventos' | 'alimentacion';
+type TabId = 'postmortem' | 'resumen' | 'biometria' | 'eventos' | 'alimentacion';
 
 interface Props {
   ej: Ejemplar;
@@ -53,7 +54,8 @@ function peceraLabel(locale: Locale, pecera: string | null | undefined): string 
 }
 
 export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, water, waterPath, onClose, memorial = false, baja: bajaProp = null }: Props) {
-  const [tab, setTab] = useState<TabId>('resumen');
+  // A deceased specimen opens on its forensic postmortem.
+  const [tab, setTab] = useState<TabId>(memorial ? 'postmortem' : 'resumen');
   const [mounted, setMounted] = useState(false);
   // Shareable per-specimen deep-link (the hash the on-load handler reopens).
   const [copied, setCopied] = useState(false);
@@ -97,6 +99,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
   const plan = bundle.planes[ej.alias] ?? null;
 
   const tabs: { id: TabId; label: string }[] = [
+    ...(memorial ? [{ id: 'postmortem' as TabId, label: s(locale, 'tab.postmortem') }] : []),
     { id: 'resumen', label: s(locale, 'tab.resumen') },
     { id: 'biometria', label: s(locale, 'tab.biometria') },
     { id: 'eventos', label: s(locale, 'tab.eventos') },
@@ -330,6 +333,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
 
         {/* Body */}
         <div class="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6">
+          {tab === 'postmortem' && <PostmortemTab alias={ej.alias} locale={locale} />}
           {tab === 'resumen' && (
             <ResumenTab
               ej={ej}

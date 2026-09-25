@@ -1,5 +1,7 @@
 import { useMemo, useState } from 'preact/hooks';
 import type { Baja, Bundle, Locale } from './types';
+import { bajaCount } from './types';
+import { survival, pct } from '../../lib/survival';
 import { s } from './strings';
 import BajaCard from './BajaCard';
 
@@ -29,6 +31,7 @@ function simplifyCausa(c: string | null | undefined): string {
 
 export default function BajasView({ bajas, bundle, locale, onBack, onSelect }: Props) {
   const [search, setSearch] = useState('');
+  const sv = useMemo(() => survival(bundle), [bundle]);
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -49,7 +52,7 @@ export default function BajasView({ bajas, bundle, locale, onBack, onSelect }: P
     const map: Record<string, number> = {};
     bajas.forEach((b) => {
       const k = simplifyCausa(b.causa);
-      map[k] = (map[k] ?? 0) + 1;
+      map[k] = (map[k] ?? 0) + (b.count ?? 1);
     });
     return Object.entries(map).sort((a, b) => b[1] - a[1]);
   }, [bajas]);
@@ -83,10 +86,20 @@ export default function BajasView({ bajas, bundle, locale, onBack, onSelect }: P
         <div class="flex flex-col gap-3.5">
           <div class="rounded-xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
             <div class="font-display text-5xl font-bold leading-none text-[var(--wq-ink)]">
-              {bajas.length}
+              {bajaCount(bajas)}
             </div>
             <div class="mt-1.5 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
               {s(locale, 'bajas.total')}
+            </div>
+            <div class="mt-3 border-t border-dashed border-[var(--wq-divider)] pt-3">
+              <span class="font-display text-2xl font-bold text-[var(--wq-ink)]">{pct(sv.tasa)}</span>{' '}
+              <span class="text-xs font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">{s(locale, 'bajas.survival')}</span>
+              <p class="m-0 mt-1 text-xs text-[var(--wq-ink-muted)]">
+                {s(locale, 'bajas.survival.detail')
+                  .replace('{v}', String(sv.vivos))
+                  .replace('{b}', String(sv.bajas))
+                  .replace('{t}', String(sv.total))}
+              </p>
             </div>
           </div>
           <ul class="m-0 flex list-none flex-col gap-1.5 p-0 text-sm">
@@ -100,7 +113,7 @@ export default function BajasView({ bajas, bundle, locale, onBack, onSelect }: P
                 <span class="relative h-1.5 overflow-hidden rounded-[3px] border border-[var(--wq-divider)] bg-[var(--wq-row-bg)]">
                   <span
                     class="block h-full rounded-[2px]"
-                    style={{ width: `${(n / Math.max(1, bajas.length)) * 100}%`, background: '#8B6F47' }}
+                    style={{ width: `${(n / Math.max(1, bajaCount(bajas))) * 100}%`, background: '#8B6F47' }}
                   />
                 </span>
                 <span class="text-right font-mono text-xs text-[var(--wq-ink-muted)]">{n}</span>
@@ -112,8 +125,8 @@ export default function BajasView({ bajas, bundle, locale, onBack, onSelect }: P
 
       <div class="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-3 px-6 pt-2">
         <span class="rounded-full border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-3.5 py-1.5 font-display text-sm font-semibold text-[var(--wq-ink)]">
-          {ordered.length}{' '}
-          {ordered.length === 1 ? s(locale, 'bajas.count.one') : s(locale, 'bajas.count.many')}
+          {bajaCount(ordered)}{' '}
+          {bajaCount(ordered) === 1 ? s(locale, 'bajas.count.one') : s(locale, 'bajas.count.many')}
         </span>
         <input
           type="search"

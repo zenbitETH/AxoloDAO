@@ -1,0 +1,6197 @@
+{
+ "generated": "2026-09-25",
+ "brain_commit": "e3525fe",
+ "preregistration": "451da4d",
+ "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
+ "aggregate": {
+  "grades": {
+   "oportuna": 2,
+   "tardía": 4,
+   "ausente": 0,
+   "sin_registro_de_acciones": 1,
+   "sin_señal_registrada": 0,
+   "indeterminada": 10
+  },
+  "n": 17,
+  "median_latency_over_standard": 1.23125,
+  "h0": {
+   "statement": "mediana de L_SP dentro del estándar y menos del 30 % de episodios con acción preventiva ausente",
+   "median_within_standard": false,
+   "absent_below_threshold": true,
+   "sustained": false
+  },
+  "lane5": {
+   "without_necropsy_result": 15,
+   "euthanasia_documented": 1,
+   "without_disposal_record": 17
+  }
+ },
+ "limits": [
+  "El agua se mide por sistema, no por pecera: las señales de agua se unen al ejemplar por su ubicación registrada.",
+  "Antes de abril de 2026 el museo casi no registraba acciones; ahí «sin registro» no significa «no se hizo».",
+  "Las grabaciones de las cámaras no se revisaron cuadro por cuadro; los clips verificados son pocos.",
+  "Los chats del equipo son fuente; se citan por su renglón en el expediente privado y aquí se resumen sin nombres.",
+  "Ninguna persona se nombra. Los roles se publican después del derecho de réplica."
+ ],
+ "especimenes": [
+  {
+   "alias": "Larvas (7)",
+   "species": "A. mexicanum",
+   "group": [
+    {
+     "date": "2026-04-16",
+     "cause": "Desconocido",
+     "necropsy": "NA"
+    },
+    {
+     "date": "2026-04-15",
+     "cause": "Desconocido",
+     "necropsy": "NA"
+    },
+    {
+     "date": "2026-04-05",
+     "cause": "Desconocido",
+     "necropsy": "NA"
+    },
+    {
+     "date": null,
+     "cause": "Desconocido",
+     "necropsy": "NA"
+    },
+    {
+     "date": null,
+     "cause": "Desconocido",
+     "necropsy": "NA"
+    },
+    {
+     "date": null,
+     "cause": "Desconocido",
+     "necropsy": "NA"
+    },
+    {
+     "date": null,
+     "cause": "Desconocido",
+     "necropsy": "NA"
+    }
+   ],
+   "death": {
+    "date": "2026-04-16",
+    "workbook_date": null,
+    "date_source": "libro",
+    "conf": "parcial",
+    "euthanasia": false,
+    "note": "3 de 7 con fecha; la hoja registra estas bajas sin nombre ni identificador",
+    "alive_record_after": null
+   },
+   "cause": "Desconocida",
+   "cause_source": "libro",
+   "necropsy": {
+    "performed": null,
+    "status": "sin registro"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": false,
+   "grade": "indeterminada",
+   "grade_60": "indeterminada",
+   "grade_note": "Sin registros individuales: la respuesta no se puede calificar.",
+   "primary": null,
+   "sensitivity": null,
+   "events": []
+  },
+  {
+   "alias": "Andersoni 1",
+   "species": "A. andersonii",
+   "death": {
+    "date": "2026-09-05",
+    "workbook_date": "2026-05-09",
+    "date_source": "libro",
+    "conf": "ambiguous_dm",
+    "euthanasia": false,
+    "note": "se descarta la lectura 2026-05-09: es anterior al último registro del ejemplar vivo (2026-09-03)",
+    "alive_record_after": null
+   },
+   "cause": "Faltan medidas",
+   "cause_source": "libro",
+   "necropsy": {
+    "performed": null,
+    "status": "Sin datos"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": false,
+   "grade": "tardía",
+   "grade_60": "indeterminada",
+   "grade_note": null,
+   "primary": {
+    "window": {
+     "from": "2026-08-15",
+     "to": "2026-09-05",
+     "days": 21
+    },
+    "grade": "tardía",
+    "S0": {
+     "date": "2026-08-26",
+     "time": "08:29",
+     "label": "Incidencia registrada"
+    },
+    "P": {
+     "date": "2026-08-31",
+     "time": "09:10",
+     "label": "En cuarentena"
+    },
+    "C": null,
+    "latency_h": 120.7,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 12,
+    "unanswered": 5,
+    "coverage": 0.41,
+    "role": "Dirección clínica del museo",
+    "flags": [
+     "estándar_no_escrito_en_el_museo"
+    ],
+    "recorded_after_death": 0
+   },
+   "sensitivity": {
+    "window": {
+     "from": "2026-07-07",
+     "to": "2026-09-05",
+     "days": 60
+    },
+    "grade": "indeterminada",
+    "S0": {
+     "date": "2026-08-26",
+     "time": "08:29",
+     "label": "Incidencia registrada"
+    },
+    "P": {
+     "date": "2026-08-31",
+     "time": "09:10",
+     "label": "En cuarentena"
+    },
+    "C": null,
+    "latency_h": 120.7,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 12,
+    "unanswered": 5,
+    "coverage": 0.15,
+    "role": null,
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "events": [
+    {
+     "date": "2026-08-26",
+     "time": "08:29",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Solo observación · Flotabilidad en rejilla de filtro (patita atorada)"
+    },
+    {
+     "date": "2026-08-27",
+     "time": "15:23",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nado persistente · Solo observación · El ejemplar presenta demasiada activiad de nado a la superficie. Se ha mantenido en observación y ha salido 4 veces en menos de un minuto a tomar aire. Se alerta al resto del equipo"
+    },
+    {
+     "date": "2026-08-28",
+     "time": "16:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nado persistente · Solo observación · El ejemplar presenta demasiada activiad de nado a la superficie. Se ha mantenido en observación y ha salido 3 veces en menos de un minuto a tomar aire. Se alerta a la curaduría"
+    },
+    {
+     "date": "2026-08-29",
+     "time": "09:23",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nado persistente · Solo observación · Ander sale 3 veces a la superficie en menos de un minuto; sigue presentando una actividad muy poco usual yluce con hambre. El ejemplar ha comido muy poco"
+    },
+    {
+     "date": "2026-08-29",
+     "time": "09:46",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Solo observación · Ander presenta un movimiento branquial más rápido de lo observado en dás anteriores.vJuan confirma el dato y pide mayor observación en el ejemplar"
+    },
+    {
+     "date": "2026-08-30",
+     "time": "09:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Ander atorado en rejilla de filtro"
+    },
+    {
+     "date": "2026-08-30",
+     "time": "15:49",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nado persistente · Solo observación, Modificación/Adición de equipo · El ejemplar presenta mucha actividad de nado en la superficie de la pecera. No se detiene a descansar. Se alerta al resto del equipo. Se cubre la p…"
+    },
+    {
+     "date": "2026-08-30",
+     "time": "16:29",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Solo observación · El ejemplar acaba de bajar; posible respuesta por menor cantidad de iluminación. Se observa flotabilidad del animal"
+    },
+    {
+     "date": "2026-08-30",
+     "time": "17:17",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "El ejemplar se atora con la parte dentada cercana a el filtro de la pecera. Se ha atorado en 5 ocasiones desde las 4:30 pm hasta ahora. Revisar constantemente al ejemplar"
+    },
+    {
+     "date": "2026-08-31",
+     "time": "09:10",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Solo observación · Andersoni se comió el guppie"
+    },
+    {
+     "date": "2026-08-31",
+     "time": "09:30",
+     "lane": 3,
+     "kind": "preventive_vet_notice",
+     "label": "Aviso al veterinario",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo, Nado persistente · Solo observación, Notificación a veterinario"
+    },
+    {
+     "date": "2026-08-31",
+     "time": "09:30",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo, Nado persistente · Solo observación, Notificación a veterinario"
+    },
+    {
+     "date": "2026-09-01",
+     "time": "15:45",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Solo observación · Ander flota a mitad de la pecera y baja por periodos cortos de tiempo"
+    },
+    {
+     "date": "2026-09-01",
+     "time": "18:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Solo observación · Ander baja de la superficie y pierde el control, queda en una posición recostada de lado y dura alrededor de 7 segundos en esa posición hata que logra regresar a una …"
+    },
+    {
+     "date": "2026-09-03",
+     "time": "15:50",
+     "lane": 1,
+     "kind": "signal_feeding_refusal",
+     "label": "Rechazo de alimento",
+     "source": "libro",
+     "grade": "A",
+     "text": "ración 1.17 g, consumo 0 g"
+    },
+    {
+     "date": "2026-09-03",
+     "time": "19:30",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Cambio de agua rutinario · Se realiza el cambio del agua de tupper de cuarentena de ander"
+    }
+   ]
+  },
+  {
+   "alias": "Panchita",
+   "species": "A. andersoni",
+   "death": {
+    "date": "2026-07-08",
+    "workbook_date": null,
+    "date_source": "libro",
+    "conf": "en_revision",
+    "euthanasia": false,
+    "note": "fecha en revisión contra un documento de laboratorio reservado",
+    "alive_record_after": null
+   },
+   "cause": null,
+   "cause_source": null,
+   "necropsy": {
+    "performed": null,
+    "status": "resultado reservado hasta la autorización del laboratorio"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": true,
+   "grade": "oportuna",
+   "grade_60": "tardía",
+   "grade_note": null,
+   "primary": {
+    "window": {
+     "from": "2026-06-16",
+     "to": "2026-07-07",
+     "days": 21
+    },
+    "grade": "oportuna",
+    "S0": {
+     "date": "2026-06-16",
+     "time": "12:18",
+     "label": "Agua fuera de rango"
+    },
+    "P": {
+     "date": "2026-06-16",
+     "time": "13:05",
+     "label": "Tratamiento"
+    },
+    "C": {
+     "date": "2026-07-01",
+     "time": "18:15",
+     "label": "Acción correctiva"
+    },
+    "latency_h": 0.8,
+    "standard": {
+     "id": "DEC-AGUA",
+     "title": "Otro parámetro fuera de rango: acción de agua en 72 h",
+     "hours": 72
+    },
+    "signals": 77,
+    "unanswered": 0,
+    "coverage": 1,
+    "role": null,
+    "flags": [
+     "racha_iniciada_antes_de_la_ventana"
+    ],
+    "recorded_after_death": 1
+   },
+   "sensitivity": {
+    "window": {
+     "from": "2026-05-08",
+     "to": "2026-07-07",
+     "days": 60
+    },
+    "grade": "tardía",
+    "S0": {
+     "date": "2026-05-08",
+     "time": "13:45",
+     "label": "Aviso de salud"
+    },
+    "P": {
+     "date": "2026-05-14",
+     "time": "18:31",
+     "label": "Acción preventiva"
+    },
+    "C": {
+     "date": "2026-05-15",
+     "time": "22:00",
+     "label": "Acción correctiva"
+    },
+    "latency_h": 148.8,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 152,
+    "unanswered": 8,
+    "coverage": 0.85,
+    "role": "Dirección clínica del museo",
+    "flags": [
+     "racha_iniciada_antes_de_la_ventana",
+     "estándar_no_escrito_en_el_museo"
+    ],
+    "recorded_after_death": 3
+   },
+   "events": [
+    {
+     "date": "2026-05-08",
+     "time": "13:45",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "A ninguno le gustan las lombrices; ya no hay tubifex, lo único que quieren comer"
+    },
+    {
+     "date": "2026-05-08",
+     "time": "18:39",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: GH 35.8 (rango 100–150) · KH 17.9 (rango 70–120)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-09",
+     "time": "19:50",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita tiene pelusa en las agallas"
+    },
+    {
+     "date": "2026-05-10",
+     "time": "11:33",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Practicante pregunta si un ejemplar ya tenía manchas blancas en la espalda"
+    },
+    {
+     "date": "2026-05-10",
+     "time": "13:35",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Ejemplares todo el día acercándose a la salida de agua; agua casi a 18 grados"
+    },
+    {
+     "date": "2026-05-11",
+     "time": "08:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: GH 35.8 (rango 100–150) · KH 35.8 (rango 70–120)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-11",
+     "time": "17:03",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Prueba sale 0 sin haber hecho cambios; resulta raro"
+    },
+    {
+     "date": "2026-05-12",
+     "time": "10:42",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nado persistente, Flotabilidad anormal / Arqueo · Panchita mantiene un movimiento con subida a superficie recurrente"
+    },
+    {
+     "date": "2026-05-12",
+     "time": "12:16",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.2 (rango 7.6–8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-05-12",
+     "time": "19:11",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "La protección de seguridad de la pecera Ander se está hongueando y descarapelando; faltan termómetros y MgSO4"
+    },
+    {
+     "date": "2026-05-13",
+     "time": "17:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 7.4 (rango 7.6–8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-05-14",
+     "time": "17:47",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita amaneció con gran carga de pelusa en branquias y su ojo derecho no mejora"
+    },
+    {
+     "date": "2026-05-14",
+     "time": "18:31",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Tratamiento de Panchita y Remo: 15 g de NaCl en 1.5 L por una hora; 9 garrafones llenos"
+    },
+    {
+     "date": "2026-05-14",
+     "time": "19:38",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.1 (rango 7.6–8) · GH 35.8 (rango 100–150) · KH 17.9 (rango 70–120)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-15",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-15",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-15",
+     "time": "14:42",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita con mucho hongo; el miércoles se le añadieron 3 g de NaCl; curaduría dará otro tratamiento"
+    },
+    {
+     "date": "2026-05-15",
+     "time": "21:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Crecimiento algodonoso / Manchas blancas (Saprolegnia), \"Anomalía estructural permanente (Falta de extremidad, microftalmia)\" · Cuarentena · Crecimiento algodonoso y ojo inflamado"
+    },
+    {
+     "date": "2026-05-15",
+     "time": "21:00",
+     "lane": 3,
+     "kind": "preventive_isolation",
+     "label": "Aislamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Crecimiento algodonoso / Manchas blancas (Saprolegnia), \"Anomalía estructural permanente (Falta de extremidad, microftalmia)\" · Cuarentena · Crecimiento algodonoso y ojo inflamado"
+    },
+    {
+     "date": "2026-05-15",
+     "time": "21:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Crecimiento algodonoso / Manchas blancas (Saprolegnia), \"Anomalía estructural permanente (Falta de extremidad, microftalmia)\" · Cuarentena · Crecimiento algodonoso y ojo inflamado"
+    },
+    {
+     "date": "2026-05-15",
+     "time": "21:59",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "El hongo de Panchita estaba tan avanzado que se desprendió y sangró; se trató con azul de metileno"
+    },
+    {
+     "date": "2026-05-15",
+     "time": "22:00",
+     "lane": 4,
+     "kind": "corrective_chat_action",
+     "label": "Acción correctiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Operación se lleva a Panchita del museo por instrucciones de curaduría"
+    },
+    {
+     "date": "2026-05-16",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-16",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-16",
+     "time": "19:11",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Temperaturas: ander 19, m1 15.9, m2 14.3, dume 16.7"
+    },
+    {
+     "date": "2026-05-17",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-17",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-18",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-18",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-19",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-19",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-20",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-20",
+     "time": "01:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-05-20",
+     "time": "09:36",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Quedan pocos tubifex; están mejorando con esa alimentación; no les gustan las lombrices"
+    },
+    {
+     "date": "2026-05-21",
+     "time": "20:18",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "A",
+     "text": "Curaduría informa que salió del doctor con Panchita"
+    },
+    {
+     "date": "2026-05-21",
+     "time": "20:18",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita perdió su ojo por un golpe"
+    },
+    {
+     "date": "2026-05-21",
+     "time": "20:18",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita tiene una infección secundaria"
+    },
+    {
+     "date": "2026-05-21",
+     "time": "20:18",
+     "lane": 4,
+     "kind": "corrective_chat_action",
+     "label": "Acción correctiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Le mandaron inyecciones y gotas (líneas 2141–2142)"
+    },
+    {
+     "date": "2026-05-21",
+     "time": "20:19",
+     "lane": 4,
+     "kind": "corrective_chat_action",
+     "label": "Acción correctiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Se indicó una biopsia a Panchita"
+    },
+    {
+     "date": "2026-05-25",
+     "time": "09:38",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "El tubo del aire acondicionado negro quedó mal tras el mantenimiento y escapa aire caliente"
+    },
+    {
+     "date": "2026-05-27",
+     "time": "08:40",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g · El ojo de Panchita parece ir mejorando, se ve menos iflamado pero con dano irreversible, se percibe una capa blannca …"
+    },
+    {
+     "date": "2026-05-27",
+     "time": "08:40",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g · El ojo de Panchita parece ir mejorando, se ve menos iflamado pero con dano irreversible, se percibe una capa blannca …"
+    },
+    {
+     "date": "2026-05-27",
+     "time": "08:40",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación, Infección bacteriana · tx: Proxiflo Santgar (ciprofloxacina) 3 mg/ml · El ojo de Panchita parece ir mejorando, se ve menos iflamado pero con dano irreversible, se percibe una capa blannca que…"
+    },
+    {
+     "date": "2026-05-27",
+     "time": "08:53",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Operación hace el tratamiento de Panchita"
+    },
+    {
+     "date": "2026-05-27",
+     "time": "09:13",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Al llegar el cuarto estaba muy caliente: el tubo de salida del aire nuevo estaba desacoplado"
+    },
+    {
+     "date": "2026-05-27",
+     "time": "09:20",
+     "lane": 4,
+     "kind": "corrective_chat_action",
+     "label": "Acción correctiva",
+     "source": "chat",
+     "grade": "B",
+     "text": "La cinta se usó para que curaduría adaptara su cuarto como cuarentena (fuera del museo)"
+    },
+    {
+     "date": "2026-05-27",
+     "time": "11:52",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "A",
+     "text": "La pecera de Panchita se está despegando por dentro"
+    },
+    {
+     "date": "2026-05-27",
+     "time": "12:27",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Aire acondicionado con agua condensada, ruido y menos aire; marca 59 °F bajo el mínimo de 61 °F"
+    },
+    {
+     "date": "2026-06-01",
+     "time": "08:40",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g · El ojo de Panchita parece ir mejorando, se ve menos iflamado pero con dano irreversible, se percibe una capa blannca …"
+    },
+    {
+     "date": "2026-06-01",
+     "time": "08:40",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación, Infección bacteriana · tx: Proxiflo Santgar (ciprofloxacina) 3 mg/ml · El ojo de Panchita parece ir mejorando, se ve menos iflamado pero con dano irreversible, se percibe una capa blannca que…"
+    },
+    {
+     "date": "2026-06-01",
+     "time": "09:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · tx: Gentamicina (10 mg/ml)"
+    },
+    {
+     "date": "2026-06-01",
+     "time": "09:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · tx: Gentamicina (10 mg/ml)"
+    },
+    {
+     "date": "2026-06-02",
+     "time": "10:41",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.2 (rango 7.6–8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-02",
+     "time": "19:50",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-06-03",
+     "time": null,
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua · Se retira 1/2 garrafon de sistema A. andersoni y se agrega 1 garrafon de receta nueva HrAa"
+    },
+    {
+     "date": "2026-06-03",
+     "time": "15:47",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.1 (rango 7.6–8) · cond 460 (rango 300–450) · NH3 0.5 (rango 0–0)",
+     "critical": true,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-06-03",
+     "time": "19:50",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-06-04",
+     "time": "09:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": ""
+    },
+    {
+     "date": "2026-06-04",
+     "time": "15:46",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.6 (rango 7.6–8) · cond 590 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-04",
+     "time": "19:50",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Cuarentena · Se cambio a Panchita a un toper de cuarentena porque presentaba flotabilidad. Durante el día le costaba permanecer en el fondo de su pecera"
+    },
+    {
+     "date": "2026-06-04",
+     "time": "19:50",
+     "lane": 3,
+     "kind": "preventive_isolation",
+     "label": "Aislamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Cuarentena · Se cambio a Panchita a un toper de cuarentena porque presentaba flotabilidad. Durante el día le costaba permanecer en el fondo de su pecera"
+    },
+    {
+     "date": "2026-06-04",
+     "time": "19:50",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-06-04",
+     "time": "21:43",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Faltan insumos: tubifex, pruebas de amonia, GH y KH, NaCl, bicarbonato, MgSO4"
+    },
+    {
+     "date": "2026-06-05",
+     "time": "06:40",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Cambio de agua rutinario · Cambio de Panchita de tupper a pecera pequeña"
+    },
+    {
+     "date": "2026-06-05",
+     "time": "06:40",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua rutinario · Cambio de Panchita de tupper a pecera pequeña"
+    },
+    {
+     "date": "2026-06-06",
+     "time": "10:34",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita regresa a su acuario (06-jun)"
+    },
+    {
+     "date": "2026-06-10",
+     "time": "09:10",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Solo observación · Reincidencia de Panchita con crecimiento algodonoso en brannquias (saprolegniasis)"
+    },
+    {
+     "date": "2026-06-10",
+     "time": "19:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.5 (rango 7.6–8) · cond 840 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-11",
+     "time": "09:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-06-11",
+     "time": "16:20",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal"
+    },
+    {
+     "date": "2026-06-11",
+     "time": "19:27",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.3 (rango 7.6–8) · cond 820 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-12",
+     "time": "13:25",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal"
+    },
+    {
+     "date": "2026-06-12",
+     "time": "17:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Solo observación · La parte trasera del ejemplar flota"
+    },
+    {
+     "date": "2026-06-12",
+     "time": "19:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.5 (rango 7.6–8) · cond 840 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-13",
+     "time": "15:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal"
+    },
+    {
+     "date": "2026-06-13",
+     "time": "18:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.2 (rango 7.6–8) · cond 800 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-14",
+     "time": "12:28",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Crecimiento algodonoso / Manchas blancas (Saprolegnia), Retención de muda / Descamación · Solo observación · Se observa en Panchita, posterior a 3 días de baños con concentraciones de sal, un crecimieto algodonoso men…"
+    },
+    {
+     "date": "2026-06-14",
+     "time": "13:05",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal"
+    },
+    {
+     "date": "2026-06-14",
+     "time": "19:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.3 (rango 7.6–8) · cond 780 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-15",
+     "time": "10:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.7 (rango 7.6–8) · cond 800 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-15",
+     "time": "12:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua · Receta con adicion de NaCl de 1g xL"
+    },
+    {
+     "date": "2026-06-15",
+     "time": "12:20",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Retención de muda / Descamación · Solo observación · Se realiza la deteccion de una lesion en la parte correspondiente a la barbilla de Panchita. Se inspecciona el ejemplar sin desprendimiento de la lesion, parece ser…"
+    },
+    {
+     "date": "2026-06-16",
+     "time": "13:05",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal"
+    },
+    {
+     "date": "2026-06-16",
+     "time": "17:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.4 (rango 7.6–8) · cond 1490 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-17",
+     "time": "13:02",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal"
+    },
+    {
+     "date": "2026-06-17",
+     "time": "19:41",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.3 (rango 7.6–8) · cond 1510 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-18",
+     "time": "13:06",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal"
+    },
+    {
+     "date": "2026-06-18",
+     "time": "14:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-06-18",
+     "time": "19:10",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.4 (rango 7.6–8) · cond 1500 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-19",
+     "time": "14:25",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Azul de metileno · Aplicacion de gota en lesión detectada en la barbilla (cercana a comisura de la cavidad bucal). Se realiza seguimiento tras la deteccion rugosidad adherida en su piel"
+    },
+    {
+     "date": "2026-06-19",
+     "time": "19:35",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.4 (rango 7.6–8) · cond 1670 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-20",
+     "time": "13:56",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal"
+    },
+    {
+     "date": "2026-06-20",
+     "time": "18:45",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.4 (rango 7.6–8) · cond 1650 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-21",
+     "time": "12:55",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal"
+    },
+    {
+     "date": "2026-06-21",
+     "time": "14:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "\"Anomalía estructural permanente (Falta de extremidad, microftalmia)\" · Notificación a veterinario · Se observa una inflamacion irregular en el ojo dañado de Panchita (ojo derecho), se notifica a veterinario para su r…"
+    },
+    {
+     "date": "2026-06-21",
+     "time": "14:00",
+     "lane": 3,
+     "kind": "preventive_vet_notice",
+     "label": "Aviso al veterinario",
+     "source": "libro",
+     "grade": "A",
+     "text": "\"Anomalía estructural permanente (Falta de extremidad, microftalmia)\" · Notificación a veterinario · Se observa una inflamacion irregular en el ojo dañado de Panchita (ojo derecho), se notifica a veterinario para su r…"
+    },
+    {
+     "date": "2026-06-21",
+     "time": "15:52",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+    },
+    {
+     "date": "2026-06-21",
+     "time": "16:33",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "El ojo derecho (dañado) de Panchita se ve distinto y protuberante; no ha estado comiendo bien"
+    },
+    {
+     "date": "2026-06-21",
+     "time": "16:38",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Operación propone contemplar itraconazol y Stress Guard"
+    },
+    {
+     "date": "2026-06-21",
+     "time": "17:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.5 (rango 7.6–8) · cond 1650 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-22",
+     "time": "08:20",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Notificación a veterinario · Reincidencia de ejemplar con crecimiento algodonoso en branquias"
+    },
+    {
+     "date": "2026-06-22",
+     "time": "08:20",
+     "lane": 3,
+     "kind": "preventive_vet_notice",
+     "label": "Aviso al veterinario",
+     "source": "libro",
+     "grade": "A",
+     "text": "Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Notificación a veterinario · Reincidencia de ejemplar con crecimiento algodonoso en branquias"
+    },
+    {
+     "date": "2026-06-22",
+     "time": "09:28",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.4 (rango 7.6–8) · cond 1600 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-22",
+     "time": "10:40",
+     "lane": 2,
+     "kind": "signal_diagnosis",
+     "label": "Diagnóstico registrado",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nematodos · tx: Fenbendazol"
+    },
+    {
+     "date": "2026-06-22",
+     "time": "13:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "tx: Stress guard · A manera preventiva posterior a la manipulacion de los ejemplares se acondiciona el agua con el producto señalado por los 5 días siguientes considerando la sugerencia del veterinario"
+    },
+    {
+     "date": "2026-06-22",
+     "time": "14:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Apatía / Rechazo de alimento · Solo observación · Se observa de manera recurrente una apatia hacia la alimentacion por Panchita, aproximadamente evidente desde hace una semana"
+    },
+    {
+     "date": "2026-06-23",
+     "time": "13:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua · Adicion de NaCl de 1g x L"
+    },
+    {
+     "date": "2026-06-23",
+     "time": "16:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Magic · Baño con magic"
+    },
+    {
+     "date": "2026-06-23",
+     "time": "16:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Magic · Baño con magic"
+    },
+    {
+     "date": "2026-06-23",
+     "time": "16:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Azul de metileno · Baño con azul de metileno"
+    },
+    {
+     "date": "2026-06-23",
+     "time": "19:35",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.4 (rango 7.6–8) · cond 1600 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-24",
+     "time": "13:05",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Magic · Baño con magic"
+    },
+    {
+     "date": "2026-06-24",
+     "time": "13:05",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Magic · Baño con magic"
+    },
+    {
+     "date": "2026-06-24",
+     "time": "13:05",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Azul de metileno · Baño con azul de metileno"
+    },
+    {
+     "date": "2026-06-24",
+     "time": "20:27",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.4 (rango 7.6–8) · cond 1830 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-25",
+     "time": "09:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Solo observación · Panchita mantiene flotabilidad en region caudal por presunto gas retenido"
+    },
+    {
+     "date": "2026-06-25",
+     "time": "12:50",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Magic · Baño con magic"
+    },
+    {
+     "date": "2026-06-25",
+     "time": "12:50",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Azul de metileno · Baño con azul de metileno"
+    },
+    {
+     "date": "2026-06-25",
+     "time": "13:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Persistencia de hongo en branquias tras tratamientos aplicados, se considera cambiar a un tratamiento distinto si el ejemplar no mejora al terminar el tratamien…"
+    },
+    {
+     "date": "2026-06-25",
+     "time": "14:20",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "tx: Stress guard"
+    },
+    {
+     "date": "2026-06-26",
+     "time": "12:36",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Magic · Baño con magic"
+    },
+    {
+     "date": "2026-06-26",
+     "time": "12:36",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Azul de metileno · Baño con azul de metileno"
+    },
+    {
+     "date": "2026-06-26",
+     "time": "13:15",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "tx: Stress guard"
+    },
+    {
+     "date": "2026-06-27",
+     "time": "09:15",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Solo observación · Se encontro al ejemplar con 3 crecimientos algodonosos en las branquias derechas (1 en la branquia inferior, pegado a la base de su cabeza y …"
+    },
+    {
+     "date": "2026-06-27",
+     "time": "14:02",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol · Baño con itraconazol. Se le retiraron 3 algodonosidades de las branquias derechas. El ejemplar se mantuvo muy reactivo durante todo el tratamiento."
+    },
+    {
+     "date": "2026-06-27",
+     "time": "14:02",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol · Baño con itraconazol. Se le retiraron 3 algodonosidades de las branquias derechas. El ejemplar se mantuvo muy reactivo durante todo el tratamiento."
+    },
+    {
+     "date": "2026-06-28",
+     "time": "13:50",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-06-28",
+     "time": "19:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.4 (rango 7.6–8) · cond 1970 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-29",
+     "time": "08:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Solo observación, Notificación a veterinario · Se registra flotabilidad anormal en Pancha. Adicionalmente se detecta una alerta en ojo izquierdo e inflamación en región de la cloaca por…"
+    },
+    {
+     "date": "2026-06-29",
+     "time": "08:00",
+     "lane": 3,
+     "kind": "preventive_vet_notice",
+     "label": "Aviso al veterinario",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Solo observación, Notificación a veterinario · Se registra flotabilidad anormal en Pancha. Adicionalmente se detecta una alerta en ojo izquierdo e inflamación en región de la cloaca por…"
+    },
+    {
+     "date": "2026-06-29",
+     "time": "09:45",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.2 (rango 7.6–8) · cond 1880 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-06-29",
+     "time": "14:30",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Presencia de parásitos macroscópicos (Ej. Nematodos) · Solo observación, Notificación a veterinario · Se localiza una excreta en Panchita de apariencia inusual y con posible presencia de parásitos; la inflamacion caud…"
+    },
+    {
+     "date": "2026-06-29",
+     "time": "14:30",
+     "lane": 3,
+     "kind": "preventive_vet_notice",
+     "label": "Aviso al veterinario",
+     "source": "libro",
+     "grade": "A",
+     "text": "Presencia de parásitos macroscópicos (Ej. Nematodos) · Solo observación, Notificación a veterinario · Se localiza una excreta en Panchita de apariencia inusual y con posible presencia de parásitos; la inflamacion caud…"
+    },
+    {
+     "date": "2026-06-29",
+     "time": "14:30",
+     "lane": 2,
+     "kind": "signal_diagnosis",
+     "label": "Diagnóstico registrado",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-06-29",
+     "time": "14:30",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-06-29",
+     "time": "15:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua · Reinicio de sistema"
+    },
+    {
+     "date": "2026-06-30",
+     "time": "16:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Notificación a veterinario · Se lleva el ejemplar a revisión veterinaria tras detección de comportamientos anormales, apatía a alimento e inflamación generalizada"
+    },
+    {
+     "date": "2026-06-30",
+     "time": "16:00",
+     "lane": 3,
+     "kind": "preventive_vet_notice",
+     "label": "Aviso al veterinario",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Notificación a veterinario · Se lleva el ejemplar a revisión veterinaria tras detección de comportamientos anormales, apatía a alimento e inflamación generalizada"
+    },
+    {
+     "date": "2026-06-30",
+     "time": "19:03",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AA: pH 8.3 (rango 7.6–8) · cond 2770 (rango 300–450) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-07-01",
+     "time": "10:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Compra de insumos veterinarios para tratamiento de Panchita"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "10:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Compra de insumos veterinarios para tratamiento de Panchita"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "13:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml · Medicamento recetado al ejemplar por el veterinario, en la visita médica se toman muestras de fluidos para enviarlos a patología. Inflamación vi…"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "16:00",
+     "lane": 1,
+     "kind": "signal_feeding_refusal",
+     "label": "Rechazo de alimento",
+     "source": "libro",
+     "grade": "A",
+     "text": "ración 0.81 g, consumo 0 g"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "17:28",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Ndali: Panchita de regreso; se presentó un absceso; se procedió al tratamiento"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "18:08",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "B",
+     "text": "Tras el análisis de parásitos provenientes del tubifex/alimento vivo, el veterinario fue a desparasitarlos \"el lunes antepasado\""
+    },
+    {
+     "date": "2026-07-01",
+     "time": "18:10",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Se le comentó al vet la flotación anormal de Panchita y que el otro ojo se notaba raro"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "18:11",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "A",
+     "text": "El lunes de limpieza de peceras operación avisó a curaduría; se contactó al vet, que tomó muestras (reporte de efusiones)"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "18:15",
+     "lane": 4,
+     "kind": "corrective_chat_action",
+     "label": "Acción correctiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita retirada del acuario a cuarentena, sigue fuera del recinto porque flotaba"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "18:19",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "A",
+     "text": "Diagnóstico reservado: posible falla hepática y/o renal, retención de líquido abdominal, sin desnutrición"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "18:53",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Punción de 6 ml; el vet compartirá una Holtfreter hipertónica para ayudarle a soltar líquido; pronóstico bajo"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "19:19",
+     "lane": 5,
+     "kind": "euthanasia",
+     "label": "Eutanasia (mención en el chat)",
+     "source": "chat",
+     "grade": "A",
+     "text": "Fundador: evaluar en qué punto la eutanasia es más factible en costos que prolongarla"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-01",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "07:30",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Restos de sangre encontrados en tupper de Panchita"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "07:30",
+     "lane": 5,
+     "kind": "postmortem_keyword",
+     "label": "Después de la muerte",
+     "source": "libro",
+     "grade": "A",
+     "text": "Restos de sangre encontrados en tupper de Panchita"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "10:21",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita entra a solución hipertónica salina; sigue en cuarentena"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "11:50",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · tx: Baño hipertónico · El ejemplar parece mostrar cierta incomodidad pero mantiene un movimiento reducido, en el primer tratamiento no se registra diferencia de pesos. Con recomendacion del vete…"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "13:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-02",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "13:04",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita: tratamiento de ojos y antibiótico, baño de sales 24 h (1 de 3), alimentación por sonda"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "13:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "14:19",
+     "lane": 1,
+     "kind": "signal_feeding_refusal",
+     "label": "Rechazo de alimento",
+     "source": "libro",
+     "grade": "A",
+     "text": "ración 0.6 g, consumo 0 g"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "19:37",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Cuarentena"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "19:37",
+     "lane": 3,
+     "kind": "preventive_isolation",
+     "label": "Aislamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Cuarentena"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "19:37",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita flota por la parte inferior del cuerpo y le cuesta permanecer en el fondo"
+    },
+    {
+     "date": "2026-07-03",
+     "time": "20:07",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Estudios: parásitos que se establecen en el intestino y limitan la absorción de nutrientes; costos de desparasitar"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "08:03",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · tx: Baño hipertónico · Tras la exposición a los baños de sales el ejemplar presenta cierta descamación en distintas regiones del cuerpo y un aclaramiento en áreas como de la parte inicial a inte…"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "09:10",
+     "lane": 3,
+     "kind": "preventive_isolation",
+     "label": "Aislamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Cuarentena · El ejemplar estabba recibiento tratamientos oftalmicos, se encontraba en cuarentena"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "09:10",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Cuarentena · El ejemplar estabba recibiento tratamientos oftalmicos, se encontraba en cuarentena"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "13:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-04",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "10:10",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Retención de muda / Descamación, Nado persistente · Cuarentena · Se registra dentro de lo observado en el comportamiento del ejemplar: movimiento activo constante (locomoción), salidas a superficie, descamación deriva…"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "10:10",
+     "lane": 3,
+     "kind": "preventive_isolation",
+     "label": "Aislamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Retención de muda / Descamación, Nado persistente · Cuarentena · Se registra dentro de lo observado en el comportamiento del ejemplar: movimiento activo constante (locomoción), salidas a superficie, descamación deriva…"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "12:07",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita con mejor ánimo, sin flotación; Martín sin flotación anormal"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "13:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "18:45",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "18:45",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "18:45",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "18:45",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-05",
+     "time": "18:45",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "11:12",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Retención de muda / Descamación · Cambio de agua rutinario · Panchita sube a superficie por algunas ocasiones a tomar bocanadas de aire. El proceso de descamacion deriva de los baños hipertónicos de sal, los cuales oc…"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "11:37",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · tx: Baño hipertónico · Mezcla de sales (consultar en bitácora de mantenimiento de agua). Con el tratamiento el ejemplar logra reducir el peso conforme a lo esperado por el veterinario (127 g a 1…"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "13:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-06",
+     "time": "19:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-07",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_disposal",
+     "label": "Destino del cuerpo sin registro",
+     "source": "libro",
+     "grade": "A",
+     "text": "destino del cuerpo: conservado en agua refrigerada y enviado a necropsia; destino posterior sin registro"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "07:20",
+     "lane": 2,
+     "kind": "signal_diagnosis",
+     "label": "Diagnóstico registrado",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Dorpress Santgar (Dorzolamida)"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Proxiflox Santgar (Ciprofloxacino)"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "07:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Traumatismo / Amputación · tx: Diclofenaco Sodico Santgar"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "13:20",
+     "lane": 2,
+     "kind": "signal_diagnosis",
+     "label": "Diagnóstico registrado",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "13:20",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "13:20",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "13:25",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Notificación a veterinario · Comportamiento inusual con actividad previa, subida a superficie y posteriormente se situa en cuarentena para visita de emergencia con el veterinario. El ejemplar muestra respuesta reducid…"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "13:25",
+     "lane": 3,
+     "kind": "preventive_vet_notice",
+     "label": "Aviso al veterinario",
+     "source": "libro",
+     "grade": "A",
+     "text": "Notificación a veterinario · Comportamiento inusual con actividad previa, subida a superficie y posteriormente se situa en cuarentena para visita de emergencia con el veterinario. El ejemplar muestra respuesta reducid…"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "15:47",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Ndali: Panchita presentó un comportamiento muy raro; operación corre al veterinario"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "17:52",
+     "lane": 4,
+     "kind": "corrective_chat_action",
+     "label": "Acción correctiva",
+     "source": "chat",
+     "grade": "A",
+     "text": "Panchita llevada de emergencia al vet; se queda allá; descompensación, pronóstico reservado"
+    },
+    {
+     "date": "2026-07-07",
+     "time": "17:55",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "A",
+     "text": "Resultados incompletos; el vet contactará a su patólogo; cuadro sistémico complicado"
+    }
+   ]
+  },
+  {
+   "alias": "Goldy",
+   "species": "A. mexicanum",
+   "death": {
+    "date": "2026-06-05",
+    "workbook_date": null,
+    "date_source": "libro",
+    "conf": "en_revision",
+    "euthanasia": false,
+    "note": "fecha en revisión contra un documento de laboratorio reservado",
+    "alive_record_after": null
+   },
+   "cause": "Parasitos e infeccion bacteriana",
+   "cause_source": "libro",
+   "necropsy": {
+    "performed": null,
+    "status": "resultado reservado hasta la autorización del laboratorio"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": true,
+   "grade": "tardía",
+   "grade_60": "tardía",
+   "grade_note": null,
+   "primary": {
+    "window": {
+     "from": "2026-05-20",
+     "to": "2026-06-10",
+     "days": 21
+    },
+    "grade": "tardía",
+    "S0": {
+     "date": "2026-05-20",
+     "time": "09:36",
+     "label": "Aviso de salud"
+    },
+    "P": {
+     "date": "2026-05-28",
+     "time": "17:21",
+     "label": "Aislamiento"
+    },
+    "C": null,
+    "latency_h": 199.8,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 32,
+    "unanswered": 17,
+    "coverage": 0.82,
+    "role": "Dirección clínica del museo",
+    "flags": [
+     "racha_iniciada_antes_de_la_ventana",
+     "estándar_no_escrito_en_el_museo"
+    ],
+    "recorded_after_death": 0
+   },
+   "sensitivity": {
+    "window": {
+     "from": "2026-04-11",
+     "to": "2026-06-10",
+     "days": 60
+    },
+    "grade": "tardía",
+    "S0": {
+     "date": "2026-04-12",
+     "time": "08:20",
+     "label": "Incidencia registrada"
+    },
+    "P": {
+     "date": "2026-04-20",
+     "time": "10:24",
+     "label": "Consulta veterinaria"
+    },
+    "C": null,
+    "latency_h": 194.1,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 73,
+    "unanswered": 42,
+    "coverage": 0.77,
+    "role": "Sistema y dotación",
+    "flags": [
+     "dotación_mínima",
+     "estándar_no_escrito_en_el_museo"
+    ],
+    "recorded_after_death": 0
+   },
+   "events": [
+    {
+     "date": "2026-04-12",
+     "time": "08:20",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Solo observación · Incidente de Goldy en recinto Mex1, el ejemplar sufrió una aparente succión por el tubo de filtrado y se localizó en la parte correspondiente al filtro. Se rescató y se colocó en observación descart…"
+    },
+    {
+     "date": "2026-04-13",
+     "time": "19:46",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: NH3 0.25 (rango 0–0) · NO2 0.3 (rango 0–0.1) · GH 89.5 (rango 125–250) · KH 35 (rango 50–100) · pH 7.9 (rango 7.4–7.8) · cond 3410 (rango 700–1100)",
+     "critical": true,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-14",
+     "time": "10:00",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Solo observación · Flotación anormal del ejemplar en varias ocasiones por causa desconocida, se realiza alimentación exitosa y el comportamiento disminuye pero vuelve a presentarse en d…"
+    },
+    {
+     "date": "2026-04-14",
+     "time": "13:50",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: cond 3160 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-15",
+     "time": "07:40",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Modificación/Adición de equipo · Se observa nuevamente el comportamiento de flotabilidad anormal transitoria en Goldy, se procede a colocar una bomba aireadora en el recindo para increm…"
+    },
+    {
+     "date": "2026-04-15",
+     "time": "19:31",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: cond 3130 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-16",
+     "time": "08:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: pH 7.9 (rango 7.4–7.8) · cond 3170 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-16",
+     "time": "13:15",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Comportamiento normal · Se observa de manera transitoria flotabilidad por aprox. 1 minuto en el ejemplar"
+    },
+    {
+     "date": "2026-04-20",
+     "time": "10:24",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "B",
+     "text": "Curaduría: el veterinario reagendó la visita del 20-abr"
+    },
+    {
+     "date": "2026-04-20",
+     "time": "12:03",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: GH 71.2 (rango 125–250) · cond 1990 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-23",
+     "time": "10:21",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: temp 13.4 (rango 16–18) · GH 71.6 (rango 125–250) · cond 1860 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-27",
+     "time": "18:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: GH 53.7 (rango 125–250) · KH 35.8 (rango 50–100) · pH 8 (rango 7.4–7.8) · cond 1750 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-28",
+     "time": "10:04",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Fundador comparte video sobre las panzas quemadas"
+    },
+    {
+     "date": "2026-04-28",
+     "time": "19:26",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: KH 35.8 (rango 50–100) · cond 1750 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-29",
+     "time": "18:08",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: cond 1790 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-30",
+     "time": "10:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: pH 8 (rango 7.4–7.8) · cond 1810 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-30",
+     "time": "16:04",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "NO2 por agotarse; los medidores parecen dar pH mayor que las pruebas químicas"
+    },
+    {
+     "date": "2026-04-30",
+     "time": "21:37",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "B",
+     "text": "No se alimentó por la ida al veterinario (30-abr)"
+    },
+    {
+     "date": "2026-04-30",
+     "time": "21:37",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "No se hizo el cambio de agua del 10 % por falta de insumos"
+    },
+    {
+     "date": "2026-05-01",
+     "time": "10:26",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: GH 53.4 (rango 125–250) · KH 35.6 (rango 50–100) · cond 1750 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-02",
+     "time": "03:39",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "B",
+     "text": "El veterinario dice que muchos síntomas son por intoxicación por amoniaco"
+    },
+    {
+     "date": "2026-05-02",
+     "time": "03:39",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Un ejemplar bastante tocado y otros 3 con signos poco favorables"
+    },
+    {
+     "date": "2026-05-04",
+     "time": "16:36",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: GH 106.8 (rango 125–250) · KH 106.8 (rango 50–100) · pH 7.9 (rango 7.4–7.8) · cond 1790 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-05",
+     "time": "18:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8 (rango 7.4–7.8) · cond 1770 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-06",
+     "time": "18:10",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: GH 89.5 (rango 125–250) · KH 35.8 (rango 50–100) · pH 7 (rango 7.4–7.8) · cond 1690 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-07",
+     "time": "11:05",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Se terminaron reactivos de NO2 Fluval; queda API; poco Stress Guard"
+    },
+    {
+     "date": "2026-05-07",
+     "time": "18:10",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 7.9 (rango 7.4–7.8) · cond 1780 (rango 700–1100) · GH 71.6 (rango 125–250) · KH 35.8 (rango 50–100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-07",
+     "time": "19:09",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "B",
+     "text": "Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+    },
+    {
+     "date": "2026-05-08",
+     "time": "13:45",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "A ninguno le gustan las lombrices; ya no hay tubifex, lo único que quieren comer"
+    },
+    {
+     "date": "2026-05-08",
+     "time": "18:39",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: GH 35.8 (rango 125–250) · KH 17.5 (rango 50–100) · cond 1680 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-10",
+     "time": "11:33",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Practicante pregunta si un ejemplar ya tenía manchas blancas en la espalda"
+    },
+    {
+     "date": "2026-05-10",
+     "time": "13:35",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Ejemplares todo el día acercándose a la salida de agua; agua casi a 18 grados"
+    },
+    {
+     "date": "2026-05-10",
+     "time": "18:10",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: cond 1740 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-11",
+     "time": "08:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: GH 53.7 (rango 125–250) · KH 35.8 (rango 50–100) · cond 1700 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-11",
+     "time": "17:03",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Prueba sale 0 sin haber hecho cambios; resulta raro"
+    },
+    {
+     "date": "2026-05-12",
+     "time": "07:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Comportamiento normal · Cambio de agua rutinario"
+    },
+    {
+     "date": "2026-05-12",
+     "time": "17:38",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: cond 1770 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-13",
+     "time": "17:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: cond 1760 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-14",
+     "time": "19:38",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 14.8 (rango 16–18) · pH 7.3 (rango 7.4–7.8) · cond 1780 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-15",
+     "time": "18:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 13.7 (rango 16–18) · pH 8.3 (rango 7.4–7.8) · cond 1800 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-16",
+     "time": "09:50",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.4 (rango 16–18) · pH 8.2 (rango 7.4–7.8) · cond 1800 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-16",
+     "time": "19:11",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Temperaturas: ander 19, m1 15.9, m2 14.3, dume 16.7"
+    },
+    {
+     "date": "2026-05-18",
+     "time": "10:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: GH 35.8 (rango 125–250) · KH 35.8 (rango 50–100) · pH 8.2 (rango 7.4–7.8) · cond 1740 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-20",
+     "time": "09:36",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Quedan pocos tubifex; están mejorando con esa alimentación; no les gustan las lombrices"
+    },
+    {
+     "date": "2026-05-20",
+     "time": "12:40",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 14.8 (rango 16–18) · GH 71.6 (rango 125–250) · KH 35.8 (rango 50–100) · pH 8.1 (rango 7.4–7.8) · cond 1850 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-21",
+     "time": "10:49",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8 (rango 7.4–7.8) · cond 470 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-22",
+     "time": "10:04",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.5 (rango 16–18) · pH 8 (rango 7.4–7.8) · cond 1880 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-25",
+     "time": "09:38",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "El tubo del aire acondicionado negro quedó mal tras el mantenimiento y escapa aire caliente"
+    },
+    {
+     "date": "2026-05-25",
+     "time": "10:30",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15 (rango 16–18) · GH 71.6 (rango 125–250) · KH 35.8 (rango 50–100) · pH 7.9 (rango 7.4–7.8) · cond 1870 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-26",
+     "time": "15:31",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 14.8 (rango 16–18) · pH 8.3 (rango 7.4–7.8) · cond 1850 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-27",
+     "time": "09:13",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Al llegar el cuarto estaba muy caliente: el tubo de salida del aire nuevo estaba desacoplado"
+    },
+    {
+     "date": "2026-05-27",
+     "time": "12:27",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Aire acondicionado con agua condensada, ruido y menos aire; marca 59 °F bajo el mínimo de 61 °F"
+    },
+    {
+     "date": "2026-05-28",
+     "time": "12:06",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.3 (rango 16–18) · cond 1770 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-28",
+     "time": "13:15",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua rutinario · Se realiza el cambio de 2 garrafones con receta de HrAm 20% y adicional se agrega 1/2 garrafón de la misma receta para recuperar el volumen evaporado para dejar las bombas funcionales"
+    },
+    {
+     "date": "2026-05-28",
+     "time": "13:20",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-05-28",
+     "time": "17:21",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nado persistente · Solo observación, Cuarentena · Goldi nada sin control y permanece flotando / Se movio a topper con poca agua"
+    },
+    {
+     "date": "2026-05-28",
+     "time": "17:21",
+     "lane": 3,
+     "kind": "preventive_isolation",
+     "label": "Aislamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nado persistente · Solo observación, Cuarentena · Goldi nada sin control y permanece flotando / Se movio a topper con poca agua"
+    },
+    {
+     "date": "2026-05-29",
+     "time": "09:29",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.1 (rango 16–18) · cond 1800 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-06-01",
+     "time": "10:57",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.2 (rango 16–18) · NO3 30 (rango 0–20) · GH 53.7 (rango 125–250) · KH 35.8 (rango 50–100) · cond 1870 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-06-01",
+     "time": "14:40",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-06-02",
+     "time": "10:41",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.1 (rango 7.4–7.8) · cond 1680 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-06-03",
+     "time": "15:47",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.7 (rango 16–18) · pH 8 (rango 7.4–7.8) · cond 1690 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-06-04",
+     "time": "11:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-06-04",
+     "time": "18:57",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.1 (rango 7.4–7.8) · cond 1670 (rango 700–1100) · temp 15.8 (rango 16–18) · GH 107.4 (rango 125–250)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-06-04",
+     "time": "21:43",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Faltan insumos: tubifex, pruebas de amonia, GH y KH, NaCl, bicarbonato, MgSO4"
+    },
+    {
+     "date": "2026-06-05",
+     "time": null,
+     "lane": 5,
+     "kind": "death",
+     "label": "Muerte",
+     "source": "libro",
+     "grade": "B",
+     "text": "causa: Parasitos e infeccion bacteriana · necropsia: En carpeta · documentación: Necropcia"
+    },
+    {
+     "date": "2026-06-05",
+     "time": "19:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.1 (rango 7.4–7.8) · cond 1630 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-06-07",
+     "time": "10:31",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8 (rango 7.4–7.8) · cond 1660 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-06-08",
+     "time": "08:05",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Turbidez blanca ligera / severa · Cambio de agua rutinario"
+    },
+    {
+     "date": "2026-06-08",
+     "time": "11:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: NO3 40 (rango 0–20) · GH 107.4 (rango 125–250) · pH 8.1 (rango 7.4–7.8) · cond 1610 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-06-08",
+     "time": "12:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-06-09",
+     "time": "19:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.2 (rango 7.4–7.8) · cond 1530 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-06-10",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_disposal",
+     "label": "Destino del cuerpo sin registro",
+     "source": "libro",
+     "grade": "A",
+     "text": "destino del cuerpo: necropsia en laboratorio; destino posterior sin registro"
+    },
+    {
+     "date": "2026-06-10",
+     "time": "19:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.1 (rango 7.4–7.8) · cond 1550 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    }
+   ]
+  },
+  {
+   "alias": "Leucistica",
+   "species": "A. mexicanum",
+   "death": {
+    "date": "2026-05-05",
+    "workbook_date": null,
+    "date_source": "libro",
+    "conf": "exact",
+    "euthanasia": false,
+    "note": null,
+    "alive_record_after": null
+   },
+   "cause": "Quemaduras por amoniaco e infecciones secundarias",
+   "cause_source": "libro",
+   "necropsy": {
+    "performed": null,
+    "status": "NA"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": false,
+   "grade": "tardía",
+   "grade_60": "tardía",
+   "grade_note": null,
+   "primary": {
+    "window": {
+     "from": "2026-04-14",
+     "to": "2026-05-05",
+     "days": 21
+    },
+    "grade": "tardía",
+    "S0": {
+     "date": "2026-04-28",
+     "time": "10:04",
+     "label": "Aviso de salud"
+    },
+    "P": {
+     "date": "2026-04-30",
+     "time": "21:37",
+     "label": "Consulta veterinaria"
+    },
+    "C": null,
+    "latency_h": 59.5,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 13,
+    "unanswered": 6,
+    "coverage": 0.45,
+    "role": "Dirección clínica del museo",
+    "flags": [
+     "estándar_no_escrito_en_el_museo"
+    ],
+    "recorded_after_death": 0
+   },
+   "sensitivity": {
+    "window": {
+     "from": "2026-03-06",
+     "to": "2026-05-05",
+     "days": 60
+    },
+    "grade": "tardía",
+    "S0": {
+     "date": "2026-04-28",
+     "time": "10:04",
+     "label": "Aviso de salud"
+    },
+    "P": {
+     "date": "2026-04-30",
+     "time": "21:37",
+     "label": "Consulta veterinaria"
+    },
+    "C": null,
+    "latency_h": 59.5,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 16,
+    "unanswered": 8,
+    "coverage": 0.21,
+    "role": "Dirección clínica del museo",
+    "flags": [
+     "estándar_no_escrito_en_el_museo"
+    ],
+    "recorded_after_death": 0
+   },
+   "events": [
+    {
+     "date": "2026-03-18",
+     "time": "16:30",
+     "lane": 2,
+     "kind": "signal_diagnosis",
+     "label": "Diagnóstico registrado",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nematodos · tx: Desparacitante"
+    },
+    {
+     "date": "2026-03-18",
+     "time": "16:30",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nematodos · tx: Desparacitante"
+    },
+    {
+     "date": "2026-03-28",
+     "time": "14:10",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+    },
+    {
+     "date": "2026-04-08",
+     "time": "16:49",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Los ajolotes no aceptan o vomitan las croquetas; se mezcla tubifex con croqueta"
+    },
+    {
+     "date": "2026-04-14",
+     "time": "08:40",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Flotabilidad anormal / Arqueo · Solo observación · Flotación anormal del ejemplar, después de alimentación el comportamiento no se observa"
+    },
+    {
+     "date": "2026-04-20",
+     "time": "10:24",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "B",
+     "text": "Curaduría: el veterinario reagendó la visita del 20-abr"
+    },
+    {
+     "date": "2026-04-28",
+     "time": "10:04",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Fundador comparte video sobre las panzas quemadas"
+    },
+    {
+     "date": "2026-04-28",
+     "time": "15:19",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "A",
+     "text": "Vigilar Tamal por posible oviposición; revisar ánimo de parda hembra, Chocorrol y Leucistica; guppies muriendo"
+    },
+    {
+     "date": "2026-04-28",
+     "time": "19:26",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: KH 35.8 (rango 50–100) · cond 1750 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-29",
+     "time": "18:08",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: cond 1790 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-30",
+     "time": "16:04",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "NO2 por agotarse; los medidores parecen dar pH mayor que las pruebas químicas"
+    },
+    {
+     "date": "2026-04-30",
+     "time": "18:58",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: cond 1710 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-04-30",
+     "time": "21:37",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "B",
+     "text": "No se alimentó por la ida al veterinario (30-abr)"
+    },
+    {
+     "date": "2026-04-30",
+     "time": "21:37",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "No se hizo el cambio de agua del 10 % por falta de insumos"
+    },
+    {
+     "date": "2026-05-01",
+     "time": "10:26",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: GH 53.4 (rango 125–250) · KH 35.6 (rango 50–100) · cond 1750 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-02",
+     "time": "03:39",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "B",
+     "text": "El veterinario dice que muchos síntomas son por intoxicación por amoniaco"
+    },
+    {
+     "date": "2026-05-02",
+     "time": "03:39",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Un ejemplar bastante tocado y otros 3 con signos poco favorables"
+    },
+    {
+     "date": "2026-05-04",
+     "time": "16:36",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: GH 106.8 (rango 125–250) · KH 106.8 (rango 50–100) · pH 7.9 (rango 7.4–7.8) · cond 1790 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-05-05",
+     "time": null,
+     "lane": 5,
+     "kind": "death",
+     "label": "Muerte",
+     "source": "libro",
+     "grade": "A",
+     "text": "causa: Quemaduras por amoniaco e infecciones secundarias · necropsia: NA · documentación: NA"
+    },
+    {
+     "date": "2026-05-05",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_necropsy",
+     "label": "Sin resultado de necropsia",
+     "source": "libro",
+     "grade": "A",
+     "text": "necropsia: NA"
+    },
+    {
+     "date": "2026-05-05",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_disposal",
+     "label": "Destino del cuerpo sin registro",
+     "source": "libro",
+     "grade": "A",
+     "text": "destino del cuerpo: sin registro en ninguna hoja"
+    },
+    {
+     "date": "2026-05-05",
+     "time": "11:34",
+     "lane": 5,
+     "kind": "chat_death",
+     "label": "Aviso de muerte",
+     "source": "chat",
+     "grade": "A",
+     "text": "Leucistica encontrada muerta ~9 am en su tupper al ir a cambiar el agua; el día anterior seguía viva"
+    },
+    {
+     "date": "2026-05-05",
+     "time": "11:35",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "A",
+     "text": "Esa mañana el agua de su tupper estaba turbia"
+    },
+    {
+     "date": "2026-05-05",
+     "time": "11:36",
+     "lane": 5,
+     "kind": "chat_disposal",
+     "label": "Destino del cuerpo",
+     "source": "chat",
+     "grade": "A",
+     "text": "Operación espera indicaciones sobre qué hacer con el cuerpo"
+    },
+    {
+     "date": "2026-05-05",
+     "time": "18:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8 (rango 7.4–7.8) · cond 1770 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    }
+   ]
+  },
+  {
+   "alias": "Jaffy",
+   "species": null,
+   "death": {
+    "date": "2025-12-20",
+    "workbook_date": null,
+    "date_source": "libro",
+    "conf": "exact",
+    "euthanasia": false,
+    "note": null,
+    "alive_record_after": null
+   },
+   "cause": "Sospecha de infección parasitica o bacteriana",
+   "cause_source": "libro",
+   "necropsy": {
+    "performed": null,
+    "status": "NA"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": false,
+   "grade": "sin_registro_de_acciones",
+   "grade_60": "sin_registro_de_acciones",
+   "grade_note": null,
+   "primary": {
+    "window": {
+     "from": "2025-11-29",
+     "to": "2025-12-20",
+     "days": 21
+    },
+    "grade": "sin_registro_de_acciones",
+    "S0": {
+     "date": "2025-12-03",
+     "time": "11:33",
+     "label": "Aviso de agua"
+    },
+    "P": null,
+    "C": null,
+    "latency_h": null,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 16,
+    "unanswered": 16,
+    "coverage": 0.55,
+    "role": "Sistema y dotación",
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "sensitivity": {
+    "window": {
+     "from": "2025-10-21",
+     "to": "2025-12-20",
+     "days": 60
+    },
+    "grade": "sin_registro_de_acciones",
+    "S0": {
+     "date": "2025-12-03",
+     "time": "11:33",
+     "label": "Aviso de agua"
+    },
+    "P": null,
+    "C": null,
+    "latency_h": null,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 24,
+    "unanswered": 24,
+    "coverage": 0.31,
+    "role": "Sistema y dotación",
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "events": [
+    {
+     "date": "2025-10-30",
+     "time": "14:35",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: temp 15.2 (rango 16–18) · pH 8 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-11-02",
+     "time": "17:30",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: GH 80 (rango 125–250) · KH 40 (rango 50–100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-11-13",
+     "time": "12:30",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: NH3 0.25 (rango 0–0) · NO3 110 (rango 0–20) · pH 8.2 (rango 7.4–7.8)",
+     "critical": true,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-11-14",
+     "time": "13:40",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: GH 120 (rango 125–250) · pH 8.2 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-11-19",
+     "time": "14:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: pH 8.2 (rango 7.4–7.8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2025-11-22",
+     "time": "19:49",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: temp 15.8 (rango 16–18) · NH3 2 (rango 0–0) · NO3 50 (rango 0–20) · GH 100 (rango 125–250) · KH 120 (rango 50–100)",
+     "critical": true,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-01",
+     "time": "11:41",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "B",
+     "text": "Se sigue estabilizando parámetros: cambios de agua, ajuste del aire acondicionado y tratamientos"
+    },
+    {
+     "date": "2025-12-03",
+     "time": "11:33",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Fundador pregunta si volvió a dispararse el valor (24) en la estación de los mexicanum y si ya se sustituyó la teja"
+    },
+    {
+     "date": "2025-12-03",
+     "time": "11:34",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Ambas pruebas en pH 7.6, ligeramente alcalinas"
+    },
+    {
+     "date": "2025-12-04",
+     "time": "12:10",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: cond 402 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-05",
+     "time": "14:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: GH 100 (rango 125–250) · pH 8 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-05",
+     "time": "22:12",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Dureza controlada, falta pH; filtros (matrix) pedidos"
+    },
+    {
+     "date": "2025-12-06",
+     "time": "11:52",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: NO2 0.8 (rango 0–0.1) · pH 8.2 (rango 7.4–7.8) · cond 326 (rango 700–1100)",
+     "critical": true,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-10",
+     "time": "11:36",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: temp 15.6 (rango 16–18) · NO2 0.3 (rango 0–0.1) · NO3 50 (rango 0–20) · GH 60 (rango 125–250) · KH 30 (rango 50–100)",
+     "critical": true,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-13",
+     "time": "18:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: pH 8.12 (rango 7.4–7.8) · cond 104 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-14",
+     "time": "11:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: temp 15.8 (rango 16–18) · GH 40 (rango 125–250) · KH 10 (rango 50–100) · pH 8.4 (rango 7.4–7.8) · cond 104 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-15",
+     "time": "10:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: GH 60 (rango 125–250)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-16",
+     "time": "16:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: cond 106 (rango 700–1100) · temp 15.1 (rango 16–18) · GH 40 (rango 125–250) · KH 30 (rango 50–100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-17",
+     "time": "10:30",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: GH 40 (rango 125–250) · KH 40 (rango 50–100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-20",
+     "time": null,
+     "lane": 5,
+     "kind": "death",
+     "label": "Muerte",
+     "source": "libro",
+     "grade": "A",
+     "text": "causa: Sospecha de infección parasitica o bacteriana · necropsia: NA · documentación: NA"
+    },
+    {
+     "date": "2025-12-20",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_necropsy",
+     "label": "Sin resultado de necropsia",
+     "source": "libro",
+     "grade": "A",
+     "text": "necropsia: NA"
+    },
+    {
+     "date": "2025-12-20",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_disposal",
+     "label": "Destino del cuerpo sin registro",
+     "source": "libro",
+     "grade": "A",
+     "text": "destino del cuerpo: sin registro en ninguna hoja"
+    },
+    {
+     "date": "2025-12-20",
+     "time": "12:32",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 1: temp 14.8 (rango 16–18) · GH 60 (rango 125–250) · pH 8 (rango 7.4–7.8) · cond 240 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    }
+   ]
+  },
+  {
+   "alias": "Guajolote",
+   "species": null,
+   "death": {
+    "date": "2025-12-17",
+    "workbook_date": null,
+    "date_source": "libro",
+    "conf": "exact",
+    "euthanasia": false,
+    "note": null,
+    "alive_record_after": null
+   },
+   "cause": "Infección bacteriana",
+   "cause_source": "libro",
+   "necropsy": {
+    "performed": null,
+    "status": "NA"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": false,
+   "grade": "tardía",
+   "grade_60": "indeterminada",
+   "grade_note": null,
+   "primary": {
+    "window": {
+     "from": "2025-11-26",
+     "to": "2025-12-17",
+     "days": 21
+    },
+    "grade": "tardía",
+    "S0": {
+     "date": "2025-12-03",
+     "time": "11:33",
+     "label": "Aviso de agua"
+    },
+    "P": {
+     "date": "2025-12-05",
+     "time": "22:12",
+     "label": "Consulta veterinaria"
+    },
+    "C": null,
+    "latency_h": 58.7,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 14,
+    "unanswered": 12,
+    "coverage": 0.45,
+    "role": "Dirección clínica del museo",
+    "flags": [
+     "estándar_no_escrito_en_el_museo"
+    ],
+    "recorded_after_death": 0
+   },
+   "sensitivity": {
+    "window": {
+     "from": "2025-10-18",
+     "to": "2025-12-17",
+     "days": 60
+    },
+    "grade": "indeterminada",
+    "S0": {
+     "date": "2025-12-03",
+     "time": "11:33",
+     "label": "Aviso de agua"
+    },
+    "P": {
+     "date": "2025-12-05",
+     "time": "22:12",
+     "label": "Consulta veterinaria"
+    },
+    "C": null,
+    "latency_h": 58.7,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 14,
+    "unanswered": 12,
+    "coverage": 0.18,
+    "role": null,
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "events": [
+    {
+     "date": "2025-12-01",
+     "time": "11:41",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "A",
+     "text": "Guajolote en tratamiento, separado por indicación del veterinario, en espera de resultados de laboratorio"
+    },
+    {
+     "date": "2025-12-01",
+     "time": "11:41",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "B",
+     "text": "Se sigue estabilizando parámetros: cambios de agua, ajuste del aire acondicionado y tratamientos"
+    },
+    {
+     "date": "2025-12-03",
+     "time": "11:33",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Fundador pregunta si volvió a dispararse el valor (24) en la estación de los mexicanum y si ya se sustituyó la teja"
+    },
+    {
+     "date": "2025-12-03",
+     "time": "11:34",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Ambas pruebas en pH 7.6, ligeramente alcalinas"
+    },
+    {
+     "date": "2025-12-05",
+     "time": "14:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: GH 20 (rango 125–250) · KH 10 (rango 50–100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-05",
+     "time": "22:12",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "A",
+     "text": "Guajolote llevado al veterinario para segundo drenado, dado de alta; se reincorpora a población general el domingo"
+    },
+    {
+     "date": "2025-12-05",
+     "time": "22:12",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Dureza controlada, falta pH; filtros (matrix) pedidos"
+    },
+    {
+     "date": "2025-12-06",
+     "time": "11:52",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: cond 38 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-10",
+     "time": "11:36",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: temp 15.6 (rango 16–18) · NO2 0.3 (rango 0–0.1) · GH 20 (rango 125–250) · KH 20 (rango 50–100)",
+     "critical": true,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-13",
+     "time": "18:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: pH 8.22 (rango 7.4–7.8) · cond 104 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-14",
+     "time": "11:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: NH3 0.25 (rango 0–0) · GH 40 (rango 125–250) · KH 20 (rango 50–100) · pH 8.3 (rango 7.4–7.8) · cond 174 (rango 700–1100)",
+     "critical": true,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-15",
+     "time": "10:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: pH 8 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-16",
+     "time": "16:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: NO2 0.8 (rango 0–0.1) · pH 8 (rango 7.4–7.8) · cond 163 (rango 700–1100) · GH 60 (rango 125–250) · KH 40 (rango 50–100)",
+     "critical": true,
+     "chronic_only": false
+    },
+    {
+     "date": "2025-12-17",
+     "time": null,
+     "lane": 5,
+     "kind": "death",
+     "label": "Muerte",
+     "source": "libro",
+     "grade": "A",
+     "text": "causa: Infección bacteriana · necropsia: NA · documentación: NA"
+    },
+    {
+     "date": "2025-12-17",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_necropsy",
+     "label": "Sin resultado de necropsia",
+     "source": "libro",
+     "grade": "A",
+     "text": "necropsia: NA"
+    },
+    {
+     "date": "2025-12-17",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_disposal",
+     "label": "Destino del cuerpo sin registro",
+     "source": "libro",
+     "grade": "A",
+     "text": "destino del cuerpo: sin registro en ninguna hoja"
+    },
+    {
+     "date": "2025-12-17",
+     "time": "10:30",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM 2: NO3 110 (rango 0–20) · GH 60 (rango 125–250) · pH 8 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    }
+   ]
+  },
+  {
+   "alias": "Moka",
+   "species": null,
+   "death": {
+    "date": "2025-12-12",
+    "workbook_date": null,
+    "date_source": "libro",
+    "conf": "exact",
+    "euthanasia": false,
+    "note": null,
+    "alive_record_after": null
+   },
+   "cause": "Desconocido",
+   "cause_source": "libro",
+   "necropsy": {
+    "performed": null,
+    "status": "En proceso"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": false,
+   "grade": "indeterminada",
+   "grade_60": "indeterminada",
+   "grade_note": null,
+   "primary": {
+    "window": {
+     "from": "2025-11-21",
+     "to": "2025-12-12",
+     "days": 21
+    },
+    "grade": "indeterminada",
+    "S0": null,
+    "P": null,
+    "C": null,
+    "latency_h": null,
+    "standard": null,
+    "signals": 0,
+    "unanswered": 0,
+    "coverage": 0,
+    "role": null,
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "sensitivity": {
+    "window": {
+     "from": "2025-10-13",
+     "to": "2025-12-12",
+     "days": 60
+    },
+    "grade": "indeterminada",
+    "S0": null,
+    "P": null,
+    "C": null,
+    "latency_h": null,
+    "standard": null,
+    "signals": 0,
+    "unanswered": 0,
+    "coverage": 0.02,
+    "role": null,
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "events": [
+    {
+     "date": "2025-12-12",
+     "time": null,
+     "lane": 5,
+     "kind": "death",
+     "label": "Muerte",
+     "source": "libro",
+     "grade": "A",
+     "text": "causa: Desconocido · necropsia: En proceso · documentación: NA"
+    },
+    {
+     "date": "2025-12-12",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_necropsy",
+     "label": "Sin resultado de necropsia",
+     "source": "libro",
+     "grade": "A",
+     "text": "necropsia: En proceso"
+    },
+    {
+     "date": "2025-12-12",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_disposal",
+     "label": "Destino del cuerpo sin registro",
+     "source": "libro",
+     "grade": "A",
+     "text": "destino del cuerpo: sin registro en ninguna hoja"
+    }
+   ]
+  },
+  {
+   "alias": "Loncho",
+   "species": null,
+   "death": {
+    "date": "2025-11-10",
+    "workbook_date": null,
+    "date_source": "libro",
+    "conf": "ambiguous_dm",
+    "euthanasia": false,
+    "note": "se descarta la lectura 2025-10-11: es anterior al último registro del ejemplar vivo (2025-11-10)",
+    "alive_record_after": null
+   },
+   "cause": "Sepsis bacteriana/ Daños por caida",
+   "cause_source": "libro",
+   "necropsy": {
+    "performed": null,
+    "status": "NA"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": false,
+   "grade": "indeterminada",
+   "grade_60": "indeterminada",
+   "grade_note": null,
+   "primary": {
+    "window": {
+     "from": "2025-10-20",
+     "to": "2025-11-10",
+     "days": 21
+    },
+    "grade": "indeterminada",
+    "S0": null,
+    "P": null,
+    "C": null,
+    "latency_h": null,
+    "standard": null,
+    "signals": 0,
+    "unanswered": 0,
+    "coverage": 0.09,
+    "role": null,
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "sensitivity": {
+    "window": {
+     "from": "2025-09-11",
+     "to": "2025-11-10",
+     "days": 60
+    },
+    "grade": "indeterminada",
+    "S0": null,
+    "P": null,
+    "C": null,
+    "latency_h": null,
+    "standard": null,
+    "signals": 0,
+    "unanswered": 0,
+    "coverage": 0.03,
+    "role": null,
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "events": [
+    {
+     "date": "2025-11-10",
+     "time": null,
+     "lane": 5,
+     "kind": "death",
+     "label": "Muerte",
+     "source": "libro",
+     "grade": "B",
+     "text": "causa: Sepsis bacteriana/ Daños por caida · necropsia: NA · documentación: Reporte de incidente"
+    },
+    {
+     "date": "2025-11-10",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_necropsy",
+     "label": "Sin resultado de necropsia",
+     "source": "libro",
+     "grade": "A",
+     "text": "necropsia: NA"
+    },
+    {
+     "date": "2025-11-10",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_disposal",
+     "label": "Destino del cuerpo sin registro",
+     "source": "libro",
+     "grade": "A",
+     "text": "destino del cuerpo: sin registro en ninguna hoja"
+    }
+   ]
+  },
+  {
+   "alias": "Golden",
+   "species": null,
+   "death": {
+    "date": "2025-01-14",
+    "workbook_date": null,
+    "date_source": "libro",
+    "conf": "exact",
+    "euthanasia": false,
+    "note": null,
+    "alive_record_after": null
+   },
+   "cause": "Infección bacteriana",
+   "cause_source": "libro",
+   "necropsy": {
+    "performed": null,
+    "status": "NA"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": false,
+   "grade": "indeterminada",
+   "grade_60": "indeterminada",
+   "grade_note": null,
+   "primary": {
+    "window": {
+     "from": "2024-12-24",
+     "to": "2025-01-14",
+     "days": 21
+    },
+    "grade": "indeterminada",
+    "S0": null,
+    "P": null,
+    "C": null,
+    "latency_h": null,
+    "standard": null,
+    "signals": 0,
+    "unanswered": 0,
+    "coverage": 0,
+    "role": null,
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "sensitivity": {
+    "window": {
+     "from": "2024-11-15",
+     "to": "2025-01-14",
+     "days": 60
+    },
+    "grade": "indeterminada",
+    "S0": null,
+    "P": null,
+    "C": null,
+    "latency_h": null,
+    "standard": null,
+    "signals": 0,
+    "unanswered": 0,
+    "coverage": 0,
+    "role": null,
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "events": [
+    {
+     "date": "2025-01-14",
+     "time": null,
+     "lane": 5,
+     "kind": "death",
+     "label": "Muerte",
+     "source": "libro",
+     "grade": "A",
+     "text": "causa: Infección bacteriana · necropsia: NA · documentación: NA"
+    },
+    {
+     "date": "2025-01-14",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_necropsy",
+     "label": "Sin resultado de necropsia",
+     "source": "libro",
+     "grade": "A",
+     "text": "necropsia: NA"
+    },
+    {
+     "date": "2025-01-14",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_disposal",
+     "label": "Destino del cuerpo sin registro",
+     "source": "libro",
+     "grade": "A",
+     "text": "destino del cuerpo: sin registro en ninguna hoja"
+    }
+   ]
+  },
+  {
+   "alias": "Larva 2",
+   "species": "A. mexicanum",
+   "death": {
+    "date": "2026-09-23",
+    "workbook_date": null,
+    "date_source": "libro",
+    "conf": "exact",
+    "euthanasia": false,
+    "note": null,
+    "alive_record_after": null
+   },
+   "cause": "Desconocida por ahora",
+   "cause_source": "libro",
+   "necropsy": {
+    "performed": null,
+    "status": "sin registro"
+   },
+   "body": "sin registro",
+   "body_conservation": null,
+   "lab_reserved": false,
+   "grade": "oportuna",
+   "grade_60": "oportuna",
+   "grade_note": null,
+   "primary": {
+    "window": {
+     "from": "2026-09-02",
+     "to": "2026-09-23",
+     "days": 21
+    },
+    "grade": "oportuna",
+    "S0": {
+     "date": "2026-09-02",
+     "time": "18:38",
+     "label": "Aviso de agua"
+    },
+    "P": {
+     "date": "2026-09-02",
+     "time": "13:00",
+     "label": "Tratamiento"
+    },
+    "C": {
+     "date": "2026-09-22",
+     "time": null,
+     "label": "Colección fuera del museo"
+    },
+    "latency_h": 0,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 7,
+    "unanswered": 2,
+    "coverage": 0.45,
+    "role": null,
+    "flags": [
+     "racha_iniciada_antes_de_la_ventana"
+    ],
+    "recorded_after_death": 0
+   },
+   "sensitivity": {
+    "window": {
+     "from": "2026-07-25",
+     "to": "2026-09-23",
+     "days": 60
+    },
+    "grade": "oportuna",
+    "S0": {
+     "date": "2026-09-02",
+     "time": "18:38",
+     "label": "Aviso de agua"
+    },
+    "P": {
+     "date": "2026-09-02",
+     "time": "13:00",
+     "label": "Tratamiento"
+    },
+    "C": {
+     "date": "2026-09-22",
+     "time": null,
+     "label": "Colección fuera del museo"
+    },
+    "latency_h": 0,
+    "standard": {
+     "id": "DEC-CLINICA",
+     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
+     "hours": 48
+    },
+    "signals": 90,
+    "unanswered": 9,
+    "coverage": 0.79,
+    "role": null,
+    "flags": [],
+    "recorded_after_death": 0
+   },
+   "events": [
+    {
+     "date": "2026-07-25",
+     "time": "09:39",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Revisión rápida: no se observan más parásitos en los excrementos; se cambian garrafones de Sansón"
+    },
+    {
+     "date": "2026-07-25",
+     "time": "17:20",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.4 (rango 7.4–7.8) · cond 1120 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-07-26",
+     "time": "20:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.9 (rango 16–18) · pH 8.4 (rango 7.4–7.8) · cond 1140 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-07-27",
+     "time": "11:13",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.75 (rango 16–18) · NO3 40 (rango 0–20) · pH 8.2 (rango 7.4–7.8) · cond 1130 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-07-27",
+     "time": "14:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-07-28",
+     "time": "19:30",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.6 (rango 16–18) · pH 8.3 (rango 7.4–7.8) · cond 1130 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-07-29",
+     "time": "18:02",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.65 (rango 16–18) · pH 8.2 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-07-30",
+     "time": "15:31",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.9 (rango 16–18) · pH 8.2 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-07-31",
+     "time": "09:10",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-07-31",
+     "time": "12:02",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "B",
+     "text": "Curaduría menciona (07-31) que regresará ; sin detalle de ejemplar ni motivo"
+    },
+    {
+     "date": "2026-07-31",
+     "time": "18:30",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.55 (rango 16–18) · pH 8.4 (rango 7.4–7.8) · cond 1110 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-01",
+     "time": "07:30",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nematodos · tx: Fenbendazol · Aumento de dosis por baja eficiencia del medicamento"
+    },
+    {
+     "date": "2026-08-01",
+     "time": "17:50",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.6 (rango 16–18) · pH 8.4 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-02",
+     "time": "18:04",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.2 (rango 7.4–7.8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-08-03",
+     "time": "08:30",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes"
+    },
+    {
+     "date": "2026-08-03",
+     "time": "08:46",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "B",
+     "text": "Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+    },
+    {
+     "date": "2026-08-03",
+     "time": "10:22",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.8 (rango 16–18) · NO3 40 (rango 0–20) · pH 8.3 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-04",
+     "time": "14:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-08-04",
+     "time": "19:50",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.7 (rango 16–18) · pH 8.3 (rango 7.4–7.8) · cond 1160 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-05",
+     "time": "19:30",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.9 (rango 16–18) · pH 8.3 (rango 7.4–7.8) · cond 1150 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-06",
+     "time": "19:45",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: temp 15.7 (rango 16–18) · pH 8.2 (rango 7.4–7.8) · cond 1190 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-07",
+     "time": "09:30",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-08-07",
+     "time": "19:42",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.5 (rango 7.4–7.8) · cond 1190 (rango 700–1100) · NO3 40 (rango 0–20) · temp 15.7 (rango 16–18)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-08",
+     "time": "17:45",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.6 (rango 7.4–7.8) · cond 1160 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-09",
+     "time": "17:40",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.5 (rango 7.4–7.8) · cond 1170 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-10",
+     "time": "06:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-08-10",
+     "time": "08:30",
+     "lane": 2,
+     "kind": "signal_diagnosis",
+     "label": "Diagnóstico registrado",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nematodos · tx: Ivermectina 0.1 mg/ml"
+    },
+    {
+     "date": "2026-08-10",
+     "time": "08:30",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Nematodos · tx: Ivermectina 0.1 mg/ml"
+    },
+    {
+     "date": "2026-08-10",
+     "time": "11:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: NO3 40 (rango 0–20) · pH 8.4 (rango 7.4–7.8) · cond 1170 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-11",
+     "time": "10:18",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "B",
+     "text": "Fundador pide agregar al grupo a la veterinaria (Pinal),"
+    },
+    {
+     "date": "2026-08-11",
+     "time": "19:33",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.4 (rango 7.4–7.8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-08-12",
+     "time": "17:48",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+    },
+    {
+     "date": "2026-08-12",
+     "time": "19:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.2 (rango 7.4–7.8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-08-13",
+     "time": "09:20",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Solo observación · Larva 2 se muestra mu cauteloso al abandonar el refugio, posiblemente en respuesta a la manipulación realizada el día 10/08/26"
+    },
+    {
+     "date": "2026-08-13",
+     "time": "19:50",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.5 (rango 7.4–7.8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-08-14",
+     "time": "07:53",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-08-14",
+     "time": "20:00",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.4 (rango 7.4–7.8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-08-15",
+     "time": "14:30",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Solo observación · El ejemplar a permanecido todo el día dentro del coco"
+    },
+    {
+     "date": "2026-08-15",
+     "time": "19:12",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.5 (rango 7.4–7.8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-08-16",
+     "time": "19:09",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.5 (rango 7.4–7.8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-08-17",
+     "time": "11:50",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: NO3 40 (rango 0–20) · pH 8 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-18",
+     "time": "08:30",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: pH 8.6 (rango 7.4–7.8) · fuera de rango crónico",
+     "critical": false,
+     "chronic_only": true
+    },
+    {
+     "date": "2026-08-18",
+     "time": "09:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-08-19",
+     "time": "07:30",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: cond 1110 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-20",
+     "time": "13:30",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua · Cambio de agua por mantenimiento en filtro del sistema A. mexicanum"
+    },
+    {
+     "date": "2026-08-20",
+     "time": "18:24",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Apatía / Rechazo de alimento · Solo observación · El ejemplar no ha salido del refugio en odo el dia. Observar comporamieno: posible estres o incomodidad del ejemplar"
+    },
+    {
+     "date": "2026-08-21",
+     "time": "08:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-08-23",
+     "time": "09:50",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: cond 1130 (rango 700–1100)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-24",
+     "time": "10:51",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: NO3 40 (rango 0–20)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-08-25",
+     "time": "07:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua · Agua de la llave"
+    },
+    {
+     "date": "2026-08-25",
+     "time": "20:08",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Ajolotes de Pinal: se ven sanos y han comido"
+    },
+    {
+     "date": "2026-08-25",
+     "time": "20:09",
+     "lane": 2,
+     "kind": "signal_chat_health",
+     "label": "Aviso de salud",
+     "source": "chat",
+     "grade": "B",
+     "text": "Manchas de piel persisten en ajolotes de Pinal; parecen de edad, no crecieron"
+    },
+    {
+     "date": "2026-08-27",
+     "time": "13:48",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal acuario"
+    },
+    {
+     "date": "2026-08-28",
+     "time": "08:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-08-28",
+     "time": "13:25",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal acuario"
+    },
+    {
+     "date": "2026-08-28",
+     "time": "17:23",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "B",
+     "text": "Se requiere entretiempo de 1 a 2 pm sábado y domingo para medicamentos y tratamientos; animales estables; en comunicación con el vet"
+    },
+    {
+     "date": "2026-08-29",
+     "time": "13:10",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal acuario"
+    },
+    {
+     "date": "2026-08-30",
+     "time": "13:10",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal acuario"
+    },
+    {
+     "date": "2026-08-31",
+     "time": "13:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Sal acuario"
+    },
+    {
+     "date": "2026-09-01",
+     "time": "07:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-09-01",
+     "time": "13:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-09-02",
+     "time": "13:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-09-02",
+     "time": "18:38",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Se fue la luz en el biomuseo; la PC sigue apagada"
+    },
+    {
+     "date": "2026-09-03",
+     "time": "13:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-09-04",
+     "time": "13:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-09-04",
+     "time": "13:15",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-09-05",
+     "time": "10:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-09-06",
+     "time": "10:00",
+     "lane": 2,
+     "kind": "signal_diagnosis",
+     "label": "Diagnóstico registrado",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-09-06",
+     "time": "10:00",
+     "lane": 3,
+     "kind": "preventive_treatment",
+     "label": "Tratamiento",
+     "source": "libro",
+     "grade": "A",
+     "text": "Saprolegniasis · tx: Itraconazol"
+    },
+    {
+     "date": "2026-09-08",
+     "time": "13:00",
+     "lane": 3,
+     "kind": "preventive_water_change",
+     "label": "Cambio de agua",
+     "source": "libro",
+     "grade": "B",
+     "text": "Cambio de agua"
+    },
+    {
+     "date": "2026-09-08",
+     "time": "15:20",
+     "lane": 1,
+     "kind": "signal_feeding_refusal",
+     "label": "Rechazo de alimento",
+     "source": "libro",
+     "grade": "A",
+     "text": "ración 0.43 g, consumo 0 g"
+    },
+    {
+     "date": "2026-09-08",
+     "time": "20:38",
+     "lane": 3,
+     "kind": "preventive_vet_consult",
+     "label": "Consulta veterinaria",
+     "source": "chat",
+     "grade": "B",
+     "text": "Curaduría avisa durante la junta que sigue en llamada con los de axolovet"
+    },
+    {
+     "date": "2026-09-09",
+     "time": "16:42",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "A",
+     "text": "Irritacion cutanea · Solo observación · El ejemplar se rasca 2 veces la branquia del lado izquierdo"
+    },
+    {
+     "date": "2026-09-10",
+     "time": "16:43",
+     "lane": 2,
+     "kind": "signal_logged_incident",
+     "label": "Incidencia registrada",
+     "source": "libro",
+     "grade": "B",
+     "text": "Irritacion cutanea · Solo observación · El ejemplar se rasca 3 veces la branquia del lado derecho"
+    },
+    {
+     "date": "2026-09-13",
+     "time": "17:36",
+     "lane": 1,
+     "kind": "signal_chat_water",
+     "label": "Aviso de agua",
+     "source": "chat",
+     "grade": "B",
+     "text": "Fallo en la energía eléctrica en el biomuseo; curaduría va en camino"
+    },
+    {
+     "date": "2026-09-14",
+     "time": "10:50",
+     "lane": 1,
+     "kind": "signal_param_oor",
+     "label": "Agua fuera de rango",
+     "source": "libro",
+     "grade": "B",
+     "text": "AM: NO3 40 (rango 0–20) · pH 8 (rango 7.4–7.8)",
+     "critical": false,
+     "chronic_only": false
+    },
+    {
+     "date": "2026-09-14",
+     "time": "13:19",
+     "lane": 3,
+     "kind": "preventive_chat_action",
+     "label": "Acción preventiva",
+     "source": "chat",
+     "grade": "B",
+     "text": "Curaduría hará la limpieza el martes y cotizará extractores (líneas 3003–3005)"
+    },
+    {
+     "date": "2026-09-22",
+     "time": null,
+     "lane": 4,
+     "kind": "corrective_collection_removed",
+     "label": "Colección fuera del museo",
+     "source": "registro",
+     "grade": "B",
+     "text": "toda la colección pasa a cuarentena fuera del museo"
+    },
+    {
+     "date": "2026-09-23",
+     "time": null,
+     "lane": 5,
+     "kind": "death",
+     "label": "Muerte",
+     "source": "registro",
+     "grade": "B",
+     "text": "causa: Desconocida por ahora · necropsia: sin registro · documentación: sin registro"
+    },
+    {
+     "date": "2026-09-23",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_necropsy",
+     "label": "Sin resultado de necropsia",
+     "source": "registro",
+     "grade": "A",
+     "text": "necropsia: sin registro"
+    },
+    {
+     "date": "2026-09-23",
+     "time": null,
+     "lane": 5,
+     "kind": "gap_disposal",
+     "label": "Destino del cuerpo sin registro",
+     "source": "registro",
+     "grade": "A",
+     "text": "destino del cuerpo: sin registro en ninguna hoja"
+    }
+   ]
+  }
+ ],
+ "aire": [
+  {
+   "specimen": "goldy",
+   "episode": 13,
+   "date": "2026-06-10",
+   "claim": "Goldy se está quedando atrás en crecimiento (vivo)",
+   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "speaker": "Vocería del museo",
+   "confidence": "alta",
+   "verified_on_video": true,
+   "url": "https://youtu.be/FwB8MEdB0E0?t=2138"
+  },
+  {
+   "specimen": "goldy",
+   "episode": 14,
+   "date": "2026-06-17",
+   "claim": "Golden/Goldy está mejorando bastante; si se recupera tendrá que ir a otras instalaciones",
+   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "speaker": "Vocería del museo",
+   "confidence": "alta",
+   "verified_on_video": true,
+   "url": "https://youtu.be/qg_h-yVaX9E?t=113"
+  },
+  {
+   "specimen": "goldy",
+   "episode": 18,
+   "date": "2026-07-14",
+   "claim": "Goldy falleció un poco más repentinamente que Panchita, con el sistema inmune bajo",
+   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "speaker": "Vocería del museo",
+   "confidence": "alta",
+   "verified_on_video": true,
+   "url": "https://youtu.be/B3NpBliaWCs?t=266"
+  },
+  {
+   "specimen": "goldy",
+   "episode": 18,
+   "date": "2026-07-14",
+   "claim": "causas probables: complicaciones post-parasitosis y caquexia",
+   "contrast": "el texto lo escribió el lado de Zenbit en b651d0b (2026-07-14 21:25) y en el guion 6f0ca8c; no se atribuye a la curaduría",
+   "speaker": "Lectura del sitio de AxoloDAO",
+   "confidence": "alta",
+   "verified_on_video": true,
+   "url": "https://youtu.be/B3NpBliaWCs?t=2285"
+  },
+  {
+   "specimen": null,
+   "episode": 9,
+   "date": "2026-05-13",
+   "claim": "Remo no ha presentado ningún signo del hongo",
+   "contrast": "Bitácora 05-07, 05-11, 05-12: crecimiento algodonoso en branquias de Remo; Terapéutica 04-05: Saprolegniasis por microscopía",
+   "speaker": "Vocería del museo",
+   "confidence": "alta-media",
+   "verified_on_video": true,
+   "url": "https://youtu.be/IKqbFoU2gyA?t=994"
+  },
+  {
+   "specimen": "goldy",
+   "episode": 12,
+   "date": "2026-06-03",
+   "claim": "Goldy come, no flota extraño, no es motivo para pensar que esté enfermo",
+   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "speaker": "Vocería del museo",
+   "confidence": "alta",
+   "verified_on_video": true,
+   "url": "https://youtu.be/s9YyWmdQepA?t=1428"
+  },
+  {
+   "specimen": null,
+   "episode": 16,
+   "date": "2026-06-30",
+   "claim": "las bases nitrogenadas se comportan como en un acuario ciclado",
+   "contrast": "Calidad de agua 06-29: amoníaco 0.125 (AM) y 0.0125 (AD), sobre el máximo de 0",
+   "speaker": "Vocería del museo",
+   "confidence": "alta",
+   "verified_on_video": true,
+   "url": "https://youtu.be/8RbgMyJFtSk?t=883"
+  },
+  {
+   "specimen": null,
+   "episode": 17,
+   "date": "2026-07-07",
+   "claim": "en el sistema mexicanum no se ha presentado el problema de los hongos",
+   "contrast": "Terapéutica: Saprolegniasis de Chocorrol (05-11 a 05-20); Bitácora 06-19: algodoncillo en Limón",
+   "speaker": "Vocería de Zenbit",
+   "confidence": "alta",
+   "verified_on_video": true,
+   "url": "https://youtu.be/-Ql1-LHHXKA?t=1676"
+  },
+  {
+   "specimen": null,
+   "episode": 19,
+   "date": "2026-07-21",
+   "claim": "el amoníaco fue un problema hace dos o tres meses",
+   "contrast": "Calidad de agua 07-06: amoníaco 0.5 (AA) y 0.125 (AM, AD)",
+   "speaker": "Vocería del museo",
+   "confidence": "media",
+   "verified_on_video": true,
+   "url": "https://youtu.be/VVJsGY18i4I?t=3460"
+  },
+  {
+   "specimen": null,
+   "episode": 20,
+   "date": "2026-07-28",
+   "claim": "en mexicanum no se ha visto crecimiento algodonoso ni prurito",
+   "contrast": "Bitácora 07-13 Chocorrol (la nota duda: posible muda); 07-17 La negra con parásitos",
+   "speaker": "Vocería del museo",
+   "confidence": "alta",
+   "verified_on_video": true,
+   "url": "https://youtu.be/dno4elLJSA4?t=4825"
+  },
+  {
+   "specimen": null,
+   "episode": 22,
+   "date": "2026-08-12",
+   "claim": "Tamal de invitada: nada de qué preocuparnos, todo está bien con ella",
+   "contrast": "Bitácora 08-07: flotabilidad anormal de Tamal",
+   "speaker": "Vocería del museo",
+   "confidence": "alta",
+   "verified_on_video": true,
+   "url": "https://youtu.be/bgZSV0_K3Lo?t=181"
+  },
+  {
+   "specimen": null,
+   "episode": 24,
+   "date": "2026-09-09",
+   "claim": "Remo no ha tenido reincidencias",
+   "contrast": "Bitácora 08-13 a 08-16: se rasca branquias; 08-21: parche de Saprolegnia",
+   "speaker": "Vocería del museo",
+   "confidence": "media",
+   "verified_on_video": true,
+   "url": "https://youtu.be/8RYbbXfJEmE?t=2201"
+  },
+  {
+   "specimen": null,
+   "episode": 15,
+   "date": "2026-06-24",
+   "claim": "el veterinario dijo que la mancha de Remo es un lunar benigno",
+   "contrast": "Terapéutica 06-19: la lesión se trató como Saprolegniasis; ningún renglón registra el dictamen del veterinario",
+   "speaker": "Personal del museo",
+   "confidence": "media",
+   "verified_on_video": true,
+   "url": "https://youtu.be/0RZHMB4n9dI?t=984"
+  },
+  {
+   "specimen": null,
+   "episode": 24,
+   "date": "2026-09-09",
+   "claim": "Limón expulsó nematodos tras la primera dosis de ivermectina",
+   "contrast": "Bitácora 07-31 y 08-01: la expulsión fue antes de la ivermectina del 08-03",
+   "speaker": "Vocería de Zenbit",
+   "confidence": "media",
+   "verified_on_video": true,
+   "url": "https://youtu.be/8RYbbXfJEmE?t=890"
+  },
+  {
+   "specimen": "panchita",
+   "episode": 18,
+   "date": "2026-07-14",
+   "claim": "Panchita murió de una infección en varios órganos",
+   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "speaker": "Sin verificar",
+   "confidence": "—",
+   "verified_on_video": false,
+   "url": "https://youtu.be/B3NpBliaWCs?t=2"
+  }
+ ]
+}
