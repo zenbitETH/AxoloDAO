@@ -42,11 +42,15 @@ const BAJA_SPECIES_HINT: Record<string, SpeciesCode> = {
 // alguien arregle la celda, se borra esta entrada y el dato real fluye solo.
 //
 // ⚠ Una fecha con día ≤ 12 es ambigua y este error es invisible en ella. En el
-// registro son ambiguas las de Panchita, Goldy, Romualdo, Leucistica y Loncho.
+// registro son ambiguas las de Panchita, Goldy, Leucistica y Loncho, entre otras.
 // Las larvas del 15 y 16 de abril prueban que el almacenamiento NO invierte
 // siempre: no existe un mes 15.
-const BAJA_FECHA_FIX: Record<string, string> = {
+// Golden: la Hoja dice 14/1/2025, pero Golden fue ejemplar del Biomuseo (abierto el 24-oct-2025) y la
+// lista de bajas se terminó de capturar el 14-ene-2026 (chat de la mesa directiva). La fecha es la
+// captura con el año errado: la muerte fue a más tardar ese día, entre diciembre y enero.
+export const BAJA_FECHA_FIX: Record<string, string> = {
   'Andersoni 1': '2026-09-05',
+  Golden: '2026-01-14',
 };
 
 /** La baja con su fecha corregida, si hay corrección curada para ese nombre. */

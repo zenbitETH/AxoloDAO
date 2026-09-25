@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import type { ComponentChildren } from 'preact';
 import type { Baja, BitacoraEntry, Bundle, Ejemplar, Locale, SpeciesCode } from './types';
+import { bajaCount } from './types';
+import { survival, pct, OPENING } from '../../lib/survival';
 import type { Measurement } from '../waterQuality/types';
 import { useTheme, SPECIES_ORDER, stationOf } from './theme';
 import { aliasSlug } from './photos';
@@ -55,7 +57,9 @@ function applyTheme(t: 'light' | 'dark') {
 // que la grafía del registro no encontraría nada y la tarjeta no aparecería.
 // 'Larva 2' se memorializa el 2026-09-24: murió el 23 de septiembre, con la causa todavía
 // desconocida, y la Hoja aún no registra la baja; su entrada sale de synthLarva2Baja.
-const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica', 'Panchita', 'Goldy', 'Andersoni 1', 'Larva 2']);
+// The forensic postmortem covers every named death, so the wall shows them all for review
+// (Guajolote, Jaffy, Moka and Golden join on 2026-09-25).
+const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica', 'Panchita', 'Goldy', 'Andersoni 1', 'Larva 2', 'Guajolote', 'Jaffy', 'Moka', 'Golden']);
 
 // NOTE: the per-component hidden-alias list that used to live here is gone.
 // `bundle.ejemplares` is now the LIVE roster by construction — data-ajolotes.mjs
@@ -195,7 +199,25 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
       const fromData = bundle.bajas.find((b: Baja) => (b.nombre ?? '').trim() === nombre);
       if (fromData) out.push(withFechaFix(fromData));
     }
-    return out;
+    // The unnamed mexicanum larvae share one sheet name and carry no individual records,
+    // so the wall shows them as one card, «Larvas (N)», dated by the latest death.
+    const larvas = (bundle.bajas as Baja[]).filter((b) => /^larva de ajolote/i.test((b.nombre ?? '').trim()));
+    if (larvas.length) {
+      const fechas = larvas.map((b) => b.fecha).filter(Boolean).sort() as string[];
+      out.push({
+        fecha: fechas[fechas.length - 1] ?? null,
+        nombre: `Larvas (${larvas.length})`,
+        peso: null,
+        longitud: null,
+        edad: '2 a 3 meses',
+        causa: 'Desconocida',
+        necropcia: 'NA',
+        count: larvas.length,
+      });
+    }
+    // One rule for every count on the site: museum deaths since the opening (lib/survival OPENING).
+    // A death dated before it (Golden, 2025-01-14) predates the Biomuseo and stays off the wall.
+    return out.filter((b) => !b.fecha || b.fecha >= OPENING);
   }, [bundle.bajas, bundle.ejemplares, bundle.bajasSnapshots]);
 
   // Per-species counts mirror exactly what the gallery renders, so the cover
@@ -223,7 +245,7 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
       total: liveEjemplares.filter(
         (e) => showLarvario || (!isAjolobebe(e) && stationOf(e.pecera) !== 'Larvario'),
       ).length,
-      bajas: visibleBajas.length,
+      bajas: bajaCount(visibleBajas),
     }),
     [liveEjemplares, visibleBajas, showLarvario],
   );
@@ -279,6 +301,7 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
           logoSvg={logoSvg}
           totalEjemplares={totals.total}
           totalBajas={totals.bajas}
+          survivalPct={pct(survival(bundle).tasa)}
           speciesCounts={speciesCounts}
           selectedSpecies={selectedSpecies}
           onSelectSpecies={setSelectedSpecies}

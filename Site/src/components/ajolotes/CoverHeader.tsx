@@ -8,6 +8,7 @@ interface Props {
   logoSvg: string;
   totalEjemplares: number;
   totalBajas: number;
+  survivalPct?: string | null;   // tasa de supervivencia desde la apertura, formatted
   speciesCounts: Record<SpeciesCode, number>;
   selectedSpecies: SpeciesCode | null;
   onSelectSpecies: (sp: SpeciesCode | null) => void;
@@ -22,6 +23,7 @@ export default function CoverHeader({
   logoSvg,
   totalEjemplares,
   totalBajas,
+  survivalPct = null,
   speciesCounts,
   selectedSpecies,
   onSelectSpecies,
@@ -85,6 +87,12 @@ export default function CoverHeader({
             <div class="mt-1 text-xs font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
               {s(locale, 'cover.glance.bajas')}
             </div>
+            {survivalPct && (
+              <div class="mt-2 border-t border-dashed border-[var(--wq-divider)] pt-2 text-[11px] leading-snug text-[var(--wq-ink-muted)]">
+                <span class="font-display text-base font-bold text-[var(--wq-ink)]">{survivalPct}</span>{' '}
+                {s(locale, 'bajas.survival.short')}
+              </div>
+            )}
           </button>
         </div>
 
