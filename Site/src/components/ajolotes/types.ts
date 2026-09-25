@@ -126,7 +126,11 @@ export interface Baja {
   edad: string | null;
   causa: string | null;
   necropcia: string | null;       // "NA" | "En proceso" | descriptive
+  count?: number;                 // deaths this card stands for (a grouped card counts each one)
 }
+
+/** Deaths a list of cards stands for: a grouped card counts every death it holds. */
+export const bajaCount = (bajas: Baja[]): number => bajas.reduce((n, b) => n + (b.count ?? 1), 0);
 
 export interface TerapeuticaEntry {
   fecha: string;                  // ISO
