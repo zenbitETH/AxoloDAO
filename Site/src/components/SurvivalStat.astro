@@ -1,0 +1,22 @@
+---
+// Tasa de supervivencia del Biomuseo desde su apertura, from the helper the registry uses too.
+// One line, no wrapping; on a narrow screen it scrolls sideways instead of breaking.
+import bundleRaw from '@/data/ajolotes/bundle.json';
+import { survival, pct, CORTE, fechaLarga } from '@/lib/survival';
+
+interface Props {
+  href?: string;
+}
+const { href = '/xolotlcalli/ajolotes/' } = Astro.props;
+const sv = survival(bundleRaw as never);
+---
+
+<aside class="mx-auto mb-8 mt-4 max-w-[1240px] overflow-x-auto rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-5 py-3">
+  <p class="m-0 flex items-baseline gap-2 whitespace-nowrap text-sm text-[var(--wq-ink-muted)]">
+    <span class="text-[11px] font-semibold uppercase tracking-[0.08em]">Tasa de supervivencia</span>
+    <strong class="font-display text-xl font-bold text-[var(--wq-ink)]">{pct(sv.tasa)}</strong>
+    <span aria-hidden="true">·</span>
+    <span>Al {fechaLarga(CORTE)}: <strong class="text-[var(--wq-ink)]">{sv.vivos}</strong> ejemplares vivos, <strong class="text-[var(--wq-ink)]">{sv.bajas}</strong> bajas, <strong class="text-[var(--wq-ink)]">{sv.total}</strong> registros totales.</span>
+    <a href={href} class="ml-auto pl-4 font-semibold text-teal underline-offset-2 hover:underline">Ver ejemplares →</a>
+  </p>
+</aside>
