@@ -1,6 +1,6 @@
 {
  "generated": "2026-09-30",
- "brain_commit": "f2b7ee0",
+ "brain_commit": "9070298",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -4363,7 +4363,7 @@
      {
       "n": "3",
       "u": "",
-      "l": "videos de su estado, verificados por la curaduría",
+      "l": "videos de su estado, verificados",
       "tone": "teal"
      }
     ],
@@ -4596,7 +4596,7 @@
       "identifies": "el fundador",
       "verifies": "la curaduría",
       "verified": "2026-09-30",
-      "sha256": "06280259b8f51b859d36d001c0c44737f30e74b8cc93af9b1fe348fd109612ca",
+      "sha256": "9a7cf33e792a54e5e809eea6efc725f3454a9ceb693c03e5eb2660cba42e284d",
       "attestation": null
      },
      {

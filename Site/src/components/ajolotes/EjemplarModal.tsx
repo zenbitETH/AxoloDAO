@@ -333,7 +333,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
 
         {/* Body */}
         <div class="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6">
-          {tab === 'postmortem' && <PostmortemTab alias={ej.alias} locale={locale} onTab={setTab} />}
+          {tab === 'postmortem' && <PostmortemTab alias={ej.alias} locale={locale} />}
           {tab === 'resumen' && (
             <ResumenTab
               ej={ej}

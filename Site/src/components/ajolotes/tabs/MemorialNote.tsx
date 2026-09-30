@@ -17,14 +17,13 @@ export default function MemorialNote({ death, insight, locale }: { death: string
 }
 
 /** Largest fall from the heaviest earlier weigh-in to the last one, if any. */
-export function weightDrop(rows: { fecha: string; peso?: number | null; lt?: number | null }[]) {
-  const ps = rows.filter((r) => r.fecha && r.peso != null).map((r) => ({ d: r.fecha, g: +(r.peso as number), lt: r.lt ?? null })).sort((a, b) => a.d.localeCompare(b.d));
+export function weightDrop(rows: { fecha: string; peso?: number | null }[]) {
+  const ps = rows.filter((r) => r.fecha && r.peso != null).map((r) => ({ d: r.fecha, g: +(r.peso as number) })).sort((a, b) => a.d.localeCompare(b.d));
   if (ps.length < 2) return null;
   const last = ps[ps.length - 1];
   const peak = ps.slice(0, -1).reduce((m, p) => (p.g > m.g ? p : m));
   if (last.g >= peak.g) return null;
-  const sameLength = ps.every((p) => p.lt == null || last.lt == null || Math.abs(p.lt - last.lt) < 1);
-  return { from: peak, to: last, g: +(peak.g - last.g).toFixed(1), pct: Math.round(((peak.g - last.g) / peak.g) * 100), sameLength };
+  return { from: peak, to: last, g: +(peak.g - last.g).toFixed(1), pct: Math.round(((peak.g - last.g) / peak.g) * 100) };
 }
 
 /** Longest stretch between two consecutive feeding records. */

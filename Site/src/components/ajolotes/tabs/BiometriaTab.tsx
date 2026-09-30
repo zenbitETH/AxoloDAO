@@ -29,7 +29,7 @@ export default function BiometriaTab({ hist, accent, locale, death }: Props) {
     <div>
       {death !== undefined && (
         <MemorialNote death={death} locale={locale} insight={drop ? s(locale, 'memorial.bio.drop').replace('{g}', String(drop.g)).replace('{pct}', String(drop.pct))
-          .replace('{from}', dMem(drop.from.d)).replace('{to}', dMem(drop.to.d)) + (drop.sameLength ? ` ${s(locale, 'pm.r.sameLength')}` : '') : null} />
+          .replace('{from}', dMem(drop.from.d)).replace('{to}', dMem(drop.to.d)) : null} />
       )}
       <div class="mb-3.5 grid grid-cols-1 gap-3.5 md:grid-cols-2">
         <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">

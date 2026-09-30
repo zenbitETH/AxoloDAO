@@ -51,7 +51,6 @@ const inRange = (d: string, a: string, b?: string) => d >= a && d <= (b ?? a);
 let lastTouch = 0;
 if (typeof window !== 'undefined') window.addEventListener('touchstart', () => { lastTouch = Date.now(); }, { capture: true, passive: true });
 const touching = () => Date.now() - lastTouch < 1000;
-const tapHot = (set: (h: Hot | ((c: Hot) => Hot)) => void, h: NonNullable<Hot>) => set((cur: Hot) => (JSON.stringify(cur) === JSON.stringify(h) ? null : h));
 
 /** What the pointer is on. A date lights up marks and moments; the other keys are stats. */
 type Hot = { date?: string; to?: string; key?: 'lat' | 'gap' | 'vid' | 'peso' | 'alim' } | null;
@@ -69,6 +68,30 @@ export function insights(r: PmRelato) {
   let gap: { from: string; to: string; n: number } | null = null;
   for (let i = 1; i < alim.length; i++) { const n = days(alim[i - 1].d, alim[i].d); if (n >= 5 && (!gap || n > gap.n)) gap = { from: alim[i - 1].d, to: alim[i].d, n }; }
   return { drop, gap, alim, peso };
+}
+
+/**
+ * Everything the main view draws, as rows for the full record, so the record below never
+ * shows less than the view above it. Method events come from the projection; these add
+ * the curated course, the videos and what the detail tabs hold (weigh-ins, meals).
+ */
+export function relatoEvents(r: PmRelato, locale: Locale) {
+  type Row = { date: string; time: string | null; lane: 1 | 2 | 'datos' | 'integrity'; kind: string; label: string; source: string; grade: 'A' | 'B' | 'C'; text: string | null; critical?: boolean };
+  const c = r.curso; const rows: Row[] = [];
+  const moment = (d: string) => r.momentos.find((m) => inRange(d, m.d, m.d2));
+  c.criticas.forEach((d) => rows.push({ date: d, time: null, lane: 1, kind: 'water_critical', label: s(locale, 'pm.r.ev.critical'), source: 'libro', grade: 'B', text: moment(d)?.title ?? null, critical: true }));
+  c.bomba.forEach(([a, b]) => rows.push({ date: a, time: null, lane: 1, kind: 'pump', label: s(locale, 'pm.r.ev.pump'), source: 'podcast', grade: 'B', text: `${dShort(a)}–${dShort(b)} · ${moment(a)?.text ?? ''}`.trim() }));
+  c.sin_lectura.forEach(([a, b]) => { for (let d = a; d <= b; d = new Date(Date.parse(d) + 864e5).toISOString().slice(0, 10))
+    rows.push({ date: d, time: null, lane: 1, kind: 'gap_measurement', label: s(locale, 'pm.r.ev.noReadingLabel'), source: 'libro', grade: 'B', text: s(locale, 'pm.r.ev.noReading') }); });
+  r.evidencia.forEach((e) => rows.push({ date: e.date, time: e.time, lane: 2, kind: 'signal_video', label: s(locale, 'pm.r.ev.video'), source: 'video', grade: 'A', text: e.text }));
+  (r.datos?.peso ?? []).forEach((p, i, all) => rows.push({ date: p.d, time: null, lane: 'datos', kind: 'weigh_in', label: s(locale, 'pm.r.weighIn'), source: 'historial', grade: 'A',
+    text: `${p.g} g${p.lt != null ? ` · LT ${p.lt} cm` : ''}${i && p.g !== all[i - 1].g ? ` · ${p.g - all[i - 1].g > 0 ? '+' : '−'}${Math.abs(+(p.g - all[i - 1].g).toFixed(1))} g` : ''}` }));
+  (r.datos?.alim ?? []).forEach((a) => rows.push({ date: a.d, time: null, lane: 'datos', kind: 'meal', label: s(locale, 'pm.r.fed'), source: 'alimentacion', grade: 'A',
+    text: `${+a.g.toFixed(2)} g${a.ofrecido != null ? ` ${s(locale, 'pm.r.of')} ${+a.ofrecido.toFixed(2)} g` : ''}` }));
+  const gap = insights(r).gap;
+  if (gap) rows.push({ date: gap.from, time: null, lane: 'datos', kind: 'gap_meal', label: s(locale, 'pm.r.noFood').replace('{n}', String(gap.n)), source: 'alimentacion', grade: 'A', text: `${dShort(gap.from)} – ${dShort(gap.to)}` });
+  if (r.publico) rows.push({ date: r.publico.fecha, time: null, lane: 'integrity', kind: 'said_public', label: s(locale, 'pm.r.public'), source: 'podcast', grade: 'A', text: `«${r.publico.cita}»` });
+  return rows;
 }
 
 /** **bold** in curated prose, and nothing else: no HTML ever comes from the data. */
@@ -113,11 +136,20 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
   ins.peso.filter((p) => p.d >= c.from && p.d <= c.to).forEach((p) => {
     const prev = ins.peso.filter((q) => q.d < p.d).pop();
     marks.push({ id: `p${p.d}`, x: x(p.d, '12:00'), y: ROWS.ella, r: 5, shape: 'dia', fill: '#F2556F', date: p.d, title: `${s(locale, 'pm.r.weighIn')}: ${p.g} g`,
-      sub: prev ? `${p.g - prev.g > 0 ? '+' : ''}${+(p.g - prev.g).toFixed(1)} g ${s(locale, 'pm.r.since')} ${dShort(prev.d)}${ins.drop ? ` · ${ins.drop.pct} % ${s(locale, 'pm.r.since')} ${dShort(ins.drop.from.d)}` : ''}` : undefined });
+      sub: prev ? `${p.g - prev.g > 0 ? '+' : '−'}${Math.abs(+(p.g - prev.g).toFixed(1))} g ${s(locale, 'pm.r.since')} ${dShort(prev.d)}${ins.drop ? ` · −${Math.abs(ins.drop.pct)} % ${s(locale, 'pm.r.since')} ${dShort(ins.drop.from.d)}` : ''}` : undefined });
   });
   ins.alim.forEach((a) => marks.push({ id: `a${a.d}`, x: x(a.d, '12:00'), y: ROWS.ella - 11, r: 2.4, shape: 'dot', fill: '#B98DF0', date: a.d,
     title: `${s(locale, 'pm.r.fed')}: ${+a.g.toFixed(2)} g`, sub: a.ofrecido != null ? `${s(locale, 'pm.r.offered')} ${+a.ofrecido.toFixed(2)} g` : undefined }));
-  const lit = (m: Mark) => (hot?.date ? inRange(m.date, hot.date, hot.to) : hot?.key === 'vid' ? m.shape === 'sq' : hot?.key === 'peso' ? m.shape === 'dia' : hot?.key === 'alim' ? m.id.startsWith('a') : false);
+  const lit = (m: Mark) => {
+    if (hot?.date) return inRange(m.date, hot.date, hot.to);
+    switch (hot?.key) {
+      case 'vid': return m.shape === 'sq';
+      case 'peso': return m.shape === 'dia';
+      case 'alim': return m.id.startsWith('a');
+      case 'lat': return !!c.latencia && ((m.id.startsWith('s') && m.date === c.latencia.from[0]) || (m.id.startsWith('r') && m.date === c.latencia.to[0]));
+      default: return false;
+    }
+  };
   const lat = c.latencia;
   const show = (m: Mark | null) => { setTip(m); setHot(m ? { date: m.date } : null); };
   return (
@@ -173,8 +205,9 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
         <text x={x(c.to, '09:00') - 3} y={36} font-size="10" font-weight="700" text-anchor="end" fill="var(--wq-ink)">{s(locale, 'pm.death')}</text>
         {marks.map((m) => {
           const on = lit(m) || tip?.id === m.id; const rr = on ? m.r + 2 : m.r;
+          const dim = !!hot?.key && !on;
           return (
-            <g key={m.id}>
+            <g key={m.id} opacity={dim ? 0.22 : 1} style={{ transition: 'opacity 150ms' }}>
               {m.shape === 'dia'
                 ? <rect x={m.x - rr * 0.8} y={m.y - rr * 0.8} width={rr * 1.6} height={rr * 1.6} fill={m.fill} stroke="var(--wq-surface)" stroke-width="1.2" transform={`rotate(45 ${m.x} ${m.y})`} />
                 : m.shape === 'sq'
@@ -272,8 +305,7 @@ function Lightbox({ list, index, setIndex, locale }: { list: PmEvidence[]; index
           </div>
           <p class="m-0 text-sm leading-snug text-[var(--wq-ink)]">{e.text}.</p>
           <dl class="m-0 grid gap-x-2.5 gap-y-1 rounded-xl bg-[var(--wq-row-bg)] px-2.5 py-2 text-[11.5px] leading-snug" style={{ gridTemplateColumns: 'auto 1fr' }}>
-            <dt class="text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.identifies')}</dt><dd class="m-0 text-[var(--wq-ink)]">{e.identifies}</dd>
-            <dt class="text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.verifies')}</dt><dd class="m-0 text-[var(--wq-ink)]">{e.verifies} · {dShort(e.verified)}</dd>
+            <dt class="text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.status')}</dt><dd class="m-0 text-[var(--wq-ink)]">{s(locale, 'pm.r.verified')} · {dShort(e.verified)}</dd>
             <dt class="text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.attestation')}</dt><dd class="m-0 text-[#E0A23A]">{e.attestation ?? s(locale, 'pm.r.pending')}</dd>
             <dt class="text-[var(--wq-ink-muted)]">SHA-256</dt><dd class="m-0 break-all font-mono text-[10px] text-[var(--wq-ink-muted)]">{e.sha256}</dd>
           </dl>
@@ -291,81 +323,28 @@ function Lightbox({ list, index, setIndex, locale }: { list: PmEvidence[]; index
   );
 }
 
-/** Small same-size cards for what the detail tabs hold, each with its own insight. */
-function DataCards({ r, hot, setHot, onTab, locale }: { r: PmRelato; hot: Hot; setHot: (h: Hot | ((c: Hot) => Hot)) => void; onTab?: (t: 'biometria' | 'alimentacion') => void; locale: Locale }) {
-  const ins = insights(r);
-  if (!ins.peso.length && !ins.alim.length) return null;
-  const W = 260, H = 84, P = 8;
-  const card = 'flex flex-col gap-1.5 rounded-2xl border border-transparent bg-[var(--wq-row-bg)] p-3 outline-none transition duration-200 hover:-translate-y-0.5 hover:border-[var(--wq-divider)] focus-within:border-[#2EC4C0]';
-  const goto = (t: 'biometria' | 'alimentacion') => onTab && (
-    <button type="button" onClick={() => onTab(t)} class="self-start text-[11.5px] font-semibold text-teal underline-offset-2 hover:underline">{s(locale, t === 'biometria' ? 'pm.r.toBio' : 'pm.r.toAlim')} →</button>);
-  // weight
-  const ps = ins.peso; const gs = ps.map((p) => p.g);
-  const gmin = Math.min(...gs) - 3, gmax = Math.max(...gs) + 3;
-  const px = (i: number) => P + (ps.length > 1 ? (i / (ps.length - 1)) * (W - 2 * P) : (W - 2 * P) / 2);
-  const py = (g: number) => P + (1 - (g - gmin) / Math.max(1, gmax - gmin)) * (H - 2 * P);
-  // intake, inside the course window
-  const a0 = Date.parse(r.curso.from), a1 = Date.parse(r.curso.to);
-  const ax = (d: string) => P + ((Date.parse(d) - a0) / (a1 - a0)) * (W - 2 * P);
-  const amax = Math.max(1, ...ins.alim.map((a) => a.ofrecido ?? a.g));
-  return (
-    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-      {ps.length > 0 && (
-        <div class={card} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ key: 'peso' }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => tapHot(setHot, { key: 'peso' })} onFocus={() => { if (!touching()) setHot({ key: 'peso' }); }} onBlur={() => { if (!touching()) setHot(null); }}>
-          <span class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.weight')}</span>
-          <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label={s(locale, 'pm.r.weight')}>
-            <polyline points={ps.map((p, i) => `${px(i)},${py(p.g)}`).join(' ')} fill="none" stroke="#F2556F" stroke-width="2" />
-            {ps.map((p, i) => (
-              <g key={p.d}>
-                <circle cx={px(i)} cy={py(p.g)} r={hot?.key === 'peso' || hot?.date === p.d ? 4.5 : 3.2} fill="#F2556F" />
-                <text x={px(i)} y={py(p.g) - 7} font-size="10" text-anchor={i === 0 ? 'start' : i === ps.length - 1 ? 'end' : 'middle'} fill="var(--wq-ink)">{p.g}</text>
-                <text x={px(i)} y={H - 1} font-size="9" text-anchor={i === 0 ? 'start' : i === ps.length - 1 ? 'end' : 'middle'} fill="var(--wq-ink-muted)">{dShort(p.d)}</text>
-              </g>
-            ))}
-          </svg>
-          {ins.drop && <p class="m-0 text-[12.5px] leading-snug text-[var(--wq-ink)]">{s(locale, 'pm.r.weightInsight').replace('{g}', String(ins.drop.g)).replace('{pct}', String(Math.abs(ins.drop.pct)))
-            .replace('{from}', dShort(ins.drop.from.d)).replace('{to}', dShort(ins.drop.to.d))}{ps.every((p) => p.lt == null || Math.abs(p.lt - (ps[ps.length - 1].lt ?? p.lt)) < 1) ? ` ${s(locale, 'pm.r.sameLength')}` : ''}</p>}
-          {goto('biometria')}
-        </div>
-      )}
-      {ins.alim.length > 0 && (
-        <div class={card} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ key: 'alim' }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => tapHot(setHot, { key: 'alim' })} onFocus={() => { if (!touching()) setHot({ key: 'alim' }); }} onBlur={() => { if (!touching()) setHot(null); }}>
-          <span class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.food')}</span>
-          <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label={s(locale, 'pm.r.food')}>
-            {ins.gap && <rect x={ax(ins.gap.from) + 4} y={P} width={ax(ins.gap.to) - ax(ins.gap.from) - 8} height={H - 2 * P - 8} fill="#B98DF0" opacity="0.12" rx={4} />}
-            {ins.gap && <text x={(ax(ins.gap.from) + ax(ins.gap.to)) / 2} y={H / 2 - 4} font-size="10" text-anchor="middle" fill="#B98DF0">{s(locale, 'pm.r.noFood').replace('{n}', String(ins.gap.n))}</text>}
-            {ins.alim.map((a) => {
-              const hOff = ((a.ofrecido ?? a.g) / amax) * (H - 2 * P - 12), hEat = (a.g / amax) * (H - 2 * P - 12);
-              return (
-                <g key={a.d}>
-                  <rect x={ax(a.d) - 3.5} y={H - P - 10 - hOff} width={7} height={hOff} rx={1.5} fill="#B98DF0" opacity="0.3" />
-                  <rect x={ax(a.d) - 3.5} y={H - P - 10 - hEat} width={7} height={hEat} rx={1.5} fill="#B98DF0" />
-                </g>
-              );
-            })}
-            <text x={P} y={H - 1} font-size="9" fill="var(--wq-ink-muted)">{dShort(r.curso.from)}</text>
-            <text x={W - P} y={H - 1} font-size="9" text-anchor="end" fill="var(--wq-ink-muted)">{dShort(r.curso.to)}</text>
-          </svg>
-          <p class="m-0 text-[12.5px] leading-snug text-[var(--wq-ink)]">
-            {ins.gap ? s(locale, 'pm.r.foodInsight').replace('{n}', String(ins.gap.n)).replace('{from}', dShort(ins.gap.from)).replace('{to}', dShort(ins.gap.to)) : s(locale, 'pm.r.foodNoGap')}
-          </p>
-          {goto('alimentacion')}
-        </div>
-      )}
-    </div>
-  );
-}
-
 const H3 = 'm-0 font-display text-base font-bold text-[var(--wq-ink)] sm:text-[15px]';
 
-export default function Relato({ r, alias, locale, onTab }: { r: PmRelato; alias: string; locale: Locale; onTab?: (t: 'biometria' | 'alimentacion') => void }) {
-  const [hot, setHot] = useState<Hot>(null);
+export default function Relato({ r, alias, locale }: { r: PmRelato; alias: string; locale: Locale }) {
+  // Hover previews a selection; a click or a tap pins it until the same thing is chosen again.
+  const [hov, setHot] = useState<Hot>(null);
+  const [pin, setPin] = useState<Hot>(null);
+  const hot = hov ?? pin;
+  const curso = useRef<HTMLElement>(null);
+  const pinHot = (h: NonNullable<Hot>, reveal = false) => {
+    const same = JSON.stringify(pin) === JSON.stringify(h);
+    setPin(same ? null : h);
+    if (!same && reveal && curso.current) {
+      const r0 = curso.current.getBoundingClientRect();
+      if (r0.top < 60 || r0.bottom > window.innerHeight) curso.current.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'center' });
+    }
+  };
   const [open, setOpen] = useState<number | null>(null);
   const ev = [...r.evidencia].sort((a, b) => `${a.date} ${a.time ?? ''}`.localeCompare(`${b.date} ${b.time ?? ''}`));
   const statKey: ('lat' | 'gap' | 'vid')[] = ['lat', 'gap', 'vid'];
   const ins = insights(r);
   const stats: (PmRelato['stats'][number] & { key: NonNullable<Hot>['key'] })[] = r.stats.map((st, i) => ({ ...st, key: statKey[i] }));
-  if (ins.drop) stats.splice(1, 0, { n: `${ins.drop.pct}`, u: '%', tone: 'rose', key: 'peso',
+  if (ins.drop) stats.splice(1, 0, { n: `−${Math.abs(ins.drop.pct)}`, u: '%', tone: 'rose', key: 'peso',
     l: s(locale, 'pm.r.weightStat').replace('{a}', String(ins.drop.from.g)).replace('{b}', String(ins.drop.to.g)).replace('{d}', dShort(ins.drop.to.d)) });
   return (
     <div class="flex flex-col gap-5">
@@ -374,9 +353,10 @@ export default function Relato({ r, alias, locale, onTab }: { r: PmRelato; alias
       <section class="flex flex-col gap-2">
         <div class={`grid gap-2 ${stats.length === 4 ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-3'}`}>
           {stats.map((st, i) => (
-            <div key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ key: st.key }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => tapHot(setHot, { key: st.key })}
+            <div key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ key: st.key }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => pinHot({ key: st.key }, true)}
               onFocus={() => { if (!touching()) setHot({ key: st.key }); }} onBlur={() => { if (!touching()) setHot(null); }}
-              class="cursor-default rounded-2xl border border-transparent bg-[var(--wq-row-bg)] px-2.5 pb-2 pt-2.5 outline-none transition duration-200 hover:-translate-y-0.5 hover:border-[var(--wq-divider)] focus-visible:border-[#2EC4C0]">
+              role="button" aria-pressed={pin?.key === st.key}
+              class={`cursor-pointer rounded-2xl border bg-[var(--wq-row-bg)] px-2.5 pb-2 pt-2.5 outline-none transition duration-200 [@media(hover:hover)]:hover:-translate-y-0.5 focus-visible:border-[#2EC4C0] ${pin?.key === st.key ? 'border-current' : hot?.key === st.key ? 'border-[var(--wq-divider)]' : 'border-transparent'}`} style={{ color: TONE[st.tone] }}>
               <div class="font-display text-[28px] font-extrabold leading-none sm:text-[24px]" style={{ color: TONE[st.tone] }}>
                 {st.n}{st.u && <span class="ml-0.5 text-[12px] font-bold">{st.u}</span>}
               </div>
@@ -387,14 +367,9 @@ export default function Relato({ r, alias, locale, onTab }: { r: PmRelato; alias
         {r.stats_note && <p class="m-0 text-[11px] leading-snug text-[var(--wq-ink-muted)]">{r.stats_note}</p>}
       </section>
 
-      <section class="flex flex-col gap-2">
+      <section ref={curso} class="flex flex-col gap-2">
         <h3 class={H3}>{s(locale, 'pm.r.curso')}</h3>
         <Curso r={r} name={r.nombre ?? alias} hot={hot} setHot={setHot} locale={locale} />
-      </section>
-
-      <section class="flex flex-col gap-2">
-        <h3 class={H3}>{s(locale, 'pm.r.data')} <span class="font-sans text-xs font-medium text-[var(--wq-ink-muted)]">· {s(locale, 'pm.r.dataSub')}</span></h3>
-        <DataCards r={r} hot={hot} setHot={setHot} onTab={onTab} locale={locale} />
       </section>
 
       {ev.length > 0 && (
@@ -406,7 +381,7 @@ export default function Relato({ r, alias, locale, onTab }: { r: PmRelato; alias
             {ev.map((e, i) => <EvidenceCard key={e.media} e={e} locale={locale} onOpen={() => setOpen(i)}
               lit={hot?.key === 'vid' || (!!hot?.date && inRange(e.date, hot.date, hot.to))} />)}
           </div>
-          <p class="m-0 text-[11px] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.evidenceHint').replace('{who}', ev[0].verifies)}</p>
+          <p class="m-0 text-[11px] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.evidenceHint')}</p>
           {open != null && <Lightbox list={ev} index={open} setIndex={setOpen} locale={locale} />}
         </section>
       )}
@@ -417,7 +392,7 @@ export default function Relato({ r, alias, locale, onTab }: { r: PmRelato; alias
           {r.momentos.map((m, i) => {
             const on = !!hot?.date && (inRange(hot.date, m.d, m.d2) || (!!hot.to && inRange(m.d, hot.date, hot.to)));
             return (
-              <li key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ date: m.d, to: m.d2 }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => tapHot(setHot, { date: m.d, to: m.d2 })}
+              <li key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ date: m.d, to: m.d2 }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => pinHot({ date: m.d, to: m.d2 })}
                 onFocus={() => { if (!touching()) setHot({ date: m.d, to: m.d2 }); }} onBlur={() => { if (!touching()) setHot(null); }}
                 class={`-mx-2 grid gap-x-3 rounded-lg border-b border-dashed border-[var(--wq-divider)] px-2 py-2 outline-none transition-colors hover:bg-[var(--wq-row-bg)] ${on ? 'bg-[var(--wq-row-bg)]' : ''}`}
                 style={{ gridTemplateColumns: '58px 1fr' }}>
@@ -443,7 +418,7 @@ export default function Relato({ r, alias, locale, onTab }: { r: PmRelato; alias
           <h3 class={H3}>{s(locale, 'pm.r.simTitle')}</h3>
           <ul class="m-0 flex list-none flex-col gap-1 p-0">
             {r.simulacion.reglas.map((g, i) => (
-              <li key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ date: g.d }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => tapHot(setHot, { date: g.d })} onFocus={() => { if (!touching()) setHot({ date: g.d }); }} onBlur={() => { if (!touching()) setHot(null); }}
+              <li key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ date: g.d }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => pinHot({ date: g.d })} onFocus={() => { if (!touching()) setHot({ date: g.d }); }} onBlur={() => { if (!touching()) setHot(null); }}
                 class="-mx-1.5 grid gap-x-2.5 rounded-lg px-1.5 py-1 text-[13px] leading-snug outline-none transition-colors hover:bg-[var(--wq-surface)]" style={{ gridTemplateColumns: '50px 1fr' }}>
                 <span class="font-mono text-[11px] font-semibold text-[#2EC4C0]">{dShort(g.d)}</span>
                 <span class="text-[var(--wq-ink)]">{g.text}<span class="block text-[11.5px] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.real')}: {g.real}</span></span>
