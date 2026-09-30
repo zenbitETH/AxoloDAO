@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-25",
- "brain_commit": "e3525fe",
+ "generated": "2026-09-30",
+ "brain_commit": "3812621",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -354,23 +354,24 @@
    "alias": "Panchita",
    "species": "A. andersoni",
    "death": {
-    "date": "2026-07-08",
-    "workbook_date": null,
-    "date_source": "libro",
-    "conf": "en_revision",
+    "date": "2026-07-07",
+    "workbook_date": "2026-07-08",
+    "date_source": "laboratorio",
+    "conf": "exact",
     "euthanasia": false,
-    "note": "fecha en revisión contra un documento de laboratorio reservado",
+    "note": null,
     "alive_record_after": null
    },
-   "cause": null,
-   "cause_source": null,
+   "cause": "hepatitis crónica, asociable a infección bacteriana ascendente, septicemia o intoxicación (amoníaco o nitritos); el hidroceloma podría relacionarse con el daño hepático; lesiones renales sugieren daño glomerular",
+   "cause_source": "necropsia",
    "necropsy": {
-    "performed": null,
-    "status": "resultado reservado hasta la autorización del laboratorio"
+    "performed": "2026-07-08",
+    "result": "2026-08-04",
+    "lab_case": null
    },
-   "body": "sin registro",
-   "body_conservation": null,
-   "lab_reserved": true,
+   "body": "conservado en agua refrigerada y enviado a necropsia; destino posterior sin registro",
+   "body_conservation": "mantenido en agua con refrigeración hasta la necropsia; estado de conservación regular, autólisis",
+   "lab_reserved": false,
    "grade": "oportuna",
    "grade_60": "tardía",
    "grade_note": null,
@@ -1882,6 +1883,28 @@
     },
     {
      "date": "2026-06-30",
+     "time": "16:00",
+     "lane": 3,
+     "kind": "preventive_lab_test",
+     "label": "Estudio de laboratorio",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "evaluación de efusión celómica (citología): trasudado pobre en proteínas (proteínas totales 18 g/L, A/G 0.38); Gram sin agentes infecciosos · desequilibrio de presión hidrostática u oncótica: fallo renal, insuficienci…",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-06-30",
+     "time": "16:00",
+     "lane": 2,
+     "kind": "signal_lab_history",
+     "label": "Historia clínica (laboratorio)",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "anamnesis del laboratorio: anorexia de una semana; líquido libre verde-amarillo en abdomen; micosis previa e infección bacteriana; glaucoma y catarata de posible origen infeccioso en ojo derecho; queratitis en ojo izq…",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-06-30",
      "time": "19:03",
      "lane": 1,
      "kind": "signal_param_oor",
@@ -2854,6 +2877,17 @@
     },
     {
      "date": "2026-07-07",
+     "time": "14:30",
+     "lane": "integrity",
+     "kind": "death_date_conflict",
+     "label": "Fecha de muerte en conflicto",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "el documento de laboratorio fecha la muerte el 2026-07-07; la hoja Bajas dice 2026-07-08 o 2026-08-07",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-07-07",
      "time": "15:47",
      "lane": 2,
      "kind": "signal_chat_health",
@@ -2881,6 +2915,108 @@
      "source": "chat",
      "grade": "A",
      "text": "Resultados incompletos; el vet contactará a su patólogo; cuadro sistémico complicado"
+    },
+    {
+     "date": "2026-07-08",
+     "time": null,
+     "lane": 5,
+     "kind": "death",
+     "label": "Muerte",
+     "source": "libro",
+     "grade": "B",
+     "text": "· necropsia: sin registro · documentación: Citologia"
+    },
+    {
+     "date": "2026-07-08",
+     "time": "14:30",
+     "lane": 5,
+     "kind": "necropsy",
+     "label": "Necropsia",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "necropsia · mantenido en agua con refrigeración hasta la necropsia; estado de conservación regular, autólisis",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-07-09",
+     "time": "07:35",
+     "lane": 5,
+     "kind": "chat_death",
+     "label": "Aviso de muerte",
+     "source": "chat",
+     "grade": "A",
+     "text": "Operación comunica que Panchita no lo logró"
+    },
+    {
+     "date": "2026-07-09",
+     "time": "07:38",
+     "lane": 5,
+     "kind": "chat_death",
+     "label": "Aviso de muerte",
+     "source": "chat",
+     "grade": "A",
+     "text": "Tras comportamiento inusual, descompensación o falla orgánica; llegó al vet con poca respuesta"
+    },
+    {
+     "date": "2026-07-09",
+     "time": "07:40",
+     "lane": 5,
+     "kind": "chat_necropsy",
+     "label": "Necropsia (aviso)",
+     "source": "chat",
+     "grade": "A",
+     "text": "Queda realizar la necropsia a recomendación del vet, no obligada; operación la considera útil"
+    },
+    {
+     "date": "2026-08-04",
+     "time": null,
+     "lane": 5,
+     "kind": "necropsy_result",
+     "label": "Resultado de necropsia",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "resultado: hepatitis crónica, asociable a infección bacteriana ascendente, septicemia o intoxicación (amoníaco o nitritos); el hidroceloma podría relacionarse con el daño hepático; lesiones renales sugieren daño glome…",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-08-04",
+     "time": "11:55",
+     "lane": 5,
+     "kind": "chat_necropsy",
+     "label": "Necropsia (aviso)",
+     "source": "chat",
+     "grade": "A",
+     "text": "Curaduría comparte el resultado de la necropsia (el chat no nombra al ejemplar; necropsias.json lo asigna a Panchita)"
+    },
+    {
+     "date": "2026-08-04",
+     "time": "12:00",
+     "lane": 5,
+     "kind": "chat_necropsy",
+     "label": "Necropsia (aviso)",
+     "source": "chat",
+     "grade": "A",
+     "text": "El fundador: no estaba grávida, tenía los órganos hinchados; curaduría: al morir sí, antes era gravidez (líneas 2521–2524)"
+    },
+    {
+     "date": "2026-08-04",
+     "time": "12:01",
+     "lane": 5,
+     "kind": "chat_necropsy",
+     "label": "Necropsia (aviso)",
+     "source": "chat",
+     "grade": "A",
+     "text": "El fundador: la hepatitis era crónica"
+    },
+    {
+     "date": "2026-08-04",
+     "time": "12:12",
+     "lane": 5,
+     "kind": "chat_necropsy",
+     "label": "Necropsia (aviso)",
+     "source": "chat",
+     "grade": "A",
+     "text": "El fundador pregunta si la carga de sales pudo acelerar el desgaste de hígado y riñones"
     }
    ]
   },
@@ -2888,23 +3024,24 @@
    "alias": "Goldy",
    "species": "A. mexicanum",
    "death": {
-    "date": "2026-06-05",
-    "workbook_date": null,
-    "date_source": "libro",
-    "conf": "en_revision",
-    "euthanasia": false,
-    "note": "fecha en revisión contra un documento de laboratorio reservado",
-    "alive_record_after": null
+    "date": "2026-06-10",
+    "workbook_date": "2026-06-05",
+    "date_source": "laboratorio",
+    "conf": "window",
+    "euthanasia": true,
+    "note": null,
+    "alive_record_after": "2026-06-11"
    },
-   "cause": "Parasitos e infeccion bacteriana",
-   "cause_source": "libro",
+   "cause": "infección bacteriana sistémica compatible con septicemia (diferenciales Aeromonas spp., Pedobacter sp.) y enteritis parasitaria por nematodos (diferencial principal Strongyloides spp.)",
+   "cause_source": "necropsia",
    "necropsy": {
-    "performed": null,
-    "status": "resultado reservado hasta la autorización del laboratorio"
+    "performed": "2026-06-10",
+    "result": "2026-07-10",
+    "lab_case": null
    },
-   "body": "sin registro",
-   "body_conservation": null,
-   "lab_reserved": true,
+   "body": "necropsia en laboratorio; destino posterior sin registro",
+   "body_conservation": "buen estado de conservación",
+   "lab_reserved": false,
    "grade": "tardía",
    "grade_60": "tardía",
    "grade_note": null,
@@ -3787,6 +3924,39 @@
     },
     {
      "date": "2026-06-10",
+     "time": "15:50",
+     "lane": "integrity",
+     "kind": "death_date_conflict",
+     "label": "Fecha de muerte en conflicto",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "el documento de laboratorio fecha la muerte el 2026-06-10 (eutanasia); la hoja Bajas dice 2026-06-05 o 2026-05-06",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-06-10",
+     "time": "15:50",
+     "lane": 5,
+     "kind": "euthanasia",
+     "label": "Eutanasia",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "eutanasia (hallazgo de necropsia); no aparece en ninguna hoja del libro",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-06-10",
+     "time": "15:50",
+     "lane": 5,
+     "kind": "necropsy",
+     "label": "Necropsia",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "necropsia · buen estado de conservación",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-06-10",
      "time": "19:20",
      "lane": 1,
      "kind": "signal_param_oor",
@@ -3796,6 +3966,27 @@
      "text": "AM: pH 8.1 (rango 7.4–7.8) · cond 1550 (rango 700–1100)",
      "critical": false,
      "chronic_only": false
+    },
+    {
+     "date": "2026-06-11",
+     "time": "07:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Comportamiento normal · Modificación/Adición de equipo · Moviemiento de ejemplar"
+    },
+    {
+     "date": "2026-07-10",
+     "time": null,
+     "lane": 5,
+     "kind": "necropsy_result",
+     "label": "Resultado de necropsia",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "resultado: infección bacteriana sistémica compatible con septicemia (diferenciales Aeromonas spp., Pedobacter sp.) y enteritis parasitaria por nematodos (diferencial principal Strongyloides spp.);",
+     "role": "Laboratorio"
     }
    ]
   },
@@ -6033,7 +6224,7 @@
    "episode": 13,
    "date": "2026-06-10",
    "claim": "Goldy se está quedando atrás en crecimiento (vivo)",
-   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "contrast": "necropsia: eutanasia y necropsia el 2026-06-10 15:50, el mismo día",
    "speaker": "Vocería del museo",
    "confidence": "alta",
    "verified_on_video": true,
@@ -6044,7 +6235,7 @@
    "episode": 14,
    "date": "2026-06-17",
    "claim": "Golden/Goldy está mejorando bastante; si se recupera tendrá que ir a otras instalaciones",
-   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "contrast": "necropsia: eutanasia el 2026-06-10, siete días antes",
    "speaker": "Vocería del museo",
    "confidence": "alta",
    "verified_on_video": true,
@@ -6055,7 +6246,7 @@
    "episode": 18,
    "date": "2026-07-14",
    "claim": "Goldy falleció un poco más repentinamente que Panchita, con el sistema inmune bajo",
-   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "contrast": "necropsia: eutanasia el 06-10, condición corporal 3/5, resultado emitido el 07-10; el guion y el sitio de Zenbit (6f0ca8c, b651d0b) ya decían caquexia y 07-13",
    "speaker": "Vocería del museo",
    "confidence": "alta",
    "verified_on_video": true,
@@ -6088,7 +6279,7 @@
    "episode": 12,
    "date": "2026-06-03",
    "claim": "Goldy come, no flota extraño, no es motivo para pensar que esté enfermo",
-   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "contrast": "Bitácora 2026-05-28: Goldy nada sin control, permanece flotando, pasa a topper de cuarentena; eutanasia y necropsia el 2026-06-10",
    "speaker": "Vocería del museo",
    "confidence": "alta",
    "verified_on_video": true,
@@ -6187,7 +6378,7 @@
    "episode": 18,
    "date": "2026-07-14",
    "claim": "Panchita murió de una infección en varios órganos",
-   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "contrast": "necropsia: hepatitis crónica; resultado del 08-04, después del episodio",
    "speaker": "Sin verificar",
    "confidence": "—",
    "verified_on_video": false,
