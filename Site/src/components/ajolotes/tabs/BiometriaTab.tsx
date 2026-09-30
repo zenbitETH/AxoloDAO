@@ -1,11 +1,13 @@
 import type { HistorialEntry, Locale } from '../types';
 import { s } from '../strings';
 import LineChart from '../charts/LineChart';
+import MemorialNote, { dMem, weightDrop } from './MemorialNote';
 
 interface Props {
   hist: HistorialEntry[];
   accent: string;
   locale: Locale;
+  death?: string | null;   // set on memorial profiles
 }
 
 const fmt = (v: unknown, d = 1): string => {
@@ -14,7 +16,7 @@ const fmt = (v: unknown, d = 1): string => {
   return String(v);
 };
 
-export default function BiometriaTab({ hist, accent, locale }: Props) {
+export default function BiometriaTab({ hist, accent, locale, death }: Props) {
   const peso = hist.filter((h) => h.peso != null).map((h) => ({ date: h.fecha, value: +(h.peso as number) }));
   const lt = hist.filter((h) => h.lt != null).map((h) => ({ date: h.fecha, value: +(h.lt as number) }));
   const lhc = hist.filter((h) => h.lhc != null).map((h) => ({ date: h.fecha, value: +(h.lhc as number) }));
@@ -22,8 +24,13 @@ export default function BiometriaTab({ hist, accent, locale }: Props) {
   const measurementCount = (n: number) =>
     `${n} ${n === 1 ? s(locale, 'biometria.measurement.one') : s(locale, 'biometria.measurement.many')}`;
 
+  const drop = death !== undefined ? weightDrop(hist as any) : null;
   return (
     <div>
+      {death !== undefined && (
+        <MemorialNote death={death} locale={locale} insight={drop ? s(locale, 'memorial.bio.drop').replace('{g}', String(drop.g)).replace('{pct}', String(drop.pct))
+          .replace('{from}', dMem(drop.from.d)).replace('{to}', dMem(drop.to.d)) + (drop.sameLength ? ` ${s(locale, 'pm.r.sameLength')}` : '') : null} />
+      )}
       <div class="mb-3.5 grid grid-cols-1 gap-3.5 md:grid-cols-2">
         <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
           <header class="mb-3 flex items-center justify-between gap-3">

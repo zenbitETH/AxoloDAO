@@ -203,7 +203,7 @@ function Fact({ label, value, tone }: { label: string; value: string; tone?: 'ga
   );
 }
 
-export default function PostmortemTab({ alias, locale }: { alias: string; locale: Locale }) {
+export default function PostmortemTab({ alias, locale, onTab }: { alias: string; locale: Locale; onTab?: (t: 'biometria' | 'alimentacion') => void }) {
   const [data, setData] = useState<PmData | null>(null);
   const [error, setError] = useState(false);
   const [win, setWin] = useState<'primary' | 'sensitivity'>('sensitivity');
@@ -415,7 +415,7 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
   if (sp.relato) {
     return (
       <div class="flex flex-col gap-5">
-        <Relato r={sp.relato} alias={sp.alias} locale={locale} />
+        <Relato r={sp.relato} alias={sp.alias} locale={locale} onTab={onTab} />
         {factsSec}
         {groupSec}
         <details class="rounded-2xl border border-[var(--wq-divider)] p-3">

@@ -18,6 +18,8 @@ interface Props {
   locale: Locale;
   water: Measurement[];
   waterPath: string;
+  memorial?: boolean;
+  lastMeal?: { fecha: string; g: number } | null;
 }
 
 const fmt = (v: unknown, d = 2): string => {
@@ -82,6 +84,8 @@ export default function ResumenTab({
   locale,
   water,
   waterPath,
+  memorial = false,
+  lastMeal = null,
 }: Props) {
   const bioDate = latestBiometricDate(hist);
 
@@ -100,7 +104,7 @@ export default function ResumenTab({
       {/* Estado clínico */}
       <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
         <h3 class="m-0 mb-3 font-display text-base font-bold tracking-tight text-[var(--wq-ink)]">
-          {s(locale, 'resumen.estado')}
+          {s(locale, memorial ? 'resumen.estado.memorial' : 'resumen.estado')}
         </h3>
         <div class={`grid gap-3 ${isLarva ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-3'}`}>
           <div class="flex flex-col gap-1.5">
@@ -111,7 +115,7 @@ export default function ResumenTab({
               tone={conduc.tone}
               label={
                 conduc.tone === 'muted'
-                  ? s(locale, 'resumen.estados.sinAlertas')
+                  ? s(locale, memorial ? 'resumen.estados.sinAlertas.memorial' : 'resumen.estados.sinAlertas')
                   : conduc.label.toLowerCase()
               }
             />
@@ -124,7 +128,7 @@ export default function ResumenTab({
               tone={respAlim.tone}
               label={
                 respAlim.tone === 'muted'
-                  ? s(locale, 'resumen.estados.sinDatos')
+                  ? s(locale, memorial ? 'resumen.estados.sinDatos.memorial' : 'resumen.estados.sinDatos')
                   : respAlim.label.toLowerCase()
               }
             />
@@ -132,14 +136,15 @@ export default function ResumenTab({
           {!isLarva && (
             <div class="flex flex-col gap-1.5">
               <span class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
-                {s(locale, 'resumen.consumo.title')}
+                {s(locale, memorial ? 'resumen.consumo.title.memorial' : 'resumen.consumo.title')}
               </span>
               <span
                 class="font-display text-[1.05rem] font-bold leading-none tabular-nums"
                 style={{ color: accent }}
               >
-                {fmt(ej.ultimoConsumo, 2)}
+                {fmt(ej.ultimoConsumo ?? lastMeal?.g ?? null, 2)}
                 <small class="ml-0.5 text-[10px] font-normal opacity-65">g</small>
+                {memorial && lastMeal && ej.ultimoConsumo == null && <small class="ml-1.5 font-body text-[11px] font-normal text-[var(--wq-ink-muted)]">{lastMeal.fecha}</small>}
               </span>
             </div>
           )}
@@ -160,7 +165,7 @@ export default function ResumenTab({
         <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
           <header class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
             <h3 class="m-0 font-display text-base font-bold tracking-tight text-[var(--wq-ink)]">
-              {s(locale, 'resumen.bio.title')}
+              {s(locale, memorial ? 'resumen.bio.title.memorial' : 'resumen.bio.title')}
             </h3>
             {bioDate && (
               <span class="text-xs text-[var(--wq-ink-muted)]">

@@ -333,7 +333,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
 
         {/* Body */}
         <div class="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6">
-          {tab === 'postmortem' && <PostmortemTab alias={ej.alias} locale={locale} />}
+          {tab === 'postmortem' && <PostmortemTab alias={ej.alias} locale={locale} onTab={setTab} />}
           {tab === 'resumen' && (
             <ResumenTab
               ej={ej}
@@ -346,9 +346,11 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
               locale={locale}
               water={water}
               waterPath={waterPath}
+              memorial={memorial}
+              lastMeal={(() => { const l = [...alim].filter((a) => a.fecha).sort((a, b) => String(a.fecha).localeCompare(String(b.fecha))).pop(); return l ? { fecha: String(l.fecha), g: +(l.consumo ?? 0) } : null; })()}
             />
           )}
-          {tab === 'biometria' && <BiometriaTab hist={hist} accent={ac} locale={locale} />}
+          {tab === 'biometria' && <BiometriaTab hist={hist} accent={ac} locale={locale} death={memorial ? baja?.fecha ?? null : undefined} />}
           {tab === 'eventos' && (
             <EventosTab
               alias={ej.alias}
@@ -358,10 +360,11 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
               baja={baja}
               accent={ac}
               locale={locale}
+              memorial={memorial}
             />
           )}
           {tab === 'alimentacion' && (
-            <AlimentacionTab ej={ej} alim={alim} plan={plan} accent={ac} locale={locale} />
+            <AlimentacionTab ej={ej} alim={alim} plan={plan} accent={ac} locale={locale} death={memorial ? baja?.fecha ?? null : undefined} />
           )}
         </div>
 

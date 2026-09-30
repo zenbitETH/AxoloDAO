@@ -34,6 +34,7 @@ export interface PmRelato {
   simulacion?: { reglas: { d: string; text: string; real: string }[]; con: { n: string; l: string }; sin: { n: string; l: string } };
   publico?: { fecha: string; fuente: string; url: string; cita: string; registro: string };
   evidencia: PmEvidence[];
+  datos?: { peso: { d: string; g: number; lt: number | null }[]; alim: { d: string; g: number; ofrecido: number | null }[] };
 }
 
 const TONE: Record<Tone, string> = {
@@ -45,8 +46,30 @@ const dLong = (d: string) => `${+d.slice(8, 10)} ${MES[+d.slice(5, 7) - 1]} ${d.
 const hrs = (d: string, t?: string | null) => Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10), +(t?.slice(0, 2) ?? 12), +(t?.slice(3, 5) ?? 0)) / 36e5;
 const inRange = (d: string, a: string, b?: string) => d >= a && d <= (b ?? a);
 
+// Touch screens emulate mouseenter right before click. Hover handlers stand down for a
+// moment after any touch, and every hover target also answers a tap (tap again to close).
+let lastTouch = 0;
+if (typeof window !== 'undefined') window.addEventListener('touchstart', () => { lastTouch = Date.now(); }, { capture: true, passive: true });
+const touching = () => Date.now() - lastTouch < 1000;
+const tapHot = (set: (h: Hot | ((c: Hot) => Hot)) => void, h: NonNullable<Hot>) => set((cur: Hot) => (JSON.stringify(cur) === JSON.stringify(h) ? null : h));
+
 /** What the pointer is on. A date lights up marks and moments; the other keys are stats. */
-type Hot = { date?: string; to?: string; key?: 'lat' | 'gap' | 'vid' } | null;
+type Hot = { date?: string; to?: string; key?: 'lat' | 'gap' | 'vid' | 'peso' | 'alim' } | null;
+
+const days = (a: string, b: string) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
+
+/** Insights the detail tabs hold, computed here so the postmortem shows them first. */
+export function insights(r: PmRelato) {
+  const peso = r.datos?.peso ?? [];
+  const last = peso[peso.length - 1];
+  const peak = peso.reduce<typeof last | undefined>((m, p) => (!m || p.g > m.g ? p : m), undefined);
+  const drop = last && peak && peak.d < last.d && last.g < peak.g
+    ? { from: peak, to: last, pct: Math.round(((last.g - peak.g) / peak.g) * 100), g: +(peak.g - last.g).toFixed(1) } : null;
+  const alim = (r.datos?.alim ?? []).filter((a) => a.d >= r.curso.from && a.d <= r.curso.to);
+  let gap: { from: string; to: string; n: number } | null = null;
+  for (let i = 1; i < alim.length; i++) { const n = days(alim[i - 1].d, alim[i].d); if (n >= 5 && (!gap || n > gap.n)) gap = { from: alim[i - 1].d, to: alim[i].d, n }; }
+  return { drop, gap, alim, peso };
+}
 
 /** **bold** in curated prose, and nothing else: no HTML ever comes from the data. */
 function Rich({ text }: { text: string }) {
@@ -54,9 +77,9 @@ function Rich({ text }: { text: string }) {
   return <>{parts.map((p, i) => (i % 2 ? <strong key={i} class="text-[var(--wq-ink)]">{p}</strong> : p))}</>;
 }
 
-interface Mark { id: string; x: number; y: number; r: number; shape: 'dot' | 'ring' | 'sq'; fill: string; date: string; time?: string | null; title: string; sub?: string; dim?: boolean }
+interface Mark { id: string; x: number; y: number; r: number; shape: 'dot' | 'ring' | 'sq' | 'dia'; fill: string; date: string; time?: string | null; title: string; sub?: string; dim?: boolean }
 
-function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; hot: Hot; setHot: (h: Hot) => void; locale: Locale }) {
+function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; hot: Hot; setHot: (h: Hot | ((c: Hot) => Hot)) => void; locale: Locale }) {
   const c = r.curso;
   // The SVG is drawn at the container's real width (1 unit = 1 CSS px), so labels keep
   // their size on a phone and on a desktop instead of scaling with the drawing.
@@ -86,11 +109,19 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
     ...c.respuestas.map(([d, t, k]): Mark => ({ id: `r${d}${t}`, x: x(d, t), y: ROWS.resp, r: 5.5, shape: k === 'no_ocurrio' ? 'ring' : 'dot', fill: k === 'no_ocurrio' ? 'var(--wq-ink-muted)' : '#34C08A', date: d, time: t,
       title: momentOn(d)?.title ?? s(locale, 'pm.r.lgResponse'), sub: momentOn(d)?.text })),
   ];
-  const lit = (m: Mark) => (hot?.date ? inRange(m.date, hot.date, hot.to) : hot?.key === 'vid' ? m.shape === 'sq' : false);
+  const ins = insights(r);
+  ins.peso.filter((p) => p.d >= c.from && p.d <= c.to).forEach((p) => {
+    const prev = ins.peso.filter((q) => q.d < p.d).pop();
+    marks.push({ id: `p${p.d}`, x: x(p.d, '12:00'), y: ROWS.ella, r: 5, shape: 'dia', fill: '#F2556F', date: p.d, title: `${s(locale, 'pm.r.weighIn')}: ${p.g} g`,
+      sub: prev ? `${p.g - prev.g > 0 ? '+' : ''}${+(p.g - prev.g).toFixed(1)} g ${s(locale, 'pm.r.since')} ${dShort(prev.d)}${ins.drop ? ` · ${ins.drop.pct} % ${s(locale, 'pm.r.since')} ${dShort(ins.drop.from.d)}` : ''}` : undefined });
+  });
+  ins.alim.forEach((a) => marks.push({ id: `a${a.d}`, x: x(a.d, '12:00'), y: ROWS.ella - 11, r: 2.4, shape: 'dot', fill: '#B98DF0', date: a.d,
+    title: `${s(locale, 'pm.r.fed')}: ${+a.g.toFixed(2)} g`, sub: a.ofrecido != null ? `${s(locale, 'pm.r.offered')} ${+a.ofrecido.toFixed(2)} g` : undefined }));
+  const lit = (m: Mark) => (hot?.date ? inRange(m.date, hot.date, hot.to) : hot?.key === 'vid' ? m.shape === 'sq' : hot?.key === 'peso' ? m.shape === 'dia' : hot?.key === 'alim' ? m.id.startsWith('a') : false);
   const lat = c.latencia;
   const show = (m: Mark | null) => { setTip(m); setHot(m ? { date: m.date } : null); };
   return (
-    <div class="relative rounded-2xl bg-[var(--wq-row-bg)] px-2 pb-1.5 pt-2.5" onMouseLeave={() => show(null)}>
+    <div class="relative rounded-2xl bg-[var(--wq-row-bg)] px-2 pb-1.5 pt-2.5" onMouseLeave={() => { if (!touching()) show(null); }}>
       <div ref={box}>
       <svg viewBox={`0 0 ${VW} 192`} width={VW} height={192} role="img" aria-label={s(locale, 'pm.r.cursoAria')} style={{ width: '100%', height: 'auto', display: 'block' }}>
         <defs>
@@ -112,9 +143,9 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
         ))}
         {c.sin_lectura.map(([a, b]) => { const g = band(a, b); const on = hot?.key === 'gap' || (hot?.date && inRange(hot.date, a, b));
           return <rect key={a} x={g.x} y={ROWS.agua - 15} width={g.w} height={30} fill="url(#pm-hatch)" stroke={on ? '#F2556F' : 'none'} stroke-width="1.5" rx={3}
-            style={{ cursor: 'help' }} onMouseEnter={() => { setTip({ id: 'gap', x: g.x + g.w / 2, y: ROWS.agua, r: 0, shape: 'dot', fill: '#F2556F', date: a, title: s(locale, 'pm.r.lgNoReading'), sub: `${dShort(a)} – ${dShort(b)}` }); setHot({ date: a, to: b }); }} />; })}
+            style={{ cursor: 'pointer' }} onMouseEnter={() => { if (touching()) return; setTip({ id: 'gap', x: g.x + g.w / 2, y: ROWS.agua, r: 0, shape: 'dot', fill: '#F2556F', date: a, title: s(locale, 'pm.r.lgNoReading'), sub: `${dShort(a)} – ${dShort(b)}` }); setHot({ date: a, to: b }); }} onClick={() => { setTip({ id: 'gap', x: g.x + g.w / 2, y: ROWS.agua, r: 0, shape: 'dot', fill: '#F2556F', date: a, title: s(locale, 'pm.r.lgNoReading'), sub: `${dShort(a)} – ${dShort(b)}` }); setHot({ date: a, to: b }); }} />; })}
         {c.bomba.map(([a, b]) => { const g = band(a, b); return (
-          <g key={a} style={{ cursor: 'help' }} onMouseEnter={() => { setTip({ id: 'pump', x: g.x + g.w / 2, y: ROWS.agua - 15, r: 0, shape: 'dot', fill: '#F2556F', date: a, title: momentOn(a)?.title ?? s(locale, 'pm.r.pump'), sub: momentOn(a)?.text }); setHot({ date: a, to: b }); }}>
+          <g key={a} style={{ cursor: 'pointer' }} onMouseEnter={() => { if (touching()) return; setTip({ id: 'pump', x: g.x + g.w / 2, y: ROWS.agua - 15, r: 0, shape: 'dot', fill: '#F2556F', date: a, title: momentOn(a)?.title ?? s(locale, 'pm.r.pump'), sub: momentOn(a)?.text }); setHot({ date: a, to: b }); }} onClick={() => { setTip({ id: 'pump', x: g.x + g.w / 2, y: ROWS.agua - 15, r: 0, shape: 'dot', fill: '#F2556F', date: a, title: momentOn(a)?.title ?? s(locale, 'pm.r.pump'), sub: momentOn(a)?.text }); setHot({ date: a, to: b }); }}>
             <rect x={g.x} y={ROWS.agua - 22} width={g.w} height={11} fill="transparent" />
             <rect x={g.x} y={ROWS.agua - 15} width={g.w} height={4} rx={2} fill="#F2556F" opacity="0.85" />
             <text x={g.x + g.w / 2} y={ROWS.agua - 19} font-size="9" text-anchor="middle" fill="#F2556F">{s(locale, 'pm.r.pump')}</text>
@@ -124,6 +155,11 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
             <rect x={g.x} y={ROWS.ella + 13} width={g.w} height={3} rx={1.5} fill="var(--wq-ink-muted)" opacity="0.5" />
             <text x={g.x + g.w / 2} y={ROWS.ella + 27} font-size="9" text-anchor="middle" fill="var(--wq-ink-muted)">{s(locale, 'pm.r.noCamera')}</text>
           </g>); })}
+        {ins.gap && (() => { const g = band(ins.gap.from, ins.gap.to); const on = hot?.key === 'alim' || (hot?.date && inRange(hot.date, ins.gap.from, ins.gap.to)); return (
+          <g style={{ cursor: 'pointer' }} onMouseEnter={() => { if (touching()) return; setTip({ id: 'agap', x: g.x + g.w / 2, y: ROWS.ella - 11, r: 0, shape: 'dot', fill: '#B98DF0', date: ins.gap!.from, title: s(locale, 'pm.r.noFood').replace('{n}', String(ins.gap!.n)), sub: `${dShort(ins.gap!.from)} – ${dShort(ins.gap!.to)}` }); setHot({ date: ins.gap!.from, to: ins.gap!.to }); }} onClick={() => { setTip({ id: 'agap', x: g.x + g.w / 2, y: ROWS.ella - 11, r: 0, shape: 'dot', fill: '#B98DF0', date: ins.gap!.from, title: s(locale, 'pm.r.noFood').replace('{n}', String(ins.gap!.n)), sub: `${dShort(ins.gap!.from)} – ${dShort(ins.gap!.to)}` }); setHot({ date: ins.gap!.from, to: ins.gap!.to }); }}>
+            <rect x={g.x} y={ROWS.ella - 14} width={g.w} height={6} fill="transparent" />
+            <line x1={g.x} x2={g.x + g.w} y1={ROWS.ella - 11} y2={ROWS.ella - 11} stroke="#B98DF0" stroke-width={on ? 2.5 : 1.5} stroke-dasharray="3 3" />
+          </g>); })()}
         {lat && (() => { const a = x(...lat.from), b = x(...lat.to); const on = hot?.key === 'lat'; return (
           <g opacity={hot && !on ? 0.55 : 1}>
             <line x1={a} x2={b} y1={20} y2={20} stroke="#E0A23A" stroke-width={on ? 3 : 2} />
@@ -139,14 +175,16 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
           const on = lit(m) || tip?.id === m.id; const rr = on ? m.r + 2 : m.r;
           return (
             <g key={m.id}>
-              {m.shape === 'sq'
+              {m.shape === 'dia'
+                ? <rect x={m.x - rr * 0.8} y={m.y - rr * 0.8} width={rr * 1.6} height={rr * 1.6} fill={m.fill} stroke="var(--wq-surface)" stroke-width="1.2" transform={`rotate(45 ${m.x} ${m.y})`} />
+                : m.shape === 'sq'
                 ? <rect x={m.x - rr} y={m.y - rr} width={rr * 2} height={rr * 2} rx={2} fill={m.fill} stroke="var(--wq-surface)" stroke-width="1.2" />
                 : m.shape === 'ring'
                   ? <circle cx={m.x} cy={m.y} r={rr} fill="none" stroke={m.fill} stroke-width="1.8" />
                   : <circle cx={m.x} cy={m.y} r={rr} fill={m.fill} stroke={m.r > 3 ? 'var(--wq-surface)' : 'none'} stroke-width="1.5" />}
               {on && <circle cx={m.x} cy={m.y} r={rr + 4} fill="none" stroke={m.fill} stroke-width="1" opacity="0.5" />}
               <circle cx={m.x} cy={m.y} r={9} fill="transparent" tabIndex={0} role="button" aria-label={`${dLong(m.date)} · ${m.title}`}
-                style={{ cursor: 'pointer', outline: 'none' }} onMouseEnter={() => show(m)} onFocus={() => show(m)} onBlur={() => show(null)}
+                style={{ cursor: 'pointer', outline: 'none' }} onMouseEnter={() => { if (!touching()) show(m); }} onFocus={() => { if (!touching()) show(m); }} onBlur={() => show(null)}
                 onClick={() => show(tip?.id === m.id ? null : m)} />
             </g>
           );
@@ -164,9 +202,9 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
         </div>
       )}
       <div class="flex flex-wrap gap-x-3 gap-y-1 px-1 pt-1 text-[11px] text-[var(--wq-ink-muted)]">
-        {([['#F2556F', 'pm.r.lgCritical'], ['#6B8E96', 'pm.r.lgReading'], ['hatch', 'pm.r.lgNoReading'], ['#E0A23A', 'pm.r.lgSignal'], ['#2EC4C0', 'pm.r.lgVideo'], ['#34C08A', 'pm.r.lgResponse']] as const).map(([c2, key]) => (
+        {([['#F2556F', 'pm.r.lgCritical'], ['#6B8E96', 'pm.r.lgReading'], ['hatch', 'pm.r.lgNoReading'], ['#E0A23A', 'pm.r.lgSignal'], ['#2EC4C0', 'pm.r.lgVideo'], ['dia', 'pm.r.lgWeight'], ['#B98DF0', 'pm.r.lgFood'], ['#34C08A', 'pm.r.lgResponse']] as const).map(([c2, key]) => (
           <span key={key} class="inline-flex items-center gap-1.5">
-            <i class="inline-block h-2.5 w-2.5 rounded-full" style={c2 === 'hatch'
+            <i class="inline-block h-2.5 w-2.5 rounded-full" style={c2 === 'dia' ? { background: '#F2556F', borderRadius: '1px', transform: 'rotate(45deg) scale(0.8)' } : c2 === 'hatch'
               ? { borderRadius: '2px', border: '1px solid #F2556F88', background: 'repeating-linear-gradient(135deg,#F2556F55 0 3px,transparent 3px 6px)' }
               : { background: c2 }} />
             {s(locale, key)}
@@ -184,8 +222,8 @@ function EvidenceCard({ e, locale, onOpen, lit }: { e: PmEvidence; locale: Local
   const [hover, setHover] = useState(false);
   const preview = hover && !reducedMotion();
   return (
-    <button type="button" onClick={onOpen} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
-      onFocus={() => setHover(true)} onBlur={() => setHover(false)}
+    <button type="button" onClick={onOpen} onMouseEnter={() => { if (!touching()) setHover(true); }} onMouseLeave={() => setHover(false)}
+      onFocus={() => { if (!touching()) setHover(true); }} onBlur={() => setHover(false)}
       aria-label={`${s(locale, 'pm.r.open')}: ${e.text}`}
       class={`group relative block w-full overflow-hidden rounded-xl border bg-black text-left transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(0,0,0,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#2EC4C0] ${lit ? 'border-[#2EC4C0]' : 'border-[var(--wq-divider)]'}`}
       style={{ aspectRatio: '4 / 5' }}>
@@ -250,22 +288,91 @@ function Lightbox({ list, index, setIndex, locale }: { list: PmEvidence[]; index
   );
 }
 
+/** Small same-size cards for what the detail tabs hold, each with its own insight. */
+function DataCards({ r, hot, setHot, onTab, locale }: { r: PmRelato; hot: Hot; setHot: (h: Hot | ((c: Hot) => Hot)) => void; onTab?: (t: 'biometria' | 'alimentacion') => void; locale: Locale }) {
+  const ins = insights(r);
+  if (!ins.peso.length && !ins.alim.length) return null;
+  const W = 260, H = 84, P = 8;
+  const card = 'flex flex-col gap-1.5 rounded-2xl border border-transparent bg-[var(--wq-row-bg)] p-3 outline-none transition duration-200 hover:-translate-y-0.5 hover:border-[var(--wq-divider)] focus-within:border-[#2EC4C0]';
+  const goto = (t: 'biometria' | 'alimentacion') => onTab && (
+    <button type="button" onClick={() => onTab(t)} class="self-start text-[11.5px] font-semibold text-teal underline-offset-2 hover:underline">{s(locale, t === 'biometria' ? 'pm.r.toBio' : 'pm.r.toAlim')} →</button>);
+  // weight
+  const ps = ins.peso; const gs = ps.map((p) => p.g);
+  const gmin = Math.min(...gs) - 3, gmax = Math.max(...gs) + 3;
+  const px = (i: number) => P + (ps.length > 1 ? (i / (ps.length - 1)) * (W - 2 * P) : (W - 2 * P) / 2);
+  const py = (g: number) => P + (1 - (g - gmin) / Math.max(1, gmax - gmin)) * (H - 2 * P);
+  // intake, inside the course window
+  const a0 = Date.parse(r.curso.from), a1 = Date.parse(r.curso.to);
+  const ax = (d: string) => P + ((Date.parse(d) - a0) / (a1 - a0)) * (W - 2 * P);
+  const amax = Math.max(1, ...ins.alim.map((a) => a.ofrecido ?? a.g));
+  return (
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+      {ps.length > 0 && (
+        <div class={card} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ key: 'peso' }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => tapHot(setHot, { key: 'peso' })} onFocus={() => { if (!touching()) setHot({ key: 'peso' }); }} onBlur={() => { if (!touching()) setHot(null); }}>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.weight')}</span>
+          <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label={s(locale, 'pm.r.weight')}>
+            <polyline points={ps.map((p, i) => `${px(i)},${py(p.g)}`).join(' ')} fill="none" stroke="#F2556F" stroke-width="2" />
+            {ps.map((p, i) => (
+              <g key={p.d}>
+                <circle cx={px(i)} cy={py(p.g)} r={hot?.key === 'peso' || hot?.date === p.d ? 4.5 : 3.2} fill="#F2556F" />
+                <text x={px(i)} y={py(p.g) - 7} font-size="10" text-anchor={i === 0 ? 'start' : i === ps.length - 1 ? 'end' : 'middle'} fill="var(--wq-ink)">{p.g}</text>
+                <text x={px(i)} y={H - 1} font-size="9" text-anchor={i === 0 ? 'start' : i === ps.length - 1 ? 'end' : 'middle'} fill="var(--wq-ink-muted)">{dShort(p.d)}</text>
+              </g>
+            ))}
+          </svg>
+          {ins.drop && <p class="m-0 text-[12.5px] leading-snug text-[var(--wq-ink)]">{s(locale, 'pm.r.weightInsight').replace('{g}', String(ins.drop.g)).replace('{pct}', String(Math.abs(ins.drop.pct)))
+            .replace('{from}', dShort(ins.drop.from.d)).replace('{to}', dShort(ins.drop.to.d))}{ps.every((p) => p.lt == null || Math.abs(p.lt - (ps[ps.length - 1].lt ?? p.lt)) < 1) ? ` ${s(locale, 'pm.r.sameLength')}` : ''}</p>}
+          {goto('biometria')}
+        </div>
+      )}
+      {ins.alim.length > 0 && (
+        <div class={card} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ key: 'alim' }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => tapHot(setHot, { key: 'alim' })} onFocus={() => { if (!touching()) setHot({ key: 'alim' }); }} onBlur={() => { if (!touching()) setHot(null); }}>
+          <span class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.food')}</span>
+          <svg viewBox={`0 0 ${W} ${H}`} style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label={s(locale, 'pm.r.food')}>
+            {ins.gap && <rect x={ax(ins.gap.from) + 4} y={P} width={ax(ins.gap.to) - ax(ins.gap.from) - 8} height={H - 2 * P - 8} fill="#B98DF0" opacity="0.12" rx={4} />}
+            {ins.gap && <text x={(ax(ins.gap.from) + ax(ins.gap.to)) / 2} y={H / 2 - 4} font-size="10" text-anchor="middle" fill="#B98DF0">{s(locale, 'pm.r.noFood').replace('{n}', String(ins.gap.n))}</text>}
+            {ins.alim.map((a) => {
+              const hOff = ((a.ofrecido ?? a.g) / amax) * (H - 2 * P - 12), hEat = (a.g / amax) * (H - 2 * P - 12);
+              return (
+                <g key={a.d}>
+                  <rect x={ax(a.d) - 3.5} y={H - P - 10 - hOff} width={7} height={hOff} rx={1.5} fill="#B98DF0" opacity="0.3" />
+                  <rect x={ax(a.d) - 3.5} y={H - P - 10 - hEat} width={7} height={hEat} rx={1.5} fill="#B98DF0" />
+                </g>
+              );
+            })}
+            <text x={P} y={H - 1} font-size="9" fill="var(--wq-ink-muted)">{dShort(r.curso.from)}</text>
+            <text x={W - P} y={H - 1} font-size="9" text-anchor="end" fill="var(--wq-ink-muted)">{dShort(r.curso.to)}</text>
+          </svg>
+          <p class="m-0 text-[12.5px] leading-snug text-[var(--wq-ink)]">
+            {ins.gap ? s(locale, 'pm.r.foodInsight').replace('{n}', String(ins.gap.n)).replace('{from}', dShort(ins.gap.from)).replace('{to}', dShort(ins.gap.to)) : s(locale, 'pm.r.foodNoGap')}
+          </p>
+          {goto('alimentacion')}
+        </div>
+      )}
+    </div>
+  );
+}
+
 const H3 = 'm-0 font-display text-base font-bold text-[var(--wq-ink)] sm:text-[15px]';
 
-export default function Relato({ r, alias, locale }: { r: PmRelato; alias: string; locale: Locale }) {
+export default function Relato({ r, alias, locale, onTab }: { r: PmRelato; alias: string; locale: Locale; onTab?: (t: 'biometria' | 'alimentacion') => void }) {
   const [hot, setHot] = useState<Hot>(null);
   const [open, setOpen] = useState<number | null>(null);
   const ev = [...r.evidencia].sort((a, b) => `${a.date} ${a.time ?? ''}`.localeCompare(`${b.date} ${b.time ?? ''}`));
   const statKey: ('lat' | 'gap' | 'vid')[] = ['lat', 'gap', 'vid'];
+  const ins = insights(r);
+  const stats: (PmRelato['stats'][number] & { key: NonNullable<Hot>['key'] })[] = r.stats.map((st, i) => ({ ...st, key: statKey[i] }));
+  if (ins.drop) stats.splice(1, 0, { n: `${ins.drop.pct}`, u: '%', tone: 'rose', key: 'peso',
+    l: s(locale, 'pm.r.weightStat').replace('{a}', String(ins.drop.from.g)).replace('{b}', String(ins.drop.to.g)).replace('{d}', dShort(ins.drop.to.d)) });
   return (
     <div class="flex flex-col gap-5">
       <p class="m-0 text-[15px] leading-relaxed text-[var(--wq-ink)] sm:text-sm"><Rich text={r.lead} /></p>
 
       <section class="flex flex-col gap-2">
-        <div class="grid grid-cols-3 gap-2">
-          {r.stats.map((st, i) => (
-            <div key={i} tabIndex={0} onMouseEnter={() => setHot({ key: statKey[i] })} onMouseLeave={() => setHot(null)}
-              onFocus={() => setHot({ key: statKey[i] })} onBlur={() => setHot(null)}
+        <div class={`grid gap-2 ${stats.length === 4 ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-3'}`}>
+          {stats.map((st, i) => (
+            <div key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ key: st.key }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => tapHot(setHot, { key: st.key })}
+              onFocus={() => { if (!touching()) setHot({ key: st.key }); }} onBlur={() => { if (!touching()) setHot(null); }}
               class="cursor-default rounded-2xl border border-transparent bg-[var(--wq-row-bg)] px-2.5 pb-2 pt-2.5 outline-none transition duration-200 hover:-translate-y-0.5 hover:border-[var(--wq-divider)] focus-visible:border-[#2EC4C0]">
               <div class="font-display text-[28px] font-extrabold leading-none sm:text-[24px]" style={{ color: TONE[st.tone] }}>
                 {st.n}{st.u && <span class="ml-0.5 text-[12px] font-bold">{st.u}</span>}
@@ -280,6 +387,11 @@ export default function Relato({ r, alias, locale }: { r: PmRelato; alias: strin
       <section class="flex flex-col gap-2">
         <h3 class={H3}>{s(locale, 'pm.r.curso')}</h3>
         <Curso r={r} name={r.nombre ?? alias} hot={hot} setHot={setHot} locale={locale} />
+      </section>
+
+      <section class="flex flex-col gap-2">
+        <h3 class={H3}>{s(locale, 'pm.r.data')} <span class="font-sans text-xs font-medium text-[var(--wq-ink-muted)]">· {s(locale, 'pm.r.dataSub')}</span></h3>
+        <DataCards r={r} hot={hot} setHot={setHot} onTab={onTab} locale={locale} />
       </section>
 
       {ev.length > 0 && (
@@ -302,8 +414,8 @@ export default function Relato({ r, alias, locale }: { r: PmRelato; alias: strin
           {r.momentos.map((m, i) => {
             const on = !!hot?.date && (inRange(hot.date, m.d, m.d2) || (!!hot.to && inRange(m.d, hot.date, hot.to)));
             return (
-              <li key={i} tabIndex={0} onMouseEnter={() => setHot({ date: m.d, to: m.d2 })} onMouseLeave={() => setHot(null)}
-                onFocus={() => setHot({ date: m.d, to: m.d2 })} onBlur={() => setHot(null)}
+              <li key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ date: m.d, to: m.d2 }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => tapHot(setHot, { date: m.d, to: m.d2 })}
+                onFocus={() => { if (!touching()) setHot({ date: m.d, to: m.d2 }); }} onBlur={() => { if (!touching()) setHot(null); }}
                 class={`-mx-2 grid gap-x-3 rounded-lg border-b border-dashed border-[var(--wq-divider)] px-2 py-2 outline-none transition-colors hover:bg-[var(--wq-row-bg)] ${on ? 'bg-[var(--wq-row-bg)]' : ''}`}
                 style={{ gridTemplateColumns: '58px 1fr' }}>
                 <span class="font-mono text-[11px] leading-snug text-[var(--wq-ink-muted)]">
@@ -328,7 +440,7 @@ export default function Relato({ r, alias, locale }: { r: PmRelato; alias: strin
           <h3 class={H3}>{s(locale, 'pm.r.simTitle')}</h3>
           <ul class="m-0 flex list-none flex-col gap-1 p-0">
             {r.simulacion.reglas.map((g, i) => (
-              <li key={i} tabIndex={0} onMouseEnter={() => setHot({ date: g.d })} onMouseLeave={() => setHot(null)} onFocus={() => setHot({ date: g.d })} onBlur={() => setHot(null)}
+              <li key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ date: g.d }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => tapHot(setHot, { date: g.d })} onFocus={() => { if (!touching()) setHot({ date: g.d }); }} onBlur={() => { if (!touching()) setHot(null); }}
                 class="-mx-1.5 grid gap-x-2.5 rounded-lg px-1.5 py-1 text-[13px] leading-snug outline-none transition-colors hover:bg-[var(--wq-surface)]" style={{ gridTemplateColumns: '50px 1fr' }}>
                 <span class="font-mono text-[11px] font-semibold text-[#2EC4C0]">{dShort(g.d)}</span>
                 <span class="text-[var(--wq-ink)]">{g.text}<span class="block text-[11.5px] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.real')}: {g.real}</span></span>

@@ -1,6 +1,6 @@
 {
  "generated": "2026-09-30",
- "brain_commit": "b8782d2",
+ "brain_commit": "f2b7ee0",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -4346,7 +4346,7 @@
    ],
    "relato": {
     "nombre": "Leucística",
-    "lead": "Los sistemas de agua de su especie marcaron amoníaco crítico dos veces en abril. El **14 de abril** se registró que flotaba de forma anormal y se arqueaba. Del 17 al 19 no hay ni una medición de agua, y el 19 hay video de su estado crítico. La primera consulta veterinaria llegó el **30 de abril**. Murió el 5 de mayo.",
+    "lead": "Los sistemas de agua de su especie marcaron amoníaco crítico dos veces en abril. El **14 de abril** se registró que flotaba de forma anormal y se arqueaba. Del 17 al 19 no hay ni una medición de agua, y el 19 hay video de su estado crítico. El 21 pesó **50 g, 22 % menos que en enero**, con la misma longitud. La primera consulta veterinaria llegó el **30 de abril**. Murió el 5 de mayo.",
     "stats": [
      {
       "n": "16",
@@ -4507,11 +4507,26 @@
       "src": "libro · chat · video"
      },
      {
+      "d": "2026-04-14",
+      "d2": "2026-04-28",
+      "tone": "amber",
+      "title": "Catorce días sin registro de alimentación",
+      "text": "El último registro antes es del 14 (1 g de camarón); el siguiente, del 28 (0.17 g de lombriz).",
+      "src": "alimentación"
+     },
+     {
       "d": "2026-04-20",
       "tone": "muted",
       "title": "El veterinario reagenda",
       "text": "No hay consulta. La conductividad baja de ≈3,000 a ≈2,000 tras un cambio de agua.",
       "src": "chat · libro"
+     },
+     {
+      "d": "2026-04-21",
+      "tone": "amber",
+      "title": "La pesan: 50 g",
+      "text": "9 g menos que el 18 de marzo y 14 menos que en enero, con la misma longitud. Ese día, el podcast dijo que ningún ejemplar estaba en riesgo alto.",
+      "src": "historial médico · podcast 6"
      },
      {
       "d": "2026-04-30",
@@ -4614,7 +4629,63 @@
       "sha256": "8d7844e6b2e55a61115b5f166b19f65ae3da4bda84681a4d118a0edb4c28c13b",
       "attestation": null
      }
-    ]
+    ],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-12-24",
+       "g": 63,
+       "lt": 18.46
+      },
+      {
+       "d": "2026-01-19",
+       "g": 64,
+       "lt": 20
+      },
+      {
+       "d": "2026-03-03",
+       "g": 59,
+       "lt": 19.23
+      },
+      {
+       "d": "2026-03-18",
+       "g": 59,
+       "lt": 19.23
+      },
+      {
+       "d": "2026-04-21",
+       "g": 50,
+       "lt": 19.23
+      }
+     ],
+     "alim": [
+      {
+       "d": "2026-04-08",
+       "g": 2.036,
+       "ofrecido": 3.296
+      },
+      {
+       "d": "2026-04-10",
+       "g": 1.48,
+       "ofrecido": 1.48
+      },
+      {
+       "d": "2026-04-14",
+       "g": 1.01,
+       "ofrecido": 1.01
+      },
+      {
+       "d": "2026-04-28",
+       "g": 0.17,
+       "ofrecido": 0.17
+      },
+      {
+       "d": "2026-04-29",
+       "g": 3.19,
+       "ofrecido": 7.46
+      }
+     ]
+    }
    }
   },
   {
