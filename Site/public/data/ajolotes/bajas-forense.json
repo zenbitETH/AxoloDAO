@@ -1,6 +1,6 @@
 {
  "generated": "2026-09-30",
- "brain_commit": "3812621",
+ "brain_commit": "00568f6",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -4343,7 +4343,278 @@
      "critical": false,
      "chronic_only": false
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Los sistemas de agua de su especie marcaron amoníaco crítico dos veces en abril. El **14 de abril** se registró que flotaba de forma anormal y se arqueaba. Del 17 al 19 no hay ni una medición de agua, y el 19 hay video de su estado crítico. La primera consulta veterinaria llegó el **30 de abril**. Murió el 5 de mayo.",
+    "stats": [
+     {
+      "n": "16",
+      "u": "días",
+      "l": "de la primera incidencia registrada a la primera consulta veterinaria",
+      "tone": "amber"
+     },
+     {
+      "n": "3",
+      "u": "días",
+      "l": "sin medir el agua mientras se agravaba",
+      "tone": "rose"
+     },
+     {
+      "n": "3",
+      "u": "",
+      "l": "videos de su estado, verificados por la curaduría",
+      "tone": "teal"
+     }
+    ],
+    "stats_note": "Son distancias entre registros. La calificación del método (abajo, en el registro completo) no cambia hasta que se apruebe una enmienda.",
+    "curso": {
+     "from": "2026-04-01",
+     "to": "2026-05-05",
+     "lecturas": [
+      "2026-04-02",
+      "2026-04-06",
+      "2026-04-08",
+      "2026-04-09",
+      "2026-04-10",
+      "2026-04-13",
+      "2026-04-14",
+      "2026-04-15",
+      "2026-04-16",
+      "2026-04-20",
+      "2026-04-23",
+      "2026-04-27",
+      "2026-04-28",
+      "2026-04-29",
+      "2026-04-30",
+      "2026-05-01",
+      "2026-05-04",
+      "2026-05-05"
+     ],
+     "criticas": [
+      "2026-04-06",
+      "2026-04-13"
+     ],
+     "sin_lectura": [
+      [
+       "2026-04-17",
+       "2026-04-19"
+      ]
+     ],
+     "bomba": [
+      [
+       "2026-04-07",
+       "2026-04-13"
+      ]
+     ],
+     "sin_camara": [
+      [
+       "2026-04-23",
+       "2026-05-03"
+      ]
+     ],
+     "senales": [
+      [
+       "2026-04-14",
+       "08:40",
+       "fuerte"
+      ],
+      [
+       "2026-04-28",
+       "10:04",
+       "leve"
+      ],
+      [
+       "2026-05-02",
+       "03:39",
+       "leve"
+      ]
+     ],
+     "videos": [
+      [
+       "2026-04-19",
+       "04:12"
+      ],
+      [
+       "2026-04-19",
+       "18:08"
+      ],
+      [
+       "2026-04-20",
+       "00:21"
+      ]
+     ],
+     "respuestas": [
+      [
+       "2026-04-20",
+       "10:24",
+       "no_ocurrio"
+      ],
+      [
+       "2026-04-30",
+       "21:37",
+       "si"
+      ],
+      [
+       "2026-05-02",
+       "03:39",
+       "si"
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2026-04-14",
+       "08:40"
+      ],
+      "to": [
+       "2026-04-30",
+       "21:37"
+      ],
+      "label": "16 días · estándar 48 h"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2026-04-06",
+      "t": "14:17",
+      "tone": "rose",
+      "title": "Amoníaco 0.5 en Mexicanum 2",
+      "text": "Alerta crítica en uno de los dos sistemas de su especie.",
+      "src": "libro · agua"
+     },
+     {
+      "d": "2026-04-07",
+      "d2": "2026-04-13",
+      "tone": "rose",
+      "title": "Se para el sistema Mexicanum 1",
+      "text": "Una tubería se zafó bajo el filtro y la bomba falló; el agua quedó estancada unas horas. El 13, amoníaco 0.25 y nitrito 0.3 en los dos sistemas.",
+      "src": "podcast 5 · libro"
+     },
+     {
+      "d": "2026-04-14",
+      "t": "08:40",
+      "tone": "amber",
+      "title": "Flota de forma anormal y se arquea",
+      "text": "Registrado como solo observación, sin acción.",
+      "src": "bitácora"
+     },
+     {
+      "d": "2026-04-17",
+      "d2": "2026-04-19",
+      "tone": "rose",
+      "title": "Tres días sin medir el agua",
+      "text": "El 17, según el chat del equipo, otro ejemplar de su especie pasó el día revolcándose. El 19, video de su estado crítico.",
+      "src": "libro · chat · video"
+     },
+     {
+      "d": "2026-04-20",
+      "tone": "muted",
+      "title": "El veterinario reagenda",
+      "text": "No hay consulta. La conductividad baja de ≈3,000 a ≈2,000 tras un cambio de agua.",
+      "src": "chat · libro"
+     },
+     {
+      "d": "2026-04-30",
+      "t": "21:37",
+      "tone": "green",
+      "title": "Primera consulta veterinaria",
+      "text": "El mismo día falla la bomba que lleva agua fría entre sistemas. El 2 de mayo, el veterinario habla de intoxicación por amoníaco.",
+      "src": "chat"
+     },
+     {
+      "d": "2026-05-05",
+      "tone": "ink",
+      "title": "Muere en su tupper",
+      "text": "Esa mañana el agua estaba turbia. Sin necropsia; el destino del cuerpo no se registró.",
+      "src": "libro · chat"
+     }
+    ],
+    "simulacion": {
+     "reglas": [
+      {
+       "d": "2026-04-06",
+       "text": "Amoníaco sobre cero → aviso crítico al veterinario en minutos.",
+       "real": "Sin acción registrada."
+      },
+      {
+       "d": "2026-04-14",
+       "text": "Incidencia clínica sin respuesta en 48 h → escala a dirección clínica el 16.",
+       "real": "16 días hasta la consulta."
+      },
+      {
+       "d": "2026-04-18",
+       "text": "24 h sin medición con alerta abierta → aviso de silencio.",
+       "real": "El silencio no se notó."
+      },
+      {
+       "d": "2026-04-19",
+       "text": "Clip propuesto y confirmado por un verificador → renglón en la bitácora y alerta abierta.",
+       "real": "El video quedó en un teléfono cinco meses."
+      }
+     ],
+     "con": {
+      "n": "≤ 48 h",
+      "l": "de la primera señal a la acción, con avisos"
+     },
+     "sin": {
+      "n": "16 días",
+      "l": "lo que pasó sin ellos"
+     }
+    },
+    "publico": {
+     "fecha": "2026-04-21",
+     "fuente": "Podcast 6",
+     "url": "https://youtu.be/qhfHi1Tr2v0?t=2310",
+     "cita": "Actualmente ninguno de nuestros ejemplares está en cuarentena por enfermedad… realmente ninguno de nuestros ejemplares está en un riesgo demasiado alto.",
+     "registro": "El 19 de abril hay video de su estado crítico, y del 17 al 19 no hay mediciones de agua."
+    },
+    "evidencia": [
+     {
+      "date": "2026-04-19",
+      "time": "18:08",
+      "source": "telefono",
+      "text": "Cabeza apoyada en el fondo, branquias enroscadas, patas delanteras sin apoyo hacia atrás",
+      "media": "/postmortem/leucistica/leucistica-2026-04-19-telefono.mp4",
+      "poster": "/postmortem/leucistica/leucistica-2026-04-19-telefono.jpg",
+      "orient": "vertical",
+      "url": null,
+      "identifies": "el fundador",
+      "verifies": "la curaduría",
+      "verified": "2026-09-30",
+      "sha256": "06280259b8f51b859d36d001c0c44737f30e74b8cc93af9b1fe348fd109612ca",
+      "attestation": null
+     },
+     {
+      "date": "2026-04-19",
+      "time": "04:12:41",
+      "source": "transmision",
+      "text": "Sube por la teja y resbala de cabeza, con las patas delanteras abiertas",
+      "media": "/postmortem/leucistica/leucistica-2026-04-19-transmision.mp4",
+      "poster": "/postmortem/leucistica/leucistica-2026-04-19-transmision.jpg",
+      "orient": "horizontal",
+      "url": "https://youtu.be/nMbDgTI_34g?t=15161",
+      "identifies": "el fundador",
+      "verifies": "la curaduría",
+      "verified": "2026-09-30",
+      "sha256": "cf0d389e1fad27e1354038335d9a2df71ca557b08cd6f55ce13db5868c0a2378",
+      "attestation": null
+     },
+     {
+      "date": "2026-04-20",
+      "time": "00:21:41",
+      "source": "transmision",
+      "text": "Al fondo, detrás de las tejas",
+      "media": "/postmortem/leucistica/leucistica-2026-04-20-transmision.mp4",
+      "poster": "/postmortem/leucistica/leucistica-2026-04-20-transmision.jpg",
+      "orient": "horizontal",
+      "url": "https://youtu.be/uwR_Sizaw6I?t=1301",
+      "identifies": "el fundador",
+      "verifies": "la curaduría",
+      "verified": "2026-09-30",
+      "sha256": "8d7844e6b2e55a61115b5f166b19f65ae3da4bda84681a4d118a0edb4c28c13b",
+      "attestation": null
+     }
+    ]
+   }
   },
   {
    "alias": "Jaffy",
