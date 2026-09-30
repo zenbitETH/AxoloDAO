@@ -1,6 +1,6 @@
 {
  "generated": "2026-09-30",
- "brain_commit": "00568f6",
+ "brain_commit": "b8782d2",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -4345,6 +4345,7 @@
     }
    ],
    "relato": {
+    "nombre": "Leucística",
     "lead": "Los sistemas de agua de su especie marcaron amoníaco crítico dos veces en abril. El **14 de abril** se registró que flotaba de forma anormal y se arqueaba. Del 17 al 19 no hay ni una medición de agua, y el 19 hay video de su estado crítico. La primera consulta veterinaria llegó el **30 de abril**. Murió el 5 de mayo.",
     "stats": [
      {

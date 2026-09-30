@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'preact/hooks';
 import type { Locale } from '../types';
 import { s } from '../strings';
 
@@ -6,6 +7,10 @@ import { s } from '../strings';
 // caller renders folded below). Everything here comes from `relato` in
 // bajas-forense.json, written in the brain (forense/relatos/<alias>.json) and passed
 // through the same embargo, person and lab guards as the rest of the projection.
+//
+// Everything that can be pointed at answers: timeline marks show what they are, a
+// stat lights up the part of the timeline it counts, a key moment lights up its mark,
+// and evidence previews on hover and opens full size on click.
 
 type Tone = 'amber' | 'rose' | 'teal' | 'green' | 'muted' | 'ink';
 type Stamp = [string, string?, string?];
@@ -15,6 +20,7 @@ export interface PmEvidence {
   identifies: string; verifies: string; verified: string; sha256: string; attestation: string | null;
 }
 export interface PmRelato {
+  nombre?: string;
   lead: string;
   stats: { n: string; u: string; l: string; tone: Tone }[];
   stats_note?: string;
@@ -37,6 +43,10 @@ const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct
 const dShort = (d: string) => `${d.slice(8, 10)} ${MES[+d.slice(5, 7) - 1]}`;
 const dLong = (d: string) => `${+d.slice(8, 10)} ${MES[+d.slice(5, 7) - 1]} ${d.slice(0, 4)}`;
 const hrs = (d: string, t?: string | null) => Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10), +(t?.slice(0, 2) ?? 12), +(t?.slice(3, 5) ?? 0)) / 36e5;
+const inRange = (d: string, a: string, b?: string) => d >= a && d <= (b ?? a);
+
+/** What the pointer is on. A date lights up marks and moments; the other keys are stats. */
+type Hot = { date?: string; to?: string; key?: 'lat' | 'gap' | 'vid' } | null;
 
 /** **bold** in curated prose, and nothing else: no HTML ever comes from the data. */
 function Rich({ text }: { text: string }) {
@@ -44,26 +54,54 @@ function Rich({ text }: { text: string }) {
   return <>{parts.map((p, i) => (i % 2 ? <strong key={i} class="text-[var(--wq-ink)]">{p}</strong> : p))}</>;
 }
 
-function Curso({ c, locale }: { c: PmRelato['curso']; locale: Locale }) {
-  const L = 64, R = 392, W = R - L, TOP = 44, ROWS = { agua: 64, ella: 112, resp: 158 };
+interface Mark { id: string; x: number; y: number; r: number; shape: 'dot' | 'ring' | 'sq'; fill: string; date: string; time?: string | null; title: string; sub?: string; dim?: boolean }
+
+function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; hot: Hot; setHot: (h: Hot) => void; locale: Locale }) {
+  const c = r.curso;
+  // The SVG is drawn at the container's real width (1 unit = 1 CSS px), so labels keep
+  // their size on a phone and on a desktop instead of scaling with the drawing.
+  const box = useRef<HTMLDivElement>(null);
+  const [VW, setVW] = useState(400);
+  useEffect(() => {
+    const el = box.current; if (!el || typeof ResizeObserver === 'undefined') return;
+    const ro = new ResizeObserver(([e]) => setVW(Math.max(320, Math.round(e.contentRect.width))));
+    ro.observe(el); return () => ro.disconnect();
+  }, []);
+  const L = 86, R = VW - 8, W = R - L, TOP = 44, ROWS = { agua: 64, ella: 112, resp: 158 };
   const h0 = hrs(c.from, '00:00'), h1 = hrs(c.to, '23:59');
   const x = (d: string, t?: string | null) => L + ((hrs(d, t) - h0) / (h1 - h0)) * W;
+  const [tip, setTip] = useState<Mark | null>(null);
   const ticks: string[] = [];
   for (let h = h0; h <= h1; h += 7 * 24) ticks.push(new Date(h * 36e5).toISOString().slice(0, 10));
   const band = (a: string, b: string) => ({ x: x(a, '00:00'), w: x(b, '23:59') - x(a, '00:00') });
+  const momentOn = (d: string) => r.momentos.find((m) => inRange(d, m.d, m.d2));
+  const marks: Mark[] = [
+    ...c.lecturas.filter((d) => !c.criticas.includes(d)).map((d): Mark => ({ id: `l${d}`, x: x(d), y: ROWS.agua, r: 2.6, shape: 'dot', fill: '#6B8E96', date: d, title: s(locale, 'pm.r.tipReading') })),
+    ...c.criticas.map((d): Mark => ({ id: `c${d}`, x: x(d), y: ROWS.agua, r: 6, shape: 'dot', fill: '#F2556F', date: d, title: momentOn(d)?.title ?? s(locale, 'pm.r.lgCritical'), sub: momentOn(d)?.text })),
+    ...c.senales.map(([d, t, k]): Mark => ({ id: `s${d}${t}`, x: x(d, t), y: ROWS.ella, r: k === 'fuerte' ? 6 : 4.5, shape: 'dot', fill: '#E0A23A', date: d, time: t, title: momentOn(d)?.title ?? s(locale, 'pm.r.lgSignal'), sub: momentOn(d)?.text })),
+    ...c.videos.map(([d, t], i): Mark => {
+      const ev = r.evidencia.find((e) => e.date === d && (e.time ?? '').slice(0, 5) === t);
+      return { id: `v${d}${t}`, x: x(d, t) + (i % 2 ? 3 : 0), y: ROWS.ella, r: 4.5, shape: 'sq', fill: '#2EC4C0', date: d, time: t, title: s(locale, 'pm.r.lgVideo'), sub: ev?.text };
+    }),
+    ...c.respuestas.map(([d, t, k]): Mark => ({ id: `r${d}${t}`, x: x(d, t), y: ROWS.resp, r: 5.5, shape: k === 'no_ocurrio' ? 'ring' : 'dot', fill: k === 'no_ocurrio' ? 'var(--wq-ink-muted)' : '#34C08A', date: d, time: t,
+      title: momentOn(d)?.title ?? s(locale, 'pm.r.lgResponse'), sub: momentOn(d)?.text })),
+  ];
+  const lit = (m: Mark) => (hot?.date ? inRange(m.date, hot.date, hot.to) : hot?.key === 'vid' ? m.shape === 'sq' : false);
   const lat = c.latencia;
+  const show = (m: Mark | null) => { setTip(m); setHot(m ? { date: m.date } : null); };
   return (
-    <div class="rounded-2xl bg-[var(--wq-row-bg)] px-2 pb-1.5 pt-2.5">
-      <svg viewBox="0 0 400 192" role="img" aria-label={s(locale, 'pm.r.cursoAria')} style={{ width: '100%', display: 'block' }}>
+    <div class="relative rounded-2xl bg-[var(--wq-row-bg)] px-2 pb-1.5 pt-2.5" onMouseLeave={() => show(null)}>
+      <div ref={box}>
+      <svg viewBox={`0 0 ${VW} 192`} width={VW} height={192} role="img" aria-label={s(locale, 'pm.r.cursoAria')} style={{ width: '100%', height: 'auto', display: 'block' }}>
         <defs>
           <pattern id="pm-hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
             <line x1="0" y1="0" x2="0" y2="5" stroke="#F2556F" stroke-width="2.2" opacity="0.55" />
           </pattern>
         </defs>
-        {([['agua', 'pm.r.rowWater'], ['ella', 'pm.r.rowHer'], ['resp', 'pm.r.rowResp']] as const).map(([k, key]) => (
+        {([['agua', s(locale, 'pm.r.rowWater')], ['ella', name], ['resp', s(locale, 'pm.r.rowResp')]] as const).map(([k, label]) => (
           <g key={k}>
             <rect x={L} y={ROWS[k] - 15} width={W} height={30} rx={6} fill="var(--wq-surface)" />
-            <text x={4} y={ROWS[k] + 4} font-size="12" font-weight="700" fill="var(--wq-ink)">{s(locale, key)}</text>
+            <text x={4} y={ROWS[k] + 4} font-size="11.5" font-weight="700" fill="var(--wq-ink)">{label}</text>
           </g>
         ))}
         {ticks.map((t, i) => (
@@ -72,36 +110,59 @@ function Curso({ c, locale }: { c: PmRelato['curso']; locale: Locale }) {
             <text x={x(t, '00:00')} y={188} font-size="10" text-anchor={i === 0 ? 'start' : 'middle'} fill="var(--wq-ink-muted)">{i === 0 ? dShort(t) : +t.slice(8, 10)}</text>
           </g>
         ))}
-        {c.sin_lectura.map(([a, b]) => { const r = band(a, b); return <rect key={a} x={r.x} y={ROWS.agua - 15} width={r.w} height={30} fill="url(#pm-hatch)" />; })}
-        {c.bomba.map(([a, b]) => { const r = band(a, b); return (
-          <g key={a}>
-            <rect x={r.x} y={ROWS.agua - 15} width={r.w} height={4} rx={2} fill="#F2556F" opacity="0.85" />
-            <text x={r.x + r.w / 2} y={ROWS.agua - 19} font-size="9" text-anchor="middle" fill="#F2556F">{s(locale, 'pm.r.pump')}</text>
+        {c.sin_lectura.map(([a, b]) => { const g = band(a, b); const on = hot?.key === 'gap' || (hot?.date && inRange(hot.date, a, b));
+          return <rect key={a} x={g.x} y={ROWS.agua - 15} width={g.w} height={30} fill="url(#pm-hatch)" stroke={on ? '#F2556F' : 'none'} stroke-width="1.5" rx={3}
+            style={{ cursor: 'help' }} onMouseEnter={() => { setTip({ id: 'gap', x: g.x + g.w / 2, y: ROWS.agua, r: 0, shape: 'dot', fill: '#F2556F', date: a, title: s(locale, 'pm.r.lgNoReading'), sub: `${dShort(a)} – ${dShort(b)}` }); setHot({ date: a, to: b }); }} />; })}
+        {c.bomba.map(([a, b]) => { const g = band(a, b); return (
+          <g key={a} style={{ cursor: 'help' }} onMouseEnter={() => { setTip({ id: 'pump', x: g.x + g.w / 2, y: ROWS.agua - 15, r: 0, shape: 'dot', fill: '#F2556F', date: a, title: momentOn(a)?.title ?? s(locale, 'pm.r.pump'), sub: momentOn(a)?.text }); setHot({ date: a, to: b }); }}>
+            <rect x={g.x} y={ROWS.agua - 22} width={g.w} height={11} fill="transparent" />
+            <rect x={g.x} y={ROWS.agua - 15} width={g.w} height={4} rx={2} fill="#F2556F" opacity="0.85" />
+            <text x={g.x + g.w / 2} y={ROWS.agua - 19} font-size="9" text-anchor="middle" fill="#F2556F">{s(locale, 'pm.r.pump')}</text>
           </g>); })}
-        {c.sin_camara.map(([a, b]) => { const r = band(a, b); return (
+        {c.sin_camara.map(([a, b]) => { const g = band(a, b); return (
           <g key={a}>
-            <rect x={r.x} y={ROWS.ella + 13} width={r.w} height={3} rx={1.5} fill="var(--wq-ink-muted)" opacity="0.5" />
-            <text x={r.x + r.w / 2} y={ROWS.ella + 27} font-size="9" text-anchor="middle" fill="var(--wq-ink-muted)">{s(locale, 'pm.r.noCamera')}</text>
+            <rect x={g.x} y={ROWS.ella + 13} width={g.w} height={3} rx={1.5} fill="var(--wq-ink-muted)" opacity="0.5" />
+            <text x={g.x + g.w / 2} y={ROWS.ella + 27} font-size="9" text-anchor="middle" fill="var(--wq-ink-muted)">{s(locale, 'pm.r.noCamera')}</text>
           </g>); })}
-        {c.lecturas.map((d) => <circle key={d} cx={x(d)} cy={ROWS.agua} r={2.6} fill="#6B8E96" />)}
-        {c.criticas.map((d) => <circle key={d} cx={x(d)} cy={ROWS.agua} r={6} fill="#F2556F" stroke="var(--wq-surface)" stroke-width="1.5" />)}
-        {c.senales.map(([d, t, k]) => <circle key={d + t} cx={x(d, t)} cy={ROWS.ella} r={k === 'fuerte' ? 6 : 4.5} fill="#E0A23A" opacity={k === 'fuerte' ? 1 : 0.85} stroke="var(--wq-surface)" stroke-width="1.5" />)}
-        {c.videos.map(([d, t], i) => <rect key={d + t} x={x(d, t) - 4.5 + (i % 2 ? 3 : 0)} y={ROWS.ella - 4.5} width={9} height={9} rx={2} fill="#2EC4C0" stroke="var(--wq-surface)" stroke-width="1.2" />)}
-        {c.respuestas.map(([d, t, k]) => k === 'no_ocurrio'
-          ? <circle key={d + t} cx={x(d, t)} cy={ROWS.resp} r={5} fill="none" stroke="var(--wq-ink-muted)" stroke-width="1.8" />
-          : <circle key={d + t} cx={x(d, t)} cy={ROWS.resp} r={5.5} fill="#34C08A" stroke="var(--wq-surface)" stroke-width="1.5" />)}
-        <line x1={x(c.to, '09:00')} x2={x(c.to, '09:00')} y1={40} y2={176} stroke="var(--wq-ink)" stroke-width="2" />
-        <text x={x(c.to, '09:00') - 3} y={36} font-size="10" font-weight="700" text-anchor="end" fill="var(--wq-ink)">{s(locale, 'pm.death')}</text>
-        {lat && (() => { const a = x(...lat.from), b = x(...lat.to); return (
-          <g>
-            <line x1={a} x2={b} y1={20} y2={20} stroke="#E0A23A" stroke-width="2" />
+        {lat && (() => { const a = x(...lat.from), b = x(...lat.to); const on = hot?.key === 'lat'; return (
+          <g opacity={hot && !on ? 0.55 : 1}>
+            <line x1={a} x2={b} y1={20} y2={20} stroke="#E0A23A" stroke-width={on ? 3 : 2} />
             <line x1={a} x2={a} y1={15} y2={25} stroke="#E0A23A" stroke-width="2" />
             <line x1={b} x2={b} y1={15} y2={25} stroke="#E0A23A" stroke-width="2" />
-            <text x={(a + b) / 2} y={13} font-size="11.5" font-weight="700" text-anchor="middle" fill="#E0A23A">{lat.label}</text>
+            <text x={(a + b) / 2} y={12} font-size="11" font-weight="700" text-anchor="middle" fill="#E0A23A">{lat.label}</text>
             <line x1={a} x2={a} y1={25} y2={176} stroke="#E0A23A" stroke-width="1" stroke-dasharray="3 3" opacity="0.7" />
             <line x1={b} x2={b} y1={25} y2={176} stroke="#34C08A" stroke-width="1" stroke-dasharray="3 3" opacity="0.7" />
           </g>); })()}
+        <line x1={x(c.to, '09:00')} x2={x(c.to, '09:00')} y1={40} y2={176} stroke="var(--wq-ink)" stroke-width="2" />
+        <text x={x(c.to, '09:00') - 3} y={36} font-size="10" font-weight="700" text-anchor="end" fill="var(--wq-ink)">{s(locale, 'pm.death')}</text>
+        {marks.map((m) => {
+          const on = lit(m) || tip?.id === m.id; const rr = on ? m.r + 2 : m.r;
+          return (
+            <g key={m.id}>
+              {m.shape === 'sq'
+                ? <rect x={m.x - rr} y={m.y - rr} width={rr * 2} height={rr * 2} rx={2} fill={m.fill} stroke="var(--wq-surface)" stroke-width="1.2" />
+                : m.shape === 'ring'
+                  ? <circle cx={m.x} cy={m.y} r={rr} fill="none" stroke={m.fill} stroke-width="1.8" />
+                  : <circle cx={m.x} cy={m.y} r={rr} fill={m.fill} stroke={m.r > 3 ? 'var(--wq-surface)' : 'none'} stroke-width="1.5" />}
+              {on && <circle cx={m.x} cy={m.y} r={rr + 4} fill="none" stroke={m.fill} stroke-width="1" opacity="0.5" />}
+              <circle cx={m.x} cy={m.y} r={9} fill="transparent" tabIndex={0} role="button" aria-label={`${dLong(m.date)} · ${m.title}`}
+                style={{ cursor: 'pointer', outline: 'none' }} onMouseEnter={() => show(m)} onFocus={() => show(m)} onBlur={() => show(null)}
+                onClick={() => show(tip?.id === m.id ? null : m)} />
+            </g>
+          );
+        })}
       </svg>
+      </div>
+      {tip && (
+        <div role="tooltip" class="pointer-events-none absolute z-10 w-[240px] rounded-xl border border-[var(--wq-divider)] bg-[var(--wq-surface)] p-2.5 text-xs shadow-[0_8px_24px_rgba(7,31,41,0.25)]"
+          style={{ left: `clamp(4px, calc(${(tip.x / VW) * 100}% - 120px), calc(100% - 244px))`, top: `${(tip.y / 192) * 100}%`, transform: tip.y > 96 ? 'translateY(calc(-100% - 14px))' : 'translateY(14px)' }}>
+          <div class="flex items-center gap-1.5 font-semibold text-[var(--wq-ink)]">
+            <span class="inline-block h-2 w-2 rounded-full" style={{ background: tip.fill }} />{tip.title}
+          </div>
+          <div class="mt-0.5 font-mono text-[10.5px] text-[var(--wq-ink-muted)]">{dLong(tip.date)}{tip.time ? ` · ${tip.time}` : ''}</div>
+          {tip.sub && <p class="m-0 mt-1 leading-snug text-[var(--wq-ink)]">{tip.sub}</p>}
+        </div>
+      )}
       <div class="flex flex-wrap gap-x-3 gap-y-1 px-1 pt-1 text-[11px] text-[var(--wq-ink-muted)]">
         {([['#F2556F', 'pm.r.lgCritical'], ['#6B8E96', 'pm.r.lgReading'], ['hatch', 'pm.r.lgNoReading'], ['#E0A23A', 'pm.r.lgSignal'], ['#2EC4C0', 'pm.r.lgVideo'], ['#34C08A', 'pm.r.lgResponse']] as const).map(([c2, key]) => (
           <span key={key} class="inline-flex items-center gap-1.5">
@@ -116,102 +177,169 @@ function Curso({ c, locale }: { c: PmRelato['curso']; locale: Locale }) {
   );
 }
 
-function Evidence({ e, locale, big }: { e: PmEvidence; locale: Locale; big?: boolean }) {
+const reducedMotion = () => typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+/** Same-size card: poster at rest, muted looping preview on hover, full view on click. */
+function EvidenceCard({ e, locale, onOpen, lit }: { e: PmEvidence; locale: Locale; onOpen: () => void; lit: boolean }) {
+  const [hover, setHover] = useState(false);
+  const preview = hover && !reducedMotion();
   return (
-    <figure class="m-0 overflow-hidden rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)]">
-      <video controls playsInline preload="none" poster={e.poster} src={e.media}
-        class="block w-full bg-black" style={{ aspectRatio: e.orient === 'vertical' ? '9 / 12' : '16 / 9', objectFit: 'cover' }} />
-      <figcaption class={`flex flex-col gap-2 ${big ? 'p-3' : 'p-2.5'}`}>
-        <span class="font-mono text-[11.5px] text-[var(--wq-ink-muted)]">
-          {dLong(e.date)}{e.time ? ` · ${e.time}` : ''} · {s(locale, e.source === 'telefono' ? 'pm.r.phone' : 'pm.r.stream')}
-        </span>
-        <span class={`${big ? 'text-sm' : 'text-[12.5px]'} leading-snug text-[var(--wq-ink)]`}>{e.text}.</span>
-        {big && (
-          <dl class="m-0 grid gap-x-2.5 gap-y-0.5 rounded-xl bg-[var(--wq-surface)] px-2.5 py-2 text-[11.5px] leading-snug" style={{ gridTemplateColumns: 'auto 1fr' }}>
-            <dt class="text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.identifies')}</dt><dd class="m-0 text-[var(--wq-ink)]">{e.identifies}</dd>
-            <dt class="text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.verifies')}</dt><dd class="m-0 text-[var(--wq-ink)]">{e.verifies} · {dShort(e.verified)}</dd>
-            <dt class="text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.attestation')}</dt><dd class="m-0 text-[#E0A23A]">{e.attestation ?? s(locale, 'pm.r.pending')}</dd>
-            <dt class="text-[var(--wq-ink-muted)]">SHA-256</dt><dd class="m-0 break-all font-mono text-[10.5px] text-[var(--wq-ink-muted)]">{e.sha256}</dd>
-          </dl>
-        )}
-        {e.url && <a href={e.url} target="_blank" rel="noopener" class="text-[12px] font-semibold text-teal underline-offset-2 hover:underline">{s(locale, 'pm.watch')} ↗</a>}
-      </figcaption>
-    </figure>
+    <button type="button" onClick={onOpen} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+      onFocus={() => setHover(true)} onBlur={() => setHover(false)}
+      aria-label={`${s(locale, 'pm.r.open')}: ${e.text}`}
+      class={`group relative block w-full overflow-hidden rounded-xl border bg-black text-left transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(0,0,0,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#2EC4C0] ${lit ? 'border-[#2EC4C0]' : 'border-[var(--wq-divider)]'}`}
+      style={{ aspectRatio: '4 / 5' }}>
+      {preview
+        ? <video src={e.media} muted autoPlay loop playsInline preload="auto" class="absolute inset-0 h-full w-full object-cover" />
+        : <img src={e.poster} alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100" />}
+      <span class="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-0.5 bg-gradient-to-t from-black/85 via-black/50 to-transparent px-2 pb-2 pt-8">
+        <span class="font-mono text-[10px] text-white/75">{dShort(e.date)}{e.time ? ` · ${e.time.slice(0, 5)}` : ''}</span>
+        <span class="text-[11.5px] font-semibold leading-tight text-white">{s(locale, e.source === 'telefono' ? 'pm.r.phone' : 'pm.r.stream')}</span>
+      </span>
+      <span class={`pointer-events-none absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-full bg-black/55 text-white transition-opacity ${preview ? 'opacity-0' : 'opacity-100'}`} aria-hidden="true">
+        <svg width="11" height="12" viewBox="0 0 11 12"><path d="M1 1l9 5-9 5z" fill="currentColor" /></svg>
+      </span>
+    </button>
   );
 }
 
-export default function Relato({ r, locale }: { r: PmRelato; locale: Locale }) {
-  const [main, ...rest] = [...r.evidencia].sort((a, b) => (a.source === 'telefono' ? -1 : b.source === 'telefono' ? 1 : 0));
+function Lightbox({ list, index, setIndex, locale }: { list: PmEvidence[]; index: number; setIndex: (i: number | null) => void; locale: Locale }) {
+  const e = list[index];
+  const close = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    close.current?.focus();
+    const onKey = (k: KeyboardEvent) => {
+      if (k.key === 'Escape') { k.stopImmediatePropagation(); k.preventDefault(); setIndex(null); }
+      if (k.key === 'ArrowRight') setIndex((index + 1) % list.length);
+      if (k.key === 'ArrowLeft') setIndex((index - 1 + list.length) % list.length);
+    };
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  }, [index, list.length]);
+  return (
+    <div role="dialog" aria-modal="true" aria-label={e.text} class="fixed inset-0 z-[90] flex items-center justify-center bg-black/80 p-3 backdrop-blur-sm sm:p-6"
+      onClick={(ev) => { if (ev.target === ev.currentTarget) setIndex(null); }}>
+      <div class="flex max-h-full w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-surface)] sm:flex-row">
+        <div class="flex min-h-0 flex-1 items-center justify-center bg-black">
+          <video key={e.media} src={e.media} poster={e.poster} controls autoPlay playsInline class="block max-h-[62vh] w-full object-contain sm:max-h-[82vh]" />
+        </div>
+        <div class="flex w-full flex-col gap-2.5 overflow-y-auto p-4 sm:w-[300px]">
+          <div class="flex items-start justify-between gap-2">
+            <span class="font-mono text-[11px] text-[var(--wq-ink-muted)]">{dLong(e.date)}{e.time ? ` · ${e.time}` : ''} · {s(locale, e.source === 'telefono' ? 'pm.r.phone' : 'pm.r.stream')}</span>
+            <button ref={close} type="button" onClick={() => setIndex(null)} aria-label={s(locale, 'pm.r.close')}
+              class="grid h-7 w-7 flex-none place-items-center rounded-full border border-[var(--wq-divider)] text-[var(--wq-ink)] transition-colors hover:bg-[var(--wq-row-bg)]">✕</button>
+          </div>
+          <p class="m-0 text-sm leading-snug text-[var(--wq-ink)]">{e.text}.</p>
+          <dl class="m-0 grid gap-x-2.5 gap-y-1 rounded-xl bg-[var(--wq-row-bg)] px-2.5 py-2 text-[11.5px] leading-snug" style={{ gridTemplateColumns: 'auto 1fr' }}>
+            <dt class="text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.identifies')}</dt><dd class="m-0 text-[var(--wq-ink)]">{e.identifies}</dd>
+            <dt class="text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.verifies')}</dt><dd class="m-0 text-[var(--wq-ink)]">{e.verifies} · {dShort(e.verified)}</dd>
+            <dt class="text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.attestation')}</dt><dd class="m-0 text-[#E0A23A]">{e.attestation ?? s(locale, 'pm.r.pending')}</dd>
+            <dt class="text-[var(--wq-ink-muted)]">SHA-256</dt><dd class="m-0 break-all font-mono text-[10px] text-[var(--wq-ink-muted)]">{e.sha256}</dd>
+          </dl>
+          {e.url && <a href={e.url} target="_blank" rel="noopener" class="text-xs font-semibold text-teal underline-offset-2 hover:underline">{s(locale, 'pm.watch')} ↗</a>}
+          {list.length > 1 && (
+            <div class="mt-auto flex items-center justify-between pt-2 text-xs text-[var(--wq-ink-muted)]">
+              <button type="button" onClick={() => setIndex((index - 1 + list.length) % list.length)} class="rounded-full border border-[var(--wq-divider)] px-3 py-1 hover:bg-[var(--wq-row-bg)]">‹ {s(locale, 'pm.r.prev')}</button>
+              <span class="font-mono">{index + 1} / {list.length}</span>
+              <button type="button" onClick={() => setIndex((index + 1) % list.length)} class="rounded-full border border-[var(--wq-divider)] px-3 py-1 hover:bg-[var(--wq-row-bg)]">{s(locale, 'pm.r.next')} ›</button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const H3 = 'm-0 font-display text-base font-bold text-[var(--wq-ink)] sm:text-[15px]';
+
+export default function Relato({ r, alias, locale }: { r: PmRelato; alias: string; locale: Locale }) {
+  const [hot, setHot] = useState<Hot>(null);
+  const [open, setOpen] = useState<number | null>(null);
+  const ev = [...r.evidencia].sort((a, b) => `${a.date} ${a.time ?? ''}`.localeCompare(`${b.date} ${b.time ?? ''}`));
+  const statKey: ('lat' | 'gap' | 'vid')[] = ['lat', 'gap', 'vid'];
   return (
     <div class="flex flex-col gap-5">
-      <p class="m-0 text-[15px] leading-relaxed text-[var(--wq-ink)]"><Rich text={r.lead} /></p>
+      <p class="m-0 text-[15px] leading-relaxed text-[var(--wq-ink)] sm:text-sm"><Rich text={r.lead} /></p>
 
       <section class="flex flex-col gap-2">
         <div class="grid grid-cols-3 gap-2">
           {r.stats.map((st, i) => (
-            <div key={i} class="rounded-2xl bg-[var(--wq-row-bg)] px-2.5 pb-2 pt-2.5">
-              <div class="font-display text-[30px] font-extrabold leading-none" style={{ color: TONE[st.tone] }}>
-                {st.n}{st.u && <span class="ml-0.5 text-[13px] font-bold">{st.u}</span>}
+            <div key={i} tabIndex={0} onMouseEnter={() => setHot({ key: statKey[i] })} onMouseLeave={() => setHot(null)}
+              onFocus={() => setHot({ key: statKey[i] })} onBlur={() => setHot(null)}
+              class="cursor-default rounded-2xl border border-transparent bg-[var(--wq-row-bg)] px-2.5 pb-2 pt-2.5 outline-none transition duration-200 hover:-translate-y-0.5 hover:border-[var(--wq-divider)] focus-visible:border-[#2EC4C0]">
+              <div class="font-display text-[28px] font-extrabold leading-none sm:text-[24px]" style={{ color: TONE[st.tone] }}>
+                {st.n}{st.u && <span class="ml-0.5 text-[12px] font-bold">{st.u}</span>}
               </div>
-              <div class="mt-1 text-[11.5px] leading-snug text-[var(--wq-ink-muted)]">{st.l}</div>
+              <div class="mt-1 text-[11.5px] leading-snug text-[var(--wq-ink-muted)] sm:text-[11px]">{st.l}</div>
             </div>
           ))}
         </div>
-        {r.stats_note && <p class="m-0 text-[11.5px] leading-snug text-[var(--wq-ink-muted)]">{r.stats_note}</p>}
+        {r.stats_note && <p class="m-0 text-[11px] leading-snug text-[var(--wq-ink-muted)]">{r.stats_note}</p>}
       </section>
 
       <section class="flex flex-col gap-2">
-        <h3 class="m-0 font-display text-base font-bold text-[var(--wq-ink)]">{s(locale, 'pm.r.curso')}</h3>
-        <Curso c={r.curso} locale={locale} />
+        <h3 class={H3}>{s(locale, 'pm.r.curso')}</h3>
+        <Curso r={r} name={r.nombre ?? alias} hot={hot} setHot={setHot} locale={locale} />
       </section>
 
-      {main && (
+      {ev.length > 0 && (
         <section class="flex flex-col gap-2">
-          <h3 class="m-0 font-display text-base font-bold text-[var(--wq-ink)]">
+          <h3 class={H3}>
             {s(locale, 'pm.r.evidence')} <span class="font-sans text-xs font-medium text-[var(--wq-ink-muted)]">· {s(locale, 'pm.r.evidenceSub')}</span>
           </h3>
-          <Evidence e={main} locale={locale} big />
-          {rest.length > 0 && <div class="grid grid-cols-2 gap-2">{rest.map((e) => <Evidence key={e.media} e={e} locale={locale} />)}</div>}
+          <div class="grid grid-cols-3 gap-2 sm:grid-cols-5">
+            {ev.map((e, i) => <EvidenceCard key={e.media} e={e} locale={locale} onOpen={() => setOpen(i)}
+              lit={hot?.key === 'vid' || (!!hot?.date && inRange(e.date, hot.date, hot.to))} />)}
+          </div>
+          <p class="m-0 text-[11px] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.evidenceHint').replace('{who}', ev[0].verifies)}</p>
+          {open != null && <Lightbox list={ev} index={open} setIndex={setOpen} locale={locale} />}
         </section>
       )}
 
       <section class="flex flex-col gap-1">
-        <h3 class="m-0 font-display text-base font-bold text-[var(--wq-ink)]">{s(locale, 'pm.r.moments')}</h3>
+        <h3 class={H3}>{s(locale, 'pm.r.moments')}</h3>
         <ol class="m-0 flex list-none flex-col p-0">
-          {r.momentos.map((m, i) => (
-            <li key={i} class="grid gap-x-3 border-b border-dashed border-[var(--wq-divider)] py-2.5" style={{ gridTemplateColumns: '62px 1fr' }}>
-              <span class="font-mono text-xs leading-snug text-[var(--wq-ink-muted)]">
-                {m.d2 ? `${+m.d.slice(8, 10)}–${dShort(m.d2)}` : dShort(m.d)}{m.t && <><br />{m.t}</>}
-              </span>
-              <span class="text-sm leading-snug text-[var(--wq-ink)]">
-                <span class="flex items-center gap-1.5 font-semibold">
-                  <span class="inline-block h-2 w-2 flex-none rounded-full" style={{ background: TONE[m.tone] }} />{m.title}
+          {r.momentos.map((m, i) => {
+            const on = !!hot?.date && (inRange(hot.date, m.d, m.d2) || (!!hot.to && inRange(m.d, hot.date, hot.to)));
+            return (
+              <li key={i} tabIndex={0} onMouseEnter={() => setHot({ date: m.d, to: m.d2 })} onMouseLeave={() => setHot(null)}
+                onFocus={() => setHot({ date: m.d, to: m.d2 })} onBlur={() => setHot(null)}
+                class={`-mx-2 grid gap-x-3 rounded-lg border-b border-dashed border-[var(--wq-divider)] px-2 py-2 outline-none transition-colors hover:bg-[var(--wq-row-bg)] ${on ? 'bg-[var(--wq-row-bg)]' : ''}`}
+                style={{ gridTemplateColumns: '58px 1fr' }}>
+                <span class="font-mono text-[11px] leading-snug text-[var(--wq-ink-muted)]">
+                  {m.d2 ? `${+m.d.slice(8, 10)}–${dShort(m.d2)}` : dShort(m.d)}{m.t && <><br />{m.t}</>}
                 </span>
-                <span class="text-[var(--wq-ink-muted)]">{m.text}</span>
-                <span class="ml-1 inline-block rounded-full border border-[var(--wq-divider)] px-1.5 text-[10px] text-[var(--wq-ink-muted)]">{m.src}</span>
-              </span>
-            </li>
-          ))}
+                <span class="text-sm leading-snug text-[var(--wq-ink)] sm:text-[13px]">
+                  <span class="flex items-center gap-1.5 font-semibold">
+                    <span class="inline-block h-2 w-2 flex-none rounded-full" style={{ background: TONE[m.tone] }} />{m.title}
+                  </span>
+                  <span class="text-[var(--wq-ink-muted)]">{m.text}</span>
+                  <span class="ml-1 inline-block rounded-full border border-[var(--wq-divider)] px-1.5 text-[10px] text-[var(--wq-ink-muted)]">{m.src}</span>
+                </span>
+              </li>
+            );
+          })}
         </ol>
       </section>
 
       {r.simulacion && (
         <section class="flex flex-col gap-2 rounded-2xl border border-[#2EC4C0]/30 bg-[var(--wq-row-bg)] p-3">
-          <span class="font-mono text-[10.5px] font-semibold uppercase tracking-[0.06em] text-[#2EC4C0]">{s(locale, 'pm.r.simBadge')}</span>
-          <h3 class="m-0 font-display text-base font-bold text-[var(--wq-ink)]">{s(locale, 'pm.r.simTitle')}</h3>
-          <ul class="m-0 flex list-none flex-col gap-2 p-0">
+          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[#2EC4C0]">{s(locale, 'pm.r.simBadge')}</span>
+          <h3 class={H3}>{s(locale, 'pm.r.simTitle')}</h3>
+          <ul class="m-0 flex list-none flex-col gap-1 p-0">
             {r.simulacion.reglas.map((g, i) => (
-              <li key={i} class="grid gap-x-2.5 text-[13.5px] leading-snug" style={{ gridTemplateColumns: '54px 1fr' }}>
-                <span class="font-mono text-xs font-semibold text-[#2EC4C0]">{dShort(g.d)}</span>
-                <span class="text-[var(--wq-ink)]">{g.text}<span class="block text-xs text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.real')}: {g.real}</span></span>
+              <li key={i} tabIndex={0} onMouseEnter={() => setHot({ date: g.d })} onMouseLeave={() => setHot(null)} onFocus={() => setHot({ date: g.d })} onBlur={() => setHot(null)}
+                class="-mx-1.5 grid gap-x-2.5 rounded-lg px-1.5 py-1 text-[13px] leading-snug outline-none transition-colors hover:bg-[var(--wq-surface)]" style={{ gridTemplateColumns: '50px 1fr' }}>
+                <span class="font-mono text-[11px] font-semibold text-[#2EC4C0]">{dShort(g.d)}</span>
+                <span class="text-[var(--wq-ink)]">{g.text}<span class="block text-[11.5px] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.real')}: {g.real}</span></span>
               </li>
             ))}
           </ul>
           <div class="grid grid-cols-2 gap-2">
             {[r.simulacion.con, r.simulacion.sin].map((k, i) => (
               <div key={i} class="rounded-xl bg-[var(--wq-surface)] px-2.5 py-2">
-                <b class="block font-display text-[22px] leading-tight" style={{ color: i ? '#E0A23A' : '#34C08A' }}>{k.n}</b>
-                <span class="text-[11.5px] text-[var(--wq-ink-muted)]">{k.l}</span>
+                <b class="block font-display text-[20px] leading-tight" style={{ color: i ? '#E0A23A' : '#34C08A' }}>{k.n}</b>
+                <span class="text-[11px] text-[var(--wq-ink-muted)]">{k.l}</span>
               </div>
             ))}
           </div>
@@ -219,11 +347,11 @@ export default function Relato({ r, locale }: { r: PmRelato; locale: Locale }) {
       )}
 
       {r.publico && (
-        <section class="flex flex-col gap-1.5 rounded-2xl border border-[var(--wq-divider)] p-3">
-          <h3 class="m-0 font-display text-base font-bold text-[var(--wq-ink)]">{s(locale, 'pm.r.public')}</h3>
+        <section class="flex flex-col gap-1.5 rounded-2xl border border-[var(--wq-divider)] p-3 transition-colors hover:border-[#E0A23A]/50">
+          <h3 class={H3}>{s(locale, 'pm.r.public')}</h3>
           <span class="text-xs text-[var(--wq-ink-muted)]">{r.publico.fuente} · {dLong(r.publico.fecha)} ·{' '}
             <a href={r.publico.url} target="_blank" rel="noopener" class="font-semibold text-teal underline-offset-2 hover:underline">{s(locale, 'pm.watch')} ↗</a></span>
-          <blockquote class="m-0 border-l-[3px] border-[#E0A23A] pl-2.5 text-sm italic leading-snug text-[var(--wq-ink)]">«{r.publico.cita}»</blockquote>
+          <blockquote class="m-0 border-l-[3px] border-[#E0A23A] pl-2.5 text-sm italic leading-snug text-[var(--wq-ink)] sm:text-[13px]">«{r.publico.cita}»</blockquote>
           <p class="m-0 text-xs leading-snug text-[#E0A23A]">{s(locale, 'pm.record')}: {r.publico.registro}</p>
         </section>
       )}

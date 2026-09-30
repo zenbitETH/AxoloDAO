@@ -415,7 +415,7 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
   if (sp.relato) {
     return (
       <div class="flex flex-col gap-5">
-        <Relato r={sp.relato} locale={locale} />
+        <Relato r={sp.relato} alias={sp.alias} locale={locale} />
         {factsSec}
         {groupSec}
         <details class="rounded-2xl border border-[var(--wq-divider)] p-3">
