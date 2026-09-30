@@ -257,11 +257,14 @@ function Lightbox({ list, index, setIndex, locale }: { list: PmEvidence[]; index
   return (
     <div role="dialog" aria-modal="true" aria-label={e.text} class="fixed inset-0 z-[90] flex items-center justify-center bg-black/80 p-3 backdrop-blur-sm sm:p-6"
       onClick={(ev) => { if (ev.target === ev.currentTarget) setIndex(null); }}>
-      <div class="flex max-h-full w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-surface)] sm:flex-row">
-        <div class="flex min-h-0 flex-1 items-center justify-center bg-black">
-          <video key={e.media} src={e.media} poster={e.poster} controls autoPlay playsInline class="block max-h-[62vh] w-full object-contain sm:max-h-[82vh]" />
+      <div class="flex max-h-full w-full max-w-4xl flex-col overflow-y-auto overscroll-contain rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-surface)] sm:flex-row sm:overflow-hidden">
+        {/* On a phone the video keeps its place in one scrolling column and a vertical clip is
+            capped at 42vh, so it can never paint over the text below it. */}
+        <div class="flex flex-none items-center justify-center bg-black sm:min-h-0 sm:flex-1">
+          <video key={e.media} src={e.media} poster={e.poster} controls autoPlay playsInline
+            class={`block max-w-full object-contain ${e.orient === 'vertical' ? 'max-h-[42vh] w-auto sm:max-h-[82vh]' : 'max-h-[42vh] w-full sm:max-h-[82vh]'}`} />
         </div>
-        <div class="flex w-full flex-col gap-2.5 overflow-y-auto p-4 sm:w-[300px]">
+        <div class="flex w-full flex-none flex-col gap-2.5 p-4 sm:w-[300px] sm:flex-auto sm:overflow-y-auto">
           <div class="flex items-start justify-between gap-2">
             <span class="font-mono text-[11px] text-[var(--wq-ink-muted)]">{dLong(e.date)}{e.time ? ` · ${e.time}` : ''} · {s(locale, e.source === 'telefono' ? 'pm.r.phone' : 'pm.r.stream')}</span>
             <button ref={close} type="button" onClick={() => setIndex(null)} aria-label={s(locale, 'pm.r.close')}
