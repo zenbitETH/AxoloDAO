@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-30",
- "brain_commit": "9070298",
+ "generated": "2026-10-01",
+ "brain_commit": "9203c15",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -348,7 +348,205 @@
      "grade": "A",
      "text": "Cambio de agua rutinario · Se realiza el cambio del agua de tupper de cuarentena de ander"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Del **26 al 30 de agosto** el libro anota siete veces que flotaba, que nadaba hacia la superficie una y otra vez o que se atoraba en la rejilla del filtro, casi siempre como solo observación. La primera acción, un aviso al veterinario y la cuarentena, llegó el **31 de agosto**, cinco días después de la primera señal; ese día el agua de su sistema marcó amoníaco sobre cero. Murió el 5 de septiembre.",
+    "stats": [
+     {
+      "n": "5",
+      "u": "días",
+      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
+      "tone": "amber",
+      "key": "lat"
+     },
+     {
+      "n": "5",
+      "u": "de 12",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "rose",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2026-08-02",
+     "to": "2026-09-05",
+     "lecturas": [
+      "2026-08-26",
+      "2026-08-27",
+      "2026-08-28",
+      "2026-08-31",
+      "2026-09-01",
+      "2026-09-02",
+      "2026-09-03",
+      "2026-09-04"
+     ],
+     "criticas": [
+      "2026-08-31"
+     ],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [
+      [
+       "2026-08-26",
+       "08:29",
+       "fuerte"
+      ],
+      [
+       "2026-08-27",
+       "15:23",
+       "fuerte"
+      ],
+      [
+       "2026-08-28",
+       "16:00",
+       "fuerte"
+      ],
+      [
+       "2026-08-29",
+       "09:46",
+       "fuerte"
+      ],
+      [
+       "2026-08-29",
+       "09:23",
+       "fuerte"
+      ],
+      [
+       "2026-08-30",
+       "17:17",
+       "fuerte"
+      ],
+      [
+       "2026-08-30",
+       "16:29",
+       "fuerte"
+      ],
+      [
+       "2026-08-30",
+       "15:49",
+       "fuerte"
+      ],
+      [
+       "2026-08-30",
+       "09:00",
+       "fuerte"
+      ],
+      [
+       "2026-09-01",
+       "18:00",
+       "fuerte"
+      ],
+      [
+       "2026-09-01",
+       "15:45",
+       "fuerte"
+      ]
+     ],
+     "videos": [],
+     "respuestas": [
+      [
+       "2026-08-31",
+       "09:30",
+       "si"
+      ],
+      [
+       "2026-09-03",
+       "19:30",
+       "si"
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2026-08-26",
+       "08:29"
+      ],
+      "to": [
+       "2026-08-31",
+       "09:10"
+      ],
+      "label": "5 días · estándar 48 h"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2026-08-26",
+      "tone": "amber",
+      "title": "Flota atorado en el filtro",
+      "text": "Flotabilidad en la rejilla del filtro, con una pata atorada.",
+      "src": "bitácora",
+      "t": "08:29"
+     },
+     {
+      "d": "2026-08-27",
+      "tone": "amber",
+      "title": "Nada hacia la superficie",
+      "text": "Actividad de nado a la superficie demasiado alta, tres días seguidos; queda en observación.",
+      "src": "bitácora",
+      "t": "15:23",
+      "d2": "2026-08-29"
+     },
+     {
+      "d": "2026-08-30",
+      "tone": "amber",
+      "title": "Se atora una y otra vez",
+      "text": "Se atoró cinco veces en la parte dentada junto al filtro.",
+      "src": "bitácora",
+      "t": "17:17"
+     },
+     {
+      "d": "2026-08-31",
+      "tone": "green",
+      "title": "Aviso al veterinario y cuarentena",
+      "text": "Primera acción del episodio. Ese día, amoníaco sobre cero en su sistema.",
+      "src": "bitácora · libro",
+      "t": "09:30"
+     },
+     {
+      "d": "2026-09-01",
+      "tone": "amber",
+      "title": "Pierde el control al bajar",
+      "text": "Flota a media agua y pierde el control al bajar de la superficie.",
+      "src": "bitácora",
+      "t": "18:00"
+     },
+     {
+      "d": "2026-09-05",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "La hoja puede leerse también como 9 de mayo; esa lectura se descarta porque hay registros de ella viva hasta el 3 de septiembre.",
+      "src": "libro"
+     }
+    ],
+    "simulacion": {
+     "reglas": [
+      {
+       "d": "2026-08-26",
+       "text": "Incidencia clínica sin respuesta en 48 h → escala a dirección clínica el 28.",
+       "real": "Cinco días y siete incidencias anotadas como solo observación hasta el aviso al veterinario."
+      },
+      {
+       "d": "2026-08-31",
+       "text": "Amoníaco sobre cero → aviso crítico al veterinario en minutos.",
+       "real": "Ese día sí se avisó al veterinario."
+      }
+     ],
+     "con": {
+      "n": "≤ 48 h",
+      "l": "de la primera señal a la acción, con avisos"
+     },
+     "sin": {
+      "n": "5 días",
+      "l": "lo que pasó sin ellos"
+     }
+    },
+    "evidencia": [],
+    "datos": {
+     "peso": [],
+     "alim": []
+    }
+   }
   },
   {
    "alias": "Panchita",
@@ -3018,7 +3216,742 @@
      "grade": "A",
      "text": "El fundador pregunta si la carga de sales pudo acelerar el desgaste de hígado y riñones"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Desde el **4 de junio** el libro anota que flotaba con la parte trasera hacia arriba y que le volvía el crecimiento algodonoso en las branquias. Pasó un mes entre cuarentena y tratamientos diarios, y ninguna de sus señales quedó sin respuesta dentro de su plazo. El 22 de junio pesaba 144 g, 10 % menos que en abril. El 1 de julio salió del acuario porque flotaba; el **7 de julio** la llevaron de emergencia al veterinario y murió.",
+    "stats": [
+     {
+      "n": "mismo",
+      "u": "día",
+      "l": "de la primera señal del episodio a la primera acción (estándar 72 h)",
+      "tone": "green",
+      "key": "lat"
+     },
+     {
+      "n": "0",
+      "u": "de 77",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "green",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2026-06-03",
+     "to": "2026-07-07",
+     "lecturas": [
+      "2026-06-03",
+      "2026-06-04",
+      "2026-06-05",
+      "2026-06-06",
+      "2026-06-07",
+      "2026-06-08",
+      "2026-06-09",
+      "2026-06-10",
+      "2026-06-11",
+      "2026-06-12",
+      "2026-06-13",
+      "2026-06-14",
+      "2026-06-15",
+      "2026-06-16",
+      "2026-06-17",
+      "2026-06-18",
+      "2026-06-19",
+      "2026-06-20",
+      "2026-06-21",
+      "2026-06-22",
+      "2026-06-23",
+      "2026-06-24",
+      "2026-06-25",
+      "2026-06-26",
+      "2026-06-27",
+      "2026-06-28",
+      "2026-06-29",
+      "2026-06-30",
+      "2026-07-01",
+      "2026-07-02",
+      "2026-07-03",
+      "2026-07-04",
+      "2026-07-05",
+      "2026-07-06",
+      "2026-07-07"
+     ],
+     "criticas": [
+      "2026-06-03",
+      "2026-07-06",
+      "2026-07-07"
+     ],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [
+      [
+       "2026-06-04",
+       "19:50",
+       "fuerte"
+      ],
+      [
+       "2026-06-10",
+       "09:10",
+       "fuerte"
+      ],
+      [
+       "2026-06-12",
+       "17:00",
+       "fuerte"
+      ],
+      [
+       "2026-06-14",
+       "12:28",
+       "fuerte"
+      ],
+      [
+       "2026-06-15",
+       "12:20",
+       "fuerte"
+      ],
+      [
+       "2026-06-21",
+       "14:00",
+       "fuerte"
+      ],
+      [
+       "2026-06-21",
+       "16:33",
+       "fuerte"
+      ],
+      [
+       "2026-06-21",
+       "15:52",
+       "leve"
+      ],
+      [
+       "2026-06-22",
+       "14:00",
+       "fuerte"
+      ],
+      [
+       "2026-06-22",
+       "08:20",
+       "fuerte"
+      ],
+      [
+       "2026-06-22",
+       "10:40",
+       "fuerte"
+      ],
+      [
+       "2026-06-25",
+       "13:00",
+       "fuerte"
+      ],
+      [
+       "2026-06-25",
+       "09:00",
+       "fuerte"
+      ],
+      [
+       "2026-06-27",
+       "09:15",
+       "fuerte"
+      ],
+      [
+       "2026-06-29",
+       "14:30",
+       "fuerte"
+      ],
+      [
+       "2026-06-29",
+       "08:00",
+       "fuerte"
+      ],
+      [
+       "2026-06-29",
+       "14:30",
+       "fuerte"
+      ],
+      [
+       "2026-06-30",
+       "16:00",
+       "fuerte"
+      ],
+      [
+       "2026-06-30",
+       "16:00",
+       "fuerte"
+      ],
+      [
+       "2026-07-01",
+       "10:00",
+       "fuerte"
+      ],
+      [
+       "2026-07-01",
+       "17:28",
+       "fuerte"
+      ],
+      [
+       "2026-07-01",
+       "18:10",
+       "fuerte"
+      ],
+      [
+       "2026-07-02",
+       "07:30",
+       "fuerte"
+      ],
+      [
+       "2026-07-03",
+       "19:37",
+       "fuerte"
+      ],
+      [
+       "2026-07-03",
+       "19:37",
+       "fuerte"
+      ],
+      [
+       "2026-07-03",
+       "20:07",
+       "leve"
+      ],
+      [
+       "2026-07-05",
+       "10:10",
+       "fuerte"
+      ],
+      [
+       "2026-07-05",
+       "12:07",
+       "fuerte"
+      ],
+      [
+       "2026-07-06",
+       "11:12",
+       "fuerte"
+      ],
+      [
+       "2026-07-07",
+       "13:25",
+       "fuerte"
+      ],
+      [
+       "2026-07-07",
+       "13:20",
+       "fuerte"
+      ],
+      [
+       "2026-07-07",
+       "07:20",
+       "fuerte"
+      ],
+      [
+       "2026-07-07",
+       "15:47",
+       "fuerte"
+      ]
+     ],
+     "videos": [],
+     "respuestas": [
+      [
+       "2026-06-03",
+       "19:50",
+       "si"
+      ],
+      [
+       "2026-06-04",
+       "19:50",
+       "si"
+      ],
+      [
+       "2026-06-05",
+       "06:40",
+       "si"
+      ],
+      [
+       "2026-06-06",
+       "10:34",
+       "si"
+      ],
+      [
+       "2026-06-11",
+       "16:20",
+       "si"
+      ],
+      [
+       "2026-06-12",
+       "13:25",
+       "si"
+      ],
+      [
+       "2026-06-13",
+       "15:00",
+       "si"
+      ],
+      [
+       "2026-06-14",
+       "13:05",
+       "si"
+      ],
+      [
+       "2026-06-15",
+       "12:00",
+       "si"
+      ],
+      [
+       "2026-06-16",
+       "13:05",
+       "si"
+      ],
+      [
+       "2026-06-17",
+       "13:02",
+       "si"
+      ],
+      [
+       "2026-06-18",
+       "13:06",
+       "si"
+      ],
+      [
+       "2026-06-19",
+       "14:25",
+       "si"
+      ],
+      [
+       "2026-06-20",
+       "13:56",
+       "si"
+      ],
+      [
+       "2026-06-21",
+       "14:00",
+       "si"
+      ],
+      [
+       "2026-06-22",
+       "08:20",
+       "si"
+      ],
+      [
+       "2026-06-23",
+       "16:00",
+       "si"
+      ],
+      [
+       "2026-06-24",
+       "13:05",
+       "si"
+      ],
+      [
+       "2026-06-25",
+       "14:20",
+       "si"
+      ],
+      [
+       "2026-06-26",
+       "13:15",
+       "si"
+      ],
+      [
+       "2026-06-27",
+       "14:02",
+       "si"
+      ],
+      [
+       "2026-06-28",
+       "13:50",
+       "si"
+      ],
+      [
+       "2026-06-29",
+       "14:30",
+       "si"
+      ],
+      [
+       "2026-06-30",
+       "16:00",
+       "si"
+      ],
+      [
+       "2026-07-01",
+       "10:00",
+       "si"
+      ],
+      [
+       "2026-07-02",
+       "19:20",
+       "si"
+      ],
+      [
+       "2026-07-03",
+       "19:37",
+       "si"
+      ],
+      [
+       "2026-07-04",
+       "09:10",
+       "si"
+      ],
+      [
+       "2026-07-05",
+       "10:10",
+       "si"
+      ],
+      [
+       "2026-07-06",
+       "19:20",
+       "si"
+      ],
+      [
+       "2026-07-07",
+       "13:25",
+       "si"
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2026-06-16",
+       "12:18"
+      ],
+      "to": [
+       "2026-06-16",
+       "13:05"
+      ],
+      "label": "mismo día · estándar 72 h"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2026-06-03",
+      "tone": "rose",
+      "title": "Amoníaco sobre cero en su sistema",
+      "text": "Primera de tres lecturas de amoníaco sobre cero en el acuario de Ambystoma andersoni en junio.",
+      "src": "libro · agua"
+     },
+     {
+      "d": "2026-06-04",
+      "tone": "amber",
+      "title": "Flota y pasa a cuarentena",
+      "text": "Le costaba permanecer en el fondo; se cambió a un topper de cuarentena.",
+      "src": "bitácora",
+      "t": "19:50"
+     },
+     {
+      "d": "2026-06-10",
+      "tone": "amber",
+      "title": "Vuelve el crecimiento algodonoso",
+      "text": "Reincidencia del crecimiento algodonoso en las branquias.",
+      "src": "bitácora",
+      "t": "09:10"
+     },
+     {
+      "d": "2026-06-16",
+      "tone": "green",
+      "title": "Empieza el tratamiento",
+      "text": "Saprolegniasis: baños de sal, el mismo día de la señal.",
+      "src": "terapéutica",
+      "t": "13:05"
+     },
+     {
+      "d": "2026-07-01",
+      "tone": "green",
+      "title": "Sale del acuario",
+      "text": "Se retira a cuarentena fuera del recinto porque seguía flotando; empiezan los tratamientos oftálmicos y el antibiótico.",
+      "src": "chat · terapéutica",
+      "t": "18:15"
+     },
+     {
+      "d": "2026-07-07",
+      "tone": "green",
+      "title": "Emergencia veterinaria",
+      "text": "Comportamiento inusual y subidas a la superficie; se avisa al veterinario y se la lleva de emergencia. Se queda en la clínica con pronóstico reservado.",
+      "src": "bitácora · chat",
+      "t": "13:25"
+     },
+     {
+      "d": "2026-07-07",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "El laboratorio fecha la muerte el 7; la hoja Bajas, el 8. Se conservó refrigerada y se le hizo necropsia.",
+      "src": "laboratorio · libro"
+     }
+    ],
+    "publico": {
+     "fecha": "2026-07-14",
+     "fuente": "Podcast 18",
+     "url": "https://youtu.be/B3NpBliaWCs?t=2",
+     "cita": "Panchita murió de una infección en varios órganos",
+     "registro": "necropsia: hepatitis crónica; resultado del 08-04, después del episodio"
+    },
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-11-09",
+       "g": 159,
+       "lt": null
+      },
+      {
+       "d": "2025-12-18",
+       "g": 147,
+       "lt": 24.5
+      },
+      {
+       "d": "2025-12-24",
+       "g": 147,
+       "lt": 25
+      },
+      {
+       "d": "2026-01-19",
+       "g": 147,
+       "lt": 25
+      },
+      {
+       "d": "2026-03-03",
+       "g": 159,
+       "lt": 26.03
+      },
+      {
+       "d": "2026-03-17",
+       "g": 148,
+       "lt": 26.03
+      },
+      {
+       "d": "2026-03-18",
+       "g": 149,
+       "lt": 26.03
+      },
+      {
+       "d": "2026-04-21",
+       "g": 160,
+       "lt": 26.03
+      },
+      {
+       "d": "2026-06-08",
+       "g": 150,
+       "lt": 26.5
+      },
+      {
+       "d": "2026-06-22",
+       "g": 144,
+       "lt": null
+      }
+     ],
+     "alim": [
+      {
+       "d": "2026-04-08",
+       "g": 1.27,
+       "ofrecido": 5.51
+      },
+      {
+       "d": "2026-04-10",
+       "g": 1,
+       "ofrecido": 1
+      },
+      {
+       "d": "2026-04-13",
+       "g": 0.34,
+       "ofrecido": 0.61
+      },
+      {
+       "d": "2026-04-14",
+       "g": 1.02,
+       "ofrecido": 1.02
+      },
+      {
+       "d": "2026-04-15",
+       "g": 1.07,
+       "ofrecido": 1.07
+      },
+      {
+       "d": "2026-04-28",
+       "g": 3.25,
+       "ofrecido": 3.25
+      },
+      {
+       "d": "2026-04-29",
+       "g": 1.8,
+       "ofrecido": 4.46
+      },
+      {
+       "d": "2026-05-04",
+       "g": 0,
+       "ofrecido": null
+      },
+      {
+       "d": "2026-05-05",
+       "g": 0.2,
+       "ofrecido": 3.63
+      },
+      {
+       "d": "2026-05-06",
+       "g": 0,
+       "ofrecido": 2.5
+      },
+      {
+       "d": "2026-05-08",
+       "g": 2.54,
+       "ofrecido": 2.54
+      },
+      {
+       "d": "2026-05-09",
+       "g": 1.49,
+       "ofrecido": 6.62
+      },
+      {
+       "d": "2026-05-12",
+       "g": 1.43,
+       "ofrecido": 4.07
+      },
+      {
+       "d": "2026-05-14",
+       "g": 0.28,
+       "ofrecido": 3.15
+      },
+      {
+       "d": "2026-05-15",
+       "g": 0.05,
+       "ofrecido": 7.59
+      },
+      {
+       "d": "2026-05-27",
+       "g": 2.56,
+       "ofrecido": 2.56
+      },
+      {
+       "d": "2026-06-01",
+       "g": 0.02,
+       "ofrecido": 2.84
+      },
+      {
+       "d": "2026-06-03",
+       "g": 0.26,
+       "ofrecido": 2.43
+      },
+      {
+       "d": "2026-06-05",
+       "g": 0,
+       "ofrecido": 2.99
+      },
+      {
+       "d": "2026-06-07",
+       "g": 4.09,
+       "ofrecido": 4.09
+      },
+      {
+       "d": "2026-06-09",
+       "g": 0.28,
+       "ofrecido": 3.22
+      },
+      {
+       "d": "2026-06-10",
+       "g": 0,
+       "ofrecido": 2.94
+      },
+      {
+       "d": "2026-06-12",
+       "g": 0.14,
+       "ofrecido": 2.34
+      },
+      {
+       "d": "2026-06-13",
+       "g": 0.87,
+       "ofrecido": 2.2
+      },
+      {
+       "d": "2026-06-14",
+       "g": 0.22,
+       "ofrecido": 1.33
+      },
+      {
+       "d": "2026-06-16",
+       "g": 0.43,
+       "ofrecido": 2.35
+      },
+      {
+       "d": "2026-06-17",
+       "g": 0.44,
+       "ofrecido": 1.92
+      },
+      {
+       "d": "2026-06-18",
+       "g": 0.18,
+       "ofrecido": 1.48
+      },
+      {
+       "d": "2026-06-19",
+       "g": 0.49,
+       "ofrecido": 1.3
+      },
+      {
+       "d": "2026-06-22",
+       "g": 0.155,
+       "ofrecido": 0.62
+      },
+      {
+       "d": "2026-06-22",
+       "g": 0.37,
+       "ofrecido": 2.63
+      },
+      {
+       "d": "2026-06-23",
+       "g": 0.315,
+       "ofrecido": 0.47
+      },
+      {
+       "d": "2026-06-24",
+       "g": 0.02,
+       "ofrecido": 3.5
+      },
+      {
+       "d": "2026-06-25",
+       "g": 0.22,
+       "ofrecido": 2.66
+      },
+      {
+       "d": "2026-06-26",
+       "g": 0.25,
+       "ofrecido": 2.44
+      },
+      {
+       "d": "2026-06-29",
+       "g": 0.54,
+       "ofrecido": 2.77
+      },
+      {
+       "d": "2026-07-01",
+       "g": 0,
+       "ofrecido": 0.81
+      },
+      {
+       "d": "2026-07-02",
+       "g": 1,
+       "ofrecido": 1
+      },
+      {
+       "d": "2026-07-03",
+       "g": 0,
+       "ofrecido": 0.6
+      },
+      {
+       "d": "2026-07-04",
+       "g": 1,
+       "ofrecido": 1
+      },
+      {
+       "d": "2026-07-05",
+       "g": 1,
+       "ofrecido": 1
+      },
+      {
+       "d": "2026-07-07",
+       "g": 1,
+       "ofrecido": 1
+      }
+     ]
+    }
+   }
   },
   {
    "alias": "Goldy",
@@ -3988,7 +4921,374 @@
      "text": "resultado: infección bacteriana sistémica compatible con septicemia (diferenciales Aeromonas spp., Pedobacter sp.) y enteritis parasitaria por nematodos (diferencial principal Strongyloides spp.);",
      "role": "Laboratorio"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Entre marzo y junio bajó de **20 g a 10 g**. El 28 de mayo el libro anota que nadaba sin control y flotaba, y pasó a un topper con poca agua: la primera acción llegó ocho días después de la primera señal del episodio. La hoja Bajas la da por muerta el 5 de junio; el laboratorio fecha su **eutanasia y necropsia el 10 de junio**, el mismo día en que el podcast habló de ella como viva.",
+    "stats": [
+     {
+      "n": "8",
+      "u": "días",
+      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
+      "tone": "amber",
+      "key": "lat"
+     },
+     {
+      "n": "17",
+      "u": "de 32",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "rose",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2026-05-07",
+     "to": "2026-06-10",
+     "lecturas": [
+      "2026-05-07",
+      "2026-05-08",
+      "2026-05-10",
+      "2026-05-11",
+      "2026-05-12",
+      "2026-05-13",
+      "2026-05-14",
+      "2026-05-15",
+      "2026-05-16",
+      "2026-05-17",
+      "2026-05-18",
+      "2026-05-19",
+      "2026-05-20",
+      "2026-05-21",
+      "2026-05-22",
+      "2026-05-25",
+      "2026-05-26",
+      "2026-05-27",
+      "2026-05-28",
+      "2026-05-29",
+      "2026-06-01",
+      "2026-06-02",
+      "2026-06-03",
+      "2026-06-04",
+      "2026-06-05",
+      "2026-06-06",
+      "2026-06-07",
+      "2026-06-08",
+      "2026-06-09",
+      "2026-06-10"
+     ],
+     "criticas": [],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [
+      [
+       "2026-05-08",
+       "13:45",
+       "leve"
+      ],
+      [
+       "2026-05-10",
+       "11:33",
+       "leve"
+      ],
+      [
+       "2026-05-20",
+       "09:36",
+       "leve"
+      ],
+      [
+       "2026-05-28",
+       "17:21",
+       "fuerte"
+      ]
+     ],
+     "videos": [],
+     "respuestas": [
+      [
+       "2026-05-07",
+       "19:09",
+       "si"
+      ],
+      [
+       "2026-05-12",
+       "07:00",
+       "si"
+      ],
+      [
+       "2026-05-28",
+       "17:21",
+       "si"
+      ],
+      [
+       "2026-06-01",
+       "14:40",
+       "si"
+      ],
+      [
+       "2026-06-04",
+       "11:00",
+       "si"
+      ],
+      [
+       "2026-06-08",
+       "08:05",
+       "si"
+      ],
+      [
+       "2026-06-11",
+       "07:00",
+       "si"
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2026-05-20",
+       "09:36"
+      ],
+      "to": [
+       "2026-05-28",
+       "17:21"
+      ],
+      "label": "8 días · estándar 48 h"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2026-05-20",
+      "tone": "amber",
+      "title": "Primera señal del episodio",
+      "text": "Aviso del equipo sobre la alimentación del grupo: quedaban pocos tubifex y rechazaban las lombrices.",
+      "src": "chat",
+      "t": "09:36"
+     },
+     {
+      "d": "2026-05-28",
+      "tone": "amber",
+      "title": "Nada sin control y flota",
+      "text": "Se mueve a un topper con poca agua.",
+      "src": "bitácora",
+      "t": "17:21"
+     },
+     {
+      "d": "2026-06-05",
+      "tone": "muted",
+      "title": "La hoja Bajas la registra muerta",
+      "text": "Causa anotada: parásitos e infección bacteriana.",
+      "src": "libro"
+     },
+     {
+      "d": "2026-06-08",
+      "tone": "amber",
+      "title": "Pesa 10 g",
+      "text": "La mitad de lo que pesaba en marzo.",
+      "src": "historial médico"
+     },
+     {
+      "d": "2026-06-10",
+      "tone": "ink",
+      "title": "Eutanasia y necropsia",
+      "text": "Según el laboratorio, a las 15:50. No aparece en ninguna hoja del libro, y el 11 hay un registro que la trata como viva.",
+      "src": "laboratorio",
+      "t": "15:50"
+     }
+    ],
+    "simulacion": {
+     "reglas": [
+      {
+       "d": "2026-05-20",
+       "text": "Señal sin respuesta en 48 h → escala a dirección clínica.",
+       "real": "8 días hasta la primera acción."
+      }
+     ],
+     "con": {
+      "n": "≤ 48 h",
+      "l": "de la primera señal a la acción, con avisos"
+     },
+     "sin": {
+      "n": "8 días",
+      "l": "lo que pasó sin ellos"
+     }
+    },
+    "publico": {
+     "fecha": "2026-06-10",
+     "fuente": "Podcast 13",
+     "url": "https://youtu.be/FwB8MEdB0E0?t=2138",
+     "cita": "Goldy se está quedando atrás en crecimiento (vivo)",
+     "registro": "necropsia: eutanasia y necropsia el 2026-06-10 15:50, el mismo día"
+    },
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2026-03-03",
+       "g": 20,
+       "lt": 12.9
+      },
+      {
+       "d": "2026-03-18",
+       "g": 16,
+       "lt": null
+      },
+      {
+       "d": "2026-04-21",
+       "g": 17,
+       "lt": null
+      },
+      {
+       "d": "2026-06-08",
+       "g": 10,
+       "lt": null
+      }
+     ],
+     "alim": [
+      {
+       "d": "2026-04-08",
+       "g": 1.157,
+       "ofrecido": 2.397
+      },
+      {
+       "d": "2026-04-10",
+       "g": 0.72,
+       "ofrecido": 1.72
+      },
+      {
+       "d": "2026-04-14",
+       "g": 0.58,
+       "ofrecido": 0.8
+      },
+      {
+       "d": "2026-04-28",
+       "g": 0.12,
+       "ofrecido": 0.12
+      },
+      {
+       "d": "2026-04-29",
+       "g": 3.73,
+       "ofrecido": 9.28
+      },
+      {
+       "d": "2026-05-04",
+       "g": 0,
+       "ofrecido": null
+      },
+      {
+       "d": "2026-05-05",
+       "g": 0.5433333333,
+       "ofrecido": 1.433333333
+      },
+      {
+       "d": "2026-05-06",
+       "g": 0.37,
+       "ofrecido": 1.57
+      },
+      {
+       "d": "2026-05-08",
+       "g": 0,
+       "ofrecido": 6.47
+      },
+      {
+       "d": "2026-05-08",
+       "g": 0.08,
+       "ofrecido": 1.66
+      },
+      {
+       "d": "2026-05-09",
+       "g": 3.75,
+       "ofrecido": 15.39
+      },
+      {
+       "d": "2026-05-12",
+       "g": 1.403333333,
+       "ofrecido": 6.51
+      },
+      {
+       "d": "2026-05-14",
+       "g": 2,
+       "ofrecido": 2.6
+      },
+      {
+       "d": "2026-05-15",
+       "g": 3.3,
+       "ofrecido": 5.58
+      },
+      {
+       "d": "2026-05-16",
+       "g": 1.15,
+       "ofrecido": 7.19
+      },
+      {
+       "d": "2026-05-17",
+       "g": 0.5233333333,
+       "ofrecido": 6
+      },
+      {
+       "d": "2026-05-19",
+       "g": 1.535,
+       "ofrecido": 4.29
+      },
+      {
+       "d": "2026-05-20",
+       "g": 1.035,
+       "ofrecido": 3.09
+      },
+      {
+       "d": "2026-05-22",
+       "g": 1.155,
+       "ofrecido": 3.04
+      },
+      {
+       "d": "2026-05-25",
+       "g": 1.22,
+       "ofrecido": 3.56
+      },
+      {
+       "d": "2026-05-27",
+       "g": 0.66,
+       "ofrecido": 3.14
+      },
+      {
+       "d": "2026-05-28",
+       "g": 0.58,
+       "ofrecido": 1.52
+      },
+      {
+       "d": "2026-05-30",
+       "g": 0.08,
+       "ofrecido": 1.4
+      },
+      {
+       "d": "2026-05-30",
+       "g": 0,
+       "ofrecido": 1.47
+      },
+      {
+       "d": "2026-06-01",
+       "g": 0.62,
+       "ofrecido": 1.08
+      },
+      {
+       "d": "2026-06-03",
+       "g": 0.29,
+       "ofrecido": 0.29
+      },
+      {
+       "d": "2026-06-05",
+       "g": 0.76,
+       "ofrecido": 0.78
+      },
+      {
+       "d": "2026-06-07",
+       "g": 0.44,
+       "ofrecido": 1.11
+      },
+      {
+       "d": "2026-06-09",
+       "g": 1.59,
+       "ofrecido": 1.59
+      }
+     ]
+    }
+   }
   },
   {
    "alias": "Leucistica",
@@ -4352,19 +5652,22 @@
       "n": "16",
       "u": "días",
       "l": "de la primera incidencia registrada a la primera consulta veterinaria",
-      "tone": "amber"
+      "tone": "amber",
+      "key": "lat"
      },
      {
       "n": "3",
       "u": "días",
       "l": "sin medir el agua mientras se agravaba",
-      "tone": "rose"
+      "tone": "rose",
+      "key": "gap"
      },
      {
       "n": "3",
       "u": "",
       "l": "videos de su estado, verificados",
-      "tone": "teal"
+      "tone": "teal",
+      "key": "vid"
      }
     ],
     "stats_note": "Son distancias entre registros. La calificación del método (abajo, en el registro completo) no cambia hasta que se apruebe una enmienda.",
@@ -5029,7 +6332,100 @@
      "critical": false,
      "chronic_only": false
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Pesó **60 g el 9 de noviembre y 29 g el 18 de diciembre**: perdió la mitad de su peso en cinco semanas. El agua de su sistema marcó amoníaco sobre cero el 22 de noviembre. El libro no registra ninguna acción que respondiera a esas señales. Murió el **20 de diciembre**, con sospecha de infección parasitaria o bacteriana y sin necropsia.",
+    "stats": [
+     {
+      "n": "16",
+      "u": "de 16",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "rose",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: no significa . La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2025-11-16",
+     "to": "2025-12-20",
+     "lecturas": [
+      "2025-11-19",
+      "2025-11-22",
+      "2025-12-04",
+      "2025-12-05",
+      "2025-12-06",
+      "2025-12-10",
+      "2025-12-13",
+      "2025-12-14",
+      "2025-12-15",
+      "2025-12-16",
+      "2025-12-17",
+      "2025-12-18",
+      "2025-12-20"
+     ],
+     "criticas": [
+      "2025-11-22"
+     ],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [],
+     "videos": [],
+     "respuestas": [
+      [
+       "2025-12-01",
+       "11:41",
+       "si"
+      ]
+     ]
+    },
+    "momentos": [
+     {
+      "d": "2025-11-09",
+      "tone": "muted",
+      "title": "Pesa 60 g",
+      "text": "Primera medición registrada.",
+      "src": "historial médico"
+     },
+     {
+      "d": "2025-11-22",
+      "tone": "rose",
+      "title": "Amoníaco sobre cero en su sistema",
+      "text": "Lectura del libro de agua.",
+      "src": "libro · agua"
+     },
+     {
+      "d": "2025-12-18",
+      "tone": "amber",
+      "title": "Pesa 29 g",
+      "text": "La mitad que en noviembre, dos días antes de morir.",
+      "src": "historial médico"
+     },
+     {
+      "d": "2025-12-20",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "Sospecha de infección parasitaria o bacteriana; sin necropsia.",
+      "src": "libro"
+     }
+    ],
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-11-09",
+       "g": 60,
+       "lt": null
+      },
+      {
+       "d": "2025-12-18",
+       "g": 29,
+       "lt": 20
+      }
+     ],
+     "alim": []
+    }
+   }
   },
   {
    "alias": "Guajolote",
@@ -5306,7 +6702,148 @@
      "critical": false,
      "chronic_only": false
     }
-   ]
+   ],
+   "relato": {
+    "lead": "El agua de su sistema marcó amoníaco sobre cero tres veces entre noviembre y diciembre. El **1 de diciembre** estaba en tratamiento, separado por indicación del veterinario y en espera de resultados de laboratorio; el 5 fue a un segundo drenado, lo dieron de alta y volvió a su acuario. Murió el **17 de diciembre**; el libro anota infección bacteriana y no hubo necropsia.",
+    "stats": [
+     {
+      "n": "59",
+      "u": "h",
+      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
+      "tone": "amber",
+      "key": "lat"
+     },
+     {
+      "n": "12",
+      "u": "de 14",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "rose",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: no significa . La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2025-11-13",
+     "to": "2025-12-17",
+     "lecturas": [
+      "2025-11-13",
+      "2025-11-14",
+      "2025-11-19",
+      "2025-11-22",
+      "2025-12-05",
+      "2025-12-06",
+      "2025-12-10",
+      "2025-12-13",
+      "2025-12-14",
+      "2025-12-15",
+      "2025-12-16",
+      "2025-12-17"
+     ],
+     "criticas": [
+      "2025-11-13",
+      "2025-11-22",
+      "2025-12-14"
+     ],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [],
+     "videos": [],
+     "respuestas": [
+      [
+       "2025-12-01",
+       "11:41",
+       "si"
+      ],
+      [
+       "2025-12-05",
+       "22:12",
+       "si"
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2025-12-03",
+       "11:33"
+      ],
+      "to": [
+       "2025-12-05",
+       "22:12"
+      ],
+      "label": "59 h · estándar 48 h"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2025-11-13",
+      "tone": "rose",
+      "title": "Amoníaco sobre cero en su sistema",
+      "text": "Primera de tres lecturas sobre cero en noviembre y diciembre.",
+      "src": "libro · agua"
+     },
+     {
+      "d": "2025-12-01",
+      "t": "11:41",
+      "tone": "green",
+      "title": "En tratamiento y separado",
+      "text": "Por indicación del veterinario, en espera de resultados de laboratorio; se ajustan agua y temperatura.",
+      "src": "chat"
+     },
+     {
+      "d": "2025-12-05",
+      "t": "22:12",
+      "tone": "green",
+      "title": "Segundo drenado",
+      "text": "Va al veterinario para un segundo drenado; lo dan de alta y se reincorpora a su acuario.",
+      "src": "chat"
+     },
+     {
+      "d": "2025-12-17",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "Infección bacteriana, según el libro; sin necropsia.",
+      "src": "libro"
+     }
+    ],
+    "simulacion": {
+     "reglas": [
+      {
+       "d": "2025-11-13",
+       "text": "Amoníaco sobre cero → aviso crítico al veterinario en minutos.",
+       "real": "La primera acción registrada es del 1 de diciembre; antes de abril de 2026 el libro casi no registraba acciones."
+      },
+      {
+       "d": "2025-12-03",
+       "text": "Señal sin respuesta en 48 h → escala a dirección clínica.",
+       "real": "59 h hasta el segundo drenado."
+      }
+     ],
+     "con": {
+      "n": "≤ 48 h",
+      "l": "de la primera señal a la acción, con avisos"
+     },
+     "sin": {
+      "n": "59 h",
+      "l": "lo que pasó sin ellos"
+     }
+    },
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-11-09",
+       "g": 26,
+       "lt": null
+      },
+      {
+       "d": "2025-11-09",
+       "g": 41,
+       "lt": null
+      }
+     ],
+     "alim": []
+    }
+   }
   },
   {
    "alias": "Moka",
@@ -5401,7 +6938,63 @@
      "grade": "A",
      "text": "destino del cuerpo: sin registro en ninguna hoja"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "El agua de los sistemas de su especie marcó amoníaco sobre cero en noviembre. No hay registros clínicos de sus últimas semanas: antes de abril de 2026 el museo casi no registraba acciones. Murió el **12 de diciembre**; la causa quedó como desconocida y la necropsia, en proceso, nunca llegó al libro.",
+    "stats": [],
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: no significa . La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2025-11-08",
+     "to": "2025-12-12",
+     "lecturas": [
+      "2025-11-13",
+      "2025-11-14",
+      "2025-11-19",
+      "2025-11-22",
+      "2025-12-04",
+      "2025-12-05",
+      "2025-12-06",
+      "2025-12-10"
+     ],
+     "criticas": [
+      "2025-11-13",
+      "2025-11-22"
+     ],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [],
+     "videos": [],
+     "respuestas": []
+    },
+    "momentos": [
+     {
+      "d": "2025-11-13",
+      "tone": "rose",
+      "title": "Amoníaco sobre cero",
+      "text": "Lectura del libro de agua de los sistemas de su especie.",
+      "src": "libro · agua"
+     },
+     {
+      "d": "2025-12-12",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "Causa desconocida; la necropsia quedó en proceso y no hay resultado.",
+      "src": "libro"
+     }
+    ],
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-11-09",
+       "g": 8,
+       "lt": null
+      }
+     ],
+     "alim": []
+    }
+   }
   },
   {
    "alias": "Loncho",
@@ -5496,7 +7089,47 @@
      "grade": "A",
      "text": "destino del cuerpo: sin registro en ninguna hoja"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Vivía con Panchita en el acuario de Ambystoma andersoni. No hay registros clínicos de sus últimas semanas y el libro de agua apenas empezaba. Murió el **10 de noviembre**; la hoja Bajas anota sepsis bacteriana y daños por caída, con un reporte de incidente. Las grabaciones de sus últimos días están en revisión.",
+    "stats": [],
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: no significa . La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2025-10-07",
+     "to": "2025-11-10",
+     "lecturas": [
+      "2025-10-30",
+      "2025-11-02"
+     ],
+     "criticas": [],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [],
+     "videos": [],
+     "respuestas": []
+    },
+    "momentos": [
+     {
+      "d": "2025-11-10",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "Sepsis bacteriana y daños por caída, con reporte de incidente; sin necropsia.",
+      "src": "libro"
+     }
+    ],
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-11-09",
+       "g": 116,
+       "lt": null
+      }
+     ],
+     "alim": []
+    }
+   }
   },
   {
    "alias": "Golden",
@@ -6558,7 +8191,297 @@
      "grade": "A",
      "text": "destino del cuerpo: sin registro en ninguna hoja"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Creció de 5 g a 18 g entre junio y agosto. El **20 de agosto** el libro anota que no salió del refugio en todo el día; el 6 de septiembre se le diagnosticó saprolegniasis y se trató con itraconazol, y el 9 y el 10 se rascaba las branquias. Con esas señales abiertas, el agua de su sistema no se midió del 9 al 13 ni del 15 al 22 de septiembre. El 22 la colección salió del museo; murió al día siguiente y la causa sigue sin registrar.",
+    "stats": [
+     {
+      "n": "mismo",
+      "u": "día",
+      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
+      "tone": "green",
+      "key": "lat"
+     },
+     {
+      "n": "13",
+      "u": "días",
+      "l": "sin medir el agua de su sistema con una señal abierta",
+      "tone": "rose",
+      "key": "gap"
+     },
+     {
+      "n": "2",
+      "u": "de 7",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "rose",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2026-08-20",
+     "to": "2026-09-23",
+     "lecturas": [
+      "2026-08-20",
+      "2026-08-21",
+      "2026-08-23",
+      "2026-08-24",
+      "2026-08-25",
+      "2026-08-26",
+      "2026-08-27",
+      "2026-08-28",
+      "2026-08-31",
+      "2026-09-01",
+      "2026-09-02",
+      "2026-09-03",
+      "2026-09-04",
+      "2026-09-06",
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-14"
+     ],
+     "criticas": [],
+     "sin_lectura": [
+      [
+       "2026-09-09",
+       "2026-09-13"
+      ],
+      [
+       "2026-09-15",
+       "2026-09-22"
+      ]
+     ],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [
+      [
+       "2026-08-20",
+       "18:24",
+       "fuerte"
+      ],
+      [
+       "2026-08-25",
+       "20:08",
+       "leve"
+      ],
+      [
+       "2026-08-25",
+       "20:09",
+       "leve"
+      ],
+      [
+       "2026-09-06",
+       "10:00",
+       "fuerte"
+      ],
+      [
+       "2026-09-09",
+       "16:42",
+       "fuerte"
+      ],
+      [
+       "2026-09-10",
+       "16:43",
+       "leve"
+      ]
+     ],
+     "videos": [],
+     "respuestas": [
+      [
+       "2026-08-20",
+       "13:30",
+       "si"
+      ],
+      [
+       "2026-08-21",
+       "08:00",
+       "si"
+      ],
+      [
+       "2026-08-25",
+       "07:00",
+       "si"
+      ],
+      [
+       "2026-08-27",
+       "13:48",
+       "si"
+      ],
+      [
+       "2026-08-28",
+       "13:25",
+       "si"
+      ],
+      [
+       "2026-08-29",
+       "13:10",
+       "si"
+      ],
+      [
+       "2026-08-30",
+       "13:10",
+       "si"
+      ],
+      [
+       "2026-08-31",
+       "13:00",
+       "si"
+      ],
+      [
+       "2026-09-01",
+       "13:00",
+       "si"
+      ],
+      [
+       "2026-09-02",
+       "13:00",
+       "si"
+      ],
+      [
+       "2026-09-03",
+       "13:00",
+       "si"
+      ],
+      [
+       "2026-09-04",
+       "13:00",
+       "si"
+      ],
+      [
+       "2026-09-05",
+       "10:00",
+       "si"
+      ],
+      [
+       "2026-09-06",
+       "10:00",
+       "si"
+      ],
+      [
+       "2026-09-08",
+       "20:38",
+       "si"
+      ],
+      [
+       "2026-09-14",
+       "13:19",
+       "si"
+      ],
+      [
+       "2026-09-22",
+       null,
+       "si"
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2026-09-02",
+       "18:38"
+      ],
+      "to": [
+       "2026-09-02",
+       "13:00"
+      ],
+      "label": "mismo día · estándar 48 h"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2026-08-20",
+      "tone": "amber",
+      "title": "No sale del refugio",
+      "text": "No salió del refugio en todo el día; se anota observar por posible estrés.",
+      "src": "bitácora",
+      "t": "18:24"
+     },
+     {
+      "d": "2026-09-06",
+      "tone": "green",
+      "title": "Saprolegniasis",
+      "text": "Diagnóstico y tratamiento con itraconazol.",
+      "src": "terapéutica",
+      "t": "10:00"
+     },
+     {
+      "d": "2026-09-09",
+      "tone": "amber",
+      "title": "Se rasca las branquias",
+      "text": "El 9 dos veces del lado izquierdo; el 10, tres del derecho.",
+      "src": "bitácora",
+      "t": "16:42",
+      "d2": "2026-09-10"
+     },
+     {
+      "d": "2026-09-15",
+      "tone": "rose",
+      "title": "Una semana sin medir el agua",
+      "text": "Del 15 al 22 de septiembre no hay lecturas de su sistema.",
+      "src": "libro",
+      "d2": "2026-09-22"
+     },
+     {
+      "d": "2026-09-22",
+      "tone": "green",
+      "title": "La colección sale del museo",
+      "text": "Toda la colección pasa a cuarentena fuera del museo.",
+      "src": "registro"
+     },
+     {
+      "d": "2026-09-23",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "Causa desconocida por ahora; no hay necropsia registrada.",
+      "src": "registro"
+     }
+    ],
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2026-06-08",
+       "g": 5,
+       "lt": 8.36
+      },
+      {
+       "d": "2026-06-22",
+       "g": 8,
+       "lt": null
+      },
+      {
+       "d": "2026-07-22",
+       "g": 14,
+       "lt": 11.83
+      },
+      {
+       "d": "2026-08-03",
+       "g": 19,
+       "lt": null
+      },
+      {
+       "d": "2026-08-10",
+       "g": 18,
+       "lt": null
+      },
+      {
+       "d": "2026-08-25",
+       "g": 18,
+       "lt": 13.44
+      }
+     ],
+     "alim": [
+      {
+       "d": "2026-07-31",
+       "g": 0.21,
+       "ofrecido": 0.65
+      },
+      {
+       "d": "2026-09-08",
+       "g": 0,
+       "ofrecido": 0.43
+      }
+     ]
+    }
+   }
   }
  ],
  "aire": [
