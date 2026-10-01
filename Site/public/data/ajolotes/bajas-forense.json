@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-01",
- "brain_commit": "d0b59ca",
+ "brain_commit": "64e569a",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -3218,7 +3218,7 @@
     }
    ],
    "relato": {
-    "lead": "En mayo se le inflamó el ojo derecho tras un golpe; el **21 de mayo** lo perdió, y el 27 el daño ya era irreversible. Desde el **4 de junio** el libro anota que flotaba con la parte trasera hacia arriba y que le volvía el crecimiento algodonoso en las branquias. Pasó un mes entre cuarentena y tratamientos diarios, y ninguna de sus señales quedó sin respuesta dentro de su plazo. El 22 de junio pesaba 144 g, 10 % menos que en abril; esa semana el ojo dañado volvió a inflamarse, y el 29 hubo una alerta en el otro. El 1 de julio salió del acuario porque flotaba; el **7 de julio** la llevaron de emergencia al veterinario y murió.",
+    "lead": "Llevaba meses enferma: el crecimiento algodonoso en sus branquias reapareció en diciembre de 2025 al terminar un tratamiento y nunca se resolvió del todo. Según el testimonio del fundador, en 2025 salió del museo dos veces, a la Expo Qro en septiembre y a una convención de UMA y PIMVS en otro estado a fines de octubre, viajes que pudieron exponerla a cambios bruscos de temperatura. En mayo se le inflamó el ojo derecho tras un golpe; el **21 de mayo** lo perdió, y el 27 el daño ya era irreversible. Desde el **4 de junio** el libro anota que flotaba con la parte trasera hacia arriba. Pasó un mes entre cuarentena y tratamientos diarios, y ninguna de sus señales quedó sin respuesta dentro de su plazo. El 22 de junio pesaba 144 g, 10 % menos que en abril; esa semana el ojo dañado volvió a inflamarse, y el 29 hubo una alerta en el otro. El 1 de julio salió del acuario porque flotaba; el **7 de julio** la llevaron de emergencia al veterinario y murió.",
     "stats": [
      {
       "n": "mismo",
@@ -3791,6 +3791,21 @@
      }
     },
     "momentos": [
+     {
+      "d": "2025-12-01",
+      "t": "11:41",
+      "tone": "amber",
+      "title": "El hongo reaparece al terminar un tratamiento",
+      "text": "El equipo anota que el tratamiento acabó el jueves y que al domingo ya era evidente el regreso de lo que creían un hongo. En enero se seguía vigilando que no volviera.",
+      "src": "chat"
+     },
+     {
+      "d": "2026-04-16",
+      "tone": "amber",
+      "title": "Rebrote en las branquias",
+      "text": "Crecimiento algodonoso en la rama intermedia derecha; al día siguiente, tratamiento con sal.",
+      "src": "historial médico · terapéutica"
+     },
      {
       "d": "2026-05-04",
       "t": "16:00",
