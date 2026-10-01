@@ -19,8 +19,11 @@ export interface PmEvidence {
   media: string; poster: string; orient: 'vertical' | 'horizontal'; url: string | null;
   identifies: string; verifies: string; verified: string; sha256: string; attestation: string | null;
 }
+export interface PmPista { tone: Tone; key?: NonNullable<Hot>['key']; title: string; text: string; src: string }
 export interface PmRelato {
   nombre?: string;
+  /** A living specimen's follow-up (seguimiento.json): same shape, the chart ends at the record's cut. */
+  vivo?: boolean; corte?: string; pistas?: PmPista[];
   lead: string;
   stats: { n: string; u: string; l: string; tone: Tone; key?: NonNullable<Hot>['key'] }[];
   stats_note?: string;
@@ -53,7 +56,7 @@ if (typeof window !== 'undefined') window.addEventListener('touchstart', () => {
 const touching = () => Date.now() - lastTouch < 1000;
 
 /** What the pointer is on. A date lights up marks and moments; the other keys are stats. */
-type Hot = { date?: string; to?: string; key?: 'lat' | 'gap' | 'vid' | 'peso' | 'alim' | 'senales' } | null;
+type Hot = { date?: string; to?: string; key?: 'lat' | 'gap' | 'vid' | 'peso' | 'alim' | 'senales' | 'agua' } | null;
 
 const days = (a: string, b: string) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
 
@@ -62,7 +65,9 @@ export function insights(r: PmRelato) {
   const peso = r.datos?.peso ?? [];
   const last = peso[peso.length - 1];
   const peak = peso.reduce<typeof last | undefined>((m, p) => (!m || p.g > m.g ? p : m), undefined);
-  const drop = last && peak && peak.d < last.d && last.g < peak.g
+  // The living get their weight pista from seguimiento.mjs (two weigh-ins below the 90-day
+  // peak); a peak-to-last drop over all time would revive one-off entries.
+  const drop = !r.vivo && last && peak && peak.d < last.d && last.g < peak.g
     ? { from: peak, to: last, pct: Math.round(((last.g - peak.g) / peak.g) * 100), g: +(peak.g - last.g).toFixed(1) } : null;
   const alim = (r.datos?.alim ?? []).filter((a) => a.d >= r.curso.from && a.d <= r.curso.to);
   let gap: { from: string; to: string; n: number } | null = null;
@@ -147,6 +152,7 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
       case 'peso': return m.shape === 'dia';
       case 'alim': return m.id.startsWith('a');
       case 'senales': return m.id.startsWith('s') || m.id.startsWith('c');
+      case 'agua': return m.id.startsWith('c') || m.id.startsWith('l');
       case 'lat': return !!c.latencia && ((m.id.startsWith('s') && m.date === c.latencia.from[0]) || (m.id.startsWith('r') && m.date === c.latencia.to[0]));
       default: return false;
     }
@@ -203,7 +209,7 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
             <line x1={b} x2={b} y1={25} y2={176} stroke="#34C08A" stroke-width="1" stroke-dasharray="3 3" opacity="0.7" />
           </g>); })()}
         <line x1={x(c.to, '09:00')} x2={x(c.to, '09:00')} y1={40} y2={176} stroke="var(--wq-ink)" stroke-width="2" />
-        <text x={x(c.to, '09:00') - 3} y={36} font-size="10" font-weight="700" text-anchor="end" fill="var(--wq-ink)">{s(locale, 'pm.death')}</text>
+        <text x={x(c.to, '09:00') - 3} y={36} font-size="10" font-weight="700" text-anchor="end" fill="var(--wq-ink)">{s(locale, r.vivo ? 'seg.corte' : 'pm.death')}</text>
         {marks.map((m) => {
           const on = lit(m) || tip?.id === m.id; const rr = on ? m.r + 2 : m.r;
           const dim = !!hot?.key && !on;
@@ -369,6 +375,27 @@ export default function Relato({ r, alias, locale }: { r: PmRelato; alias: strin
         </div>
         {r.stats_note && <p class="m-0 text-[11px] leading-snug text-[var(--wq-ink-muted)]">{r.stats_note}</p>}
       </section>}
+
+      {!!r.pistas?.length && (
+        <section class="flex flex-col gap-2">
+          <h3 class={H3}>{s(locale, 'seg.pistas')} <span class="font-sans text-xs font-medium text-[var(--wq-ink-muted)]">· {s(locale, 'seg.pistasSub')}</span></h3>
+          <ul class="m-0 grid list-none gap-2 p-0 sm:grid-cols-2">
+            {r.pistas.map((p, i) => (
+              <li key={i} tabIndex={0} role="button" aria-pressed={!!p.key && pin?.key === p.key}
+                onMouseEnter={() => { if (!touching() && p.key) setHot({ key: p.key }); }} onMouseLeave={() => { if (!touching()) setHot(null); }}
+                onFocus={() => { if (!touching() && p.key) setHot({ key: p.key }); }} onBlur={() => { if (!touching()) setHot(null); }}
+                onClick={() => p.key && pinHot({ key: p.key }, true)}
+                class={`cursor-pointer rounded-xl border bg-[var(--wq-row-bg)] px-3 py-2 outline-none transition duration-200 [@media(hover:hover)]:hover:-translate-y-0.5 focus-visible:border-[#2EC4C0] ${p.key && pin?.key === p.key ? 'border-current' : p.key && hot?.key === p.key ? 'border-[var(--wq-divider)]' : 'border-transparent'}`}
+                style={{ color: TONE[p.tone] }}>
+                <div class="flex items-center gap-1.5 text-[13px] font-semibold text-[var(--wq-ink)]">
+                  <span class="inline-block h-2 w-2 shrink-0 rounded-full" style={{ background: TONE[p.tone] }} />{p.title}
+                </div>
+                <p class="m-0 mt-0.5 text-[12px] leading-snug text-[var(--wq-ink-muted)]">{p.text} <span class="ml-0.5 whitespace-nowrap rounded-full border border-[var(--wq-divider)] px-1.5 text-[10px]">{p.src}</span></p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section ref={curso} class="flex flex-col gap-2">
         <h3 class={H3}>{s(locale, 'pm.r.curso')}</h3>
