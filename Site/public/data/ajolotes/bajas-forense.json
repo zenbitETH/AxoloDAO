@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-01",
- "brain_commit": "2cb7e28",
+ "brain_commit": "c6cadb4",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -3265,9 +3265,76 @@
     ],
     "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
     "curso": {
-     "from": "2026-04-14",
+     "from": "2025-11-09",
      "to": "2026-07-07",
      "lecturas": [
+      "2025-11-13",
+      "2025-11-14",
+      "2025-11-19",
+      "2025-11-22",
+      "2025-12-04",
+      "2025-12-05",
+      "2025-12-06",
+      "2025-12-10",
+      "2025-12-13",
+      "2025-12-14",
+      "2025-12-15",
+      "2025-12-16",
+      "2025-12-17",
+      "2025-12-18",
+      "2025-12-20",
+      "2025-12-22",
+      "2025-12-23",
+      "2025-12-24",
+      "2025-12-25",
+      "2025-12-26",
+      "2025-12-27",
+      "2025-12-30",
+      "2025-12-31",
+      "2026-01-06",
+      "2026-01-07",
+      "2026-01-08",
+      "2026-01-09",
+      "2026-01-13",
+      "2026-01-14",
+      "2026-01-15",
+      "2026-01-16",
+      "2026-01-19",
+      "2026-01-20",
+      "2026-01-21",
+      "2026-01-22",
+      "2026-01-23",
+      "2026-01-26",
+      "2026-01-27",
+      "2026-01-28",
+      "2026-01-30",
+      "2026-02-02",
+      "2026-02-03",
+      "2026-02-10",
+      "2026-02-12",
+      "2026-02-13",
+      "2026-02-16",
+      "2026-02-19",
+      "2026-02-23",
+      "2026-02-24",
+      "2026-02-25",
+      "2026-02-27",
+      "2026-03-02",
+      "2026-03-04",
+      "2026-03-06",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-13",
+      "2026-03-16",
+      "2026-03-23",
+      "2026-03-30",
+      "2026-04-02",
+      "2026-04-06",
+      "2026-04-08",
+      "2026-04-09",
+      "2026-04-10",
+      "2026-04-11",
+      "2026-04-13",
       "2026-04-14",
       "2026-04-15",
       "2026-04-16",
@@ -3337,12 +3404,51 @@
       "2026-07-07"
      ],
      "criticas": [
+      "2025-11-13",
+      "2025-11-22",
+      "2026-01-09",
+      "2026-01-30",
+      "2026-03-02",
+      "2026-03-10",
+      "2026-03-23",
       "2026-05-20",
       "2026-06-03",
       "2026-07-06",
       "2026-07-07"
      ],
      "sin_lectura": [
+      [
+       "2025-12-07",
+       "2025-12-09"
+      ],
+      [
+       "2026-01-01",
+       "2026-01-05"
+      ],
+      [
+       "2026-01-10",
+       "2026-01-12"
+      ],
+      [
+       "2026-02-04",
+       "2026-02-09"
+      ],
+      [
+       "2026-02-20",
+       "2026-02-22"
+      ],
+      [
+       "2026-03-17",
+       "2026-03-22"
+      ],
+      [
+       "2026-03-24",
+       "2026-03-29"
+      ],
+      [
+       "2026-04-03",
+       "2026-04-05"
+      ],
       [
        "2026-05-22",
        "2026-05-26"
@@ -3351,6 +3457,48 @@
      "bomba": [],
      "sin_camara": [],
      "senales": [
+      [
+       "2025-12-01",
+       "11:41",
+       "fuerte",
+       "Chat del equipo: Panchita terminó tratamiento el jueves y reaparece lo que creen es hongo"
+      ],
+      [
+       "2026-01-14",
+       "18:29",
+       "fuerte",
+       "Chat del equipo: Fundador ve a Panchita rascándose las branquias"
+      ],
+      [
+       "2026-01-14",
+       "18:57",
+       "fuerte",
+       "Chat del equipo: Operación la revisa: está bien, vigilar que no salga pelusa en branquias"
+      ],
+      [
+       "2026-01-29",
+       "17:21",
+       "fuerte",
+       "Chat del equipo: Fundador: Pancha se anda rascando"
+      ],
+      [
+       "2026-03-04",
+       "17:35",
+       "fuerte",
+       "Chat del equipo: Fundador: Pancha se está rascando"
+      ],
+      [
+       "2026-03-28",
+       "14:10",
+       "leve",
+       "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      ],
+      [
+       "2026-04-08",
+       "16:49",
+       "leve",
+       "Chat del equipo: Los ajolotes no aceptan o vomitan las croquetas; se mezcla tubifex con croqueta"
+      ],
       [
        "2026-04-28",
        "09:33",
@@ -3642,6 +3790,46 @@
      ],
      "videos": [],
      "respuestas": [
+      [
+       "2025-12-01",
+       "11:41",
+       "si",
+       [
+        "Acción: Se aplicarán tratamientos antifúngicos con baños de sal a Panchita"
+       ]
+      ],
+      [
+       "2026-03-18",
+       "16:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Desparacitante"
+       ]
+      ],
+      [
+       "2026-04-02",
+       "08:00",
+       "si",
+       [
+        "Tratamiento: tx: Sal acuario + magic"
+       ]
+      ],
+      [
+       "2026-04-05",
+       "08:00",
+       "si",
+       [
+        "Tratamiento: tx: Sal acuario + magic"
+       ]
+      ],
+      [
+       "2026-04-08",
+       "08:00",
+       "si",
+       [
+        "Tratamiento: tx: Sal acuario + magic"
+       ]
+      ],
       [
        "2026-04-17",
        "09:00",
@@ -4108,6 +4296,73 @@
       "label": "mismo día · estándar 72 h"
      },
      "agua": {
+      "2025-11-13": "17.6 °C · NH₃ 0.25 mg/L",
+      "2025-11-14": "17.2 °C · NH₃ 0 mg/L",
+      "2025-11-19": "16.8 °C · NH₃ 0 mg/L",
+      "2025-11-22": "15–17.1 °C · NH₃ 0.5 mg/L (2 lecturas)",
+      "2025-12-04": "sin valores",
+      "2025-12-05": "18.3 °C · NH₃ 0 mg/L",
+      "2025-12-06": "18.8 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L",
+      "2025-12-10": "16.8 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L",
+      "2025-12-13": "NH₃ 0 mg/L (2 lecturas)",
+      "2025-12-14": "17.1 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2025-12-15": "NO₂ 0.1 mg/L",
+      "2025-12-16": "16.5 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2025-12-17": "17.2 °C · NH₃ 0 mg/L",
+      "2025-12-18": "17.1 °C",
+      "2025-12-20": "16.3 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2025-12-22": "16.9 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2025-12-23": "16.1 °C",
+      "2025-12-24": "17.5 °C",
+      "2025-12-25": "17.5 °C",
+      "2025-12-26": "17.5 °C",
+      "2025-12-27": "sin valores",
+      "2025-12-30": "16.8 °C",
+      "2025-12-31": "17.3 °C",
+      "2026-01-06": "16.3 °C",
+      "2026-01-07": "17.3 °C",
+      "2026-01-08": "17.5 °C",
+      "2026-01-09": "17.1 °C · NH₃ 0.12 mg/L · NO₂ 0.1 mg/L (3 lecturas)",
+      "2026-01-13": "18.8 °C",
+      "2026-01-14": "17.5–17.7 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-01-15": "17.3–17.5 °C (2 lecturas)",
+      "2026-01-16": "17.1–17.2 °C (2 lecturas)",
+      "2026-01-19": "18.7 °C",
+      "2026-01-20": "18.6 °C",
+      "2026-01-21": "18.5 °C (2 lecturas)",
+      "2026-01-22": "18.6 °C",
+      "2026-01-23": "18.5–18.6 °C (2 lecturas)",
+      "2026-01-26": "18.5 °C · NH₃ 0 mg/L",
+      "2026-01-27": "17.5–17.9 °C (2 lecturas)",
+      "2026-01-28": "18.6–18.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-01-30": "18.2 °C · NH₃ 0.25 mg/L · NO₂ 0.1 mg/L",
+      "2026-02-02": "18 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-02-03": "18.9 °C",
+      "2026-02-10": "19.3 °C",
+      "2026-02-12": "19.1 °C",
+      "2026-02-13": "18.6 °C",
+      "2026-02-16": "15.4 °C · NO₂ 0.1 mg/L",
+      "2026-02-19": "18.8 °C",
+      "2026-02-23": "18.6 °C · NO₂ 0.1 mg/L",
+      "2026-02-24": "18.5 °C",
+      "2026-02-25": "18.3 °C",
+      "2026-02-27": "18.6 °C · NO₂ 0 mg/L (2 lecturas)",
+      "2026-03-02": "19.1 °C · NH₃ 0.25 mg/L · NO₂ 0.1 mg/L",
+      "2026-03-04": "18.1–18.3 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2026-03-06": "18.4 °C · NH₃ 0 mg/L",
+      "2026-03-09": "18.5 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-03-10": "NH₃ 0.25 mg/L (2 lecturas)",
+      "2026-03-13": "18.6 °C",
+      "2026-03-16": "17.7 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-03-23": "17.7 °C · NH₃ 0.25 mg/L · NO₂ 0.1 mg/L",
+      "2026-03-30": "18.1 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-04-02": "18.1 °C · NH₃ 0 mg/L",
+      "2026-04-06": "18.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-04-08": "17.8 °C",
+      "2026-04-09": "18–18.3 °C (3 lecturas)",
+      "2026-04-10": "18.5 °C",
+      "2026-04-11": "18.5 °C · NH₃ 0 mg/L",
+      "2026-04-13": "18.5 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
       "2026-04-14": "18.4 °C",
       "2026-04-15": "18.3–18.6 °C (2 lecturas)",
       "2026-04-16": "18.8 °C",
@@ -5568,9 +5823,60 @@
     ],
     "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
     "curso": {
-     "from": "2026-05-07",
+     "from": "2026-01-14",
      "to": "2026-06-10",
      "lecturas": [
+      "2026-01-14",
+      "2026-01-15",
+      "2026-01-16",
+      "2026-01-19",
+      "2026-01-20",
+      "2026-01-21",
+      "2026-01-22",
+      "2026-01-23",
+      "2026-01-26",
+      "2026-01-27",
+      "2026-01-28",
+      "2026-01-30",
+      "2026-02-02",
+      "2026-02-03",
+      "2026-02-10",
+      "2026-02-12",
+      "2026-02-13",
+      "2026-02-16",
+      "2026-02-19",
+      "2026-02-23",
+      "2026-02-24",
+      "2026-02-25",
+      "2026-02-27",
+      "2026-03-02",
+      "2026-03-04",
+      "2026-03-06",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-13",
+      "2026-03-16",
+      "2026-03-23",
+      "2026-03-30",
+      "2026-04-02",
+      "2026-04-06",
+      "2026-04-08",
+      "2026-04-09",
+      "2026-04-10",
+      "2026-04-13",
+      "2026-04-14",
+      "2026-04-15",
+      "2026-04-16",
+      "2026-04-20",
+      "2026-04-23",
+      "2026-04-27",
+      "2026-04-28",
+      "2026-04-29",
+      "2026-04-30",
+      "2026-05-01",
+      "2026-05-04",
+      "2026-05-05",
+      "2026-05-06",
       "2026-05-07",
       "2026-05-08",
       "2026-05-10",
@@ -5602,11 +5908,102 @@
       "2026-06-09",
       "2026-06-10"
      ],
-     "criticas": [],
-     "sin_lectura": [],
+     "criticas": [
+      "2026-03-02",
+      "2026-03-04",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-16",
+      "2026-03-23",
+      "2026-04-06",
+      "2026-04-13",
+      "2026-04-23"
+     ],
+     "sin_lectura": [
+      [
+       "2026-03-19",
+       "2026-03-22"
+      ],
+      [
+       "2026-03-24",
+       "2026-03-29"
+      ],
+      [
+       "2026-04-03",
+       "2026-04-05"
+      ],
+      [
+       "2026-04-17",
+       "2026-04-19"
+      ],
+      [
+       "2026-04-24",
+       "2026-04-26"
+      ]
+     ],
      "bomba": [],
      "sin_camara": [],
      "senales": [
+      [
+       "2026-03-18",
+       "16:30",
+       "fuerte",
+       "Diagnóstico: Nematodos · tx: Desparacitante"
+      ],
+      [
+       "2026-03-28",
+       "14:10",
+       "leve",
+       "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      ],
+      [
+       "2026-04-08",
+       "12:00",
+       "fuerte",
+       "Bitácora: Retención de muda / Descamación · Cambio de agua rutinario, Cuarentena · Se observa un daño marcado en la estructura cu…"
+      ],
+      [
+       "2026-04-08",
+       "16:49",
+       "leve",
+       "Chat del equipo: Los ajolotes no aceptan o vomitan las croquetas; se mezcla tubifex con croqueta"
+      ],
+      [
+       "2026-04-12",
+       "08:20",
+       "fuerte",
+       "Bitácora: Solo observación · Incidente de Goldy en recinto Mex1, el ejemplar sufrió una aparente succión por el tubo de filtrado…"
+      ],
+      [
+       "2026-04-14",
+       "10:00",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Flotación anormal del ejemplar en varias ocasiones por causa descono…"
+      ],
+      [
+       "2026-04-15",
+       "07:40",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Modificación/Adición de equipo · Se observa nuevamente el comportamiento de flotabilida…"
+      ],
+      [
+       "2026-04-16",
+       "13:15",
+       "fuerte",
+       "Bitácora: Comportamiento normal · Se observa de manera transitoria flotabilidad por aprox. 1 minuto en el ejemplar"
+      ],
+      [
+       "2026-04-28",
+       "10:04",
+       "leve",
+       "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      ],
+      [
+       "2026-05-02",
+       "03:39",
+       "leve",
+       "Chat del equipo: Un ejemplar bastante tocado y otros 3 con signos poco favorables"
+      ],
       [
        "2026-05-08",
        "13:45",
@@ -5634,6 +6031,56 @@
      ],
      "videos": [],
      "respuestas": [
+      [
+       "2026-02-18",
+       "10:47",
+       "si",
+       [
+        "Retiro: Flotabilidad anormal lateral, traslado a veterinario."
+       ]
+      ],
+      [
+       "2026-03-18",
+       "16:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Desparacitante"
+       ]
+      ],
+      [
+       "2026-04-08",
+       "12:00",
+       "si",
+       [
+        "Aislamiento: Retención de muda / Descamación · Cambio de agua rutinario, Cuarentena · Se observa un daño marcado en la estructura cu…",
+        "En Cuarentena",
+        "Cambio de agua: Retención de muda / Descamación · Cambio de agua rutinario, Cuarentena · Se observa un daño marcado en la estructura cu…"
+       ]
+      ],
+      [
+       "2026-04-20",
+       "10:24",
+       "no_ocurrio",
+       [
+        "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       ]
+      ],
+      [
+       "2026-04-30",
+       "21:37",
+       "si",
+       [
+        "Veterinario: No se alimentó por la ida al veterinario (30-abr)"
+       ]
+      ],
+      [
+       "2026-05-02",
+       "03:39",
+       "si",
+       [
+        "Veterinario: El veterinario dice que muchos síntomas son por intoxicación por amoniaco"
+       ]
+      ],
       [
        "2026-05-07",
        "19:09",
@@ -5706,6 +6153,57 @@
       "label": "8 días · estándar 48 h"
      },
      "agua": {
+      "2026-01-14": "16.1 °C (2 lecturas)",
+      "2026-01-15": "15.3–16.2 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (5 lecturas)",
+      "2026-01-16": "15.1–16.2 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L (5 lecturas)",
+      "2026-01-19": "17.8 °C (2 lecturas)",
+      "2026-01-20": "16.5–16.8 °C (2 lecturas)",
+      "2026-01-21": "16.5–17 °C (4 lecturas)",
+      "2026-01-22": "16.7–17.1 °C (2 lecturas)",
+      "2026-01-23": "16.4–16.8 °C (4 lecturas)",
+      "2026-01-26": "16.5–16.7 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2026-01-27": "15.1–15.9 °C (4 lecturas)",
+      "2026-01-28": "16.6–17.2 °C (2 lecturas)",
+      "2026-01-30": "16.1–16.6 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-02": "16–16.6 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-02-03": "16.9–17.7 °C (2 lecturas)",
+      "2026-02-10": "17.1–17.6 °C (2 lecturas)",
+      "2026-02-12": "16.9–17.6 °C (2 lecturas)",
+      "2026-02-13": "16.4–17.6 °C (2 lecturas)",
+      "2026-02-16": "17.4–17.6 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-19": "16.6–17.1 °C (2 lecturas)",
+      "2026-02-23": "16.6–16.9 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-24": "16.6–16.8 °C (2 lecturas)",
+      "2026-02-25": "16.4–16.6 °C (2 lecturas)",
+      "2026-02-27": "16.3–16.9 °C · NO₂ 0.3 mg/L (4 lecturas)",
+      "2026-03-02": "14.7–15.3 °C · NH₃ 0.5 mg/L · NO₂ 0.8 mg/L (2 lecturas)",
+      "2026-03-04": "15.9–16.1 °C · NH₃ 0.25 mg/L (4 lecturas)",
+      "2026-03-06": "16.3–16.5 °C (2 lecturas)",
+      "2026-03-09": "16.5–16.6 °C · NH₃ 0.25 mg/L · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-03-10": "NH₃ 0.5 mg/L (4 lecturas)",
+      "2026-03-13": "16.3–16.4 °C (2 lecturas)",
+      "2026-03-16": "15.3–15.5 °C · NH₃ 0.12 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-03-23": "15.6 °C · NH₃ 0.5 mg/L · NO₂ 0.25 mg/L (2 lecturas)",
+      "2026-03-30": "15.16–16.4 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-04-02": "16.5–16.7 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2026-04-06": "17–17.1 °C · NH₃ 0.5 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-04-08": "16.5–16.6 °C (2 lecturas)",
+      "2026-04-09": "16.5–16.9 °C (6 lecturas)",
+      "2026-04-10": "16.8–16.9 °C (2 lecturas)",
+      "2026-04-13": "17.1–17.2 °C · NH₃ 0.25 mg/L · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-04-14": "16.5–16.8 °C (2 lecturas)",
+      "2026-04-15": "16.5–17 °C (4 lecturas)",
+      "2026-04-16": "16.8–16.9 °C (2 lecturas)",
+      "2026-04-20": "17.6–17.9 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-04-23": "13.4–17.4 °C · NH₃ 0.25 mg/L · NO₂ 0.1 mg/L (3 lecturas)",
+      "2026-04-27": "17 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-04-28": "16.4 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-04-29": "16.1 °C",
+      "2026-04-30": "16.7–17 °C (7 lecturas)",
+      "2026-05-01": "16.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-05-04": "16.5 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-05": "16.5 °C",
+      "2026-05-06": "16.9 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
       "2026-05-07": "16.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
       "2026-05-08": "17.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
       "2026-05-10": "18 °C",
@@ -6358,9 +6856,52 @@
     ],
     "stats_note": "Son distancias entre registros. La calificación del método (abajo, en el registro completo) no cambia hasta que se apruebe una enmienda.",
     "curso": {
-     "from": "2026-04-01",
+     "from": "2025-12-24",
      "to": "2026-05-05",
      "lecturas": [
+      "2025-12-24",
+      "2025-12-25",
+      "2025-12-26",
+      "2025-12-27",
+      "2025-12-30",
+      "2025-12-31",
+      "2026-01-06",
+      "2026-01-07",
+      "2026-01-08",
+      "2026-01-09",
+      "2026-01-13",
+      "2026-01-14",
+      "2026-01-15",
+      "2026-01-16",
+      "2026-01-19",
+      "2026-01-20",
+      "2026-01-21",
+      "2026-01-22",
+      "2026-01-23",
+      "2026-01-26",
+      "2026-01-27",
+      "2026-01-28",
+      "2026-01-30",
+      "2026-02-02",
+      "2026-02-03",
+      "2026-02-10",
+      "2026-02-12",
+      "2026-02-13",
+      "2026-02-16",
+      "2026-02-19",
+      "2026-02-23",
+      "2026-02-24",
+      "2026-02-25",
+      "2026-02-27",
+      "2026-03-02",
+      "2026-03-04",
+      "2026-03-06",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-13",
+      "2026-03-16",
+      "2026-03-23",
+      "2026-03-30",
       "2026-04-02",
       "2026-04-06",
       "2026-04-08",
@@ -6381,10 +6922,25 @@
       "2026-05-05"
      ],
      "criticas": [
+      "2026-01-09",
+      "2026-03-02",
+      "2026-03-04",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-16",
+      "2026-03-23",
       "2026-04-06",
       "2026-04-13"
      ],
      "sin_lectura": [
+      [
+       "2026-03-19",
+       "2026-03-22"
+      ],
+      [
+       "2026-03-24",
+       "2026-03-29"
+      ],
       [
        "2026-04-17",
        "2026-04-19"
@@ -6403,6 +6959,18 @@
       ]
      ],
      "senales": [
+      [
+       "2026-03-18",
+       "16:30",
+       "fuerte",
+       "Diagnóstico: Nematodos · tx: Desparacitante"
+      ],
+      [
+       "2026-03-28",
+       "14:10",
+       "leve",
+       "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      ],
       [
        "2026-04-14",
        "08:40",
@@ -6437,6 +7005,14 @@
       ]
      ],
      "respuestas": [
+      [
+       "2026-03-18",
+       "16:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Desparacitante"
+       ]
+      ],
       [
        "2026-04-20",
        "10:24",
@@ -6474,6 +7050,49 @@
       "label": "16 días · estándar 48 h"
      },
      "agua": {
+      "2025-12-24": "17.5 °C (2 lecturas)",
+      "2025-12-25": "17.5 °C (2 lecturas)",
+      "2025-12-26": "15.3–15.6 °C (2 lecturas)",
+      "2025-12-27": "sin valores (2 lecturas)",
+      "2025-12-30": "14.7–14.9 °C (2 lecturas)",
+      "2025-12-31": "15.1–15.4 °C (2 lecturas)",
+      "2026-01-06": "14.5 °C (2 lecturas)",
+      "2026-01-07": "15.2–15.4 °C (2 lecturas)",
+      "2026-01-08": "15.3–15.8 °C (2 lecturas)",
+      "2026-01-09": "14.7–14.9 °C · NH₃ 0.12 mg/L · NO₂ 3.3 mg/L (6 lecturas)",
+      "2026-01-13": "16.8–17.3 °C (2 lecturas)",
+      "2026-01-14": "16.1 °C (2 lecturas)",
+      "2026-01-15": "15.3–16.2 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (5 lecturas)",
+      "2026-01-16": "15.1–16.2 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L (5 lecturas)",
+      "2026-01-19": "17.8 °C (2 lecturas)",
+      "2026-01-20": "16.5–16.8 °C (2 lecturas)",
+      "2026-01-21": "16.5–17 °C (4 lecturas)",
+      "2026-01-22": "16.7–17.1 °C (2 lecturas)",
+      "2026-01-23": "16.4–16.8 °C (4 lecturas)",
+      "2026-01-26": "16.5–16.7 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2026-01-27": "15.1–15.9 °C (4 lecturas)",
+      "2026-01-28": "16.6–17.2 °C (2 lecturas)",
+      "2026-01-30": "16.1–16.6 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-02": "16–16.6 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-02-03": "16.9–17.7 °C (2 lecturas)",
+      "2026-02-10": "17.1–17.6 °C (2 lecturas)",
+      "2026-02-12": "16.9–17.6 °C (2 lecturas)",
+      "2026-02-13": "16.4–17.6 °C (2 lecturas)",
+      "2026-02-16": "17.4–17.6 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-19": "16.6–17.1 °C (2 lecturas)",
+      "2026-02-23": "16.6–16.9 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-24": "16.6–16.8 °C (2 lecturas)",
+      "2026-02-25": "16.4–16.6 °C (2 lecturas)",
+      "2026-02-27": "16.3–16.9 °C · NO₂ 0.3 mg/L (4 lecturas)",
+      "2026-03-02": "14.7–15.3 °C · NH₃ 0.5 mg/L · NO₂ 0.8 mg/L (2 lecturas)",
+      "2026-03-04": "15.9–16.1 °C · NH₃ 0.25 mg/L (4 lecturas)",
+      "2026-03-06": "16.3–16.5 °C (2 lecturas)",
+      "2026-03-09": "16.5–16.6 °C · NH₃ 0.25 mg/L · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-03-10": "NH₃ 0.5 mg/L (4 lecturas)",
+      "2026-03-13": "16.3–16.4 °C (2 lecturas)",
+      "2026-03-16": "15.3–15.5 °C · NH₃ 0.12 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-03-23": "15.6 °C · NH₃ 0.5 mg/L · NO₂ 0.25 mg/L (2 lecturas)",
+      "2026-03-30": "15.16–16.4 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
       "2026-04-02": "16.5–16.7 °C · NH₃ 0 mg/L (2 lecturas)",
       "2026-04-06": "17–17.1 °C · NH₃ 0.5 mg/L · NO₂ 0 mg/L (2 lecturas)",
       "2026-04-08": "16.5–16.6 °C (2 lecturas)",
@@ -7064,9 +7683,13 @@
     ],
     "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
     "curso": {
-     "from": "2025-11-16",
+     "from": "2025-10-30",
      "to": "2025-12-20",
      "lecturas": [
+      "2025-10-30",
+      "2025-11-02",
+      "2025-11-13",
+      "2025-11-14",
       "2025-11-19",
       "2025-11-22",
       "2025-12-04",
@@ -7082,6 +7705,7 @@
       "2025-12-20"
      ],
      "criticas": [
+      "2025-11-13",
       "2025-11-22"
      ],
      "sin_lectura": [],
@@ -7100,6 +7724,10 @@
       ]
      ],
      "agua": {
+      "2025-10-30": "15.2 °C (2 lecturas)",
+      "2025-11-02": "sin valores",
+      "2025-11-13": "NH₃ 0.25 mg/L",
+      "2025-11-14": "NH₃ 0 mg/L",
       "2025-11-19": "NH₃ 0 mg/L",
       "2025-11-22": "15.8–15.9 °C · NH₃ 2 mg/L (2 lecturas)",
       "2025-12-04": "sin valores",
@@ -7459,7 +8087,7 @@
     ],
     "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
     "curso": {
-     "from": "2025-11-13",
+     "from": "2025-11-09",
      "to": "2025-12-17",
      "lecturas": [
       "2025-11-13",
@@ -8990,9 +9618,101 @@
     ],
     "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
     "curso": {
-     "from": "2026-08-20",
+     "from": "2026-05-16",
      "to": "2026-09-23",
      "lecturas": [
+      "2026-05-16",
+      "2026-05-17",
+      "2026-05-18",
+      "2026-05-19",
+      "2026-05-20",
+      "2026-05-21",
+      "2026-05-22",
+      "2026-05-25",
+      "2026-05-26",
+      "2026-05-27",
+      "2026-05-28",
+      "2026-05-29",
+      "2026-06-01",
+      "2026-06-02",
+      "2026-06-03",
+      "2026-06-04",
+      "2026-06-05",
+      "2026-06-06",
+      "2026-06-07",
+      "2026-06-08",
+      "2026-06-09",
+      "2026-06-10",
+      "2026-06-11",
+      "2026-06-12",
+      "2026-06-13",
+      "2026-06-14",
+      "2026-06-15",
+      "2026-06-16",
+      "2026-06-17",
+      "2026-06-18",
+      "2026-06-19",
+      "2026-06-20",
+      "2026-06-21",
+      "2026-06-22",
+      "2026-06-23",
+      "2026-06-24",
+      "2026-06-25",
+      "2026-06-26",
+      "2026-06-27",
+      "2026-06-28",
+      "2026-06-29",
+      "2026-06-30",
+      "2026-07-01",
+      "2026-07-02",
+      "2026-07-03",
+      "2026-07-04",
+      "2026-07-05",
+      "2026-07-06",
+      "2026-07-07",
+      "2026-07-08",
+      "2026-07-09",
+      "2026-07-10",
+      "2026-07-11",
+      "2026-07-12",
+      "2026-07-13",
+      "2026-07-14",
+      "2026-07-15",
+      "2026-07-16",
+      "2026-07-17",
+      "2026-07-18",
+      "2026-07-19",
+      "2026-07-20",
+      "2026-07-21",
+      "2026-07-22",
+      "2026-07-23",
+      "2026-07-24",
+      "2026-07-25",
+      "2026-07-26",
+      "2026-07-27",
+      "2026-07-28",
+      "2026-07-29",
+      "2026-07-30",
+      "2026-07-31",
+      "2026-08-01",
+      "2026-08-02",
+      "2026-08-03",
+      "2026-08-04",
+      "2026-08-05",
+      "2026-08-06",
+      "2026-08-07",
+      "2026-08-08",
+      "2026-08-09",
+      "2026-08-10",
+      "2026-08-11",
+      "2026-08-12",
+      "2026-08-13",
+      "2026-08-14",
+      "2026-08-15",
+      "2026-08-16",
+      "2026-08-17",
+      "2026-08-18",
+      "2026-08-19",
       "2026-08-20",
       "2026-08-21",
       "2026-08-23",
@@ -9011,7 +9731,12 @@
       "2026-09-08",
       "2026-09-14"
      ],
-     "criticas": [],
+     "criticas": [
+      "2026-06-15",
+      "2026-06-29",
+      "2026-07-06",
+      "2026-07-13"
+     ],
      "sin_lectura": [
       [
        "2026-09-09",
@@ -9025,6 +9750,90 @@
      "bomba": [],
      "sin_camara": [],
      "senales": [
+      [
+       "2026-05-20",
+       "09:36",
+       "leve",
+       "Chat del equipo: Quedan pocos tubifex; están mejorando con esa alimentación; no les gustan las lombrices"
+      ],
+      [
+       "2026-06-04",
+       "19:54",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · Nado rápido; se realizo una prueba de amonia y salio de 0ppm"
+      ],
+      [
+       "2026-06-21",
+       "15:52",
+       "leve",
+       "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      ],
+      [
+       "2026-06-29",
+       "12:00",
+       "fuerte",
+       "Bitácora: Nado persistente · Larva 2 presenta nado esporadico que deja de ser presente posterior a la alimentacion"
+      ],
+      [
+       "2026-07-03",
+       "20:00",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · El ejemplar nada buscando comida. Se nota esttresado."
+      ],
+      [
+       "2026-07-03",
+       "20:07",
+       "leve",
+       "Chat del equipo: Estudios: parásitos que se establecen en el intestino y limitan la absorción de nutrientes; costos de desparasitar"
+      ],
+      [
+       "2026-07-06",
+       "11:15",
+       "fuerte",
+       "Bitácora: Nado persistente · Cambio de agua rutinario · Se observa nado constante en ejemplar pequeño de larvas mexicanum, el com…"
+      ],
+      [
+       "2026-07-07",
+       "09:00",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · Se observa un nado constante en la larva 2, el comportamiento se muestra en inter…"
+      ],
+      [
+       "2026-07-09",
+       "07:30",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación, Cambio de agua rutinario · Nado constante"
+      ],
+      [
+       "2026-07-25",
+       "09:39",
+       "leve",
+       "Chat del equipo: Revisión rápida: no se observan más parásitos en los excrementos; se cambian garrafones de Sansón"
+      ],
+      [
+       "2026-08-10",
+       "08:30",
+       "fuerte",
+       "Diagnóstico: Nematodos · tx: Ivermectina 0.1 mg/ml"
+      ],
+      [
+       "2026-08-12",
+       "17:48",
+       "leve",
+       "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      ],
+      [
+       "2026-08-13",
+       "09:20",
+       "fuerte",
+       "Bitácora: Solo observación · Larva 2 se muestra mu cauteloso al abandonar el refugio, posiblemente en respuesta a la manipulación…"
+      ],
+      [
+       "2026-08-15",
+       "14:30",
+       "fuerte",
+       "Bitácora: Solo observación · El ejemplar a permanecido todo el día dentro del coco"
+      ],
       [
        "2026-08-20",
        "18:24",
@@ -9064,6 +9873,294 @@
      ],
      "videos": [],
      "respuestas": [
+      [
+       "2026-05-28",
+       "13:15",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua rutinario · Se realiza el cambio de 2 garrafones con receta de HrAm 20% y adicional se agrega 1/2 garraf…",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-01",
+       "14:40",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-04",
+       "11:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-08",
+       "14:00",
+       "si",
+       [
+        "Retiro: Comportamiento normal · Traslado a nueva pecera",
+        "Cambio de agua: Turbidez blanca ligera / severa · Cambio de agua rutinario",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-09",
+       "09:20",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-10",
+       "14:35",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-13",
+       "09:04",
+       "si",
+       [
+        "Cambio de agua: Comportamiento normal · Cambio de agua rutinario · Se les cambio el agua del tanque",
+        "Cambio de agua: Comportamiento normal · Cambio de agua rutinario",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-14",
+       "09:15",
+       "si",
+       [
+        "Cambio de agua: Turbidez blanca ligera / severa · Cambio de agua rutinario · El agua de las larvas se percibe liggeramente bblanquecina…",
+        "Cambio de agua: Turbidez blanca ligera / severa · Cambio de agua rutinario",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-15",
+       "14:00",
+       "si",
+       [
+        "Emergencia de agua: Turbidez blanca ligera / severa · Cambio de agua de emergencia · Las larvas se reposicionan de sistema pasando a torre…",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-18",
+       "14:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-22",
+       "10:40",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Fenbendazol",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-23",
+       "13:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua · 1 garrafon (23 sin adicion de sal por fala de reactivo)"
+       ]
+      ],
+      [
+       "2026-06-26",
+       "13:06",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-30",
+       "12:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-01",
+       "18:08",
+       "si",
+       [
+        "Veterinario: Tras el análisis de parásitos provenientes del tubifex/alimento vivo, el veterinario fue a desparasitarlos \"el lunes an…"
+       ]
+      ],
+      [
+       "2026-07-03",
+       "09:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-06",
+       "11:15",
+       "si",
+       [
+        "Cambio de agua: Nado persistente · Cambio de agua rutinario · Se observa nado constante en ejemplar pequeño de larvas mexicanum, el com…",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-09",
+       "08:00",
+       "si",
+       [
+        "Cambio de agua: Nado persistente · Solo observación, Cambio de agua rutinario · El movimiento se mantiene recurrente",
+        "Cambio de agua: Nado persistente · Solo observación, Cambio de agua rutinario · Nado constante",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-13",
+       "14:30",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-16",
+       "10:20",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Fenbendazol · Segunda dosis de desparacitantes. Los ejemplares se mantiene con dieta a base de tilapia…",
+        "Acción: Segunda ronda de desparasitación: uno por uno, sonda hasta el estómago"
+       ]
+      ],
+      [
+       "2026-07-17",
+       "08:55",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-20",
+       "14:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-23",
+       "13:18",
+       "si",
+       [
+        "Acción: Se cambiaron los filtros de ósmosis; pruebas \"todo ok\""
+       ]
+      ],
+      [
+       "2026-07-24",
+       "09:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-27",
+       "14:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-31",
+       "12:02",
+       "si",
+       [
+        "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-01",
+       "07:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Fenbendazol · Aumento de dosis por baja eficiencia del medicamento"
+       ]
+      ],
+      [
+       "2026-08-03",
+       "08:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
+        "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       ]
+      ],
+      [
+       "2026-08-04",
+       "14:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-07",
+       "09:30",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-10",
+       "08:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-11",
+       "10:18",
+       "si",
+       [
+        "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       ]
+      ],
+      [
+       "2026-08-14",
+       "07:53",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-18",
+       "09:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
       [
        "2026-08-20",
        "13:30",
@@ -9218,6 +10315,98 @@
       "label": "mismo día · estándar 48 h"
      },
      "agua": {
+      "2026-05-16": "15.4 °C · NH₃ 0 mg/L",
+      "2026-05-17": "14–15.1 °C (3 lecturas)",
+      "2026-05-18": "16.7 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-19": "14.9–15.9 °C (3 lecturas)",
+      "2026-05-20": "14.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-05-21": "16.2 °C",
+      "2026-05-22": "15.5 °C · NH₃ 0 mg/L",
+      "2026-05-25": "15 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-26": "14.8 °C",
+      "2026-05-27": "15.7–16.5 °C (8 lecturas)",
+      "2026-05-28": "15.3–16 °C · NH₃ 0 mg/L (3 lecturas)",
+      "2026-05-29": "15–15.5 °C (3 lecturas)",
+      "2026-06-01": "15.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-02": "16.2–16.3 °C (2 lecturas)",
+      "2026-06-03": "15.7–15.8 °C (2 lecturas)",
+      "2026-06-04": "15.8–16.4 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (3 lecturas)",
+      "2026-06-05": "16.7 °C",
+      "2026-06-06": "17.1–17.6 °C (4 lecturas)",
+      "2026-06-07": "17.4–17.9 °C (3 lecturas)",
+      "2026-06-08": "17.4–18 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-06-09": "16.6–17.1 °C (6 lecturas)",
+      "2026-06-10": "16.1–17.4 °C (8 lecturas)",
+      "2026-06-11": "17.1–18 °C (2 lecturas)",
+      "2026-06-12": "16.7–18.1 °C (6 lecturas)",
+      "2026-06-13": "16.5–18.4 °C (4 lecturas)",
+      "2026-06-14": "16–17 °C (8 lecturas)",
+      "2026-06-15": "16.3–16.6 °C · NH₃ 1 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-06-16": "16.8–17.1 °C (2 lecturas)",
+      "2026-06-17": "16.6–17.2 °C (3 lecturas)",
+      "2026-06-18": "16.2–17 °C (3 lecturas)",
+      "2026-06-19": "16.4–16.7 °C (4 lecturas)",
+      "2026-06-20": "16.5–16.8 °C (3 lecturas)",
+      "2026-06-21": "16.25–16.8 °C (4 lecturas)",
+      "2026-06-22": "16.55 °C · NO₂ 0 mg/L",
+      "2026-06-23": "16.3–16.9 °C (4 lecturas)",
+      "2026-06-24": "16.3–16.8 °C (4 lecturas)",
+      "2026-06-25": "16.5–17.2 °C (3 lecturas)",
+      "2026-06-26": "16.5–16.95 °C (4 lecturas)",
+      "2026-06-27": "16.3 °C",
+      "2026-06-28": "16.4–16.8 °C (4 lecturas)",
+      "2026-06-29": "16.9 °C · NH₃ 0.13 mg/L · NO₂ 0 mg/L",
+      "2026-06-30": "16.3–17.05 °C (3 lecturas)",
+      "2026-07-01": "15.8–15.9 °C (3 lecturas)",
+      "2026-07-02": "15.35–15.8 °C (3 lecturas)",
+      "2026-07-03": "16.1–16.2 °C (3 lecturas)",
+      "2026-07-04": "15.8–16.1 °C (3 lecturas)",
+      "2026-07-05": "16.1–16.55 °C (5 lecturas)",
+      "2026-07-06": "15.9 °C · NH₃ 0.13 mg/L · NO₂ 0 mg/L",
+      "2026-07-07": "15.7–15.85 °C (3 lecturas)",
+      "2026-07-08": "15.45–15.6 °C (2 lecturas)",
+      "2026-07-09": "15.6–16.3 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (3 lecturas)",
+      "2026-07-10": "15.7–15.95 °C (3 lecturas)",
+      "2026-07-11": "15.5–16.1 °C (3 lecturas)",
+      "2026-07-12": "15.4–15.5 °C (4 lecturas)",
+      "2026-07-13": "15.4 °C · NH₃ 0.13 mg/L · NO₂ 0 mg/L",
+      "2026-07-14": "15.1–15.4 °C (4 lecturas)",
+      "2026-07-15": "15.4–15.8 °C (4 lecturas)",
+      "2026-07-16": "15.4–16 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (3 lecturas)",
+      "2026-07-17": "15.65–15.8 °C (4 lecturas)",
+      "2026-07-18": "15.3–15.8 °C (3 lecturas)",
+      "2026-07-19": "15.4–15.7 °C (4 lecturas)",
+      "2026-07-20": "15.4 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-07-21": "15.3–15.4 °C (2 lecturas)",
+      "2026-07-22": "15.6–15.95 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (4 lecturas)",
+      "2026-07-23": "15.55–15.6 °C (2 lecturas)",
+      "2026-07-24": "15.85–16.7 °C (2 lecturas)",
+      "2026-07-25": "16.1–16.3 °C (3 lecturas)",
+      "2026-07-26": "15.8–16.4 °C (4 lecturas)",
+      "2026-07-27": "15.75 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-07-28": "15.6–15.8 °C (3 lecturas)",
+      "2026-07-29": "15.65–15.9 °C (4 lecturas)",
+      "2026-07-30": "15.9 °C (2 lecturas)",
+      "2026-07-31": "15.55–15.9 °C (3 lecturas)",
+      "2026-08-01": "15.6–15.8 °C (3 lecturas)",
+      "2026-08-02": "16–16.2 °C (4 lecturas)",
+      "2026-08-03": "15.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-08-04": "15.7–16.3 °C (4 lecturas)",
+      "2026-08-05": "15.8–15.9 °C (2 lecturas)",
+      "2026-08-06": "15.6–15.7 °C (3 lecturas)",
+      "2026-08-07": "15.7–16.3 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (4 lecturas)",
+      "2026-08-08": "16.4–16.5 °C (3 lecturas)",
+      "2026-08-09": "16.5–16.7 °C (2 lecturas)",
+      "2026-08-10": "17.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-08-11": "16.7 °C (4 lecturas)",
+      "2026-08-12": "16.75–16.8 °C (4 lecturas)",
+      "2026-08-13": "16.6–16.9 °C (4 lecturas)",
+      "2026-08-14": "16.55–17 °C (4 lecturas)",
+      "2026-08-15": "16.6 °C (3 lecturas)",
+      "2026-08-16": "16.3–16.55 °C (3 lecturas)",
+      "2026-08-17": "16.45 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-08-18": "16.15 °C",
+      "2026-08-19": "16.25 °C",
       "2026-08-20": "16.45 °C",
       "2026-08-21": "16.75 °C",
       "2026-08-23": "16.5 °C",
