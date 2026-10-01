@@ -23,6 +23,7 @@ interface Props {
   baja: Baja | null;
   accent: string;
   locale: Locale;
+  memorial?: boolean;
 }
 
 const TONE_COLOR: Record<TimelineTone, string> = {
@@ -103,6 +104,7 @@ export default function EventosTab({
   baja,
   accent,
   locale,
+  memorial = false,
 }: Props) {
   const [filters, setFilters] = useState<Record<TimelineSource, boolean>>(() => loadFilters());
   const [toneFilters, setToneFilters] = useState<ToneFilter>(() => loadToneFilters());
@@ -253,7 +255,7 @@ export default function EventosTab({
                       style={{ backgroundColor: active ? dot : 'currentColor' }}
                       aria-hidden="true"
                     />
-                    <span>{s(locale, `eventos.state.${tone}`)}</span>
+                    <span>{s(locale, memorial && tone === 'warn' ? 'eventos.state.warn.memorial' : `eventos.state.${tone}`)}</span>
                     <span class="opacity-60 tabular-nums">{toneCounts[tone]}</span>
                   </button>
                 );
