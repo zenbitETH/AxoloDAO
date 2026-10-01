@@ -122,8 +122,14 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
   const h0 = hrs(c.from, '00:00'), h1 = hrs(c.to, '23:59');
   const x = (d: string, t?: string | null) => L + ((hrs(d, t) - h0) / (h1 - h0)) * W;
   const [tip, setTip] = useState<Mark | null>(null);
+  // The whole history can span a year: weekly ticks up to ten weeks, then the 1st of each month.
+  const spanD = (h1 - h0) / 24, monthly = spanD > 70;
   const ticks: string[] = [];
-  for (let h = h0; h <= h1; h += 7 * 24) ticks.push(new Date(h * 36e5).toISOString().slice(0, 10));
+  if (!monthly) for (let h = h0; h <= h1; h += 7 * 24) ticks.push(new Date(h * 36e5).toISOString().slice(0, 10));
+  else for (let [y, m] = [+c.from.slice(0, 4), +c.from.slice(5, 7)]; `${y}-${String(m).padStart(2, '0')}-01` <= c.to; m === 12 ? (y++, m = 1) : m++) {
+    const d = `${y}-${String(m).padStart(2, '0')}-01`; if (d >= c.from) ticks.push(d);
+  }
+  const tickLabel = (t: string, i: number) => (monthly ? `${MES[+t.slice(5, 7) - 1]}${i === 0 || t.slice(5, 7) === '01' ? ` ’${t.slice(2, 4)}` : ''}` : i === 0 ? dShort(t) : String(+t.slice(8, 10)));
   const band = (a: string, b: string) => ({ x: x(a, '00:00'), w: x(b, '23:59') - x(a, '00:00') });
   const momentOn = (d: string) => r.momentos.find((m) => inRange(d, m.d, m.d2));
   const marks: Mark[] = [
@@ -145,6 +151,10 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
   });
   ins.alim.forEach((a) => marks.push({ id: `a${a.d}`, x: x(a.d, '12:00'), y: ROWS.ella - 11, r: 2.4, shape: 'dot', fill: '#B98DF0', date: a.d,
     title: `${s(locale, 'pm.r.fed')}: ${+a.g.toFixed(2)} g`, sub: a.ofrecido != null ? `${s(locale, 'pm.r.offered')} ${+a.ofrecido.toFixed(2)} g` : undefined }));
+  // Months of marks on one row: dots shrink with the span so they stay legible (the hit
+  // area stays 9 px).
+  const k = spanD > 150 ? 0.6 : spanD > 70 ? 0.75 : 1;
+  if (k < 1) marks.forEach((m) => { m.r = Math.max(1.6, m.r * k); });
   const lit = (m: Mark) => {
     if (hot?.date) return inRange(m.date, hot.date, hot.to);
     switch (hot?.key) {
@@ -177,7 +187,7 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
         {ticks.map((t, i) => (
           <g key={t}>
             <line x1={x(t, '00:00')} x2={x(t, '00:00')} y1={TOP} y2={176} stroke="var(--wq-divider)" stroke-dasharray="2 3" />
-            {(i === 0 || x(t, '00:00') - x(ticks[0], '00:00') >= 44) && <text x={x(t, '00:00')} y={188} font-size="10" text-anchor={i === 0 ? 'start' : 'middle'} fill="var(--wq-ink-muted)">{i === 0 ? dShort(t) : +t.slice(8, 10)}</text>}
+            {(i === 0 || x(t, '00:00') - x(ticks[0], '00:00') >= 44) && (i === 0 || x(t, '00:00') - x(ticks[i - 1], '00:00') >= 26) && <text x={x(t, '00:00')} y={188} font-size="10" text-anchor={i === 0 ? 'start' : 'middle'} fill="var(--wq-ink-muted)">{tickLabel(t, i)}</text>}
           </g>
         ))}
         {c.sin_lectura.map(([a, b]) => { const g = band(a, b); const on = hot?.key === 'gap' || (hot?.date && inRange(hot.date, a, b));
