@@ -22,7 +22,7 @@ export interface PmEvidence {
 export interface PmRelato {
   nombre?: string;
   lead: string;
-  stats: { n: string; u: string; l: string; tone: Tone }[];
+  stats: { n: string; u: string; l: string; tone: Tone; key?: NonNullable<Hot>['key'] }[];
   stats_note?: string;
   curso: {
     from: string; to: string; lecturas: string[]; criticas: string[];
@@ -53,7 +53,7 @@ if (typeof window !== 'undefined') window.addEventListener('touchstart', () => {
 const touching = () => Date.now() - lastTouch < 1000;
 
 /** What the pointer is on. A date lights up marks and moments; the other keys are stats. */
-type Hot = { date?: string; to?: string; key?: 'lat' | 'gap' | 'vid' | 'peso' | 'alim' } | null;
+type Hot = { date?: string; to?: string; key?: 'lat' | 'gap' | 'vid' | 'peso' | 'alim' | 'senales' } | null;
 
 const days = (a: string, b: string) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
 
@@ -146,6 +146,7 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
       case 'vid': return m.shape === 'sq';
       case 'peso': return m.shape === 'dia';
       case 'alim': return m.id.startsWith('a');
+      case 'senales': return m.id.startsWith('s') || m.id.startsWith('c');
       case 'lat': return !!c.latencia && ((m.id.startsWith('s') && m.date === c.latencia.from[0]) || (m.id.startsWith('r') && m.date === c.latencia.to[0]));
       default: return false;
     }
@@ -170,7 +171,7 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
         {ticks.map((t, i) => (
           <g key={t}>
             <line x1={x(t, '00:00')} x2={x(t, '00:00')} y1={TOP} y2={176} stroke="var(--wq-divider)" stroke-dasharray="2 3" />
-            <text x={x(t, '00:00')} y={188} font-size="10" text-anchor={i === 0 ? 'start' : 'middle'} fill="var(--wq-ink-muted)">{i === 0 ? dShort(t) : +t.slice(8, 10)}</text>
+            {(i === 0 || x(t, '00:00') - x(ticks[0], '00:00') >= 44) && <text x={x(t, '00:00')} y={188} font-size="10" text-anchor={i === 0 ? 'start' : 'middle'} fill="var(--wq-ink-muted)">{i === 0 ? dShort(t) : +t.slice(8, 10)}</text>}
           </g>
         ))}
         {c.sin_lectura.map(([a, b]) => { const g = band(a, b); const on = hot?.key === 'gap' || (hot?.date && inRange(hot.date, a, b));
@@ -343,21 +344,21 @@ export default function Relato({ r, alias, locale }: { r: PmRelato; alias: strin
   const ev = [...r.evidencia].sort((a, b) => `${a.date} ${a.time ?? ''}`.localeCompare(`${b.date} ${b.time ?? ''}`));
   const statKey: ('lat' | 'gap' | 'vid')[] = ['lat', 'gap', 'vid'];
   const ins = insights(r);
-  const stats: (PmRelato['stats'][number] & { key: NonNullable<Hot>['key'] })[] = r.stats.map((st, i) => ({ ...st, key: statKey[i] }));
-  if (ins.drop) stats.splice(1, 0, { n: `−${Math.abs(ins.drop.pct)}`, u: '%', tone: 'rose', key: 'peso',
+  const stats: (PmRelato['stats'][number] & { key: NonNullable<Hot>['key'] })[] = r.stats.map((st, i) => ({ ...st, key: st.key ?? statKey[i] }));
+  if (ins.drop) stats.splice(Math.min(1, stats.length), 0, { n: `−${Math.abs(ins.drop.pct)}`, u: '%', tone: 'rose', key: 'peso',
     l: s(locale, 'pm.r.weightStat').replace('{a}', String(ins.drop.from.g)).replace('{b}', String(ins.drop.to.g)).replace('{d}', dShort(ins.drop.to.d)) });
   return (
     <div class="flex flex-col gap-5">
       <p class="m-0 text-[15px] leading-relaxed text-[var(--wq-ink)] sm:text-sm"><Rich text={r.lead} /></p>
 
-      <section class="flex flex-col gap-2">
-        <div class={`grid gap-2 ${stats.length === 4 ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-3'}`}>
+      {stats.length > 0 && <section class="flex flex-col gap-2">
+        <div class={`grid gap-2 ${['', 'grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-2 sm:grid-cols-4'][stats.length] ?? 'grid-cols-2 sm:grid-cols-4'}`}>
           {stats.map((st, i) => (
             <div key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ key: st.key }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => pinHot({ key: st.key }, true)}
               onFocus={() => { if (!touching()) setHot({ key: st.key }); }} onBlur={() => { if (!touching()) setHot(null); }}
               role="button" aria-pressed={pin?.key === st.key}
               class={`cursor-pointer rounded-2xl border bg-[var(--wq-row-bg)] px-2.5 pb-2 pt-2.5 outline-none transition duration-200 [@media(hover:hover)]:hover:-translate-y-0.5 focus-visible:border-[#2EC4C0] ${pin?.key === st.key ? 'border-current' : hot?.key === st.key ? 'border-[var(--wq-divider)]' : 'border-transparent'}`} style={{ color: TONE[st.tone] }}>
-              <div class="font-display text-[28px] font-extrabold leading-none sm:text-[24px]" style={{ color: TONE[st.tone] }}>
+              <div class={`font-display font-extrabold leading-none ${/\d/.test(st.n) ? 'text-[28px] sm:text-[24px]' : 'text-[20px] sm:text-[18px]'}`} style={{ color: TONE[st.tone] }}>
                 {st.n}{st.u && <span class="ml-0.5 text-[12px] font-bold">{st.u}</span>}
               </div>
               <div class="mt-1 text-[11.5px] leading-snug text-[var(--wq-ink-muted)] sm:text-[11px]">{st.l}</div>
@@ -365,7 +366,7 @@ export default function Relato({ r, alias, locale }: { r: PmRelato; alias: strin
           ))}
         </div>
         {r.stats_note && <p class="m-0 text-[11px] leading-snug text-[var(--wq-ink-muted)]">{r.stats_note}</p>}
-      </section>
+      </section>}
 
       <section ref={curso} class="flex flex-col gap-2">
         <h3 class={H3}>{s(locale, 'pm.r.curso')}</h3>
