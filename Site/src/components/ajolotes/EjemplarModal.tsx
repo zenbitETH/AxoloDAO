@@ -157,8 +157,10 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
           </div>
           <div class="relative flex items-start justify-between gap-3 p-4 sm:gap-4 sm:p-6">
             <div class="min-w-0 flex-1 sm:max-w-[58%]">
-              <h2 class="m-0 flex items-center gap-2.5 font-display text-2xl font-bold leading-none tracking-tight text-[var(--wq-ink)] sm:text-3xl">
-                <span class="truncate">{ej.alias}</span>
+              <h2 class="m-0 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 font-display text-2xl font-bold leading-none tracking-tight text-[var(--wq-ink)] sm:text-3xl">
+                {/* Wraps instead of squeezing: on a phone the badge drops below the name
+                    rather than truncating the name to nothing. */}
+                <span class="min-w-0 max-w-full truncate">{ej.alias}</span>
                 <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)} aria-label={genderTitle(locale, ej.genero)}>
                   {sym}
                 </span>
@@ -224,7 +226,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
                   title={s(locale, 'xovi.clip')}
                 >
                   <img src="/logos/xovi.svg" alt="" width={18} height={18} class="h-[18px] w-[18px]" />
-                  <span class="whitespace-nowrap">{s(locale, 'xovi.clip')}</span>
+                  <span class="hidden whitespace-nowrap sm:inline">{s(locale, 'xovi.clip')}</span>
                 </a>
               )}
               {memorial && (
@@ -239,7 +241,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
                     <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                     <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
                   </svg>
-                  <span class="whitespace-nowrap">{copied ? s(locale, 'bajas.copied') : s(locale, 'bajas.copyLink')}</span>
+                  <span class="hidden whitespace-nowrap sm:inline">{copied ? s(locale, 'bajas.copied') : s(locale, 'bajas.copyLink')}</span>
                 </button>
               )}
               <button
