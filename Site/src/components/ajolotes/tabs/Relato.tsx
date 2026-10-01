@@ -13,7 +13,7 @@ import { s } from '../strings';
 // and evidence previews on hover and opens full size on click.
 
 type Tone = 'amber' | 'rose' | 'teal' | 'green' | 'muted' | 'ink';
-type Stamp = [string, string?, string?];
+type Stamp = [string, string?, string?, (string | string[])?];
 export interface PmEvidence {
   date: string; time: string | null; source: 'telefono' | 'transmision'; text: string;
   media: string; poster: string; orient: 'vertical' | 'horizontal'; url: string | null;
@@ -25,7 +25,7 @@ export interface PmRelato {
   stats: { n: string; u: string; l: string; tone: Tone; key?: NonNullable<Hot>['key'] }[];
   stats_note?: string;
   curso: {
-    from: string; to: string; lecturas: string[]; criticas: string[];
+    from: string; to: string; lecturas: string[]; criticas: string[]; agua?: Record<string, string>;
     sin_lectura: [string, string][]; bomba: [string, string][]; sin_camara: [string, string][];
     senales: Stamp[]; videos: Stamp[]; respuestas: Stamp[];
     latencia?: { from: [string, string]; to: [string, string]; label: string };
@@ -79,7 +79,7 @@ export function relatoEvents(r: PmRelato, locale: Locale) {
   type Row = { date: string; time: string | null; lane: 1 | 2 | 'datos' | 'integrity'; kind: string; label: string; source: string; grade: 'A' | 'B' | 'C'; text: string | null; critical?: boolean };
   const c = r.curso; const rows: Row[] = [];
   const moment = (d: string) => r.momentos.find((m) => inRange(d, m.d, m.d2));
-  c.criticas.forEach((d) => rows.push({ date: d, time: null, lane: 1, kind: 'water_critical', label: s(locale, 'pm.r.ev.critical'), source: 'libro', grade: 'B', text: moment(d)?.title ?? null, critical: true }));
+  c.criticas.forEach((d) => rows.push({ date: d, time: null, lane: 1, kind: 'water_critical', label: s(locale, 'pm.r.ev.critical'), source: 'libro', grade: 'B', text: c.agua?.[d] ?? moment(d)?.title ?? null, critical: true }));
   c.bomba.forEach(([a, b]) => rows.push({ date: a, time: null, lane: 1, kind: 'pump', label: s(locale, 'pm.r.ev.pump'), source: 'podcast', grade: 'B', text: `${dShort(a)}–${dShort(b)} · ${moment(a)?.text ?? ''}`.trim() }));
   c.sin_lectura.forEach(([a, b]) => { for (let d = a; d <= b; d = new Date(Date.parse(d) + 864e5).toISOString().slice(0, 10))
     rows.push({ date: d, time: null, lane: 1, kind: 'gap_measurement', label: s(locale, 'pm.r.ev.noReadingLabel'), source: 'libro', grade: 'B', text: s(locale, 'pm.r.ev.noReading') }); });
@@ -100,7 +100,7 @@ function Rich({ text }: { text: string }) {
   return <>{parts.map((p, i) => (i % 2 ? <strong key={i} class="text-[var(--wq-ink)]">{p}</strong> : p))}</>;
 }
 
-interface Mark { id: string; x: number; y: number; r: number; shape: 'dot' | 'ring' | 'sq' | 'dia'; fill: string; date: string; time?: string | null; title: string; sub?: string; dim?: boolean }
+interface Mark { id: string; x: number; y: number; r: number; shape: 'dot' | 'ring' | 'sq' | 'dia'; fill: string; date: string; time?: string | null; title: string; sub?: string; lines?: string[]; note?: string; dim?: boolean }
 
 function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; hot: Hot; setHot: (h: Hot | ((c: Hot) => Hot)) => void; locale: Locale }) {
   const c = r.curso;
@@ -122,15 +122,15 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
   const band = (a: string, b: string) => ({ x: x(a, '00:00'), w: x(b, '23:59') - x(a, '00:00') });
   const momentOn = (d: string) => r.momentos.find((m) => inRange(d, m.d, m.d2));
   const marks: Mark[] = [
-    ...c.lecturas.filter((d) => !c.criticas.includes(d)).map((d): Mark => ({ id: `l${d}`, x: x(d), y: ROWS.agua, r: 2.6, shape: 'dot', fill: '#6B8E96', date: d, title: s(locale, 'pm.r.tipReading') })),
-    ...c.criticas.map((d): Mark => ({ id: `c${d}`, x: x(d), y: ROWS.agua, r: 6, shape: 'dot', fill: '#F2556F', date: d, title: momentOn(d)?.title ?? s(locale, 'pm.r.lgCritical'), sub: momentOn(d)?.text })),
-    ...c.senales.map(([d, t, k]): Mark => ({ id: `s${d}${t}`, x: x(d, t), y: ROWS.ella, r: k === 'fuerte' ? 6 : 4.5, shape: 'dot', fill: '#E0A23A', date: d, time: t, title: momentOn(d)?.title ?? s(locale, 'pm.r.lgSignal'), sub: momentOn(d)?.text })),
+    ...c.lecturas.filter((d) => !c.criticas.includes(d)).map((d): Mark => ({ id: `l${d}`, x: x(d), y: ROWS.agua, r: 2.6, shape: 'dot', fill: '#6B8E96', date: d, title: s(locale, 'pm.r.tipReading'), sub: c.agua?.[d], note: momentOn(d)?.title })),
+    ...c.criticas.map((d): Mark => ({ id: `c${d}`, x: x(d), y: ROWS.agua, r: 6, shape: 'dot', fill: '#F2556F', date: d, title: s(locale, 'pm.r.tipCritical'), sub: c.agua?.[d] ?? momentOn(d)?.text, note: momentOn(d)?.title })),
+    ...c.senales.map(([d, t, k, why]): Mark => ({ id: `s${d}${t}`, x: x(d, t), y: ROWS.ella, r: k === 'fuerte' ? 6 : 4.5, shape: 'dot', fill: '#E0A23A', date: d, time: t, title: s(locale, 'pm.r.tipSignal'), sub: (typeof why === 'string' ? why : undefined) ?? momentOn(d)?.text, note: momentOn(d)?.title })),
     ...c.videos.map(([d, t], i): Mark => {
       const ev = r.evidencia.find((e) => e.date === d && (e.time ?? '').slice(0, 5) === t);
       return { id: `v${d}${t}`, x: x(d, t) + (i % 2 ? 3 : 0), y: ROWS.ella, r: 4.5, shape: 'sq', fill: '#2EC4C0', date: d, time: t, title: s(locale, 'pm.r.lgVideo'), sub: ev?.text };
     }),
-    ...c.respuestas.map(([d, t, k]): Mark => ({ id: `r${d}${t}`, x: x(d, t), y: ROWS.resp, r: 5.5, shape: k === 'no_ocurrio' ? 'ring' : 'dot', fill: k === 'no_ocurrio' ? 'var(--wq-ink-muted)' : '#34C08A', date: d, time: t,
-      title: momentOn(d)?.title ?? s(locale, 'pm.r.lgResponse'), sub: momentOn(d)?.text })),
+    ...c.respuestas.map(([d, t, k, what]): Mark => ({ id: `r${d}${t}`, x: x(d, t), y: ROWS.resp, r: 5.5, shape: k === 'no_ocurrio' ? 'ring' : 'dot', fill: k === 'no_ocurrio' ? 'var(--wq-ink-muted)' : '#34C08A', date: d, time: t,
+      title: s(locale, k === 'no_ocurrio' ? 'pm.r.tipNoResp' : 'pm.r.tipResponse'), lines: Array.isArray(what) ? what : what ? [what] : undefined, sub: what ? undefined : momentOn(d)?.text, note: momentOn(d)?.title })),
   ];
   const ins = insights(r);
   ins.peso.filter((p) => p.d >= c.from && p.d <= c.to).forEach((p) => {
@@ -226,13 +226,15 @@ function Curso({ r, name, hot, setHot, locale }: { r: PmRelato; name: string; ho
       </svg>
       </div>
       {tip && (
-        <div role="tooltip" class="pointer-events-none absolute z-10 w-[240px] rounded-xl border border-[var(--wq-divider)] bg-[var(--wq-surface)] p-2.5 text-xs shadow-[0_8px_24px_rgba(7,31,41,0.25)]"
-          style={{ left: `clamp(4px, calc(${(tip.x / VW) * 100}% - 120px), calc(100% - 244px))`, top: `${(tip.y / 192) * 100}%`, transform: tip.y > 96 ? 'translateY(calc(-100% - 14px))' : 'translateY(14px)' }}>
+        <div role="tooltip" class="pointer-events-none absolute z-10 w-[280px] rounded-xl border border-[var(--wq-divider)] bg-[var(--wq-surface)] p-2.5 text-xs shadow-[0_8px_24px_rgba(7,31,41,0.25)]"
+          style={{ left: `clamp(4px, calc(${(tip.x / VW) * 100}% - 140px), calc(100% - 284px))`, top: `${(tip.y / 192) * 100}%`, transform: tip.y > 96 ? 'translateY(calc(-100% - 14px))' : 'translateY(14px)' }}>
           <div class="flex items-center gap-1.5 font-semibold text-[var(--wq-ink)]">
             <span class="inline-block h-2 w-2 rounded-full" style={{ background: tip.fill }} />{tip.title}
           </div>
           <div class="mt-0.5 font-mono text-[10.5px] text-[var(--wq-ink-muted)]">{dLong(tip.date)}{tip.time ? ` · ${tip.time}` : ''}</div>
           {tip.sub && <p class="m-0 mt-1 leading-snug text-[var(--wq-ink)]">{tip.sub}</p>}
+          {tip.lines && <ul class="m-0 mt-1 list-disc space-y-0.5 pl-4 leading-snug text-[var(--wq-ink)]">{tip.lines.map((l) => <li key={l}>{l}</li>)}</ul>}
+          {tip.note && <p class="m-0 mt-1.5 border-t border-[var(--wq-divider)] pt-1 text-[10.5px] leading-snug text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.tipMoment')}: {tip.note}</p>}
         </div>
       )}
       <div class="flex flex-wrap gap-x-3 gap-y-1 px-1 pt-1 text-[11px] text-[var(--wq-ink-muted)]">
