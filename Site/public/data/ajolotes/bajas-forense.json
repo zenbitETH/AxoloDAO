@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-01",
- "brain_commit": "64e569a",
+ "brain_commit": "05e3dbe",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -3218,7 +3218,7 @@
     }
    ],
    "relato": {
-    "lead": "Llevaba meses enferma: el crecimiento algodonoso en sus branquias reapareció en diciembre de 2025 al terminar un tratamiento y nunca se resolvió del todo. Según el testimonio del fundador, en 2025 salió del museo dos veces, a la Expo Qro en septiembre y a una convención de UMA y PIMVS en otro estado a fines de octubre, viajes que pudieron exponerla a cambios bruscos de temperatura. En mayo se le inflamó el ojo derecho tras un golpe; el **21 de mayo** lo perdió, y el 27 el daño ya era irreversible. Desde el **4 de junio** el libro anota que flotaba con la parte trasera hacia arriba. Pasó un mes entre cuarentena y tratamientos diarios, y ninguna de sus señales quedó sin respuesta dentro de su plazo. El 22 de junio pesaba 144 g, 10 % menos que en abril; esa semana el ojo dañado volvió a inflamarse, y el 29 hubo una alerta en el otro. El 1 de julio salió del acuario porque flotaba; el **7 de julio** la llevaron de emergencia al veterinario y murió.",
+    "lead": "Llevaba meses enferma: el crecimiento algodonoso en sus branquias reapareció en diciembre de 2025 al terminar un tratamiento y nunca se resolvió del todo. Según el testimonio del fundador, en 2025 salió del museo dos veces, a la Expo Qro en septiembre y a una convención de UMA y PIMVS en otro estado a fines de octubre, viajes que pudieron exponerla a cambios bruscos de temperatura. En su propio acuario, el libro registra vaivenes de 3 a 4 °C en pocos días entre el 23 de abril y el 5 de mayo. El 4 de mayo se registra una inflamación persistente en el ojo derecho, por un posible golpe; el **21 de mayo** lo perdió, y el 27 el daño ya era irreversible. Desde el **4 de junio** el libro anota que flotaba con la parte trasera hacia arriba. Pasó un mes entre cuarentena y tratamientos diarios, y ninguna de sus señales quedó sin respuesta dentro de su plazo. El 22 de junio pesaba 144 g, 10 % menos que en abril; esa semana el ojo dañado volvió a inflamarse, y el 29 hubo una alerta en el otro. El 1 de julio salió del acuario porque flotaba; el **7 de julio** la llevaron de emergencia al veterinario y murió.",
     "stats": [
      {
       "n": "mismo",
@@ -3237,9 +3237,18 @@
     ],
     "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
     "curso": {
-     "from": "2026-05-01",
+     "from": "2026-04-14",
      "to": "2026-07-07",
      "lecturas": [
+      "2026-04-14",
+      "2026-04-15",
+      "2026-04-16",
+      "2026-04-20",
+      "2026-04-23",
+      "2026-04-27",
+      "2026-04-28",
+      "2026-04-29",
+      "2026-04-30",
       "2026-05-01",
       "2026-05-04",
       "2026-05-05",
@@ -3314,6 +3323,21 @@
      "bomba": [],
      "sin_camara": [],
      "senales": [
+      [
+       "2026-04-28",
+       "09:33",
+       "fuerte"
+      ],
+      [
+       "2026-04-28",
+       "10:04",
+       "leve"
+      ],
+      [
+       "2026-04-29",
+       "12:50",
+       "fuerte"
+      ],
       [
        "2026-05-02",
        "03:39",
@@ -3542,6 +3566,21 @@
      ],
      "videos": [],
      "respuestas": [
+      [
+       "2026-04-17",
+       "09:00",
+       "si"
+      ],
+      [
+       "2026-04-20",
+       "10:24",
+       "no_ocurrio"
+      ],
+      [
+       "2026-04-30",
+       "21:37",
+       "si"
+      ],
       [
        "2026-05-02",
        "03:39",
@@ -3805,6 +3844,14 @@
       "title": "Rebrote en las branquias",
       "text": "Crecimiento algodonoso en la rama intermedia derecha; al día siguiente, tratamiento con sal.",
       "src": "historial médico · terapéutica"
+     },
+     {
+      "d": "2026-04-23",
+      "d2": "2026-05-05",
+      "tone": "amber",
+      "title": "Vaivén de temperatura en su acuario",
+      "text": "19.4 °C el 23 de abril, 16 °C el 27, 14.9 °C el 1 de mayo, 18.5 °C el 4 y 15.9 °C el 5. El podcast del 28 de abril llamó shock térmico al cambio al bajar las temperaturas, pensando en las bacterias del filtro.",
+      "src": "libro · agua · podcast 7"
      },
      {
       "d": "2026-05-04",
@@ -6575,7 +6622,7 @@
       "key": "senales"
      }
     ],
-    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: no significa . La calificación del método está en el registro completo.",
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
     "curso": {
      "from": "2025-11-16",
      "to": "2025-12-20",
@@ -6952,7 +6999,7 @@
       "key": "senales"
      }
     ],
-    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: no significa . La calificación del método está en el registro completo.",
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
     "curso": {
      "from": "2025-11-13",
      "to": "2025-12-17",
@@ -7173,7 +7220,7 @@
    "relato": {
     "lead": "El agua de los sistemas de su especie marcó amoníaco sobre cero en noviembre. No hay registros clínicos de sus últimas semanas: antes de abril de 2026 el museo casi no registraba acciones. Murió el **12 de diciembre**; la causa quedó como desconocida y la necropsia, en proceso, nunca llegó al libro.",
     "stats": [],
-    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: no significa . La calificación del método está en el registro completo.",
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
     "curso": {
      "from": "2025-11-08",
      "to": "2025-12-12",
@@ -7324,7 +7371,7 @@
    "relato": {
     "lead": "Vivía con Panchita en el acuario de Ambystoma andersoni. No hay registros clínicos de sus últimas semanas y el libro de agua apenas empezaba. Murió el **10 de noviembre**; la hoja Bajas anota sepsis bacteriana y daños por caída, con un reporte de incidente. Las grabaciones de sus últimos días están en revisión.",
     "stats": [],
-    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: no significa . La calificación del método está en el registro completo.",
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
     "curso": {
      "from": "2025-10-07",
      "to": "2025-11-10",
