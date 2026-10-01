@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-01",
- "brain_commit": "9203c15",
+ "brain_commit": "d0b59ca",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -3218,7 +3218,7 @@
     }
    ],
    "relato": {
-    "lead": "Desde el **4 de junio** el libro anota que flotaba con la parte trasera hacia arriba y que le volvía el crecimiento algodonoso en las branquias. Pasó un mes entre cuarentena y tratamientos diarios, y ninguna de sus señales quedó sin respuesta dentro de su plazo. El 22 de junio pesaba 144 g, 10 % menos que en abril. El 1 de julio salió del acuario porque flotaba; el **7 de julio** la llevaron de emergencia al veterinario y murió.",
+    "lead": "En mayo se le inflamó el ojo derecho tras un golpe; el **21 de mayo** lo perdió, y el 27 el daño ya era irreversible. Desde el **4 de junio** el libro anota que flotaba con la parte trasera hacia arriba y que le volvía el crecimiento algodonoso en las branquias. Pasó un mes entre cuarentena y tratamientos diarios, y ninguna de sus señales quedó sin respuesta dentro de su plazo. El 22 de junio pesaba 144 g, 10 % menos que en abril; esa semana el ojo dañado volvió a inflamarse, y el 29 hubo una alerta en el otro. El 1 de julio salió del acuario porque flotaba; el **7 de julio** la llevaron de emergencia al veterinario y murió.",
     "stats": [
      {
       "n": "mismo",
@@ -3237,9 +3237,32 @@
     ],
     "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
     "curso": {
-     "from": "2026-06-03",
+     "from": "2026-05-01",
      "to": "2026-07-07",
      "lecturas": [
+      "2026-05-01",
+      "2026-05-04",
+      "2026-05-05",
+      "2026-05-06",
+      "2026-05-07",
+      "2026-05-08",
+      "2026-05-10",
+      "2026-05-11",
+      "2026-05-12",
+      "2026-05-13",
+      "2026-05-14",
+      "2026-05-15",
+      "2026-05-16",
+      "2026-05-17",
+      "2026-05-18",
+      "2026-05-19",
+      "2026-05-20",
+      "2026-05-21",
+      "2026-05-27",
+      "2026-05-28",
+      "2026-05-29",
+      "2026-06-01",
+      "2026-06-02",
       "2026-06-03",
       "2026-06-04",
       "2026-06-05",
@@ -3277,14 +3300,80 @@
       "2026-07-07"
      ],
      "criticas": [
+      "2026-05-20",
       "2026-06-03",
       "2026-07-06",
       "2026-07-07"
      ],
-     "sin_lectura": [],
+     "sin_lectura": [
+      [
+       "2026-05-22",
+       "2026-05-26"
+      ]
+     ],
      "bomba": [],
      "sin_camara": [],
      "senales": [
+      [
+       "2026-05-02",
+       "03:39",
+       "leve"
+      ],
+      [
+       "2026-05-08",
+       "13:45",
+       "leve"
+      ],
+      [
+       "2026-05-09",
+       "19:50",
+       "fuerte"
+      ],
+      [
+       "2026-05-10",
+       "11:33",
+       "leve"
+      ],
+      [
+       "2026-05-12",
+       "10:42",
+       "fuerte"
+      ],
+      [
+       "2026-05-14",
+       "17:47",
+       "fuerte"
+      ],
+      [
+       "2026-05-15",
+       "21:00",
+       "fuerte"
+      ],
+      [
+       "2026-05-15",
+       "14:42",
+       "fuerte"
+      ],
+      [
+       "2026-05-15",
+       "21:59",
+       "fuerte"
+      ],
+      [
+       "2026-05-20",
+       "09:36",
+       "leve"
+      ],
+      [
+       "2026-05-21",
+       "20:18",
+       "fuerte"
+      ],
+      [
+       "2026-05-21",
+       "20:18",
+       "fuerte"
+      ],
       [
        "2026-06-04",
        "19:50",
@@ -3453,6 +3542,86 @@
      ],
      "videos": [],
      "respuestas": [
+      [
+       "2026-05-02",
+       "03:39",
+       "si"
+      ],
+      [
+       "2026-05-04",
+       "13:50",
+       "si"
+      ],
+      [
+       "2026-05-05",
+       "16:00",
+       "si"
+      ],
+      [
+       "2026-05-06",
+       "16:50",
+       "si"
+      ],
+      [
+       "2026-05-07",
+       "19:09",
+       "si"
+      ],
+      [
+       "2026-05-14",
+       "18:31",
+       "si"
+      ],
+      [
+       "2026-05-15",
+       "21:00",
+       "si"
+      ],
+      [
+       "2026-05-16",
+       "01:00",
+       "si"
+      ],
+      [
+       "2026-05-17",
+       "01:00",
+       "si"
+      ],
+      [
+       "2026-05-18",
+       "01:00",
+       "si"
+      ],
+      [
+       "2026-05-19",
+       "01:00",
+       "si"
+      ],
+      [
+       "2026-05-20",
+       "01:00",
+       "si"
+      ],
+      [
+       "2026-05-21",
+       "20:18",
+       "si"
+      ],
+      [
+       "2026-05-27",
+       "08:40",
+       "si"
+      ],
+      [
+       "2026-06-01",
+       "09:00",
+       "si"
+      ],
+      [
+       "2026-06-02",
+       "19:50",
+       "si"
+      ],
       [
        "2026-06-03",
        "19:50",
@@ -3623,6 +3792,37 @@
     },
     "momentos": [
      {
+      "d": "2026-05-04",
+      "t": "16:00",
+      "tone": "amber",
+      "title": "Se le inflama el ojo derecho",
+      "text": "Inflamación persistente; un posible golpe que derivó en infección. Antibiótico en gotas desde ese día.",
+      "src": "terapéutica"
+     },
+     {
+      "d": "2026-05-15",
+      "t": "21:00",
+      "tone": "rose",
+      "title": "Pasa a cuarentena: hongo y ojo inflamado",
+      "text": "Un día antes, el equipo anotó que el ojo no mejoraba y que amaneció con mucha pelusa en las branquias.",
+      "src": "bitácora · chat"
+     },
+     {
+      "d": "2026-05-21",
+      "tone": "rose",
+      "title": "Pierde el ojo derecho",
+      "text": "El equipo lo atribuye a un golpe en su refugio; así lo contó el podcast del 27 de mayo.",
+      "src": "chat · podcast 11"
+     },
+     {
+      "d": "2026-05-27",
+      "t": "08:40",
+      "tone": "amber",
+      "title": "Daño irreversible",
+      "text": "Menos inflamado, pero con una capa blanca que se desprende; cambia a antimicótico y antibiótico en gotas.",
+      "src": "terapéutica"
+     },
+     {
       "d": "2026-06-03",
       "tone": "rose",
       "title": "Amoníaco sobre cero en su sistema",
@@ -3652,6 +3852,22 @@
       "text": "Saprolegniasis: baños de sal, el mismo día de la señal.",
       "src": "terapéutica",
       "t": "13:05"
+     },
+     {
+      "d": "2026-06-21",
+      "t": "14:00",
+      "tone": "amber",
+      "title": "El ojo dañado vuelve a inflamarse",
+      "text": "Inflamación irregular y protuberante; se avisa al veterinario. Ese día no estaba comiendo bien.",
+      "src": "bitácora · chat"
+     },
+     {
+      "d": "2026-06-29",
+      "d2": "2026-06-30",
+      "tone": "rose",
+      "title": "También el otro ojo",
+      "text": "El 29 se registra una alerta en el ojo izquierdo, con flotación anormal e inflamación en la cloaca. Al día siguiente, el laboratorio describe glaucoma y catarata en el derecho y queratitis en el izquierdo.",
+      "src": "bitácora · laboratorio"
      },
      {
       "d": "2026-07-01",
