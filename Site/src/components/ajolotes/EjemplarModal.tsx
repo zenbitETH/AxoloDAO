@@ -55,9 +55,9 @@ function peceraLabel(locale: Locale, pecera: string | null | undefined): string 
 }
 
 export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, water, waterPath, onClose, memorial = false, baja: bajaProp = null }: Props) {
-  // A deceased specimen opens on its forensic postmortem; a living one on its follow-up, the
-  // same reading of the record up to its last day.
-  const [tab, setTab] = useState<TabId>(memorial ? 'postmortem' : 'seguimiento');
+  // A deceased specimen opens on its forensic postmortem; a living one on its summary, with
+  // its follow-up (the same reading of the record as a postmortem) right after.
+  const [tab, setTab] = useState<TabId>(memorial ? 'postmortem' : 'resumen');
   const [mounted, setMounted] = useState(false);
   // Shareable per-specimen deep-link (the hash the on-load handler reopens).
   const [copied, setCopied] = useState(false);
@@ -101,8 +101,9 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
   const plan = bundle.planes[ej.alias] ?? null;
 
   const tabs: { id: TabId; label: string }[] = [
-    memorial ? { id: 'postmortem' as TabId, label: s(locale, 'tab.postmortem') } : { id: 'seguimiento' as TabId, label: s(locale, 'tab.seguimiento') },
+    ...(memorial ? [{ id: 'postmortem' as TabId, label: s(locale, 'tab.postmortem') }] : []),
     { id: 'resumen', label: s(locale, 'tab.resumen') },
+    ...(memorial ? [] : [{ id: 'seguimiento' as TabId, label: s(locale, 'tab.seguimiento') }]),
     { id: 'biometria', label: s(locale, 'tab.biometria') },
     { id: 'eventos', label: s(locale, 'tab.eventos') },
     { id: 'alimentacion', label: s(locale, 'tab.alimentacion') },
