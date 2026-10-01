@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-01",
- "brain_commit": "05e3dbe",
+ "brain_commit": "4ebdad1",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -391,57 +391,68 @@
       [
        "2026-08-26",
        "08:29",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Flotabilidad en rejilla de filtro (patita atorada)"
       ],
       [
        "2026-08-27",
        "15:23",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · El ejemplar presenta demasiada activiad de nado a la superficie. Se ha mantenido…"
       ],
       [
        "2026-08-28",
        "16:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · El ejemplar presenta demasiada activiad de nado a la superficie. Se ha mantenido…"
       ],
       [
        "2026-08-29",
        "09:46",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Solo observación · Ander presenta un movimiento branquial más rápido de lo observado en dás anteriores.vJuan confirma e…"
       ],
       [
        "2026-08-29",
        "09:23",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · Ander sale 3 veces a la superficie en menos de un minuto; sigue presentando una a…"
       ],
       [
        "2026-08-30",
        "17:17",
-       "fuerte"
+       "fuerte",
+       "Bitácora: El ejemplar se atora con la parte dentada cercana a el filtro de la pecera. Se ha atorado en 5 ocasiones desde las 4:30…"
       ],
       [
        "2026-08-30",
        "16:29",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · El ejemplar acaba de bajar; posible respuesta por menor cantidad de…"
       ],
       [
        "2026-08-30",
        "15:49",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación, Modificación/Adición de equipo · El ejemplar presenta mucha actividad de nado en l…"
       ],
       [
        "2026-08-30",
        "09:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Ander atorado en rejilla de filtro"
       ],
       [
        "2026-09-01",
        "18:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Ander baja de la superficie y pierde el control, queda en una posici…"
       ],
       [
        "2026-09-01",
        "15:45",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Ander flota a mitad de la pecera y baja por periodos cortos de tiempo"
       ]
      ],
      "videos": [],
@@ -449,12 +460,19 @@
       [
        "2026-08-31",
        "09:30",
-       "si"
+       "si",
+       [
+        "Aviso al veterinario: Flotabilidad anormal / Arqueo, Nado persistente · Solo observación, Notificación a veterinario",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-09-03",
        "19:30",
-       "si"
+       "si",
+       [
+        "En Cuarentena"
+       ]
       ]
      ],
      "latencia": {
@@ -467,6 +485,16 @@
        "09:10"
       ],
       "label": "5 días · estándar 48 h"
+     },
+     "agua": {
+      "2026-08-26": "17.7 °C",
+      "2026-08-27": "17.8 °C",
+      "2026-08-28": "17.9 °C",
+      "2026-08-31": "17.1 °C · NH₃ 0.25 mg/L · NO₂ 0.25 mg/L",
+      "2026-09-01": "17.5 °C",
+      "2026-09-02": "17.5 °C",
+      "2026-09-03": "17.7 °C",
+      "2026-09-04": "17.5 °C"
      }
     },
     "momentos": [
@@ -1037,7 +1065,7 @@
      "label": "Acción correctiva",
      "source": "chat",
      "grade": "A",
-     "text": "Le mandaron inyecciones y gotas (líneas 2141–2142)"
+     "text": "Le mandaron inyecciones y gotas"
     },
     {
      "date": "2026-05-21",
@@ -3194,7 +3222,7 @@
      "label": "Necropsia (aviso)",
      "source": "chat",
      "grade": "A",
-     "text": "El fundador: no estaba grávida, tenía los órganos hinchados; curaduría: al morir sí, antes era gravidez (líneas 2521–2524)"
+     "text": "El fundador: no estaba grávida, tenía los órganos hinchados; curaduría: al morir sí, antes era gravidez"
     },
     {
      "date": "2026-08-04",
@@ -3326,242 +3354,290 @@
       [
        "2026-04-28",
        "09:33",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Fundador: Pancha ha perdido la mayoría de los filamentos branquiales desde septiembre; atribuye deterioro a falta de co…"
       ],
       [
        "2026-04-28",
        "10:04",
-       "leve"
+       "leve",
+       "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
       ],
       [
        "2026-04-29",
        "12:50",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Fundador comparte video de las branquias de Pancha"
       ],
       [
        "2026-05-02",
        "03:39",
-       "leve"
+       "leve",
+       "Chat del equipo: Un ejemplar bastante tocado y otros 3 con signos poco favorables"
       ],
       [
        "2026-05-08",
        "13:45",
-       "leve"
+       "leve",
+       "Chat del equipo: A ninguno le gustan las lombrices; ya no hay tubifex, lo único que quieren comer"
       ],
       [
        "2026-05-09",
        "19:50",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Panchita tiene pelusa en las agallas"
       ],
       [
        "2026-05-10",
        "11:33",
-       "leve"
+       "leve",
+       "Chat del equipo: Practicante pregunta si un ejemplar ya tenía manchas blancas en la espalda"
       ],
       [
        "2026-05-12",
        "10:42",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Nado persistente, Flotabilidad anormal / Arqueo · Panchita mantiene un movimiento con subida a superficie recurrente"
       ],
       [
        "2026-05-14",
        "17:47",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Panchita amaneció con gran carga de pelusa en branquias y su ojo derecho no mejora"
       ],
       [
        "2026-05-15",
        "21:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia), \"Anomalía estructural permanente (Falta de extremidad, microfta…"
       ],
       [
        "2026-05-15",
        "14:42",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Panchita con mucho hongo; el miércoles se le añadieron 3 g de NaCl; curaduría dará otro tratamiento"
       ],
       [
        "2026-05-15",
        "21:59",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: El hongo de Panchita estaba tan avanzado que se desprendió y sangró; se trató con azul de metileno"
       ],
       [
        "2026-05-20",
        "09:36",
-       "leve"
+       "leve",
+       "Chat del equipo: Quedan pocos tubifex; están mejorando con esa alimentación; no les gustan las lombrices"
       ],
       [
        "2026-05-21",
        "20:18",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Panchita tiene una infección secundaria"
       ],
       [
        "2026-05-21",
        "20:18",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Panchita tiene una infección secundaria"
       ],
       [
        "2026-06-04",
        "19:50",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Cuarentena · Se cambio a Panchita a un toper de cuarentena porque presentaba flotabilid…"
       ],
       [
        "2026-06-10",
        "09:10",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Solo observación · Reincidencia de Panchita con crecimiento al…"
       ],
       [
        "2026-06-12",
        "17:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · La parte trasera del ejemplar flota"
       ],
       [
        "2026-06-14",
        "12:28",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia), Retención de muda / Descamación · Solo observación · Se observa…"
       ],
       [
        "2026-06-15",
        "12:20",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Retención de muda / Descamación · Solo observación · Se realiza la deteccion de una lesion en la parte correspondiente…"
       ],
       [
        "2026-06-21",
        "14:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: \"Anomalía estructural permanente (Falta de extremidad, microftalmia)\" · Notificación a veterinario · Se observa una inf…"
       ],
       [
        "2026-06-21",
        "16:33",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: El ojo derecho (dañado) de Panchita se ve distinto y protuberante; no ha estado comiendo bien"
       ],
       [
        "2026-06-21",
        "15:52",
-       "leve"
+       "leve",
+       "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
       ],
       [
        "2026-06-22",
        "14:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Apatía / Rechazo de alimento · Solo observación · Se observa de manera recurrente una apatia hacia la alimentacion por…"
       ],
       [
        "2026-06-22",
        "08:20",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Notificación a veterinario · Reincidencia de ejemplar con crec…"
       ],
       [
        "2026-06-22",
        "10:40",
-       "fuerte"
+       "fuerte",
+       "Diagnóstico: Nematodos · tx: Fenbendazol"
       ],
       [
        "2026-06-25",
        "13:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Persistencia de hongo en branquias tras tratamientos aplicados…"
       ],
       [
        "2026-06-25",
        "09:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Panchita mantiene flotabilidad en region caudal por presunto gas ret…"
       ],
       [
        "2026-06-27",
        "09:15",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Solo observación · Se encontro al ejemplar con 3 crecimientos…"
       ],
       [
        "2026-06-29",
        "14:30",
-       "fuerte"
+       "fuerte",
+       "Diagnóstico: Saprolegniasis · tx: Itraconazol"
       ],
       [
        "2026-06-29",
        "08:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación, Notificación a veterinario · Se registra flotabilidad anormal en Panc…"
       ],
       [
        "2026-06-29",
        "14:30",
-       "fuerte"
+       "fuerte",
+       "Diagnóstico: Saprolegniasis · tx: Itraconazol"
       ],
       [
        "2026-06-30",
        "16:00",
-       "fuerte"
+       "fuerte",
+       "Laboratorio: anamnesis del laboratorio: anorexia de una semana; líquido libre verde-amarillo en abdomen; micosis previa e infección…"
       ],
       [
        "2026-06-30",
        "16:00",
-       "fuerte"
+       "fuerte",
+       "Laboratorio: anamnesis del laboratorio: anorexia de una semana; líquido libre verde-amarillo en abdomen; micosis previa e infección…"
       ],
       [
        "2026-07-01",
        "10:00",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Compra de insumos veterinarios para tratamiento de Panchita"
       ],
       [
        "2026-07-01",
        "17:28",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Ndali: Panchita de regreso; se presentó un absceso; se procedió al tratamiento"
       ],
       [
        "2026-07-01",
        "18:10",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Se le comentó al vet la flotación anormal de Panchita y que el otro ojo se notaba raro"
       ],
       [
        "2026-07-02",
        "07:30",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Restos de sangre encontrados en tupper de Panchita"
       ],
       [
        "2026-07-03",
        "19:37",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Panchita flota por la parte inferior del cuerpo y le cuesta permanecer en el fondo"
       ],
       [
        "2026-07-03",
        "19:37",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Panchita flota por la parte inferior del cuerpo y le cuesta permanecer en el fondo"
       ],
       [
        "2026-07-03",
        "20:07",
-       "leve"
+       "leve",
+       "Chat del equipo: Estudios: parásitos que se establecen en el intestino y limitan la absorción de nutrientes; costos de desparasitar"
       ],
       [
        "2026-07-05",
        "10:10",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Retención de muda / Descamación, Nado persistente · Cuarentena · Se registra dentro de lo observado en el comportamient…"
       ],
       [
        "2026-07-05",
        "12:07",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Panchita con mejor ánimo, sin flotación; Martín sin flotación anormal"
       ],
       [
        "2026-07-06",
        "11:12",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Retención de muda / Descamación · Cambio de agua rutinario · Panchita sube a superficie por algunas ocasiones a tomar b…"
       ],
       [
        "2026-07-07",
        "13:25",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Notificación a veterinario · Comportamiento inusual con actividad previa, subida a superficie y posteriormente se situa…"
       ],
       [
        "2026-07-07",
        "13:20",
-       "fuerte"
+       "fuerte",
+       "Diagnóstico: Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml"
       ],
       [
        "2026-07-07",
        "07:20",
-       "fuerte"
+       "fuerte",
+       "Diagnóstico: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
       ],
       [
        "2026-07-07",
        "15:47",
-       "fuerte"
+       "fuerte",
+       "Chat del equipo: Ndali: Panchita presentó un comportamiento muy raro; operación corre al veterinario"
       ]
      ],
      "videos": [],
@@ -3569,252 +3645,455 @@
       [
        "2026-04-17",
        "09:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario + magic · Se ingresa a ejemplar a tratamiento para controlar la presencia de pelusa al…"
+       ]
       ],
       [
        "2026-04-20",
        "10:24",
-       "no_ocurrio"
+       "no_ocurrio",
+       [
+        "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       ]
       ],
       [
        "2026-04-30",
        "21:37",
-       "si"
+       "si",
+       [
+        "Veterinario: No se alimentó por la ida al veterinario (30-abr)"
+       ]
       ],
       [
        "2026-05-02",
        "03:39",
-       "si"
+       "si",
+       [
+        "Veterinario: El veterinario dice que muchos síntomas son por intoxicación por amoniaco"
+       ]
       ],
       [
        "2026-05-04",
        "13:50",
-       "si"
+       "si",
+       [
+        "Emergencia de agua: Pico tóxico (Amonia/Nitritos) · Cambio de agua de emergencia, Modificación/Adición de equipo · Instalacion de pecera de…",
+        "En Cuarentena",
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Antibiotico (acetilcisteina con tobramicina) · Se observa una infl…"
+       ]
       ],
       [
        "2026-05-05",
        "16:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Antibiotico (acetilcisteina con tobramicina) · El ojo continua con…",
+        "Acción: Se aplicó medicamento a Panchita a las 4:04 (con ayuda de operación)"
+       ]
       ],
       [
        "2026-05-06",
        "16:50",
-       "si"
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Antibiotico (acetilcisteina con tobramicina) · El ojo continua con…",
+        "Acción: Medicina de Panchita aplicada ~4:50"
+       ]
       ],
       [
        "2026-05-07",
        "19:09",
-       "si"
+       "si",
+       [
+        "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       ]
       ],
       [
        "2026-05-14",
        "18:31",
-       "si"
+       "si",
+       [
+        "Acción: Tratamiento de Panchita y Remo: 15 g de NaCl en 1.5 L por una hora; 9 garrafones llenos"
+       ]
       ],
       [
        "2026-05-15",
        "21:00",
-       "si"
+       "si",
+       [
+        "Aislamiento: Crecimiento algodonoso / Manchas blancas (Saprolegnia), \"Anomalía estructural permanente (Falta de extremidad, microfta…",
+        "En Cuarentena",
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "y 1 más"
+       ]
       ],
       [
        "2026-05-16",
        "01:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-05-17",
        "01:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-05-18",
        "01:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-05-19",
        "01:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-05-20",
        "01:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-05-21",
        "20:18",
-       "si"
+       "si",
+       [
+        "Veterinario: Curaduría informa que salió del doctor con Panchita",
+        "Corrección: Le mandaron inyecciones y gotas",
+        "Corrección: Se indicó una biopsia a Panchita"
+       ]
       ],
       [
        "2026-05-27",
        "08:40",
-       "si"
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g · El ojo de Panchita…",
+        "En Cuarentena",
+        "Acción: Operación hace el tratamiento de Panchita",
+        "y 1 más"
+       ]
       ],
       [
        "2026-06-01",
        "09:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Infección bacteriana · tx: Gentamicina (10 mg/ml)",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-06-02",
        "19:50",
-       "si"
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+       ]
       ],
       [
        "2026-06-03",
        "19:50",
-       "si"
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "Cambio de agua: Cambio de agua · Se retira 1/2 garrafon de sistema A. andersoni y se agrega 1 garrafon de receta nueva HrAa"
+       ]
       ],
       [
        "2026-06-04",
        "19:50",
-       "si"
+       "si",
+       [
+        "Aislamiento: Flotabilidad anormal / Arqueo · Cuarentena · Se cambio a Panchita a un toper de cuarentena porque presentaba flotabilid…",
+        "En Cuarentena",
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+       ]
       ],
       [
        "2026-06-05",
        "06:40",
-       "si"
+       "si",
+       [
+        "En Cuarentena",
+        "Cambio de agua: Cambio de agua rutinario · Cambio de Panchita de tupper a pecera pequeña"
+       ]
       ],
       [
        "2026-06-06",
        "10:34",
-       "si"
+       "si",
+       [
+        "Acción: Panchita regresa a su acuario (06-jun)"
+       ]
       ],
       [
        "2026-06-11",
        "16:20",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal",
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-06-12",
        "13:25",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
       ],
       [
        "2026-06-13",
        "15:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
       ],
       [
        "2026-06-14",
        "13:05",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
       ],
       [
        "2026-06-15",
        "12:00",
-       "si"
+       "si",
+       [
+        "Cambio de agua: Cambio de agua · Receta con adicion de NaCl de 1g xL"
+       ]
       ],
       [
        "2026-06-16",
        "13:05",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
       ],
       [
        "2026-06-17",
        "13:02",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
       ],
       [
        "2026-06-18",
        "13:06",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal",
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-06-19",
        "14:25",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Azul de metileno · Aplicacion de gota en lesión detectada en la barbilla (cercana a comisura de la…"
+       ]
       ],
       [
        "2026-06-20",
        "13:56",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
       ],
       [
        "2026-06-21",
        "14:00",
-       "si"
+       "si",
+       [
+        "Aviso al veterinario: \"Anomalía estructural permanente (Falta de extremidad, microftalmia)\" · Notificación a veterinario · Se observa una inf…",
+        "Tratamiento: Saprolegniasis · tx: Sal",
+        "Acción: Operación propone contemplar itraconazol y Stress Guard"
+       ]
       ],
       [
        "2026-06-22",
        "08:20",
-       "si"
+       "si",
+       [
+        "Aviso al veterinario: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Notificación a veterinario · Reincidencia de ejemplar con crec…",
+        "Tratamiento: tx: Stress guard · A manera preventiva posterior a la manipulacion de los ejemplares se acondiciona el agua con el prod…"
+       ]
       ],
       [
        "2026-06-23",
        "16:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Magic · Baño con magic",
+        "En Cuarentena",
+        "Cambio de agua: Cambio de agua · Adicion de NaCl de 1g x L"
+       ]
       ],
       [
        "2026-06-24",
        "13:05",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Magic · Baño con magic",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-06-25",
        "14:20",
-       "si"
+       "si",
+       [
+        "Tratamiento: tx: Stress guard",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-06-26",
        "13:15",
-       "si"
+       "si",
+       [
+        "Tratamiento: tx: Stress guard",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-06-27",
        "14:02",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol · Baño con itraconazol. Se le retiraron 3 algodonosidades de las branquias derechas. E…",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-06-28",
        "13:50",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol"
+       ]
       ],
       [
        "2026-06-29",
        "14:30",
-       "si"
+       "si",
+       [
+        "Aviso al veterinario: Presencia de parásitos macroscópicos (Ej. Nematodos) · Solo observación, Notificación a veterinario · Se localiza una e…",
+        "Aviso al veterinario: Flotabilidad anormal / Arqueo · Solo observación, Notificación a veterinario · Se registra flotabilidad anormal en Panc…",
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "y 1 más"
+       ]
       ],
       [
        "2026-06-30",
        "16:00",
-       "si"
+       "si",
+       [
+        "Aviso al veterinario: Flotabilidad anormal / Arqueo · Notificación a veterinario · Se lleva el ejemplar a revisión veterinaria tras detección…",
+        "Prueba de laboratorio: evaluación de efusión celómica (citología): trasudado pobre en proteínas (proteínas totales 18 g/L, A/G 0.38); Gram sin…"
+       ]
       ],
       [
        "2026-07-01",
        "10:00",
-       "si"
+       "si",
+       [
+        "En Cuarentena",
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "Veterinario: El lunes de limpieza de peceras operación avisó a curaduría; se contactó al vet, que tomó muestras (reporte de efusione…",
+        "y 4 más"
+       ]
       ],
       [
        "2026-07-02",
        "19:20",
-       "si"
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "En Cuarentena",
+        "Acción: Panchita entra a solución hipertónica salina; sigue en cuarentena"
+       ]
       ],
       [
        "2026-07-03",
        "19:37",
-       "si"
+       "si",
+       [
+        "Aislamiento: Flotabilidad anormal / Arqueo · Cuarentena",
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "En Cuarentena",
+        "y 1 más"
+       ]
       ],
       [
        "2026-07-04",
        "09:10",
-       "si"
+       "si",
+       [
+        "Aislamiento: Cuarentena · El ejemplar estabba recibiento tratamientos oftalmicos, se encontraba en cuarentena",
+        "En Cuarentena",
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+       ]
       ],
       [
        "2026-07-05",
        "10:10",
-       "si"
+       "si",
+       [
+        "Aislamiento: Retención de muda / Descamación, Nado persistente · Cuarentena · Se registra dentro de lo observado en el comportamient…",
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-07-06",
        "19:20",
-       "si"
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "En Cuarentena"
+       ]
       ],
       [
        "2026-07-07",
        "13:25",
-       "si"
+       "si",
+       [
+        "Aviso al veterinario: Notificación a veterinario · Comportamiento inusual con actividad previa, subida a superficie y posteriormente se situa…",
+        "Tratamiento: Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml",
+        "En Cuarentena",
+        "y 2 más"
+       ]
       ]
      ],
      "latencia": {
@@ -3827,6 +4106,75 @@
        "13:05"
       ],
       "label": "mismo día · estándar 72 h"
+     },
+     "agua": {
+      "2026-04-14": "18.4 °C",
+      "2026-04-15": "18.3–18.6 °C (2 lecturas)",
+      "2026-04-16": "18.8 °C",
+      "2026-04-20": "19.4 °C · NH₃ 0 mg/L · NO₂ 0.17 mg/L",
+      "2026-04-23": "19.4 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-04-27": "16 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L",
+      "2026-04-28": "15.6 °C · NH₃ 0 mg/L · NO₂ 0.25 mg/L",
+      "2026-04-29": "15.3 °C",
+      "2026-04-30": "15.7–17 °C (3 lecturas)",
+      "2026-05-01": "14.9 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-05-04": "18.5 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-05": "15.9 °C",
+      "2026-05-06": "15.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-07": "16.4–17.3 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-05-08": "17.9 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-10": "16.8 °C",
+      "2026-05-11": "16.9 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-12": "17.1–17.5 °C (2 lecturas)",
+      "2026-05-13": "17.6–18 °C (2 lecturas)",
+      "2026-05-14": "16.5–17.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-05-15": "17.5–17.8 °C (2 lecturas)",
+      "2026-05-16": "18.4 °C",
+      "2026-05-17": "18.8 °C",
+      "2026-05-18": "17 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-19": "15.7 °C",
+      "2026-05-20": "16.2–16.4 °C · NH₃ 0.25 mg/L · NO₂ 0.25 mg/L (2 lecturas)",
+      "2026-05-21": "17.9 °C",
+      "2026-05-27": "18.6–19.2 °C (3 lecturas)",
+      "2026-05-28": "17.1–17.9 °C · NH₃ 0 mg/L (3 lecturas)",
+      "2026-05-29": "17.6 °C (2 lecturas)",
+      "2026-06-01": "16.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-02": "17.3–17.5 °C (2 lecturas)",
+      "2026-06-03": "15.7–17.4 °C · NH₃ 0.5 mg/L (2 lecturas)",
+      "2026-06-04": "sin valores",
+      "2026-06-05": "19.2 °C",
+      "2026-06-06": "15.7–17.1 °C (2 lecturas)",
+      "2026-06-07": "17.2–17.8 °C (2 lecturas)",
+      "2026-06-08": "17.1 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-09": "15.8–16 °C (3 lecturas)",
+      "2026-06-10": "15.4–15.6 °C (4 lecturas)",
+      "2026-06-11": "16.5 °C",
+      "2026-06-12": "15.9–16.2 °C (3 lecturas)",
+      "2026-06-13": "15.8–16 °C (2 lecturas)",
+      "2026-06-14": "15.9–16.3 °C (4 lecturas)",
+      "2026-06-15": "15.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-16": "16.8–17.1 °C (2 lecturas)",
+      "2026-06-17": "16.4–17.1 °C (3 lecturas)",
+      "2026-06-18": "15.9–17.1 °C (3 lecturas)",
+      "2026-06-19": "16–16.3 °C (4 lecturas)",
+      "2026-06-20": "16–16.2 °C (3 lecturas)",
+      "2026-06-21": "15.8–16.2 °C (4 lecturas)",
+      "2026-06-22": "15.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-23": "16.1–16.7 °C (4 lecturas)",
+      "2026-06-24": "16–16.3 °C (4 lecturas)",
+      "2026-06-25": "16.8–17.4 °C (3 lecturas)",
+      "2026-06-26": "17.3–17.9 °C (4 lecturas)",
+      "2026-06-27": "17.1 °C",
+      "2026-06-28": "16.1–16.9 °C (4 lecturas)",
+      "2026-06-29": "17.1 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-30": "16.9–17.5 °C (3 lecturas)",
+      "2026-07-01": "16.6–16.8 °C (3 lecturas)",
+      "2026-07-02": "16–16.8 °C (3 lecturas)",
+      "2026-07-03": "17.3–17.6 °C (3 lecturas)",
+      "2026-07-04": "16.9–17.1 °C (3 lecturas)",
+      "2026-07-05": "17.2–17.7 °C (4 lecturas)",
+      "2026-07-06": "16.7 °C · NH₃ 0.5 mg/L · NO₂ 0 mg/L",
+      "2026-07-07": "16.7–17.3 °C · NH₃ 0.25 mg/L (3 lecturas)"
      }
     },
     "momentos": [
@@ -5262,22 +5610,26 @@
       [
        "2026-05-08",
        "13:45",
-       "leve"
+       "leve",
+       "Chat del equipo: A ninguno le gustan las lombrices; ya no hay tubifex, lo único que quieren comer"
       ],
       [
        "2026-05-10",
        "11:33",
-       "leve"
+       "leve",
+       "Chat del equipo: Practicante pregunta si un ejemplar ya tenía manchas blancas en la espalda"
       ],
       [
        "2026-05-20",
        "09:36",
-       "leve"
+       "leve",
+       "Chat del equipo: Quedan pocos tubifex; están mejorando con esa alimentación; no les gustan las lombrices"
       ],
       [
        "2026-05-28",
        "17:21",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación, Cuarentena · Goldi nada sin control y permanece flotando / Se movio a topper con p…"
       ]
      ],
      "videos": [],
@@ -5285,37 +5637,61 @@
       [
        "2026-05-07",
        "19:09",
-       "si"
+       "si",
+       [
+        "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       ]
       ],
       [
        "2026-05-12",
        "07:00",
-       "si"
+       "si",
+       [
+        "Cambio de agua: Comportamiento normal · Cambio de agua rutinario"
+       ]
       ],
       [
        "2026-05-28",
        "17:21",
-       "si"
+       "si",
+       [
+        "Aislamiento: Nado persistente · Solo observación, Cuarentena · Goldi nada sin control y permanece flotando / Se movio a topper con p…",
+        "Cambio de agua: Cambio de agua rutinario · Se realiza el cambio de 2 garrafones con receta de HrAm 20% y adicional se agrega 1/2 garraf…",
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-06-01",
        "14:40",
-       "si"
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-06-04",
        "11:00",
-       "si"
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-06-08",
        "08:05",
-       "si"
+       "si",
+       [
+        "Cambio de agua: Turbidez blanca ligera / severa · Cambio de agua rutinario",
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-06-11",
        "07:00",
-       "si"
+       "si",
+       [
+        "En Cuarentena"
+       ]
       ]
      ],
      "latencia": {
@@ -5328,6 +5704,38 @@
        "17:21"
       ],
       "label": "8 días · estándar 48 h"
+     },
+     "agua": {
+      "2026-05-07": "16.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-05-08": "17.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-10": "18 °C",
+      "2026-05-11": "17 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-12": "16.9–17.4 °C (4 lecturas)",
+      "2026-05-13": "16–16.9 °C (2 lecturas)",
+      "2026-05-14": "14.3–14.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (4 lecturas)",
+      "2026-05-15": "13.7–15.2 °C (4 lecturas)",
+      "2026-05-16": "15.4 °C · NH₃ 0 mg/L",
+      "2026-05-17": "14–15.1 °C (3 lecturas)",
+      "2026-05-18": "16.7 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-19": "14.9–15.9 °C (3 lecturas)",
+      "2026-05-20": "14.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-05-21": "16.2 °C",
+      "2026-05-22": "15.5 °C · NH₃ 0 mg/L",
+      "2026-05-25": "15 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-26": "14.8 °C",
+      "2026-05-27": "15.7–16.5 °C (8 lecturas)",
+      "2026-05-28": "15.3–16 °C · NH₃ 0 mg/L (3 lecturas)",
+      "2026-05-29": "15–15.5 °C (3 lecturas)",
+      "2026-06-01": "15.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-02": "16.2–16.3 °C (2 lecturas)",
+      "2026-06-03": "15.7–15.8 °C (2 lecturas)",
+      "2026-06-04": "15.8–16.4 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (3 lecturas)",
+      "2026-06-05": "16.7 °C",
+      "2026-06-06": "17.1–17.6 °C (4 lecturas)",
+      "2026-06-07": "17.4–17.9 °C (3 lecturas)",
+      "2026-06-08": "17.4–18 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-06-09": "16.6–17.1 °C (6 lecturas)",
+      "2026-06-10": "16.1–17.4 °C (8 lecturas)"
      }
     },
     "momentos": [
@@ -5998,17 +6406,20 @@
       [
        "2026-04-14",
        "08:40",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Flotación anormal del ejemplar, después de alimentación el comportam…"
       ],
       [
        "2026-04-28",
        "10:04",
-       "leve"
+       "leve",
+       "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
       ],
       [
        "2026-05-02",
        "03:39",
-       "leve"
+       "leve",
+       "Chat del equipo: Un ejemplar bastante tocado y otros 3 con signos poco favorables"
       ]
      ],
      "videos": [
@@ -6029,17 +6440,26 @@
       [
        "2026-04-20",
        "10:24",
-       "no_ocurrio"
+       "no_ocurrio",
+       [
+        "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       ]
       ],
       [
        "2026-04-30",
        "21:37",
-       "si"
+       "si",
+       [
+        "Veterinario: No se alimentó por la ida al veterinario (30-abr)"
+       ]
       ],
       [
        "2026-05-02",
        "03:39",
-       "si"
+       "si",
+       [
+        "Veterinario: El veterinario dice que muchos síntomas son por intoxicación por amoniaco"
+       ]
       ]
      ],
      "latencia": {
@@ -6052,6 +6472,26 @@
        "21:37"
       ],
       "label": "16 días · estándar 48 h"
+     },
+     "agua": {
+      "2026-04-02": "16.5–16.7 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2026-04-06": "17–17.1 °C · NH₃ 0.5 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-04-08": "16.5–16.6 °C (2 lecturas)",
+      "2026-04-09": "16.5–16.9 °C (6 lecturas)",
+      "2026-04-10": "16.8–16.9 °C (2 lecturas)",
+      "2026-04-13": "17.1–17.2 °C · NH₃ 0.25 mg/L · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-04-14": "16.5–16.8 °C (2 lecturas)",
+      "2026-04-15": "16.5–17 °C (4 lecturas)",
+      "2026-04-16": "16.8–16.9 °C (2 lecturas)",
+      "2026-04-20": "17.6–17.9 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-04-23": "13.4–17.4 °C · NH₃ 0.25 mg/L · NO₂ 0.1 mg/L (3 lecturas)",
+      "2026-04-27": "17 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-04-28": "16.4 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-04-29": "16.1 °C",
+      "2026-04-30": "16.7–17 °C (7 lecturas)",
+      "2026-05-01": "16.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-05-04": "16.5 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-05": "16.5 °C"
      }
     },
     "momentos": [
@@ -6653,9 +7093,27 @@
       [
        "2025-12-01",
        "11:41",
-       "si"
+       "si",
+       [
+        "Acción: Se sigue estabilizando parámetros: cambios de agua, ajuste del aire acondicionado y tratamientos"
+       ]
       ]
-     ]
+     ],
+     "agua": {
+      "2025-11-19": "NH₃ 0 mg/L",
+      "2025-11-22": "15.8–15.9 °C · NH₃ 2 mg/L (2 lecturas)",
+      "2025-12-04": "sin valores",
+      "2025-12-05": "17.1 °C · NH₃ 0 mg/L",
+      "2025-12-06": "17.9 °C · NH₃ 0 mg/L · NO₂ 0.8 mg/L",
+      "2025-12-10": "15.6 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L",
+      "2025-12-13": "NH₃ 0 mg/L (2 lecturas)",
+      "2025-12-14": "15.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2025-12-15": "NO₂ 0.1 mg/L",
+      "2025-12-16": "15.1 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2025-12-17": "16.1 °C · NH₃ 0 mg/L",
+      "2025-12-18": "16.4 °C",
+      "2025-12-20": "14.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L"
+     }
     },
     "momentos": [
      {
@@ -7031,12 +7489,19 @@
       [
        "2025-12-01",
        "11:41",
-       "si"
+       "si",
+       [
+        "Veterinario: Guajolote en tratamiento, separado por indicación del veterinario, en espera de resultados de laboratorio",
+        "Acción: Se sigue estabilizando parámetros: cambios de agua, ajuste del aire acondicionado y tratamientos"
+       ]
       ],
       [
        "2025-12-05",
        "22:12",
-       "si"
+       "si",
+       [
+        "Veterinario: Guajolote llevado al veterinario para segundo drenado, dado de alta; se reincorpora a población general el domingo"
+       ]
       ]
      ],
      "latencia": {
@@ -7049,6 +7514,20 @@
        "22:12"
       ],
       "label": "59 h · estándar 48 h"
+     },
+     "agua": {
+      "2025-11-13": "NH₃ 0.25 mg/L",
+      "2025-11-14": "NH₃ 0 mg/L",
+      "2025-11-19": "NH₃ 0 mg/L",
+      "2025-11-22": "15.8–16 °C · NH₃ 2 mg/L (2 lecturas)",
+      "2025-12-05": "16.9 °C · NH₃ 0 mg/L",
+      "2025-12-06": "17.9 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2025-12-10": "15.6 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L",
+      "2025-12-13": "NH₃ 0 mg/L (2 lecturas)",
+      "2025-12-14": "16.3 °C · NH₃ 0.25 mg/L (2 lecturas)",
+      "2025-12-15": "sin valores",
+      "2025-12-16": "NH₃ 0 mg/L · NO₂ 0.8 mg/L (2 lecturas)",
+      "2025-12-17": "NH₃ 0 mg/L"
      }
     },
     "momentos": [
@@ -7243,7 +7722,17 @@
      "sin_camara": [],
      "senales": [],
      "videos": [],
-     "respuestas": []
+     "respuestas": [],
+     "agua": {
+      "2025-11-13": "NH₃ 0.25 mg/L (2 lecturas)",
+      "2025-11-14": "NH₃ 0 mg/L (2 lecturas)",
+      "2025-11-19": "NH₃ 0 mg/L (2 lecturas)",
+      "2025-11-22": "15.8–16 °C · NH₃ 2 mg/L (4 lecturas)",
+      "2025-12-04": "sin valores",
+      "2025-12-05": "16.9–17.1 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2025-12-06": "17.9 °C · NH₃ 0 mg/L · NO₂ 0.8 mg/L (2 lecturas)",
+      "2025-12-10": "15.6 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L (2 lecturas)"
+     }
     },
     "momentos": [
      {
@@ -7385,7 +7874,11 @@
      "sin_camara": [],
      "senales": [],
      "videos": [],
-     "respuestas": []
+     "respuestas": [],
+     "agua": {
+      "2025-10-30": "15.2 °C (2 lecturas)",
+      "2025-11-02": "sin valores"
+     }
     },
     "momentos": [
      {
@@ -8427,7 +8920,7 @@
      "label": "Acción preventiva",
      "source": "chat",
      "grade": "B",
-     "text": "Curaduría hará la limpieza el martes y cotizará extractores (líneas 3003–3005)"
+     "text": "Curaduría hará la limpieza el martes y cotizará extractores"
     },
     {
      "date": "2026-09-22",
@@ -8535,32 +9028,38 @@
       [
        "2026-08-20",
        "18:24",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Apatía / Rechazo de alimento · Solo observación · El ejemplar no ha salido del refugio en odo el dia. Observar comporam…"
       ],
       [
        "2026-08-25",
        "20:08",
-       "leve"
+       "leve",
+       "Chat del equipo: Ajolotes de Pinal: se ven sanos y han comido"
       ],
       [
        "2026-08-25",
        "20:09",
-       "leve"
+       "leve",
+       "Chat del equipo: Manchas de piel persisten en ajolotes de Pinal; parecen de edad, no crecieron"
       ],
       [
        "2026-09-06",
        "10:00",
-       "fuerte"
+       "fuerte",
+       "Diagnóstico: Saprolegniasis · tx: Itraconazol"
       ],
       [
        "2026-09-09",
        "16:42",
-       "fuerte"
+       "fuerte",
+       "Bitácora: Irritacion cutanea · Solo observación · El ejemplar se rasca 2 veces la branquia del lado izquierdo"
       ],
       [
        "2026-09-10",
        "16:43",
-       "leve"
+       "leve",
+       "Bitácora: Irritacion cutanea · Solo observación · El ejemplar se rasca 3 veces la branquia del lado derecho"
       ]
      ],
      "videos": [],
@@ -8568,87 +9067,143 @@
       [
        "2026-08-20",
        "13:30",
-       "si"
+       "si",
+       [
+        "Cambio de agua: Cambio de agua · Cambio de agua por mantenimiento en filtro del sistema A. mexicanum"
+       ]
       ],
       [
        "2026-08-21",
        "08:00",
-       "si"
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-08-25",
        "07:00",
-       "si"
+       "si",
+       [
+        "Cambio de agua: Cambio de agua · Agua de la llave"
+       ]
       ],
       [
        "2026-08-27",
        "13:48",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario"
+       ]
       ],
       [
        "2026-08-28",
        "13:25",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario",
+        "Acción: Se requiere entretiempo de 1 a 2 pm sábado y domingo para medicamentos y tratamientos; animales estables; en comunicaci…",
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-08-29",
        "13:10",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario"
+       ]
       ],
       [
        "2026-08-30",
        "13:10",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario"
+       ]
       ],
       [
        "2026-08-31",
        "13:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario"
+       ]
       ],
       [
        "2026-09-01",
        "13:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-09-02",
        "13:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol"
+       ]
       ],
       [
        "2026-09-03",
        "13:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol"
+       ]
       ],
       [
        "2026-09-04",
        "13:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-09-05",
        "10:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol"
+       ]
       ],
       [
        "2026-09-06",
        "10:00",
-       "si"
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol"
+       ]
       ],
       [
        "2026-09-08",
        "20:38",
-       "si"
+       "si",
+       [
+        "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+        "Cambio de agua: Cambio de agua"
+       ]
       ],
       [
        "2026-09-14",
        "13:19",
-       "si"
+       "si",
+       [
+        "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       ]
       ],
       [
        "2026-09-22",
        null,
-       "si"
+       "si",
+       [
+        "Retiro: toda la colección pasa a cuarentena fuera del museo"
+       ]
       ]
      ],
      "latencia": {
@@ -8661,6 +9216,25 @@
        "13:00"
       ],
       "label": "mismo día · estándar 48 h"
+     },
+     "agua": {
+      "2026-08-20": "16.45 °C",
+      "2026-08-21": "16.75 °C",
+      "2026-08-23": "16.5 °C",
+      "2026-08-24": "16.55 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-08-25": "17.15 °C",
+      "2026-08-26": "16.45 °C",
+      "2026-08-27": "16.55 °C",
+      "2026-08-28": "16.6 °C",
+      "2026-08-31": "16.55 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-09-01": "16.55 °C",
+      "2026-09-02": "16.55 °C",
+      "2026-09-03": "16.45 °C",
+      "2026-09-04": "16.2 °C",
+      "2026-09-06": "16.75 °C",
+      "2026-09-07": "16.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-09-08": "16.55 °C",
+      "2026-09-14": "17.1 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (3 lecturas)"
      }
     },
     "momentos": [
