@@ -398,7 +398,7 @@ export default function Relato({ r, alias, locale }: { r: PmRelato; alias: strin
                 class={`-mx-2 grid gap-x-3 rounded-lg border-b border-dashed border-[var(--wq-divider)] px-2 py-2 outline-none transition-colors hover:bg-[var(--wq-row-bg)] ${on ? 'bg-[var(--wq-row-bg)]' : ''}`}
                 style={{ gridTemplateColumns: '58px 1fr' }}>
                 <span class="font-mono text-[11px] leading-snug text-[var(--wq-ink-muted)]">
-                  {m.d2 ? `${+m.d.slice(8, 10)}–${dShort(m.d2)}` : dShort(m.d)}{m.d.slice(0, 4) !== r.curso.to.slice(0, 4) && <> {m.d.slice(0, 4)}</>}{m.t && <><br />{m.t}</>}
+                  {m.d2 ? (m.d.slice(5, 7) === m.d2.slice(5, 7) ? `${+m.d.slice(8, 10)}–${dShort(m.d2)}` : `${dShort(m.d)} – ${dShort(m.d2)}`) : dShort(m.d)}{m.d.slice(0, 4) !== r.curso.to.slice(0, 4) && <> {m.d.slice(0, 4)}</>}{m.t && <><br />{m.t}</>}
                 </span>
                 <span class="text-sm leading-snug text-[var(--wq-ink)] sm:text-[13px]">
                   <span class="flex items-center gap-1.5 font-semibold">
