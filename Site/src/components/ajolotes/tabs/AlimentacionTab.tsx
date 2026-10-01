@@ -2,6 +2,7 @@ import type { Ejemplar, Locale, PlanAlimentacion, RegistroAlimentacion } from '.
 import { DAY_ORDER, parseDays } from '../theme';
 import { s } from '../strings';
 import BarChart from '../charts/BarChart';
+import MemorialNote, { dMem, feedingGap } from './MemorialNote';
 
 interface Props {
   alim: RegistroAlimentacion[];
@@ -9,6 +10,7 @@ interface Props {
   accent: string;
   locale: Locale;
   ej: Ejemplar;
+  death?: string | null;   // set on memorial profiles
 }
 
 const fmt = (v: unknown, d = 2): string => {
@@ -23,7 +25,7 @@ const dayLabel = (locale: Locale, key: typeof DAY_ORDER[number]) =>
 const interp = (template: string, params: Record<string, string>): string =>
   template.replace(/\{(\w+)\}/g, (_, k: string) => params[k] ?? '');
 
-export default function AlimentacionTab({ alim, plan, accent, locale, ej }: Props) {
+export default function AlimentacionTab({ alim, plan, accent, locale, ej, death }: Props) {
   if (!alim.length && !plan) {
     return (
       <section class="rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-10 text-center">
@@ -66,6 +68,11 @@ export default function AlimentacionTab({ alim, plan, accent, locale, ej }: Prop
 
   return (
     <div>
+      {death !== undefined && (() => { const g = feedingGap(alim); const last = [...alim].filter((a) => a.fecha).sort((a, b) => String(a.fecha).localeCompare(String(b.fecha))).pop();
+        return <MemorialNote death={death} locale={locale} insight={[
+          g ? s(locale, 'memorial.alim.gap').replace('{n}', String(g.n)).replace('{from}', dMem(g.from)).replace('{to}', dMem(g.to)) : null,
+          last ? s(locale, 'memorial.alim.last').replace('{d}', dMem(String(last.fecha))).replace('{g}', String(+(+(last.consumo ?? 0)).toFixed(2))) : null,
+        ].filter(Boolean).join(' ')} />; })()}
       {hasLastMeal && !alim.length && (
         <section class="mb-3.5 flex flex-wrap items-center gap-4 rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] p-4">
           <div class="flex flex-col gap-0.5">

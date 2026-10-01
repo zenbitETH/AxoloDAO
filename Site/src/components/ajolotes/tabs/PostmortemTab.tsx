@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import type { Locale } from '../types';
 import { s } from '../strings';
+import Relato, { relatoEvents, type PmRelato } from './Relato';
 
 // Forensic postmortem of one deceased specimen. Data is the public projection of the
 // audit in the brain (tools/forense/project-public.mjs): no people are named, the lab
 // reports are summarised (never reproduced) and the method is pre-registered.
 
-type Lane = 1 | 2 | 3 | 4 | 5 | 'integrity';
+type Lane = 1 | 2 | 3 | 4 | 5 | 'integrity' | 'datos';
 interface PmEvent {
   date: string; time: string | null; lane: Lane; kind: string; label: string;
   source: string; grade: 'A' | 'B' | 'C'; text: string | null; critical?: boolean; chronic_only?: boolean;
@@ -26,6 +27,7 @@ export interface PmSpecimen {
   grade: string; grade_60: string | null; grade_note: string | null;
   primary: PmEpisode | null; sensitivity: PmEpisode | null; events: PmEvent[];
   group?: { date: string | null; cause: string; necropsy: string }[];   // grouped unnamed deaths
+  relato?: PmRelato;                                                     // curated reading (brain: forense/relatos)
 }
 interface PmAire { specimen: string | null; episode: number; date: string; claim: string; contrast: string | null; speaker: string; confidence: string; verified_on_video: boolean; url: string | null }
 export interface PmData {
@@ -51,6 +53,7 @@ export function findSpecimen(data: PmData, alias: string): PmSpecimen | null {
 
 export const LANE_COLOR: Record<string, string> = {
   '1': '#0EA5E9', '2': '#F59E0B', '3': '#10B981', '4': '#8B5CF6', '5': '#8B6F47', integrity: '#F43F5E',
+  datos: '#B98DF0',
 };
 const LANES: Lane[] = [1, 2, 3, 4, 5, 'integrity'];
 export const GRADE_STYLE: Record<string, { bg: string; ink: string }> = {
@@ -205,7 +208,7 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
   const [data, setData] = useState<PmData | null>(null);
   const [error, setError] = useState(false);
   const [win, setWin] = useState<'primary' | 'sensitivity'>('sensitivity');
-  const [lanes, setLanes] = useState<Set<string>>(new Set(LANES.map(String)));
+  const [lanes, setLanes] = useState<Set<string>>(new Set([...LANES.map(String), 'datos']));
 
   useEffect(() => {
     let live = true;
@@ -219,16 +222,20 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
   if (!sp) return <p class="text-sm text-[var(--wq-ink-muted)]">{s(locale, 'pm.none')}</p>;
   const ep = sp[win] ?? sp.primary;
   const aire = data.aire.filter((a) => a.specimen && fold(a.specimen) === fold(alias));
-  const shown = sp.events.filter((e) => lanes.has(String(e.lane)) && (!ep || e.date >= ep.window.from));
+  // With a curated reading, the full record carries everything the main view draws.
+  const allEvents: PmEvent[] = sp.relato
+    ? [...sp.events, ...(relatoEvents(sp.relato, locale) as PmEvent[])].sort((a, b) => `${a.date} ${a.time ?? ''}`.localeCompare(`${b.date} ${b.time ?? ''}`))
+    : sp.events;
+  const chipLanes: Lane[] = sp.relato ? [...LANES, 'datos'] : LANES;
+  const shown = allEvents.filter((e) => lanes.has(String(e.lane)) && (!ep || e.date >= ep.window.from));
 
   const deathValue = `${fmtFull(sp.death.date)}${sp.death.euthanasia ? ` · ${s(locale, 'pm.euthanasia')}` : ''} · ${s(locale, `pm.src.${sp.death.date_source}`)}`;
   const necroValue = sp.necropsy.performed
     ? `${s(locale, 'pm.necro.done')} ${fmtFull(sp.necropsy.performed)} · ${s(locale, 'pm.necro.result')} ${fmtFull(sp.necropsy.result ?? null)}${sp.necropsy.lab_case ? ` · ${s(locale, 'pm.necro.case')} ${sp.necropsy.lab_case}` : ''}`
     : `${s(locale, 'pm.norecord')}${sp.necropsy.status && !/^(na|sin registro)$/i.test(sp.necropsy.status) ? ` (${s(locale, 'pm.necro.book')}: «${sp.necropsy.status}»)` : ''}`;
 
-  return (
-    <div class="flex flex-col gap-5">
-      {/* Verdict */}
+  const verdictSec = (
+    <>
       <section class="flex flex-col gap-3 rounded-2xl border border-[var(--wq-divider)] p-4">
         <div class="flex flex-wrap items-center gap-2">
           <span class="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">{s(locale, 'pm.response')}</span>
@@ -269,8 +276,10 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
         )}
         {sp.grade_note && <p class="m-0 text-xs text-[#D97706]">{sp.grade_note}</p>}
       </section>
-
-      {/* Death and after */}
+    </>
+  );
+  const factsSec = (
+    <>
       <section class="grid grid-cols-1 gap-2 sm:grid-cols-2">
         <Fact label={s(locale, 'pm.fact.death')} value={deathValue} />
         {sp.death.workbook_date && (
@@ -283,8 +292,10 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
         <Fact label={s(locale, 'pm.fact.necropsy')} value={necroValue} tone={sp.necropsy.performed ? undefined : 'gap'} />
         <Fact label={s(locale, 'pm.fact.body')} value={sp.body_conservation ? `${sp.body_conservation} · ${sp.body}` : sp.body} tone={/sin registro/.test(sp.body) ? 'gap' : undefined} />
       </section>
-
-      {/* Grouped deaths (unnamed larvae): one row per sheet entry */}
+    </>
+  );
+  const groupSec = (
+    <>
       {sp.group && (
         <section class="flex flex-col gap-2">
           <h3 class="m-0 font-display text-base font-bold text-[var(--wq-ink)]">{s(locale, 'pm.group')}</h3>
@@ -311,8 +322,10 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
           {sp.death.note && <p class="m-0 text-xs text-[var(--wq-ink-muted)]">{sp.death.note}</p>}
         </section>
       )}
-
-      {/* Timeline */}
+    </>
+  );
+  const timelineSec = (
+    <>
       {ep && (
         <section class="flex flex-col gap-2">
           <div class="flex flex-wrap items-center justify-between gap-2">
@@ -329,8 +342,10 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
           <Timeline sp={sp} ep={ep} locale={locale} />
         </section>
       )}
-
-      {/* Said on air */}
+    </>
+  );
+  const aireSec = (
+    <>
       {aire.length > 0 && (
         <section class="flex flex-col gap-2">
           <h3 class="m-0 font-display text-base font-bold text-[var(--wq-ink)]">{s(locale, 'pm.aire')}</h3>
@@ -350,12 +365,14 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
           </ul>
         </section>
       )}
-
-      {/* Events by lane */}
+    </>
+  );
+  const eventsSec = (
+    <>
       <section class="flex flex-col gap-2">
         <div class="flex flex-wrap items-center gap-1.5">
-          <h3 class="m-0 mr-2 font-display text-base font-bold text-[var(--wq-ink)]">{s(locale, 'pm.events')}</h3>
-          {LANES.map((l) => {
+          <h3 class="m-0 mr-2 font-display text-base font-bold text-[var(--wq-ink)]">{s(locale, 'pm.events')} <span class="font-sans text-xs font-medium text-[var(--wq-ink-muted)]">({shown.length})</span></h3>
+          {chipLanes.map((l) => {
             const on = lanes.has(String(l));
             return (
               <button key={String(l)} type="button" aria-pressed={on}
@@ -386,8 +403,10 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
           ))}
         </ol>
       </section>
-
-      {/* Method */}
+    </>
+  );
+  const methodSec = (
+    <>
       <details class="rounded-xl border border-[var(--wq-divider)] p-3 text-xs text-[var(--wq-ink-muted)]">
         <summary class="cursor-pointer font-semibold text-[var(--wq-ink)]">{s(locale, 'pm.method')}</summary>
         <p class="mb-2 mt-2">{data.method_note}</p>
@@ -396,6 +415,35 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
         </ul>
         <p class="mb-0 mt-2 font-mono">{s(locale, 'pm.prereg')} {data.preregistration} · {s(locale, 'pm.generated')} {data.generated}</p>
       </details>
+    </>
+  );
+
+  if (sp.relato) {
+    return (
+      <div class="flex flex-col gap-5">
+        <Relato r={sp.relato} alias={sp.alias} locale={locale} />
+        <details class="rounded-2xl border border-[var(--wq-divider)] p-3">
+          <summary class="cursor-pointer text-sm font-semibold text-[var(--wq-ink)]">{s(locale, 'pm.r.record').replace('{n}', String(allEvents.filter((e) => !ep || e.date >= ep.window.from).length))}</summary>
+          <div class="mt-4 flex flex-col gap-5">
+            {verdictSec}
+            {aireSec}
+            {eventsSec}
+            {methodSec}
+          </div>
+        </details>
+      </div>
+    );
+  }
+
+  return (
+    <div class="flex flex-col gap-5">
+      {verdictSec}
+      {factsSec}
+      {groupSec}
+      {timelineSec}
+      {aireSec}
+      {eventsSec}
+      {methodSec}
     </div>
   );
 }

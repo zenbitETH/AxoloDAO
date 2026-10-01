@@ -18,9 +18,10 @@ import BiometriaTab from './tabs/BiometriaTab';
 import EventosTab from './tabs/EventosTab';
 import AlimentacionTab from './tabs/AlimentacionTab';
 import PostmortemTab from './tabs/PostmortemTab';
+import SeguimientoTab from './tabs/SeguimientoTab';
 import { necroStatus } from './memorial';
 
-type TabId = 'postmortem' | 'resumen' | 'biometria' | 'eventos' | 'alimentacion';
+type TabId = 'postmortem' | 'seguimiento' | 'resumen' | 'biometria' | 'eventos' | 'alimentacion';
 
 interface Props {
   ej: Ejemplar;
@@ -54,7 +55,8 @@ function peceraLabel(locale: Locale, pecera: string | null | undefined): string 
 }
 
 export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, water, waterPath, onClose, memorial = false, baja: bajaProp = null }: Props) {
-  // A deceased specimen opens on its forensic postmortem.
+  // A deceased specimen opens on its forensic postmortem; a living one on its summary, with
+  // its follow-up (the same reading of the record as a postmortem) right after.
   const [tab, setTab] = useState<TabId>(memorial ? 'postmortem' : 'resumen');
   const [mounted, setMounted] = useState(false);
   // Shareable per-specimen deep-link (the hash the on-load handler reopens).
@@ -101,6 +103,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
   const tabs: { id: TabId; label: string }[] = [
     ...(memorial ? [{ id: 'postmortem' as TabId, label: s(locale, 'tab.postmortem') }] : []),
     { id: 'resumen', label: s(locale, 'tab.resumen') },
+    ...(memorial ? [] : [{ id: 'seguimiento' as TabId, label: s(locale, 'tab.seguimiento') }]),
     { id: 'biometria', label: s(locale, 'tab.biometria') },
     { id: 'eventos', label: s(locale, 'tab.eventos') },
     { id: 'alimentacion', label: s(locale, 'tab.alimentacion') },
@@ -157,8 +160,10 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
           </div>
           <div class="relative flex items-start justify-between gap-3 p-4 sm:gap-4 sm:p-6">
             <div class="min-w-0 flex-1 sm:max-w-[58%]">
-              <h2 class="m-0 flex items-center gap-2.5 font-display text-2xl font-bold leading-none tracking-tight text-[var(--wq-ink)] sm:text-3xl">
-                <span class="truncate">{ej.alias}</span>
+              <h2 class="m-0 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 font-display text-2xl font-bold leading-none tracking-tight text-[var(--wq-ink)] sm:text-3xl">
+                {/* Wraps instead of squeezing: on a phone the badge drops below the name
+                    rather than truncating the name to nothing. */}
+                <span class="min-w-0 max-w-full truncate">{ej.alias}</span>
                 <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)} aria-label={genderTitle(locale, ej.genero)}>
                   {sym}
                 </span>
@@ -224,7 +229,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
                   title={s(locale, 'xovi.clip')}
                 >
                   <img src="/logos/xovi.svg" alt="" width={18} height={18} class="h-[18px] w-[18px]" />
-                  <span class="whitespace-nowrap">{s(locale, 'xovi.clip')}</span>
+                  <span class="hidden whitespace-nowrap sm:inline">{s(locale, 'xovi.clip')}</span>
                 </a>
               )}
               {memorial && (
@@ -239,7 +244,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
                     <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
                     <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
                   </svg>
-                  <span class="whitespace-nowrap">{copied ? s(locale, 'bajas.copied') : s(locale, 'bajas.copyLink')}</span>
+                  <span class="hidden whitespace-nowrap sm:inline">{copied ? s(locale, 'bajas.copied') : s(locale, 'bajas.copyLink')}</span>
                 </button>
               )}
               <button
@@ -334,6 +339,7 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
         {/* Body */}
         <div class="min-h-0 flex-1 overflow-y-auto p-5 sm:p-6">
           {tab === 'postmortem' && <PostmortemTab alias={ej.alias} locale={locale} />}
+          {tab === 'seguimiento' && <SeguimientoTab alias={ej.alias} locale={locale} />}
           {tab === 'resumen' && (
             <ResumenTab
               ej={ej}
@@ -346,9 +352,11 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
               locale={locale}
               water={water}
               waterPath={waterPath}
+              memorial={memorial}
+              lastMeal={(() => { const l = [...alim].filter((a) => a.fecha).sort((a, b) => String(a.fecha).localeCompare(String(b.fecha))).pop(); return l ? { fecha: String(l.fecha), g: +(l.consumo ?? 0) } : null; })()}
             />
           )}
-          {tab === 'biometria' && <BiometriaTab hist={hist} accent={ac} locale={locale} />}
+          {tab === 'biometria' && <BiometriaTab hist={hist} accent={ac} locale={locale} death={memorial ? baja?.fecha ?? null : undefined} />}
           {tab === 'eventos' && (
             <EventosTab
               alias={ej.alias}
@@ -358,10 +366,11 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
               baja={baja}
               accent={ac}
               locale={locale}
+              memorial={memorial}
             />
           )}
           {tab === 'alimentacion' && (
-            <AlimentacionTab ej={ej} alim={alim} plan={plan} accent={ac} locale={locale} />
+            <AlimentacionTab ej={ej} alim={alim} plan={plan} accent={ac} locale={locale} death={memorial ? baja?.fecha ?? null : undefined} />
           )}
         </div>
 
@@ -374,10 +383,14 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
             />
             {s(locale, 'modal.foot.att')}
           </span>
-          <span>
-            {s(locale, 'modal.foot.curador')}:{' '}
-            <code class="font-mono text-teal">lups-plantae.axolodao.eth</code>
-          </span>
+          {/* Not on memorial profiles: the postmortem names no person, and the
+              forensic projection maps this ENS to a role (operación). */}
+          {!memorial && (
+            <span>
+              {s(locale, 'modal.foot.curador')}:{' '}
+              <code class="font-mono text-teal">lups-plantae.axolodao.eth</code>
+            </span>
+          )}
         </div>
       </div>
     </div>

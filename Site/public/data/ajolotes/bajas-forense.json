@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-25",
- "brain_commit": "e3525fe",
+ "generated": "2026-10-01",
+ "brain_commit": "c6cadb4",
  "preregistration": "451da4d",
  "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
  "aggregate": {
@@ -348,29 +348,256 @@
      "grade": "A",
      "text": "Cambio de agua rutinario · Se realiza el cambio del agua de tupper de cuarentena de ander"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Del **26 al 30 de agosto** el libro anota siete veces que flotaba, que nadaba hacia la superficie una y otra vez o que se atoraba en la rejilla del filtro, casi siempre como solo observación. La primera acción, un aviso al veterinario y la cuarentena, llegó el **31 de agosto**, cinco días después de la primera señal; ese día el agua de su sistema marcó amoníaco sobre cero. Murió el 5 de septiembre.",
+    "stats": [
+     {
+      "n": "5",
+      "u": "días",
+      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
+      "tone": "amber",
+      "key": "lat"
+     },
+     {
+      "n": "5",
+      "u": "de 12",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "rose",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2026-08-02",
+     "to": "2026-09-05",
+     "lecturas": [
+      "2026-08-26",
+      "2026-08-27",
+      "2026-08-28",
+      "2026-08-31",
+      "2026-09-01",
+      "2026-09-02",
+      "2026-09-03",
+      "2026-09-04"
+     ],
+     "criticas": [
+      "2026-08-31"
+     ],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [
+      [
+       "2026-08-26",
+       "08:29",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Flotabilidad en rejilla de filtro (patita atorada)"
+      ],
+      [
+       "2026-08-27",
+       "15:23",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · El ejemplar presenta demasiada activiad de nado a la superficie. Se ha mantenido…"
+      ],
+      [
+       "2026-08-28",
+       "16:00",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · El ejemplar presenta demasiada activiad de nado a la superficie. Se ha mantenido…"
+      ],
+      [
+       "2026-08-29",
+       "09:46",
+       "fuerte",
+       "Bitácora: Solo observación · Ander presenta un movimiento branquial más rápido de lo observado en dás anteriores.vJuan confirma e…"
+      ],
+      [
+       "2026-08-29",
+       "09:23",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · Ander sale 3 veces a la superficie en menos de un minuto; sigue presentando una a…"
+      ],
+      [
+       "2026-08-30",
+       "17:17",
+       "fuerte",
+       "Bitácora: El ejemplar se atora con la parte dentada cercana a el filtro de la pecera. Se ha atorado en 5 ocasiones desde las 4:30…"
+      ],
+      [
+       "2026-08-30",
+       "16:29",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · El ejemplar acaba de bajar; posible respuesta por menor cantidad de…"
+      ],
+      [
+       "2026-08-30",
+       "15:49",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación, Modificación/Adición de equipo · El ejemplar presenta mucha actividad de nado en l…"
+      ],
+      [
+       "2026-08-30",
+       "09:00",
+       "fuerte",
+       "Bitácora: Ander atorado en rejilla de filtro"
+      ],
+      [
+       "2026-09-01",
+       "18:00",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Ander baja de la superficie y pierde el control, queda en una posici…"
+      ],
+      [
+       "2026-09-01",
+       "15:45",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Ander flota a mitad de la pecera y baja por periodos cortos de tiempo"
+      ]
+     ],
+     "videos": [],
+     "respuestas": [
+      [
+       "2026-08-31",
+       "09:30",
+       "si",
+       [
+        "Aviso al veterinario: Flotabilidad anormal / Arqueo, Nado persistente · Solo observación, Notificación a veterinario",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-09-03",
+       "19:30",
+       "si",
+       [
+        "En Cuarentena"
+       ]
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2026-08-26",
+       "08:29"
+      ],
+      "to": [
+       "2026-08-31",
+       "09:10"
+      ],
+      "label": "5 días · estándar 48 h"
+     },
+     "agua": {
+      "2026-08-26": "17.7 °C",
+      "2026-08-27": "17.8 °C",
+      "2026-08-28": "17.9 °C",
+      "2026-08-31": "17.1 °C · NH₃ 0.25 mg/L · NO₂ 0.25 mg/L",
+      "2026-09-01": "17.5 °C",
+      "2026-09-02": "17.5 °C",
+      "2026-09-03": "17.7 °C",
+      "2026-09-04": "17.5 °C"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2026-08-26",
+      "tone": "amber",
+      "title": "Flota atorado en el filtro",
+      "text": "Flotabilidad en la rejilla del filtro, con una pata atorada.",
+      "src": "bitácora",
+      "t": "08:29"
+     },
+     {
+      "d": "2026-08-27",
+      "tone": "amber",
+      "title": "Nada hacia la superficie",
+      "text": "Actividad de nado a la superficie demasiado alta, tres días seguidos; queda en observación.",
+      "src": "bitácora",
+      "t": "15:23",
+      "d2": "2026-08-29"
+     },
+     {
+      "d": "2026-08-30",
+      "tone": "amber",
+      "title": "Se atora una y otra vez",
+      "text": "Se atoró cinco veces en la parte dentada junto al filtro.",
+      "src": "bitácora",
+      "t": "17:17"
+     },
+     {
+      "d": "2026-08-31",
+      "tone": "green",
+      "title": "Aviso al veterinario y cuarentena",
+      "text": "Primera acción del episodio. Ese día, amoníaco sobre cero en su sistema.",
+      "src": "bitácora · libro",
+      "t": "09:30"
+     },
+     {
+      "d": "2026-09-01",
+      "tone": "amber",
+      "title": "Pierde el control al bajar",
+      "text": "Flota a media agua y pierde el control al bajar de la superficie.",
+      "src": "bitácora",
+      "t": "18:00"
+     },
+     {
+      "d": "2026-09-05",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "La hoja puede leerse también como 9 de mayo; esa lectura se descarta porque hay registros de ella viva hasta el 3 de septiembre.",
+      "src": "libro"
+     }
+    ],
+    "simulacion": {
+     "reglas": [
+      {
+       "d": "2026-08-26",
+       "text": "Incidencia clínica sin respuesta en 48 h → escala a dirección clínica el 28.",
+       "real": "Cinco días y siete incidencias anotadas como solo observación hasta el aviso al veterinario."
+      },
+      {
+       "d": "2026-08-31",
+       "text": "Amoníaco sobre cero → aviso crítico al veterinario en minutos.",
+       "real": "Ese día sí se avisó al veterinario."
+      }
+     ],
+     "con": {
+      "n": "≤ 48 h",
+      "l": "de la primera señal a la acción, con avisos"
+     },
+     "sin": {
+      "n": "5 días",
+      "l": "lo que pasó sin ellos"
+     }
+    },
+    "evidencia": [],
+    "datos": {
+     "peso": [],
+     "alim": []
+    }
+   }
   },
   {
    "alias": "Panchita",
    "species": "A. andersoni",
    "death": {
-    "date": "2026-07-08",
-    "workbook_date": null,
-    "date_source": "libro",
-    "conf": "en_revision",
+    "date": "2026-07-07",
+    "workbook_date": "2026-07-08",
+    "date_source": "laboratorio",
+    "conf": "exact",
     "euthanasia": false,
-    "note": "fecha en revisión contra un documento de laboratorio reservado",
+    "note": null,
     "alive_record_after": null
    },
-   "cause": null,
-   "cause_source": null,
+   "cause": "hepatitis crónica, asociable a infección bacteriana ascendente, septicemia o intoxicación (amoníaco o nitritos); el hidroceloma podría relacionarse con el daño hepático; lesiones renales sugieren daño glomerular",
+   "cause_source": "necropsia",
    "necropsy": {
-    "performed": null,
-    "status": "resultado reservado hasta la autorización del laboratorio"
+    "performed": "2026-07-08",
+    "result": "2026-08-04",
+    "lab_case": null
    },
-   "body": "sin registro",
-   "body_conservation": null,
-   "lab_reserved": true,
+   "body": "conservado en agua refrigerada y enviado a necropsia; destino posterior sin registro",
+   "body_conservation": "mantenido en agua con refrigeración hasta la necropsia; estado de conservación regular, autólisis",
+   "lab_reserved": false,
    "grade": "oportuna",
    "grade_60": "tardía",
    "grade_note": null,
@@ -838,7 +1065,7 @@
      "label": "Acción correctiva",
      "source": "chat",
      "grade": "A",
-     "text": "Le mandaron inyecciones y gotas (líneas 2141–2142)"
+     "text": "Le mandaron inyecciones y gotas"
     },
     {
      "date": "2026-05-21",
@@ -1882,6 +2109,28 @@
     },
     {
      "date": "2026-06-30",
+     "time": "16:00",
+     "lane": 3,
+     "kind": "preventive_lab_test",
+     "label": "Estudio de laboratorio",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "evaluación de efusión celómica (citología): trasudado pobre en proteínas (proteínas totales 18 g/L, A/G 0.38); Gram sin agentes infecciosos · desequilibrio de presión hidrostática u oncótica: fallo renal, insuficienci…",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-06-30",
+     "time": "16:00",
+     "lane": 2,
+     "kind": "signal_lab_history",
+     "label": "Historia clínica (laboratorio)",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "anamnesis del laboratorio: anorexia de una semana; líquido libre verde-amarillo en abdomen; micosis previa e infección bacteriana; glaucoma y catarata de posible origen infeccioso en ojo derecho; queratitis en ojo izq…",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-06-30",
      "time": "19:03",
      "lane": 1,
      "kind": "signal_param_oor",
@@ -2854,6 +3103,17 @@
     },
     {
      "date": "2026-07-07",
+     "time": "14:30",
+     "lane": "integrity",
+     "kind": "death_date_conflict",
+     "label": "Fecha de muerte en conflicto",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "el documento de laboratorio fecha la muerte el 2026-07-07; la hoja Bajas dice 2026-07-08 o 2026-08-07",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-07-07",
      "time": "15:47",
      "lane": 2,
      "kind": "signal_chat_health",
@@ -2881,30 +3141,1721 @@
      "source": "chat",
      "grade": "A",
      "text": "Resultados incompletos; el vet contactará a su patólogo; cuadro sistémico complicado"
+    },
+    {
+     "date": "2026-07-08",
+     "time": null,
+     "lane": 5,
+     "kind": "death",
+     "label": "Muerte",
+     "source": "libro",
+     "grade": "B",
+     "text": "· necropsia: sin registro · documentación: Citologia"
+    },
+    {
+     "date": "2026-07-08",
+     "time": "14:30",
+     "lane": 5,
+     "kind": "necropsy",
+     "label": "Necropsia",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "necropsia · mantenido en agua con refrigeración hasta la necropsia; estado de conservación regular, autólisis",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-07-09",
+     "time": "07:35",
+     "lane": 5,
+     "kind": "chat_death",
+     "label": "Aviso de muerte",
+     "source": "chat",
+     "grade": "A",
+     "text": "Operación comunica que Panchita no lo logró"
+    },
+    {
+     "date": "2026-07-09",
+     "time": "07:38",
+     "lane": 5,
+     "kind": "chat_death",
+     "label": "Aviso de muerte",
+     "source": "chat",
+     "grade": "A",
+     "text": "Tras comportamiento inusual, descompensación o falla orgánica; llegó al vet con poca respuesta"
+    },
+    {
+     "date": "2026-07-09",
+     "time": "07:40",
+     "lane": 5,
+     "kind": "chat_necropsy",
+     "label": "Necropsia (aviso)",
+     "source": "chat",
+     "grade": "A",
+     "text": "Queda realizar la necropsia a recomendación del vet, no obligada; operación la considera útil"
+    },
+    {
+     "date": "2026-08-04",
+     "time": null,
+     "lane": 5,
+     "kind": "necropsy_result",
+     "label": "Resultado de necropsia",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "resultado: hepatitis crónica, asociable a infección bacteriana ascendente, septicemia o intoxicación (amoníaco o nitritos); el hidroceloma podría relacionarse con el daño hepático; lesiones renales sugieren daño glome…",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-08-04",
+     "time": "11:55",
+     "lane": 5,
+     "kind": "chat_necropsy",
+     "label": "Necropsia (aviso)",
+     "source": "chat",
+     "grade": "A",
+     "text": "Curaduría comparte el resultado de la necropsia (el chat no nombra al ejemplar; necropsias.json lo asigna a Panchita)"
+    },
+    {
+     "date": "2026-08-04",
+     "time": "12:00",
+     "lane": 5,
+     "kind": "chat_necropsy",
+     "label": "Necropsia (aviso)",
+     "source": "chat",
+     "grade": "A",
+     "text": "El fundador: no estaba grávida, tenía los órganos hinchados; curaduría: al morir sí, antes era gravidez"
+    },
+    {
+     "date": "2026-08-04",
+     "time": "12:01",
+     "lane": 5,
+     "kind": "chat_necropsy",
+     "label": "Necropsia (aviso)",
+     "source": "chat",
+     "grade": "A",
+     "text": "El fundador: la hepatitis era crónica"
+    },
+    {
+     "date": "2026-08-04",
+     "time": "12:12",
+     "lane": 5,
+     "kind": "chat_necropsy",
+     "label": "Necropsia (aviso)",
+     "source": "chat",
+     "grade": "A",
+     "text": "El fundador pregunta si la carga de sales pudo acelerar el desgaste de hígado y riñones"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Llevaba meses enferma: el crecimiento algodonoso en sus branquias reapareció en diciembre de 2025 al terminar un tratamiento y nunca se resolvió del todo. Según el testimonio del fundador, en 2025 salió del museo dos veces, a la Expo Qro en septiembre y a una convención de UMA y PIMVS en otro estado a fines de octubre, viajes que pudieron exponerla a cambios bruscos de temperatura. En su propio acuario, el libro registra vaivenes de 3 a 4 °C en pocos días entre el 23 de abril y el 5 de mayo. El 4 de mayo se registra una inflamación persistente en el ojo derecho, por un posible golpe; el **21 de mayo** lo perdió, y el 27 el daño ya era irreversible. Desde el **4 de junio** el libro anota que flotaba con la parte trasera hacia arriba. Pasó un mes entre cuarentena y tratamientos diarios, y ninguna de sus señales quedó sin respuesta dentro de su plazo. El 22 de junio pesaba 144 g, 10 % menos que en abril; esa semana el ojo dañado volvió a inflamarse, y el 29 hubo una alerta en el otro. El 1 de julio salió del acuario porque flotaba; el **7 de julio** la llevaron de emergencia al veterinario y murió.",
+    "stats": [
+     {
+      "n": "mismo",
+      "u": "día",
+      "l": "de la primera señal del episodio a la primera acción (estándar 72 h)",
+      "tone": "green",
+      "key": "lat"
+     },
+     {
+      "n": "0",
+      "u": "de 77",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "green",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2025-11-09",
+     "to": "2026-07-07",
+     "lecturas": [
+      "2025-11-13",
+      "2025-11-14",
+      "2025-11-19",
+      "2025-11-22",
+      "2025-12-04",
+      "2025-12-05",
+      "2025-12-06",
+      "2025-12-10",
+      "2025-12-13",
+      "2025-12-14",
+      "2025-12-15",
+      "2025-12-16",
+      "2025-12-17",
+      "2025-12-18",
+      "2025-12-20",
+      "2025-12-22",
+      "2025-12-23",
+      "2025-12-24",
+      "2025-12-25",
+      "2025-12-26",
+      "2025-12-27",
+      "2025-12-30",
+      "2025-12-31",
+      "2026-01-06",
+      "2026-01-07",
+      "2026-01-08",
+      "2026-01-09",
+      "2026-01-13",
+      "2026-01-14",
+      "2026-01-15",
+      "2026-01-16",
+      "2026-01-19",
+      "2026-01-20",
+      "2026-01-21",
+      "2026-01-22",
+      "2026-01-23",
+      "2026-01-26",
+      "2026-01-27",
+      "2026-01-28",
+      "2026-01-30",
+      "2026-02-02",
+      "2026-02-03",
+      "2026-02-10",
+      "2026-02-12",
+      "2026-02-13",
+      "2026-02-16",
+      "2026-02-19",
+      "2026-02-23",
+      "2026-02-24",
+      "2026-02-25",
+      "2026-02-27",
+      "2026-03-02",
+      "2026-03-04",
+      "2026-03-06",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-13",
+      "2026-03-16",
+      "2026-03-23",
+      "2026-03-30",
+      "2026-04-02",
+      "2026-04-06",
+      "2026-04-08",
+      "2026-04-09",
+      "2026-04-10",
+      "2026-04-11",
+      "2026-04-13",
+      "2026-04-14",
+      "2026-04-15",
+      "2026-04-16",
+      "2026-04-20",
+      "2026-04-23",
+      "2026-04-27",
+      "2026-04-28",
+      "2026-04-29",
+      "2026-04-30",
+      "2026-05-01",
+      "2026-05-04",
+      "2026-05-05",
+      "2026-05-06",
+      "2026-05-07",
+      "2026-05-08",
+      "2026-05-10",
+      "2026-05-11",
+      "2026-05-12",
+      "2026-05-13",
+      "2026-05-14",
+      "2026-05-15",
+      "2026-05-16",
+      "2026-05-17",
+      "2026-05-18",
+      "2026-05-19",
+      "2026-05-20",
+      "2026-05-21",
+      "2026-05-27",
+      "2026-05-28",
+      "2026-05-29",
+      "2026-06-01",
+      "2026-06-02",
+      "2026-06-03",
+      "2026-06-04",
+      "2026-06-05",
+      "2026-06-06",
+      "2026-06-07",
+      "2026-06-08",
+      "2026-06-09",
+      "2026-06-10",
+      "2026-06-11",
+      "2026-06-12",
+      "2026-06-13",
+      "2026-06-14",
+      "2026-06-15",
+      "2026-06-16",
+      "2026-06-17",
+      "2026-06-18",
+      "2026-06-19",
+      "2026-06-20",
+      "2026-06-21",
+      "2026-06-22",
+      "2026-06-23",
+      "2026-06-24",
+      "2026-06-25",
+      "2026-06-26",
+      "2026-06-27",
+      "2026-06-28",
+      "2026-06-29",
+      "2026-06-30",
+      "2026-07-01",
+      "2026-07-02",
+      "2026-07-03",
+      "2026-07-04",
+      "2026-07-05",
+      "2026-07-06",
+      "2026-07-07"
+     ],
+     "criticas": [
+      "2025-11-13",
+      "2025-11-22",
+      "2026-01-09",
+      "2026-01-30",
+      "2026-03-02",
+      "2026-03-10",
+      "2026-03-23",
+      "2026-05-20",
+      "2026-06-03",
+      "2026-07-06",
+      "2026-07-07"
+     ],
+     "sin_lectura": [
+      [
+       "2025-12-07",
+       "2025-12-09"
+      ],
+      [
+       "2026-01-01",
+       "2026-01-05"
+      ],
+      [
+       "2026-01-10",
+       "2026-01-12"
+      ],
+      [
+       "2026-02-04",
+       "2026-02-09"
+      ],
+      [
+       "2026-02-20",
+       "2026-02-22"
+      ],
+      [
+       "2026-03-17",
+       "2026-03-22"
+      ],
+      [
+       "2026-03-24",
+       "2026-03-29"
+      ],
+      [
+       "2026-04-03",
+       "2026-04-05"
+      ],
+      [
+       "2026-05-22",
+       "2026-05-26"
+      ]
+     ],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [
+      [
+       "2025-12-01",
+       "11:41",
+       "fuerte",
+       "Chat del equipo: Panchita terminó tratamiento el jueves y reaparece lo que creen es hongo"
+      ],
+      [
+       "2026-01-14",
+       "18:29",
+       "fuerte",
+       "Chat del equipo: Fundador ve a Panchita rascándose las branquias"
+      ],
+      [
+       "2026-01-14",
+       "18:57",
+       "fuerte",
+       "Chat del equipo: Operación la revisa: está bien, vigilar que no salga pelusa en branquias"
+      ],
+      [
+       "2026-01-29",
+       "17:21",
+       "fuerte",
+       "Chat del equipo: Fundador: Pancha se anda rascando"
+      ],
+      [
+       "2026-03-04",
+       "17:35",
+       "fuerte",
+       "Chat del equipo: Fundador: Pancha se está rascando"
+      ],
+      [
+       "2026-03-28",
+       "14:10",
+       "leve",
+       "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      ],
+      [
+       "2026-04-08",
+       "16:49",
+       "leve",
+       "Chat del equipo: Los ajolotes no aceptan o vomitan las croquetas; se mezcla tubifex con croqueta"
+      ],
+      [
+       "2026-04-28",
+       "09:33",
+       "fuerte",
+       "Chat del equipo: Fundador: Pancha ha perdido la mayoría de los filamentos branquiales desde septiembre; atribuye deterioro a falta de co…"
+      ],
+      [
+       "2026-04-28",
+       "10:04",
+       "leve",
+       "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      ],
+      [
+       "2026-04-29",
+       "12:50",
+       "fuerte",
+       "Chat del equipo: Fundador comparte video de las branquias de Pancha"
+      ],
+      [
+       "2026-05-02",
+       "03:39",
+       "leve",
+       "Chat del equipo: Un ejemplar bastante tocado y otros 3 con signos poco favorables"
+      ],
+      [
+       "2026-05-08",
+       "13:45",
+       "leve",
+       "Chat del equipo: A ninguno le gustan las lombrices; ya no hay tubifex, lo único que quieren comer"
+      ],
+      [
+       "2026-05-09",
+       "19:50",
+       "fuerte",
+       "Chat del equipo: Panchita tiene pelusa en las agallas"
+      ],
+      [
+       "2026-05-10",
+       "11:33",
+       "leve",
+       "Chat del equipo: Practicante pregunta si un ejemplar ya tenía manchas blancas en la espalda"
+      ],
+      [
+       "2026-05-12",
+       "10:42",
+       "fuerte",
+       "Bitácora: Nado persistente, Flotabilidad anormal / Arqueo · Panchita mantiene un movimiento con subida a superficie recurrente"
+      ],
+      [
+       "2026-05-14",
+       "17:47",
+       "fuerte",
+       "Chat del equipo: Panchita amaneció con gran carga de pelusa en branquias y su ojo derecho no mejora"
+      ],
+      [
+       "2026-05-15",
+       "21:00",
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia), \"Anomalía estructural permanente (Falta de extremidad, microfta…"
+      ],
+      [
+       "2026-05-15",
+       "14:42",
+       "fuerte",
+       "Chat del equipo: Panchita con mucho hongo; el miércoles se le añadieron 3 g de NaCl; curaduría dará otro tratamiento"
+      ],
+      [
+       "2026-05-15",
+       "21:59",
+       "fuerte",
+       "Chat del equipo: El hongo de Panchita estaba tan avanzado que se desprendió y sangró; se trató con azul de metileno"
+      ],
+      [
+       "2026-05-20",
+       "09:36",
+       "leve",
+       "Chat del equipo: Quedan pocos tubifex; están mejorando con esa alimentación; no les gustan las lombrices"
+      ],
+      [
+       "2026-05-21",
+       "20:18",
+       "fuerte",
+       "Chat del equipo: Panchita tiene una infección secundaria"
+      ],
+      [
+       "2026-05-21",
+       "20:18",
+       "fuerte",
+       "Chat del equipo: Panchita tiene una infección secundaria"
+      ],
+      [
+       "2026-06-04",
+       "19:50",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Cuarentena · Se cambio a Panchita a un toper de cuarentena porque presentaba flotabilid…"
+      ],
+      [
+       "2026-06-10",
+       "09:10",
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Solo observación · Reincidencia de Panchita con crecimiento al…"
+      ],
+      [
+       "2026-06-12",
+       "17:00",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · La parte trasera del ejemplar flota"
+      ],
+      [
+       "2026-06-14",
+       "12:28",
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia), Retención de muda / Descamación · Solo observación · Se observa…"
+      ],
+      [
+       "2026-06-15",
+       "12:20",
+       "fuerte",
+       "Bitácora: Retención de muda / Descamación · Solo observación · Se realiza la deteccion de una lesion en la parte correspondiente…"
+      ],
+      [
+       "2026-06-21",
+       "14:00",
+       "fuerte",
+       "Bitácora: \"Anomalía estructural permanente (Falta de extremidad, microftalmia)\" · Notificación a veterinario · Se observa una inf…"
+      ],
+      [
+       "2026-06-21",
+       "16:33",
+       "fuerte",
+       "Chat del equipo: El ojo derecho (dañado) de Panchita se ve distinto y protuberante; no ha estado comiendo bien"
+      ],
+      [
+       "2026-06-21",
+       "15:52",
+       "leve",
+       "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      ],
+      [
+       "2026-06-22",
+       "14:00",
+       "fuerte",
+       "Bitácora: Apatía / Rechazo de alimento · Solo observación · Se observa de manera recurrente una apatia hacia la alimentacion por…"
+      ],
+      [
+       "2026-06-22",
+       "08:20",
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Notificación a veterinario · Reincidencia de ejemplar con crec…"
+      ],
+      [
+       "2026-06-22",
+       "10:40",
+       "fuerte",
+       "Diagnóstico: Nematodos · tx: Fenbendazol"
+      ],
+      [
+       "2026-06-25",
+       "13:00",
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Persistencia de hongo en branquias tras tratamientos aplicados…"
+      ],
+      [
+       "2026-06-25",
+       "09:00",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Panchita mantiene flotabilidad en region caudal por presunto gas ret…"
+      ],
+      [
+       "2026-06-27",
+       "09:15",
+       "fuerte",
+       "Bitácora: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Solo observación · Se encontro al ejemplar con 3 crecimientos…"
+      ],
+      [
+       "2026-06-29",
+       "14:30",
+       "fuerte",
+       "Diagnóstico: Saprolegniasis · tx: Itraconazol"
+      ],
+      [
+       "2026-06-29",
+       "08:00",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación, Notificación a veterinario · Se registra flotabilidad anormal en Panc…"
+      ],
+      [
+       "2026-06-29",
+       "14:30",
+       "fuerte",
+       "Diagnóstico: Saprolegniasis · tx: Itraconazol"
+      ],
+      [
+       "2026-06-30",
+       "16:00",
+       "fuerte",
+       "Laboratorio: anamnesis del laboratorio: anorexia de una semana; líquido libre verde-amarillo en abdomen; micosis previa e infección…"
+      ],
+      [
+       "2026-06-30",
+       "16:00",
+       "fuerte",
+       "Laboratorio: anamnesis del laboratorio: anorexia de una semana; líquido libre verde-amarillo en abdomen; micosis previa e infección…"
+      ],
+      [
+       "2026-07-01",
+       "10:00",
+       "fuerte",
+       "Bitácora: Compra de insumos veterinarios para tratamiento de Panchita"
+      ],
+      [
+       "2026-07-01",
+       "17:28",
+       "fuerte",
+       "Chat del equipo: Ndali: Panchita de regreso; se presentó un absceso; se procedió al tratamiento"
+      ],
+      [
+       "2026-07-01",
+       "18:10",
+       "fuerte",
+       "Chat del equipo: Se le comentó al vet la flotación anormal de Panchita y que el otro ojo se notaba raro"
+      ],
+      [
+       "2026-07-02",
+       "07:30",
+       "fuerte",
+       "Bitácora: Restos de sangre encontrados en tupper de Panchita"
+      ],
+      [
+       "2026-07-03",
+       "19:37",
+       "fuerte",
+       "Chat del equipo: Panchita flota por la parte inferior del cuerpo y le cuesta permanecer en el fondo"
+      ],
+      [
+       "2026-07-03",
+       "19:37",
+       "fuerte",
+       "Chat del equipo: Panchita flota por la parte inferior del cuerpo y le cuesta permanecer en el fondo"
+      ],
+      [
+       "2026-07-03",
+       "20:07",
+       "leve",
+       "Chat del equipo: Estudios: parásitos que se establecen en el intestino y limitan la absorción de nutrientes; costos de desparasitar"
+      ],
+      [
+       "2026-07-05",
+       "10:10",
+       "fuerte",
+       "Bitácora: Retención de muda / Descamación, Nado persistente · Cuarentena · Se registra dentro de lo observado en el comportamient…"
+      ],
+      [
+       "2026-07-05",
+       "12:07",
+       "fuerte",
+       "Chat del equipo: Panchita con mejor ánimo, sin flotación; Martín sin flotación anormal"
+      ],
+      [
+       "2026-07-06",
+       "11:12",
+       "fuerte",
+       "Bitácora: Retención de muda / Descamación · Cambio de agua rutinario · Panchita sube a superficie por algunas ocasiones a tomar b…"
+      ],
+      [
+       "2026-07-07",
+       "13:25",
+       "fuerte",
+       "Bitácora: Notificación a veterinario · Comportamiento inusual con actividad previa, subida a superficie y posteriormente se situa…"
+      ],
+      [
+       "2026-07-07",
+       "13:20",
+       "fuerte",
+       "Diagnóstico: Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml"
+      ],
+      [
+       "2026-07-07",
+       "07:20",
+       "fuerte",
+       "Diagnóstico: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+      ],
+      [
+       "2026-07-07",
+       "15:47",
+       "fuerte",
+       "Chat del equipo: Ndali: Panchita presentó un comportamiento muy raro; operación corre al veterinario"
+      ]
+     ],
+     "videos": [],
+     "respuestas": [
+      [
+       "2025-12-01",
+       "11:41",
+       "si",
+       [
+        "Acción: Se aplicarán tratamientos antifúngicos con baños de sal a Panchita"
+       ]
+      ],
+      [
+       "2026-03-18",
+       "16:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Desparacitante"
+       ]
+      ],
+      [
+       "2026-04-02",
+       "08:00",
+       "si",
+       [
+        "Tratamiento: tx: Sal acuario + magic"
+       ]
+      ],
+      [
+       "2026-04-05",
+       "08:00",
+       "si",
+       [
+        "Tratamiento: tx: Sal acuario + magic"
+       ]
+      ],
+      [
+       "2026-04-08",
+       "08:00",
+       "si",
+       [
+        "Tratamiento: tx: Sal acuario + magic"
+       ]
+      ],
+      [
+       "2026-04-17",
+       "09:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario + magic · Se ingresa a ejemplar a tratamiento para controlar la presencia de pelusa al…"
+       ]
+      ],
+      [
+       "2026-04-20",
+       "10:24",
+       "no_ocurrio",
+       [
+        "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       ]
+      ],
+      [
+       "2026-04-30",
+       "21:37",
+       "si",
+       [
+        "Veterinario: No se alimentó por la ida al veterinario (30-abr)"
+       ]
+      ],
+      [
+       "2026-05-02",
+       "03:39",
+       "si",
+       [
+        "Veterinario: El veterinario dice que muchos síntomas son por intoxicación por amoniaco"
+       ]
+      ],
+      [
+       "2026-05-04",
+       "13:50",
+       "si",
+       [
+        "Emergencia de agua: Pico tóxico (Amonia/Nitritos) · Cambio de agua de emergencia, Modificación/Adición de equipo · Instalacion de pecera de…",
+        "En Cuarentena",
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Antibiotico (acetilcisteina con tobramicina) · Se observa una infl…"
+       ]
+      ],
+      [
+       "2026-05-05",
+       "16:00",
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Antibiotico (acetilcisteina con tobramicina) · El ojo continua con…",
+        "Acción: Se aplicó medicamento a Panchita a las 4:04 (con ayuda de operación)"
+       ]
+      ],
+      [
+       "2026-05-06",
+       "16:50",
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Antibiotico (acetilcisteina con tobramicina) · El ojo continua con…",
+        "Acción: Medicina de Panchita aplicada ~4:50"
+       ]
+      ],
+      [
+       "2026-05-07",
+       "19:09",
+       "si",
+       [
+        "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       ]
+      ],
+      [
+       "2026-05-14",
+       "18:31",
+       "si",
+       [
+        "Acción: Tratamiento de Panchita y Remo: 15 g de NaCl en 1.5 L por una hora; 9 garrafones llenos"
+       ]
+      ],
+      [
+       "2026-05-15",
+       "21:00",
+       "si",
+       [
+        "Aislamiento: Crecimiento algodonoso / Manchas blancas (Saprolegnia), \"Anomalía estructural permanente (Falta de extremidad, microfta…",
+        "En Cuarentena",
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "y 1 más"
+       ]
+      ],
+      [
+       "2026-05-16",
+       "01:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-05-17",
+       "01:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-05-18",
+       "01:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-05-19",
+       "01:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-05-20",
+       "01:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-05-21",
+       "20:18",
+       "si",
+       [
+        "Veterinario: Curaduría informa que salió del doctor con Panchita",
+        "Corrección: Le mandaron inyecciones y gotas",
+        "Corrección: Se indicó una biopsia a Panchita"
+       ]
+      ],
+      [
+       "2026-05-27",
+       "08:40",
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g · El ojo de Panchita…",
+        "En Cuarentena",
+        "Acción: Operación hace el tratamiento de Panchita",
+        "y 1 más"
+       ]
+      ],
+      [
+       "2026-06-01",
+       "09:00",
+       "si",
+       [
+        "Tratamiento: Infección bacteriana · tx: Gentamicina (10 mg/ml)",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-06-02",
+       "19:50",
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+       ]
+      ],
+      [
+       "2026-06-03",
+       "19:50",
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "Cambio de agua: Cambio de agua · Se retira 1/2 garrafon de sistema A. andersoni y se agrega 1 garrafon de receta nueva HrAa"
+       ]
+      ],
+      [
+       "2026-06-04",
+       "19:50",
+       "si",
+       [
+        "Aislamiento: Flotabilidad anormal / Arqueo · Cuarentena · Se cambio a Panchita a un toper de cuarentena porque presentaba flotabilid…",
+        "En Cuarentena",
+        "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+       ]
+      ],
+      [
+       "2026-06-05",
+       "06:40",
+       "si",
+       [
+        "En Cuarentena",
+        "Cambio de agua: Cambio de agua rutinario · Cambio de Panchita de tupper a pecera pequeña"
+       ]
+      ],
+      [
+       "2026-06-06",
+       "10:34",
+       "si",
+       [
+        "Acción: Panchita regresa a su acuario (06-jun)"
+       ]
+      ],
+      [
+       "2026-06-11",
+       "16:20",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-12",
+       "13:25",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
+      ],
+      [
+       "2026-06-13",
+       "15:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
+      ],
+      [
+       "2026-06-14",
+       "13:05",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
+      ],
+      [
+       "2026-06-15",
+       "12:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua · Receta con adicion de NaCl de 1g xL"
+       ]
+      ],
+      [
+       "2026-06-16",
+       "13:05",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
+      ],
+      [
+       "2026-06-17",
+       "13:02",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
+      ],
+      [
+       "2026-06-18",
+       "13:06",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-19",
+       "14:25",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Azul de metileno · Aplicacion de gota en lesión detectada en la barbilla (cercana a comisura de la…"
+       ]
+      ],
+      [
+       "2026-06-20",
+       "13:56",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal"
+       ]
+      ],
+      [
+       "2026-06-21",
+       "14:00",
+       "si",
+       [
+        "Aviso al veterinario: \"Anomalía estructural permanente (Falta de extremidad, microftalmia)\" · Notificación a veterinario · Se observa una inf…",
+        "Tratamiento: Saprolegniasis · tx: Sal",
+        "Acción: Operación propone contemplar itraconazol y Stress Guard"
+       ]
+      ],
+      [
+       "2026-06-22",
+       "08:20",
+       "si",
+       [
+        "Aviso al veterinario: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Notificación a veterinario · Reincidencia de ejemplar con crec…",
+        "Tratamiento: tx: Stress guard · A manera preventiva posterior a la manipulacion de los ejemplares se acondiciona el agua con el prod…"
+       ]
+      ],
+      [
+       "2026-06-23",
+       "16:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Magic · Baño con magic",
+        "En Cuarentena",
+        "Cambio de agua: Cambio de agua · Adicion de NaCl de 1g x L"
+       ]
+      ],
+      [
+       "2026-06-24",
+       "13:05",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Magic · Baño con magic",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-06-25",
+       "14:20",
+       "si",
+       [
+        "Tratamiento: tx: Stress guard",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-06-26",
+       "13:15",
+       "si",
+       [
+        "Tratamiento: tx: Stress guard",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-06-27",
+       "14:02",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol · Baño con itraconazol. Se le retiraron 3 algodonosidades de las branquias derechas. E…",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-06-28",
+       "13:50",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol"
+       ]
+      ],
+      [
+       "2026-06-29",
+       "14:30",
+       "si",
+       [
+        "Aviso al veterinario: Presencia de parásitos macroscópicos (Ej. Nematodos) · Solo observación, Notificación a veterinario · Se localiza una e…",
+        "Aviso al veterinario: Flotabilidad anormal / Arqueo · Solo observación, Notificación a veterinario · Se registra flotabilidad anormal en Panc…",
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "y 1 más"
+       ]
+      ],
+      [
+       "2026-06-30",
+       "16:00",
+       "si",
+       [
+        "Aviso al veterinario: Flotabilidad anormal / Arqueo · Notificación a veterinario · Se lleva el ejemplar a revisión veterinaria tras detección…",
+        "Prueba de laboratorio: evaluación de efusión celómica (citología): trasudado pobre en proteínas (proteínas totales 18 g/L, A/G 0.38); Gram sin…"
+       ]
+      ],
+      [
+       "2026-07-01",
+       "10:00",
+       "si",
+       [
+        "En Cuarentena",
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "Veterinario: El lunes de limpieza de peceras operación avisó a curaduría; se contactó al vet, que tomó muestras (reporte de efusione…",
+        "y 4 más"
+       ]
+      ],
+      [
+       "2026-07-02",
+       "19:20",
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "En Cuarentena",
+        "Acción: Panchita entra a solución hipertónica salina; sigue en cuarentena"
+       ]
+      ],
+      [
+       "2026-07-03",
+       "19:37",
+       "si",
+       [
+        "Aislamiento: Flotabilidad anormal / Arqueo · Cuarentena",
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "En Cuarentena",
+        "y 1 más"
+       ]
+      ],
+      [
+       "2026-07-04",
+       "09:10",
+       "si",
+       [
+        "Aislamiento: Cuarentena · El ejemplar estabba recibiento tratamientos oftalmicos, se encontraba en cuarentena",
+        "En Cuarentena",
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
+       ]
+      ],
+      [
+       "2026-07-05",
+       "10:10",
+       "si",
+       [
+        "Aislamiento: Retención de muda / Descamación, Nado persistente · Cuarentena · Se registra dentro de lo observado en el comportamient…",
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-07-06",
+       "19:20",
+       "si",
+       [
+        "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
+        "En Cuarentena"
+       ]
+      ],
+      [
+       "2026-07-07",
+       "13:25",
+       "si",
+       [
+        "Aviso al veterinario: Notificación a veterinario · Comportamiento inusual con actividad previa, subida a superficie y posteriormente se situa…",
+        "Tratamiento: Infección bacteriana · pruebas: Patología · tx: Enrofloxacina 50 mg/ml",
+        "En Cuarentena",
+        "y 2 más"
+       ]
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2026-06-16",
+       "12:18"
+      ],
+      "to": [
+       "2026-06-16",
+       "13:05"
+      ],
+      "label": "mismo día · estándar 72 h"
+     },
+     "agua": {
+      "2025-11-13": "17.6 °C · NH₃ 0.25 mg/L",
+      "2025-11-14": "17.2 °C · NH₃ 0 mg/L",
+      "2025-11-19": "16.8 °C · NH₃ 0 mg/L",
+      "2025-11-22": "15–17.1 °C · NH₃ 0.5 mg/L (2 lecturas)",
+      "2025-12-04": "sin valores",
+      "2025-12-05": "18.3 °C · NH₃ 0 mg/L",
+      "2025-12-06": "18.8 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L",
+      "2025-12-10": "16.8 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L",
+      "2025-12-13": "NH₃ 0 mg/L (2 lecturas)",
+      "2025-12-14": "17.1 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2025-12-15": "NO₂ 0.1 mg/L",
+      "2025-12-16": "16.5 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2025-12-17": "17.2 °C · NH₃ 0 mg/L",
+      "2025-12-18": "17.1 °C",
+      "2025-12-20": "16.3 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2025-12-22": "16.9 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2025-12-23": "16.1 °C",
+      "2025-12-24": "17.5 °C",
+      "2025-12-25": "17.5 °C",
+      "2025-12-26": "17.5 °C",
+      "2025-12-27": "sin valores",
+      "2025-12-30": "16.8 °C",
+      "2025-12-31": "17.3 °C",
+      "2026-01-06": "16.3 °C",
+      "2026-01-07": "17.3 °C",
+      "2026-01-08": "17.5 °C",
+      "2026-01-09": "17.1 °C · NH₃ 0.12 mg/L · NO₂ 0.1 mg/L (3 lecturas)",
+      "2026-01-13": "18.8 °C",
+      "2026-01-14": "17.5–17.7 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-01-15": "17.3–17.5 °C (2 lecturas)",
+      "2026-01-16": "17.1–17.2 °C (2 lecturas)",
+      "2026-01-19": "18.7 °C",
+      "2026-01-20": "18.6 °C",
+      "2026-01-21": "18.5 °C (2 lecturas)",
+      "2026-01-22": "18.6 °C",
+      "2026-01-23": "18.5–18.6 °C (2 lecturas)",
+      "2026-01-26": "18.5 °C · NH₃ 0 mg/L",
+      "2026-01-27": "17.5–17.9 °C (2 lecturas)",
+      "2026-01-28": "18.6–18.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-01-30": "18.2 °C · NH₃ 0.25 mg/L · NO₂ 0.1 mg/L",
+      "2026-02-02": "18 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-02-03": "18.9 °C",
+      "2026-02-10": "19.3 °C",
+      "2026-02-12": "19.1 °C",
+      "2026-02-13": "18.6 °C",
+      "2026-02-16": "15.4 °C · NO₂ 0.1 mg/L",
+      "2026-02-19": "18.8 °C",
+      "2026-02-23": "18.6 °C · NO₂ 0.1 mg/L",
+      "2026-02-24": "18.5 °C",
+      "2026-02-25": "18.3 °C",
+      "2026-02-27": "18.6 °C · NO₂ 0 mg/L (2 lecturas)",
+      "2026-03-02": "19.1 °C · NH₃ 0.25 mg/L · NO₂ 0.1 mg/L",
+      "2026-03-04": "18.1–18.3 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2026-03-06": "18.4 °C · NH₃ 0 mg/L",
+      "2026-03-09": "18.5 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-03-10": "NH₃ 0.25 mg/L (2 lecturas)",
+      "2026-03-13": "18.6 °C",
+      "2026-03-16": "17.7 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-03-23": "17.7 °C · NH₃ 0.25 mg/L · NO₂ 0.1 mg/L",
+      "2026-03-30": "18.1 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-04-02": "18.1 °C · NH₃ 0 mg/L",
+      "2026-04-06": "18.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-04-08": "17.8 °C",
+      "2026-04-09": "18–18.3 °C (3 lecturas)",
+      "2026-04-10": "18.5 °C",
+      "2026-04-11": "18.5 °C · NH₃ 0 mg/L",
+      "2026-04-13": "18.5 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-04-14": "18.4 °C",
+      "2026-04-15": "18.3–18.6 °C (2 lecturas)",
+      "2026-04-16": "18.8 °C",
+      "2026-04-20": "19.4 °C · NH₃ 0 mg/L · NO₂ 0.17 mg/L",
+      "2026-04-23": "19.4 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-04-27": "16 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L",
+      "2026-04-28": "15.6 °C · NH₃ 0 mg/L · NO₂ 0.25 mg/L",
+      "2026-04-29": "15.3 °C",
+      "2026-04-30": "15.7–17 °C (3 lecturas)",
+      "2026-05-01": "14.9 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-05-04": "18.5 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-05": "15.9 °C",
+      "2026-05-06": "15.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-07": "16.4–17.3 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-05-08": "17.9 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-10": "16.8 °C",
+      "2026-05-11": "16.9 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-12": "17.1–17.5 °C (2 lecturas)",
+      "2026-05-13": "17.6–18 °C (2 lecturas)",
+      "2026-05-14": "16.5–17.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-05-15": "17.5–17.8 °C (2 lecturas)",
+      "2026-05-16": "18.4 °C",
+      "2026-05-17": "18.8 °C",
+      "2026-05-18": "17 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-19": "15.7 °C",
+      "2026-05-20": "16.2–16.4 °C · NH₃ 0.25 mg/L · NO₂ 0.25 mg/L (2 lecturas)",
+      "2026-05-21": "17.9 °C",
+      "2026-05-27": "18.6–19.2 °C (3 lecturas)",
+      "2026-05-28": "17.1–17.9 °C · NH₃ 0 mg/L (3 lecturas)",
+      "2026-05-29": "17.6 °C (2 lecturas)",
+      "2026-06-01": "16.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-02": "17.3–17.5 °C (2 lecturas)",
+      "2026-06-03": "15.7–17.4 °C · NH₃ 0.5 mg/L (2 lecturas)",
+      "2026-06-04": "sin valores",
+      "2026-06-05": "19.2 °C",
+      "2026-06-06": "15.7–17.1 °C (2 lecturas)",
+      "2026-06-07": "17.2–17.8 °C (2 lecturas)",
+      "2026-06-08": "17.1 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-09": "15.8–16 °C (3 lecturas)",
+      "2026-06-10": "15.4–15.6 °C (4 lecturas)",
+      "2026-06-11": "16.5 °C",
+      "2026-06-12": "15.9–16.2 °C (3 lecturas)",
+      "2026-06-13": "15.8–16 °C (2 lecturas)",
+      "2026-06-14": "15.9–16.3 °C (4 lecturas)",
+      "2026-06-15": "15.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-16": "16.8–17.1 °C (2 lecturas)",
+      "2026-06-17": "16.4–17.1 °C (3 lecturas)",
+      "2026-06-18": "15.9–17.1 °C (3 lecturas)",
+      "2026-06-19": "16–16.3 °C (4 lecturas)",
+      "2026-06-20": "16–16.2 °C (3 lecturas)",
+      "2026-06-21": "15.8–16.2 °C (4 lecturas)",
+      "2026-06-22": "15.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-23": "16.1–16.7 °C (4 lecturas)",
+      "2026-06-24": "16–16.3 °C (4 lecturas)",
+      "2026-06-25": "16.8–17.4 °C (3 lecturas)",
+      "2026-06-26": "17.3–17.9 °C (4 lecturas)",
+      "2026-06-27": "17.1 °C",
+      "2026-06-28": "16.1–16.9 °C (4 lecturas)",
+      "2026-06-29": "17.1 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-30": "16.9–17.5 °C (3 lecturas)",
+      "2026-07-01": "16.6–16.8 °C (3 lecturas)",
+      "2026-07-02": "16–16.8 °C (3 lecturas)",
+      "2026-07-03": "17.3–17.6 °C (3 lecturas)",
+      "2026-07-04": "16.9–17.1 °C (3 lecturas)",
+      "2026-07-05": "17.2–17.7 °C (4 lecturas)",
+      "2026-07-06": "16.7 °C · NH₃ 0.5 mg/L · NO₂ 0 mg/L",
+      "2026-07-07": "16.7–17.3 °C · NH₃ 0.25 mg/L (3 lecturas)"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2025-12-01",
+      "t": "11:41",
+      "tone": "amber",
+      "title": "El hongo reaparece al terminar un tratamiento",
+      "text": "El equipo anota que el tratamiento acabó el jueves y que al domingo ya era evidente el regreso de lo que creían un hongo. En enero se seguía vigilando que no volviera.",
+      "src": "chat"
+     },
+     {
+      "d": "2026-04-16",
+      "tone": "amber",
+      "title": "Rebrote en las branquias",
+      "text": "Crecimiento algodonoso en la rama intermedia derecha; al día siguiente, tratamiento con sal.",
+      "src": "historial médico · terapéutica"
+     },
+     {
+      "d": "2026-04-23",
+      "d2": "2026-05-05",
+      "tone": "amber",
+      "title": "Vaivén de temperatura en su acuario",
+      "text": "19.4 °C el 23 de abril, 16 °C el 27, 14.9 °C el 1 de mayo, 18.5 °C el 4 y 15.9 °C el 5. El podcast del 28 de abril llamó shock térmico al cambio al bajar las temperaturas, pensando en las bacterias del filtro.",
+      "src": "libro · agua · podcast 7"
+     },
+     {
+      "d": "2026-05-04",
+      "t": "16:00",
+      "tone": "amber",
+      "title": "Se le inflama el ojo derecho",
+      "text": "Inflamación persistente; un posible golpe que derivó en infección. Antibiótico en gotas desde ese día.",
+      "src": "terapéutica"
+     },
+     {
+      "d": "2026-05-15",
+      "t": "21:00",
+      "tone": "rose",
+      "title": "Pasa a cuarentena: hongo y ojo inflamado",
+      "text": "Un día antes, el equipo anotó que el ojo no mejoraba y que amaneció con mucha pelusa en las branquias.",
+      "src": "bitácora · chat"
+     },
+     {
+      "d": "2026-05-21",
+      "tone": "rose",
+      "title": "Pierde el ojo derecho",
+      "text": "El equipo lo atribuye a un golpe en su refugio; así lo contó el podcast del 27 de mayo.",
+      "src": "chat · podcast 11"
+     },
+     {
+      "d": "2026-05-27",
+      "t": "08:40",
+      "tone": "amber",
+      "title": "Daño irreversible",
+      "text": "Menos inflamado, pero con una capa blanca que se desprende; cambia a antimicótico y antibiótico en gotas.",
+      "src": "terapéutica"
+     },
+     {
+      "d": "2026-06-03",
+      "tone": "rose",
+      "title": "Amoníaco sobre cero en su sistema",
+      "text": "Primera de tres lecturas de amoníaco sobre cero en el acuario de Ambystoma andersoni en junio.",
+      "src": "libro · agua"
+     },
+     {
+      "d": "2026-06-04",
+      "tone": "amber",
+      "title": "Flota y pasa a cuarentena",
+      "text": "Le costaba permanecer en el fondo; se cambió a un topper de cuarentena.",
+      "src": "bitácora",
+      "t": "19:50"
+     },
+     {
+      "d": "2026-06-10",
+      "tone": "amber",
+      "title": "Vuelve el crecimiento algodonoso",
+      "text": "Reincidencia del crecimiento algodonoso en las branquias.",
+      "src": "bitácora",
+      "t": "09:10"
+     },
+     {
+      "d": "2026-06-16",
+      "tone": "green",
+      "title": "Empieza el tratamiento",
+      "text": "Saprolegniasis: baños de sal, el mismo día de la señal.",
+      "src": "terapéutica",
+      "t": "13:05"
+     },
+     {
+      "d": "2026-06-21",
+      "t": "14:00",
+      "tone": "amber",
+      "title": "El ojo dañado vuelve a inflamarse",
+      "text": "Inflamación irregular y protuberante; se avisa al veterinario. Ese día no estaba comiendo bien.",
+      "src": "bitácora · chat"
+     },
+     {
+      "d": "2026-06-29",
+      "d2": "2026-06-30",
+      "tone": "rose",
+      "title": "También el otro ojo",
+      "text": "El 29 se registra una alerta en el ojo izquierdo, con flotación anormal e inflamación en la cloaca. Al día siguiente, el laboratorio describe glaucoma y catarata en el derecho y queratitis en el izquierdo.",
+      "src": "bitácora · laboratorio"
+     },
+     {
+      "d": "2026-07-01",
+      "tone": "green",
+      "title": "Sale del acuario",
+      "text": "Se retira a cuarentena fuera del recinto porque seguía flotando; empiezan los tratamientos oftálmicos y el antibiótico.",
+      "src": "chat · terapéutica",
+      "t": "18:15"
+     },
+     {
+      "d": "2026-07-07",
+      "tone": "green",
+      "title": "Emergencia veterinaria",
+      "text": "Comportamiento inusual y subidas a la superficie; se avisa al veterinario y se la lleva de emergencia. Se queda en la clínica con pronóstico reservado.",
+      "src": "bitácora · chat",
+      "t": "13:25"
+     },
+     {
+      "d": "2026-07-07",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "El laboratorio fecha la muerte el 7; la hoja Bajas, el 8. Se conservó refrigerada y se le hizo necropsia.",
+      "src": "laboratorio · libro"
+     }
+    ],
+    "publico": {
+     "fecha": "2026-07-14",
+     "fuente": "Podcast 18",
+     "url": "https://youtu.be/B3NpBliaWCs?t=2",
+     "cita": "Panchita murió de una infección en varios órganos",
+     "registro": "necropsia: hepatitis crónica; resultado del 08-04, después del episodio"
+    },
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-11-09",
+       "g": 159,
+       "lt": null
+      },
+      {
+       "d": "2025-12-18",
+       "g": 147,
+       "lt": 24.5
+      },
+      {
+       "d": "2025-12-24",
+       "g": 147,
+       "lt": 25
+      },
+      {
+       "d": "2026-01-19",
+       "g": 147,
+       "lt": 25
+      },
+      {
+       "d": "2026-03-03",
+       "g": 159,
+       "lt": 26.03
+      },
+      {
+       "d": "2026-03-17",
+       "g": 148,
+       "lt": 26.03
+      },
+      {
+       "d": "2026-03-18",
+       "g": 149,
+       "lt": 26.03
+      },
+      {
+       "d": "2026-04-21",
+       "g": 160,
+       "lt": 26.03
+      },
+      {
+       "d": "2026-06-08",
+       "g": 150,
+       "lt": 26.5
+      },
+      {
+       "d": "2026-06-22",
+       "g": 144,
+       "lt": null
+      }
+     ],
+     "alim": [
+      {
+       "d": "2026-04-08",
+       "g": 1.27,
+       "ofrecido": 5.51
+      },
+      {
+       "d": "2026-04-10",
+       "g": 1,
+       "ofrecido": 1
+      },
+      {
+       "d": "2026-04-13",
+       "g": 0.34,
+       "ofrecido": 0.61
+      },
+      {
+       "d": "2026-04-14",
+       "g": 1.02,
+       "ofrecido": 1.02
+      },
+      {
+       "d": "2026-04-15",
+       "g": 1.07,
+       "ofrecido": 1.07
+      },
+      {
+       "d": "2026-04-28",
+       "g": 3.25,
+       "ofrecido": 3.25
+      },
+      {
+       "d": "2026-04-29",
+       "g": 1.8,
+       "ofrecido": 4.46
+      },
+      {
+       "d": "2026-05-04",
+       "g": 0,
+       "ofrecido": null
+      },
+      {
+       "d": "2026-05-05",
+       "g": 0.2,
+       "ofrecido": 3.63
+      },
+      {
+       "d": "2026-05-06",
+       "g": 0,
+       "ofrecido": 2.5
+      },
+      {
+       "d": "2026-05-08",
+       "g": 2.54,
+       "ofrecido": 2.54
+      },
+      {
+       "d": "2026-05-09",
+       "g": 1.49,
+       "ofrecido": 6.62
+      },
+      {
+       "d": "2026-05-12",
+       "g": 1.43,
+       "ofrecido": 4.07
+      },
+      {
+       "d": "2026-05-14",
+       "g": 0.28,
+       "ofrecido": 3.15
+      },
+      {
+       "d": "2026-05-15",
+       "g": 0.05,
+       "ofrecido": 7.59
+      },
+      {
+       "d": "2026-05-27",
+       "g": 2.56,
+       "ofrecido": 2.56
+      },
+      {
+       "d": "2026-06-01",
+       "g": 0.02,
+       "ofrecido": 2.84
+      },
+      {
+       "d": "2026-06-03",
+       "g": 0.26,
+       "ofrecido": 2.43
+      },
+      {
+       "d": "2026-06-05",
+       "g": 0,
+       "ofrecido": 2.99
+      },
+      {
+       "d": "2026-06-07",
+       "g": 4.09,
+       "ofrecido": 4.09
+      },
+      {
+       "d": "2026-06-09",
+       "g": 0.28,
+       "ofrecido": 3.22
+      },
+      {
+       "d": "2026-06-10",
+       "g": 0,
+       "ofrecido": 2.94
+      },
+      {
+       "d": "2026-06-12",
+       "g": 0.14,
+       "ofrecido": 2.34
+      },
+      {
+       "d": "2026-06-13",
+       "g": 0.87,
+       "ofrecido": 2.2
+      },
+      {
+       "d": "2026-06-14",
+       "g": 0.22,
+       "ofrecido": 1.33
+      },
+      {
+       "d": "2026-06-16",
+       "g": 0.43,
+       "ofrecido": 2.35
+      },
+      {
+       "d": "2026-06-17",
+       "g": 0.44,
+       "ofrecido": 1.92
+      },
+      {
+       "d": "2026-06-18",
+       "g": 0.18,
+       "ofrecido": 1.48
+      },
+      {
+       "d": "2026-06-19",
+       "g": 0.49,
+       "ofrecido": 1.3
+      },
+      {
+       "d": "2026-06-22",
+       "g": 0.155,
+       "ofrecido": 0.62
+      },
+      {
+       "d": "2026-06-22",
+       "g": 0.37,
+       "ofrecido": 2.63
+      },
+      {
+       "d": "2026-06-23",
+       "g": 0.315,
+       "ofrecido": 0.47
+      },
+      {
+       "d": "2026-06-24",
+       "g": 0.02,
+       "ofrecido": 3.5
+      },
+      {
+       "d": "2026-06-25",
+       "g": 0.22,
+       "ofrecido": 2.66
+      },
+      {
+       "d": "2026-06-26",
+       "g": 0.25,
+       "ofrecido": 2.44
+      },
+      {
+       "d": "2026-06-29",
+       "g": 0.54,
+       "ofrecido": 2.77
+      },
+      {
+       "d": "2026-07-01",
+       "g": 0,
+       "ofrecido": 0.81
+      },
+      {
+       "d": "2026-07-02",
+       "g": 1,
+       "ofrecido": 1
+      },
+      {
+       "d": "2026-07-03",
+       "g": 0,
+       "ofrecido": 0.6
+      },
+      {
+       "d": "2026-07-04",
+       "g": 1,
+       "ofrecido": 1
+      },
+      {
+       "d": "2026-07-05",
+       "g": 1,
+       "ofrecido": 1
+      },
+      {
+       "d": "2026-07-07",
+       "g": 1,
+       "ofrecido": 1
+      }
+     ]
+    }
+   }
   },
   {
    "alias": "Goldy",
    "species": "A. mexicanum",
    "death": {
-    "date": "2026-06-05",
-    "workbook_date": null,
-    "date_source": "libro",
-    "conf": "en_revision",
-    "euthanasia": false,
-    "note": "fecha en revisión contra un documento de laboratorio reservado",
-    "alive_record_after": null
+    "date": "2026-06-10",
+    "workbook_date": "2026-06-05",
+    "date_source": "laboratorio",
+    "conf": "window",
+    "euthanasia": true,
+    "note": null,
+    "alive_record_after": "2026-06-11"
    },
-   "cause": "Parasitos e infeccion bacteriana",
-   "cause_source": "libro",
+   "cause": "infección bacteriana sistémica compatible con septicemia (diferenciales Aeromonas spp., Pedobacter sp.) y enteritis parasitaria por nematodos (diferencial principal Strongyloides spp.)",
+   "cause_source": "necropsia",
    "necropsy": {
-    "performed": null,
-    "status": "resultado reservado hasta la autorización del laboratorio"
+    "performed": "2026-06-10",
+    "result": "2026-07-10",
+    "lab_case": null
    },
-   "body": "sin registro",
-   "body_conservation": null,
-   "lab_reserved": true,
+   "body": "necropsia en laboratorio; destino posterior sin registro",
+   "body_conservation": "buen estado de conservación",
+   "lab_reserved": false,
    "grade": "tardía",
    "grade_60": "tardía",
    "grade_note": null,
@@ -3787,6 +5738,39 @@
     },
     {
      "date": "2026-06-10",
+     "time": "15:50",
+     "lane": "integrity",
+     "kind": "death_date_conflict",
+     "label": "Fecha de muerte en conflicto",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "el documento de laboratorio fecha la muerte el 2026-06-10 (eutanasia); la hoja Bajas dice 2026-06-05 o 2026-05-06",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-06-10",
+     "time": "15:50",
+     "lane": 5,
+     "kind": "euthanasia",
+     "label": "Eutanasia",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "eutanasia (hallazgo de necropsia); no aparece en ninguna hoja del libro",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-06-10",
+     "time": "15:50",
+     "lane": 5,
+     "kind": "necropsy",
+     "label": "Necropsia",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "necropsia · buen estado de conservación",
+     "role": "Laboratorio"
+    },
+    {
+     "date": "2026-06-10",
      "time": "19:20",
      "lane": 1,
      "kind": "signal_param_oor",
@@ -3796,8 +5780,699 @@
      "text": "AM: pH 8.1 (rango 7.4–7.8) · cond 1550 (rango 700–1100)",
      "critical": false,
      "chronic_only": false
+    },
+    {
+     "date": "2026-06-11",
+     "time": "07:00",
+     "lane": 3,
+     "kind": "preventive_isolation_location",
+     "label": "En cuarentena",
+     "source": "libro",
+     "grade": "A",
+     "text": "Comportamiento normal · Modificación/Adición de equipo · Moviemiento de ejemplar"
+    },
+    {
+     "date": "2026-07-10",
+     "time": null,
+     "lane": 5,
+     "kind": "necropsy_result",
+     "label": "Resultado de necropsia",
+     "source": "laboratorio",
+     "grade": "A",
+     "text": "resultado: infección bacteriana sistémica compatible con septicemia (diferenciales Aeromonas spp., Pedobacter sp.) y enteritis parasitaria por nematodos (diferencial principal Strongyloides spp.);",
+     "role": "Laboratorio"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Entre marzo y junio bajó de **20 g a 10 g**. El 28 de mayo el libro anota que nadaba sin control y flotaba, y pasó a un topper con poca agua: la primera acción llegó ocho días después de la primera señal del episodio. La hoja Bajas la da por muerta el 5 de junio; el laboratorio fecha su **eutanasia y necropsia el 10 de junio**, el mismo día en que el podcast habló de ella como viva.",
+    "stats": [
+     {
+      "n": "8",
+      "u": "días",
+      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
+      "tone": "amber",
+      "key": "lat"
+     },
+     {
+      "n": "17",
+      "u": "de 32",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "rose",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2026-01-14",
+     "to": "2026-06-10",
+     "lecturas": [
+      "2026-01-14",
+      "2026-01-15",
+      "2026-01-16",
+      "2026-01-19",
+      "2026-01-20",
+      "2026-01-21",
+      "2026-01-22",
+      "2026-01-23",
+      "2026-01-26",
+      "2026-01-27",
+      "2026-01-28",
+      "2026-01-30",
+      "2026-02-02",
+      "2026-02-03",
+      "2026-02-10",
+      "2026-02-12",
+      "2026-02-13",
+      "2026-02-16",
+      "2026-02-19",
+      "2026-02-23",
+      "2026-02-24",
+      "2026-02-25",
+      "2026-02-27",
+      "2026-03-02",
+      "2026-03-04",
+      "2026-03-06",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-13",
+      "2026-03-16",
+      "2026-03-23",
+      "2026-03-30",
+      "2026-04-02",
+      "2026-04-06",
+      "2026-04-08",
+      "2026-04-09",
+      "2026-04-10",
+      "2026-04-13",
+      "2026-04-14",
+      "2026-04-15",
+      "2026-04-16",
+      "2026-04-20",
+      "2026-04-23",
+      "2026-04-27",
+      "2026-04-28",
+      "2026-04-29",
+      "2026-04-30",
+      "2026-05-01",
+      "2026-05-04",
+      "2026-05-05",
+      "2026-05-06",
+      "2026-05-07",
+      "2026-05-08",
+      "2026-05-10",
+      "2026-05-11",
+      "2026-05-12",
+      "2026-05-13",
+      "2026-05-14",
+      "2026-05-15",
+      "2026-05-16",
+      "2026-05-17",
+      "2026-05-18",
+      "2026-05-19",
+      "2026-05-20",
+      "2026-05-21",
+      "2026-05-22",
+      "2026-05-25",
+      "2026-05-26",
+      "2026-05-27",
+      "2026-05-28",
+      "2026-05-29",
+      "2026-06-01",
+      "2026-06-02",
+      "2026-06-03",
+      "2026-06-04",
+      "2026-06-05",
+      "2026-06-06",
+      "2026-06-07",
+      "2026-06-08",
+      "2026-06-09",
+      "2026-06-10"
+     ],
+     "criticas": [
+      "2026-03-02",
+      "2026-03-04",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-16",
+      "2026-03-23",
+      "2026-04-06",
+      "2026-04-13",
+      "2026-04-23"
+     ],
+     "sin_lectura": [
+      [
+       "2026-03-19",
+       "2026-03-22"
+      ],
+      [
+       "2026-03-24",
+       "2026-03-29"
+      ],
+      [
+       "2026-04-03",
+       "2026-04-05"
+      ],
+      [
+       "2026-04-17",
+       "2026-04-19"
+      ],
+      [
+       "2026-04-24",
+       "2026-04-26"
+      ]
+     ],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [
+      [
+       "2026-03-18",
+       "16:30",
+       "fuerte",
+       "Diagnóstico: Nematodos · tx: Desparacitante"
+      ],
+      [
+       "2026-03-28",
+       "14:10",
+       "leve",
+       "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      ],
+      [
+       "2026-04-08",
+       "12:00",
+       "fuerte",
+       "Bitácora: Retención de muda / Descamación · Cambio de agua rutinario, Cuarentena · Se observa un daño marcado en la estructura cu…"
+      ],
+      [
+       "2026-04-08",
+       "16:49",
+       "leve",
+       "Chat del equipo: Los ajolotes no aceptan o vomitan las croquetas; se mezcla tubifex con croqueta"
+      ],
+      [
+       "2026-04-12",
+       "08:20",
+       "fuerte",
+       "Bitácora: Solo observación · Incidente de Goldy en recinto Mex1, el ejemplar sufrió una aparente succión por el tubo de filtrado…"
+      ],
+      [
+       "2026-04-14",
+       "10:00",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Flotación anormal del ejemplar en varias ocasiones por causa descono…"
+      ],
+      [
+       "2026-04-15",
+       "07:40",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Modificación/Adición de equipo · Se observa nuevamente el comportamiento de flotabilida…"
+      ],
+      [
+       "2026-04-16",
+       "13:15",
+       "fuerte",
+       "Bitácora: Comportamiento normal · Se observa de manera transitoria flotabilidad por aprox. 1 minuto en el ejemplar"
+      ],
+      [
+       "2026-04-28",
+       "10:04",
+       "leve",
+       "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      ],
+      [
+       "2026-05-02",
+       "03:39",
+       "leve",
+       "Chat del equipo: Un ejemplar bastante tocado y otros 3 con signos poco favorables"
+      ],
+      [
+       "2026-05-08",
+       "13:45",
+       "leve",
+       "Chat del equipo: A ninguno le gustan las lombrices; ya no hay tubifex, lo único que quieren comer"
+      ],
+      [
+       "2026-05-10",
+       "11:33",
+       "leve",
+       "Chat del equipo: Practicante pregunta si un ejemplar ya tenía manchas blancas en la espalda"
+      ],
+      [
+       "2026-05-20",
+       "09:36",
+       "leve",
+       "Chat del equipo: Quedan pocos tubifex; están mejorando con esa alimentación; no les gustan las lombrices"
+      ],
+      [
+       "2026-05-28",
+       "17:21",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación, Cuarentena · Goldi nada sin control y permanece flotando / Se movio a topper con p…"
+      ]
+     ],
+     "videos": [],
+     "respuestas": [
+      [
+       "2026-02-18",
+       "10:47",
+       "si",
+       [
+        "Retiro: Flotabilidad anormal lateral, traslado a veterinario."
+       ]
+      ],
+      [
+       "2026-03-18",
+       "16:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Desparacitante"
+       ]
+      ],
+      [
+       "2026-04-08",
+       "12:00",
+       "si",
+       [
+        "Aislamiento: Retención de muda / Descamación · Cambio de agua rutinario, Cuarentena · Se observa un daño marcado en la estructura cu…",
+        "En Cuarentena",
+        "Cambio de agua: Retención de muda / Descamación · Cambio de agua rutinario, Cuarentena · Se observa un daño marcado en la estructura cu…"
+       ]
+      ],
+      [
+       "2026-04-20",
+       "10:24",
+       "no_ocurrio",
+       [
+        "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       ]
+      ],
+      [
+       "2026-04-30",
+       "21:37",
+       "si",
+       [
+        "Veterinario: No se alimentó por la ida al veterinario (30-abr)"
+       ]
+      ],
+      [
+       "2026-05-02",
+       "03:39",
+       "si",
+       [
+        "Veterinario: El veterinario dice que muchos síntomas son por intoxicación por amoniaco"
+       ]
+      ],
+      [
+       "2026-05-07",
+       "19:09",
+       "si",
+       [
+        "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       ]
+      ],
+      [
+       "2026-05-12",
+       "07:00",
+       "si",
+       [
+        "Cambio de agua: Comportamiento normal · Cambio de agua rutinario"
+       ]
+      ],
+      [
+       "2026-05-28",
+       "17:21",
+       "si",
+       [
+        "Aislamiento: Nado persistente · Solo observación, Cuarentena · Goldi nada sin control y permanece flotando / Se movio a topper con p…",
+        "Cambio de agua: Cambio de agua rutinario · Se realiza el cambio de 2 garrafones con receta de HrAm 20% y adicional se agrega 1/2 garraf…",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-01",
+       "14:40",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-04",
+       "11:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-08",
+       "08:05",
+       "si",
+       [
+        "Cambio de agua: Turbidez blanca ligera / severa · Cambio de agua rutinario",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-11",
+       "07:00",
+       "si",
+       [
+        "En Cuarentena"
+       ]
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2026-05-20",
+       "09:36"
+      ],
+      "to": [
+       "2026-05-28",
+       "17:21"
+      ],
+      "label": "8 días · estándar 48 h"
+     },
+     "agua": {
+      "2026-01-14": "16.1 °C (2 lecturas)",
+      "2026-01-15": "15.3–16.2 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (5 lecturas)",
+      "2026-01-16": "15.1–16.2 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L (5 lecturas)",
+      "2026-01-19": "17.8 °C (2 lecturas)",
+      "2026-01-20": "16.5–16.8 °C (2 lecturas)",
+      "2026-01-21": "16.5–17 °C (4 lecturas)",
+      "2026-01-22": "16.7–17.1 °C (2 lecturas)",
+      "2026-01-23": "16.4–16.8 °C (4 lecturas)",
+      "2026-01-26": "16.5–16.7 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2026-01-27": "15.1–15.9 °C (4 lecturas)",
+      "2026-01-28": "16.6–17.2 °C (2 lecturas)",
+      "2026-01-30": "16.1–16.6 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-02": "16–16.6 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-02-03": "16.9–17.7 °C (2 lecturas)",
+      "2026-02-10": "17.1–17.6 °C (2 lecturas)",
+      "2026-02-12": "16.9–17.6 °C (2 lecturas)",
+      "2026-02-13": "16.4–17.6 °C (2 lecturas)",
+      "2026-02-16": "17.4–17.6 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-19": "16.6–17.1 °C (2 lecturas)",
+      "2026-02-23": "16.6–16.9 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-24": "16.6–16.8 °C (2 lecturas)",
+      "2026-02-25": "16.4–16.6 °C (2 lecturas)",
+      "2026-02-27": "16.3–16.9 °C · NO₂ 0.3 mg/L (4 lecturas)",
+      "2026-03-02": "14.7–15.3 °C · NH₃ 0.5 mg/L · NO₂ 0.8 mg/L (2 lecturas)",
+      "2026-03-04": "15.9–16.1 °C · NH₃ 0.25 mg/L (4 lecturas)",
+      "2026-03-06": "16.3–16.5 °C (2 lecturas)",
+      "2026-03-09": "16.5–16.6 °C · NH₃ 0.25 mg/L · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-03-10": "NH₃ 0.5 mg/L (4 lecturas)",
+      "2026-03-13": "16.3–16.4 °C (2 lecturas)",
+      "2026-03-16": "15.3–15.5 °C · NH₃ 0.12 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-03-23": "15.6 °C · NH₃ 0.5 mg/L · NO₂ 0.25 mg/L (2 lecturas)",
+      "2026-03-30": "15.16–16.4 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-04-02": "16.5–16.7 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2026-04-06": "17–17.1 °C · NH₃ 0.5 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-04-08": "16.5–16.6 °C (2 lecturas)",
+      "2026-04-09": "16.5–16.9 °C (6 lecturas)",
+      "2026-04-10": "16.8–16.9 °C (2 lecturas)",
+      "2026-04-13": "17.1–17.2 °C · NH₃ 0.25 mg/L · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-04-14": "16.5–16.8 °C (2 lecturas)",
+      "2026-04-15": "16.5–17 °C (4 lecturas)",
+      "2026-04-16": "16.8–16.9 °C (2 lecturas)",
+      "2026-04-20": "17.6–17.9 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-04-23": "13.4–17.4 °C · NH₃ 0.25 mg/L · NO₂ 0.1 mg/L (3 lecturas)",
+      "2026-04-27": "17 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-04-28": "16.4 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-04-29": "16.1 °C",
+      "2026-04-30": "16.7–17 °C (7 lecturas)",
+      "2026-05-01": "16.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-05-04": "16.5 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-05": "16.5 °C",
+      "2026-05-06": "16.9 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-07": "16.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-05-08": "17.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-10": "18 °C",
+      "2026-05-11": "17 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-12": "16.9–17.4 °C (4 lecturas)",
+      "2026-05-13": "16–16.9 °C (2 lecturas)",
+      "2026-05-14": "14.3–14.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (4 lecturas)",
+      "2026-05-15": "13.7–15.2 °C (4 lecturas)",
+      "2026-05-16": "15.4 °C · NH₃ 0 mg/L",
+      "2026-05-17": "14–15.1 °C (3 lecturas)",
+      "2026-05-18": "16.7 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-19": "14.9–15.9 °C (3 lecturas)",
+      "2026-05-20": "14.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-05-21": "16.2 °C",
+      "2026-05-22": "15.5 °C · NH₃ 0 mg/L",
+      "2026-05-25": "15 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-26": "14.8 °C",
+      "2026-05-27": "15.7–16.5 °C (8 lecturas)",
+      "2026-05-28": "15.3–16 °C · NH₃ 0 mg/L (3 lecturas)",
+      "2026-05-29": "15–15.5 °C (3 lecturas)",
+      "2026-06-01": "15.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-02": "16.2–16.3 °C (2 lecturas)",
+      "2026-06-03": "15.7–15.8 °C (2 lecturas)",
+      "2026-06-04": "15.8–16.4 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (3 lecturas)",
+      "2026-06-05": "16.7 °C",
+      "2026-06-06": "17.1–17.6 °C (4 lecturas)",
+      "2026-06-07": "17.4–17.9 °C (3 lecturas)",
+      "2026-06-08": "17.4–18 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-06-09": "16.6–17.1 °C (6 lecturas)",
+      "2026-06-10": "16.1–17.4 °C (8 lecturas)"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2026-05-20",
+      "tone": "amber",
+      "title": "Primera señal del episodio",
+      "text": "Aviso del equipo sobre la alimentación del grupo: quedaban pocos tubifex y rechazaban las lombrices.",
+      "src": "chat",
+      "t": "09:36"
+     },
+     {
+      "d": "2026-05-28",
+      "tone": "amber",
+      "title": "Nada sin control y flota",
+      "text": "Se mueve a un topper con poca agua.",
+      "src": "bitácora",
+      "t": "17:21"
+     },
+     {
+      "d": "2026-06-05",
+      "tone": "muted",
+      "title": "La hoja Bajas la registra muerta",
+      "text": "Causa anotada: parásitos e infección bacteriana.",
+      "src": "libro"
+     },
+     {
+      "d": "2026-06-08",
+      "tone": "amber",
+      "title": "Pesa 10 g",
+      "text": "La mitad de lo que pesaba en marzo.",
+      "src": "historial médico"
+     },
+     {
+      "d": "2026-06-10",
+      "tone": "ink",
+      "title": "Eutanasia y necropsia",
+      "text": "Según el laboratorio, a las 15:50. No aparece en ninguna hoja del libro, y el 11 hay un registro que la trata como viva.",
+      "src": "laboratorio",
+      "t": "15:50"
+     }
+    ],
+    "simulacion": {
+     "reglas": [
+      {
+       "d": "2026-05-20",
+       "text": "Señal sin respuesta en 48 h → escala a dirección clínica.",
+       "real": "8 días hasta la primera acción."
+      }
+     ],
+     "con": {
+      "n": "≤ 48 h",
+      "l": "de la primera señal a la acción, con avisos"
+     },
+     "sin": {
+      "n": "8 días",
+      "l": "lo que pasó sin ellos"
+     }
+    },
+    "publico": {
+     "fecha": "2026-06-10",
+     "fuente": "Podcast 13",
+     "url": "https://youtu.be/FwB8MEdB0E0?t=2138",
+     "cita": "Goldy se está quedando atrás en crecimiento (vivo)",
+     "registro": "necropsia: eutanasia y necropsia el 2026-06-10 15:50, el mismo día"
+    },
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2026-03-03",
+       "g": 20,
+       "lt": 12.9
+      },
+      {
+       "d": "2026-03-18",
+       "g": 16,
+       "lt": null
+      },
+      {
+       "d": "2026-04-21",
+       "g": 17,
+       "lt": null
+      },
+      {
+       "d": "2026-06-08",
+       "g": 10,
+       "lt": null
+      }
+     ],
+     "alim": [
+      {
+       "d": "2026-04-08",
+       "g": 1.157,
+       "ofrecido": 2.397
+      },
+      {
+       "d": "2026-04-10",
+       "g": 0.72,
+       "ofrecido": 1.72
+      },
+      {
+       "d": "2026-04-14",
+       "g": 0.58,
+       "ofrecido": 0.8
+      },
+      {
+       "d": "2026-04-28",
+       "g": 0.12,
+       "ofrecido": 0.12
+      },
+      {
+       "d": "2026-04-29",
+       "g": 3.73,
+       "ofrecido": 9.28
+      },
+      {
+       "d": "2026-05-04",
+       "g": 0,
+       "ofrecido": null
+      },
+      {
+       "d": "2026-05-05",
+       "g": 0.5433333333,
+       "ofrecido": 1.433333333
+      },
+      {
+       "d": "2026-05-06",
+       "g": 0.37,
+       "ofrecido": 1.57
+      },
+      {
+       "d": "2026-05-08",
+       "g": 0,
+       "ofrecido": 6.47
+      },
+      {
+       "d": "2026-05-08",
+       "g": 0.08,
+       "ofrecido": 1.66
+      },
+      {
+       "d": "2026-05-09",
+       "g": 3.75,
+       "ofrecido": 15.39
+      },
+      {
+       "d": "2026-05-12",
+       "g": 1.403333333,
+       "ofrecido": 6.51
+      },
+      {
+       "d": "2026-05-14",
+       "g": 2,
+       "ofrecido": 2.6
+      },
+      {
+       "d": "2026-05-15",
+       "g": 3.3,
+       "ofrecido": 5.58
+      },
+      {
+       "d": "2026-05-16",
+       "g": 1.15,
+       "ofrecido": 7.19
+      },
+      {
+       "d": "2026-05-17",
+       "g": 0.5233333333,
+       "ofrecido": 6
+      },
+      {
+       "d": "2026-05-19",
+       "g": 1.535,
+       "ofrecido": 4.29
+      },
+      {
+       "d": "2026-05-20",
+       "g": 1.035,
+       "ofrecido": 3.09
+      },
+      {
+       "d": "2026-05-22",
+       "g": 1.155,
+       "ofrecido": 3.04
+      },
+      {
+       "d": "2026-05-25",
+       "g": 1.22,
+       "ofrecido": 3.56
+      },
+      {
+       "d": "2026-05-27",
+       "g": 0.66,
+       "ofrecido": 3.14
+      },
+      {
+       "d": "2026-05-28",
+       "g": 0.58,
+       "ofrecido": 1.52
+      },
+      {
+       "d": "2026-05-30",
+       "g": 0.08,
+       "ofrecido": 1.4
+      },
+      {
+       "d": "2026-05-30",
+       "g": 0,
+       "ofrecido": 1.47
+      },
+      {
+       "d": "2026-06-01",
+       "g": 0.62,
+       "ofrecido": 1.08
+      },
+      {
+       "d": "2026-06-03",
+       "g": 0.29,
+       "ofrecido": 0.29
+      },
+      {
+       "d": "2026-06-05",
+       "g": 0.76,
+       "ofrecido": 0.78
+      },
+      {
+       "d": "2026-06-07",
+       "g": 0.44,
+       "ofrecido": 1.11
+      },
+      {
+       "d": "2026-06-09",
+       "g": 1.59,
+       "ofrecido": 1.59
+      }
+     ]
+    }
+   }
   },
   {
    "alias": "Leucistica",
@@ -4152,7 +6827,506 @@
      "critical": false,
      "chronic_only": false
     }
-   ]
+   ],
+   "relato": {
+    "nombre": "Leucística",
+    "lead": "Los sistemas de agua de su especie marcaron amoníaco crítico dos veces en abril. El **14 de abril** se registró que flotaba de forma anormal y se arqueaba. Del 17 al 19 no hay ni una medición de agua, y el 19 hay video de su estado crítico. El 21 pesó **50 g, 22 % menos que en enero**, con la misma longitud. La primera consulta veterinaria llegó el **30 de abril**. Murió el 5 de mayo.",
+    "stats": [
+     {
+      "n": "16",
+      "u": "días",
+      "l": "de la primera incidencia registrada a la primera consulta veterinaria",
+      "tone": "amber",
+      "key": "lat"
+     },
+     {
+      "n": "3",
+      "u": "días",
+      "l": "sin medir el agua mientras se agravaba",
+      "tone": "rose",
+      "key": "gap"
+     },
+     {
+      "n": "3",
+      "u": "",
+      "l": "videos de su estado, verificados",
+      "tone": "teal",
+      "key": "vid"
+     }
+    ],
+    "stats_note": "Son distancias entre registros. La calificación del método (abajo, en el registro completo) no cambia hasta que se apruebe una enmienda.",
+    "curso": {
+     "from": "2025-12-24",
+     "to": "2026-05-05",
+     "lecturas": [
+      "2025-12-24",
+      "2025-12-25",
+      "2025-12-26",
+      "2025-12-27",
+      "2025-12-30",
+      "2025-12-31",
+      "2026-01-06",
+      "2026-01-07",
+      "2026-01-08",
+      "2026-01-09",
+      "2026-01-13",
+      "2026-01-14",
+      "2026-01-15",
+      "2026-01-16",
+      "2026-01-19",
+      "2026-01-20",
+      "2026-01-21",
+      "2026-01-22",
+      "2026-01-23",
+      "2026-01-26",
+      "2026-01-27",
+      "2026-01-28",
+      "2026-01-30",
+      "2026-02-02",
+      "2026-02-03",
+      "2026-02-10",
+      "2026-02-12",
+      "2026-02-13",
+      "2026-02-16",
+      "2026-02-19",
+      "2026-02-23",
+      "2026-02-24",
+      "2026-02-25",
+      "2026-02-27",
+      "2026-03-02",
+      "2026-03-04",
+      "2026-03-06",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-13",
+      "2026-03-16",
+      "2026-03-23",
+      "2026-03-30",
+      "2026-04-02",
+      "2026-04-06",
+      "2026-04-08",
+      "2026-04-09",
+      "2026-04-10",
+      "2026-04-13",
+      "2026-04-14",
+      "2026-04-15",
+      "2026-04-16",
+      "2026-04-20",
+      "2026-04-23",
+      "2026-04-27",
+      "2026-04-28",
+      "2026-04-29",
+      "2026-04-30",
+      "2026-05-01",
+      "2026-05-04",
+      "2026-05-05"
+     ],
+     "criticas": [
+      "2026-01-09",
+      "2026-03-02",
+      "2026-03-04",
+      "2026-03-09",
+      "2026-03-10",
+      "2026-03-16",
+      "2026-03-23",
+      "2026-04-06",
+      "2026-04-13"
+     ],
+     "sin_lectura": [
+      [
+       "2026-03-19",
+       "2026-03-22"
+      ],
+      [
+       "2026-03-24",
+       "2026-03-29"
+      ],
+      [
+       "2026-04-17",
+       "2026-04-19"
+      ]
+     ],
+     "bomba": [
+      [
+       "2026-04-07",
+       "2026-04-13"
+      ]
+     ],
+     "sin_camara": [
+      [
+       "2026-04-23",
+       "2026-05-03"
+      ]
+     ],
+     "senales": [
+      [
+       "2026-03-18",
+       "16:30",
+       "fuerte",
+       "Diagnóstico: Nematodos · tx: Desparacitante"
+      ],
+      [
+       "2026-03-28",
+       "14:10",
+       "leve",
+       "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      ],
+      [
+       "2026-04-14",
+       "08:40",
+       "fuerte",
+       "Bitácora: Flotabilidad anormal / Arqueo · Solo observación · Flotación anormal del ejemplar, después de alimentación el comportam…"
+      ],
+      [
+       "2026-04-28",
+       "10:04",
+       "leve",
+       "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      ],
+      [
+       "2026-05-02",
+       "03:39",
+       "leve",
+       "Chat del equipo: Un ejemplar bastante tocado y otros 3 con signos poco favorables"
+      ]
+     ],
+     "videos": [
+      [
+       "2026-04-19",
+       "04:12"
+      ],
+      [
+       "2026-04-19",
+       "18:08"
+      ],
+      [
+       "2026-04-20",
+       "00:21"
+      ]
+     ],
+     "respuestas": [
+      [
+       "2026-03-18",
+       "16:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Desparacitante"
+       ]
+      ],
+      [
+       "2026-04-20",
+       "10:24",
+       "no_ocurrio",
+       [
+        "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       ]
+      ],
+      [
+       "2026-04-30",
+       "21:37",
+       "si",
+       [
+        "Veterinario: No se alimentó por la ida al veterinario (30-abr)"
+       ]
+      ],
+      [
+       "2026-05-02",
+       "03:39",
+       "si",
+       [
+        "Veterinario: El veterinario dice que muchos síntomas son por intoxicación por amoniaco"
+       ]
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2026-04-14",
+       "08:40"
+      ],
+      "to": [
+       "2026-04-30",
+       "21:37"
+      ],
+      "label": "16 días · estándar 48 h"
+     },
+     "agua": {
+      "2025-12-24": "17.5 °C (2 lecturas)",
+      "2025-12-25": "17.5 °C (2 lecturas)",
+      "2025-12-26": "15.3–15.6 °C (2 lecturas)",
+      "2025-12-27": "sin valores (2 lecturas)",
+      "2025-12-30": "14.7–14.9 °C (2 lecturas)",
+      "2025-12-31": "15.1–15.4 °C (2 lecturas)",
+      "2026-01-06": "14.5 °C (2 lecturas)",
+      "2026-01-07": "15.2–15.4 °C (2 lecturas)",
+      "2026-01-08": "15.3–15.8 °C (2 lecturas)",
+      "2026-01-09": "14.7–14.9 °C · NH₃ 0.12 mg/L · NO₂ 3.3 mg/L (6 lecturas)",
+      "2026-01-13": "16.8–17.3 °C (2 lecturas)",
+      "2026-01-14": "16.1 °C (2 lecturas)",
+      "2026-01-15": "15.3–16.2 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (5 lecturas)",
+      "2026-01-16": "15.1–16.2 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L (5 lecturas)",
+      "2026-01-19": "17.8 °C (2 lecturas)",
+      "2026-01-20": "16.5–16.8 °C (2 lecturas)",
+      "2026-01-21": "16.5–17 °C (4 lecturas)",
+      "2026-01-22": "16.7–17.1 °C (2 lecturas)",
+      "2026-01-23": "16.4–16.8 °C (4 lecturas)",
+      "2026-01-26": "16.5–16.7 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2026-01-27": "15.1–15.9 °C (4 lecturas)",
+      "2026-01-28": "16.6–17.2 °C (2 lecturas)",
+      "2026-01-30": "16.1–16.6 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-02": "16–16.6 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-02-03": "16.9–17.7 °C (2 lecturas)",
+      "2026-02-10": "17.1–17.6 °C (2 lecturas)",
+      "2026-02-12": "16.9–17.6 °C (2 lecturas)",
+      "2026-02-13": "16.4–17.6 °C (2 lecturas)",
+      "2026-02-16": "17.4–17.6 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-19": "16.6–17.1 °C (2 lecturas)",
+      "2026-02-23": "16.6–16.9 °C · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-02-24": "16.6–16.8 °C (2 lecturas)",
+      "2026-02-25": "16.4–16.6 °C (2 lecturas)",
+      "2026-02-27": "16.3–16.9 °C · NO₂ 0.3 mg/L (4 lecturas)",
+      "2026-03-02": "14.7–15.3 °C · NH₃ 0.5 mg/L · NO₂ 0.8 mg/L (2 lecturas)",
+      "2026-03-04": "15.9–16.1 °C · NH₃ 0.25 mg/L (4 lecturas)",
+      "2026-03-06": "16.3–16.5 °C (2 lecturas)",
+      "2026-03-09": "16.5–16.6 °C · NH₃ 0.25 mg/L · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-03-10": "NH₃ 0.5 mg/L (4 lecturas)",
+      "2026-03-13": "16.3–16.4 °C (2 lecturas)",
+      "2026-03-16": "15.3–15.5 °C · NH₃ 0.12 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-03-23": "15.6 °C · NH₃ 0.5 mg/L · NO₂ 0.25 mg/L (2 lecturas)",
+      "2026-03-30": "15.16–16.4 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-04-02": "16.5–16.7 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2026-04-06": "17–17.1 °C · NH₃ 0.5 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-04-08": "16.5–16.6 °C (2 lecturas)",
+      "2026-04-09": "16.5–16.9 °C (6 lecturas)",
+      "2026-04-10": "16.8–16.9 °C (2 lecturas)",
+      "2026-04-13": "17.1–17.2 °C · NH₃ 0.25 mg/L · NO₂ 0.3 mg/L (2 lecturas)",
+      "2026-04-14": "16.5–16.8 °C (2 lecturas)",
+      "2026-04-15": "16.5–17 °C (4 lecturas)",
+      "2026-04-16": "16.8–16.9 °C (2 lecturas)",
+      "2026-04-20": "17.6–17.9 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-04-23": "13.4–17.4 °C · NH₃ 0.25 mg/L · NO₂ 0.1 mg/L (3 lecturas)",
+      "2026-04-27": "17 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2026-04-28": "16.4 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-04-29": "16.1 °C",
+      "2026-04-30": "16.7–17 °C (7 lecturas)",
+      "2026-05-01": "16.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2026-05-04": "16.5 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-05": "16.5 °C"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2026-04-06",
+      "t": "14:17",
+      "tone": "rose",
+      "title": "Amoníaco 0.5 en Mexicanum 2",
+      "text": "Alerta crítica en uno de los dos sistemas de su especie.",
+      "src": "libro · agua"
+     },
+     {
+      "d": "2026-04-07",
+      "d2": "2026-04-13",
+      "tone": "rose",
+      "title": "Se para el sistema Mexicanum 1",
+      "text": "Una tubería se zafó bajo el filtro y la bomba falló; el agua quedó estancada unas horas. El 13, amoníaco 0.25 y nitrito 0.3 en los dos sistemas.",
+      "src": "podcast 5 · libro"
+     },
+     {
+      "d": "2026-04-14",
+      "t": "08:40",
+      "tone": "amber",
+      "title": "Flota de forma anormal y se arquea",
+      "text": "Registrado como solo observación, sin acción.",
+      "src": "bitácora"
+     },
+     {
+      "d": "2026-04-17",
+      "d2": "2026-04-19",
+      "tone": "rose",
+      "title": "Tres días sin medir el agua",
+      "text": "El 17, según el chat del equipo, otro ejemplar de su especie pasó el día revolcándose. El 19, video de su estado crítico.",
+      "src": "libro · chat · video"
+     },
+     {
+      "d": "2026-04-14",
+      "d2": "2026-04-28",
+      "tone": "amber",
+      "title": "Catorce días sin registro de alimentación",
+      "text": "El último registro antes es del 14 (1 g de camarón); el siguiente, del 28 (0.17 g de lombriz).",
+      "src": "alimentación"
+     },
+     {
+      "d": "2026-04-20",
+      "tone": "muted",
+      "title": "El veterinario reagenda",
+      "text": "No hay consulta. La conductividad baja de ≈3,000 a ≈2,000 tras un cambio de agua.",
+      "src": "chat · libro"
+     },
+     {
+      "d": "2026-04-21",
+      "tone": "amber",
+      "title": "La pesan: 50 g",
+      "text": "9 g menos que el 18 de marzo y 14 menos que en enero, con la misma longitud. Ese día, el podcast dijo que ningún ejemplar estaba en riesgo alto.",
+      "src": "historial médico · podcast 6"
+     },
+     {
+      "d": "2026-04-30",
+      "t": "21:37",
+      "tone": "green",
+      "title": "Primera consulta veterinaria",
+      "text": "El mismo día falla la bomba que lleva agua fría entre sistemas. El 2 de mayo, el veterinario habla de intoxicación por amoníaco.",
+      "src": "chat"
+     },
+     {
+      "d": "2026-05-05",
+      "tone": "ink",
+      "title": "Muere en su tupper",
+      "text": "Esa mañana el agua estaba turbia. Sin necropsia; el destino del cuerpo no se registró.",
+      "src": "libro · chat"
+     }
+    ],
+    "simulacion": {
+     "reglas": [
+      {
+       "d": "2026-04-06",
+       "text": "Amoníaco sobre cero → aviso crítico al veterinario en minutos.",
+       "real": "Sin acción registrada."
+      },
+      {
+       "d": "2026-04-14",
+       "text": "Incidencia clínica sin respuesta en 48 h → escala a dirección clínica el 16.",
+       "real": "16 días hasta la consulta."
+      },
+      {
+       "d": "2026-04-18",
+       "text": "24 h sin medición con alerta abierta → aviso de silencio.",
+       "real": "El silencio no se notó."
+      },
+      {
+       "d": "2026-04-19",
+       "text": "Clip propuesto y confirmado por un verificador → renglón en la bitácora y alerta abierta.",
+       "real": "El video quedó en un teléfono cinco meses."
+      }
+     ],
+     "con": {
+      "n": "≤ 48 h",
+      "l": "de la primera señal a la acción, con avisos"
+     },
+     "sin": {
+      "n": "16 días",
+      "l": "lo que pasó sin ellos"
+     }
+    },
+    "publico": {
+     "fecha": "2026-04-21",
+     "fuente": "Podcast 6",
+     "url": "https://youtu.be/qhfHi1Tr2v0?t=2310",
+     "cita": "Actualmente ninguno de nuestros ejemplares está en cuarentena por enfermedad… realmente ninguno de nuestros ejemplares está en un riesgo demasiado alto.",
+     "registro": "El 19 de abril hay video de su estado crítico, y del 17 al 19 no hay mediciones de agua."
+    },
+    "evidencia": [
+     {
+      "date": "2026-04-19",
+      "time": "18:08",
+      "source": "telefono",
+      "text": "Cabeza apoyada en el fondo, branquias enroscadas, patas delanteras sin apoyo hacia atrás",
+      "media": "/postmortem/leucistica/leucistica-2026-04-19-telefono.mp4",
+      "poster": "/postmortem/leucistica/leucistica-2026-04-19-telefono.jpg",
+      "orient": "vertical",
+      "url": null,
+      "identifies": "el fundador",
+      "verifies": "la curaduría",
+      "verified": "2026-09-30",
+      "sha256": "9a7cf33e792a54e5e809eea6efc725f3454a9ceb693c03e5eb2660cba42e284d",
+      "attestation": null
+     },
+     {
+      "date": "2026-04-19",
+      "time": "04:12:41",
+      "source": "transmision",
+      "text": "Sube por la teja y resbala de cabeza, con las patas delanteras abiertas",
+      "media": "/postmortem/leucistica/leucistica-2026-04-19-transmision.mp4",
+      "poster": "/postmortem/leucistica/leucistica-2026-04-19-transmision.jpg",
+      "orient": "horizontal",
+      "url": "https://youtu.be/nMbDgTI_34g?t=15161",
+      "identifies": "el fundador",
+      "verifies": "la curaduría",
+      "verified": "2026-09-30",
+      "sha256": "cf0d389e1fad27e1354038335d9a2df71ca557b08cd6f55ce13db5868c0a2378",
+      "attestation": null
+     },
+     {
+      "date": "2026-04-20",
+      "time": "00:21:41",
+      "source": "transmision",
+      "text": "Al fondo, detrás de las tejas",
+      "media": "/postmortem/leucistica/leucistica-2026-04-20-transmision.mp4",
+      "poster": "/postmortem/leucistica/leucistica-2026-04-20-transmision.jpg",
+      "orient": "horizontal",
+      "url": "https://youtu.be/uwR_Sizaw6I?t=1301",
+      "identifies": "el fundador",
+      "verifies": "la curaduría",
+      "verified": "2026-09-30",
+      "sha256": "8d7844e6b2e55a61115b5f166b19f65ae3da4bda84681a4d118a0edb4c28c13b",
+      "attestation": null
+     }
+    ],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-12-24",
+       "g": 63,
+       "lt": 18.46
+      },
+      {
+       "d": "2026-01-19",
+       "g": 64,
+       "lt": 20
+      },
+      {
+       "d": "2026-03-03",
+       "g": 59,
+       "lt": 19.23
+      },
+      {
+       "d": "2026-03-18",
+       "g": 59,
+       "lt": 19.23
+      },
+      {
+       "d": "2026-04-21",
+       "g": 50,
+       "lt": 19.23
+      }
+     ],
+     "alim": [
+      {
+       "d": "2026-04-08",
+       "g": 2.036,
+       "ofrecido": 3.296
+      },
+      {
+       "d": "2026-04-10",
+       "g": 1.48,
+       "ofrecido": 1.48
+      },
+      {
+       "d": "2026-04-14",
+       "g": 1.01,
+       "ofrecido": 1.01
+      },
+      {
+       "d": "2026-04-28",
+       "g": 0.17,
+       "ofrecido": 0.17
+      },
+      {
+       "d": "2026-04-29",
+       "g": 3.19,
+       "ofrecido": 7.46
+      }
+     ]
+    }
+   }
   },
   {
    "alias": "Jaffy",
@@ -4495,7 +7669,127 @@
      "critical": false,
      "chronic_only": false
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Pesó **60 g el 9 de noviembre y 29 g el 18 de diciembre**: perdió la mitad de su peso en cinco semanas. El agua de su sistema marcó amoníaco sobre cero el 22 de noviembre. El libro no registra ninguna acción que respondiera a esas señales. Murió el **20 de diciembre**, con sospecha de infección parasitaria o bacteriana y sin necropsia.",
+    "stats": [
+     {
+      "n": "16",
+      "u": "de 16",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "rose",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2025-10-30",
+     "to": "2025-12-20",
+     "lecturas": [
+      "2025-10-30",
+      "2025-11-02",
+      "2025-11-13",
+      "2025-11-14",
+      "2025-11-19",
+      "2025-11-22",
+      "2025-12-04",
+      "2025-12-05",
+      "2025-12-06",
+      "2025-12-10",
+      "2025-12-13",
+      "2025-12-14",
+      "2025-12-15",
+      "2025-12-16",
+      "2025-12-17",
+      "2025-12-18",
+      "2025-12-20"
+     ],
+     "criticas": [
+      "2025-11-13",
+      "2025-11-22"
+     ],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [],
+     "videos": [],
+     "respuestas": [
+      [
+       "2025-12-01",
+       "11:41",
+       "si",
+       [
+        "Acción: Se sigue estabilizando parámetros: cambios de agua, ajuste del aire acondicionado y tratamientos"
+       ]
+      ]
+     ],
+     "agua": {
+      "2025-10-30": "15.2 °C (2 lecturas)",
+      "2025-11-02": "sin valores",
+      "2025-11-13": "NH₃ 0.25 mg/L",
+      "2025-11-14": "NH₃ 0 mg/L",
+      "2025-11-19": "NH₃ 0 mg/L",
+      "2025-11-22": "15.8–15.9 °C · NH₃ 2 mg/L (2 lecturas)",
+      "2025-12-04": "sin valores",
+      "2025-12-05": "17.1 °C · NH₃ 0 mg/L",
+      "2025-12-06": "17.9 °C · NH₃ 0 mg/L · NO₂ 0.8 mg/L",
+      "2025-12-10": "15.6 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L",
+      "2025-12-13": "NH₃ 0 mg/L (2 lecturas)",
+      "2025-12-14": "15.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2025-12-15": "NO₂ 0.1 mg/L",
+      "2025-12-16": "15.1 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L (2 lecturas)",
+      "2025-12-17": "16.1 °C · NH₃ 0 mg/L",
+      "2025-12-18": "16.4 °C",
+      "2025-12-20": "14.8 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2025-11-09",
+      "tone": "muted",
+      "title": "Pesa 60 g",
+      "text": "Primera medición registrada.",
+      "src": "historial médico"
+     },
+     {
+      "d": "2025-11-22",
+      "tone": "rose",
+      "title": "Amoníaco sobre cero en su sistema",
+      "text": "Lectura del libro de agua.",
+      "src": "libro · agua"
+     },
+     {
+      "d": "2025-12-18",
+      "tone": "amber",
+      "title": "Pesa 29 g",
+      "text": "La mitad que en noviembre, dos días antes de morir.",
+      "src": "historial médico"
+     },
+     {
+      "d": "2025-12-20",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "Sospecha de infección parasitaria o bacteriana; sin necropsia.",
+      "src": "libro"
+     }
+    ],
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-11-09",
+       "g": 60,
+       "lt": null
+      },
+      {
+       "d": "2025-12-18",
+       "g": 29,
+       "lt": 20
+      }
+     ],
+     "alim": []
+    }
+   }
   },
   {
    "alias": "Guajolote",
@@ -4772,7 +8066,169 @@
      "critical": false,
      "chronic_only": false
     }
-   ]
+   ],
+   "relato": {
+    "lead": "El agua de su sistema marcó amoníaco sobre cero tres veces entre noviembre y diciembre. El **1 de diciembre** estaba en tratamiento, separado por indicación del veterinario y en espera de resultados de laboratorio; el 5 fue a un segundo drenado, lo dieron de alta y volvió a su acuario. Murió el **17 de diciembre**; el libro anota infección bacteriana y no hubo necropsia.",
+    "stats": [
+     {
+      "n": "59",
+      "u": "h",
+      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
+      "tone": "amber",
+      "key": "lat"
+     },
+     {
+      "n": "12",
+      "u": "de 14",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "rose",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2025-11-09",
+     "to": "2025-12-17",
+     "lecturas": [
+      "2025-11-13",
+      "2025-11-14",
+      "2025-11-19",
+      "2025-11-22",
+      "2025-12-05",
+      "2025-12-06",
+      "2025-12-10",
+      "2025-12-13",
+      "2025-12-14",
+      "2025-12-15",
+      "2025-12-16",
+      "2025-12-17"
+     ],
+     "criticas": [
+      "2025-11-13",
+      "2025-11-22",
+      "2025-12-14"
+     ],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [],
+     "videos": [],
+     "respuestas": [
+      [
+       "2025-12-01",
+       "11:41",
+       "si",
+       [
+        "Veterinario: Guajolote en tratamiento, separado por indicación del veterinario, en espera de resultados de laboratorio",
+        "Acción: Se sigue estabilizando parámetros: cambios de agua, ajuste del aire acondicionado y tratamientos"
+       ]
+      ],
+      [
+       "2025-12-05",
+       "22:12",
+       "si",
+       [
+        "Veterinario: Guajolote llevado al veterinario para segundo drenado, dado de alta; se reincorpora a población general el domingo"
+       ]
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2025-12-03",
+       "11:33"
+      ],
+      "to": [
+       "2025-12-05",
+       "22:12"
+      ],
+      "label": "59 h · estándar 48 h"
+     },
+     "agua": {
+      "2025-11-13": "NH₃ 0.25 mg/L",
+      "2025-11-14": "NH₃ 0 mg/L",
+      "2025-11-19": "NH₃ 0 mg/L",
+      "2025-11-22": "15.8–16 °C · NH₃ 2 mg/L (2 lecturas)",
+      "2025-12-05": "16.9 °C · NH₃ 0 mg/L",
+      "2025-12-06": "17.9 °C · NH₃ 0 mg/L · NO₂ 0.1 mg/L",
+      "2025-12-10": "15.6 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L",
+      "2025-12-13": "NH₃ 0 mg/L (2 lecturas)",
+      "2025-12-14": "16.3 °C · NH₃ 0.25 mg/L (2 lecturas)",
+      "2025-12-15": "sin valores",
+      "2025-12-16": "NH₃ 0 mg/L · NO₂ 0.8 mg/L (2 lecturas)",
+      "2025-12-17": "NH₃ 0 mg/L"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2025-11-13",
+      "tone": "rose",
+      "title": "Amoníaco sobre cero en su sistema",
+      "text": "Primera de tres lecturas sobre cero en noviembre y diciembre.",
+      "src": "libro · agua"
+     },
+     {
+      "d": "2025-12-01",
+      "t": "11:41",
+      "tone": "green",
+      "title": "En tratamiento y separado",
+      "text": "Por indicación del veterinario, en espera de resultados de laboratorio; se ajustan agua y temperatura.",
+      "src": "chat"
+     },
+     {
+      "d": "2025-12-05",
+      "t": "22:12",
+      "tone": "green",
+      "title": "Segundo drenado",
+      "text": "Va al veterinario para un segundo drenado; lo dan de alta y se reincorpora a su acuario.",
+      "src": "chat"
+     },
+     {
+      "d": "2025-12-17",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "Infección bacteriana, según el libro; sin necropsia.",
+      "src": "libro"
+     }
+    ],
+    "simulacion": {
+     "reglas": [
+      {
+       "d": "2025-11-13",
+       "text": "Amoníaco sobre cero → aviso crítico al veterinario en minutos.",
+       "real": "La primera acción registrada es del 1 de diciembre; antes de abril de 2026 el libro casi no registraba acciones."
+      },
+      {
+       "d": "2025-12-03",
+       "text": "Señal sin respuesta en 48 h → escala a dirección clínica.",
+       "real": "59 h hasta el segundo drenado."
+      }
+     ],
+     "con": {
+      "n": "≤ 48 h",
+      "l": "de la primera señal a la acción, con avisos"
+     },
+     "sin": {
+      "n": "59 h",
+      "l": "lo que pasó sin ellos"
+     }
+    },
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-11-09",
+       "g": 26,
+       "lt": null
+      },
+      {
+       "d": "2025-11-09",
+       "g": 41,
+       "lt": null
+      }
+     ],
+     "alim": []
+    }
+   }
   },
   {
    "alias": "Moka",
@@ -4867,7 +8323,73 @@
      "grade": "A",
      "text": "destino del cuerpo: sin registro en ninguna hoja"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "El agua de los sistemas de su especie marcó amoníaco sobre cero en noviembre. No hay registros clínicos de sus últimas semanas: antes de abril de 2026 el museo casi no registraba acciones. Murió el **12 de diciembre**; la causa quedó como desconocida y la necropsia, en proceso, nunca llegó al libro.",
+    "stats": [],
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2025-11-08",
+     "to": "2025-12-12",
+     "lecturas": [
+      "2025-11-13",
+      "2025-11-14",
+      "2025-11-19",
+      "2025-11-22",
+      "2025-12-04",
+      "2025-12-05",
+      "2025-12-06",
+      "2025-12-10"
+     ],
+     "criticas": [
+      "2025-11-13",
+      "2025-11-22"
+     ],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [],
+     "videos": [],
+     "respuestas": [],
+     "agua": {
+      "2025-11-13": "NH₃ 0.25 mg/L (2 lecturas)",
+      "2025-11-14": "NH₃ 0 mg/L (2 lecturas)",
+      "2025-11-19": "NH₃ 0 mg/L (2 lecturas)",
+      "2025-11-22": "15.8–16 °C · NH₃ 2 mg/L (4 lecturas)",
+      "2025-12-04": "sin valores",
+      "2025-12-05": "16.9–17.1 °C · NH₃ 0 mg/L (2 lecturas)",
+      "2025-12-06": "17.9 °C · NH₃ 0 mg/L · NO₂ 0.8 mg/L (2 lecturas)",
+      "2025-12-10": "15.6 °C · NH₃ 0 mg/L · NO₂ 0.3 mg/L (2 lecturas)"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2025-11-13",
+      "tone": "rose",
+      "title": "Amoníaco sobre cero",
+      "text": "Lectura del libro de agua de los sistemas de su especie.",
+      "src": "libro · agua"
+     },
+     {
+      "d": "2025-12-12",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "Causa desconocida; la necropsia quedó en proceso y no hay resultado.",
+      "src": "libro"
+     }
+    ],
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-11-09",
+       "g": 8,
+       "lt": null
+      }
+     ],
+     "alim": []
+    }
+   }
   },
   {
    "alias": "Loncho",
@@ -4962,7 +8484,51 @@
      "grade": "A",
      "text": "destino del cuerpo: sin registro en ninguna hoja"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Vivía con Panchita en el acuario de Ambystoma andersoni. No hay registros clínicos de sus últimas semanas y el libro de agua apenas empezaba. Murió el **10 de noviembre**; la hoja Bajas anota sepsis bacteriana y daños por caída, con un reporte de incidente. Las grabaciones de sus últimos días están en revisión.",
+    "stats": [],
+    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2025-10-07",
+     "to": "2025-11-10",
+     "lecturas": [
+      "2025-10-30",
+      "2025-11-02"
+     ],
+     "criticas": [],
+     "sin_lectura": [],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [],
+     "videos": [],
+     "respuestas": [],
+     "agua": {
+      "2025-10-30": "15.2 °C (2 lecturas)",
+      "2025-11-02": "sin valores"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2025-11-10",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "Sepsis bacteriana y daños por caída, con reporte de incidente; sin necropsia.",
+      "src": "libro"
+     }
+    ],
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2025-11-09",
+       "g": 116,
+       "lt": null
+      }
+     ],
+     "alim": []
+    }
+   }
   },
   {
    "alias": "Golden",
@@ -5982,7 +9548,7 @@
      "label": "Acción preventiva",
      "source": "chat",
      "grade": "B",
-     "text": "Curaduría hará la limpieza el martes y cotizará extractores (líneas 3003–3005)"
+     "text": "Curaduría hará la limpieza el martes y cotizará extractores"
     },
     {
      "date": "2026-09-22",
@@ -6024,7 +9590,939 @@
      "grade": "A",
      "text": "destino del cuerpo: sin registro en ninguna hoja"
     }
-   ]
+   ],
+   "relato": {
+    "lead": "Creció de 5 g a 18 g entre junio y agosto. El **20 de agosto** el libro anota que no salió del refugio en todo el día; el 6 de septiembre se le diagnosticó saprolegniasis y se trató con itraconazol, y el 9 y el 10 se rascaba las branquias. Con esas señales abiertas, el agua de su sistema no se midió del 9 al 13 ni del 15 al 22 de septiembre. El 22 la colección salió del museo; murió al día siguiente y la causa sigue sin registrar.",
+    "stats": [
+     {
+      "n": "mismo",
+      "u": "día",
+      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
+      "tone": "green",
+      "key": "lat"
+     },
+     {
+      "n": "13",
+      "u": "días",
+      "l": "sin medir el agua de su sistema con una señal abierta",
+      "tone": "rose",
+      "key": "gap"
+     },
+     {
+      "n": "2",
+      "u": "de 7",
+      "l": "señales sin respuesta dentro de su plazo",
+      "tone": "rose",
+      "key": "senales"
+     }
+    ],
+    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "curso": {
+     "from": "2026-05-16",
+     "to": "2026-09-23",
+     "lecturas": [
+      "2026-05-16",
+      "2026-05-17",
+      "2026-05-18",
+      "2026-05-19",
+      "2026-05-20",
+      "2026-05-21",
+      "2026-05-22",
+      "2026-05-25",
+      "2026-05-26",
+      "2026-05-27",
+      "2026-05-28",
+      "2026-05-29",
+      "2026-06-01",
+      "2026-06-02",
+      "2026-06-03",
+      "2026-06-04",
+      "2026-06-05",
+      "2026-06-06",
+      "2026-06-07",
+      "2026-06-08",
+      "2026-06-09",
+      "2026-06-10",
+      "2026-06-11",
+      "2026-06-12",
+      "2026-06-13",
+      "2026-06-14",
+      "2026-06-15",
+      "2026-06-16",
+      "2026-06-17",
+      "2026-06-18",
+      "2026-06-19",
+      "2026-06-20",
+      "2026-06-21",
+      "2026-06-22",
+      "2026-06-23",
+      "2026-06-24",
+      "2026-06-25",
+      "2026-06-26",
+      "2026-06-27",
+      "2026-06-28",
+      "2026-06-29",
+      "2026-06-30",
+      "2026-07-01",
+      "2026-07-02",
+      "2026-07-03",
+      "2026-07-04",
+      "2026-07-05",
+      "2026-07-06",
+      "2026-07-07",
+      "2026-07-08",
+      "2026-07-09",
+      "2026-07-10",
+      "2026-07-11",
+      "2026-07-12",
+      "2026-07-13",
+      "2026-07-14",
+      "2026-07-15",
+      "2026-07-16",
+      "2026-07-17",
+      "2026-07-18",
+      "2026-07-19",
+      "2026-07-20",
+      "2026-07-21",
+      "2026-07-22",
+      "2026-07-23",
+      "2026-07-24",
+      "2026-07-25",
+      "2026-07-26",
+      "2026-07-27",
+      "2026-07-28",
+      "2026-07-29",
+      "2026-07-30",
+      "2026-07-31",
+      "2026-08-01",
+      "2026-08-02",
+      "2026-08-03",
+      "2026-08-04",
+      "2026-08-05",
+      "2026-08-06",
+      "2026-08-07",
+      "2026-08-08",
+      "2026-08-09",
+      "2026-08-10",
+      "2026-08-11",
+      "2026-08-12",
+      "2026-08-13",
+      "2026-08-14",
+      "2026-08-15",
+      "2026-08-16",
+      "2026-08-17",
+      "2026-08-18",
+      "2026-08-19",
+      "2026-08-20",
+      "2026-08-21",
+      "2026-08-23",
+      "2026-08-24",
+      "2026-08-25",
+      "2026-08-26",
+      "2026-08-27",
+      "2026-08-28",
+      "2026-08-31",
+      "2026-09-01",
+      "2026-09-02",
+      "2026-09-03",
+      "2026-09-04",
+      "2026-09-06",
+      "2026-09-07",
+      "2026-09-08",
+      "2026-09-14"
+     ],
+     "criticas": [
+      "2026-06-15",
+      "2026-06-29",
+      "2026-07-06",
+      "2026-07-13"
+     ],
+     "sin_lectura": [
+      [
+       "2026-09-09",
+       "2026-09-13"
+      ],
+      [
+       "2026-09-15",
+       "2026-09-22"
+      ]
+     ],
+     "bomba": [],
+     "sin_camara": [],
+     "senales": [
+      [
+       "2026-05-20",
+       "09:36",
+       "leve",
+       "Chat del equipo: Quedan pocos tubifex; están mejorando con esa alimentación; no les gustan las lombrices"
+      ],
+      [
+       "2026-06-04",
+       "19:54",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · Nado rápido; se realizo una prueba de amonia y salio de 0ppm"
+      ],
+      [
+       "2026-06-21",
+       "15:52",
+       "leve",
+       "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      ],
+      [
+       "2026-06-29",
+       "12:00",
+       "fuerte",
+       "Bitácora: Nado persistente · Larva 2 presenta nado esporadico que deja de ser presente posterior a la alimentacion"
+      ],
+      [
+       "2026-07-03",
+       "20:00",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · El ejemplar nada buscando comida. Se nota esttresado."
+      ],
+      [
+       "2026-07-03",
+       "20:07",
+       "leve",
+       "Chat del equipo: Estudios: parásitos que se establecen en el intestino y limitan la absorción de nutrientes; costos de desparasitar"
+      ],
+      [
+       "2026-07-06",
+       "11:15",
+       "fuerte",
+       "Bitácora: Nado persistente · Cambio de agua rutinario · Se observa nado constante en ejemplar pequeño de larvas mexicanum, el com…"
+      ],
+      [
+       "2026-07-07",
+       "09:00",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación · Se observa un nado constante en la larva 2, el comportamiento se muestra en inter…"
+      ],
+      [
+       "2026-07-09",
+       "07:30",
+       "fuerte",
+       "Bitácora: Nado persistente · Solo observación, Cambio de agua rutinario · Nado constante"
+      ],
+      [
+       "2026-07-25",
+       "09:39",
+       "leve",
+       "Chat del equipo: Revisión rápida: no se observan más parásitos en los excrementos; se cambian garrafones de Sansón"
+      ],
+      [
+       "2026-08-10",
+       "08:30",
+       "fuerte",
+       "Diagnóstico: Nematodos · tx: Ivermectina 0.1 mg/ml"
+      ],
+      [
+       "2026-08-12",
+       "17:48",
+       "leve",
+       "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      ],
+      [
+       "2026-08-13",
+       "09:20",
+       "fuerte",
+       "Bitácora: Solo observación · Larva 2 se muestra mu cauteloso al abandonar el refugio, posiblemente en respuesta a la manipulación…"
+      ],
+      [
+       "2026-08-15",
+       "14:30",
+       "fuerte",
+       "Bitácora: Solo observación · El ejemplar a permanecido todo el día dentro del coco"
+      ],
+      [
+       "2026-08-20",
+       "18:24",
+       "fuerte",
+       "Bitácora: Apatía / Rechazo de alimento · Solo observación · El ejemplar no ha salido del refugio en odo el dia. Observar comporam…"
+      ],
+      [
+       "2026-08-25",
+       "20:08",
+       "leve",
+       "Chat del equipo: Ajolotes de Pinal: se ven sanos y han comido"
+      ],
+      [
+       "2026-08-25",
+       "20:09",
+       "leve",
+       "Chat del equipo: Manchas de piel persisten en ajolotes de Pinal; parecen de edad, no crecieron"
+      ],
+      [
+       "2026-09-06",
+       "10:00",
+       "fuerte",
+       "Diagnóstico: Saprolegniasis · tx: Itraconazol"
+      ],
+      [
+       "2026-09-09",
+       "16:42",
+       "fuerte",
+       "Bitácora: Irritacion cutanea · Solo observación · El ejemplar se rasca 2 veces la branquia del lado izquierdo"
+      ],
+      [
+       "2026-09-10",
+       "16:43",
+       "leve",
+       "Bitácora: Irritacion cutanea · Solo observación · El ejemplar se rasca 3 veces la branquia del lado derecho"
+      ]
+     ],
+     "videos": [],
+     "respuestas": [
+      [
+       "2026-05-28",
+       "13:15",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua rutinario · Se realiza el cambio de 2 garrafones con receta de HrAm 20% y adicional se agrega 1/2 garraf…",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-01",
+       "14:40",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-04",
+       "11:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-08",
+       "14:00",
+       "si",
+       [
+        "Retiro: Comportamiento normal · Traslado a nueva pecera",
+        "Cambio de agua: Turbidez blanca ligera / severa · Cambio de agua rutinario",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-09",
+       "09:20",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-10",
+       "14:35",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-13",
+       "09:04",
+       "si",
+       [
+        "Cambio de agua: Comportamiento normal · Cambio de agua rutinario · Se les cambio el agua del tanque",
+        "Cambio de agua: Comportamiento normal · Cambio de agua rutinario",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-14",
+       "09:15",
+       "si",
+       [
+        "Cambio de agua: Turbidez blanca ligera / severa · Cambio de agua rutinario · El agua de las larvas se percibe liggeramente bblanquecina…",
+        "Cambio de agua: Turbidez blanca ligera / severa · Cambio de agua rutinario",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-15",
+       "14:00",
+       "si",
+       [
+        "Emergencia de agua: Turbidez blanca ligera / severa · Cambio de agua de emergencia · Las larvas se reposicionan de sistema pasando a torre…",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-18",
+       "14:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-22",
+       "10:40",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Fenbendazol",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-23",
+       "13:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua · 1 garrafon (23 sin adicion de sal por fala de reactivo)"
+       ]
+      ],
+      [
+       "2026-06-26",
+       "13:06",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-06-30",
+       "12:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-01",
+       "18:08",
+       "si",
+       [
+        "Veterinario: Tras el análisis de parásitos provenientes del tubifex/alimento vivo, el veterinario fue a desparasitarlos \"el lunes an…"
+       ]
+      ],
+      [
+       "2026-07-03",
+       "09:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-06",
+       "11:15",
+       "si",
+       [
+        "Cambio de agua: Nado persistente · Cambio de agua rutinario · Se observa nado constante en ejemplar pequeño de larvas mexicanum, el com…",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-09",
+       "08:00",
+       "si",
+       [
+        "Cambio de agua: Nado persistente · Solo observación, Cambio de agua rutinario · El movimiento se mantiene recurrente",
+        "Cambio de agua: Nado persistente · Solo observación, Cambio de agua rutinario · Nado constante",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-13",
+       "14:30",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-16",
+       "10:20",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Fenbendazol · Segunda dosis de desparacitantes. Los ejemplares se mantiene con dieta a base de tilapia…",
+        "Acción: Segunda ronda de desparasitación: uno por uno, sonda hasta el estómago"
+       ]
+      ],
+      [
+       "2026-07-17",
+       "08:55",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-20",
+       "14:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-23",
+       "13:18",
+       "si",
+       [
+        "Acción: Se cambiaron los filtros de ósmosis; pruebas \"todo ok\""
+       ]
+      ],
+      [
+       "2026-07-24",
+       "09:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-27",
+       "14:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-07-31",
+       "12:02",
+       "si",
+       [
+        "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-01",
+       "07:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Fenbendazol · Aumento de dosis por baja eficiencia del medicamento"
+       ]
+      ],
+      [
+       "2026-08-03",
+       "08:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
+        "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       ]
+      ],
+      [
+       "2026-08-04",
+       "14:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-07",
+       "09:30",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-10",
+       "08:30",
+       "si",
+       [
+        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-11",
+       "10:18",
+       "si",
+       [
+        "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       ]
+      ],
+      [
+       "2026-08-14",
+       "07:53",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-18",
+       "09:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-20",
+       "13:30",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua · Cambio de agua por mantenimiento en filtro del sistema A. mexicanum"
+       ]
+      ],
+      [
+       "2026-08-21",
+       "08:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-25",
+       "07:00",
+       "si",
+       [
+        "Cambio de agua: Cambio de agua · Agua de la llave"
+       ]
+      ],
+      [
+       "2026-08-27",
+       "13:48",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario"
+       ]
+      ],
+      [
+       "2026-08-28",
+       "13:25",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario",
+        "Acción: Se requiere entretiempo de 1 a 2 pm sábado y domingo para medicamentos y tratamientos; animales estables; en comunicaci…",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-08-29",
+       "13:10",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario"
+       ]
+      ],
+      [
+       "2026-08-30",
+       "13:10",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario"
+       ]
+      ],
+      [
+       "2026-08-31",
+       "13:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Sal acuario"
+       ]
+      ],
+      [
+       "2026-09-01",
+       "13:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-09-02",
+       "13:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol"
+       ]
+      ],
+      [
+       "2026-09-03",
+       "13:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol"
+       ]
+      ],
+      [
+       "2026-09-04",
+       "13:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-09-05",
+       "10:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol"
+       ]
+      ],
+      [
+       "2026-09-06",
+       "10:00",
+       "si",
+       [
+        "Tratamiento: Saprolegniasis · tx: Itraconazol"
+       ]
+      ],
+      [
+       "2026-09-08",
+       "20:38",
+       "si",
+       [
+        "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+        "Cambio de agua: Cambio de agua"
+       ]
+      ],
+      [
+       "2026-09-14",
+       "13:19",
+       "si",
+       [
+        "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       ]
+      ],
+      [
+       "2026-09-22",
+       null,
+       "si",
+       [
+        "Retiro: toda la colección pasa a cuarentena fuera del museo"
+       ]
+      ]
+     ],
+     "latencia": {
+      "from": [
+       "2026-09-02",
+       "18:38"
+      ],
+      "to": [
+       "2026-09-02",
+       "13:00"
+      ],
+      "label": "mismo día · estándar 48 h"
+     },
+     "agua": {
+      "2026-05-16": "15.4 °C · NH₃ 0 mg/L",
+      "2026-05-17": "14–15.1 °C (3 lecturas)",
+      "2026-05-18": "16.7 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-19": "14.9–15.9 °C (3 lecturas)",
+      "2026-05-20": "14.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-05-21": "16.2 °C",
+      "2026-05-22": "15.5 °C · NH₃ 0 mg/L",
+      "2026-05-25": "15 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-05-26": "14.8 °C",
+      "2026-05-27": "15.7–16.5 °C (8 lecturas)",
+      "2026-05-28": "15.3–16 °C · NH₃ 0 mg/L (3 lecturas)",
+      "2026-05-29": "15–15.5 °C (3 lecturas)",
+      "2026-06-01": "15.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-06-02": "16.2–16.3 °C (2 lecturas)",
+      "2026-06-03": "15.7–15.8 °C (2 lecturas)",
+      "2026-06-04": "15.8–16.4 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (3 lecturas)",
+      "2026-06-05": "16.7 °C",
+      "2026-06-06": "17.1–17.6 °C (4 lecturas)",
+      "2026-06-07": "17.4–17.9 °C (3 lecturas)",
+      "2026-06-08": "17.4–18 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-06-09": "16.6–17.1 °C (6 lecturas)",
+      "2026-06-10": "16.1–17.4 °C (8 lecturas)",
+      "2026-06-11": "17.1–18 °C (2 lecturas)",
+      "2026-06-12": "16.7–18.1 °C (6 lecturas)",
+      "2026-06-13": "16.5–18.4 °C (4 lecturas)",
+      "2026-06-14": "16–17 °C (8 lecturas)",
+      "2026-06-15": "16.3–16.6 °C · NH₃ 1 mg/L · NO₂ 0 mg/L (2 lecturas)",
+      "2026-06-16": "16.8–17.1 °C (2 lecturas)",
+      "2026-06-17": "16.6–17.2 °C (3 lecturas)",
+      "2026-06-18": "16.2–17 °C (3 lecturas)",
+      "2026-06-19": "16.4–16.7 °C (4 lecturas)",
+      "2026-06-20": "16.5–16.8 °C (3 lecturas)",
+      "2026-06-21": "16.25–16.8 °C (4 lecturas)",
+      "2026-06-22": "16.55 °C · NO₂ 0 mg/L",
+      "2026-06-23": "16.3–16.9 °C (4 lecturas)",
+      "2026-06-24": "16.3–16.8 °C (4 lecturas)",
+      "2026-06-25": "16.5–17.2 °C (3 lecturas)",
+      "2026-06-26": "16.5–16.95 °C (4 lecturas)",
+      "2026-06-27": "16.3 °C",
+      "2026-06-28": "16.4–16.8 °C (4 lecturas)",
+      "2026-06-29": "16.9 °C · NH₃ 0.13 mg/L · NO₂ 0 mg/L",
+      "2026-06-30": "16.3–17.05 °C (3 lecturas)",
+      "2026-07-01": "15.8–15.9 °C (3 lecturas)",
+      "2026-07-02": "15.35–15.8 °C (3 lecturas)",
+      "2026-07-03": "16.1–16.2 °C (3 lecturas)",
+      "2026-07-04": "15.8–16.1 °C (3 lecturas)",
+      "2026-07-05": "16.1–16.55 °C (5 lecturas)",
+      "2026-07-06": "15.9 °C · NH₃ 0.13 mg/L · NO₂ 0 mg/L",
+      "2026-07-07": "15.7–15.85 °C (3 lecturas)",
+      "2026-07-08": "15.45–15.6 °C (2 lecturas)",
+      "2026-07-09": "15.6–16.3 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (3 lecturas)",
+      "2026-07-10": "15.7–15.95 °C (3 lecturas)",
+      "2026-07-11": "15.5–16.1 °C (3 lecturas)",
+      "2026-07-12": "15.4–15.5 °C (4 lecturas)",
+      "2026-07-13": "15.4 °C · NH₃ 0.13 mg/L · NO₂ 0 mg/L",
+      "2026-07-14": "15.1–15.4 °C (4 lecturas)",
+      "2026-07-15": "15.4–15.8 °C (4 lecturas)",
+      "2026-07-16": "15.4–16 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (3 lecturas)",
+      "2026-07-17": "15.65–15.8 °C (4 lecturas)",
+      "2026-07-18": "15.3–15.8 °C (3 lecturas)",
+      "2026-07-19": "15.4–15.7 °C (4 lecturas)",
+      "2026-07-20": "15.4 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-07-21": "15.3–15.4 °C (2 lecturas)",
+      "2026-07-22": "15.6–15.95 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (4 lecturas)",
+      "2026-07-23": "15.55–15.6 °C (2 lecturas)",
+      "2026-07-24": "15.85–16.7 °C (2 lecturas)",
+      "2026-07-25": "16.1–16.3 °C (3 lecturas)",
+      "2026-07-26": "15.8–16.4 °C (4 lecturas)",
+      "2026-07-27": "15.75 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-07-28": "15.6–15.8 °C (3 lecturas)",
+      "2026-07-29": "15.65–15.9 °C (4 lecturas)",
+      "2026-07-30": "15.9 °C (2 lecturas)",
+      "2026-07-31": "15.55–15.9 °C (3 lecturas)",
+      "2026-08-01": "15.6–15.8 °C (3 lecturas)",
+      "2026-08-02": "16–16.2 °C (4 lecturas)",
+      "2026-08-03": "15.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-08-04": "15.7–16.3 °C (4 lecturas)",
+      "2026-08-05": "15.8–15.9 °C (2 lecturas)",
+      "2026-08-06": "15.6–15.7 °C (3 lecturas)",
+      "2026-08-07": "15.7–16.3 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (4 lecturas)",
+      "2026-08-08": "16.4–16.5 °C (3 lecturas)",
+      "2026-08-09": "16.5–16.7 °C (2 lecturas)",
+      "2026-08-10": "17.2 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-08-11": "16.7 °C (4 lecturas)",
+      "2026-08-12": "16.75–16.8 °C (4 lecturas)",
+      "2026-08-13": "16.6–16.9 °C (4 lecturas)",
+      "2026-08-14": "16.55–17 °C (4 lecturas)",
+      "2026-08-15": "16.6 °C (3 lecturas)",
+      "2026-08-16": "16.3–16.55 °C (3 lecturas)",
+      "2026-08-17": "16.45 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-08-18": "16.15 °C",
+      "2026-08-19": "16.25 °C",
+      "2026-08-20": "16.45 °C",
+      "2026-08-21": "16.75 °C",
+      "2026-08-23": "16.5 °C",
+      "2026-08-24": "16.55 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-08-25": "17.15 °C",
+      "2026-08-26": "16.45 °C",
+      "2026-08-27": "16.55 °C",
+      "2026-08-28": "16.6 °C",
+      "2026-08-31": "16.55 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-09-01": "16.55 °C",
+      "2026-09-02": "16.55 °C",
+      "2026-09-03": "16.45 °C",
+      "2026-09-04": "16.2 °C",
+      "2026-09-06": "16.75 °C",
+      "2026-09-07": "16.8 °C · NH₃ 0 mg/L · NO₂ 0 mg/L",
+      "2026-09-08": "16.55 °C",
+      "2026-09-14": "17.1 °C · NH₃ 0 mg/L · NO₂ 0 mg/L (3 lecturas)"
+     }
+    },
+    "momentos": [
+     {
+      "d": "2026-08-20",
+      "tone": "amber",
+      "title": "No sale del refugio",
+      "text": "No salió del refugio en todo el día; se anota observar por posible estrés.",
+      "src": "bitácora",
+      "t": "18:24"
+     },
+     {
+      "d": "2026-09-06",
+      "tone": "green",
+      "title": "Saprolegniasis",
+      "text": "Diagnóstico y tratamiento con itraconazol.",
+      "src": "terapéutica",
+      "t": "10:00"
+     },
+     {
+      "d": "2026-09-09",
+      "tone": "amber",
+      "title": "Se rasca las branquias",
+      "text": "El 9 dos veces del lado izquierdo; el 10, tres del derecho.",
+      "src": "bitácora",
+      "t": "16:42",
+      "d2": "2026-09-10"
+     },
+     {
+      "d": "2026-09-15",
+      "tone": "rose",
+      "title": "Una semana sin medir el agua",
+      "text": "Del 15 al 22 de septiembre no hay lecturas de su sistema.",
+      "src": "libro",
+      "d2": "2026-09-22"
+     },
+     {
+      "d": "2026-09-22",
+      "tone": "green",
+      "title": "La colección sale del museo",
+      "text": "Toda la colección pasa a cuarentena fuera del museo.",
+      "src": "registro"
+     },
+     {
+      "d": "2026-09-23",
+      "tone": "ink",
+      "title": "Muere",
+      "text": "Causa desconocida por ahora; no hay necropsia registrada.",
+      "src": "registro"
+     }
+    ],
+    "evidencia": [],
+    "datos": {
+     "peso": [
+      {
+       "d": "2026-06-08",
+       "g": 5,
+       "lt": 8.36
+      },
+      {
+       "d": "2026-06-22",
+       "g": 8,
+       "lt": null
+      },
+      {
+       "d": "2026-07-22",
+       "g": 14,
+       "lt": 11.83
+      },
+      {
+       "d": "2026-08-03",
+       "g": 19,
+       "lt": null
+      },
+      {
+       "d": "2026-08-10",
+       "g": 18,
+       "lt": null
+      },
+      {
+       "d": "2026-08-25",
+       "g": 18,
+       "lt": 13.44
+      }
+     ],
+     "alim": [
+      {
+       "d": "2026-07-31",
+       "g": 0.21,
+       "ofrecido": 0.65
+      },
+      {
+       "d": "2026-09-08",
+       "g": 0,
+       "ofrecido": 0.43
+      }
+     ]
+    }
+   }
   }
  ],
  "aire": [
@@ -6033,7 +10531,7 @@
    "episode": 13,
    "date": "2026-06-10",
    "claim": "Goldy se está quedando atrás en crecimiento (vivo)",
-   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "contrast": "necropsia: eutanasia y necropsia el 2026-06-10 15:50, el mismo día",
    "speaker": "Vocería del museo",
    "confidence": "alta",
    "verified_on_video": true,
@@ -6044,7 +10542,7 @@
    "episode": 14,
    "date": "2026-06-17",
    "claim": "Golden/Goldy está mejorando bastante; si se recupera tendrá que ir a otras instalaciones",
-   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "contrast": "necropsia: eutanasia el 2026-06-10, siete días antes",
    "speaker": "Vocería del museo",
    "confidence": "alta",
    "verified_on_video": true,
@@ -6055,7 +10553,7 @@
    "episode": 18,
    "date": "2026-07-14",
    "claim": "Goldy falleció un poco más repentinamente que Panchita, con el sistema inmune bajo",
-   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "contrast": "necropsia: eutanasia el 06-10, condición corporal 3/5, resultado emitido el 07-10; el guion y el sitio de Zenbit (6f0ca8c, b651d0b) ya decían caquexia y 07-13",
    "speaker": "Vocería del museo",
    "confidence": "alta",
    "verified_on_video": true,
@@ -6088,7 +10586,7 @@
    "episode": 12,
    "date": "2026-06-03",
    "claim": "Goldy come, no flota extraño, no es motivo para pensar que esté enfermo",
-   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "contrast": "Bitácora 2026-05-28: Goldy nada sin control, permanece flotando, pasa a topper de cuarentena; eutanasia y necropsia el 2026-06-10",
    "speaker": "Vocería del museo",
    "confidence": "alta",
    "verified_on_video": true,
@@ -6142,7 +10640,7 @@
    "specimen": null,
    "episode": 22,
    "date": "2026-08-12",
-   "claim": "Tamal de invitada: nada de qué preocuparnos, todo está bien con ella",
+   "claim": "Tamal de dulce: nada de qué preocuparnos, todo está bien con ella",
    "contrast": "Bitácora 08-07: flotabilidad anormal de Tamal",
    "speaker": "Vocería del museo",
    "confidence": "alta",
@@ -6187,7 +10685,7 @@
    "episode": 18,
    "date": "2026-07-14",
    "claim": "Panchita murió de una infección en varios órganos",
-   "contrast": "contrastado con un documento de laboratorio reservado hasta su autorización",
+   "contrast": "necropsia: hepatitis crónica; resultado del 08-04, después del episodio",
    "speaker": "Sin verificar",
    "confidence": "—",
    "verified_on_video": false,
