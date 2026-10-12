@@ -146,5 +146,103 @@ if (process.argv.includes('--dist')) {
   }
 }
 
+console.log('\n7 · el registro de ejemplares: la copia de maggia, sin «custodia» en presente ni un estado en presente');
+// La copia aprobada para la página del registro (es, en, pt). La columna pt sigue pendiente de lectura por una persona.
+const COPIA = {
+ "titulo": {
+  "es": "Registro de ejemplares del Museo de Ajolotes Xolotlcalli (2025–2026)",
+  "en": "Specimen register of the Museo de Ajolotes Xolotlcalli (2025–2026)",
+  "pt": "Registro de exemplares do Museo de Ajolotes Xolotlcalli (2025–2026)"
+ },
+ "subtitulo": {
+  "es": "Archivo del registro de cada ejemplar durante la operación del museo, de octubre de 2025 a septiembre de 2026: biometría, historial médico y alimentación.",
+  "en": "Archive of each specimen's record while the museum operated, from October 2025 to September 2026: biometrics, medical history and feeding.",
+  "pt": "Arquivo do registro de cada exemplar durante o funcionamento do museu, de outubro de 2025 a setembro de 2026: biometria, histórico médico e alimentação."
+ },
+ "entrada": {
+  "es": "El Museo de Ajolotes Xolotlcalli cerró sus puertas al público en septiembre de 2026. Gracias a todas las personas que lo visitaron entre octubre de 2025 y septiembre de 2026. Los registros de ese periodo se conservan como archivo.",
+  "en": "The Museo de Ajolotes Xolotlcalli closed to the public in September 2026. Thank you to everyone who visited between October 2025 and September 2026. The records from that period are kept as an archive.",
+  "pt": "O Museo de Ajolotes Xolotlcalli fechou as portas ao público em setembro de 2026. Obrigado a todas as pessoas que o visitaram entre outubro de 2025 e setembro de 2026. Os registros desse período são conservados como arquivo."
+ },
+ "preguntas": {
+  "es": "Las preguntas sobre los ejemplares o sobre el cierre las atiende el propio museo.",
+  "en": "Questions about the specimens or the closure are answered by the museum itself.",
+  "pt": "As perguntas sobre os exemplares ou sobre o fechamento são respondidas pelo próprio museu."
+ },
+ "boton": {
+  "es": "Ver el registro de ejemplares →",
+  "en": "See the specimen register →",
+  "pt": "Ver o registro de exemplares →"
+ },
+ "vivo": {
+  "es": "Vivo al cierre del registro (25 sep 2026)",
+  "en": "Alive when the register closed (25 Sep 2026)",
+  "pt": "Vivo no encerramento do registro (25 set. 2026)"
+ },
+ "baja": {
+  "es": "Baja · {fecha}",
+  "en": "Death · {fecha}",
+  "pt": "Óbito · {fecha}"
+ },
+ "postmortem": {
+  "es": "Después del cierre al público",
+  "en": "After the closure to the public",
+  "pt": "Após o fechamento ao público"
+ },
+ "nota": {
+  "es": "Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo. Incluye una baja del 23 de septiembre de 2026, ocurrida después del cierre al público (22 de septiembre), con los ejemplares bajo custodia del museo.",
+  "en": "Survival from 24 October 2025, opening day, to 25 September 2026: share of specimens alive among those in the museum's register. Includes one death on 23 September 2026, after the closure to the public (22 September), while the specimens were in the museum's care.",
+  "pt": "Sobrevivência de 24 de outubro de 2025, dia da abertura, a 25 de setembro de 2026: proporção de exemplares vivos entre os incluídos no registro do museu. Inclui um óbito em 23 de setembro de 2026, ocorrido após o fechamento ao público (22 de setembro), com os exemplares sob os cuidados do museu."
+ },
+ "fuente": {
+  "es": "Fuente: Museo de Ajolotes Xolotlcalli (2025–2026)",
+  "en": "Source: Museo de Ajolotes Xolotlcalli (2025–2026)",
+  "pt": "Fonte: Museo de Ajolotes Xolotlcalli (2025–2026)"
+ }
+};
+const tabla = (archivo) => {
+  const texto = readFileSync(join(SITE, archivo), 'utf8');
+  const i = { es: texto.indexOf('  es: {'), en: texto.indexOf('  en: {'), pt: texto.indexOf('  pt: {') };
+  const tramo = { es: texto.slice(i.es, i.en), en: texto.slice(i.en, i.pt), pt: texto.slice(i.pt) };
+  return Object.fromEntries(Object.entries(tramo).map(([l, t]) => [l, Object.fromEntries([...t.matchAll(/'([a-zA-Z0-9.]+)':\s*'((?:[^'\\]|\\.)*)'/g)].map((m) => [m[1], m[2].replace(/\\'/g, "'")]))]));
+};
+const sitio = tabla('src/i18n/strings.ts');
+const ajolotes = tabla('src/components/ajolotes/strings.ts');
+const CLAVES = [[sitio, 'ajolotes.title', 'titulo'], [sitio, 'ajolotes.subtitle', 'subtitulo'], [sitio, 'ajolotes.cta', 'boton'],
+  [ajolotes, 'cover.title', 'titulo'], [ajolotes, 'cover.sub', 'subtitulo'], [ajolotes, 'cover.lead', 'entrada'], [ajolotes, 'cover.preguntas', 'preguntas'],
+  [ajolotes, 'cover.fuente', 'fuente'], [ajolotes, 'modal.status.vivo', 'vivo'], [ajolotes, 'bajas.status', 'baja'], [ajolotes, 'pm.custody', 'postmortem']];
+for (const l of ['es', 'en', 'pt']) {
+  for (const [t, clave, pieza] of CLAVES) ok(t[l][clave] === COPIA[pieza][l], `${l} ${clave} es la copia aprobada`);
+}
+const CUSTODIA = /custodi|custody|custódia/i;
+const ESTADO_SUELTO = /^(vivo|viva|alive|en cuarentena|in quarantine|em quarentena)$/i;
+for (const [nombre, t] of [['i18n/strings.ts', sitio], ['ajolotes/strings.ts', ajolotes]]) {
+  for (const l of ['es', 'en', 'pt']) {
+    const malas = Object.entries(t[l]).filter(([, v]) => CUSTODIA.test(v)).map(([k]) => k);
+    ok(malas.length === 0, `${nombre} ${l}: ninguna cadena dice «custodia»${malas.length ? `: ${malas.join(', ')}` : ''}`);
+    const sueltas = Object.entries(t[l]).filter(([, v]) => ESTADO_SUELTO.test(v.trim())).map(([k]) => k);
+    ok(sueltas.length === 0, `${nombre} ${l}: ningún estado en presente${sueltas.length ? `: ${sueltas.join(', ')}` : ''}`);
+  }
+}
+const survivalTs = readFileSync(join(SITE, 'src/lib/survival.ts'), 'utf8');
+for (const l of ['es', 'en', 'pt']) ok(survivalTs.includes(`'${COPIA.nota[l].replace(/'/g, "\\'")}'`), `${l}: la nota de supervivencia es la aprobada`);
+if (process.argv.includes('--dist')) {
+  const PAGINAS = { es: 'xolotlcalli/ajolotes/index.html', en: 'en/xolotlcalli/ajolotes/index.html', pt: 'pt/xolotlcalli/ajolotes/index.html' };
+  const texto = (html) => html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, '&').replace(/\s+/g, ' ');
+  for (const [l, pag] of Object.entries(PAGINAS)) {
+    const ruta = join(SITE, 'dist', pag);
+    const t = existsSync(ruta) ? texto(readFileSync(ruta, 'utf8')) : '';
+    for (const pieza of ['titulo', 'subtitulo', 'entrada', 'preguntas', 'fuente']) ok(t.includes(COPIA[pieza][l]), `dist/${pag}: lleva ${pieza}`);
+  }
+  for (const pag of [...Object.values(PAGINAS), 'index.html', 'en/index.html', 'pt/index.html', 'xolotlcalli/index.html', 'en/xolotlcalli/index.html', 'pt/xolotlcalli/index.html']) {
+    const ruta = join(SITE, 'dist', pag);
+    if (!existsSync(ruta)) { ok(false, `dist/${pag} existe`); continue; }
+    let t = texto(readFileSync(ruta, 'utf8'));
+    for (const l of ['es', 'en', 'pt']) t = t.split(COPIA.nota[l]).join(' ');
+    ok(!CUSTODIA.test(t), `dist/${pag}: «custodia» sólo aparece dentro de la nota de supervivencia`);
+    ok(!/>\s*(Vivo|Viva|Alive)\s*</.test(readFileSync(ruta, 'utf8')), `dist/${pag}: ningún estado «Vivo» suelto`);
+  }
+}
+
 console.log(fallos ? `\n${fallos} FALLOS` : '\nTODO VERDE');
 process.exit(fallos ? 1 : 0);

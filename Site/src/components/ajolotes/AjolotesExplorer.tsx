@@ -14,6 +14,7 @@ import EjemplarTable from './EjemplarTable';
 import BajasView from './BajasView';
 import EjemplarModal from './EjemplarModal';
 import TweaksPanel from './TweaksPanel';
+import { s } from './strings';
 import { useBackToClose } from '../useBackToClose';
 
 interface Props {
@@ -371,6 +372,8 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
           baja={active.baja ?? null}
         />
       )}
+
+      <p class="mx-auto max-w-[1240px] px-4 pb-10 pt-6 text-xs text-[var(--wq-ink-muted)] sm:px-6">{s(locale, 'cover.fuente')}</p>
 
       <TweaksPanel
         locale={locale}

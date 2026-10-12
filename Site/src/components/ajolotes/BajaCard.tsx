@@ -94,7 +94,7 @@ export default function BajaCard({ baja, bundle, locale, onSelect }: Props) {
             <span class="shrink-0 text-sm" aria-hidden="true">🕯️</span>
           </h3>
           <p class="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-[var(--wq-ink-muted)]">
-            <span class="font-mono font-semibold text-[var(--wq-ink)]">{baja.fecha || '—'}</span>
+            <span class="font-mono font-semibold text-[var(--wq-ink)]">{baja.fecha ? s(locale, 'bajas.status').replace('{fecha}', baja.fecha) : '—'}</span>
             {baja.edad && <span class="opacity-50" aria-hidden="true">·</span>}
             {baja.edad && <span>{baja.edad}</span>}
           </p>

@@ -46,6 +46,8 @@ export default function CoverHeader({
         <p class="m-0 max-w-[56ch] font-body text-sm text-[var(--wq-ink)]/70">
           {s(locale, 'cover.sub')}
         </p>
+        <p class="m-0 mt-2 max-w-[56ch] font-body text-sm text-[var(--wq-ink)]/70">{s(locale, 'cover.lead')}</p>
+        <p class="m-0 mt-1 max-w-[56ch] font-body text-sm text-[var(--wq-ink)]/70">{s(locale, 'cover.preguntas')}</p>
         <a
           href={waterPath}
           class="mt-3.5 inline-flex items-center gap-1 rounded-full border border-[var(--wq-divider)] px-3.5 py-1.5 text-sm text-[var(--wq-ink)] transition-colors duration-200 hover:bg-[var(--wq-row-bg)]"
