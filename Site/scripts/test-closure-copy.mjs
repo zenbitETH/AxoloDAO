@@ -119,6 +119,7 @@ if (process.argv.includes('--dist')) {
     const ruta = join(SITE, 'dist', pag);
     const encabezado = existsSync(ruta) ? /<header[\s\S]*?<\/header>/.exec(readFileSync(ruta, 'utf8'))?.[0] ?? '' : '';
     ok(encabezado.length > 0 && !/href="[^"]*\/xolotlcalli\//.test(encabezado), `dist/${pag}: el encabezado no lleva enlace a /xolotlcalli/`);
+    ok(encabezado.length > 0 && !/href="[^"]*\/conceptos\//.test(encabezado), `dist/${pag}: el encabezado no lleva enlace a /conceptos/`);
   }
   for (const pag of ['index.html', 'en/index.html', 'pt/index.html']) {
     const ruta = join(SITE, 'dist', pag);
@@ -127,6 +128,7 @@ if (process.argv.includes('--dist')) {
     ok(portada.length > 0 && !/href="[^"]*\/xolotlcalli\/ajolotes\//.test(portada), `dist/${pag}: la portada no lleva el botón a los ejemplares en custodia`);
   }
   ok(existsSync(join(SITE, 'dist/xolotlcalli/index.html')) && existsSync(join(SITE, 'dist/xolotlcalli/ajolotes/index.html')), 'las páginas /xolotlcalli/ y /xolotlcalli/ajolotes/ siguen construyéndose');
+  ok(['conceptos/index.html', 'en/conceptos/index.html', 'pt/conceptos/index.html'].every((p) => existsSync(join(SITE, 'dist', p))), 'la página /conceptos/ sigue construyéndose en los tres idiomas');
   console.log('\n· el sitio construido no nombra a Ndali ni tiene la sección de nodos');
   const enDist = [];
   const recorrer = (d) => { for (const n of readdirSync(d)) { const r = join(d, n); statSync(r).isDirectory() ? recorrer(r) : enDist.push(r); } };
