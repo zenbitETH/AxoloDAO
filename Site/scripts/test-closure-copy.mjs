@@ -138,9 +138,12 @@ if (process.argv.includes('--dist')) {
   const TEXTO = /\.(html|js|mjs|css|json|xml|txt|svg|webmanifest)$/i;
   const conTexto = enDist.filter((r) => TEXTO.test(r) && /ndali/i.test(readFileSync(r, 'utf8')));
   ok(conTexto.length === 0, `ningún archivo de dist dice «ndali»${conTexto.length ? `: ${conTexto.map((r) => r.slice(SITE.length + 1)).join(', ')}` : ''}`);
+  const suscripcion = enDist.filter((r) => /\.(html|js|mjs)$/i.test(r) && /xovi[a-z.]*\/(?:suscribete|subscribe)/i.test(readFileSync(r, 'utf8')));
+  ok(suscripcion.length === 0, `ningún archivo de dist enlaza a la suscripción de Xovi${suscripcion.length ? `: ${suscripcion.map((r) => r.slice(SITE.length + 1)).join(', ')}` : ''}`);
   for (const pag of ['index.html', 'en/index.html', 'pt/index.html']) {
     const html = readFileSync(join(SITE, 'dist', pag), 'utf8');
     ok(!/id="members"/.test(html) && !/Nodos de AxoloDAO|AxoloDAO nodes|Nós da AxoloDAO/.test(html), `dist/${pag}: sin la sección «Nodos de AxoloDAO»`);
+    ok(!/id="supporters"/.test(html) && !/Aliados y Guardianes|Allies and Guardians|Aliados e Guardiões/.test(html), `dist/${pag}: sin la sección «Aliados y Guardianes»`);
   }
   console.log('\n· la tasa de la página construida es la de los datos');
   const pagina = join(SITE, 'dist/xolotlcalli/index.html');
