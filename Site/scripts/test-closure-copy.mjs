@@ -22,9 +22,9 @@ const COPIA = {
   "pt": "Biometria, histórico médico e alimentação de cada exemplar."
  },
  "entrada": {
-  "es": "Gracias a todas las personas que lo visitaron.",
-  "en": "Thank you to everyone who visited.",
-  "pt": "Obrigado a todas as pessoas que o visitaram."
+  "es": "Gracias a todas las personas que visitaron el museo.",
+  "en": "Thank you to everyone who visited the museum.",
+  "pt": "Obrigado a todas as pessoas que visitaram o museu."
  },
  "preguntas": {
   "es": "Las preguntas sobre los ejemplares o sobre el cierre las atiende el propio museo.",
@@ -57,9 +57,9 @@ const COPIA = {
   "pt": "Sobrevivência de 24 de outubro de 2025, dia da abertura, a 25 de setembro de 2026: proporção de exemplares vivos entre os incluídos no registro do museu. Inclui um óbito em 23 de setembro de 2026, ocorrido após o fechamento ao público (22 de setembro), com os exemplares sob os cuidados do museu."
  },
  "fuente": {
-  "es": "Fuente: Museo de Ajolotes Xolotlcalli",
-  "en": "Source: Museo de Ajolotes Xolotlcalli",
-  "pt": "Fonte: Museo de Ajolotes Xolotlcalli"
+  "es": "Fuente: Museo de Ajolotes Xolotlcalli (2025–2026)",
+  "en": "Source: Museo de Ajolotes Xolotlcalli (2025–2026)",
+  "pt": "Fonte: Museo de Ajolotes Xolotlcalli (2025–2026)"
  },
  "titulo_corto": {
   "es": "Registro de ejemplares (2025–2026)",
@@ -292,6 +292,8 @@ if (process.argv.includes('--dist')) {
     const veces = (t.match(/Museo de Ajolotes Xolotlcalli/g) ?? []).length;
     ok(veces <= 1, `dist/${pag}: el nombre del museo aparece ${veces} ${veces === 1 ? 'vez' : 'veces'}`);
     if (/ajolotes/.test(pag)) ok(!/\(\?\)/.test(t) && !/SEMARNAT ID/.test(t), `dist/${pag}: las tarjetas no dicen «(?)» ni «SEMARNAT ID»`);
+    if (/ajolotes/.test(pag)) ok(/(Fuente|Source|Fonte): Museo de Ajolotes Xolotlcalli \(2025–2026\)/.test(t), `dist/${pag}: la fuente al pie lleva los años (atribución de la cláusula SEXTA)`);
+    ok(!/\b\d+ (de|of) \d+ (vivos|alive)(?! (al|on|em) 25)/.test(t), `dist/${pag}: «vivos» siempre con su fecha`);
   }
 }
 
