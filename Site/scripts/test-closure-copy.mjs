@@ -115,6 +115,19 @@ if (existsSync(join(dist, 'xolotlcalli/ajolotes/index.html'))) {
 // Una sola cifra: la que dibuja la página del cierre es la que sale de los datos, con su método y su corte al lado.
 // Con --dist lee la página construida (npm run build antes); sin dist construido, --dist falla.
 if (process.argv.includes('--dist')) {
+  console.log('\n· el encabezado ya no enlaza a Xolotlcalli (las páginas siguen)');
+  for (const pag of ['index.html', 'en/index.html', 'pt/index.html']) {
+    const ruta = join(SITE, 'dist', pag);
+    const encabezado = existsSync(ruta) ? /<header[\s\S]*?<\/header>/.exec(readFileSync(ruta, 'utf8'))?.[0] ?? '' : '';
+    ok(encabezado.length > 0 && !/href="[^"]*\/xolotlcalli\//.test(encabezado), `dist/${pag}: el encabezado no lleva enlace a /xolotlcalli/`);
+  }
+  for (const pag of ['index.html', 'en/index.html', 'pt/index.html']) {
+    const ruta = join(SITE, 'dist', pag);
+    const html = existsSync(ruta) ? readFileSync(ruta, 'utf8') : '';
+    const portada = /<section[^>]*>(?:(?!<\/section>)[\s\S])*?hero-subtitle[\s\S]*?<\/section>/.exec(html)?.[0] ?? '';
+    ok(portada.length > 0 && !/href="[^"]*\/xolotlcalli\/ajolotes\//.test(portada), `dist/${pag}: la portada no lleva el botón a los ejemplares en custodia`);
+  }
+  ok(existsSync(join(SITE, 'dist/xolotlcalli/index.html')) && existsSync(join(SITE, 'dist/xolotlcalli/ajolotes/index.html')), 'las páginas /xolotlcalli/ y /xolotlcalli/ajolotes/ siguen construyéndose');
   console.log('\n· la tasa de la página construida es la de los datos');
   const pagina = join(SITE, 'dist/xolotlcalli/index.html');
   ok(existsSync(pagina), 'dist/xolotlcalli/index.html existe (corre el build antes)');
