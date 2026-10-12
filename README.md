@@ -146,14 +146,12 @@ AxoloDAO operates through ENS-based identities and modular organizational nodes.
 | [axolodao.eth](https://app.ens.domains/axolodao.eth) | resolve via ENS | Primary administrative identity |
 | [treasury.axolodao.eth](https://app.ens.domains/treasury.axolodao.eth) | `0xbDF701408aD237faA2d5d3177ae257aF35265dbb` | Safe multisig treasury (OP Mainnet) |
 | [zenbit.axolodao.eth](https://app.ens.domains/zenbit.axolodao.eth) | resolve via ENS | Infrastructure and system design node |
-| [xolotlcalli.axolodao.eth](https://app.ens.domains/xolotlcalli.axolodao.eth) | resolve via ENS | Conservation and biomuseum node |
+| [xolotlcalli.axolodao.eth](https://app.ens.domains/xolotlcalli.axolodao.eth) | resolve via ENS | Conservation and museum node |
 | [ndali.axolodao.eth](https://app.ens.domains/ndali.axolodao.eth) | — | Community articulation and coordination node |
-| [lups-plantae.axolodao.eth](https://app.ens.domains/lups-plantae.axolodao.eth) | — | Additional participant node |
-| [lego-lvsg.axolodao.eth](https://app.ens.domains/lego-lvsg.axolodao.eth) | — | Additional participant node |
 
 The treasury (`treasury.axolodao.eth`) is a Safe multisig on OP Mainnet — 2/3 by internal decision, 2/4
 onchain while the fourth signer is retired. Its transaction history is public and can be read directly from
-the Safe. Zenbit and the AxoloDAO treasury have both funded parts of Biomuseum Xolotlcalli's operational
+the Safe. Zenbit and the AxoloDAO treasury have both funded parts of Museo de Ajolotes Xolotlcalli's operational
 infrastructure onchain; the share is not currently published because no measured, sourced figure exists for
 it.
 
@@ -163,7 +161,7 @@ Three surfaces carry the same record: a public site that renders it, an applicat
 onchain layer that will anchor it.
 
 ```text
- BioMuseo Xolotlcalli ──► operations workbook ──► Site data:* scripts ──► axolodao.org
+ Museo de Ajolotes Xolotlcalli ──► operations workbook ──► Site data:* scripts ──► axolodao.org
    tanks · specimens                                                       (public record)
         │
         └── daily 9:00–21:00 stream ──► Xovi · xovi.axolodao.org ──► operator + verifier queues
@@ -175,7 +173,7 @@ onchain layer that will anchor it.
 ```
 
 **The site is the render source of truth.** Every public **operational** figure on axolodao.org — water
-quality, the bitácora and the specimen roster — is generated from the Biomuseo's operations workbook by the
+quality, the bitácora and the specimen roster — is generated from the Museo de Ajolotes Xolotlcalli's operations workbook by the
 `data:water`, `data:ajolotes` and `data:ops` scripts in `Site/scripts/` and committed as JSON — the
 build never reaches a live database. Today that is 1,128 water-quality measurements (source:
 `Site/public/data/water-quality/measurements-all.json`, measured 2026-09-02), 1,229 operations-log entries
@@ -185,7 +183,7 @@ forms, no accounts, no wallet connection. See [`Site/README.md`](./Site/README.m
 inputs and their outputs.
 
 **Xovi captures observations.** [xovi.axolodao.org](https://xovi.axolodao.org/) is the interaction layer
-over the biomuseum's daily livestream, 9:00 to 21:00 (Mexico City), with recordings available any time:
+over the museum's daily livestream, 9:00 to 21:00 (Mexico City), with recordings available any time:
 operators record water cycles and readings, viewers submit clips of axolotl behaviour, and human verifiers
 confirm them before anything is treated as a fact. Machine-produced values enter as *proposals*, never as
 confirmed records. Xovi is pre-launch; no XOVI token has been issued and no Xovi-specific contract is
@@ -213,7 +211,7 @@ Digital public infrastructure contributor and system design lead.
 
 ---
 
-### Xolotlcalli BioMuseum / [`xolotlcalli.axolodao.eth`](https://app.ens.domains/xolotlcalli.axolodao.eth)
+### Museo de Ajolotes Xolotlcalli / [`xolotlcalli.axolodao.eth`](https://app.ens.domains/xolotlcalli.axolodao.eth)
 Conservation and field-practice node connected to biodiversity operations.
 
 - [Instagram](https://www.instagram.com/axolodao/)
@@ -231,8 +229,6 @@ Community articulation and stakeholder coordination node.
 
 ### Additional Onchain Participants
 
-- [`lups-plantae.axolodao.eth`](https://app.ens.domains/lups-plantae.axolodao.eth)
-- [`lego-lvsg.axolodao.eth`](https://app.ens.domains/lego-lvsg.axolodao.eth)
 
 
 ## 🏫 8. Offchain Affiliations & Collaborations

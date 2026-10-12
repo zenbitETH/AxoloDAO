@@ -163,9 +163,9 @@
     "volumeL": null,
     "primary": true,
     "note": {
-      "es": "Acuario de larvas de A. mexicanum; umbrales compartidos con AM",
-      "en": "A. mexicanum larvae aquarium; thresholds shared with AM",
-      "pt": "Aquário de larvas de A. mexicanum; limiares compartilhados com AM"
+      "es": "Acuario de larvas de A. mexicanum; rangos de referencia compartidos con AM",
+      "en": "A. mexicanum larvae aquarium; reference ranges shared with AM",
+      "pt": "Aquário de larvas de A. mexicanum; faixas de referência compartilhadas com AM"
     },
     "accentColor": "#2C5F7C",
     "system": null

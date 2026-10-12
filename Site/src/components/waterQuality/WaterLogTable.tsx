@@ -25,12 +25,6 @@ const PARAM_SHORT: Record<ParamKey, string> = {
 
 const SPECIES_ACCENT: Record<string, string> = { AA: '#B87333', AM: '#2C5F7C', AD: '#3E6B4A' };
 
-// Full ENS author, never stripped (e.g. "lups-plantae.axolodao.eth").
-function authorName(a: string | null | undefined): string {
-  const v = (a ?? '').trim();
-  return v || '—';
-}
-
 // A scannable, paginated log of weekly water tests and water-change events —
 // the ajolotes list view's counterpart for the tanks.
 export default function WaterLogTable({ locale, tanks, measurements, bitacora }: Props) {
@@ -104,11 +98,6 @@ export default function WaterLogTable({ locale, tanks, measurements, bitacora }:
       </span>
     </td>
   );
-  const autorCell = (autor: string | null | undefined) => (
-    <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-3 py-2 font-mono text-[11px] text-[var(--wq-ink-muted)]">
-      {authorName(autor)}
-    </td>
-  );
   const th = (label: string, opts: { first?: boolean; num?: boolean } = {}) => (
     <th
       class={`whitespace-nowrap border-b border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-3 py-2.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)] ${
@@ -151,7 +140,6 @@ export default function WaterLogTable({ locale, tanks, measurements, bitacora }:
               {isTests
                 ? activeParams.map((k) => th(PARAM_SHORT[k], { num: true }))
                 : th(t.logColAction)}
-              {th(t.logColAuthor)}
             </tr>
           </thead>
           <tbody>
@@ -184,7 +172,6 @@ export default function WaterLogTable({ locale, tanks, measurements, bitacora }:
                       </td>
                     );
                   })}
-                  {autorCell(m.authors?.main)}
                 </tr>
               ))
             ) : (
@@ -193,7 +180,6 @@ export default function WaterLogTable({ locale, tanks, measurements, bitacora }:
                   {dateCell(c.date)}
                   {peceraCell(c.ubic, accentFor(c.ubic))}
                   <td class="border-b border-[var(--wq-divider)] px-3 py-2 text-[var(--wq-ink)]/80">{c.accion}</td>
-                  {autorCell(c.autor)}
                 </tr>
               ))
             )}

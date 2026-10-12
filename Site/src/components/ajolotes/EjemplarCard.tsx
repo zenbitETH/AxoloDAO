@@ -88,9 +88,9 @@ export default function EjemplarCard({ ej, theme, locale, emphasis = 'neutral', 
       <div class="flex flex-col gap-1.5 p-4">
         <h3 class="m-0 flex items-baseline justify-between gap-2 font-display text-[1.15rem] font-bold leading-tight tracking-tight text-[var(--wq-ink)]">
           <span class="min-w-0 truncate">{ej.alias}</span>
-          <span class={GENDER_CLASS[sym]} title={gTitle} aria-label={gTitle}>
+          {sym !== '(?)' && (<span class={GENDER_CLASS[sym]} title={gTitle} aria-label={gTitle}>
             {sym}
-          </span>
+          </span>)}
         </h3>
         {ej.fenotipo && (
           <p class="m-0 truncate text-xs italic text-[var(--wq-ink-muted)]">
@@ -117,9 +117,6 @@ export default function EjemplarCard({ ej, theme, locale, emphasis = 'neutral', 
             class="aj-semarnat mt-0.5 flex w-full items-center gap-1.5 whitespace-nowrap rounded border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-2 py-1"
             title={s(locale, 'card.semarnat.tooltip')}
           >
-            <span class="shrink-0 text-[9px] font-semibold uppercase tracking-[0.04em] text-[var(--wq-ink-muted)]">
-              {s(locale, 'card.semarnat')}
-            </span>
             <span class="ml-auto font-mono font-semibold leading-none tracking-[-0.02em] text-[var(--wq-ink)]">
               {ej.id}
             </span>

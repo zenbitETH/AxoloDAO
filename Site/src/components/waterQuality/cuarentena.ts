@@ -16,7 +16,6 @@ export interface CuarentenaResident {
 // mapping easy to verify.
 const HOME_TANK_BY_ALIAS: Record<string, string> = {
   Panchita: 'AA',
-  Rómulo: 'AD',
 };
 
 export function residentsInCuarentena(ejemplares: Ejemplar[]): CuarentenaResident[] {

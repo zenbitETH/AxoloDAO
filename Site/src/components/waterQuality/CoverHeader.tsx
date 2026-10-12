@@ -50,7 +50,7 @@ export default function CoverHeader({
       <div class="flex min-w-0 flex-col items-center text-center sm:items-start sm:text-left">
         <div
           class="wq-logo-mark text-choco dark:text-cream/90"
-          aria-label="Biomuseo Xolotlcalli"
+          aria-label="Museo de Ajolotes Xolotlcalli"
           dangerouslySetInnerHTML={{ __html: logoSvg }}
         />
         <h1 class="mt-3 font-display text-2xl text-[var(--wq-ink)] sm:text-3xl">{title}</h1>

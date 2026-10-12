@@ -6,7 +6,6 @@ interface Props { locale: Locale }
 const { locale } = Astro.props;
 
 const xolotlcalliPath = t(locale, 'xolotlcalli.path');
-const ajolotesPath = t(locale, 'ajolotes.path');
 ---
 
 <HeroParallax client:idle />
@@ -28,9 +27,6 @@ const ajolotesPath = t(locale, 'ajolotes.path');
       <div class="flex flex-wrap items-center justify-center gap-3">
         <a href={xolotlcalliPath} class="btn-secondary btn-secondary--compact">
           {t(locale, 'hero.cta.xolotlcalli')}
-        </a>
-        <a href={ajolotesPath} class="btn-secondary btn-secondary--compact">
-          {t(locale, 'hero.cta.ajolotes')}
         </a>
       </div>
     </div>

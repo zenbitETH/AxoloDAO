@@ -81,7 +81,7 @@ export function fromHistorial(
     title,
     detail: h.tipo ?? null,
     notes: h.notas,
-    authors: { main: h.autor, secondary: h.autor2 },
+    authors: { main: null, secondary: null },
     raw: h,
   };
 }
@@ -119,7 +119,7 @@ export function fromTerapeutica(
     title: truncate(title),
     detail,
     notes: t.observaciones,
-    authors: { main: t.autor, secondary: t.autor2 },
+    authors: { main: null, secondary: null },
     raw: t,
   };
 }
@@ -151,7 +151,7 @@ export function fromBitacora(b: BitacoraEntry, idx: number): TimelineEvent {
     title: truncate(title),
     detail,
     notes: b.notas,
-    authors: { main: b.autorPrincipal, secondary: b.autorSecundario },
+    authors: { main: null, secondary: null },
     raw: b,
   };
 }

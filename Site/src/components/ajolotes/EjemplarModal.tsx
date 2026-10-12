@@ -164,19 +164,19 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
                 {/* Wraps instead of squeezing: on a phone the badge drops below the name
                     rather than truncating the name to nothing. */}
                 <span class="min-w-0 max-w-full truncate">{ej.alias}</span>
-                <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)} aria-label={genderTitle(locale, ej.genero)}>
+                {sym !== '(?)' && (<span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)} aria-label={genderTitle(locale, ej.genero)}>
                   {sym}
-                </span>
+                </span>)}
                 {memorial ? (
                   <span class="inline-flex items-center gap-1.5 self-center whitespace-nowrap rounded-full border border-[#8B6F47]/50 bg-[#8B6F47]/15 px-2.5 py-1 font-display text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#8B6F47]">
                     <span aria-hidden="true">🕯️</span>
-                    {s(locale, 'modal.memorial.badge')}
+                    {baja?.fecha ? s(locale, 'bajas.status').replace('{fecha}', baja.fecha) : s(locale, 'modal.memorial.badge')}
                   </span>
-                ) : (ej.pecera ?? '').trim() === 'Cuarentena' ? (
-                  <span class="aj-ribbon aj-state-pulse inline-flex items-center self-center whitespace-nowrap rounded-full bg-rosa px-2.5 py-1 font-display text-[10px] font-extrabold uppercase tracking-[0.12em] text-marfil shadow-[0_4px_10px_rgba(7,31,41,0.4)]">
-                    {s(locale, 'modal.ribbon.cuarentena')}
+                ) : (
+                  <span class="inline-flex items-center self-center whitespace-nowrap rounded-full border border-[var(--wq-divider)] px-2.5 py-1 font-display text-[10px] font-bold text-[var(--wq-ink-muted)]">
+                    {s(locale, 'modal.status.vivo')}
                   </span>
-                ) : null}
+                )}
               </h2>
               {ej.fenotipo && (
                 <p class="m-0 mt-1 truncate text-xs italic text-[var(--wq-ink-muted)] sm:text-sm">
@@ -383,14 +383,6 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
             />
             {s(locale, 'modal.foot.att')}
           </span>
-          {/* Not on memorial profiles: the postmortem names no person, and the
-              forensic projection maps this ENS to a role (operación). */}
-          {!memorial && (
-            <span>
-              {s(locale, 'modal.foot.curador')}:{' '}
-              <code class="font-mono text-teal">lups-plantae.axolodao.eth</code>
-            </span>
-          )}
         </div>
       </div>
     </div>

@@ -274,17 +274,6 @@
   border-color: rgb(0 110 110 / 0.55);
 }
 
-/* Member logos: xolotlcalli and ndali ship with white fills; invert on light mode so they
-   contrast with the light card/modal surfaces. Zenbit has its own palette and is left alone. */
-[data-theme="light"] img.member-card-logo[data-slug="xolotlcalli"],
-[data-theme="light"] img.member-card-logo[data-slug="ndali"] {
-  filter: invert(1) brightness(0.18);
-}
-[data-theme="light"] img.member-modal-logo[data-slug="xolotlcalli"],
-[data-theme="light"] img.member-modal-logo[data-slug="ndali"] {
-  filter: invert(1) brightness(0.18);
-}
-
 /* Hero parallax — gentle float + glow pulse. Light mode skips the glow keyframes
    because they would overwrite the invert() filter that keeps the silhouette
    readable on the cream background. */

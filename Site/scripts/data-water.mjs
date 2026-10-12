@@ -3,7 +3,7 @@
  * data-water.mjs
  *
  * Reads the operations workbook (path from the AXOLODAO_XLSX env var, maintained
- * by the Biomuseo Xolotlcalli team) and emits JSON for the water-quality dashboard:
+ * by the Museo de Ajolotes Xolotlcalli team) and emits JSON for the water-quality dashboard:
  *
  *   Site/src/data/water-quality/tanks.json
  *   Site/src/data/water-quality/parameters.json
@@ -33,6 +33,15 @@ import {
 import { isReaderBotAuthor } from './lib/reader-bot.mjs';
 import { SWAP_PARAM, findLabelSwaps } from './lib/label-swaps.mjs';
 import { findOutOfOrderRows } from './lib/date-order.mjs';
+
+// Personal data never reaches a published file (founder, 7-oct): authors, staff names, person ENS names, emails, phones and wallets are
+// removed or replaced. The list of staff names lives in a private file (AXOLODAO_PERSONAS_PRIVADAS), not in this repository.
+const { limpiarValor, huellasDePersonas, leerPersonasPrivadas } = await import('./lib/limpiar-personas.mjs');
+// (The test harness of this script sets DATA_WATER_KEEP_NOTES_FOR_TESTS and inspects the authors of the rows it publishes: it is the only
+// run that skips the cleaning.)
+const paraPruebas = Boolean(process.env.DATA_WATER_KEEP_NOTES_FOR_TESTS) || process.argv.includes('--solo-para-pruebas');
+const huellasDePersonal = paraPruebas ? new Set() : huellasDePersonas(leerPersonasPrivadas(process.env.AXOLODAO_PERSONAS_PRIVADAS)).huellas;
+const limpio = (v) => (paraPruebas ? v : limpiarValor(v, huellasDePersonal));
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
@@ -102,12 +111,12 @@ const AM_UNIFICATION_NOTE = {
 
 // AM Larvas is the A. mexicanum larvae aquarium. The curators began logging its
 // water quality in 2026-W24 but it has no rows of its own in the catalog/systems
-// sheets, so it inherits the unified AM thresholds (same species) — see the
+// sheets, so it inherits the unified AM reference ranges (same species) — see the
 // AM → AM Larvas catalog mirror below. Volume is unset until the team adds it.
 const AM_LARVAS_NOTE = {
-  es: 'Acuario de larvas de A. mexicanum; umbrales compartidos con AM',
-  en: 'A. mexicanum larvae aquarium; thresholds shared with AM',
-  pt: 'Aquário de larvas de A. mexicanum; limiares compartilhados com AM',
+  es: 'Acuario de larvas de A. mexicanum; rangos de referencia compartidos con AM',
+  en: 'A. mexicanum larvae aquarium; reference ranges shared with AM',
+  pt: 'Aquário de larvas de A. mexicanum; faixas de referência compartilhadas com AM',
 };
 
 // Single source of truth for tank metadata. Subsystems (AD 1.x, AM 1.x, AM 2.x)
@@ -159,7 +168,7 @@ function normalizeTankId(raw, isoDate) {
   // no word boundary between "D" and a digit, so it silently dropped those rows.
   if (/^AD(\b|\d)/.test(compact)) return 'AD';
 
-  // A. mexicanum larvae aquarium: its own series with AM thresholds (catalog mirror).
+  // A. mexicanum larvae aquarium: its own series with the AM reference ranges (catalog mirror).
   if (/^AM\s*LARVAS?$/.test(compact)) return 'AM Larvas';
 
   const post = isoDate >= AM_UNIFICATION;
@@ -376,7 +385,13 @@ const IDX = {
   min:     idxOf('mínimo'),
   max:     idxOf('máximo'),
   target:  idxOf('objetivo'),
+  fuente:  idxOf('fuente'),
 };
+
+// Every range cites where it comes from (literature or the museum's protocol).
+// A row whose sheet cell is empty carries the pilot's own label instead, so no
+// range is shown as if it had a reference it does not have.
+const FUENTE_POR_DEFECTO = 'referencia operativa del piloto';
 
 // The catalog lists some entries under subsystem IDs (e.g. AM 1, AM 2 are
 // already canonical). We normalize to the same logical tank space as
@@ -406,6 +421,7 @@ for (let r = dataStartIdx; r < catalogRows.length; r++) {
     min: parseNumber(row[IDX.min]),
     max: parseNumber(row[IDX.max]),
     target: parseNumber(row[IDX.target]),
+    fuente: (IDX.fuente >= 0 ? (row[IDX.fuente] ?? '').toString().trim() : '') || FUENTE_POR_DEFECTO,
   });
 }
 
@@ -437,72 +453,8 @@ console.log(`[data-water] parameters.json: ${parameters.length} catalog entries`
 const catalogLookup = new Map();
 for (const p of parameters) catalogLookup.set(`${p.tankId}|${p.key}`, { min: p.min, max: p.max });
 
-// --- Dashboard calidad de agua (curator-blessed summary) -------------------
-// `Estado Clínico` carries species-specific clinical judgment beyond the
-// catalog's min/max thresholds (e.g., a high NO3 that's clinically OK for
-// dumerilii but alarming for andersoni). Ingest as-is, do not recompute.
-// ID-sistemas is sticky: forward-fill from the previous non-empty row.
-const dashSheet = wb.Sheets['Dashboard calidad de agua'];
-const dashboardAgua = [];
-const estadoSet = new Set();
-if (dashSheet) {
-  const dashRowsRaw = XLSX.utils.sheet_to_json(dashSheet, { header: 1, defval: null, raw: true, blankrows: false });
-  const dashHdrIdx = findHeaderRow(dashRowsRaw, ['id-sistemas', 'parámetro', 'estado clínico']);
-  if (dashHdrIdx < 0) {
-    console.warn('[data-water] Dashboard calidad de agua: header row not found, skipping ingestion');
-  } else {
-    const dashHdr = dashRowsRaw[dashHdrIdx];
-    const G = {
-      tankId:        indexOfHeader(dashHdr, 'id-sistemas'),
-      species:       indexOfHeader(dashHdr, 'especie'),
-      param:         indexOfHeader(dashHdr, 'parámetro'),
-      unit:          indexOfHeader(dashHdr, 'unidad'),
-      rangeSafe:     indexOfHeader(dashHdr, 'rango seguro'),
-      promedio:      indexOfHeader(dashHdr, 'promedio'),
-      ultima:        indexOfHeader(dashHdr, 'última medición'),
-      estado:        indexOfHeader(dashHdr, 'estado clínico'),
-      min:           indexOfHeader(dashHdr, 'mínimo'),
-      max:           indexOfHeader(dashHdr, 'máximo'),
-    };
-    let stickyTankRaw = null;
-    for (let r = dashHdrIdx + 1; r < dashRowsRaw.length; r++) {
-      const row = dashRowsRaw[r];
-      if (!row || row.every((c) => c == null || c === '')) continue;
-      const rawId = (row[G.tankId] ?? '').toString().trim();
-      if (rawId) stickyTankRaw = rawId;
-      if (!stickyTankRaw) continue;
-      const tankId = normalizeCatalogTankId(stickyTankRaw);
-      if (!tankId || !TANK_META[tankId]) continue;
-      const paramKey = paramKeyFromName(row[G.param]);
-      if (!paramKey) {
-        console.warn(`[data-water] dashboard-agua: skipping unknown parameter "${row[G.param]}" on row ${r + 1}`);
-        continue;
-      }
-      const estado = (row[G.estado] ?? '').toString().trim() || null;
-      if (estado) estadoSet.add(estado);
-      dashboardAgua.push({
-        tankId,
-        speciesCode: speciesCodeFrom(row[G.species]),
-        paramKey,
-        unit: (row[G.unit] ?? '').toString().trim() || null,
-        rangeSafe: (row[G.rangeSafe] ?? '').toString().trim() || null,
-        promedioHistorico: parseNumber(row[G.promedio]),
-        ultimaMedicion: parseNumber(row[G.ultima]),
-        estadoClinico: estado,
-        limiteMin: parseNumber(row[G.min]),
-        limiteMax: parseNumber(row[G.max]),
-      });
-    }
-  }
-} else {
-  console.warn('[data-water] Sheet "Dashboard calidad de agua" not found, skipping ingestion');
-}
-writeFileSync(
-  join(CONTENT_OUT, 'dashboard-agua.json'),
-  JSON.stringify(dashboardAgua, null, 2) + '\n',
-);
-console.log(`[data-water] dashboard-agua.json: ${dashboardAgua.length} entries`);
-if (estadoSet.size) console.log(`[data-water]   distinct estadoClinico values: ${[...estadoSet].join(' | ')}`);
+// El «Dashboard calidad de agua» del libro no se ingiere: es una hoja derivada cuyas consultas llevan la letra de una columna
+// y que publicó conductividad como fosfato. Las lecturas salen sólo de «Calidad de agua», por encabezado.
 
 // --- Measurements (Calidad de agua) ----------------------------------------
 const measSheet = wb.Sheets['Calidad de agua'];
@@ -548,7 +500,7 @@ if (IDX_M.pecera < 0) {
   );
 }
 
-// Rows written by the colorimetric reader ("XOVI bot sin Lupita") live in the same tab as
+// Rows written by the colorimetric reader ("XOVI bot") live in the same tab as
 // the curator's readings, but they are UNVERIFIED machine readings (dry-run, station assumed
 // by tube order), so they must never be published as a measurement. They are marked by
 // Autor principal === "XOVI bot". Match ONLY the main author: the verified human rows carry
@@ -641,15 +593,24 @@ for (const c of candidates) {
 
 allMeasurements.sort((a, b) => (a.date + (a.time ?? '')).localeCompare(b.date + (b.time ?? '')));
 
-const mondays = allMeasurements.filter(m => m.isMonday);
+// Los archivos públicos no llevan texto libre: la nota de la hoja puede hablar de la salud de un ejemplar y se queda en la fuente
+// privada (veredicto de maggia IP, 7-oct). Sólo la prueba de las filas sospechosas pide conservarla, para rotular las filas de su
+// libro de muestra con ella; ningún archivo del sitio se escribe con esa variable.
+const KEEP_NOTES = process.env.DATA_WATER_KEEP_NOTES_FOR_TESTS === '1';
+const publicRow = (m) => {
+  if (KEEP_NOTES) return m;
+  const { note, ...rest } = m;
+  return rest;
+};
+const mondays = allMeasurements.filter(m => m.isMonday).map(publicRow);
 
 writeFileSync(
   join(CONTENT_OUT, 'measurements-mondays.json'),
-  JSON.stringify(mondays, null, 2) + '\n'
+  JSON.stringify(limpio(mondays), null, 2) + '\n'
 );
 writeFileSync(
   join(PUBLIC_OUT, 'measurements-all.json'),
-  JSON.stringify(allMeasurements) + '\n'
+  JSON.stringify(limpio(allMeasurements.map(publicRow))) + '\n'
 );
 
 console.log(`[data-water] measurements-mondays.json: ${mondays.length} rows`);

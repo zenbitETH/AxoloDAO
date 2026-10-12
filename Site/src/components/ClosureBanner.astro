@@ -1,47 +1,30 @@
 ---
 import { type Locale, t } from '@/i18n/strings';
-import { CLOSURE, assertBannerMatchesDates } from '@/lib/closure';
+import { CLOSURE, assertClosureCopyIsPast } from '@/lib/closure';
 
 // Shown only on the museum's two pages, the water dashboard and the registry, right
 // under their header blocks: the pages pass it into their islands as a child.
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
-if (CLOSURE.active) assertBannerMatchesDates(locale);
-const show = CLOSURE.active || CLOSURE.quarantine;
+if (CLOSURE.active) assertClosureCopyIsPast(locale);
 ---
 
-{show && (
+{CLOSURE.active && (
   <!-- No role="alert" or aria-live: being in the DOM is enough, and a live region
        would be announced again on every visit. -->
-  <aside
-    class="closure-card mb-6 rounded-2xl px-5 py-4 sm:px-6 print:hidden"
-    aria-label={CLOSURE.quarantine ? t(locale, 'closure.quarantine.aria') : undefined}
-  >
-    {CLOSURE.quarantine && (
-      <p class="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-3">
-        <strong class="font-display text-lg leading-snug">{t(locale, 'closure.quarantine.pill')}</strong>
-        <span class="text-sm">{t(locale, 'closure.quarantine.context')}</span>
-      </p>
-    )}
-    {CLOSURE.active && (
-      <p
-        class:list={[
-          'flex flex-col gap-1 text-sm sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4',
-          CLOSURE.quarantine && 'closure-rule mt-3 pt-3',
-        ]}
+  <aside class="closure-card mb-6 rounded-2xl px-5 py-4 sm:px-6 print:hidden">
+    <p class="flex flex-col gap-1 text-sm sm:flex-row sm:flex-wrap sm:items-baseline sm:gap-x-4">
+      <span>{t(locale, 'closure.banner.text')}</span>
+      <a
+        href="https://xovi.axolodao.org"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="closure-link w-fit font-semibold underline underline-offset-4 focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
       >
-        <span>{t(locale, 'closure.banner.text')}</span>
-        <a
-          href="https://xovi.axolodao.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="closure-link w-fit font-semibold underline underline-offset-4 focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-        >
-          {t(locale, 'closure.banner.link')}
-        </a>
-      </p>
-    )}
+        {t(locale, 'closure.banner.link')}
+      </a>
+    </p>
   </aside>
 )}
 
@@ -61,9 +44,6 @@ const show = CLOSURE.active || CLOSURE.quarantine;
   }
   .closure-link:hover {
     text-decoration-color: #fff;
-  }
-  .closure-rule {
-    border-top: 1px solid rgb(255 255 255 / 0.28);
   }
   /* The whole card pulses: a ring that leaves the card and fades. */
   @keyframes closure-pulse {

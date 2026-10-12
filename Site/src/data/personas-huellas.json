@@ -1,0 +1,30 @@
+{
+  "_nota": "Las huellas (HMAC-SHA256 con una clave fuera del repositorio, de la ficha normalizada) de la lista privada de nombres de personal, para que la prueba de CI los busque en lo publicado. Los nombres no están en el repositorio.",
+  "digest": "945b694a2ddf6a69eb6068ec8946852b72e0a97dc7819ca886446fa5c47954e3",
+  "fichas": 13,
+  "huellas": [
+    "0df607ca2bbb46c6abac71f8eaa11bbf64d0b99b53ed40286c1ade5bb179e549",
+    "0e449045ad917c237d32c04dd79e1a18c3e05fef91b445a5e293e2078a8b6cff",
+    "22e9c5a9f74949bd7d445c700a4ac888fc77c86826d52581f63c6296e5173ac5",
+    "49b0a865be9582002b7fa408a7a7e790d0ce5dc5cf5790a69bf6a7e4f83a89dc",
+    "7cdda8c95326a94c18b6c6cb9dfa533c9161f2559125ebbc71821ec6b10ab47c",
+    "7d67c9e1633a1459c1e45ab9ac45750aace2e2787ee560ddb1626fd49415e2d3",
+    "83dab197cb6f007eb4a453912f1deec0e42aa191907bfd9fc464d491abe8ee5f",
+    "9ad3cd6a300861bfbb3f1d86f0079f803bb3b93e72bcb07df3524e9339e635f1",
+    "9cc103f857fe2178a64fb8833183251cdd24eb10e55baca760a8334b138c0cd0",
+    "a016345717582758484519ce7912e061af9e11aa05d7820e38342abed3b56da9",
+    "bc0b602f961e491e1e4be5564656f349c52a0621c1370e2ea684d38f8914c236",
+    "dbafd9a938824fc88b8dd4e58b95bc99f82df131c2e4852197aa17fa4715eef8",
+    "e9d7cebfc0309c1ffce4df9d47fcfeeaf5b0a1de8c510986cd030270b6a18a94"
+  ],
+  "digestRoles": "21c6c5b2050c680b543d9375a7d9524c7057f9fa4fb9f66577cf6dde52dd5323",
+  "roles": {
+    "host": [
+      "9ad3cd6a300861bfbb3f1d86f0079f803bb3b93e72bcb07df3524e9339e635f1",
+      "a016345717582758484519ce7912e061af9e11aa05d7820e38342abed3b56da9",
+      "dbafd9a938824fc88b8dd4e58b95bc99f82df131c2e4852197aa17fa4715eef8"
+    ],
+    "consentimiento": []
+  },
+  "centinela": "2f70ae9362c6054d13331c17fc78788de7fb4ea3420e7fce10769dc3fd78b3d9"
+}

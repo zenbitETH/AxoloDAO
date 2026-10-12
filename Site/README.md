@@ -17,7 +17,7 @@ GATE (run before any commit to the public repo; must return nothing):
 Astro 5 + Preact + Tailwind. Trilingual (ES default, EN, PT). Static output, deployed on Vercel at
 [axolodao.org](https://axolodao.org).
 
-The site is the **render surface for the Biomuseo Xolotlcalli record**: the operations workbook and a
+The site is the **render surface for the Museo de Ajolotes Xolotlcalli record**: the operations workbook and a
 handful of source asset folders go in, committed JSON and static pages come out. Nothing is fetched at
 runtime except three files this same build produces: `public/map/mexico-interactive.svg`,
 `public/map/state-bboxes.json` and `public/data/water-quality/measurements-all.json` (source:
@@ -72,7 +72,7 @@ a `{ es, en, pt }` object validated by Zod.
 ## Data scripts
 
 Six one-shot Node scripts, all declared in `package.json` (source: `package.json`, 2026-09-02). Three of
-them read the **operations workbook** maintained by the Biomuseo Xolotlcalli team; the other three work
+them read the **operations workbook** maintained by the Museo de Ajolotes Xolotlcalli team; the other three work
 from asset folders inside the repository.
 
 ```bash
@@ -126,7 +126,6 @@ Sheets consumed: `Descripcion de sistemas`, `Catálogo de parámetros`, `Dashboa
 |---|---|---|
 | `src/data/water-quality/tanks.json` | one entry per water system: species, display name, volume, accent colour, and the physical system description (dimensions, tank type, filter, cooling, aeration) | 8 systems (measured 2026-09-02) |
 | `src/data/water-quality/parameters.json` | per-system, per-parameter reference row: `tankId`, `speciesCode`, `key`, `unit`, `min`, `max`, `target` | 60 rows (measured 2026-09-02) |
-| `src/data/water-quality/dashboard-agua.json` | the workbook's own dashboard view: historical average, last measurement, clinical status, limits | 40 rows (measured 2026-09-02) |
 | `src/data/water-quality/measurements-mondays.json` | default view — the Monday round only | 113 rows (measured 2026-09-02) |
 | `public/data/water-quality/measurements-all.json` | full measurement history, fetched lazily by the client when the visitor switches off "Mondays only" | 1,128 rows (measured 2026-09-02) |
 

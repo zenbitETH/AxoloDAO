@@ -10,13 +10,12 @@ import Relato, { relatoEvents, type PmRelato } from './Relato';
 type Lane = 1 | 2 | 3 | 4 | 5 | 'integrity' | 'datos';
 interface PmEvent {
   date: string; time: string | null; lane: Lane; kind: string; label: string;
-  source: string; grade: 'A' | 'B' | 'C'; text: string | null; critical?: boolean; chronic_only?: boolean;
+  source: string; grade: 'A' | 'B' | 'C'; text: string | null; critical?: boolean; chronic_only?: boolean; custody?: boolean;
 }
 interface PmPoint { date: string; time: string | null; label: string }
 interface PmEpisode {
-  window: { from: string; to: string; days: number }; grade: string; S0: PmPoint | null; P: PmPoint | null; C: PmPoint | null;
-  latency_h: number | null; standard: { id: string; title: string; hours: number } | null;
-  signals: number; unanswered: number; coverage: number; role: string | null; flags: string[]; recorded_after_death: number;
+  window: { from: string; to: string; days: number }; S0: PmPoint | null; P: PmPoint | null; C: PmPoint | null;
+  latency_h: number | null; recorded_after_death: number;
 }
 export interface PmSpecimen {
   alias: string; species: string | null;
@@ -24,16 +23,14 @@ export interface PmSpecimen {
   cause: string | null; cause_source: string | null;
   necropsy: { performed: string | null; result?: string | null; lab_case?: string | null; status?: string };
   body: string; body_conservation: string | null;
-  grade: string; grade_60: string | null; grade_note: string | null;
   primary: PmEpisode | null; sensitivity: PmEpisode | null; events: PmEvent[];
   group?: { date: string | null; cause: string; necropsy: string }[];   // grouped unnamed deaths
   relato?: PmRelato;                                                     // curated reading (brain: forense/relatos)
 }
-interface PmAire { specimen: string | null; episode: number; date: string; claim: string; contrast: string | null; speaker: string; confidence: string; verified_on_video: boolean; url: string | null }
 export interface PmData {
   generated: string; brain_commit: string; preregistration: string; method_note: string; limits: string[];
-  aggregate: { grades: Record<string, number>; n: number; median_latency_over_standard: number | null };
-  especimenes: PmSpecimen[]; aire: PmAire[];
+  aggregate: { n: number };
+  especimenes: PmSpecimen[];
 }
 
 const fold = (x: string) => x.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
@@ -56,33 +53,12 @@ export const LANE_COLOR: Record<string, string> = {
   datos: '#B98DF0',
 };
 const LANES: Lane[] = [1, 2, 3, 4, 5, 'integrity'];
-export const GRADE_STYLE: Record<string, { bg: string; ink: string }> = {
-  oportuna: { bg: 'rgba(16,185,129,0.14)', ink: '#10B981' },
-  'tardía': { bg: 'rgba(245,158,11,0.16)', ink: '#D97706' },
-  ausente: { bg: 'rgba(244,63,94,0.16)', ink: '#F43F5E' },
-  sin_registro_de_acciones: { bg: 'rgba(139,92,246,0.14)', ink: '#8B5CF6' },
-  'sin_señal_registrada': { bg: 'rgba(128,128,128,0.16)', ink: 'var(--wq-ink-muted)' },
-  indeterminada: { bg: 'rgba(128,128,128,0.16)', ink: 'var(--wq-ink-muted)' },
-};
 
 const dayNum = (iso: string) => Math.floor(Date.parse(`${iso}T00:00:00Z`) / 864e5);
 const hoursOf = (d: string, t: string | null) => dayNum(d) * 24 + (t ? +t.slice(0, 2) + +t.slice(3, 5) / 60 : 12);
 const fmtDay = (iso: string | null) => (iso ? iso.split('-').reverse().slice(0, 2).join('/') : '—');
 const fmtFull = (iso: string | null) => (iso ? iso.split('-').reverse().join('/') : '—');
 const fmtH = (h: number | null) => (h == null ? '—' : h >= 48 ? `${h.toFixed(0)} h (${(h / 24).toFixed(1)} días)` : `${h.toFixed(1)} h`);
-
-export function GradePill({ grade, locale, small = false }: { grade: string; locale: Locale; small?: boolean }) {
-  const st = GRADE_STYLE[grade] ?? GRADE_STYLE.indeterminada;
-  return (
-    <span
-      class={`inline-flex items-center gap-1.5 rounded-full font-semibold ${small ? 'px-2 py-0.5 text-[10px]' : 'px-3 py-1 text-xs'}`}
-      style={{ background: st.bg, color: st.ink }}
-    >
-      <span class="inline-block h-1.5 w-1.5 rounded-full" style={{ background: st.ink }} aria-hidden="true" />
-      {s(locale, `pm.grade.${grade}`)}
-    </span>
-  );
-}
 
 function Timeline({ sp, ep, locale }: { sp: PmSpecimen; ep: PmEpisode; locale: Locale }) {
   const W = 960, LEFT = 150, RIGHT = 16, TOP = 44, ROW = 34;
@@ -108,7 +84,6 @@ function Timeline({ sp, ep, locale }: { sp: PmSpecimen; ep: PmEpisode; locale: L
   const S0x = ep.S0 ? x(ep.S0.date, ep.S0.time) : null;
   const Px = ep.P ? x(ep.P.date, ep.P.time) : null;
   const Dx = sp.death.date ? x(sp.death.date, null) : null;
-  const late = ep.standard && ep.latency_h != null && ep.latency_h > ep.standard.hours;
 
   const hp = hover != null ? pts[hover] : null;
 
@@ -131,11 +106,11 @@ function Timeline({ sp, ep, locale }: { sp: PmSpecimen; ep: PmEpisode; locale: L
         ))}
         {S0x != null && Px != null && (
           <g>
-            <line x1={S0x} x2={Px} y1={20} y2={20} stroke={late ? '#D97706' : '#10B981'} stroke-width="2" />
-            <line x1={S0x} x2={S0x} y1={14} y2={26} stroke={late ? '#D97706' : '#10B981'} stroke-width="2" />
-            <line x1={Px} x2={Px} y1={14} y2={26} stroke={late ? '#D97706' : '#10B981'} stroke-width="2" />
-            <text x={(S0x + Px) / 2} y={11} font-size="11" font-weight="600" text-anchor="middle" fill={late ? '#D97706' : '#10B981'}>
-              {`${fmtH(ep.latency_h)}${ep.standard ? ` · ${s(locale, 'pm.standard')} ${ep.standard.hours} h` : ''}`}
+            <line x1={S0x} x2={Px} y1={20} y2={20} stroke="var(--wq-ink-muted)" stroke-width="2" />
+            <line x1={S0x} x2={S0x} y1={14} y2={26} stroke="var(--wq-ink-muted)" stroke-width="2" />
+            <line x1={Px} x2={Px} y1={14} y2={26} stroke="var(--wq-ink-muted)" stroke-width="2" />
+            <text x={(S0x + Px) / 2} y={11} font-size="11" font-weight="600" text-anchor="middle" fill="var(--wq-ink-muted)">
+              {fmtH(ep.latency_h)}
             </text>
           </g>
         )}
@@ -221,7 +196,6 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
   const sp = findSpecimen(data, alias);
   if (!sp) return <p class="text-sm text-[var(--wq-ink-muted)]">{s(locale, 'pm.none')}</p>;
   const ep = sp[win] ?? sp.primary;
-  const aire = data.aire.filter((a) => a.specimen && fold(a.specimen) === fold(alias));
   // With a curated reading, the full record carries everything the main view draws.
   const allEvents: PmEvent[] = sp.relato
     ? [...sp.events, ...(relatoEvents(sp.relato, locale) as PmEvent[])].sort((a, b) => `${a.date} ${a.time ?? ''}`.localeCompare(`${b.date} ${b.time ?? ''}`))
@@ -229,7 +203,7 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
   const chipLanes: Lane[] = sp.relato ? [...LANES, 'datos'] : LANES;
   const shown = allEvents.filter((e) => lanes.has(String(e.lane)) && (!ep || e.date >= ep.window.from));
 
-  const deathValue = `${fmtFull(sp.death.date)}${sp.death.euthanasia ? ` · ${s(locale, 'pm.euthanasia')}` : ''} · ${s(locale, `pm.src.${sp.death.date_source}`)}`;
+  const deathValue = `${sp.death.conf === 'a_mas_tardar' ? `${s(locale, 'pm.atLatest')} ` : ''}${fmtFull(sp.death.date)}${sp.death.euthanasia ? ` · ${s(locale, 'pm.euthanasia')}` : ''} · ${s(locale, `pm.src.${sp.death.date_source}`)}`;
   const necroValue = sp.necropsy.performed
     ? `${s(locale, 'pm.necro.done')} ${fmtFull(sp.necropsy.performed)} · ${s(locale, 'pm.necro.result')} ${fmtFull(sp.necropsy.result ?? null)}${sp.necropsy.lab_case ? ` · ${s(locale, 'pm.necro.case')} ${sp.necropsy.lab_case}` : ''}`
     : `${s(locale, 'pm.norecord')}${sp.necropsy.status && !/^(na|sin registro)$/i.test(sp.necropsy.status) ? ` (${s(locale, 'pm.necro.book')}: «${sp.necropsy.status}»)` : ''}`;
@@ -239,10 +213,6 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
       <section class="flex flex-col gap-3 rounded-2xl border border-[var(--wq-divider)] p-4">
         <div class="flex flex-wrap items-center gap-2">
           <span class="text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">{s(locale, 'pm.response')}</span>
-          <GradePill grade={sp.grade} locale={locale} />
-          <span class="text-xs text-[var(--wq-ink-muted)]">{s(locale, 'pm.window21')}</span>
-          {sp.grade_60 && <GradePill grade={sp.grade_60} locale={locale} small />}
-          <span class="text-xs text-[var(--wq-ink-muted)]">{s(locale, 'pm.window60')}</span>
         </div>
         {ep && (
           <p class="m-0 text-sm leading-relaxed text-[var(--wq-ink)]">
@@ -251,30 +221,18 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
                 {s(locale, 'pm.firstSignal')} <strong>{fmtFull(ep.S0.date)}</strong> ({ep.S0.label.toLowerCase()}).{' '}
                 {ep.P ? (
                   <>
-                    {s(locale, 'pm.firstAction')} <strong>{fmtFull(ep.P.date)}</strong> ({ep.P.label.toLowerCase()}):{' '}
-                    <strong>{fmtH(ep.latency_h)}</strong>
-                    {ep.standard && <> {s(locale, 'pm.against')} {ep.standard.hours} h ({ep.standard.title.toLowerCase()})</>}.
+                    {s(locale, 'pm.firstAction')} <strong>{fmtFull(ep.P.date)}</strong> ({ep.P.label.toLowerCase()}).{' '}
+                    {s(locale, 'pm.responseAfter').replace('{t}', fmtH(ep.latency_h))}
                   </>
                 ) : (
                   <>{s(locale, 'pm.noAction')}</>
-                )}{' '}
-                {s(locale, 'pm.unanswered')
-                  .replace('{n}', String(ep.unanswered))
-                  .replace('{m}', String(ep.signals))}
+                )}
               </>
             ) : (
               s(locale, 'pm.noSignal')
             )}
           </p>
         )}
-        {ep?.role && (
-          <p class="m-0 text-xs text-[var(--wq-ink-muted)]">
-            {s(locale, 'pm.role')}: <span class="font-semibold text-[var(--wq-ink)]">{ep.role}</span>
-            {ep.flags.includes('dotación_mínima') && <> · {s(locale, 'pm.flag.staff')}</>}
-            {ep.flags.includes('estándar_no_escrito_en_el_museo') && <> · {s(locale, 'pm.flag.unwritten')}</>}
-          </p>
-        )}
-        {sp.grade_note && <p class="m-0 text-xs text-[#D97706]">{sp.grade_note}</p>}
       </section>
     </>
   );
@@ -344,29 +302,6 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
       )}
     </>
   );
-  const aireSec = (
-    <>
-      {aire.length > 0 && (
-        <section class="flex flex-col gap-2">
-          <h3 class="m-0 font-display text-base font-bold text-[var(--wq-ink)]">{s(locale, 'pm.aire')}</h3>
-          <ul class="m-0 flex list-none flex-col gap-2 p-0">
-            {aire.map((a, i) => (
-              <li key={i} class="rounded-xl border border-[var(--wq-divider)] p-3">
-                <div class="flex flex-wrap items-center gap-2 text-xs text-[var(--wq-ink-muted)]">
-                  <span class="font-mono font-semibold text-[var(--wq-ink)]">{fmtFull(a.date)}</span>
-                  <span>· {s(locale, 'pm.episode')} {a.episode}</span>
-                  <span>· {a.speaker}{a.verified_on_video ? ` (${s(locale, 'pm.verified')})` : ''}</span>
-                  {a.url && <a href={a.url} target="_blank" rel="noopener" class="ml-auto font-semibold text-teal underline-offset-2 hover:underline">{s(locale, 'pm.watch')} ↗</a>}
-                </div>
-                <p class="m-0 mt-1.5 text-sm text-[var(--wq-ink)]">«{a.claim}»</p>
-                {a.contrast && <p class="m-0 mt-1 text-xs leading-snug text-[#D97706]">{s(locale, 'pm.record')}: {a.contrast}</p>}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-    </>
-  );
   const eventsSec = (
     <>
       <section class="flex flex-col gap-2">
@@ -396,6 +331,7 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
                   <span class="font-semibold text-[var(--wq-ink)]">{e.label}</span>
                   <span class="rounded-full border border-[var(--wq-divider)] px-1.5 text-[10px] text-[var(--wq-ink-muted)]">{s(locale, `pm.src.${e.source}`)}</span>
                   <span class="text-[10px] text-[var(--wq-ink-muted)]">{s(locale, 'pm.grade')} {e.grade}</span>
+                  {e.custody && <span class="rounded-full border border-[var(--wq-divider)] px-1.5 text-[10px] text-[var(--wq-ink-muted)]">{s(locale, 'pm.custody')}</span>}
                 </span>
                 {e.text && <span class="text-[13px] leading-snug text-[var(--wq-ink-muted)]">{e.text}</span>}
               </span>
@@ -426,7 +362,6 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
           <summary class="cursor-pointer text-sm font-semibold text-[var(--wq-ink)]">{s(locale, 'pm.r.record').replace('{n}', String(allEvents.filter((e) => !ep || e.date >= ep.window.from).length))}</summary>
           <div class="mt-4 flex flex-col gap-5">
             {verdictSec}
-            {aireSec}
             {eventsSec}
             {methodSec}
           </div>
@@ -441,7 +376,6 @@ export default function PostmortemTab({ alias, locale }: { alias: string; locale
       {factsSec}
       {groupSec}
       {timelineSec}
-      {aireSec}
       {eventsSec}
       {methodSec}
     </div>

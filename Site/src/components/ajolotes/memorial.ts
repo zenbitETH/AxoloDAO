@@ -31,26 +31,14 @@ const BAJA_SPECIES_HINT: Record<string, SpeciesCode> = {
   'Larva 2': 'A. mexicanum',
 };
 
-// Fechas corregidas a mano, por nombre. La Hoja guarda la baja de Andersoni 1
-// como 2026-05-09 porque se capturó en día/mes y quedó almacenada como mes/día:
-// el fallecimiento fue el 5 de septiembre de 2026. Lo confirma el founder y lo
-// sostiene la bitácora pública de este mismo sitio, que tiene 17 entradas de ese
-// ejemplar entre el 25 de agosto y el 3 de septiembre —todas posteriores a la
-// fecha almacenada— incluida una incidencia de flotabilidad el 1 de septiembre.
-//
-// Esto NO corrige la Hoja, que sigue siendo el sistema de registro. Cuando
-// alguien arregle la celda, se borra esta entrada y el dato real fluye solo.
-//
-// ⚠ Una fecha con día ≤ 12 es ambigua y este error es invisible en ella. En el
-// registro son ambiguas las de Panchita, Goldy, Leucistica y Loncho, entre otras.
-// Las larvas del 15 y 16 de abril prueban que el almacenamiento NO invierte
-// siempre: no existe un mes 15.
-// Golden: la Hoja dice 14/1/2025, pero Golden fue ejemplar del Biomuseo (abierto el 24-oct-2025) y la
-// lista de bajas se terminó de capturar el 14-ene-2026 (chat de la mesa directiva). La fecha es la
-// captura con el año errado: la muerte fue a más tardar ese día, entre diciembre y enero.
+// Fechas corregidas a mano, por nombre, sólo para lo que no tiene fila de baja con fecha. Las bajas con
+// fila llegan ya con su fecha canónica desde el generador (scripts/data-ajolotes.mjs toma la de
+// bajas-forense.json: día y mes invertidos, año errado y laboratorio contra libro ya resueltos), y la
+// comprobación de la construcción (scripts/check-fechas.mjs) falla si el sitio y forense no coinciden.
 export const BAJA_FECHA_FIX: Record<string, string> = {
-  'Andersoni 1': '2026-09-05',
-  Golden: '2026-01-14',
+  // Larva 2 sólo está como ejemplar fallecido en el registro (sin fila de baja con fecha): su muerte es del 23 de septiembre de 2026, después del cierre del
+  // museo, así que al cierre estaba viva y no cuenta como baja del periodo.
+  'Larva 2': '2026-09-23',
 };
 
 /** La baja con su fecha corregida, si hay corrección curada para ese nombre. */

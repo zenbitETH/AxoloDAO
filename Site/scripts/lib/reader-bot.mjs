@@ -1,4 +1,4 @@
-// The colorimetric reader's author in Control operativo. Its rows ("XOVI bot sin Lupita")
+// The colorimetric reader's author in Control operativo. Its rows ("XOVI bot")
 // are unverified machine readings, marked by this string as Autor principal, and must never
 // be published as a measurement.
 //

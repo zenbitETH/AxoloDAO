@@ -7,8 +7,6 @@
  *
  *   - Bitacora                  → site/src/data/ops/bitacora-recent.json (last 90 days)
  *                                 site/public/data/ops/bitacora.json     (full history, lazy-fetched)
- *   - Calendario de actividades → site/src/data/ops/personnel.json {actividades[]}
- *   - Rol de turnos             → site/src/data/ops/personnel.json {turnos[]}
  *
  * Bitácora rows can carry both an `Alias` (per-ejemplar event) and a
  * `Ubicación` (per-tank/system event); the modal and the xolotlcalli water
@@ -18,7 +16,7 @@
  *   npm run data:ops
  */
 import XLSX from 'xlsx';
-import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
@@ -31,13 +29,20 @@ import {
   indexOfHeader,
   normalizeAlias,
   ALIAS_NORMALIZE,
-  loadEmbargoNames,
+  makeEmbargoFilter,
   pad2,
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
 import { refuseWhileClosed } from './lib/closure.mjs';
+import { etapaDe, horaHHMM, registrosTrasMuerte, sinRepeticiones } from './lib/fechas.mjs';
 
 refuseWhileClosed('data-ops');
+// Personal data never reaches a published file (founder, 7-oct): authors, staff names, person ENS names, emails, phones and wallets are
+// removed or replaced. The list of staff names lives in a private file (AXOLODAO_PERSONAS_PRIVADAS), not in this repository.
+const { limpiarValor, huellasDePersonas, leerPersonasPrivadas } = await import('./lib/limpiar-personas.mjs');
+const huellasDePersonal = huellasDePersonas(leerPersonasPrivadas(process.env.AXOLODAO_PERSONAS_PRIVADAS)).huellas;
+const limpio = (v) => limpiarValor(v, huellasDePersonal);
+
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = resolve(__dirname, '..');
@@ -48,14 +53,13 @@ const PUBLIC_OUT  = resolve(SITE_ROOT, 'public/data/ops');
 mkdirSync(CONTENT_OUT, { recursive: true });
 mkdirSync(PUBLIC_OUT, { recursive: true });
 
-// Embargo: withheld specimen names (operator env / untracked config, never
-// hardcoded). The bitácora feed is serialized into the client island, so a
-// withheld name must not appear in any entry field. isEmbargoedAlias matches a
-// single normalized alias; textMentionsEmbargoed does an accent/case-insensitive
-// substring check for free-text fields (notas, ubicación, …).
-const EMBARGO = loadEmbargoNames(__dirname);
-const isEmbargoedAlias = (s) =>
-  EMBARGO.has((normalizeAlias(toStr(s)) ?? '').trim().toLowerCase());
+// Embargo: withheld specimens are matched by committed sha256 digests (plus any
+// operator env / untracked config), never by a name in the source. The bitácora
+// feed is serialized into the client island, so a withheld specimen must not
+// appear in any entry field. isEmbargoedAlias matches a single alias;
+// textMentionsEmbargoed checks free-text fields (notas, ubicación, …) word by word.
+const EMBARGO = makeEmbargoFilter(__dirname);
+const isEmbargoedAlias = EMBARGO.isAlias;
 const stripDiacritics = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '');
 
 // A renamed specimen keeps its old name in two places ALIAS_NORMALIZE cannot
@@ -72,12 +76,7 @@ const canonicalizeProse = (v) => {
   }
   return out;
 };
-const EMBARGO_TEXT = [...EMBARGO].map((n) => stripDiacritics(n)).filter(Boolean);
-const textMentionsEmbargoed = (v) => {
-  if (typeof v !== 'string' || !v) return false;
-  const t = stripDiacritics(v.toLowerCase());
-  return EMBARGO_TEXT.some((n) => t.includes(n));
-};
+const textMentionsEmbargoed = EMBARGO.mentions;
 
 // Convert an Excel time fraction (0..1) or a Date back to a HH:MM string.
 // Bitácora and turnos use date-as-time cells (epoch 1899-12-30 + hours);
@@ -90,11 +89,10 @@ function fractionToHHMM(frac) {
   return `${pad2(h)}:${pad2(m)}`;
 }
 function toHHMM(v) {
-  // Prefer direct HH:MM strings if the cell is already text
+  // Prefer direct HH:MM strings if the cell is already text; then 24-hour HH:MM for every other spelling (lib/fechas.mjs, regla 3).
   const s = toTimeString(v);
-  if (s) return s;
-  const frac = toTimeFraction(v);
-  return fractionToHHMM(frac);
+  if (s) return horaHHMM(s) ?? s;
+  return fractionToHHMM(toTimeFraction(v)) ?? horaHHMM(v);
 }
 
 if (!existsSync(XLSX_PATH)) {
@@ -143,7 +141,7 @@ for (let r = bitHdrIdx + 1; r < bitRows.length; r++) {
   if (!row || row.every((c) => c == null || c === '')) continue;
   const fecha = toIsoDate(row[B.fecha]);
   if (!fecha) { bitSkipped++; continue; }
-  // Bitácora rows can list multiple aliases comma-separated ("Remo, Romulo");
+  // Bitácora rows can list multiple aliases comma-separated (multi-specimen event):
   // split, normalize each component, rejoin so consumer-side `alias.split(', ')
   // .includes(name)` resolves both names regardless of casing/accents.
   const rawAlias = toStr(row[B.alias]);
@@ -178,7 +176,7 @@ const MAINT_SHEET = 'Bitacora de mantenimiento de ag';
 // Map the maintenance `Ubicación` to a canonical tank token so the merged
 // events match the chart/timeline tank filters. Recipe-prefixed locations
 // ("Holtfreter AA") fold to their tank; "AM larvas" stays in the AM family;
-// specimen-level / pantry rows (Romulo, Golden, garrafón fills) pass through.
+// specimen-level / pantry labels (e.g. Golden, garrafón fills) pass through.
 function normalizeMaintUbicacion(raw) {
   if (!raw) return null;
   const up = raw.trim().toUpperCase();
@@ -261,6 +259,28 @@ bitacora.push(...bitacoraPublic);
 
 bitacora.sort((a, b) => (a.fecha + (a.hora ?? '')).localeCompare(b.fecha + (b.hora ?? '')));
 
+// Fechas (reglas en lib/fechas.mjs): una fila repetida tal cual se
+// publica una vez (regla 7); lo de fuera del periodo no se publica y lo de antes de abrir se marca como
+// preparación (regla 1); una fila sobre un ejemplar con fecha posterior a su muerte canónica, la de
+// bajas-forense.json, queda marcada para que una persona la resuelva (regla 6).
+{
+  const FORENSE = join(__dirname, '..', 'public', 'data', 'ajolotes', 'bajas-forense.json');
+  if (!existsSync(FORENSE)) throw new Error('falta public/data/ajolotes/bajas-forense.json: genera bajas-forense.json antes que este script');
+  const muerte = new Map(JSON.parse(readFileSync(FORENSE, 'utf8')).especimenes.filter((e) => !e.group && e.death?.date)
+    .map((e) => [e.alias.toLowerCase(), e.death.date]));
+  const [unicas, repetidas] = sinRepeticiones(bitacora);
+  const dentro = unicas.filter((e) => etapaDe(e.fecha) !== 'fuera');
+  let trasMuerte = 0;
+  for (const e of dentro) {
+    if (etapaDe(e.fecha) === 'preapertura') e.etapa = 'preapertura';
+    const alias = (e.alias ?? '').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean);
+    if (alias.some((a) => registrosTrasMuerte([e], muerte.get(a)).length)) { e.trasMuerte = true; trasMuerte++; }
+  }
+  console.log(`[data-ops] fechas: ${repetidas} filas repetidas quitadas, ${unicas.length - dentro.length} fuera del periodo, ${dentro.filter((e) => e.etapa).length} de preparación, ${trasMuerte} tras la muerte`);
+  bitacora.length = 0;
+  bitacora.push(...dentro);
+}
+
 // 90-day window for the eagerly-imported recent file. Uses the most-recent
 // event date as the reference (more robust than `new Date()` when the xlsx is
 // a day or two behind the calendar — keeps the window stable across reruns).
@@ -277,11 +297,11 @@ if (latestIso) {
 
 writeFileSync(
   join(PUBLIC_OUT, 'bitacora.json'),
-  JSON.stringify(bitacora) + '\n',
+  JSON.stringify(limpio(bitacora)) + '\n',
 );
 writeFileSync(
   join(CONTENT_OUT, 'bitacora-recent.json'),
-  JSON.stringify(bitacoraRecent, null, 2) + '\n',
+  JSON.stringify(limpio(bitacoraRecent), null, 2) + '\n',
 );
 console.log(`[data-ops] bitacora.json: ${bitacora.length} events (full history)`);
 console.log(`[data-ops] bitacora-recent.json: ${bitacoraRecent.length} events (90-day window ending ${latestIso})`);
@@ -289,91 +309,5 @@ console.log(`[data-ops]   includes ${maintCount} water-maintenance events (Mante
 if (bitSkipped) console.warn(`[data-ops]   skipped ${bitSkipped} bitacora rows (missing fecha)`);
 if (maintSkipped) console.warn(`[data-ops]   skipped ${maintSkipped} water-maintenance rows (missing fecha)`);
 
-// --- Calendario de actividades --------------------------------------------
-// The sheet uses section header rows (e.g. "Turno matutino (Apertura)") whose
-// only populated cell is column 0. We forward-track the current section so
-// each activity carries its turno context for the personnel doc.
-const calRows = sheet('Calendario de actividades');
-const calHdrIdx = findHeaderRow(calRows, ['orden', 'actividad', 'puntaje']);
-if (calHdrIdx < 0) throw new Error('Calendario de actividades: header row not found');
-const calHdr = calRows[calHdrIdx];
-const C = {
-  orden:        indexOfHeader(calHdr, 'orden'),
-  actividad:    indexOfHeader(calHdr, 'actividad'),
-  puntaje:      indexOfHeader(calHdr, 'puntaje'),
-  registro:     indexOfHeader(calHdr, ['pestaña de registro', 'pestana de registro']),
-  responsable:  indexOfHeader(calHdr, 'responsable'),
-  modalidad:    indexOfHeader(calHdr, 'modalidad'),
-  notas:        indexOfHeader(calHdr, 'notas'),
-};
-
-const actividades = [];
-let currentSeccion = null;
-for (let r = calHdrIdx + 1; r < calRows.length; r++) {
-  const row = calRows[r];
-  if (!row || row.every((c) => c == null || c === '')) continue;
-  const orden = row[C.orden];
-  const actividad = toStr(row[C.actividad]);
-  // Section header rows have a string in col 0 and nothing else
-  const onlyCol0 = row.slice(1).every((c) => c == null || c === '');
-  if (onlyCol0 && typeof orden === 'string') {
-    currentSeccion = orden.trim();
-    continue;
-  }
-  if (!actividad && typeof orden !== 'number') continue;
-  actividades.push({
-    seccion: currentSeccion,
-    orden: typeof orden === 'number' ? orden : null,
-    actividad: actividad ? actividad.replace(/\s*\n\s*/g, ' ').trim() : null,
-    puntaje: toStr(row[C.puntaje]),
-    registro: toStr(row[C.registro]),
-    responsable: toStr(row[C.responsable]),
-    modalidad: toStr(row[C.modalidad]),
-    notas: toStr(row[C.notas]),
-  });
-}
-
-// --- Rol de turnos ---------------------------------------------------------
-// `Dia` is sticky: populated on the first row of each weekday block and null
-// for subsequent rows that share the same day. Forward-fill so every entry
-// carries its day.
-const turRows = sheet('Rol de turnos');
-const turHdrIdx = findHeaderRow(turRows, ['dia', 'nombre', 'turno']);
-if (turHdrIdx < 0) throw new Error('Rol de turnos: header row not found');
-const turHdr = turRows[turHdrIdx];
-const R = {
-  dia:          indexOfHeader(turHdr, 'dia'),
-  nombre:       indexOfHeader(turHdr, 'nombre'),
-  turno:        indexOfHeader(turHdr, ['turno asignado', 'turno\nasignado']),
-  modalidad:    indexOfHeader(turHdr, 'modalidad'),
-  horaEntrada:  indexOfHeader(turHdr, ['hora de entrada', 'hora de\nentrada']),
-  horaSalida:   indexOfHeader(turHdr, ['hora de salida', 'hora de\nsalida']),
-  totalHoras:   indexOfHeader(turHdr, ['total de horas', 'total de\nhoras']),
-};
-
-const turnos = [];
-let stickyDia = null;
-for (let r = turHdrIdx + 1; r < turRows.length; r++) {
-  const row = turRows[r];
-  if (!row || row.every((c) => c == null || c === '')) continue;
-  const dia = toStr(row[R.dia]);
-  if (dia) stickyDia = dia;
-  const nombre = toStr(row[R.nombre]);
-  if (!nombre) continue;
-  turnos.push({
-    dia: stickyDia,
-    nombre,
-    turno: toStr(row[R.turno]),
-    modalidad: toStr(row[R.modalidad]),
-    horaEntrada: toHHMM(row[R.horaEntrada]),
-    horaSalida: toHHMM(row[R.horaSalida]),
-    totalHoras: toNum(row[R.totalHoras]),
-  });
-}
-
-writeFileSync(
-  join(CONTENT_OUT, 'personnel.json'),
-  JSON.stringify({ actividades, turnos }, null, 2) + '\n',
-);
-console.log(`[data-ops] personnel.json: ${actividades.length} actividades, ${turnos.length} turnos`);
+// The activity calendar and the shift roster (staff names, shifts) are not published: they are not read here any more.
 console.log('[data-ops] Done.');

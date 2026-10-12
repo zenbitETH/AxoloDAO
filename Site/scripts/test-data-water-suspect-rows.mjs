@@ -37,7 +37,7 @@ const HEADER = ['Fecha', 'Hora', 'Autor Principal', 'Autor secundario', 'Ubicaci
   '2. Amonia/amoniaco NH3 (mg/L)', '3. Nitritos NO2 (mg/L)', '4. Nitratos NO3 (mg/L)',
   '5. GH Dureza General (mg/L)', '6. KH Dureza de Carbonatos (mg/L)', '7. pH ',
   '9. Conductividad (µS/cm)', 'Nota'];
-const intraday = (d, time, where, temp, ph, cond, note = null) => [d, time, 'May', null, where, temp, null, null, null, null, null, ph, cond, note];
+const intraday = (d, time, where, temp, ph, cond, note = null) => [d, time, 'zenbit.axolodao.eth', null, where, temp, null, null, null, null, null, ph, cond, note];
 
 function writeWorkbook(path) {
   const wb = XLSX.utils.book_new();
@@ -62,7 +62,7 @@ function writeWorkbook(path) {
     intraday(day(-1), '05:00', 'AM', 17.4, 7.8, 2890, 'one-sided: published'),
     intraday(day(-1), '05:00', 'AD', 18.1, 8.1, 2896, 'one-sided: published'),
     // A: a full battery the day before the closure.
-    [day(-1), '18:31', 'lups-plantae.axolodao.eth', 'XOVI bot', 'AA', 17, 0.25, 0.25, 40, 232.7, 161.1, 8.8, 880, 'row A'],
+    [day(-1), '18:31', 'ndali.axolodao.eth', 'XOVI bot', 'AA', 17, 0.25, 0.25, 40, 232.7, 161.1, 8.8, 880, 'row A'],
     // B: a reading on the closure day joins the same series as every other reading.
     intraday(day(0), '16:10', 'AA', 16.3, 8.7, 840, 'row B: closure day'),
     // E: a reader row, skipped as always.
@@ -76,7 +76,6 @@ const digest = p => (existsSync(p) ? createHash('sha256').update(readFileSync(p)
 const TRACKED = [
   'public/data/water-quality/measurements-all.json',
   'src/data/water-quality/measurements-mondays.json',
-  'src/data/water-quality/dashboard-agua.json',
   'src/data/ajolotes/bundle.json',
 ].map(p => join(SITE, p));
 const trackedBefore = TRACKED.map(digest);
@@ -93,7 +92,7 @@ function makeScratch() {
   return { scratch, workbook };
 }
 const runScript = ({ scratch, workbook }, script = 'data-water.mjs') => spawnSync(process.execPath, [join(scratch, 'scripts', script)], {
-  env: { ...process.env, AXOLODAO_XLSX: workbook },
+  env: { ...process.env, AXOLODAO_XLSX: workbook, DATA_WATER_KEEP_NOTES_FOR_TESTS: '1' },
   encoding: 'utf8',
 });
 const readAll = scratch => {
@@ -131,7 +130,26 @@ try {
   ok(noted(all, 'row B').length === 1 && noted(all, 'row B')[0].tankId === 'AA', 'a reading from the closure day is published in the same series, as AA');
   ok(/omitted 2 rows as 1 suspected label swaps/.test(run.stderr || ''), 'the log names the omitted swap');
   ok(/omitted 1 rows dated out of the tab's order/.test(run.stderr || ''), 'the log names the out-of-order row');
-  ok(existsSync(join(s.scratch, 'src/data/water-quality/dashboard-agua.json')), 'dashboard-agua.json is written as before');
+  ok(!existsSync(join(s.scratch, 'src/data/water-quality/dashboard-agua.json')), 'dashboard-agua.json is not written any more: it published conductivity as phosphate');
+
+  // (la lista privada de nombres de personal: una prueba la trae de un archivo temporal; el generador no corre sin ella)
+function listaDePersonas(dir) {
+  const f = join(dir, 'personas-de-prueba.txt');
+  writeFileSync(f, 'Persona de Prueba\n');
+  return f;
+}
+
+  // sin la variable de las pruebas, ningún archivo público lleva la nota de la hoja (puede hablar de la salud de un ejemplar)
+  {
+    const sn = makeScratch();
+    scratches.push(sn.scratch);
+    const rn = spawnSync(process.execPath, [join(sn.scratch, 'scripts', 'data-water.mjs')], { env: { ...process.env, AXOLODAO_XLSX: sn.workbook, DATA_WATER_KEEP_NOTES_FOR_TESTS: '', AXOLODAO_PERSONAS_PRIVADAS: listaDePersonas(sn.scratch), AXOLODAO_PERSONAS_CLAVE: 'cd'.repeat(32) }, encoding: 'utf8' });
+    const sin = readAll(sn.scratch);
+    ok(rn.status === 0 && sin.length === all.length, 'the same rows are published without the test variable');
+    ok(sin.every(m => !('note' in m)), 'no published measurement carries a note key');
+    const mondays = JSON.parse(readFileSync(join(sn.scratch, 'src/data/water-quality/measurements-mondays.json'), 'utf8'));
+    ok(mondays.every(m => !('note' in m)), 'the Monday series carries no note either');
+  }
 
   console.log('\n2 · each rule is seen red: one mutation per rule, planted in the scratch copy');
   const mutations = [
