@@ -18,7 +18,6 @@ const casos = [
   ['reabre el sábado 24 de octubre', 'reapertura'],
   ['cerrado por remodelación', 'obras'],
   ['reopens on 24 October', 'una fecha o reapertura'],
-  ['en alianza con Ndali', 'evento de un aliado'],
   ['todos los ajolotes en cuarentena', 'cuarentena'],
   ['volverá pronto', 'futuro vago'],
   ['cerró el 23 de septiembre de 2026', 'otra fecha de cierre'],
@@ -128,6 +127,19 @@ if (process.argv.includes('--dist')) {
     ok(portada.length > 0 && !/href="[^"]*\/xolotlcalli\/ajolotes\//.test(portada), `dist/${pag}: la portada no lleva el botón a los ejemplares en custodia`);
   }
   ok(existsSync(join(SITE, 'dist/xolotlcalli/index.html')) && existsSync(join(SITE, 'dist/xolotlcalli/ajolotes/index.html')), 'las páginas /xolotlcalli/ y /xolotlcalli/ajolotes/ siguen construyéndose');
+  console.log('\n· el sitio construido no nombra a Ndali ni tiene la sección de nodos');
+  const enDist = [];
+  const recorrer = (d) => { for (const n of readdirSync(d)) { const r = join(d, n); statSync(r).isDirectory() ? recorrer(r) : enDist.push(r); } };
+  recorrer(join(SITE, 'dist'));
+  const conNombre = enDist.filter((r) => /ndali/i.test(r.slice(SITE.length)));
+  ok(conNombre.length === 0, `ningún archivo de dist se llama como Ndali${conNombre.length ? `: ${conNombre.map((r) => r.slice(SITE.length + 1)).join(', ')}` : ''}`);
+  const TEXTO = /\.(html|js|mjs|css|json|xml|txt|svg|webmanifest)$/i;
+  const conTexto = enDist.filter((r) => TEXTO.test(r) && /ndali/i.test(readFileSync(r, 'utf8')));
+  ok(conTexto.length === 0, `ningún archivo de dist dice «ndali»${conTexto.length ? `: ${conTexto.map((r) => r.slice(SITE.length + 1)).join(', ')}` : ''}`);
+  for (const pag of ['index.html', 'en/index.html', 'pt/index.html']) {
+    const html = readFileSync(join(SITE, 'dist', pag), 'utf8');
+    ok(!/id="members"/.test(html) && !/Nodos de AxoloDAO|AxoloDAO nodes|Nós da AxoloDAO/.test(html), `dist/${pag}: sin la sección «Nodos de AxoloDAO»`);
+  }
   console.log('\n· la tasa de la página construida es la de los datos');
   const pagina = join(SITE, 'dist/xolotlcalli/index.html');
   ok(existsSync(pagina), 'dist/xolotlcalli/index.html existe (corre el build antes)');

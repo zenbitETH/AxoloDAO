@@ -1,6 +1,6 @@
 {
  "generated": "2026-10-12",
- "brain_commit": "5d8769f",
+ "brain_commit": "3eeb141",
  "vivos": {
   "Chocorrol": {
    "alias": "Chocorrol",
@@ -745,7 +745,7 @@
       "18:39",
       "si",
       [
-       "Acción: Ndali pidió quitar las casitas de barro (posibles silicatos) y poner refugios de plástico",
+       "Acción: un aliado pidió quitar las casitas de barro (posibles silicatos) y poner refugios de plástico",
        "Acción: El equipo pregunta si ya se consiguió el sulfato de magnesio para la solución Holtfreter",
        "Acción: El equipo dice que no tiene garrafones, los vaciará y al día siguiente hará Holtfreter"
       ]
@@ -3206,11 +3206,6 @@
       "d": "2026-05-05",
       "g": 0.24,
       "ofrecido": 2.4
-     },
-     {
-      "d": "2026-05-06",
-      "g": -0.05,
-      "ofrecido": 1.15
      },
      {
       "d": "2026-05-06",
@@ -12056,7 +12051,7 @@
       "18:39",
       "si",
       [
-       "Acción: Ndali pidió quitar las casitas de barro (posibles silicatos) y poner refugios de plástico",
+       "Acción: un aliado pidió quitar las casitas de barro (posibles silicatos) y poner refugios de plástico",
        "Acción: El equipo pregunta si ya se consiguió el sulfato de magnesio para la solución Holtfreter",
        "Acción: El equipo dice que no tiene garrafones, los vaciará y al día siguiente hará Holtfreter"
       ]

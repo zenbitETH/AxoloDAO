@@ -15,7 +15,6 @@ const MONTHS: Record<string, number> = {
 export const PROHIBITED: ReadonlyArray<readonly [string, RegExp]> = [
   ['reopening', /reabr|reapertura|reabertura|reopen|volvera a abrir|will (?:re)?open|voltara a abrir/],
   ['works or renovation', /remodel|reform|renovat|obras en|under construction/],
-  ['partner event', /ndali/],
   ['quarantine', /cuarentena|quarantine|quarentena/],
   ['vague future', /pronto|\bsoon\b|em breve|proxim|\bnext\b|provisional|tentativ/],
 ];

@@ -113,7 +113,7 @@ const news = defineCollection({
   type: 'data',
   schema: z.object({
     slug: z.string(),
-    author: z.enum(['zenbit', 'xolotlcalli', 'ndali']),
+    author: z.enum(['zenbit', 'xolotlcalli']),
     // Absent when the original post is not linked (a card with no link).
     url: z.string().url().optional(),
     image: z.string(),

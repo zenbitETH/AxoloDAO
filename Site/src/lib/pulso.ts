@@ -11,7 +11,7 @@
 // navigation to carry the extra length.
 
 export type Chapter = 'semanal' | 'lunes' | 'axolonews' | 'podcast' | 'ajolote';
-export type Author = 'zenbit' | 'xolotlcalli' | 'ndali';
+export type Author = 'zenbit' | 'xolotlcalli';
 
 export interface NewsItem {
   slug: string;
