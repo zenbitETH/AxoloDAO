@@ -58,11 +58,13 @@ const handles = [
       role="group"
       aria-label={t(locale, 'news.instagram.title')}
     >
-      {items.map((it) => (
-        <a
-          href={it.url}
-          target="_blank"
-          rel="noopener noreferrer"
+      {items.map((it) => {
+        // A post whose original is not linked is a card with no link.
+        const Wrapper = it.url ? 'a' : 'div';
+        const link = it.url ? { href: it.url, target: '_blank', rel: 'noopener noreferrer' } : {};
+        return (
+        <Wrapper
+          {...link}
           aria-label={it.caption[locale]}
           class="group block w-[78%] max-w-[260px] flex-shrink-0 snap-start"
         >
@@ -103,8 +105,9 @@ const handles = [
               </p>
             </div>
           </div>
-        </a>
-      ))}
+        </Wrapper>
+        );
+      })}
     </div>
   ) : (
     <p class="text-sm text-white/55">{t(locale, 'common.soon')}</p>

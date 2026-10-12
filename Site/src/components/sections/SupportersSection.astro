@@ -77,13 +77,13 @@ const initials = (name: string) =>
                     {people.map((p) => (
                       <li class="inline-flex items-center gap-2 rounded-full bg-white/5 py-1.5 pl-1.5 pr-4">
                         {p.logo ? (
-                          <img src={p.logo} alt={p.name} class="h-8 w-8 rounded-full object-contain" />
+                          <img src={p.logo} alt={p.name ?? t(locale, 'supporters.anonymous')} class="h-8 w-8 rounded-full object-contain" />
                         ) : (
                           <span class={`grid h-8 w-8 place-items-center rounded-full text-xs font-bold ${style.avatar}`}>
-                            {initials(p.name)}
+                            {p.name ? initials(p.name) : '★'}
                           </span>
                         )}
-                        <span class="text-sm font-medium text-white/90">{p.name}</span>
+                        <span class="text-sm font-medium text-white/90">{p.name ?? t(locale, 'supporters.anonymous')}</span>
                       </li>
                     ))}
                   </ul>

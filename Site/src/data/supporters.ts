@@ -10,8 +10,8 @@
 export type SupporterTier = 'aliado' | 'guardian';
 
 export interface Supporter {
-  /** Full name (Aliado mention) or organization name (Guardián). */
-  name: string;
+  /** Full name (Aliado mention, only with written consent) or organization name (Guardián). Without it the site says «un suscriptor fundador». */
+  name?: string;
   tier: SupporterTier;
   /** ISO month the subscription started, e.g. '2026-07'. */
   since?: string;
@@ -25,7 +25,7 @@ export interface Supporter {
 export const XOVI_SUBSCRIBE_URL = 'https://xovi.axolodao.org/subscribe';
 
 export const SUPPORTERS: Supporter[] = [
-  { name: 'Javier Ortega Quezada', tier: 'aliado', since: '2026-07' },
+  { tier: 'aliado', since: '2026-07' },   // sin nombre: se publica «un suscriptor fundador» mientras no haya un consentimiento por escrito
 ];
 
 // Presentation facts per tier (list price in MXN + brand accent). Prices mirror the

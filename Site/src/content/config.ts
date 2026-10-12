@@ -114,7 +114,8 @@ const news = defineCollection({
   schema: z.object({
     slug: z.string(),
     author: z.enum(['zenbit', 'xolotlcalli', 'ndali']),
-    url: z.string().url(),
+    // Absent when the original post is not linked (a card with no link).
+    url: z.string().url().optional(),
     image: z.string(),
     // Rail proxy for the video-first chapters (lunes, ajolote). Small and
     // low-bitrate on purpose — the publish-quality master goes to Instagram, not

@@ -16,7 +16,7 @@ export type Author = 'zenbit' | 'xolotlcalli' | 'ndali';
 export interface NewsItem {
   slug: string;
   author: Author;
-  url: string;
+  url?: string;
   image: string;
   video?: string;
   poster?: string;
