@@ -1,6 +1,7 @@
 import type { Locale, SpeciesCode } from './types';
 import { type ThemeMode, accent as accentFor, SPECIES_ORDER } from './theme';
 import { s } from './strings';
+import { periodoDeSupervivencia } from '../../lib/survival';
 
 interface Props {
   locale: Locale;
@@ -36,7 +37,7 @@ export default function CoverHeader({
       <div class="max-w-[720px]">
         <div
           class="wq-logo-mark mb-3 text-choco dark:text-cream/90"
-          aria-label="Biomuseo Xolotlcalli"
+          aria-label="Museo de Ajolotes Xolotlcalli"
           dangerouslySetInnerHTML={{ __html: logoSvg }}
         />
         <h1 class="m-0 mb-1 font-display text-2xl text-[var(--wq-ink)] sm:text-3xl">
@@ -90,7 +91,7 @@ export default function CoverHeader({
             {survivalPct && (
               <div class="mt-2 border-t border-dashed border-[var(--wq-divider)] pt-2 text-[11px] leading-snug text-[var(--wq-ink-muted)]">
                 <span class="font-display text-base font-bold text-[var(--wq-ink)]">{survivalPct}</span>{' '}
-                {s(locale, 'bajas.survival.short')}
+                {s(locale, 'bajas.survival.short')} · {periodoDeSupervivencia(locale)}
               </div>
             )}
           </button>

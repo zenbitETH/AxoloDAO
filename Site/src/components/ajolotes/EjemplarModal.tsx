@@ -383,14 +383,6 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
             />
             {s(locale, 'modal.foot.att')}
           </span>
-          {/* Not on memorial profiles: the postmortem names no person, and the
-              forensic projection maps this ENS to a role (operación). */}
-          {!memorial && (
-            <span>
-              {s(locale, 'modal.foot.curador')}:{' '}
-              <code class="font-mono text-teal">lups-plantae.axolodao.eth</code>
-            </span>
-          )}
         </div>
       </div>
     </div>

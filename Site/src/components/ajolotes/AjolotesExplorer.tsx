@@ -216,7 +216,7 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
       });
     }
     // One rule for every count on the site: museum deaths since the opening (lib/survival OPENING).
-    // A death dated before it (Golden, 2025-01-14) predates the Biomuseo and stays off the wall.
+    // A death dated before it (Golden, 2025-01-14) predates the Museo de Ajolotes Xolotlcalli and stays off the wall.
     return out.filter((b) => !b.fecha || b.fecha >= OPENING);
   }, [bundle.bajas, bundle.ejemplares, bundle.bajasSnapshots]);
 

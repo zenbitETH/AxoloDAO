@@ -8,6 +8,7 @@ import { closureCopyViolations } from '../src/lib/closure-copy.ts';
 import { contarSupervivencia } from '../src/lib/survival-core.mjs';
 
 const SITE = join(dirname(fileURLToPath(import.meta.url)), '..');
+const NOTA = 'Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo. Incluye una baja del 23 de septiembre de 2026, ocurrida después del cierre al público (22 de septiembre), con los ejemplares bajo custodia del museo.';
 const { closedOn } = JSON.parse(readFileSync(join(SITE, 'src/data/closure.json'), 'utf8'));
 let fallos = 0;
 const ok = (cond, msg) => { console.log(`  ${cond ? '✓' : '✗'} ${msg}`); if (!cond) fallos++; };
@@ -68,9 +69,10 @@ const noticias = archivos(join(SITE, 'src/content/news')).filter((f) => f.endsWi
 ok(noticias.length >= 20, `se leyeron ${noticias.length} pies del Pulso`);
 for (const f of noticias) ok(!PROMESA_DE_ADOPCION.test(readFileSync(f, 'utf8')), `${f.replace(SITE + '/', '')}: sin promesa de adopción ni de recompensa`);
 
-console.log('\n6 · la tasa de supervivencia lleva su periodo, con una sola fecha de cierre');
+console.log('\n6 · la tasa de supervivencia lleva su periodo: hasta el 25 de septiembre de 2026, con la baja bajo custodia');
 const survival = readFileSync(join(SITE, 'src/lib/survival.ts'), 'utf8');
-ok(/CLOSED_ON[^\n]*closure\.closedOn/.test(survival) && !/\bCORTE\b/.test(survival), 'el periodo termina en closure.json (closedOn); no queda una segunda fecha (CORTE)');
+const FIN = /FIN_DE_LA_CUENTA = '(\d{4}-\d{2}-\d{2})'/.exec(survival)?.[1];
+ok(FIN === '2026-09-25' && /CLOSED_ON[^\n]*closure\.closedOn/.test(survival) && /until: string = FIN_DE_LA_CUENTA/.test(survival) && !/\bCORTE\b/.test(survival), 'la cuenta termina el 2026-09-25 (FIN_DE_LA_CUENTA) y el cierre sigue siendo closure.json');
 {
   // La tasa es una función del periodo: se prueba con casos inventados y con el paquete real.
   const b = (vivos, bajas, snaps = []) => ({ ejemplares: Array.from({ length: vivos }, (_, i) => ({ i })), bajas, bajasSnapshots: snaps });
@@ -89,11 +91,12 @@ ok(/CLOSED_ON[^\n]*closure\.closedOn/.test(survival) && !/\bCORTE\b/.test(surviv
   const real = JSON.parse(readFileSync(join(SITE, 'src/data/ajolotes/bundle.json'), 'utf8'));
   const memorial = readFileSync(join(SITE, 'src/components/ajolotes/memorial.ts'), 'utf8');
   const fixes = Object.fromEntries([...memorial.slice(memorial.indexOf('BAJA_FECHA_FIX')).split('};')[0].matchAll(/(?:'([^']+)'|(\w+)):\s*'(\d{4}-\d{2}-\d{2})'/g)].map((m) => [m[1] ?? m[2], m[3]]));
-  const sv = contarSupervivencia(real, { since: '2025-10-24', until: closedOn, fixes });
-  ok(sv.fechas.filter(Boolean).every((f) => f >= '2025-10-24' && f <= closedOn), `cada muerte con fecha en la cuenta cae dentro de 24 oct 2025 a ${closedOn}`);
+  const sv = contarSupervivencia(real, { since: '2025-10-24', until: FIN, fixes });
+  ok(sv.fechas.filter(Boolean).every((f) => f >= '2025-10-24' && f <= FIN), `cada muerte con fecha en la cuenta cae dentro de 24 oct 2025 a ${FIN}`);
+  ok(sv.vivos === 10 && sv.bajas === 17 && sv.total === 27 && (sv.tasa * 100).toFixed(1) === '37.0', `la cifra de este paquete es exactamente 37.0 % (10 de 27): sale ${(sv.tasa * 100).toFixed(1)} %`);
   const nombres = new Set(real.bajas.map((x) => (x.nombre ?? '').trim()));
-  const despuesReal = [...real.bajas, ...(real.bajasSnapshots ?? []).filter((x) => !nombres.has((x.alias ?? '').trim()))].filter((x) => (fixes[(x.nombre ?? x.alias ?? '').trim()] ?? x.fecha) > closedOn).length;
-  ok(sv.vivos === real.ejemplares.length + despuesReal && sv.total === sv.vivos + sv.bajas && Math.abs(sv.tasa - sv.vivos / sv.total) < 1e-12, `la tasa del paquete real sale del periodo: ${sv.vivos} vivos al cierre, ${sv.bajas} bajas, ${(sv.tasa * 100).toFixed(1)} %`);
+  const despuesReal = [...real.bajas, ...(real.bajasSnapshots ?? []).filter((x) => !nombres.has((x.alias ?? '').trim()))].filter((x) => (fixes[(x.nombre ?? x.alias ?? '').trim()] ?? x.fecha) > FIN).length;
+  ok(sv.vivos === real.ejemplares.length + despuesReal && sv.total === sv.vivos + sv.bajas && Math.abs(sv.tasa - sv.vivos / sv.total) < 1e-12, `la tasa del paquete real sale del periodo: ${sv.vivos} vivos al 25 de septiembre, ${sv.bajas} bajas, ${(sv.tasa * 100).toFixed(1)} %`);
 }
 ok(/OPENING = '2025-10-24'/.test(survival), 'el periodo empieza el día de la apertura');
 ok(/larvae and the unnamed groups/.test(readFileSync(join(SITE, 'src/lib/survival-core.mjs'), 'utf8')), 'el código dice qué cuentan las bajas sin fecha');
@@ -102,11 +105,32 @@ for (const f of ['src/components/SurvivalStat.astro', 'src/components/ajolotes/B
 }
 const dist = join(SITE, 'dist');
 if (existsSync(join(dist, 'xolotlcalli/ajolotes/index.html'))) {
-  const [y, m, d] = closedOn.split('-').map(Number);
+  const [y, m, d] = FIN.split('-').map(Number);
   const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
   const esperado = `24 oct 2025 – ${d} ${MES[m - 1]} ${y}`;
   const html = readFileSync(join(dist, 'xolotlcalli/ajolotes/index.html'), 'utf8');
   ok(html.includes(esperado), `la página construida de los ejemplares dice «${esperado}» junto a la tasa`);
+}
+
+// Una sola cifra: la que dibuja la página del cierre es la que sale de los datos, con su método y su corte al lado.
+// Con --dist lee la página construida (npm run build antes); sin dist construido, --dist falla.
+if (process.argv.includes('--dist')) {
+  console.log('\n· la tasa de la página construida es la de los datos');
+  const pagina = join(SITE, 'dist/xolotlcalli/index.html');
+  ok(existsSync(pagina), 'dist/xolotlcalli/index.html existe (corre el build antes)');
+  if (existsSync(pagina)) {
+    const html = readFileSync(pagina, 'utf8');
+    const bundle = JSON.parse(readFileSync(join(SITE, 'src/data/ajolotes/bundle.json'), 'utf8'));
+    const memorial = readFileSync(join(SITE, 'src/components/ajolotes/memorial.ts'), 'utf8');
+    const fixes = Object.fromEntries([...memorial.slice(memorial.indexOf('BAJA_FECHA_FIX')).split('};')[0].matchAll(/(?:'([^']+)'|(\w+)):\s*'(\d{4}-\d{2}-\d{2})'/g)].map((m) => [m[1] ?? m[2], m[3]]));
+    const sv = contarSupervivencia(bundle, { since: '2025-10-24', until: FIN, fixes });
+    const esperada = `${(sv.tasa * 100).toLocaleString('es-MX', { maximumFractionDigits: 1, minimumFractionDigits: 1 })} %`;
+    const enPagina = /data-supervivencia[^>]*>([^<]+)</.exec(html)?.[1]?.trim();
+    ok(enPagina === esperada, `la página dice ${enPagina ?? 'nada'} y los datos ${esperada}`);
+    const nota = /data-supervivencia-nota[^>]*>([^<]+)</.exec(html)?.[1] ?? '';
+    ok(enPagina === '37.0 %', `la página dice exactamente 37.0 %: dice ${enPagina}`);
+    ok(nota === NOTA, 'la nota de maggia, tal cual, acompaña a la cifra');
+  }
 }
 
 console.log(fallos ? `\n${fallos} FALLOS` : '\nTODO VERDE');

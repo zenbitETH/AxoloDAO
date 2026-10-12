@@ -34,8 +34,7 @@ export interface PmRelato {
     latencia?: { from: [string, string]; to: [string, string]; label: string };
   };
   momentos: { d: string; d2?: string; t?: string; tone: Tone; title: string; text: string; src: string }[];
-  simulacion?: { reglas: { d: string; text: string; real: string }[]; con: { n: string; l: string }; sin: { n: string; l: string } };
-  publico?: { fecha: string; fuente: string; url: string; cita: string; registro: string };
+  simulacion?: { reglas: { d: string; text: string }[]; cronologia: { senal: string | null; accion: string | null } };
   evidencia: PmEvidence[];
   datos?: { peso: { d: string; g: number; lt: number | null }[]; alim: { d: string; g: number; ofrecido: number | null }[] };
 }
@@ -95,7 +94,6 @@ export function relatoEvents(r: PmRelato, locale: Locale) {
     text: `${+a.g.toFixed(2)} g${a.ofrecido != null ? ` ${s(locale, 'pm.r.of')} ${+a.ofrecido.toFixed(2)} g` : ''}` }));
   const gap = insights(r).gap;
   if (gap) rows.push({ date: gap.from, time: null, lane: 'datos', kind: 'gap_meal', label: s(locale, 'pm.r.noFood').replace('{n}', String(gap.n)), source: 'alimentacion', grade: 'A', text: `${dShort(gap.from)} – ${dShort(gap.to)}` });
-  if (r.publico) rows.push({ date: r.publico.fecha, time: null, lane: 'integrity', kind: 'said_public', label: s(locale, 'pm.r.public'), source: 'podcast', grade: 'A', text: `«${r.publico.cita}»` });
   return rows;
 }
 
@@ -454,37 +452,22 @@ export default function Relato({ r, alias, locale }: { r: PmRelato; alias: strin
 
       {r.simulacion && (
         <section class="flex flex-col gap-2 rounded-2xl border border-[#2EC4C0]/30 bg-[var(--wq-row-bg)] p-3">
-          <span class="font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-[#2EC4C0]">{s(locale, 'pm.r.simBadge')}</span>
           <h3 class={H3}>{s(locale, 'pm.r.simTitle')}</h3>
           <ul class="m-0 flex list-none flex-col gap-1 p-0">
             {r.simulacion.reglas.map((g, i) => (
               <li key={i} tabIndex={0} onMouseEnter={() => { if (!touching()) setHot({ date: g.d }); }} onMouseLeave={() => { if (!touching()) setHot(null); }} onClick={() => pinHot({ date: g.d })} onFocus={() => { if (!touching()) setHot({ date: g.d }); }} onBlur={() => { if (!touching()) setHot(null); }}
                 class="-mx-1.5 grid gap-x-2.5 rounded-lg px-1.5 py-1 text-[13px] leading-snug outline-none transition-colors hover:bg-[var(--wq-surface)]" style={{ gridTemplateColumns: '50px 1fr' }}>
                 <span class="font-mono text-[11px] font-semibold text-[#2EC4C0]">{dShort(g.d)}</span>
-                <span class="text-[var(--wq-ink)]">{g.text}<span class="block text-[11.5px] text-[var(--wq-ink-muted)]">{s(locale, 'pm.r.real')}: {g.real}</span></span>
+                <span class="text-[var(--wq-ink)]">{g.text}</span>
               </li>
             ))}
           </ul>
-          <div class="grid grid-cols-2 gap-2">
-            {[r.simulacion.con, r.simulacion.sin].map((k, i) => (
-              <div key={i} class="rounded-xl bg-[var(--wq-surface)] px-2.5 py-2">
-                <b class="block font-display text-[20px] leading-tight" style={{ color: i ? '#E0A23A' : '#34C08A' }}>{k.n}</b>
-                <span class="text-[11px] text-[var(--wq-ink-muted)]">{k.l}</span>
-              </div>
-            ))}
-          </div>
+          <p class="m-0 text-[12px] text-[var(--wq-ink-muted)]" data-cronologia>
+            {s(locale, 'pm.r.firstSignalDate')}: {r.simulacion.cronologia.senal ? dLong(r.simulacion.cronologia.senal) : '—'} · {s(locale, 'pm.r.firstActionDate')}: {r.simulacion.cronologia.accion ? dLong(r.simulacion.cronologia.accion) : s(locale, 'pm.r.noActionRecorded')}
+          </p>
         </section>
       )}
 
-      {r.publico && (
-        <section class="flex flex-col gap-1.5 rounded-2xl border border-[var(--wq-divider)] p-3 transition-colors hover:border-[#E0A23A]/50">
-          <h3 class={H3}>{s(locale, 'pm.r.public')}</h3>
-          <span class="text-xs text-[var(--wq-ink-muted)]">{r.publico.fuente} · {dLong(r.publico.fecha)} ·{' '}
-            <a href={r.publico.url} target="_blank" rel="noopener" class="font-semibold text-teal underline-offset-2 hover:underline">{s(locale, 'pm.watch')} ↗</a></span>
-          <blockquote class="m-0 border-l-[3px] border-[#E0A23A] pl-2.5 text-sm italic leading-snug text-[var(--wq-ink)] sm:text-[13px]">«{r.publico.cita}»</blockquote>
-          <p class="m-0 text-xs leading-snug text-[#E0A23A]">{s(locale, 'pm.record')}: {r.publico.registro}</p>
-        </section>
-      )}
     </div>
   );
 }

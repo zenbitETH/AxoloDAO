@@ -1,7 +1,6 @@
 ---
-import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { MUSEO_WORDMARK_SVG } from '@/lib/wordmark';
 import ClosureBanner from '@components/ClosureBanner.astro';
 import AjolotesExplorer from '@components/ajolotes/AjolotesExplorer';
 import bundleRaw from '@/data/ajolotes/bundle.json';
@@ -16,10 +15,7 @@ const bundle = bundleRaw as unknown as Bundle;
 const water = waterRaw as unknown as Measurement[];
 const bitacora = bitacoraRaw as unknown as BitacoraEntry[];
 
-const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
-  .replace(/fill="white"/g, 'fill="currentColor"')
-  .replace(/<svg([^>]*?)\swidth="\d+"/, '<svg$1')
-  .replace(/<svg([^>]*?)\sheight="\d+"/, '<svg$1');
+const logoSvg = MUSEO_WORDMARK_SVG;
 
 const paths = {
   waterPath: t(locale, 'wq.path'),
@@ -33,9 +29,8 @@ const paths = {
 
 <BaseLayout
   locale={locale}
-  title={`${t(locale, 'ajolotes.title')} — BioMuseu Xolotlcalli`}
+  title={`${t(locale, 'ajolotes.title')} — Museo de Ajolotes Xolotlcalli`}
   description={t(locale, 'ajolotes.subtitle')}
-  ogImage="/og-image-xolotlcalliajolotes.jpg"
 >
   <section class="aj-surface relative">
     <AjolotesExplorer client:load locale={locale} bundle={bundle} water={water} bitacora={bitacora} logoSvg={logoSvg} paths={paths}>

@@ -1,25 +1,18 @@
 {
- "generated": "2026-10-01",
- "brain_commit": "c6cadb4",
+ "generated": "2026-10-12",
+ "brain_commit": "5d8769f",
  "vivos": {
   "Chocorrol": {
    "alias": "Chocorrol",
    "nombre": "Chocorrol",
    "vivo": true,
    "corte": "2026-09-14",
-   "lead": "Chocorrol vive en AM 1. En las cinco semanas antes del corte del registro (14 de septiembre) hay 24 señales suyas, 23 días con alguna acción y 26 días con lectura de agua. El registro muestra 4 pistas que las bajas mostraron antes.",
+   "lead": "Chocorrol estaba en AM 1 al corte del registro (14 de septiembre). Hay 24 señales suyas en las cinco semanas anteriores. Hay 23 días con alguna acción en esas semanas. Hay 26 días con lectura de agua en esas semanas.",
    "stats": [
     {
      "n": "24",
      "u": "señales",
      "l": "registradas en las cinco semanas antes del corte",
-     "tone": "amber",
-     "key": "senales"
-    },
-    {
-     "n": "21",
-     "u": "de 24",
-     "l": "con una acción dentro de 48 h",
      "tone": "amber",
      "key": "senales"
     },
@@ -472,7 +465,7 @@
       "2026-03-28",
       "14:10",
       "leve",
-      "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
      ],
      [
       "2026-04-08",
@@ -484,7 +477,7 @@
       "2026-04-28",
       "10:04",
       "leve",
-      "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
      ],
      [
       "2026-04-30",
@@ -538,7 +531,7 @@
       "2026-06-21",
       "15:52",
       "leve",
-      "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
      ],
      [
       "2026-07-03",
@@ -622,7 +615,7 @@
       "2026-08-12",
       "17:48",
       "leve",
-      "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
      ],
      [
       "2026-08-13",
@@ -753,8 +746,8 @@
       "si",
       [
        "Acción: Ndali pidió quitar las casitas de barro (posibles silicatos) y poner refugios de plástico",
-       "Acción: El fundador pregunta si ya se consiguió el sulfato de magnesio para la solución Holtfreter",
-       "Acción: Curaduría dice que no tiene garrafones, los vaciará y al día siguiente hará Holtfreter"
+       "Acción: El equipo pregunta si ya se consiguió el sulfato de magnesio para la solución Holtfreter",
+       "Acción: El equipo dice que no tiene garrafones, los vaciará y al día siguiente hará Holtfreter"
       ]
      ],
      [
@@ -770,7 +763,7 @@
       "10:24",
       "no_ocurrio",
       [
-       "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       "Veterinario: el veterinario reagendó la visita del 20-abr"
       ]
      ],
      [
@@ -794,7 +787,7 @@
       "19:09",
       "si",
       [
-       "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
       ]
      ],
      [
@@ -1074,7 +1067,7 @@
       [
        "Aviso al veterinario: Crecimiento algodonoso / Manchas blancas (Saprolegnia) · Notificación a veterinario · En el translado en tupper la pelu…",
        "En Cuarentena",
-       "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+       "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
        "y 1 más"
       ]
      ],
@@ -1092,7 +1085,7 @@
       "si",
       [
        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
-       "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       "Acción: la desparasitación no consta en el registro de mantenimiento"
       ]
      ],
      [
@@ -1125,7 +1118,7 @@
       "10:18",
       "si",
       [
-       "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),"
       ]
      ],
      [
@@ -1300,7 +1293,7 @@
       "20:38",
       "si",
       [
-       "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+       "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -1309,7 +1302,7 @@
       "13:19",
       "si",
       [
-       "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       "Acción: El equipo hará la limpieza el martes y cotizará extractores"
       ]
      ]
     ]
@@ -1319,7 +1312,7 @@
      "d": "2026-08-25",
      "tone": "muted",
      "title": "Pesaje: 62 g",
-     "text": "+27 % frente al máximo de los 90 días anteriores (49 g, 3 ago).",
+     "text": "El máximo de los 90 días anteriores es de 49 g, del 3 de agosto. La diferencia es de +27 %.",
      "src": "historial médico"
     },
     {
@@ -1366,22 +1359,15 @@
     {
      "tone": "amber",
      "key": "senales",
-     "title": "3 señales sin una acción suya en 48 h",
-     "text": "La más reciente, el 9 de septiembre: Bitácora: Flotabilidad anormal / Arqueo · Solo observación · El ejemplar está flotando y tiene una forma de u",
-     "src": "libro"
-    },
-    {
-     "tone": "amber",
-     "key": "senales",
      "title": "3 señales que vuelven",
-     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 12 veces desde el 9 jul (antes de morir la tuvieron Goldy, Leucística, Panchita, Andersoni 1); Crecimiento algodonoso / Manchas blancas (Saprolegnia), 6 veces desde el 13 jul (antes de morir la tuvo Panchita); Nado persistente, 3 veces desde el 21 jun (antes de morir la tuvieron Panchita, Goldy, Larva 2, Andersoni 1).",
+     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 12 veces desde el 9 de julio. Crecimiento algodonoso / Manchas blancas (Saprolegnia), 6 veces desde el 13 de julio. Nado persistente, 3 veces desde el 21 de junio.",
      "src": "libro"
     },
     {
-     "tone": "amber",
+     "tone": "muted",
      "key": "gap",
-     "title": "5 días sin medir el agua con una señal abierta",
-     "text": "Del 9 de septiembre al 13 de septiembre. Leucística pasó tres días así antes de su peor semana.",
+     "title": "5 días sin mediciones de agua registradas",
+     "text": "Del 9 de septiembre al 13 de septiembre.",
      "src": "libro · agua"
     },
     {
@@ -1810,19 +1796,12 @@
    "nombre": "La negra",
    "vivo": true,
    "corte": "2026-09-14",
-   "lead": "La negra vive en AM 1. En las cinco semanas antes del corte del registro (14 de septiembre) hay 17 señales suyas, 25 días con alguna acción y 26 días con lectura de agua. El registro muestra 6 pistas que las bajas mostraron antes.",
+   "lead": "La negra estaba en AM 1 al corte del registro (14 de septiembre). Hay 17 señales suyas en las cinco semanas anteriores. Hay 25 días con alguna acción en esas semanas. Hay 26 días con lectura de agua en esas semanas.",
    "stats": [
     {
      "n": "17",
      "u": "señales",
      "l": "registradas en las cinco semanas antes del corte",
-     "tone": "amber",
-     "key": "senales"
-    },
-    {
-     "n": "14",
-     "u": "de 17",
-     "l": "con una acción dentro de 48 h",
      "tone": "amber",
      "key": "senales"
     },
@@ -2237,7 +2216,7 @@
       "2026-03-28",
       "14:10",
       "leve",
-      "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
      ],
      [
       "2026-04-08",
@@ -2249,7 +2228,7 @@
       "2026-04-28",
       "10:04",
       "leve",
-      "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
      ],
      [
       "2026-05-02",
@@ -2285,7 +2264,7 @@
       "2026-06-21",
       "15:52",
       "leve",
-      "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
      ],
      [
       "2026-07-03",
@@ -2369,7 +2348,7 @@
       "2026-08-12",
       "17:48",
       "leve",
-      "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
      ],
      [
       "2026-08-17",
@@ -2483,7 +2462,7 @@
       "10:24",
       "no_ocurrio",
       [
-       "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       "Veterinario: el veterinario reagendó la visita del 20-abr"
       ]
      ],
      [
@@ -2507,7 +2486,7 @@
       "19:09",
       "si",
       [
-       "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
       ]
      ],
      [
@@ -2703,7 +2682,7 @@
       "si",
       [
        "En Cuarentena",
-       "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+       "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
        "Cambio de agua: Cambio de agua rutinario · Se realiza el cambio de agua del recinto de cuarentena de La negra con adición de stress gua…"
       ]
      ],
@@ -2734,7 +2713,7 @@
       [
        "En Cuarentena",
        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes. Se aprecia una…",
-       "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento",
+       "Acción: la desparasitación no consta en el registro de mantenimiento",
        "y 1 más"
       ]
      ],
@@ -2800,7 +2779,7 @@
       "si",
       [
        "En Cuarentena",
-       "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),",
+       "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),",
        "Cambio de agua: Cambio de agua rutinario · Se realiza el cambio de agua del ejemplar.",
        "y 1 más"
       ]
@@ -3009,7 +2988,7 @@
       "si",
       [
        "En Cuarentena",
-       "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+       "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
        "Cambio de agua: Cambio de agua rutinario · Se cambia el agua de la Negra. Se observa un poco de retención de muda en la aleta dorsaldel…",
        "y 1 más"
       ]
@@ -3028,7 +3007,7 @@
       "13:19",
       "si",
       [
-       "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       "Acción: El equipo hará la limpieza el martes y cotizará extractores"
       ]
      ]
     ]
@@ -3038,7 +3017,7 @@
      "d": "2026-08-25",
      "tone": "rose",
      "title": "Pesaje: 54 g",
-     "text": "−16 % frente al máximo de los 90 días anteriores (64 g, 22 jul).",
+     "text": "El máximo de los 90 días anteriores es de 64 g, del 22 de julio. La diferencia es de −16 %.",
      "src": "historial médico"
     },
     {
@@ -3086,35 +3065,28 @@
      "tone": "amber",
      "key": "peso",
      "title": "Bajó 16 % de peso",
-     "text": "64 g el 22 de julio; 54 g el 10 de agosto y 54 g el 25 de agosto. Antes de morir, Jaffy bajó 52 %, Goldy bajó 50 %, Leucística bajó 22 %.",
+     "text": "64 g el 22 de julio. 54 g el 10 de agosto. 54 g el 25 de agosto.",
      "src": "historial médico"
     },
     {
      "tone": "amber",
      "key": "alim",
      "title": "No comió en 9 de 13 tomas",
-     "text": "En las tres semanas antes del corte; la última sin consumo, el 9 de septiembre. En sus últimas tres semanas, Panchita también dejó tomas sin comer.",
+     "text": "En las tres semanas antes del corte; la última sin consumo, el 9 de septiembre.",
      "src": "alimentación"
     },
     {
      "tone": "amber",
      "key": "senales",
-     "title": "3 señales sin una acción suya en 48 h",
-     "text": "La más reciente, el 22 de agosto: Bitácora: Flotabilidad anormal / Arqueo · Solo observación · El ejemplar presenta flotación de sus patas delanteras",
-     "src": "libro"
-    },
-    {
-     "tone": "amber",
-     "key": "senales",
      "title": "Una señal que vuelve",
-     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 8 veces desde el 17 ago (antes de morir la tuvieron Goldy, Leucística, Panchita, Andersoni 1).",
+     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 8 veces desde el 17 de agosto.",
      "src": "libro"
     },
     {
-     "tone": "amber",
+     "tone": "muted",
      "key": "gap",
-     "title": "5 días sin medir el agua con una señal abierta",
-     "text": "Del 9 de septiembre al 13 de septiembre. Leucística pasó tres días así antes de su peor semana.",
+     "title": "5 días sin mediciones de agua registradas",
+     "text": "Del 9 de septiembre al 13 de septiembre.",
      "src": "libro · agua"
     },
     {
@@ -3598,19 +3570,12 @@
    "nombre": "Limon",
    "vivo": true,
    "corte": "2026-09-14",
-   "lead": "Limon vive en AM 1. En las cinco semanas antes del corte del registro (14 de septiembre) hay 33 señales suyas, 21 días con alguna acción y 26 días con lectura de agua. El registro muestra 5 pistas que las bajas mostraron antes.",
+   "lead": "Limon estaba en AM 1 al corte del registro (14 de septiembre). Hay 33 señales suyas en las cinco semanas anteriores. Hay 21 días con alguna acción en esas semanas. Hay 26 días con lectura de agua en esas semanas.",
    "stats": [
     {
      "n": "33",
      "u": "señales",
      "l": "registradas en las cinco semanas antes del corte",
-     "tone": "amber",
-     "key": "senales"
-    },
-    {
-     "n": "25",
-     "u": "de 33",
-     "l": "con una acción dentro de 48 h",
      "tone": "amber",
      "key": "senales"
     },
@@ -4083,7 +4048,7 @@
       "2026-03-28",
       "14:10",
       "leve",
-      "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
      ],
      [
       "2026-04-08",
@@ -4095,7 +4060,7 @@
       "2026-04-28",
       "10:04",
       "leve",
-      "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
      ],
      [
       "2026-05-02",
@@ -4149,7 +4114,7 @@
       "2026-06-21",
       "15:52",
       "leve",
-      "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
      ],
      [
       "2026-07-03",
@@ -4215,7 +4180,7 @@
       "2026-08-12",
       "17:48",
       "leve",
-      "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
      ],
      [
       "2026-08-14",
@@ -4431,7 +4396,7 @@
       "10:24",
       "no_ocurrio",
       [
-       "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       "Veterinario: el veterinario reagendó la visita del 20-abr"
       ]
      ],
      [
@@ -4455,7 +4420,7 @@
       "19:09",
       "si",
       [
-       "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
       ]
      ],
      [
@@ -4636,7 +4601,7 @@
       "si",
       [
        "Aviso al veterinario: Apatía / Rechazo de alimento · Limpieza / Lavado de equipo, Notificación a veterinario · Limón vomita su comida del día…",
-       "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+       "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -4654,7 +4619,7 @@
       "si",
       [
        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
-       "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       "Acción: la desparasitación no consta en el registro de mantenimiento"
       ]
      ],
      [
@@ -4687,7 +4652,7 @@
       "10:18",
       "si",
       [
-       "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),"
       ]
      ],
      [
@@ -4847,7 +4812,7 @@
       "20:38",
       "si",
       [
-       "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+       "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -4856,7 +4821,7 @@
       "13:19",
       "si",
       [
-       "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       "Acción: El equipo hará la limpieza el martes y cotizará extractores"
       ]
      ]
     ]
@@ -4866,7 +4831,7 @@
      "d": "2026-08-25",
      "tone": "rose",
      "title": "Pesaje: 33 g",
-     "text": "−11 % frente al máximo de los 90 días anteriores (37 g, 22 jun).",
+     "text": "El máximo de los 90 días anteriores es de 37 g, del 22 de junio. La diferencia es de −11 %.",
      "src": "historial médico"
     },
     {
@@ -4914,28 +4879,21 @@
      "tone": "amber",
      "key": "peso",
      "title": "Bajó 11 % de peso",
-     "text": "37 g el 22 de junio; 31 g el 10 de agosto y 33 g el 25 de agosto. Antes de morir, Jaffy bajó 52 %, Goldy bajó 50 %, Leucística bajó 22 %.",
+     "text": "37 g el 22 de junio. 31 g el 10 de agosto. 33 g el 25 de agosto.",
      "src": "historial médico"
     },
     {
      "tone": "amber",
      "key": "senales",
-     "title": "8 señales sin una acción suya en 48 h",
-     "text": "La más reciente, el 10 de septiembre: Bitácora: Flotabilidad anormal / Arqueo · Solo observación · El ejemplar presenta flotabilidad",
-     "src": "libro"
-    },
-    {
-     "tone": "amber",
-     "key": "senales",
      "title": "2 señales que vuelven",
-     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 27 veces desde el 16 jun (antes de morir la tuvieron Goldy, Leucística, Panchita, Andersoni 1); Nado persistente, 5 veces desde el 21 jun (antes de morir la tuvieron Panchita, Goldy, Larva 2, Andersoni 1).",
+     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 27 veces desde el 16 de junio. Nado persistente, 5 veces desde el 21 de junio.",
      "src": "libro"
     },
     {
-     "tone": "amber",
+     "tone": "muted",
      "key": "gap",
-     "title": "5 días sin medir el agua con una señal abierta",
-     "text": "Del 9 de septiembre al 13 de septiembre. Leucística pasó tres días así antes de su peor semana.",
+     "title": "5 días sin mediciones de agua registradas",
+     "text": "Del 9 de septiembre al 13 de septiembre.",
      "src": "libro · agua"
     },
     {
@@ -5384,20 +5342,13 @@
    "nombre": "Martín",
    "vivo": true,
    "corte": "2026-09-14",
-   "lead": "Martín vive en AM 2. En las cinco semanas antes del corte del registro (14 de septiembre) hay 19 señales suyas, 20 días con alguna acción y 26 días con lectura de agua. El registro muestra 3 pistas que las bajas mostraron antes.",
+   "lead": "Martín estaba en AM 2 al corte del registro (14 de septiembre). Hay 19 señales suyas en las cinco semanas anteriores. Hay 20 días con alguna acción en esas semanas. Hay 26 días con lectura de agua en esas semanas.",
    "stats": [
     {
      "n": "19",
      "u": "señales",
      "l": "registradas en las cinco semanas antes del corte",
      "tone": "amber",
-     "key": "senales"
-    },
-    {
-     "n": "19",
-     "u": "de 19",
-     "l": "con una acción dentro de 48 h",
-     "tone": "green",
      "key": "senales"
     },
     {
@@ -5848,7 +5799,7 @@
       "2026-03-28",
       "14:10",
       "leve",
-      "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
      ],
      [
       "2026-04-08",
@@ -5860,7 +5811,7 @@
       "2026-04-28",
       "10:04",
       "leve",
-      "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
      ],
      [
       "2026-05-02",
@@ -5920,7 +5871,7 @@
       "2026-06-21",
       "15:52",
       "leve",
-      "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
      ],
      [
       "2026-07-03",
@@ -5932,7 +5883,7 @@
       "2026-07-03",
       "19:59",
       "fuerte",
-      "Chat del equipo: Ndali: Martín anda muy raro, come poco y trae mucha actividad"
+      "Chat del equipo: Martín anda muy raro, come poco y trae mucha actividad"
      ],
      [
       "2026-07-03",
@@ -6034,7 +5985,7 @@
       "2026-08-12",
       "17:48",
       "leve",
-      "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
      ],
      [
       "2026-08-13",
@@ -6154,7 +6105,7 @@
       "10:24",
       "no_ocurrio",
       [
-       "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       "Veterinario: el veterinario reagendó la visita del 20-abr"
       ]
      ],
      [
@@ -6178,7 +6129,7 @@
       "19:09",
       "si",
       [
-       "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
       ]
      ],
      [
@@ -6369,7 +6320,7 @@
       "12:02",
       "si",
       [
-       "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+       "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -6387,7 +6338,7 @@
       "si",
       [
        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
-       "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       "Acción: la desparasitación no consta en el registro de mantenimiento"
       ]
      ],
      [
@@ -6420,7 +6371,7 @@
       "10:18",
       "si",
       [
-       "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),"
       ]
      ],
      [
@@ -6570,7 +6521,7 @@
       "20:38",
       "si",
       [
-       "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+       "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -6579,7 +6530,7 @@
       "13:19",
       "si",
       [
-       "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       "Acción: El equipo hará la limpieza el martes y cotizará extractores"
       ]
      ]
     ]
@@ -6589,7 +6540,7 @@
      "d": "2026-08-25",
      "tone": "muted",
      "title": "Pesaje: 43 g",
-     "text": "+19 % frente al máximo de los 90 días anteriores (36 g, 22 jul).",
+     "text": "El máximo de los 90 días anteriores es de 36 g, del 22 de julio. La diferencia es de +19 %.",
      "src": "historial médico"
     },
     {
@@ -6637,14 +6588,14 @@
      "tone": "amber",
      "key": "senales",
      "title": "2 señales que vuelven",
-     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 11 veces desde el 21 jun (antes de morir la tuvieron Goldy, Leucística, Panchita, Andersoni 1); Nado persistente, 4 veces desde el 4 jun (antes de morir la tuvieron Panchita, Goldy, Larva 2, Andersoni 1).",
+     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 11 veces desde el 21 de junio. Nado persistente, 4 veces desde el 4 de junio.",
      "src": "libro"
     },
     {
-     "tone": "amber",
+     "tone": "muted",
      "key": "gap",
-     "title": "5 días sin medir el agua con una señal abierta",
-     "text": "Del 9 de septiembre al 13 de septiembre. Leucística pasó tres días así antes de su peor semana.",
+     "title": "5 días sin mediciones de agua registradas",
+     "text": "Del 9 de septiembre al 13 de septiembre.",
      "src": "libro · agua"
     },
     {
@@ -7123,19 +7074,12 @@
    "nombre": "Parda",
    "vivo": true,
    "corte": "2026-09-14",
-   "lead": "Parda vive en AM 1. En las cinco semanas antes del corte del registro (14 de septiembre) hay 20 señales suyas, 20 días con alguna acción y 26 días con lectura de agua. El registro muestra 4 pistas que las bajas mostraron antes.",
+   "lead": "Parda estaba en AM 1 al corte del registro (14 de septiembre). Hay 20 señales suyas en las cinco semanas anteriores. Hay 20 días con alguna acción en esas semanas. Hay 26 días con lectura de agua en esas semanas.",
    "stats": [
     {
      "n": "20",
      "u": "señales",
      "l": "registradas en las cinco semanas antes del corte",
-     "tone": "amber",
-     "key": "senales"
-    },
-    {
-     "n": "19",
-     "u": "de 20",
-     "l": "con una acción dentro de 48 h",
      "tone": "amber",
      "key": "senales"
     },
@@ -7550,7 +7494,7 @@
       "2026-03-28",
       "14:10",
       "leve",
-      "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
      ],
      [
       "2026-04-08",
@@ -7604,7 +7548,7 @@
       "2026-04-28",
       "10:04",
       "leve",
-      "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
      ],
      [
       "2026-05-02",
@@ -7634,7 +7578,7 @@
       "2026-06-21",
       "15:52",
       "leve",
-      "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
      ],
      [
       "2026-07-03",
@@ -7664,7 +7608,7 @@
       "2026-08-12",
       "17:48",
       "leve",
-      "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
      ],
      [
       "2026-08-20",
@@ -7848,7 +7792,7 @@
       "10:24",
       "no_ocurrio",
       [
-       "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       "Veterinario: el veterinario reagendó la visita del 20-abr"
       ]
      ],
      [
@@ -7872,7 +7816,7 @@
       "19:09",
       "si",
       [
-       "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
       ]
      ],
      [
@@ -8055,7 +7999,7 @@
       "12:02",
       "si",
       [
-       "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+       "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -8073,7 +8017,7 @@
       "si",
       [
        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
-       "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       "Acción: la desparasitación no consta en el registro de mantenimiento"
       ]
      ],
      [
@@ -8106,7 +8050,7 @@
       "10:18",
       "si",
       [
-       "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),"
       ]
      ],
      [
@@ -8254,7 +8198,7 @@
       "20:38",
       "si",
       [
-       "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+       "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -8263,7 +8207,7 @@
       "13:19",
       "si",
       [
-       "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       "Acción: El equipo hará la limpieza el martes y cotizará extractores"
       ]
      ]
     ]
@@ -8273,7 +8217,7 @@
      "d": "2026-08-25",
      "tone": "muted",
      "title": "Pesaje: 59 g",
-     "text": "−8 % frente al máximo de los 90 días anteriores (64 g, 22 jul).",
+     "text": "El máximo de los 90 días anteriores es de 64 g, del 22 de julio. La diferencia es de −8 %.",
      "src": "historial médico"
     },
     {
@@ -8320,22 +8264,15 @@
     {
      "tone": "amber",
      "key": "senales",
-     "title": "1 señal sin una acción suya en 48 h",
-     "text": "La más reciente, el 22 de agosto: Bitácora: Nado persistente · Solo observación · Parda presenta nado rápido y descoordinado (presenta un bamboleo)",
-     "src": "libro"
-    },
-    {
-     "tone": "amber",
-     "key": "senales",
      "title": "2 señales que vuelven",
-     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 9 veces desde el 25 ago (antes de morir la tuvieron Goldy, Leucística, Panchita, Andersoni 1); Crecimiento algodonoso / Manchas blancas (Saprolegnia), 3 veces desde el 26 ago (antes de morir la tuvo Panchita).",
+     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 9 veces desde el 25 de agosto. Crecimiento algodonoso / Manchas blancas (Saprolegnia), 3 veces desde el 26 de agosto.",
      "src": "libro"
     },
     {
-     "tone": "amber",
+     "tone": "muted",
      "key": "gap",
-     "title": "5 días sin medir el agua con una señal abierta",
-     "text": "Del 9 de septiembre al 13 de septiembre. Leucística pasó tres días así antes de su peor semana.",
+     "title": "5 días sin mediciones de agua registradas",
+     "text": "Del 9 de septiembre al 13 de septiembre.",
      "src": "libro · agua"
     },
     {
@@ -8764,20 +8701,13 @@
    "nombre": "Pardo Macho",
    "vivo": true,
    "corte": "2026-09-14",
-   "lead": "Pardo Macho vive en AM 2. En las cinco semanas antes del corte del registro (14 de septiembre) hay 10 señales suyas, 19 días con alguna acción y 26 días con lectura de agua. El registro muestra 3 pistas que las bajas mostraron antes.",
+   "lead": "Pardo Macho estaba en AM 2 al corte del registro (14 de septiembre). Hay 10 señales suyas en las cinco semanas anteriores. Hay 19 días con alguna acción en esas semanas. Hay 26 días con lectura de agua en esas semanas.",
    "stats": [
     {
      "n": "10",
      "u": "señales",
      "l": "registradas en las cinco semanas antes del corte",
      "tone": "amber",
-     "key": "senales"
-    },
-    {
-     "n": "10",
-     "u": "de 10",
-     "l": "con una acción dentro de 48 h",
-     "tone": "green",
      "key": "senales"
     },
     {
@@ -9193,7 +9123,7 @@
       "2026-03-28",
       "14:10",
       "leve",
-      "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
      ],
      [
       "2026-04-08",
@@ -9205,7 +9135,7 @@
       "2026-04-28",
       "10:04",
       "leve",
-      "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
      ],
      [
       "2026-05-02",
@@ -9241,7 +9171,7 @@
       "2026-06-21",
       "15:52",
       "leve",
-      "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
      ],
      [
       "2026-06-22",
@@ -9277,7 +9207,7 @@
       "2026-08-12",
       "17:48",
       "leve",
-      "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
      ],
      [
       "2026-08-19",
@@ -9349,7 +9279,7 @@
       "10:24",
       "no_ocurrio",
       [
-       "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       "Veterinario: el veterinario reagendó la visita del 20-abr"
       ]
      ],
      [
@@ -9373,7 +9303,7 @@
       "19:09",
       "si",
       [
-       "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
       ]
      ],
      [
@@ -9557,7 +9487,7 @@
       "12:02",
       "si",
       [
-       "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+       "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -9575,7 +9505,7 @@
       "si",
       [
        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
-       "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       "Acción: la desparasitación no consta en el registro de mantenimiento"
       ]
      ],
      [
@@ -9608,7 +9538,7 @@
       "10:18",
       "si",
       [
-       "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),"
       ]
      ],
      [
@@ -9748,7 +9678,7 @@
       "20:38",
       "si",
       [
-       "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+       "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -9757,7 +9687,7 @@
       "13:19",
       "si",
       [
-       "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       "Acción: El equipo hará la limpieza el martes y cotizará extractores"
       ]
      ]
     ]
@@ -9767,7 +9697,7 @@
      "d": "2026-08-25",
      "tone": "muted",
      "title": "Pesaje: 61 g",
-     "text": "−9 % frente al máximo de los 90 días anteriores (67 g, 22 jul).",
+     "text": "El máximo de los 90 días anteriores es de 67 g, del 22 de julio. La diferencia es de −9 %.",
      "src": "historial médico"
     },
     {
@@ -9815,14 +9745,14 @@
      "tone": "amber",
      "key": "senales",
      "title": "Una señal que vuelve",
-     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 3 veces desde el 26 ago (antes de morir la tuvieron Goldy, Leucística, Panchita, Andersoni 1).",
+     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 3 veces desde el 26 de agosto.",
      "src": "libro"
     },
     {
-     "tone": "amber",
+     "tone": "muted",
      "key": "gap",
-     "title": "5 días sin medir el agua con una señal abierta",
-     "text": "Del 9 de septiembre al 13 de septiembre. Leucística pasó tres días así antes de su peor semana.",
+     "title": "5 días sin mediciones de agua registradas",
+     "text": "Del 9 de septiembre al 13 de septiembre.",
      "src": "libro · agua"
     },
     {
@@ -10251,19 +10181,12 @@
    "nombre": "Patito",
    "vivo": true,
    "corte": "2026-09-14",
-   "lead": "Patito vive en AM 3. En las cinco semanas antes del corte del registro (14 de septiembre) hay 11 señales suyas, 20 días con alguna acción y 26 días con lectura de agua. El registro muestra 2 pistas que las bajas mostraron antes.",
+   "lead": "Patito estaba en AM 3 al corte del registro (14 de septiembre). Hay 11 señales suyas en las cinco semanas anteriores. Hay 20 días con alguna acción en esas semanas. Hay 26 días con lectura de agua en esas semanas.",
    "stats": [
     {
      "n": "11",
      "u": "señales",
      "l": "registradas en las cinco semanas antes del corte",
-     "tone": "amber",
-     "key": "senales"
-    },
-    {
-     "n": "7",
-     "u": "de 11",
-     "l": "con una acción dentro de 48 h",
      "tone": "amber",
      "key": "senales"
     },
@@ -10532,7 +10455,7 @@
       "2026-06-21",
       "15:52",
       "leve",
-      "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
      ],
      [
       "2026-06-26",
@@ -10574,7 +10497,7 @@
       "2026-08-12",
       "17:48",
       "leve",
-      "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
      ],
      [
       "2026-08-15",
@@ -10856,7 +10779,7 @@
       "12:02",
       "si",
       [
-       "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+       "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -10874,7 +10797,7 @@
       "si",
       [
        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
-       "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       "Acción: la desparasitación no consta en el registro de mantenimiento"
       ]
      ],
      [
@@ -10907,7 +10830,7 @@
       "10:18",
       "si",
       [
-       "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),"
       ]
      ],
      [
@@ -11056,7 +10979,7 @@
       "20:38",
       "si",
       [
-       "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+       "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -11065,7 +10988,7 @@
       "13:19",
       "si",
       [
-       "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       "Acción: El equipo hará la limpieza el martes y cotizará extractores"
       ]
      ]
     ]
@@ -11075,7 +10998,7 @@
      "d": "2026-08-25",
      "tone": "muted",
      "title": "Pesaje: 32 g",
-     "text": "+14 % frente al máximo de los 90 días anteriores (28 g, 3 ago).",
+     "text": "El máximo de los 90 días anteriores es de 28 g, del 3 de agosto. La diferencia es de +14 %.",
      "src": "historial médico"
     },
     {
@@ -11120,17 +11043,10 @@
    ],
    "pistas": [
     {
-     "tone": "amber",
-     "key": "senales",
-     "title": "4 señales sin una acción suya en 48 h",
-     "text": "La más reciente, el 10 de septiembre: Bitácora: Irritacion cutanea · Solo observación · El ejemplar se rasca repetidamente en la branquia derecha",
-     "src": "libro"
-    },
-    {
-     "tone": "amber",
+     "tone": "muted",
      "key": "gap",
-     "title": "5 días sin medir el agua con una señal abierta",
-     "text": "Del 9 de septiembre al 13 de septiembre. Leucística pasó tres días así antes de su peor semana.",
+     "title": "5 días sin mediciones de agua registradas",
+     "text": "Del 9 de septiembre al 13 de septiembre.",
      "src": "libro · agua"
     }
    ],
@@ -11182,19 +11098,12 @@
    "nombre": "Remo",
    "vivo": true,
    "corte": "2026-09-14",
-   "lead": "Remo vive en AD. En las cinco semanas antes del corte del registro (14 de septiembre) hay 30 señales suyas, 19 días con alguna acción y 26 días con lectura de agua. El registro muestra 4 pistas que las bajas mostraron antes.",
+   "lead": "Remo estaba en AD al corte del registro (14 de septiembre). Hay 30 señales suyas en las cinco semanas anteriores. Hay 19 días con alguna acción en esas semanas. Hay 26 días con lectura de agua en esas semanas.",
    "stats": [
     {
      "n": "30",
      "u": "señales",
      "l": "registradas en las cinco semanas antes del corte",
-     "tone": "amber",
-     "key": "senales"
-    },
-    {
-     "n": "24",
-     "u": "de 30",
-     "l": "con una acción dentro de 48 h",
      "tone": "amber",
      "key": "senales"
     },
@@ -11645,7 +11554,7 @@
       "2026-03-28",
       "14:10",
       "leve",
-      "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
      ],
      [
       "2026-04-08",
@@ -11657,7 +11566,7 @@
       "2026-04-28",
       "10:04",
       "leve",
-      "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
      ],
      [
       "2026-05-02",
@@ -11673,15 +11582,9 @@
      ],
      [
       "2026-05-09",
-      "20:37",
-      "fuerte",
-      "Chat del equipo: Operación corrige: el que se llevaron es [embargo]; Remo está en pecera grande con pelusa en branquias o retención de m…"
-     ],
-     [
-      "2026-05-09",
       "12:47",
       "fuerte",
-      "Chat del equipo: Curaduría: Remo siempre ha batallado con hongo, debe tener susceptibilidad"
+      "Chat del equipo: Remo siempre ha batallado con hongo, debe tener susceptibilidad"
      ],
      [
       "2026-05-10",
@@ -11759,7 +11662,7 @@
       "2026-06-21",
       "15:52",
       "leve",
-      "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
      ],
      [
       "2026-06-23",
@@ -11807,7 +11710,7 @@
       "2026-07-11",
       "18:23",
       "fuerte",
-      "Chat del equipo: Cola de Remo; curaduría pregunta si es hongo; operación: pueden ser los baños de sal; posible succión del filtro"
+      "Chat del equipo: Cola de Remo; el equipo pregunta si es hongo; pueden ser los baños de sal; posible succión del filtro"
      ],
      [
       "2026-07-12",
@@ -11873,7 +11776,7 @@
       "2026-07-23",
       "19:19",
       "fuerte",
-      "Chat del equipo: Fundador: Remo se empezó a rascar muy brusco"
+      "Chat del equipo: Remo se empezó a rascar muy brusco"
      ],
      [
       "2026-07-24",
@@ -11981,7 +11884,7 @@
       "2026-08-12",
       "17:48",
       "leve",
-      "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
      ],
      [
       "2026-08-13",
@@ -12154,8 +12057,8 @@
       "si",
       [
        "Acción: Ndali pidió quitar las casitas de barro (posibles silicatos) y poner refugios de plástico",
-       "Acción: El fundador pregunta si ya se consiguió el sulfato de magnesio para la solución Holtfreter",
-       "Acción: Curaduría dice que no tiene garrafones, los vaciará y al día siguiente hará Holtfreter"
+       "Acción: El equipo pregunta si ya se consiguió el sulfato de magnesio para la solución Holtfreter",
+       "Acción: El equipo dice que no tiene garrafones, los vaciará y al día siguiente hará Holtfreter"
       ]
      ],
      [
@@ -12163,7 +12066,7 @@
       "18:55",
       "si",
       [
-       "Acción: Curaduría: hay que hacer cambios de agua"
+       "Acción: hay que hacer cambios de agua"
       ]
      ],
      [
@@ -12171,7 +12074,7 @@
       "09:29",
       "si",
       [
-       "Acción: Operación terminó cambios de agua"
+       "Acción: El equipo terminó cambios de agua"
       ]
      ],
      [
@@ -12203,7 +12106,7 @@
       "04:00",
       "si",
       [
-       "Acción: Cambios de agua completos; miércoles cambio de 1 garrafón en AM2; tratamiento de [embargo] y Remo en la noche"
+       "Acción: Cambios de agua completos; miércoles cambio de 1 garrafón en AM2; tratamiento de Remo en la noche"
       ]
      ],
      [
@@ -12244,7 +12147,7 @@
       "10:24",
       "no_ocurrio",
       [
-       "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       "Veterinario: el veterinario reagendó la visita del 20-abr"
       ]
      ],
      [
@@ -12268,7 +12171,7 @@
       "19:09",
       "si",
       [
-       "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
       ]
      ],
      [
@@ -12360,7 +12263,7 @@
       "12:00",
       "si",
       [
-       "Cambio de agua: Cambio de agua · Receta preparada por operación"
+       "Cambio de agua: Cambio de agua · Receta preparada por el equipo"
       ]
      ],
      [
@@ -12641,7 +12544,7 @@
       "10:53",
       "si",
       [
-       "Veterinario: Curaduría avisa al veterinario",
+       "Veterinario: El equipo avisa al veterinario",
        "Cambio de agua: Nado persistente · Cambio de agua rutinario · Remo mantiene un nado constante que disminuye tras cambio de agua y tras…",
        "Cambio de agua: Cambio de agua"
       ]
@@ -12659,7 +12562,7 @@
       "12:02",
       "si",
       [
-       "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+       "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -12677,7 +12580,7 @@
       "si",
       [
        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
-       "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       "Acción: la desparasitación no consta en el registro de mantenimiento"
       ]
      ],
      [
@@ -12710,7 +12613,7 @@
       "10:18",
       "si",
       [
-       "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),"
       ]
      ],
      [
@@ -12852,7 +12755,7 @@
       "20:38",
       "si",
       [
-       "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+       "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -12861,7 +12764,7 @@
       "13:19",
       "si",
       [
-       "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       "Acción: El equipo hará la limpieza el martes y cotizará extractores"
       ]
      ]
     ]
@@ -12871,7 +12774,7 @@
      "d": "2026-08-25",
      "tone": "muted",
      "title": "Pesaje: 112 g",
-     "text": "+18 % frente al máximo de los 90 días anteriores (95 g, 3 ago).",
+     "text": "El máximo de los 90 días anteriores es de 95 g, del 3 de agosto. La diferencia es de +18 %.",
      "src": "historial médico"
     },
     {
@@ -12918,22 +12821,15 @@
     {
      "tone": "amber",
      "key": "senales",
-     "title": "6 señales sin una acción suya en 48 h",
-     "text": "La más reciente, el 22 de agosto: Bitácora: Respiracion bucal · Solo observación · Se encontró al ejemplar con respiración bucal",
-     "src": "libro"
-    },
-    {
-     "tone": "amber",
-     "key": "senales",
      "title": "5 señales que vuelven",
-     "text": "En cuatro meses: Respiracion bucal, 22 veces desde el 23 jun; Crecimiento algodonoso / Manchas blancas (Saprolegnia), 9 veces desde el 27 operación (antes de morir la tuvo Panchita); Irritacion cutanea, 6 veces desde el 5 jun (antes de morir la tuvo Larva 2).",
+     "text": "En cuatro meses: Respiracion bucal, 22 veces desde el 23 de junio. Crecimiento algodonoso / Manchas blancas (Saprolegnia), 9 veces desde el 27 de mayo. Irritacion cutanea, 6 veces desde el 5 de junio.",
      "src": "libro"
     },
     {
-     "tone": "amber",
+     "tone": "muted",
      "key": "gap",
-     "title": "5 días sin medir el agua con una señal abierta",
-     "text": "Del 9 de septiembre al 13 de septiembre. Leucística pasó tres días así antes de su peor semana.",
+     "title": "5 días sin mediciones de agua registradas",
+     "text": "Del 9 de septiembre al 13 de septiembre.",
      "src": "libro · agua"
     },
     {
@@ -13387,20 +13283,13 @@
    "nombre": "Tamal de dulce",
    "vivo": true,
    "corte": "2026-09-14",
-   "lead": "Tamal de dulce vive en AM 1. En las cinco semanas antes del corte del registro (14 de septiembre) hay 33 señales suyas, 29 días con alguna acción y 26 días con lectura de agua. El registro muestra 4 pistas que las bajas mostraron antes.",
+   "lead": "Tamal de dulce estaba en AM 1 al corte del registro (14 de septiembre). Hay 33 señales suyas en las cinco semanas anteriores. Hay 29 días con alguna acción en esas semanas. Hay 26 días con lectura de agua en esas semanas.",
    "stats": [
     {
      "n": "33",
      "u": "señales",
      "l": "registradas en las cinco semanas antes del corte",
      "tone": "amber",
-     "key": "senales"
-    },
-    {
-     "n": "33",
-     "u": "de 33",
-     "l": "con una acción dentro de 48 h",
-     "tone": "green",
      "key": "senales"
     },
     {
@@ -13852,7 +13741,7 @@
       "2026-03-28",
       "14:10",
       "leve",
-      "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
      ],
      [
       "2026-04-08",
@@ -13864,7 +13753,7 @@
       "2026-04-28",
       "10:04",
       "leve",
-      "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
      ],
      [
       "2026-05-02",
@@ -13912,7 +13801,7 @@
       "2026-06-21",
       "15:52",
       "leve",
-      "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
      ],
      [
       "2026-06-22",
@@ -14044,7 +13933,7 @@
       "2026-08-12",
       "17:48",
       "leve",
-      "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
      ],
      [
       "2026-08-13",
@@ -14224,7 +14113,7 @@
       "10:24",
       "no_ocurrio",
       [
-       "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       "Veterinario: el veterinario reagendó la visita del 20-abr"
       ]
      ],
      [
@@ -14248,7 +14137,7 @@
       "19:09",
       "si",
       [
-       "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
       ]
      ],
      [
@@ -14256,7 +14145,7 @@
       "19:27",
       "si",
       [
-       "Acción: Curaduría: sifonear de mexicanum 2 al filtro que se vacía antes de salir del turno"
+       "Acción: sifonear de mexicanum 2 al filtro que se vacía antes de salir del turno"
       ]
      ],
      [
@@ -14439,7 +14328,7 @@
       "12:02",
       "si",
       [
-       "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+       "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -14457,7 +14346,7 @@
       "si",
       [
        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
-       "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       "Acción: la desparasitación no consta en el registro de mantenimiento"
       ]
      ],
      [
@@ -14506,7 +14395,7 @@
       "10:18",
       "si",
       [
-       "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),"
       ]
      ],
      [
@@ -14756,7 +14645,7 @@
       "20:38",
       "si",
       [
-       "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+       "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
        "Cambio de agua: Cambio de agua rutinario · Se cambia el agua de la Negra. Se observa un poco de retención de muda en la aleta dorsaldel…",
        "Cambio de agua: Cambio de agua rutinario · Se observa actividad constante en actividad. No responde a alimentación ofrecida y conserva…"
       ]
@@ -14774,7 +14663,7 @@
       "13:19",
       "si",
       [
-       "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       "Acción: El equipo hará la limpieza el martes y cotizará extractores"
       ]
      ]
     ]
@@ -14784,7 +14673,7 @@
      "d": "2026-08-25",
      "tone": "rose",
      "title": "Pesaje: 112 g",
-     "text": "−12 % frente al máximo de los 90 días anteriores (128 g, 3 ago).",
+     "text": "El máximo de los 90 días anteriores es de 128 g, del 3 de agosto. La diferencia es de −12 %.",
      "src": "historial médico"
     },
     {
@@ -14832,21 +14721,21 @@
      "tone": "amber",
      "key": "peso",
      "title": "Bajó 12 % de peso",
-     "text": "128 g el 3 de agosto; 109 g el 19 de agosto y 112 g el 25 de agosto. Antes de morir, Jaffy bajó 52 %, Goldy bajó 50 %, Leucística bajó 22 %.",
+     "text": "128 g el 3 de agosto. 109 g el 19 de agosto. 112 g el 25 de agosto.",
      "src": "historial médico"
     },
     {
      "tone": "amber",
      "key": "senales",
      "title": "3 señales que vuelven",
-     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 14 veces desde el 21 jun (antes de morir la tuvieron Goldy, Leucística, Panchita, Andersoni 1); Irritacion cutanea, 5 veces desde el 7 jun (antes de morir la tuvo Larva 2); Nado persistente, 3 veces desde el 21 jun (antes de morir la tuvieron Panchita, Goldy, Larva 2, Andersoni 1).",
+     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 14 veces desde el 21 de junio. Irritacion cutanea, 5 veces desde el 7 de junio. Nado persistente, 3 veces desde el 21 de junio.",
      "src": "libro"
     },
     {
-     "tone": "amber",
+     "tone": "muted",
      "key": "gap",
-     "title": "5 días sin medir el agua con una señal abierta",
-     "text": "Del 9 de septiembre al 13 de septiembre. Leucística pasó tres días así antes de su peor semana.",
+     "title": "5 días sin mediciones de agua registradas",
+     "text": "Del 9 de septiembre al 13 de septiembre.",
      "src": "libro · agua"
     },
     {
@@ -15340,19 +15229,12 @@
    "nombre": "Tascalate",
    "vivo": true,
    "corte": "2026-09-14",
-   "lead": "Tascalate vive en AM 1. En las cinco semanas antes del corte del registro (14 de septiembre) hay 13 señales suyas, 20 días con alguna acción y 26 días con lectura de agua. El registro muestra 4 pistas que las bajas mostraron antes.",
+   "lead": "Tascalate estaba en AM 1 al corte del registro (14 de septiembre). Hay 13 señales suyas en las cinco semanas anteriores. Hay 20 días con alguna acción en esas semanas. Hay 26 días con lectura de agua en esas semanas.",
    "stats": [
     {
      "n": "13",
      "u": "señales",
      "l": "registradas en las cinco semanas antes del corte",
-     "tone": "amber",
-     "key": "senales"
-    },
-    {
-     "n": "12",
-     "u": "de 13",
-     "l": "con una acción dentro de 48 h",
      "tone": "amber",
      "key": "senales"
     },
@@ -15767,7 +15649,7 @@
       "2026-03-28",
       "14:10",
       "leve",
-      "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+      "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
      ],
      [
       "2026-04-08",
@@ -15779,7 +15661,7 @@
       "2026-04-28",
       "10:04",
       "leve",
-      "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+      "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
      ],
      [
       "2026-05-02",
@@ -15815,7 +15697,7 @@
       "2026-06-21",
       "15:52",
       "leve",
-      "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+      "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
      ],
      [
       "2026-07-03",
@@ -15875,7 +15757,7 @@
       "2026-08-12",
       "17:48",
       "leve",
-      "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+      "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
      ],
      [
       "2026-08-18",
@@ -15959,7 +15841,7 @@
       "10:24",
       "no_ocurrio",
       [
-       "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+       "Veterinario: el veterinario reagendó la visita del 20-abr"
       ]
      ],
      [
@@ -15984,7 +15866,7 @@
       "si",
       [
        "En Cuarentena",
-       "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+       "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
       ]
      ],
      [
@@ -15992,7 +15874,7 @@
       "16:34",
       "si",
       [
-       "Acción: Curaduría: ponerlo de nuevo en cuarentena en un tupper con agua fresca"
+       "Acción: ponerlo de nuevo en cuarentena en un tupper con agua fresca"
       ]
      ],
      [
@@ -16009,7 +15891,7 @@
       "19:27",
       "si",
       [
-       "Acción: Curaduría: sifonear de mexicanum 2 al filtro que se vacía antes de salir del turno"
+       "Acción: sifonear de mexicanum 2 al filtro que se vacía antes de salir del turno"
       ]
      ],
      [
@@ -16192,7 +16074,7 @@
       "12:02",
       "si",
       [
-       "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+       "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -16210,7 +16092,7 @@
       "si",
       [
        "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
-       "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+       "Acción: la desparasitación no consta en el registro de mantenimiento"
       ]
      ],
      [
@@ -16243,7 +16125,7 @@
       "10:18",
       "si",
       [
-       "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+       "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),"
       ]
      ],
      [
@@ -16393,7 +16275,7 @@
       "20:38",
       "si",
       [
-       "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+       "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
        "Cambio de agua: Cambio de agua"
       ]
      ],
@@ -16402,7 +16284,7 @@
       "13:19",
       "si",
       [
-       "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+       "Acción: El equipo hará la limpieza el martes y cotizará extractores"
       ]
      ]
     ]
@@ -16412,7 +16294,7 @@
      "d": "2026-08-25",
      "tone": "muted",
      "title": "Pesaje: 53 g",
-     "text": "−4 % frente al máximo de los 90 días anteriores (55 g, 3 ago).",
+     "text": "El máximo de los 90 días anteriores es de 55 g, del 3 de agosto. La diferencia es de −4 %.",
      "src": "historial médico"
     },
     {
@@ -16459,22 +16341,15 @@
     {
      "tone": "amber",
      "key": "senales",
-     "title": "1 señal sin una acción suya en 48 h",
-     "text": "La más reciente, el 9 de septiembre: Bitácora: Irritacion cutanea · Solo observación · El ejemplar se rasca 3 veces seguidas en la branquia derecha",
-     "src": "libro"
-    },
-    {
-     "tone": "amber",
-     "key": "senales",
      "title": "Una señal que vuelve",
-     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 8 veces desde el 6 jul (antes de morir la tuvieron Goldy, Leucística, Panchita, Andersoni 1).",
+     "text": "En cuatro meses: Flotabilidad anormal / Arqueo, 8 veces desde el 6 de julio.",
      "src": "libro"
     },
     {
-     "tone": "amber",
+     "tone": "muted",
      "key": "gap",
-     "title": "5 días sin medir el agua con una señal abierta",
-     "text": "Del 9 de septiembre al 13 de septiembre. Leucística pasó tres días así antes de su peor semana.",
+     "title": "5 días sin mediciones de agua registradas",
+     "text": "Del 9 de septiembre al 13 de septiembre.",
      "src": "libro · agua"
     },
     {

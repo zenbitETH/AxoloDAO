@@ -42,7 +42,7 @@ export function cambiosDeAguaByTank(
       tankId,
       ubicacionReal: e.ubicacion!,
       accion: e.accion,
-      autor: e.autorPrincipal,
+      autor: null,
     });
   }
   out.sort((a, b) => a.date.localeCompare(b.date));

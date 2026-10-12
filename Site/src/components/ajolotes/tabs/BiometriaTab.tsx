@@ -97,7 +97,6 @@ export default function BiometriaTab({ hist, accent, locale, death }: Props) {
                     { k: 'biometria.col.cuerpo' },
                     { k: 'biometria.col.branquias' },
                     { k: 'biometria.col.bcs', tip: 'card.bcs.tooltip' },
-                    { k: 'biometria.col.autor' },
                   ].map(({ k, tip }) => (
                     <th
                       key={k}
@@ -126,9 +125,6 @@ export default function BiometriaTab({ hist, accent, locale, death }: Props) {
                       {fmt(h.branqIzq, 1)} / {fmt(h.branqDer, 1)}
                     </td>
                     <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 tabular-nums text-[var(--wq-ink)]">{fmt(h.bcs, 1)}</td>
-                    <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 font-mono text-[11px] text-[var(--wq-ink-muted)]">
-                      {h.autor || '—'}
-                    </td>
                   </tr>
                 ))}
               </tbody>
