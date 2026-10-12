@@ -40,6 +40,9 @@ const TEXTO = new Set(['.html', '.js', '.mjs', '.ts', '.tsx', '.astro', '.json',
 const ENS_OK = new Set([...ENS_DE_ORGANIZACION, 'impact.stat.eth', 'axolotarium.eth']);       // «impact.stat.eth…» es una llave de traducción, no un nombre ENS
 // Las direcciones públicas de los nodos de la organización (tesorería, identidad administrativa, Zenbit, Xolotlcalli), las de Docs/.../MicroDAOs.
 const CARTERAS_DE_ORGANIZACION = new Set(['0xbdf701408ad237faa2d5d3177ae257af35265dbb', '0xcf1aeb4152f01e7643f772f4a08e0e791160b96b', '0xecb4c1245665e8a1f43826355aab0dd6bf336e05', '0xb5b5d7ba8c4474f66f7f86a348b1ce303a4ba02e']);
+// Los contratos canónicos de las monedas estables que cuenta la tesorería (src/data/tesoreria.json): son contratos públicos, no carteras de nadie.
+const CONTRATOS_DE_ESTABLES = new Set(["0x0b2c639c533813f4aa9d7837caf62653d097ff85", "0x50c5725949a6f0c72e6c4a641f24049a917db0cb", "0x6b175474e89094c44da98b954eedeac495271d0f", "0x7f5c764cbc14f9669b88837ca1490cca17c31607", "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca", "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1", "0xdac17f958d2ee523a2206206994597c13d831ec7"]);
+for (const c of CONTRATOS_DE_ESTABLES) CARTERAS_DE_ORGANIZACION.add(c);
 const CORREOS_DE_ORGANIZACION = /@(?:axolodao\.org|zenbit\.mx|zenbit\.eth)$/i;
 const SIN_COMILLA = '(?:"|\'|&quot;|&#34;|&#x22;|\\\\")?';
 // Una llave de dato: entre comillas (JSON, atributos de las islas, &quot;) o sin ellas pegada a «{» o «,» (JS minificado); no una palabra de una frase.

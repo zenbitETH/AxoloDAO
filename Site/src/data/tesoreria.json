@@ -1,0 +1,61 @@
+{
+  "esquema": "axolodao.tesoreria/1",
+  "safe": "0xbDF701408aD237faA2d5d3177ae257aF35265dbb",
+  "ens": "treasury.axolodao.eth",
+  "generado": "2026-10-12T16:06:53Z",
+  "fuente": "Safe Transaction Service, /incoming-transfers/, público y sin llave. Un token cuenta sólo si su contrato está en la lista blanca de cada cadena.",
+  "cadenas": [
+    {
+      "nombre": "Ethereum",
+      "chainId": 1,
+      "entradas": 0,
+      "leido_hasta_el_bloque": 26177498,
+      "primera_entrada": null,
+      "ultima_entrada": null,
+      "contratos": {
+        "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48": "USDC",
+        "0xdac17f958d2ee523a2206206994597c13d831ec7": "USDT",
+        "0x6b175474e89094c44da98b954eedeac495271d0f": "DAI"
+      }
+    },
+    {
+      "nombre": "Optimism",
+      "chainId": 10,
+      "entradas": 46,
+      "leido_hasta_el_bloque": 158111330,
+      "primera_entrada": "2025-08-08",
+      "ultima_entrada": "2026-06-11",
+      "contratos": {
+        "0x0b2c639c533813f4aa9d7837caf62653d097ff85": "USDC",
+        "0x7f5c764cbc14f9669b88837ca1490cca17c31607": "USDC.e",
+        "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58": "USDT",
+        "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1": "DAI"
+      }
+    },
+    {
+      "nombre": "Base",
+      "chainId": 8453,
+      "entradas": 4,
+      "leido_hasta_el_bloque": 52516045,
+      "primera_entrada": "2026-01-29",
+      "ultima_entrada": "2026-01-29",
+      "contratos": {
+        "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913": "USDC",
+        "0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca": "USDbC",
+        "0x50c5725949a6f0c72e6c4a641f24049a917db0cb": "DAI"
+      }
+    }
+  ],
+  "por_token": {
+    "ETH": 2.445415,
+    "USDT": 1715.543591,
+    "USDC": 522.575748
+  },
+  "totales": {
+    "ether": 2.445415,
+    "estables_usd": 2238.12,
+    "verificadas": 43,
+    "descartadas": 7
+  },
+  "alcance": "Entradas brutas a la tesorería: incluyen lo que vuelve de Moonwell y de intercambios del propio Safe."
+}

@@ -8,6 +8,7 @@ import { closureCopyViolations } from '../src/lib/closure-copy.ts';
 import { contarSupervivencia } from '../src/lib/survival-core.mjs';
 
 const SITE = join(dirname(fileURLToPath(import.meta.url)), '..');
+const TESORERIA = JSON.parse(readFileSync(join(SITE, 'src/data/tesoreria.json'), 'utf8'));
 const NOTA = 'Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo. Incluye una baja del 23 de septiembre de 2026, ocurrida después del cierre al público (22 de septiembre), con los ejemplares bajo custodia del museo.';
 const { closedOn } = JSON.parse(readFileSync(join(SITE, 'src/data/closure.json'), 'utf8'));
 let fallos = 0;
@@ -144,6 +145,9 @@ if (process.argv.includes('--dist')) {
     const html = readFileSync(join(SITE, 'dist', pag), 'utf8');
     ok(!/id="members"/.test(html) && !/Nodos de AxoloDAO|AxoloDAO nodes|Nós da AxoloDAO/.test(html), `dist/${pag}: sin la sección «Nodos de AxoloDAO»`);
     ok(!/id="supporters"/.test(html) && !/Aliados y Guardianes|Allies and Guardians|Aliados e Guardiões/.test(html), `dist/${pag}: sin la sección «Aliados y Guardianes»`);
+    const cifra = (k) => new RegExp(`data-stat="${k}"[^>]*>\\s*([^<]+?)\\s*<`).exec(html)?.[1];
+    ok(cifra('eth') === TESORERIA.totales.ether.toFixed(2), `dist/${pag}: ETH ${cifra('eth')} es la del corte (${TESORERIA.totales.ether.toFixed(2)})`);
+    ok(cifra('stables') === Math.round(TESORERIA.totales.estables_usd).toLocaleString('en-US'), `dist/${pag}: estables ${cifra('stables')} es la del corte`);
   }
   console.log('\n· la tasa de la página construida es la de los datos');
   const pagina = join(SITE, 'dist/xolotlcalli/index.html');
@@ -162,6 +166,14 @@ if (process.argv.includes('--dist')) {
     ok(nota === NOTA, 'la nota de maggia, tal cual, acompaña a la cifra');
   }
 }
+
+console.log('\n8 · la tesorería sale de un corte con su fuente, sin contrapartes');
+ok(Boolean(TESORERIA.fuente && TESORERIA.generado && /^0x[0-9a-fA-F]{40}$/.test(TESORERIA.safe)), 'el corte dice su fuente, su fecha y el Safe');
+ok(TESORERIA.cadenas.length > 0 && TESORERIA.cadenas.every((c) => c.chainId && c.leido_hasta_el_bloque && Object.keys(c.contratos).length), 'cada cadena lleva su bloque de lectura y su lista blanca de contratos');
+ok(Math.abs(Object.entries(TESORERIA.por_token).filter(([k]) => k !== 'ETH').reduce((a, [, v]) => a + v, 0) - TESORERIA.totales.estables_usd) < 0.01, 'el total de estables es la suma por token');
+ok(!/"de"\s*:|"from"\s*:/.test(readFileSync(join(SITE, 'src/data/tesoreria.json'), 'utf8')), 'el corte no lleva direcciones de contrapartes');
+const impacto = readFileSync(join(SITE, 'src/i18n/strings.ts'), 'utf8');
+ok(!/'impact\.stat\.(eth|stables)\.value'/.test(impacto), 'las cifras de la tesorería no están escritas a mano en strings.ts');
 
 console.log('\n7 · el registro de ejemplares: la copia de maggia, sin «custodia» en presente ni un estado en presente');
 // La copia aprobada para la página del registro (es, en, pt). La columna pt sigue pendiente de lectura por una persona.
