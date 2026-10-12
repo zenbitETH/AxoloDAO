@@ -9,6 +9,64 @@ import { contarSupervivencia } from '../src/lib/survival-core.mjs';
 
 const SITE = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TESORERIA = JSON.parse(readFileSync(join(SITE, 'src/data/tesoreria.json'), 'utf8'));
+// La copia de la página del registro (es, en, pt): la de maggia, recortada al mínimo por el fundador (12-oct). La columna pt sigue pendiente de lectura por una persona.
+const COPIA = {
+ "titulo": {
+  "es": "Registro de ejemplares del Museo de Ajolotes Xolotlcalli (2025–2026)",
+  "en": "Specimen register of the Museo de Ajolotes Xolotlcalli (2025–2026)",
+  "pt": "Registro de exemplares do Museo de Ajolotes Xolotlcalli (2025–2026)"
+ },
+ "subtitulo": {
+  "es": "Biometría, historial médico y alimentación de cada ejemplar.",
+  "en": "Biometrics, medical history and feeding for each specimen.",
+  "pt": "Biometria, histórico médico e alimentação de cada exemplar."
+ },
+ "entrada": {
+  "es": "Gracias a todas las personas que lo visitaron.",
+  "en": "Thank you to everyone who visited.",
+  "pt": "Obrigado a todas as pessoas que o visitaram."
+ },
+ "preguntas": {
+  "es": "Las preguntas sobre los ejemplares o sobre el cierre las atiende el propio museo.",
+  "en": "Questions about the specimens or the closure are answered by the museum itself.",
+  "pt": "As perguntas sobre os exemplares ou sobre o fechamento são respondidas pelo próprio museu."
+ },
+ "boton": {
+  "es": "Ver el registro de ejemplares →",
+  "en": "See the specimen register →",
+  "pt": "Ver o registro de exemplares →"
+ },
+ "vivo": {
+  "es": "Vivo al cierre del registro (25 sep 2026)",
+  "en": "Alive when the register closed (25 Sep 2026)",
+  "pt": "Vivo no encerramento do registro (25 set. 2026)"
+ },
+ "baja": {
+  "es": "Baja · {fecha}",
+  "en": "Death · {fecha}",
+  "pt": "Óbito · {fecha}"
+ },
+ "postmortem": {
+  "es": "Después del cierre al público",
+  "en": "After the closure to the public",
+  "pt": "Após o fechamento ao público"
+ },
+ "nota": {
+  "es": "Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo. Incluye una baja del 23 de septiembre de 2026, ocurrida después del cierre al público (22 de septiembre), con los ejemplares bajo custodia del museo.",
+  "en": "Survival from 24 October 2025, opening day, to 25 September 2026: share of specimens alive among those in the museum's register. Includes one death on 23 September 2026, after the closure to the public (22 September), while the specimens were in the museum's care.",
+  "pt": "Sobrevivência de 24 de outubro de 2025, dia da abertura, a 25 de setembro de 2026: proporção de exemplares vivos entre os incluídos no registro do museu. Inclui um óbito em 23 de setembro de 2026, ocorrido após o fechamento ao público (22 de setembro), com os exemplares sob os cuidados do museu."
+ },
+ "fuente": {
+  "es": "Fuente: Museo de Ajolotes Xolotlcalli",
+  "en": "Source: Museo de Ajolotes Xolotlcalli",
+  "pt": "Fonte: Museo de Ajolotes Xolotlcalli"
+ },
+ "titulo_corto": {
+  "es": "Registro de ejemplares (2025–2026)",
+  "en": "Specimen register (2025–2026)",
+  "pt": "Registro de exemplares (2025–2026)"
+ }
+};
 const NOTA = 'Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo. Incluye una baja del 23 de septiembre de 2026, ocurrida después del cierre al público (22 de septiembre), con los ejemplares bajo custodia del museo.';
 const { closedOn } = JSON.parse(readFileSync(join(SITE, 'src/data/closure.json'), 'utf8'));
 let fallos = 0;
@@ -100,8 +158,9 @@ ok(FIN === '2026-09-25' && /CLOSED_ON[^\n]*closure\.closedOn/.test(survival) && 
 }
 ok(/OPENING = '2025-10-24'/.test(survival), 'el periodo empieza el día de la apertura');
 ok(/larvae and the unnamed groups/.test(readFileSync(join(SITE, 'src/lib/survival-core.mjs'), 'utf8')), 'el código dice qué cuentan las bajas sin fecha');
-for (const f of ['src/components/SurvivalStat.astro', 'src/components/ajolotes/BajasView.tsx', 'src/components/ajolotes/CoverHeader.tsx']) {
-  ok(/periodoDeSupervivencia\(/.test(readFileSync(join(SITE, f), 'utf8')), `${f}: la cifra de supervivencia muestra su periodo`);
+ok(/periodoDeSupervivencia\(/.test(readFileSync(join(SITE, 'src/components/ajolotes/CoverHeader.tsx'), 'utf8')), 'la portada del registro muestra el periodo junto a la tasa');
+for (const f of ['src/components/SurvivalStat.astro', 'src/components/ajolotes/BajasView.tsx']) {
+  ok(/notaDeSupervivencia\(/.test(readFileSync(join(SITE, f), 'utf8')), `${f}: la cifra de supervivencia lleva su nota de método y corte`);
 }
 const dist = join(SITE, 'dist');
 if (existsSync(join(dist, 'xolotlcalli/ajolotes/index.html'))) {
@@ -164,6 +223,11 @@ if (process.argv.includes('--dist')) {
     const nota = /data-supervivencia-nota[^>]*>([^<]+)</.exec(html)?.[1] ?? '';
     ok(enPagina === '37.0 %', `la página dice exactamente 37.0 %: dice ${enPagina}`);
     ok(nota === NOTA, 'la nota de maggia, tal cual, acompaña a la cifra');
+    for (const [l, pag, reg] of [['es', 'xolotlcalli/index.html', '/xolotlcalli/ajolotes/'], ['en', 'en/xolotlcalli/index.html', '/en/xolotlcalli/ajolotes/'], ['pt', 'pt/xolotlcalli/index.html', '/pt/xolotlcalli/ajolotes/']]) {
+      const h = readFileSync(join(SITE, 'dist', pag), 'utf8');
+      ok(/data-supervivencia[^>]*>37\.0 %</.test(h) && (/data-supervivencia-nota[^>]*>([^<]+)</.exec(h)?.[1] ?? '').replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, '&') === COPIA.nota[l], `dist/${pag}: la tasa y su nota en ${l}`);
+      ok(new RegExp(`href="${reg}"[^>]*data-registro`).test(h), `dist/${pag}: la tarjeta de la tasa lleva el botón al registro`);
+    }
   }
 }
 
@@ -176,59 +240,6 @@ const impacto = readFileSync(join(SITE, 'src/i18n/strings.ts'), 'utf8');
 ok(!/'impact\.stat\.(eth|stables)\.value'/.test(impacto), 'las cifras de la tesorería no están escritas a mano en strings.ts');
 
 console.log('\n7 · el registro de ejemplares: la copia de maggia, sin «custodia» en presente ni un estado en presente');
-// La copia aprobada para la página del registro (es, en, pt). La columna pt sigue pendiente de lectura por una persona.
-const COPIA = {
- "titulo": {
-  "es": "Registro de ejemplares del Museo de Ajolotes Xolotlcalli (2025–2026)",
-  "en": "Specimen register of the Museo de Ajolotes Xolotlcalli (2025–2026)",
-  "pt": "Registro de exemplares do Museo de Ajolotes Xolotlcalli (2025–2026)"
- },
- "subtitulo": {
-  "es": "Archivo del registro de cada ejemplar durante la operación del museo, de octubre de 2025 a septiembre de 2026: biometría, historial médico y alimentación.",
-  "en": "Archive of each specimen's record while the museum operated, from October 2025 to September 2026: biometrics, medical history and feeding.",
-  "pt": "Arquivo do registro de cada exemplar durante o funcionamento do museu, de outubro de 2025 a setembro de 2026: biometria, histórico médico e alimentação."
- },
- "entrada": {
-  "es": "El Museo de Ajolotes Xolotlcalli cerró sus puertas al público en septiembre de 2026. Gracias a todas las personas que lo visitaron entre octubre de 2025 y septiembre de 2026. Los registros de ese periodo se conservan como archivo.",
-  "en": "The Museo de Ajolotes Xolotlcalli closed to the public in September 2026. Thank you to everyone who visited between October 2025 and September 2026. The records from that period are kept as an archive.",
-  "pt": "O Museo de Ajolotes Xolotlcalli fechou as portas ao público em setembro de 2026. Obrigado a todas as pessoas que o visitaram entre outubro de 2025 e setembro de 2026. Os registros desse período são conservados como arquivo."
- },
- "preguntas": {
-  "es": "Las preguntas sobre los ejemplares o sobre el cierre las atiende el propio museo.",
-  "en": "Questions about the specimens or the closure are answered by the museum itself.",
-  "pt": "As perguntas sobre os exemplares ou sobre o fechamento são respondidas pelo próprio museu."
- },
- "boton": {
-  "es": "Ver el registro de ejemplares →",
-  "en": "See the specimen register →",
-  "pt": "Ver o registro de exemplares →"
- },
- "vivo": {
-  "es": "Vivo al cierre del registro (25 sep 2026)",
-  "en": "Alive when the register closed (25 Sep 2026)",
-  "pt": "Vivo no encerramento do registro (25 set. 2026)"
- },
- "baja": {
-  "es": "Baja · {fecha}",
-  "en": "Death · {fecha}",
-  "pt": "Óbito · {fecha}"
- },
- "postmortem": {
-  "es": "Después del cierre al público",
-  "en": "After the closure to the public",
-  "pt": "Após o fechamento ao público"
- },
- "nota": {
-  "es": "Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo. Incluye una baja del 23 de septiembre de 2026, ocurrida después del cierre al público (22 de septiembre), con los ejemplares bajo custodia del museo.",
-  "en": "Survival from 24 October 2025, opening day, to 25 September 2026: share of specimens alive among those in the museum's register. Includes one death on 23 September 2026, after the closure to the public (22 September), while the specimens were in the museum's care.",
-  "pt": "Sobrevivência de 24 de outubro de 2025, dia da abertura, a 25 de setembro de 2026: proporção de exemplares vivos entre os incluídos no registro do museu. Inclui um óbito em 23 de setembro de 2026, ocorrido após o fechamento ao público (22 de setembro), com os exemplares sob os cuidados do museu."
- },
- "fuente": {
-  "es": "Fuente: Museo de Ajolotes Xolotlcalli (2025–2026)",
-  "en": "Source: Museo de Ajolotes Xolotlcalli (2025–2026)",
-  "pt": "Fonte: Museo de Ajolotes Xolotlcalli (2025–2026)"
- }
-};
 const tabla = (archivo) => {
   const texto = readFileSync(join(SITE, archivo), 'utf8');
   const i = { es: texto.indexOf('  es: {'), en: texto.indexOf('  en: {'), pt: texto.indexOf('  pt: {') };
@@ -238,7 +249,7 @@ const tabla = (archivo) => {
 const sitio = tabla('src/i18n/strings.ts');
 const ajolotes = tabla('src/components/ajolotes/strings.ts');
 const CLAVES = [[sitio, 'ajolotes.title', 'titulo'], [sitio, 'ajolotes.subtitle', 'subtitulo'], [sitio, 'ajolotes.cta', 'boton'],
-  [ajolotes, 'cover.title', 'titulo'], [ajolotes, 'cover.sub', 'subtitulo'], [ajolotes, 'cover.lead', 'entrada'], [ajolotes, 'cover.preguntas', 'preguntas'],
+  [ajolotes, 'cover.title', 'titulo_corto'], [ajolotes, 'cover.sub', 'subtitulo'], [ajolotes, 'cover.lead', 'entrada'], [ajolotes, 'cover.preguntas', 'preguntas'],
   [ajolotes, 'cover.fuente', 'fuente'], [ajolotes, 'modal.status.vivo', 'vivo'], [ajolotes, 'bajas.status', 'baja'], [ajolotes, 'pm.custody', 'postmortem']];
 for (const l of ['es', 'en', 'pt']) {
   for (const [t, clave, pieza] of CLAVES) ok(t[l][clave] === COPIA[pieza][l], `${l} ${clave} es la copia aprobada`);
@@ -270,6 +281,17 @@ if (process.argv.includes('--dist')) {
     for (const l of ['es', 'en', 'pt']) t = t.split(COPIA.nota[l]).join(' ');
     ok(!CUSTODIA.test(t), `dist/${pag}: «custodia» sólo aparece dentro de la nota de supervivencia`);
     ok(!/>\s*(Vivo|Viva|Alive)\s*</.test(readFileSync(ruta, 'utf8')), `dist/${pag}: ningún estado «Vivo» suelto`);
+  }
+}
+
+if (process.argv.includes('--dist')) {
+  console.log('\n9 · texto mínimo: el nombre del museo una vez por página, sin «(?)» ni la etiqueta SEMARNAT en las tarjetas');
+  const visible = (html) => html.replace(/<head[\s\S]*?<\/head>|<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<header[\s\S]*?<\/header>|<footer[\s\S]*?<\/footer>|<svg[\s\S]*?<\/svg>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
+  for (const pag of ['xolotlcalli/index.html', 'en/xolotlcalli/index.html', 'pt/xolotlcalli/index.html', 'xolotlcalli/ajolotes/index.html', 'en/xolotlcalli/ajolotes/index.html', 'pt/xolotlcalli/ajolotes/index.html']) {
+    const t = visible(readFileSync(join(SITE, 'dist', pag), 'utf8'));
+    const veces = (t.match(/Museo de Ajolotes Xolotlcalli/g) ?? []).length;
+    ok(veces <= 1, `dist/${pag}: el nombre del museo aparece ${veces} ${veces === 1 ? 'vez' : 'veces'}`);
+    if (/ajolotes/.test(pag)) ok(!/\(\?\)/.test(t) && !/SEMARNAT ID/.test(t), `dist/${pag}: las tarjetas no dicen «(?)» ni «SEMARNAT ID»`);
   }
 }
 

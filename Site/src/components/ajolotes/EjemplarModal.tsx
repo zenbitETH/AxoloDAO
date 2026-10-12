@@ -164,9 +164,9 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
                 {/* Wraps instead of squeezing: on a phone the badge drops below the name
                     rather than truncating the name to nothing. */}
                 <span class="min-w-0 max-w-full truncate">{ej.alias}</span>
-                <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)} aria-label={genderTitle(locale, ej.genero)}>
+                {sym !== '(?)' && (<span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)} aria-label={genderTitle(locale, ej.genero)}>
                   {sym}
-                </span>
+                </span>)}
                 {memorial ? (
                   <span class="inline-flex items-center gap-1.5 self-center whitespace-nowrap rounded-full border border-[#8B6F47]/50 bg-[#8B6F47]/15 px-2.5 py-1 font-display text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#8B6F47]">
                     <span aria-hidden="true">🕯️</span>

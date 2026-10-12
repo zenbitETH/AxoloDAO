@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'preact/hooks';
 import type { Baja, Bundle, Locale } from './types';
 import { bajaCount } from './types';
-import { survival, pct, periodoDeSupervivencia, notaDeSupervivencia } from '../../lib/survival';
+import { survival, pct, notaDeSupervivencia } from '../../lib/survival';
 import { s } from './strings';
 import BajaCard from './BajaCard';
 
@@ -95,9 +95,8 @@ export default function BajasView({ bajas, bundle, locale, onBack, onSelect }: P
               <span class="font-display text-2xl font-bold text-[var(--wq-ink)]">{pct(sv.tasa)}</span>{' '}
               <span class="text-xs font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">{s(locale, 'bajas.survival')}</span>
               <p class="m-0 mt-1 text-xs text-[var(--wq-ink-muted)]">
-                {periodoDeSupervivencia(locale)}. {s(locale, 'bajas.survival.detail')
+                {s(locale, 'bajas.survival.detail')
                   .replace('{v}', String(sv.vivos))
-                  .replace('{b}', String(sv.bajas))
                   .replace('{t}', String(sv.total))}
               </p>
               <p class="m-0 mt-1 text-xs text-[var(--wq-ink-muted)]">{notaDeSupervivencia(locale)}</p>

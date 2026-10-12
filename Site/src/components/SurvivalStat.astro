@@ -1,24 +1,27 @@
 ---
-// Tasa de supervivencia del Museo de Ajolotes Xolotlcalli desde su apertura, from the helper the registry uses too.
-// One line, no wrapping; on a narrow screen it scrolls sideways instead of breaking.
+// Tasa de supervivencia del Museo de Ajolotes Xolotlcalli, del mismo cálculo que usa el registro; al lado, su método y su corte.
 import bundleRaw from '@/data/ajolotes/bundle.json';
-import { survival, pct, periodoDeSupervivencia, NOTA_DE_SUPERVIVENCIA } from '@/lib/survival';
+import { survival, pct, notaDeSupervivencia } from '@/lib/survival';
+import { type Locale, t } from '@/i18n/strings';
 
 interface Props {
-  href?: string;
+  locale?: Locale;
 }
-const { href = '/xolotlcalli/ajolotes/' } = Astro.props;
+const { locale = 'es' } = Astro.props;
 const sv = survival(bundleRaw as never);
+const vivos = t(locale, 'survival.vivos').replace('{v}', String(sv.vivos)).replace('{t}', String(sv.total));
 ---
 
-<aside class="mx-auto mb-8 mt-4 max-w-[1240px] overflow-x-auto rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-5 py-3">
-  <p class="m-0 flex items-baseline gap-2 whitespace-nowrap text-sm text-[var(--wq-ink-muted)]">
-    <span class="text-[11px] font-semibold uppercase tracking-[0.08em]">Tasa de supervivencia</span>
-    <strong class="font-display text-xl font-bold text-[var(--wq-ink)]" data-supervivencia>{pct(sv.tasa)}</strong>
-    <span>{periodoDeSupervivencia('es')}</span>
-    <span aria-hidden="true">·</span>
-    <span>Al 25 de septiembre de 2026: <strong class="text-[var(--wq-ink)]">{sv.vivos}</strong> ejemplares, <strong class="text-[var(--wq-ink)]">{sv.bajas}</strong> bajas, <strong class="text-[var(--wq-ink)]">{sv.total}</strong> registros totales.</span>
-    <a href={href} class="ml-auto pl-4 font-semibold text-teal underline-offset-2 hover:underline">Ver ejemplares →</a>
-  </p>
-  <p class="m-0 mt-1 text-xs text-[var(--wq-ink-muted)]" data-supervivencia-nota>{NOTA_DE_SUPERVIVENCIA}</p>
+<aside class="mx-auto mb-8 mt-4 max-w-[1240px] rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-5 py-4">
+  <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+    <p class="m-0 flex items-baseline gap-2 text-sm text-[var(--wq-ink-muted)]">
+      <span>{t(locale, 'survival.label')}</span>
+      <strong class="font-display text-xl font-bold text-[var(--wq-ink)]" data-supervivencia>{pct(sv.tasa)}</strong>
+      <span>{vivos}</span>
+    </p>
+    <a href={t(locale, 'ajolotes.path')} class="ml-auto inline-flex items-center rounded-full border border-[var(--wq-divider)] px-4 py-2 text-sm font-semibold text-[var(--wq-ink)] transition-colors hover:border-teal hover:text-teal" data-registro>
+      {t(locale, 'ajolotes.cta')}
+    </a>
+  </div>
+  <p class="m-0 mt-2 text-xs text-[var(--wq-ink-muted)]" data-supervivencia-nota>{notaDeSupervivencia(locale)}</p>
 </aside>

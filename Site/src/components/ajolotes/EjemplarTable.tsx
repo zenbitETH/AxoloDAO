@@ -131,9 +131,9 @@ export default function EjemplarTable({
                       <span class="flex min-w-0 flex-col">
                         <span class="flex items-baseline gap-1.5 font-display text-[0.95rem] font-bold leading-tight tracking-tight text-[var(--wq-ink)]">
                           <span class="truncate">{ej.alias}</span>
-                          <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)}>
+                          {sym !== '(?)' && (<span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)}>
                             {sym}
-                          </span>
+                          </span>)}
                         </span>
                         {ej.id && (
                           <span class="font-mono text-[10px] text-[var(--wq-ink-muted)]">
