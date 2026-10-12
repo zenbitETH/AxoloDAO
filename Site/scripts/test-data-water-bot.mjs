@@ -34,7 +34,7 @@ ok(Buffer.from(READER_BOT_AUTHOR, 'utf8').toString('hex') === '584f564920626f74'
   `READER_BOT_AUTHOR is "XOVI bot" byte for byte (${JSON.stringify(READER_BOT_AUTHOR)}), the bytes the brain pins too`);
 for (const [value, expected] of [
   ['XOVI bot', true], ['  xovi BOT  ', true],
-  ['Xovi (bot)', false], ['xovi robot', false], ['lups-plantae.axolodao.eth', false], ['', false], [null, false],
+  ['Xovi (bot)', false], ['xovi robot', false], ['ndali.axolodao.eth', false], ['', false], [null, false],
 ]) {
   ok(isReaderBotAuthor(value) === expected, `${JSON.stringify(value)} → ${expected ? 'bot' : 'not the bot'}`);
 }
@@ -53,7 +53,7 @@ function writeWorkbook(path) {
       '2. Amonia/amoniaco NH3 (mg/L)', '3. Nitritos NO2 (mg/L)', '4. Nitratos NO3 (mg/L)',
       '5. GH Dureza General (mg/L)', '6. KH Dureza de Carbonatos (mg/L)', '7. pH ',
       '9. Conductividad (µS/cm)', 'Nota'],
-    [d, '10:50', 'lups-plantae.axolodao.eth', 'XOVI bot', 'AA', 18.1, 0.25, 0.5, 80, 232.7, 196.9, 8.1, 840, 'LUPITA verified row: bot as SECONDARY'],
+    [d, '10:50', 'ndali.axolodao.eth', 'XOVI bot', 'AA', 18.1, 0.25, 0.5, 80, 232.7, 196.9, 8.1, 840, 'HUMAN verified row: bot as SECONDARY'],
     [d, '10:55', 'XOVI bot', '', 'AA', null, 0.5, null, 80, null, null, null, null, '[lector 1/2] BOT row, canonical spelling'],
     [d, '10:56', ' xovi BOT ', '', 'AA', null, 1.0, null, 40, null, null, null, null, '[lector 2/2] BOT row, case and spaces'],
     [d, '10:57', 'Xovi (bot)', '', 'AA', null, 2.0, null, 20, null, null, null, null, 'OLD spelling as main author'],
@@ -76,7 +76,7 @@ try {
   // The run sets the two env vars the brain writer once read the bot's name from: neither may
   // rename the bot here.
   const run = spawnSync(process.execPath, [join(scratch, 'scripts', 'data-water.mjs')], {
-    env: { ...process.env, AXOLODAO_XLSX: workbook, CONTROL_BOT_AUTHOR: 'xovi robot', CONTROL_AUTHOR_SECONDARY: 'xovi robot' },
+    env: { ...process.env, AXOLODAO_XLSX: workbook, CONTROL_BOT_AUTHOR: 'xovi robot', CONTROL_AUTHOR_SECONDARY: 'xovi robot', DATA_WATER_KEEP_NOTES_FOR_TESTS: '1' },
     encoding: 'utf8',
   });
 
@@ -87,7 +87,7 @@ try {
   const main = r => (r.authors?.main ?? '').toString();
   ok(!all.some(r => isReaderBotAuthor(main(r))), 'no published row has the bot as main author, in either spelling');
   ok(/skipped 2 reader-bot rows/.test(run.stdout || ''), 'the log counts exactly the 2 reader rows it skipped');
-  ok(all.some(r => main(r) === 'lups-plantae.axolodao.eth' && r.authors?.secondary === 'XOVI bot' && r.values?.nh3 === 0.25),
+  ok(all.some(r => main(r) === 'ndali.axolodao.eth' && r.authors?.secondary === 'XOVI bot' && r.values?.nh3 === 0.25),
     "the curator's row, with the bot as SECONDARY author, is published");
   ok(all.some(r => (r.note || '').includes('HUMAN row with blank main')), 'a human row with a blank main author is published');
   ok(all.some(r => main(r) === 'Xovi (bot)'),
