@@ -52,9 +52,9 @@ const COPIA = {
   "pt": "Após o fechamento ao público"
  },
  "nota": {
-  "es": "Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo. Incluye una baja del 23 de septiembre de 2026, ocurrida después del cierre al público (22 de septiembre), con los ejemplares bajo custodia del museo.",
-  "en": "Survival from 24 October 2025, opening day, to 25 September 2026: share of specimens alive among those in the museum's register. Includes one death on 23 September 2026, after the closure to the public (22 September), while the specimens were in the museum's care.",
-  "pt": "Sobrevivência de 24 de outubro de 2025, dia da abertura, a 25 de setembro de 2026: proporção de exemplares vivos entre os incluídos no registro do museu. Inclui um óbito em 23 de setembro de 2026, ocorrido após o fechamento ao público (22 de setembro), com os exemplares sob os cuidados do museu."
+  "es": "Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo.",
+  "en": "Survival from 24 October 2025, opening day, to 25 September 2026: share of specimens alive among those in the museum's register.",
+  "pt": "Sobrevivência de 24 de outubro de 2025, dia da abertura, a 25 de setembro de 2026: proporção de exemplares vivos entre os incluídos no registro do museu."
  },
  "fuente": {
   "es": "Fuente: Museo de Ajolotes Xolotlcalli (2025–2026)",
@@ -67,7 +67,7 @@ const COPIA = {
   "pt": "Registro de exemplares (2025–2026)"
  }
 };
-const NOTA = 'Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo. Incluye una baja del 23 de septiembre de 2026, ocurrida después del cierre al público (22 de septiembre), con los ejemplares bajo custodia del museo.';
+const NOTA = 'Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo.';
 const { closedOn } = JSON.parse(readFileSync(join(SITE, 'src/data/closure.json'), 'utf8'));
 let fallos = 0;
 const ok = (cond, msg) => { console.log(`  ${cond ? '✓' : '✗'} ${msg}`); if (!cond) fallos++; };

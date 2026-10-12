@@ -56,11 +56,11 @@ export function survival(bundle: BundleLike, since: string = OPENING, until: str
 /** El método y el corte de la cifra, junto a ella: la única tasa que se publica. El nombre del museo no se traduce. */
 const NOTAS_DE_SUPERVIVENCIA: Record<string, string> = {
   es:
-    'Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo. Incluye una baja del 23 de septiembre de 2026, ocurrida después del cierre al público (22 de septiembre), con los ejemplares bajo custodia del museo.',
+    'Supervivencia del 24 de octubre de 2025, día de la apertura, al 25 de septiembre de 2026: proporción de ejemplares vivos entre los incluidos en el registro del museo.',
   en:
-    'Survival from 24 October 2025, opening day, to 25 September 2026: share of specimens alive among those in the museum\'s register. Includes one death on 23 September 2026, after the closure to the public (22 September), while the specimens were in the museum\'s care.',
+    'Survival from 24 October 2025, opening day, to 25 September 2026: share of specimens alive among those in the museum\'s register.',
   pt:
-    'Sobrevivência de 24 de outubro de 2025, dia da abertura, a 25 de setembro de 2026: proporção de exemplares vivos entre os incluídos no registro do museu. Inclui um óbito em 23 de setembro de 2026, ocorrido após o fechamento ao público (22 de setembro), com os exemplares sob os cuidados do museu.',
+    'Sobrevivência de 24 de outubro de 2025, dia da abertura, a 25 de setembro de 2026: proporção de exemplares vivos entre os incluídos no registro do museu.',
 };
 export const notaDeSupervivencia = (locale = 'es'): string => NOTAS_DE_SUPERVIVENCIA[locale] ?? NOTAS_DE_SUPERVIVENCIA.es;
 export const NOTA_DE_SUPERVIVENCIA = NOTAS_DE_SUPERVIVENCIA.es;
