@@ -1,7 +1,6 @@
 ---
-import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { MUSEO_WORDMARK_SVG } from '@/lib/wordmark';
 import ClosureBanner from '@components/ClosureBanner.astro';
 import SurvivalStat from '@components/SurvivalStat.astro';
 import WaterQualityDashboard from '@components/waterQuality/WaterQualityDashboard';
@@ -31,17 +30,13 @@ const podcastEpisodeUrls = episodeUrls();
 // The registry (/xolotlcalli/ajolotes) keeps every record.
 const ejemplares = ANIMALS_AWAY_FROM_MUSEUM ? [] : (bundleRaw as unknown as Bundle).ejemplares;
 
-const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
-  .replace(/fill="white"/g, 'fill="currentColor"')
-  .replace(/<svg([^>]*?)\swidth="\d+"/, '<svg$1')
-  .replace(/<svg([^>]*?)\sheight="\d+"/, '<svg$1');
+const logoSvg = MUSEO_WORDMARK_SVG;
 ---
 
 <BaseLayout
   locale={locale}
-  title={`${t(locale, 'wq.title')} — Biomuseo Xolotlcalli`}
+  title={`${t(locale, 'wq.title')} — Museo de Ajolotes Xolotlcalli`}
   description={t(locale, 'wq.subtitle')}
-  ogImage="/og-image-xolotlcalli.jpg"
 >
   <section class="wq-surface relative">
     <WaterQualityDashboard
@@ -61,7 +56,7 @@ const logoSvg = readFileSync(resolve('public/logos/Xolotlcalli.svg'), 'utf8')
       subtitle={t(locale, 'wq.subtitle')}
     >
       <ClosureBanner locale={locale} />
-      <SurvivalStat />
+      <SurvivalStat locale={locale} />
     </WaterQualityDashboard>
   </section>
 </BaseLayout>

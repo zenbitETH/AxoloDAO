@@ -6,7 +6,8 @@
     "unit": "°C",
     "min": 15,
     "max": 20,
-    "target": 17.5
+    "target": 17.5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AA",
@@ -15,7 +16,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0,
-    "target": 0
+    "target": 0,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AA",
@@ -24,7 +26,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0.05
+    "target": 0.05,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AA",
@@ -33,7 +36,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 10,
-    "target": 5
+    "target": 5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AA",
@@ -42,7 +46,8 @@
     "unit": "mg/L",
     "min": 100,
     "max": 150,
-    "target": 125
+    "target": 125,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AA",
@@ -51,7 +56,8 @@
     "unit": "mg/L",
     "min": 70,
     "max": 120,
-    "target": 95
+    "target": 95,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AA",
@@ -60,7 +66,8 @@
     "unit": "-",
     "min": 7.6,
     "max": 8,
-    "target": 7.8
+    "target": 7.8,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AA",
@@ -69,7 +76,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.5,
-    "target": 0.25
+    "target": 0.25,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AA",
@@ -78,7 +86,8 @@
     "unit": "µS/cm",
     "min": 300,
     "max": 450,
-    "target": 375
+    "target": 375,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AA",
@@ -87,7 +96,8 @@
     "unit": "mg/L",
     "min": 70,
     "max": 150,
-    "target": 110
+    "target": 110,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 1",
@@ -96,7 +106,8 @@
     "unit": "°C",
     "min": 16,
     "max": 18,
-    "target": 17
+    "target": 17,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 1",
@@ -105,7 +116,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0,
-    "target": 0
+    "target": 0,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 1",
@@ -114,7 +126,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0.05
+    "target": 0.05,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 1",
@@ -123,7 +136,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 20,
-    "target": 10
+    "target": 10,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 1",
@@ -132,7 +146,8 @@
     "unit": "mg/L",
     "min": 125,
     "max": 250,
-    "target": 187.5
+    "target": 187.5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 1",
@@ -141,7 +156,8 @@
     "unit": "mg/L",
     "min": 50,
     "max": 100,
-    "target": 75
+    "target": 75,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 1",
@@ -150,7 +166,8 @@
     "unit": "-",
     "min": 7.4,
     "max": 7.8,
-    "target": 7.6
+    "target": 7.6,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 1",
@@ -159,7 +176,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 1,
-    "target": 0.5
+    "target": 0.5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 1",
@@ -168,7 +186,8 @@
     "unit": "µS/cm",
     "min": 700,
     "max": 1100,
-    "target": 900
+    "target": 900,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 1",
@@ -177,7 +196,8 @@
     "unit": "mg/L",
     "min": 1500,
     "max": 1800,
-    "target": 1650
+    "target": 1650,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 2",
@@ -186,7 +206,8 @@
     "unit": "°C",
     "min": 16,
     "max": 18,
-    "target": 17
+    "target": 17,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 2",
@@ -195,7 +216,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0,
-    "target": 0
+    "target": 0,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 2",
@@ -204,7 +226,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0.05
+    "target": 0.05,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 2",
@@ -213,7 +236,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 20,
-    "target": 10
+    "target": 10,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 2",
@@ -222,7 +246,8 @@
     "unit": "mg/L",
     "min": 125,
     "max": 250,
-    "target": 187.5
+    "target": 187.5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 2",
@@ -231,7 +256,8 @@
     "unit": "mg/L",
     "min": 50,
     "max": 100,
-    "target": 75
+    "target": 75,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 2",
@@ -240,7 +266,8 @@
     "unit": "-",
     "min": 7.4,
     "max": 7.8,
-    "target": 7.6
+    "target": 7.6,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 2",
@@ -249,7 +276,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 1,
-    "target": 0.5
+    "target": 0.5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 2",
@@ -258,7 +286,8 @@
     "unit": "µS/cm",
     "min": 700,
     "max": 1100,
-    "target": 900
+    "target": 900,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM 2",
@@ -267,7 +296,8 @@
     "unit": "mg/L",
     "min": 1500,
     "max": 1800,
-    "target": 1650
+    "target": 1650,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AD",
@@ -276,7 +306,8 @@
     "unit": "°C",
     "min": 15,
     "max": 18,
-    "target": 16.5
+    "target": 16.5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AD",
@@ -285,7 +316,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0,
-    "target": 0
+    "target": 0,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AD",
@@ -294,7 +326,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0.05
+    "target": 0.05,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AD",
@@ -303,7 +336,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 20,
-    "target": 10
+    "target": 10,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AD",
@@ -312,7 +346,8 @@
     "unit": "mg/L",
     "min": 180,
     "max": 250,
-    "target": 215
+    "target": 215,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AD",
@@ -321,7 +356,8 @@
     "unit": "mg/L",
     "min": 150,
     "max": 250,
-    "target": 200
+    "target": 200,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AD",
@@ -330,7 +366,8 @@
     "unit": "-",
     "min": 7.8,
     "max": 8.5,
-    "target": 8.15
+    "target": 8.15,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AD",
@@ -339,7 +376,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.5,
-    "target": 0.25
+    "target": 0.25,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AD",
@@ -348,7 +386,8 @@
     "unit": "µS/cm",
     "min": 400,
     "max": 500,
-    "target": 450
+    "target": 450,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AD",
@@ -357,7 +396,8 @@
     "unit": "mg/L",
     "min": 180,
     "max": 300,
-    "target": 240
+    "target": 240,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM",
@@ -366,7 +406,8 @@
     "unit": "°C",
     "min": 16,
     "max": 18,
-    "target": 17
+    "target": 17,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM",
@@ -375,7 +416,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0,
-    "target": 0
+    "target": 0,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM",
@@ -384,7 +426,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0.05
+    "target": 0.05,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM",
@@ -393,7 +436,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 20,
-    "target": 10
+    "target": 10,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM",
@@ -402,7 +446,8 @@
     "unit": "mg/L",
     "min": 125,
     "max": 250,
-    "target": 187.5
+    "target": 187.5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM",
@@ -411,7 +456,8 @@
     "unit": "mg/L",
     "min": 50,
     "max": 100,
-    "target": 75
+    "target": 75,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM",
@@ -420,7 +466,8 @@
     "unit": "-",
     "min": 7.4,
     "max": 7.8,
-    "target": 7.6
+    "target": 7.6,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM",
@@ -429,7 +476,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 1,
-    "target": 0.5
+    "target": 0.5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM",
@@ -438,7 +486,8 @@
     "unit": "µS/cm",
     "min": 700,
     "max": 1100,
-    "target": 900
+    "target": 900,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM",
@@ -447,7 +496,8 @@
     "unit": "mg/L",
     "min": 1500,
     "max": 1800,
-    "target": 1650
+    "target": 1650,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM Larvas",
@@ -456,7 +506,8 @@
     "unit": "°C",
     "min": 16,
     "max": 18,
-    "target": 17
+    "target": 17,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM Larvas",
@@ -465,7 +516,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0,
-    "target": 0
+    "target": 0,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM Larvas",
@@ -474,7 +526,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 0.1,
-    "target": 0.05
+    "target": 0.05,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM Larvas",
@@ -483,7 +536,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 20,
-    "target": 10
+    "target": 10,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM Larvas",
@@ -492,7 +546,8 @@
     "unit": "mg/L",
     "min": 125,
     "max": 250,
-    "target": 187.5
+    "target": 187.5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM Larvas",
@@ -501,7 +556,8 @@
     "unit": "mg/L",
     "min": 50,
     "max": 100,
-    "target": 75
+    "target": 75,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM Larvas",
@@ -510,7 +566,8 @@
     "unit": "-",
     "min": 7.4,
     "max": 7.8,
-    "target": 7.6
+    "target": 7.6,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM Larvas",
@@ -519,7 +576,8 @@
     "unit": "mg/L",
     "min": 0,
     "max": 1,
-    "target": 0.5
+    "target": 0.5,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM Larvas",
@@ -528,7 +586,8 @@
     "unit": "µS/cm",
     "min": 700,
     "max": 1100,
-    "target": 900
+    "target": 900,
+    "fuente": "referencia operativa del piloto"
   },
   {
     "tankId": "AM Larvas",
@@ -537,6 +596,7 @@
     "unit": "mg/L",
     "min": 1500,
     "max": 1800,
-    "target": 1650
+    "target": 1650,
+    "fuente": "referencia operativa del piloto"
   }
 ]

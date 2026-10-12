@@ -20,7 +20,6 @@ const AVAILABLE_PHOTOS: Record<string, 'webp' | 'jpg'> = {
   leucistica: 'webp',
   'la-negra': 'webp',
   'pardo-macho': 'webp',
-  romulo: 'webp',
   remo: 'webp',
   patito: 'webp',
   'larva-2': 'webp',

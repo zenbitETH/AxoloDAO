@@ -77,6 +77,8 @@ export interface ParameterCatalogEntry {
   min: number | null;
   max: number | null;
   target: number | null;
+  /** Literature or the museum's protocol; «referencia operativa del piloto» when there is none. */
+  fuente: string;
 }
 
 export interface Measurement {
@@ -87,7 +89,8 @@ export interface Measurement {
   authors: { main: string | null; secondary: string | null };
   values: Record<ParamKey, number | null>;
   alarms: ParamKey[];
-  note: string | null;
+  // La nota de la hoja ya no se publica (puede hablar de la salud de un ejemplar); queda en la fuente privada.
+  note?: string | null;
 }
 
 export type Status = 'ok' | 'warn' | 'alarm';

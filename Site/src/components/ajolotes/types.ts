@@ -64,6 +64,8 @@ export interface Ejemplar {
 
 export interface HistorialEntry {
   fecha: string;                  // ISO YYYY-MM-DD
+  etapa?: 'preapertura';          // before the public opening: setup (scripts/lib/fechas.mjs, rule 1)
+  trasMuerte?: true;              // dated after the specimen's canonical death: for a person to resolve (rule 6)
   autor: string | null;
   autor2: string | null;
   temp: number | null;
@@ -109,7 +111,9 @@ export interface PlanAlimentacion {
 
 export interface RegistroAlimentacion {
   fecha: string;
-  hora: number | null;            // Excel time fraction (0..1)
+  hora: string | null;            // HH:MM, 24 h
+  etapa?: 'preapertura';          // before the public opening: setup (scripts/lib/fechas.mjs, rule 1)
+  trasMuerte?: true;              // dated after the specimen's canonical death: for a person to resolve (rule 6)
   autor: string | null;
   tipo: string | null;
   racion: number | null;          // grams offered
@@ -119,7 +123,9 @@ export interface RegistroAlimentacion {
 }
 
 export interface Baja {
-  fecha: string | null;           // ISO
+  fecha: string | null;           // ISO, the canonical death date (bajas-forense.json)
+  fechaLibro?: string;            // the workbook's own date, when the canonical one differs
+  fechaConf?: 'exacta' | 'invertida' | 'ambigua_dm' | 'ventana' | 'a_mas_tardar' | 'en_revision' | 'sin_fecha';
   nombre: string;
   peso: number | string | null;   // sometimes "NA"
   longitud: number | string | null;
@@ -134,7 +140,9 @@ export const bajaCount = (bajas: Baja[]): number => bajas.reduce((n, b) => n + (
 
 export interface TerapeuticaEntry {
   fecha: string;                  // ISO
-  hora: number | null;            // Excel time fraction (0..1)
+  hora: string | null;            // HH:MM, 24 h
+  etapa?: 'preapertura';          // before the public opening: setup (scripts/lib/fechas.mjs, rule 1)
+  trasMuerte?: true;              // dated after the specimen's canonical death: for a person to resolve (rule 6)
   autor: string | null;
   autor2: string | null;
   ubicacion: string | null;
@@ -153,6 +161,8 @@ export interface TerapeuticaEntry {
 export interface BitacoraEntry {
   fecha: string;                  // ISO
   hora: string | null;            // HH:MM
+  etapa?: 'preapertura';          // before the public opening: setup (scripts/lib/fechas.mjs, rule 1)
+  trasMuerte?: true;              // dated after the specimen's canonical death: for a person to resolve (rule 6)
   estado: string | null;
   autorPrincipal: string | null;
   autorSecundario: string | null;

@@ -17,16 +17,15 @@
  * The script regenerates bundle.json from scratch each run, so re-running on
  * the same xlsx produces identical output — no merge logic needed.
  *
- * Run manually each Monday after the Biomuseo team updates the xlsx:
+ * Run manually each Monday after the Museo de Ajolotes Xolotlcalli team updates the xlsx:
  *   npm run data:ajolotes
  */
 import XLSX from 'xlsx';
-import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   toIsoDate,
-  toTimeFraction,
   toNum,
   toNumOrText,
   toStr,
@@ -34,14 +33,32 @@ import {
   indexOfHeader,
   normalizeAlias,
   normalizeEspecie,
-  loadEmbargoNames,
+  makeEmbargoFilter,
   resolveXlsxPath,
 } from './lib/xlsx-utils.mjs';
 import { refuseWhileClosed } from './lib/closure.mjs';
+import { etapaDe, horaHHMM, lecturasDeFecha, registrosTrasMuerte, sinRepeticiones } from './lib/fechas.mjs';
 
 refuseWhileClosed('data-ajolotes');
+// Personal data never reaches a published file (founder, 7-oct): authors, staff names, person ENS names, emails, phones and wallets are
+// removed or replaced. The list of staff names lives in a private file (AXOLODAO_PERSONAS_PRIVADAS), not in this repository.
+const { limpiarValor, huellasDePersonas, leerPersonasPrivadas } = await import('./lib/limpiar-personas.mjs');
+const huellasDePersonal = huellasDePersonas(leerPersonasPrivadas(process.env.AXOLODAO_PERSONAS_PRIVADAS)).huellas;
+const limpio = (v) => limpiarValor(v, huellasDePersonal);
+
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Embargo filter: some records are temporarily withheld from the public bundle
+// until an operational precondition is met (tracked outside version control).
+// The withheld specimens are matched by committed sha256 digests of the folded
+// name (EMBARGO_SHA256 in lib/xlsx-utils.mjs), plus any operator env
+// (AXOLODAO_EMBARGO_BAJAS) or untracked scripts/.embargo.json, so no withheld
+// name is in version control and a build without the untracked file still drops it.
+const embargoFilter = makeEmbargoFilter(__dirname);
+const isEmbargoedName = embargoFilter.isAlias;
+// A withheld alias must not reach the build log either: warnings list only the rest.
+const unknownList = (set) => [...set].filter((a) => !isEmbargoedName(a)).join(', ');
 const SITE_ROOT = resolve(__dirname, '..');
 const XLSX_PATH = resolveXlsxPath();
 
@@ -85,19 +102,15 @@ const EJEMPLAR_DESCRIPCIONES = new Map([
     extendida: 'Con 5 años a cuestas, Panchita fue nuestra ejemplar más veterana y, sin duda, la más imponente: era la más larga y rellenita de todo el grupo. La vida le dejó un par de marcas de guerra —de joven sus hermanos le arrancaron una branquia y una pequeña catarata nublaba uno de sus ojos—, pero ella las llevaba con orgullo. Como su vista ya no era la de antes, cazar no se le daba muy bien… aunque su apetito no conocía límites: Panchita fue, oficialmente, la más glotona de la casa. Tierna, tranquila y siempre lista para comer, fue la gran matriarca de la familia.',
   }],
   ['Remo', {
-    breve: 'Remo es nuestro dumerilii más grande y el rey indiscutible de la noche. De carácter fuerte y temperamento intenso, prefiere moverse cuando todos duermen. ¿Hembra o macho? ¡Todavía es un misterio!',
-    extendida: 'Remo es el más grande de nuestros dumerilíes y tiene una personalidad a la altura de su tamaño: decidido, territorial y con mucho carácter. Es un auténtico ser nocturno que cobra vida cuando cae la noche y todos los demás descansan. Guarda además un pequeño secreto que aún no hemos podido resolver: todavía no sabemos si es hembra o macho, así que de momento sigue siendo todo un enigma con branquias. Imponente y con un temperamento que no pasa desapercibido, Remo siempre se hace notar.',
-  }],
-  ['Rómulo', {
-    breve: 'Rómulo es el más pequeño de los dumerilíes, pero también el más cachetón y travieso. Su pasatiempo favorito es darle mordiditas a su hermano. Es un poco delicado de salud, pero tiene un espíritu enorme.',
-    extendida: 'No te dejes engañar por su tamaño: Rómulo es el más pequeño de los dumerilíes, pero también el más rellenito y cachetón de todos. Es travieso por naturaleza y tiene una debilidad muy particular: no se resiste a darle mordiditas a su hermano cada vez que tiene la oportunidad. Es un poco delicado de salud —de vez en cuando le aparece algún hongo—, así que siempre lo consentimos con cuidados extra. Pequeño, juguetón y muy querido, Rómulo se gana el corazón de todos los que lo conocen.',
+    breve: 'Remo es un dumerilii y el rey indiscutible de la noche. De carácter fuerte y temperamento intenso, prefiere moverse cuando todos duermen. ¿Hembra o macho? ¡Todavía es un misterio!',
+    extendida: 'Remo es un dumerilii con mucha personalidad: decidido, territorial y con mucho carácter. Es un auténtico ser nocturno que cobra vida cuando cae la noche y todos los demás descansan. Guarda además un pequeño secreto que aún no hemos podido resolver: todavía no sabemos si es hembra o macho, así que de momento sigue siendo todo un enigma con branquias. Imponente y con un temperamento que no pasa desapercibido, Remo siempre se hace notar.',
   }],
   ['La negra', {
     breve: 'Negra todavía busca nombre definitivo, pero su carácter ya está más que claro: es una hembra serena, tranquila y muy sociable, que se lleva de maravilla con todos los demás ajolotes.',
     extendida: 'Negra es la calma hecha ajolote. De temperamento sereno y nada conflictivo, convive sin problemas con cualquiera de sus compañeros: es de esas que siempre llevan la fiesta en paz. Por ahora su nombre es solo provisional, mientras encontramos el definitivo, pero su personalidad apacible y amistosa ya se ganó un lugar en la familia.',
   }],
   ['Parda', {
-    breve: 'Parda es otra de nuestras hembras tranquilas: dulce y pacífica. Tiene una peculiaridad entrañable: cuando la alimentamos con pinza, casi nunca le atina al bocado. Su nombre, por ahora, también es provisional.',
+    breve: 'Parda es otra de nuestras hembras tranquilas: dulce y pacífica. Tiene una peculiaridad entrañable: cuando la alimentábamos con pinza, casi nunca le atina al bocado. Su nombre, por ahora, también es provisional.',
     extendida: 'Parda comparte con Negra ese carácter calmado que tanto nos gusta: es serena, pacífica y fácil de llevar. Eso sí, tiene un detalle que saca una sonrisa: a la hora de comer con pinza, su puntería deja mucho que desear y casi nunca atrapa el bocado a la primera. Todavía lleva un nombre provisional, pero su torpeza encantadora la hace inolvidable.',
   }],
   ['Tamal de dulce', {
@@ -106,7 +119,7 @@ const EJEMPLAR_DESCRIPCIONES = new Map([
   }],
   ['Tascalate', {
     breve: 'Tascalate es la más tímida de nuestras hembras. De color algo apagado y piel delicada, es discreta y reservada. Su vecina Tamal de dulce no pierde ocasión para quitarle la comida.',
-    extendida: 'Tascalate es la más tímida de todas nuestras hembras: prefiere pasar desapercibida y quedarse en su rincón. Su color es un poco más opaco que el del resto y su piel es delicada, así que la cuidamos con especial atención. Tiene además un rasgo que la hace única: uno de los dedos de su pata delantera izquierda es más corto que los demás. Por su carácter reservado, muchas veces le toca la peor parte a la hora de comer, porque Tamal de dulce siempre se las arregla para quitarle el bocado. Discreta y delicada, Tascalate se gana el cariño poco a poco.',
+    extendida: 'Tascalate es la más tímida de todas nuestras hembras: prefiere pasar desapercibida y quedarse en su rincón. Su color es un poco más opaco que el del resto y su piel es delicada, así que la cuidábamos con especial atención. Tiene además un rasgo que la hace única: uno de los dedos de su pata delantera izquierda es más corto que los demás. Por su carácter reservado, muchas veces le toca la peor parte a la hora de comer, porque Tamal de dulce siempre se las arregla para quitarle el bocado. Discreta y delicada, Tascalate se gana el cariño poco a poco.',
   }],
   ['Pardo Macho', {
     breve: 'Pardo macho es nuestro único machito y todo un caballero reservado. Es súper tímido, no le gusta que lo toquen y, aun así, destaca por ser bastante más grande que el promedio.',
@@ -126,7 +139,7 @@ const EJEMPLAR_DESCRIPCIONES = new Map([
   }],
   ['Martín', {
     breve: 'Martín es nuestro pequeño gran personaje: de tamaño enano, pero con mucho temperamento. Tan pronto está tranquilo como se pone bravucón con los más chiquitos. Siempre tiene hambre, aunque su pancita le da algún problema.',
-    extendida: 'Martín demuestra que el tamaño no lo es todo: es nuestro ajolote enano, pequeñito pero con una personalidad de armas tomar. Tiene un humor cambiante: a ratos es de lo más tranquilo y a ratos se pone peleonero, eso sí, sobre todo con los más pequeños que él. Es muy comelón y nunca le falta apetito, aunque su estómago no siempre se lo agradece, pues suele tener problemas digestivos, así que vigilamos de cerca su alimentación. Travieso e impredecible, Martín siempre da de qué hablar.',
+    extendida: 'Martín demuestra que el tamaño no lo es todo: es nuestro ajolote enano, pequeñito pero con una personalidad de armas tomar. Tiene un humor cambiante: a ratos es de lo más tranquilo y a ratos se pone peleonero, eso sí, sobre todo con los más pequeños que él. Es muy comelón y nunca le falta apetito, aunque su estómago no siempre se lo agradece, pues suele tener problemas digestivos, así que vigilábamos de cerca su alimentación. Travieso e impredecible, Martín siempre da de qué hablar.',
   }],
   ['Goldy', {
     breve: 'Goldy fue nuestro campeón de lo remilgoso: el más exigente de todos para comer. Era delgadito, crecía despacio y era el más tímido de los juveniles. Un consentido que necesitaba paciencia y cariño.',
@@ -386,8 +399,8 @@ for (const arr of Object.values(historial)) arr.sort((a, b) => a.fecha.localeCom
 const histTotal = Object.values(historial).reduce((n, arr) => n + arr.length, 0);
 console.log(`[data-ajolotes] historial: ${histTotal} entries across ${Object.keys(historial).length} aliases`);
 if (histSkipped) console.warn(`[data-ajolotes]   skipped ${histSkipped} historial rows (missing alias or fecha)`);
-if (histUnknownAliases.size) {
-  console.warn(`[data-ajolotes]   historial aliases not in Dashboard: ${[...histUnknownAliases].join(', ')}`);
+if (unknownList(histUnknownAliases)) {
+  console.warn(`[data-ajolotes]   historial aliases not in Dashboard: ${unknownList(histUnknownAliases)}`);
 }
 
 // --- Planes ----------------------------------------------------------------
@@ -481,7 +494,7 @@ for (let r = alimHdrIdx + 1; r < alimRows.length; r++) {
   if (!knownAliases.has(alias)) alimUnknownAliases.add(alias);
   const entry = {
     fecha,
-    hora: toTimeFraction(row[A.hora]),
+    hora: horaHHMM(row[A.hora]),
     autor: toStr(row[A.autor]),
     tipo: toStr(row[A.tipo]),
     racion: toNum(row[A.racion]),
@@ -495,8 +508,8 @@ for (const arr of Object.values(alimentacion)) arr.sort((a, b) => a.fecha.locale
 const alimTotal = Object.values(alimentacion).reduce((n, arr) => n + arr.length, 0);
 console.log(`[data-ajolotes] alimentacion: ${alimTotal} entries across ${Object.keys(alimentacion).length} aliases`);
 if (alimSkipped) console.warn(`[data-ajolotes]   skipped ${alimSkipped} alimentacion rows (missing alias or fecha)`);
-if (alimUnknownAliases.size) {
-  console.warn(`[data-ajolotes]   alimentacion aliases not in Dashboard: ${[...alimUnknownAliases].join(', ')}`);
+if (unknownList(alimUnknownAliases)) {
+  console.warn(`[data-ajolotes]   alimentacion aliases not in Dashboard: ${unknownList(alimUnknownAliases)}`);
 }
 
 // --- Bajas -----------------------------------------------------------------
@@ -542,15 +555,6 @@ bajas.sort((a, b) => {
   return a.fecha.localeCompare(b.fecha);
 });
 
-// Embargo filter: some records are temporarily withheld from the public bundle
-// until an operational precondition is met (tracked outside version control).
-// The withheld names are NOT hardcoded here — they come from the operator env
-// (AXOLODAO_EMBARGO_BAJAS) or an untracked scripts/.embargo.json (see
-// loadEmbargoNames), so the source stays neutral and the value lives outside
-// version control. Names are matched against the normalized name, lowercased.
-const embargoBajas = loadEmbargoNames(__dirname);
-const isEmbargoedName = (name) =>
-  embargoBajas.has((normalizeAlias(toStr(name)) ?? '').trim().toLowerCase());
 const publicBajas = bajas.filter((b) => !isEmbargoedName(b.nombre));
 const withheld = bajas.length - publicBajas.length;
 if (withheld > 0) console.log(`[data-ajolotes] bajas withheld (embargo): ${withheld}`);
@@ -602,6 +606,7 @@ const deceasedNames = new Set(
     // Same name on both sides means the Dashboard simply has not been closed out
     // yet, which is normal and already handled by the name gate.
     if (bajaName && bajaName.toLowerCase() === (live.alias ?? '').trim().toLowerCase()) continue;
+    if (isEmbargoedName(bajaName) || isEmbargoedName(live.alias)) continue; // never name a withheld alias in the log
     conflicts.push(`  Bajas "${bajaName}" lleva el ID ${bajaId}, que el Dashboard asigna a "${live.alias}" (${live.pecera ?? 'sin pecera'})`);
   }
   if (conflicts.length) {
@@ -669,7 +674,7 @@ for (let r = teraHdrIdx + 1; r < teraRows.length; r++) {
   if (!knownAliases.has(alias)) teraUnknownAliases.add(alias);
   const entry = {
     fecha,
-    hora: toTimeFraction(row[T.hora]),
+    hora: horaHHMM(row[T.hora]),
     autor: toStr(row[T.autor]),
     autor2: toStr(row[T.autor2]),
     ubicacion: toStr(row[T.ubicacion]),
@@ -690,8 +695,8 @@ for (const arr of Object.values(terapeutica)) {
 const teraTotal = Object.values(terapeutica).reduce((n, arr) => n + arr.length, 0);
 console.log(`[data-ajolotes] terapeutica: ${teraTotal} entries across ${Object.keys(terapeutica).length} aliases`);
 if (teraSkipped) console.warn(`[data-ajolotes]   skipped ${teraSkipped} terapeutica rows (missing alias or fecha)`);
-if (teraUnknownAliases.size) {
-  console.warn(`[data-ajolotes]   terapeutica aliases not in Dashboard: ${[...teraUnknownAliases].join(', ')}`);
+if (unknownList(teraUnknownAliases)) {
+  console.warn(`[data-ajolotes]   terapeutica aliases not in Dashboard: ${unknownList(teraUnknownAliases)}`);
 }
 
 // --- Write -----------------------------------------------------------------
@@ -733,6 +738,43 @@ if (stillListed.length > 0) {
   );
 }
 
+// --- Fechas (reglas en lib/fechas.mjs) ---------------------------------------
+// Una fecha canónica por muerte (regla 8): la de forense, que ya resolvió el laboratorio contra el
+// libro, el año errado de una captura y las lecturas día/mes. La del libro queda en `fechaLibro`.
+const FORENSE = join(__dirname, '..', 'public', 'data', 'ajolotes', 'bajas-forense.json');
+if (!existsSync(FORENSE)) throw new Error('falta public/data/ajolotes/bajas-forense.json: genera bajas-forense.json antes que este script');
+const CONF_FORENSE = { exact: 'exacta', swapped: 'invertida', ambiguous_dm: 'ambigua_dm', window: 'ventana', a_mas_tardar: 'a_mas_tardar', en_revision: 'en_revision' };
+const muerteForense = new Map(JSON.parse(readFileSync(FORENSE, 'utf8')).especimenes
+  .filter((e) => !e.group).map((e) => [e.alias.toLowerCase(), e.death]));
+for (const b of publicBajas) {
+  const d = muerteForense.get(b.nombre.toLowerCase());
+  if (d?.date) {
+    if (b.fecha !== d.date) b.fechaLibro = b.fecha;
+    b.fecha = d.date;
+    b.fechaConf = CONF_FORENSE[d.conf] ?? d.conf;
+  } else {
+    b.fechaConf = lecturasDeFecha(b.fecha).conf; // regla 4: sin forense, sólo la regla día ≤ 12 y distinto del mes
+  }
+}
+publicBajas.sort((a, b) => (a.fecha == null) - (b.fecha == null) || (a.fecha ?? '').localeCompare(b.fecha ?? ''));
+const muerteDe = new Map(publicBajas.filter((b) => b.fecha).map((b) => [b.nombre.toLowerCase(), b.fecha]));
+// Reglas 1, 6 y 7 en los registros por ejemplar: lo de antes de abrir se marca como preparación, lo de
+// fuera del periodo no se publica, un registro posterior a la muerte queda marcado para que una persona
+// lo resuelva, y una fila repetida tal cual se publica una vez.
+const cuenta = { repetidas: 0, fuera: 0, preapertura: 0, trasMuerte: 0 };
+for (const dict of [historial, terapeutica, alimentacion]) {
+  for (const [alias, arr] of Object.entries(dict)) {
+    const [unicas, quitadas] = sinRepeticiones(arr);
+    cuenta.repetidas += quitadas;
+    const dentro = unicas.filter((r) => etapaDe(r.fecha) !== 'fuera');
+    cuenta.fuera += unicas.length - dentro.length;
+    for (const r of dentro) if (etapaDe(r.fecha) === 'preapertura') { r.etapa = 'preapertura'; cuenta.preapertura++; }
+    for (const r of registrosTrasMuerte(dentro, muerteDe.get(alias.toLowerCase()))) { r.trasMuerte = true; cuenta.trasMuerte++; }
+    dict[alias] = dentro;
+  }
+}
+console.log(`[data-ajolotes] fechas: ${cuenta.repetidas} filas repetidas quitadas, ${cuenta.fuera} fuera del periodo, ${cuenta.preapertura} de preparación, ${cuenta.trasMuerte} tras la muerte`);
+
 const bundle = {
   ejemplares: publicEjemplares,
   bajasSnapshots,
@@ -742,6 +784,6 @@ const bundle = {
   alimentacion,
   bajas: publicBajas,
 };
-writeFileSync(join(OUT_DIR, 'bundle.json'), JSON.stringify(bundle, null, 2) + '\n');
+writeFileSync(join(OUT_DIR, 'bundle.json'), JSON.stringify(limpio(bundle), null, 2) + '\n');
 console.log(`[data-ajolotes] wrote ${join(OUT_DIR, 'bundle.json')}`);
 console.log('[data-ajolotes] Done.');

@@ -2,14 +2,12 @@ import type { Baja, Bundle, Locale } from './types';
 import { s } from './strings';
 import EjemplarPhoto from './EjemplarPhoto';
 import { deriveMemorial, necroStatus, type WeightPoint } from './memorial';
-import { GradePill } from './tabs/PostmortemTab';
 
 interface Props {
   baja: Baja;
   bundle: Bundle;
   locale: Locale;
   onSelect: (baja: Baja) => void;
-  pmGrade?: string | null;   // response grade from the forensic postmortem, once loaded
 }
 
 // Memorial accent — a muted sepia/brown that reads as "in memoriam" across the
@@ -65,7 +63,7 @@ function Sparkline({ points, color }: { points: WeightPoint[]; color: string }) 
   );
 }
 
-export default function BajaCard({ baja, bundle, locale, onSelect, pmGrade = null }: Props) {
+export default function BajaCard({ baja, bundle, locale, onSelect }: Props) {
   const m = deriveMemorial(bundle, baja);
   const fmt = (v: unknown): string => (!isFilled(v) ? '—' : String(v));
   const { done: necroDone, pending: necroPending, text: necropcia } = necroStatus(baja);
@@ -96,7 +94,7 @@ export default function BajaCard({ baja, bundle, locale, onSelect, pmGrade = nul
             <span class="shrink-0 text-sm" aria-hidden="true">🕯️</span>
           </h3>
           <p class="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-[var(--wq-ink-muted)]">
-            <span class="font-mono font-semibold text-[var(--wq-ink)]">{baja.fecha || '—'}</span>
+            <span class="font-mono font-semibold text-[var(--wq-ink)]">{baja.fecha ? s(locale, 'bajas.status').replace('{fecha}', baja.fecha) : '—'}</span>
             {baja.edad && <span class="opacity-50" aria-hidden="true">·</span>}
             {baja.edad && <span>{baja.edad}</span>}
           </p>
@@ -130,15 +128,6 @@ export default function BajaCard({ baja, bundle, locale, onSelect, pmGrade = nul
             {s(locale, 'bajas.memorial.weightTrend')}
           </span>
           <Sparkline points={m.weightSeries} color={MEM} />
-        </div>
-      )}
-
-      {pmGrade && (
-        <div class="flex items-center justify-between gap-2">
-          <span class="text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)]">
-            {s(locale, 'pm.response')}
-          </span>
-          <GradePill grade={pmGrade} locale={locale} small />
         </div>
       )}
 

@@ -131,15 +131,9 @@ export default function EjemplarTable({
                       <span class="flex min-w-0 flex-col">
                         <span class="flex items-baseline gap-1.5 font-display text-[0.95rem] font-bold leading-tight tracking-tight text-[var(--wq-ink)]">
                           <span class="truncate">{ej.alias}</span>
-                          <span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)}>
+                          {sym !== '(?)' && (<span class={GENDER_CLASS[sym]} title={genderTitle(locale, ej.genero)}>
                             {sym}
-                          </span>
-                          {(ej.pecera ?? '').trim() === 'Cuarentena' && (
-                            <span class="aj-ribbon aj-state-pulse ml-1 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-rosa px-2 py-0.5 font-display text-[9px] font-extrabold uppercase tracking-[0.08em] text-marfil shadow-[0_2px_6px_rgba(7,31,41,0.35)]">
-                              <span class="inline-block h-1.5 w-1.5 rounded-full bg-marfil" aria-hidden="true" />
-                              {s(locale, 'modal.ribbon.cuarentena')}
-                            </span>
-                          )}
+                          </span>)}
                         </span>
                         {ej.id && (
                           <span class="font-mono text-[10px] text-[var(--wq-ink-muted)]">

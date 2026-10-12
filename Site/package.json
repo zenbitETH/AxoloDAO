@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "node scripts/check-fechas.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -17,7 +18,14 @@
     "data:ajolotes": "node scripts/data-ajolotes.mjs",
     "data:ops": "node scripts/data-ops.mjs",
     "data:all": "npm run data:map && npm run data:species && npm run data:tables && npm run data:water && npm run data:ajolotes && npm run data:ops",
-    "test:data-water": "node scripts/test-data-water-bot.mjs && node scripts/test-data-water-suspect-rows.mjs"
+    "test:no-personal-data": "node scripts/test-no-personal-data.mjs",
+    "test:agua-rangos": "node scripts/test-agua-rangos.mjs",
+    "test:data-water": "node scripts/test-data-water-bot.mjs && node scripts/test-data-water-suspect-rows.mjs",
+    "test:closure-copy": "node --experimental-strip-types --no-warnings scripts/test-closure-copy.mjs",
+    "test:closure-copy:dist": "node --experimental-strip-types --no-warnings scripts/test-closure-copy.mjs --dist",
+    "test:fechas": "node scripts/test-fechas.mjs",
+    "test:embargo": "node scripts/test-embargo.mjs",
+    "test:no-embargo-in-dist": "node scripts/test-embargo.mjs --dist"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

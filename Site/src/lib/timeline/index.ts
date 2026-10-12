@@ -84,8 +84,8 @@ export function buildTankTimeline(input: TankTimelineInput): TimelineEvent[] {
   return events;
 }
 
-// Filter a Bitácora array by alias. Handles comma-separated alias cells like
-// "Remo, Rómulo" (multi-ejemplar event) by checking membership.
+// Filter a Bitácora array by alias. Handles comma-separated alias cells
+// (multi-ejemplar event) by checking membership.
 export function filterBitacoraByAlias(bitacora: BitacoraEntry[], alias: string): BitacoraEntry[] {
   return bitacora.filter((b) => {
     if (!b.alias) return false;

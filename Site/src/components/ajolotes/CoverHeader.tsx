@@ -1,6 +1,7 @@
 import type { Locale, SpeciesCode } from './types';
 import { type ThemeMode, accent as accentFor, SPECIES_ORDER } from './theme';
 import { s } from './strings';
+import { periodoDeSupervivencia } from '../../lib/survival';
 
 interface Props {
   locale: Locale;
@@ -36,7 +37,7 @@ export default function CoverHeader({
       <div class="max-w-[720px]">
         <div
           class="wq-logo-mark mb-3 text-choco dark:text-cream/90"
-          aria-label="Biomuseo Xolotlcalli"
+          aria-label="Museo de Ajolotes Xolotlcalli"
           dangerouslySetInnerHTML={{ __html: logoSvg }}
         />
         <h1 class="m-0 mb-1 font-display text-2xl text-[var(--wq-ink)] sm:text-3xl">
@@ -45,6 +46,8 @@ export default function CoverHeader({
         <p class="m-0 max-w-[56ch] font-body text-sm text-[var(--wq-ink)]/70">
           {s(locale, 'cover.sub')}
         </p>
+        <p class="m-0 mt-2 max-w-[56ch] font-body text-sm text-[var(--wq-ink)]/70">{s(locale, 'cover.lead')}</p>
+        <p class="m-0 mt-1 max-w-[56ch] font-body text-sm text-[var(--wq-ink)]/70">{s(locale, 'cover.preguntas')}</p>
         <a
           href={waterPath}
           class="mt-3.5 inline-flex items-center gap-1 rounded-full border border-[var(--wq-divider)] px-3.5 py-1.5 text-sm text-[var(--wq-ink)] transition-colors duration-200 hover:bg-[var(--wq-row-bg)]"
@@ -90,7 +93,7 @@ export default function CoverHeader({
             {survivalPct && (
               <div class="mt-2 border-t border-dashed border-[var(--wq-divider)] pt-2 text-[11px] leading-snug text-[var(--wq-ink-muted)]">
                 <span class="font-display text-base font-bold text-[var(--wq-ink)]">{survivalPct}</span>{' '}
-                {s(locale, 'bajas.survival.short')}
+                {s(locale, 'bajas.survival.short')} · {periodoDeSupervivencia(locale)}
               </div>
             )}
           </button>

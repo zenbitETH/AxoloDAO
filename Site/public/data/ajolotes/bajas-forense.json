@@ -1,25 +1,10 @@
 {
- "generated": "2026-10-01",
- "brain_commit": "c6cadb4",
+ "generated": "2026-10-12",
+ "brain_commit": "3eeb141",
  "preregistration": "451da4d",
- "method_note": "Latencia entre la primera señal registrada y la primera acción preventiva, contra el estándar en vigor en esa fecha. Estándares declarados por AxoloDAO; no son norma oficial. Todo es descriptivo.",
+ "method_note": "Tiempo entre la primera señal registrada y la primera acción registrada, en horas. Es descriptivo: no califica a nadie.",
  "aggregate": {
-  "grades": {
-   "oportuna": 2,
-   "tardía": 4,
-   "ausente": 0,
-   "sin_registro_de_acciones": 1,
-   "sin_señal_registrada": 0,
-   "indeterminada": 10
-  },
   "n": 17,
-  "median_latency_over_standard": 1.23125,
-  "h0": {
-   "statement": "mediana de L_SP dentro del estándar y menos del 30 % de episodios con acción preventiva ausente",
-   "median_within_standard": false,
-   "absent_below_threshold": true,
-   "sustained": false
-  },
   "lane5": {
    "without_necropsy_result": 15,
    "euthanasia_documented": 1,
@@ -31,7 +16,7 @@
   "Antes de abril de 2026 el museo casi no registraba acciones; ahí «sin registro» no significa «no se hizo».",
   "Las grabaciones de las cámaras no se revisaron cuadro por cuadro; los clips verificados son pocos.",
   "Los chats del equipo son fuente; se citan por su renglón en el expediente privado y aquí se resumen sin nombres.",
-  "Ninguna persona se nombra. Los roles se publican después del derecho de réplica."
+  "Ninguna persona se nombra; la respuesta registrada es del equipo del museo."
  ],
  "especimenes": [
   {
@@ -92,9 +77,6 @@
    "body": "sin registro",
    "body_conservation": null,
    "lab_reserved": false,
-   "grade": "indeterminada",
-   "grade_60": "indeterminada",
-   "grade_note": "Sin registros individuales: la respuesta no se puede calificar.",
    "primary": null,
    "sensitivity": null,
    "events": []
@@ -106,7 +88,7 @@
     "date": "2026-09-05",
     "workbook_date": "2026-05-09",
     "date_source": "libro",
-    "conf": "ambiguous_dm",
+    "conf": "swapped",
     "euthanasia": false,
     "note": "se descarta la lectura 2026-05-09: es anterior al último registro del ejemplar vivo (2026-09-03)",
     "alive_record_after": null
@@ -120,16 +102,12 @@
    "body": "sin registro",
    "body_conservation": null,
    "lab_reserved": false,
-   "grade": "tardía",
-   "grade_60": "indeterminada",
-   "grade_note": null,
    "primary": {
     "window": {
      "from": "2026-08-15",
      "to": "2026-09-05",
      "days": 21
     },
-    "grade": "tardía",
     "S0": {
      "date": "2026-08-26",
      "time": "08:29",
@@ -142,18 +120,6 @@
     },
     "C": null,
     "latency_h": 120.7,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 12,
-    "unanswered": 5,
-    "coverage": 0.41,
-    "role": "Dirección clínica del museo",
-    "flags": [
-     "estándar_no_escrito_en_el_museo"
-    ],
     "recorded_after_death": 0
    },
    "sensitivity": {
@@ -162,7 +128,6 @@
      "to": "2026-09-05",
      "days": 60
     },
-    "grade": "indeterminada",
     "S0": {
      "date": "2026-08-26",
      "time": "08:29",
@@ -175,16 +140,6 @@
     },
     "C": null,
     "latency_h": 120.7,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 12,
-    "unanswered": 5,
-    "coverage": 0.15,
-    "role": null,
-    "flags": [],
     "recorded_after_death": 0
    },
    "events": [
@@ -216,7 +171,7 @@
      "label": "Incidencia registrada",
      "source": "libro",
      "grade": "A",
-     "text": "Nado persistente · Solo observación · El ejemplar presenta demasiada activiad de nado a la superficie. Se ha mantenido en observación y ha salido 3 veces en menos de un minuto a tomar aire. Se alerta a la curaduría"
+     "text": "Nado persistente · Solo observación · El ejemplar presenta demasiada activiad de nado a la superficie. Se ha mantenido en observación y ha salido 3 veces en menos de un minuto a tomar aire. Se alerta a [persona]"
     },
     {
      "date": "2026-08-29",
@@ -236,7 +191,7 @@
      "label": "Incidencia registrada",
      "source": "libro",
      "grade": "A",
-     "text": "Solo observación · Ander presenta un movimiento branquial más rápido de lo observado en dás anteriores.vJuan confirma el dato y pide mayor observación en el ejemplar"
+     "text": "Solo observación · Ander presenta un movimiento branquial más rápido de lo observado en dás anteriores.v[persona] confirma el dato y pide mayor observación en el ejemplar"
     },
     {
      "date": "2026-08-30",
@@ -350,24 +305,17 @@
     }
    ],
    "relato": {
-    "lead": "Del **26 al 30 de agosto** el libro anota siete veces que flotaba, que nadaba hacia la superficie una y otra vez o que se atoraba en la rejilla del filtro, casi siempre como solo observación. La primera acción, un aviso al veterinario y la cuarentena, llegó el **31 de agosto**, cinco días después de la primera señal; ese día el agua de su sistema marcó amoníaco sobre cero. Murió el 5 de septiembre.",
+    "lead": "El libro anota 9 incidencias entre el 26 y el 30 de agosto: flotaba, nadaba hacia la superficie o se atoraba en la rejilla del filtro. De 9 incidencias registradas, 7 se anotaron como \"solo observación\". La primera acción registrada es del 31 de agosto: un aviso al veterinario y la cuarentena. El agua de su sistema marcó amoníaco sobre cero el 31 de agosto. Murió el 5 de septiembre.",
     "stats": [
      {
       "n": "5",
       "u": "días",
-      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
+      "l": "de la primera señal registrada a la primera acción registrada",
       "tone": "amber",
       "key": "lat"
-     },
-     {
-      "n": "5",
-      "u": "de 12",
-      "l": "señales sin respuesta dentro de su plazo",
-      "tone": "rose",
-      "key": "senales"
      }
     ],
-    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "stats_note": "Son distancias entre registros.",
     "curso": {
      "from": "2026-08-02",
      "to": "2026-09-05",
@@ -410,7 +358,7 @@
        "2026-08-29",
        "09:46",
        "fuerte",
-       "Bitácora: Solo observación · Ander presenta un movimiento branquial más rápido de lo observado en dás anteriores.vJuan confirma e…"
+       "Bitácora: Solo observación · Ander presenta un movimiento branquial más rápido de lo observado en dás anteriores.v[persona] confirma e…"
       ],
       [
        "2026-08-29",
@@ -484,7 +432,7 @@
        "2026-08-31",
        "09:10"
       ],
-      "label": "5 días · estándar 48 h"
+      "label": "5 días"
      },
      "agua": {
       "2026-08-26": "17.7 °C",
@@ -502,7 +450,7 @@
       "d": "2026-08-26",
       "tone": "amber",
       "title": "Flota atorado en el filtro",
-      "text": "Flotabilidad en la rejilla del filtro, con una pata atorada.",
+      "text": "Se anota flotabilidad en la rejilla del filtro, con una pata atorada.",
       "src": "bitácora",
       "t": "08:29"
      },
@@ -510,7 +458,7 @@
       "d": "2026-08-27",
       "tone": "amber",
       "title": "Nada hacia la superficie",
-      "text": "Actividad de nado a la superficie demasiado alta, tres días seguidos; queda en observación.",
+      "text": "Se anota nado a la superficie los tres días. Queda en observación.",
       "src": "bitácora",
       "t": "15:23",
       "d2": "2026-08-29"
@@ -527,7 +475,7 @@
       "d": "2026-08-31",
       "tone": "green",
       "title": "Aviso al veterinario y cuarentena",
-      "text": "Primera acción del episodio. Ese día, amoníaco sobre cero en su sistema.",
+      "text": "Primera acción registrada del episodio. El agua de su sistema marca amoníaco sobre cero.",
       "src": "bitácora · libro",
       "t": "09:30"
      },
@@ -535,7 +483,7 @@
       "d": "2026-09-01",
       "tone": "amber",
       "title": "Pierde el control al bajar",
-      "text": "Flota a media agua y pierde el control al bajar de la superficie.",
+      "text": "Flota a media agua. Pierde el control al bajar de la superficie.",
       "src": "bitácora",
       "t": "18:00"
      },
@@ -543,7 +491,7 @@
       "d": "2026-09-05",
       "tone": "ink",
       "title": "Muere",
-      "text": "La hoja puede leerse también como 9 de mayo; esa lectura se descarta porque hay registros de ella viva hasta el 3 de septiembre.",
+      "text": "La hoja puede leerse también como 9 de mayo. Esa lectura se descarta porque hay registros de ella viva hasta el 3 de septiembre.",
       "src": "libro"
      }
     ],
@@ -551,22 +499,16 @@
      "reglas": [
       {
        "d": "2026-08-26",
-       "text": "Incidencia clínica sin respuesta en 48 h → escala a dirección clínica el 28.",
-       "real": "Cinco días y siete incidencias anotadas como solo observación hasta el aviso al veterinario."
+       "text": "Incidencia clínica sin respuesta en 48 h → escala a la persona responsable el 28."
       },
       {
        "d": "2026-08-31",
-       "text": "Amoníaco sobre cero → aviso crítico al veterinario en minutos.",
-       "real": "Ese día sí se avisó al veterinario."
+       "text": "Amoníaco sobre cero → aviso al veterinario en minutos."
       }
      ],
-     "con": {
-      "n": "≤ 48 h",
-      "l": "de la primera señal a la acción, con avisos"
-     },
-     "sin": {
-      "n": "5 días",
-      "l": "lo que pasó sin ellos"
+     "cronologia": {
+      "senal": "2026-08-26",
+      "accion": "2026-08-31"
      }
     },
     "evidencia": [],
@@ -592,22 +534,17 @@
    "cause_source": "necropsia",
    "necropsy": {
     "performed": "2026-07-08",
-    "result": "2026-08-04",
-    "lab_case": null
+    "result": "2026-08-04"
    },
    "body": "conservado en agua refrigerada y enviado a necropsia; destino posterior sin registro",
    "body_conservation": "mantenido en agua con refrigeración hasta la necropsia; estado de conservación regular, autólisis",
    "lab_reserved": false,
-   "grade": "oportuna",
-   "grade_60": "tardía",
-   "grade_note": null,
    "primary": {
     "window": {
      "from": "2026-06-16",
      "to": "2026-07-07",
      "days": 21
     },
-    "grade": "oportuna",
     "S0": {
      "date": "2026-06-16",
      "time": "12:18",
@@ -624,18 +561,6 @@
      "label": "Acción correctiva"
     },
     "latency_h": 0.8,
-    "standard": {
-     "id": "DEC-AGUA",
-     "title": "Otro parámetro fuera de rango: acción de agua en 72 h",
-     "hours": 72
-    },
-    "signals": 77,
-    "unanswered": 0,
-    "coverage": 1,
-    "role": null,
-    "flags": [
-     "racha_iniciada_antes_de_la_ventana"
-    ],
     "recorded_after_death": 1
    },
    "sensitivity": {
@@ -644,7 +569,6 @@
      "to": "2026-07-07",
      "days": 60
     },
-    "grade": "tardía",
     "S0": {
      "date": "2026-05-08",
      "time": "13:45",
@@ -661,19 +585,6 @@
      "label": "Acción correctiva"
     },
     "latency_h": 148.8,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 152,
-    "unanswered": 8,
-    "coverage": 0.85,
-    "role": "Dirección clínica del museo",
-    "flags": [
-     "racha_iniciada_antes_de_la_ventana",
-     "estándar_no_escrito_en_el_museo"
-    ],
     "recorded_after_death": 3
    },
    "events": [
@@ -813,7 +724,7 @@
      "label": "Acción preventiva",
      "source": "chat",
      "grade": "A",
-     "text": "Tratamiento de Panchita y Remo: 15 g de NaCl en 1.5 L por una hora; 9 garrafones llenos"
+     "text": "9 garrafones llenos"
     },
     {
      "date": "2026-05-14",
@@ -855,7 +766,7 @@
      "label": "Aviso de salud",
      "source": "chat",
      "grade": "A",
-     "text": "Panchita con mucho hongo; el miércoles se le añadieron 3 g de NaCl; curaduría dará otro tratamiento"
+     "text": "Panchita con mucho hongo; el miércoles se le añadieron 3 g de NaCl; el equipo dará otro tratamiento"
     },
     {
      "date": "2026-05-15",
@@ -905,7 +816,7 @@
      "label": "Acción correctiva",
      "source": "chat",
      "grade": "A",
-     "text": "Operación se lleva a Panchita del museo por instrucciones de curaduría"
+     "text": "El equipo se lleva a Panchita del museo"
     },
     {
      "date": "2026-05-16",
@@ -1035,7 +946,7 @@
      "label": "Consulta veterinaria",
      "source": "chat",
      "grade": "A",
-     "text": "Curaduría informa que salió del doctor con Panchita"
+     "text": "El equipo informa que salió del doctor con Panchita"
     },
     {
      "date": "2026-05-21",
@@ -1125,7 +1036,7 @@
      "label": "Acción preventiva",
      "source": "chat",
      "grade": "A",
-     "text": "Operación hace el tratamiento de Panchita"
+     "text": "El equipo hace el tratamiento de Panchita"
     },
     {
      "date": "2026-05-27",
@@ -1145,7 +1056,7 @@
      "label": "Acción correctiva",
      "source": "chat",
      "grade": "B",
-     "text": "La cinta se usó para que curaduría adaptara su cuarto como cuarentena (fuera del museo)"
+     "text": "En cuarentena fuera del museo desde el 27 de mayo de 2026"
     },
     {
      "date": "2026-05-27",
@@ -1260,16 +1171,6 @@
      "source": "libro",
      "grade": "A",
      "text": "Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g"
-    },
-    {
-     "date": "2026-06-04",
-     "time": "09:20",
-     "lane": 3,
-     "kind": "preventive_isolation_location",
-     "label": "En cuarentena",
-     "source": "libro",
-     "grade": "A",
-     "text": ""
     },
     {
      "date": "2026-06-04",
@@ -1683,7 +1584,7 @@
      "label": "Aviso de salud",
      "source": "chat",
      "grade": "B",
-     "text": "Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+     "text": "Un ejemplar se ve verdoso, como con musgo; es normal"
     },
     {
      "date": "2026-06-21",
@@ -1703,7 +1604,7 @@
      "label": "Acción preventiva",
      "source": "chat",
      "grade": "A",
-     "text": "Operación propone contemplar itraconazol y Stress Guard"
+     "text": "El equipo propone contemplar itraconazol y Stress Guard"
     },
     {
      "date": "2026-06-21",
@@ -2189,7 +2090,7 @@
      "label": "Aviso de salud",
      "source": "chat",
      "grade": "A",
-     "text": "Ndali: Panchita de regreso; se presentó un absceso; se procedió al tratamiento"
+     "text": "Panchita de regreso; se presentó un absceso; se procedió al tratamiento"
     },
     {
      "date": "2026-07-01",
@@ -2219,7 +2120,7 @@
      "label": "Consulta veterinaria",
      "source": "chat",
      "grade": "A",
-     "text": "El lunes de limpieza de peceras operación avisó a curaduría; se contactó al vet, que tomó muestras (reporte de efusiones)"
+     "text": "El lunes de limpieza de peceras el equipo avisó; se contactó al vet, que tomó muestras (reporte de efusiones)"
     },
     {
      "date": "2026-07-01",
@@ -2259,7 +2160,7 @@
      "label": "Eutanasia (mención en el chat)",
      "source": "chat",
      "grade": "A",
-     "text": "Fundador: evaluar en qué punto la eutanasia es más factible en costos que prolongarla"
+     "text": "Evaluar en qué punto la eutanasia es más factible en costos que prolongarla"
     },
     {
      "date": "2026-07-01",
@@ -2809,7 +2710,7 @@
      "label": "Aviso de salud",
      "source": "chat",
      "grade": "A",
-     "text": "Panchita con mejor ánimo, sin flotación; Martín sin flotación anormal"
+     "text": "Panchita con mejor ánimo, sin flotación"
     },
     {
      "date": "2026-07-05",
@@ -3120,7 +3021,7 @@
      "label": "Aviso de salud",
      "source": "chat",
      "grade": "A",
-     "text": "Ndali: Panchita presentó un comportamiento muy raro; operación corre al veterinario"
+     "text": "Panchita presentó un comportamiento muy raro; el equipo corre al veterinario"
     },
     {
      "date": "2026-07-07",
@@ -3171,7 +3072,7 @@
      "label": "Aviso de muerte",
      "source": "chat",
      "grade": "A",
-     "text": "Operación comunica que Panchita no lo logró"
+     "text": "El equipo comunica que Panchita no lo logró"
     },
     {
      "date": "2026-07-09",
@@ -3191,7 +3092,7 @@
      "label": "Necropsia (aviso)",
      "source": "chat",
      "grade": "A",
-     "text": "Queda realizar la necropsia a recomendación del vet, no obligada; operación la considera útil"
+     "text": "Queda realizar la necropsia a recomendación del vet, no obligada; el equipo la considera útil"
     },
     {
      "date": "2026-08-04",
@@ -3212,7 +3113,7 @@
      "label": "Necropsia (aviso)",
      "source": "chat",
      "grade": "A",
-     "text": "Curaduría comparte el resultado de la necropsia (el chat no nombra al ejemplar; necropsias.json lo asigna a Panchita)"
+     "text": "El equipo comparte el resultado de la necropsia (el chat no nombra al ejemplar; necropsias.json lo asigna a Panchita)"
     },
     {
      "date": "2026-08-04",
@@ -3222,7 +3123,7 @@
      "label": "Necropsia (aviso)",
      "source": "chat",
      "grade": "A",
-     "text": "El fundador: no estaba grávida, tenía los órganos hinchados; curaduría: al morir sí, antes era gravidez"
+     "text": "No estaba grávida, tenía los órganos hinchados"
     },
     {
      "date": "2026-08-04",
@@ -3232,7 +3133,7 @@
      "label": "Necropsia (aviso)",
      "source": "chat",
      "grade": "A",
-     "text": "El fundador: la hepatitis era crónica"
+     "text": "La hepatitis era crónica"
     },
     {
      "date": "2026-08-04",
@@ -3242,28 +3143,21 @@
      "label": "Necropsia (aviso)",
      "source": "chat",
      "grade": "A",
-     "text": "El fundador pregunta si la carga de sales pudo acelerar el desgaste de hígado y riñones"
+     "text": "El equipo pregunta si la carga de sales pudo acelerar el desgaste de hígado y riñones"
     }
    ],
    "relato": {
-    "lead": "Llevaba meses enferma: el crecimiento algodonoso en sus branquias reapareció en diciembre de 2025 al terminar un tratamiento y nunca se resolvió del todo. Según el testimonio del fundador, en 2025 salió del museo dos veces, a la Expo Qro en septiembre y a una convención de UMA y PIMVS en otro estado a fines de octubre, viajes que pudieron exponerla a cambios bruscos de temperatura. En su propio acuario, el libro registra vaivenes de 3 a 4 °C en pocos días entre el 23 de abril y el 5 de mayo. El 4 de mayo se registra una inflamación persistente en el ojo derecho, por un posible golpe; el **21 de mayo** lo perdió, y el 27 el daño ya era irreversible. Desde el **4 de junio** el libro anota que flotaba con la parte trasera hacia arriba. Pasó un mes entre cuarentena y tratamientos diarios, y ninguna de sus señales quedó sin respuesta dentro de su plazo. El 22 de junio pesaba 144 g, 10 % menos que en abril; esa semana el ojo dañado volvió a inflamarse, y el 29 hubo una alerta en el otro. El 1 de julio salió del acuario porque flotaba; el **7 de julio** la llevaron de emergencia al veterinario y murió.",
+    "lead": "En diciembre de 2025 reapareció el crecimiento algodonoso en sus branquias, al terminar un tratamiento. El 4 de mayo se registra una inflamación persistente en el ojo derecho. El **21 de mayo** perdió el ojo. El 27 de mayo el daño era irreversible. Desde el **4 de junio** el libro anota que flotaba con la parte trasera hacia arriba. Pasó un mes entre cuarentena y tratamientos diarios. El 22 de junio pesaba 144 g, 10 % menos que en abril. Esa semana el ojo dañado volvió a inflamarse. El 29 de junio hubo una alerta en el otro ojo. El 1 de julio salió del acuario porque flotaba. El **7 de julio** la llevaron de emergencia al veterinario y murió. El libro registra vaivenes de 3 a 4 °C en su acuario entre el 23 de abril y el 5 de mayo.",
     "stats": [
      {
       "n": "mismo",
       "u": "día",
-      "l": "de la primera señal del episodio a la primera acción (estándar 72 h)",
+      "l": "de la primera señal del episodio a la primera acción",
       "tone": "green",
       "key": "lat"
-     },
-     {
-      "n": "0",
-      "u": "de 77",
-      "l": "señales sin respuesta dentro de su plazo",
-      "tone": "green",
-      "key": "senales"
      }
     ],
-    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "stats_note": "Son distancias entre registros.",
     "curso": {
      "from": "2025-11-09",
      "to": "2026-07-07",
@@ -3467,31 +3361,31 @@
        "2026-01-14",
        "18:29",
        "fuerte",
-       "Chat del equipo: Fundador ve a Panchita rascándose las branquias"
+       "Chat del equipo: El equipo ve a Panchita rascándose las branquias"
       ],
       [
        "2026-01-14",
        "18:57",
        "fuerte",
-       "Chat del equipo: Operación la revisa: está bien, vigilar que no salga pelusa en branquias"
+       "Chat del equipo: El equipo la revisa: está bien, vigilar que no salga pelusa en branquias"
       ],
       [
        "2026-01-29",
        "17:21",
        "fuerte",
-       "Chat del equipo: Fundador: Pancha se anda rascando"
+       "Chat del equipo: Pancha se anda rascando"
       ],
       [
        "2026-03-04",
        "17:35",
        "fuerte",
-       "Chat del equipo: Fundador: Pancha se está rascando"
+       "Chat del equipo: Pancha se está rascando"
       ],
       [
        "2026-03-28",
        "14:10",
        "leve",
-       "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+       "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
       ],
       [
        "2026-04-08",
@@ -3503,19 +3397,19 @@
        "2026-04-28",
        "09:33",
        "fuerte",
-       "Chat del equipo: Fundador: Pancha ha perdido la mayoría de los filamentos branquiales desde septiembre; atribuye deterioro a falta de co…"
+       "Chat del equipo: Pancha ha perdido la mayoría de los filamentos branquiales desde septiembre; atribuye deterioro a falta de co…"
       ],
       [
        "2026-04-28",
        "10:04",
        "leve",
-       "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+       "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
       ],
       [
        "2026-04-29",
        "12:50",
        "fuerte",
-       "Chat del equipo: Fundador comparte video de las branquias de Pancha"
+       "Chat del equipo: El equipo comparte video de las branquias de Pancha"
       ],
       [
        "2026-05-02",
@@ -3563,7 +3457,7 @@
        "2026-05-15",
        "14:42",
        "fuerte",
-       "Chat del equipo: Panchita con mucho hongo; el miércoles se le añadieron 3 g de NaCl; curaduría dará otro tratamiento"
+       "Chat del equipo: Panchita con mucho hongo; el miércoles se le añadieron 3 g de NaCl; el equipo dará otro tratamiento"
       ],
       [
        "2026-05-15",
@@ -3635,7 +3529,7 @@
        "2026-06-21",
        "15:52",
        "leve",
-       "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+       "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
       ],
       [
        "2026-06-22",
@@ -3713,7 +3607,7 @@
        "2026-07-01",
        "17:28",
        "fuerte",
-       "Chat del equipo: Ndali: Panchita de regreso; se presentó un absceso; se procedió al tratamiento"
+       "Chat del equipo: Panchita de regreso; se presentó un absceso; se procedió al tratamiento"
       ],
       [
        "2026-07-01",
@@ -3755,7 +3649,7 @@
        "2026-07-05",
        "12:07",
        "fuerte",
-       "Chat del equipo: Panchita con mejor ánimo, sin flotación; Martín sin flotación anormal"
+       "Chat del equipo: Panchita con mejor ánimo, sin flotación"
       ],
       [
        "2026-07-06",
@@ -3785,7 +3679,7 @@
        "2026-07-07",
        "15:47",
        "fuerte",
-       "Chat del equipo: Ndali: Panchita presentó un comportamiento muy raro; operación corre al veterinario"
+       "Chat del equipo: Panchita presentó un comportamiento muy raro; el equipo corre al veterinario"
       ]
      ],
      "videos": [],
@@ -3843,7 +3737,7 @@
        "10:24",
        "no_ocurrio",
        [
-        "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+        "Veterinario: el veterinario reagendó la visita del 20-abr"
        ]
       ],
       [
@@ -3878,7 +3772,7 @@
        "si",
        [
         "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Antibiotico (acetilcisteina con tobramicina) · El ojo continua con…",
-        "Acción: Se aplicó medicamento a Panchita a las 4:04 (con ayuda de operación)"
+        "Acción: Se aplicó medicamento a Panchita a las 4:04 (con ayuda del equipo)"
        ]
       ],
       [
@@ -3895,7 +3789,7 @@
        "19:09",
        "si",
        [
-        "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+        "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
        ]
       ],
       [
@@ -3903,7 +3797,7 @@
        "18:31",
        "si",
        [
-        "Acción: Tratamiento de Panchita y Remo: 15 g de NaCl en 1.5 L por una hora; 9 garrafones llenos"
+        "9 garrafones llenos"
        ]
       ],
       [
@@ -3967,7 +3861,7 @@
        "20:18",
        "si",
        [
-        "Veterinario: Curaduría informa que salió del doctor con Panchita",
+        "Veterinario: El equipo informa que salió del doctor con Panchita",
         "Corrección: Le mandaron inyecciones y gotas",
         "Corrección: Se indicó una biopsia a Panchita"
        ]
@@ -3979,7 +3873,7 @@
        [
         "Tratamiento: Traumatismo / Amputación, Infección bacteriana · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g · El ojo de Panchita…",
         "En Cuarentena",
-        "Acción: Operación hace el tratamiento de Panchita",
+        "Acción: El equipo hace el tratamiento de Panchita",
         "y 1 más"
        ]
       ],
@@ -4125,7 +4019,7 @@
        [
         "Aviso al veterinario: \"Anomalía estructural permanente (Falta de extremidad, microftalmia)\" · Notificación a veterinario · Se observa una inf…",
         "Tratamiento: Saprolegniasis · tx: Sal",
-        "Acción: Operación propone contemplar itraconazol y Stress Guard"
+        "Acción: El equipo propone contemplar itraconazol y Stress Guard"
        ]
       ],
       [
@@ -4218,7 +4112,7 @@
        [
         "En Cuarentena",
         "Tratamiento: Traumatismo / Amputación · tx: Oftaconazol Santgar (ketoconazol) 1g en 10 g",
-        "Veterinario: El lunes de limpieza de peceras operación avisó a curaduría; se contactó al vet, que tomó muestras (reporte de efusione…",
+        "Veterinario: El lunes de limpieza de peceras el equipo avisó; se contactó al vet, que tomó muestras (reporte de efusione…",
         "y 4 más"
        ]
       ],
@@ -4293,7 +4187,7 @@
        "2026-06-16",
        "13:05"
       ],
-      "label": "mismo día · estándar 72 h"
+      "label": "mismo día"
      },
      "agua": {
       "2025-11-13": "17.6 °C · NH₃ 0.25 mg/L",
@@ -4438,14 +4332,14 @@
       "t": "11:41",
       "tone": "amber",
       "title": "El hongo reaparece al terminar un tratamiento",
-      "text": "El equipo anota que el tratamiento acabó el jueves y que al domingo ya era evidente el regreso de lo que creían un hongo. En enero se seguía vigilando que no volviera.",
+      "text": "El equipo anota que el tratamiento acabó el jueves. El domingo se anota que regresó lo que creían un hongo. En enero se sigue vigilando que no vuelva.",
       "src": "chat"
      },
      {
       "d": "2026-04-16",
       "tone": "amber",
       "title": "Rebrote en las branquias",
-      "text": "Crecimiento algodonoso en la rama intermedia derecha; al día siguiente, tratamiento con sal.",
+      "text": "Crecimiento algodonoso en la rama intermedia derecha. Al día siguiente, tratamiento con sal.",
       "src": "historial médico · terapéutica"
      },
      {
@@ -4453,7 +4347,7 @@
       "d2": "2026-05-05",
       "tone": "amber",
       "title": "Vaivén de temperatura en su acuario",
-      "text": "19.4 °C el 23 de abril, 16 °C el 27, 14.9 °C el 1 de mayo, 18.5 °C el 4 y 15.9 °C el 5. El podcast del 28 de abril llamó shock térmico al cambio al bajar las temperaturas, pensando en las bacterias del filtro.",
+      "text": "19.4 °C el 23 de abril. 16 °C el 27 de abril. 14.9 °C el 1 de mayo. 18.5 °C el 4 de mayo. 15.9 °C el 5 de mayo.",
       "src": "libro · agua · podcast 7"
      },
      {
@@ -4461,7 +4355,7 @@
       "t": "16:00",
       "tone": "amber",
       "title": "Se le inflama el ojo derecho",
-      "text": "Inflamación persistente; un posible golpe que derivó en infección. Antibiótico en gotas desde ese día.",
+      "text": "Inflamación persistente. Antibiótico en gotas desde ese día.",
       "src": "terapéutica"
      },
      {
@@ -4469,14 +4363,14 @@
       "t": "21:00",
       "tone": "rose",
       "title": "Pasa a cuarentena: hongo y ojo inflamado",
-      "text": "Un día antes, el equipo anotó que el ojo no mejoraba y que amaneció con mucha pelusa en las branquias.",
+      "text": "Un día antes se anota que el ojo no mejora. Se anota que amanece con mucha pelusa en las branquias.",
       "src": "bitácora · chat"
      },
      {
       "d": "2026-05-21",
       "tone": "rose",
       "title": "Pierde el ojo derecho",
-      "text": "El equipo lo atribuye a un golpe en su refugio; así lo contó el podcast del 27 de mayo.",
+      "text": "Pérdida registrada del ojo derecho.",
       "src": "chat · podcast 11"
      },
      {
@@ -4484,21 +4378,21 @@
       "t": "08:40",
       "tone": "amber",
       "title": "Daño irreversible",
-      "text": "Menos inflamado, pero con una capa blanca que se desprende; cambia a antimicótico y antibiótico en gotas.",
+      "text": "Menos inflamado, pero con una capa blanca que se desprende. Cambia a antimicótico y antibiótico en gotas.",
       "src": "terapéutica"
      },
      {
       "d": "2026-06-03",
       "tone": "rose",
       "title": "Amoníaco sobre cero en su sistema",
-      "text": "Primera de tres lecturas de amoníaco sobre cero en el acuario de Ambystoma andersoni en junio.",
+      "text": "Es la primera lectura sobre cero de junio en el acuario de Ambystoma andersoni. Hay tres en el mes.",
       "src": "libro · agua"
      },
      {
       "d": "2026-06-04",
       "tone": "amber",
       "title": "Flota y pasa a cuarentena",
-      "text": "Le costaba permanecer en el fondo; se cambió a un topper de cuarentena.",
+      "text": "Le cuesta permanecer en el fondo. Se cambia a un topper de cuarentena.",
       "src": "bitácora",
       "t": "19:50"
      },
@@ -4514,7 +4408,7 @@
       "d": "2026-06-16",
       "tone": "green",
       "title": "Empieza el tratamiento",
-      "text": "Saprolegniasis: baños de sal, el mismo día de la señal.",
+      "text": "Saprolegniasis: baños de sal.",
       "src": "terapéutica",
       "t": "13:05"
      },
@@ -4523,7 +4417,7 @@
       "t": "14:00",
       "tone": "amber",
       "title": "El ojo dañado vuelve a inflamarse",
-      "text": "Inflamación irregular y protuberante; se avisa al veterinario. Ese día no estaba comiendo bien.",
+      "text": "Inflamación irregular y protuberante. Se avisa al veterinario. Se anota que no come bien.",
       "src": "bitácora · chat"
      },
      {
@@ -4531,14 +4425,14 @@
       "d2": "2026-06-30",
       "tone": "rose",
       "title": "También el otro ojo",
-      "text": "El 29 se registra una alerta en el ojo izquierdo, con flotación anormal e inflamación en la cloaca. Al día siguiente, el laboratorio describe glaucoma y catarata en el derecho y queratitis en el izquierdo.",
+      "text": "El 29 de junio se registra una alerta en el ojo izquierdo, con flotación anormal e inflamación en la cloaca. El 30 de junio el laboratorio describe glaucoma y catarata en el derecho y queratitis en el izquierdo.",
       "src": "bitácora · laboratorio"
      },
      {
       "d": "2026-07-01",
       "tone": "green",
       "title": "Sale del acuario",
-      "text": "Se retira a cuarentena fuera del recinto porque seguía flotando; empiezan los tratamientos oftálmicos y el antibiótico.",
+      "text": "Se retira a cuarentena fuera del recinto. Seguía flotando. Empiezan los tratamientos oftálmicos y el antibiótico.",
       "src": "chat · terapéutica",
       "t": "18:15"
      },
@@ -4546,7 +4440,7 @@
       "d": "2026-07-07",
       "tone": "green",
       "title": "Emergencia veterinaria",
-      "text": "Comportamiento inusual y subidas a la superficie; se avisa al veterinario y se la lleva de emergencia. Se queda en la clínica con pronóstico reservado.",
+      "text": "Se anota comportamiento inusual y subidas a la superficie. Se avisa al veterinario. Se la lleva de emergencia. Se queda en la clínica con pronóstico reservado.",
       "src": "bitácora · chat",
       "t": "13:25"
      },
@@ -4554,17 +4448,10 @@
       "d": "2026-07-07",
       "tone": "ink",
       "title": "Muere",
-      "text": "El laboratorio fecha la muerte el 7; la hoja Bajas, el 8. Se conservó refrigerada y se le hizo necropsia.",
+      "text": "El laboratorio fecha la muerte el 7. La hoja Bajas la fecha el 8. Se conservó refrigerada. Se le hizo necropsia.",
       "src": "laboratorio · libro"
      }
     ],
-    "publico": {
-     "fecha": "2026-07-14",
-     "fuente": "Podcast 18",
-     "url": "https://youtu.be/B3NpBliaWCs?t=2",
-     "cita": "Panchita murió de una infección en varios órganos",
-     "registro": "necropsia: hepatitis crónica; resultado del 08-04, después del episodio"
-    },
     "evidencia": [],
     "datos": {
      "peso": [
@@ -4850,22 +4737,17 @@
    "cause_source": "necropsia",
    "necropsy": {
     "performed": "2026-06-10",
-    "result": "2026-07-10",
-    "lab_case": null
+    "result": "2026-07-10"
    },
    "body": "necropsia en laboratorio; destino posterior sin registro",
    "body_conservation": "buen estado de conservación",
    "lab_reserved": false,
-   "grade": "tardía",
-   "grade_60": "tardía",
-   "grade_note": null,
    "primary": {
     "window": {
      "from": "2026-05-20",
      "to": "2026-06-10",
      "days": 21
     },
-    "grade": "tardía",
     "S0": {
      "date": "2026-05-20",
      "time": "09:36",
@@ -4878,19 +4760,6 @@
     },
     "C": null,
     "latency_h": 199.8,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 32,
-    "unanswered": 17,
-    "coverage": 0.82,
-    "role": "Dirección clínica del museo",
-    "flags": [
-     "racha_iniciada_antes_de_la_ventana",
-     "estándar_no_escrito_en_el_museo"
-    ],
     "recorded_after_death": 0
    },
    "sensitivity": {
@@ -4899,7 +4768,6 @@
      "to": "2026-06-10",
      "days": 60
     },
-    "grade": "tardía",
     "S0": {
      "date": "2026-04-12",
      "time": "08:20",
@@ -4912,19 +4780,6 @@
     },
     "C": null,
     "latency_h": 194.1,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 73,
-    "unanswered": 42,
-    "coverage": 0.77,
-    "role": "Sistema y dotación",
-    "flags": [
-     "dotación_mínima",
-     "estándar_no_escrito_en_el_museo"
-    ],
     "recorded_after_death": 0
    },
    "events": [
@@ -5019,12 +4874,12 @@
     {
      "date": "2026-04-20",
      "time": "10:24",
-     "lane": 3,
-     "kind": "preventive_vet_consult",
-     "label": "Consulta veterinaria",
+     "lane": 5,
+     "kind": "vet_visit_rescheduled",
+     "label": "Visita veterinaria reagendada",
      "source": "chat",
      "grade": "B",
-     "text": "Curaduría: el veterinario reagendó la visita del 20-abr"
+     "text": "El veterinario reagendó la visita del 20-abr"
     },
     {
      "date": "2026-04-20",
@@ -5070,7 +4925,7 @@
      "label": "Aviso de salud",
      "source": "chat",
      "grade": "B",
-     "text": "Fundador comparte video sobre las panzas quemadas"
+     "text": "El equipo comparte video sobre las panzas quemadas"
     },
     {
      "date": "2026-04-28",
@@ -5236,7 +5091,7 @@
      "label": "Acción preventiva",
      "source": "chat",
      "grade": "B",
-     "text": "Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+     "text": "Cambio de agua en todos los sistemas y a Tlascalate"
     },
     {
      "date": "2026-05-08",
@@ -5804,24 +5659,17 @@
     }
    ],
    "relato": {
-    "lead": "Entre marzo y junio bajó de **20 g a 10 g**. El 28 de mayo el libro anota que nadaba sin control y flotaba, y pasó a un topper con poca agua: la primera acción llegó ocho días después de la primera señal del episodio. La hoja Bajas la da por muerta el 5 de junio; el laboratorio fecha su **eutanasia y necropsia el 10 de junio**, el mismo día en que el podcast habló de ella como viva.",
+    "lead": "Entre marzo y junio bajó de **20 g a 10 g**. El 28 de mayo el libro anota que nadaba sin control y flotaba, y pasó a un topper con poca agua. La primera señal registrada del episodio es del 20 de mayo. La primera acción registrada es del 28 de mayo. La hoja Bajas la da por muerta el 5 de junio. El laboratorio fecha su **eutanasia y necropsia el 10 de junio**.",
     "stats": [
      {
       "n": "8",
       "u": "días",
-      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
+      "l": "de la primera señal registrada a la primera acción registrada",
       "tone": "amber",
       "key": "lat"
-     },
-     {
-      "n": "17",
-      "u": "de 32",
-      "l": "señales sin respuesta dentro de su plazo",
-      "tone": "rose",
-      "key": "senales"
      }
     ],
-    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "stats_note": "Son distancias entre registros.",
     "curso": {
      "from": "2026-01-14",
      "to": "2026-06-10",
@@ -5954,7 +5802,7 @@
        "2026-03-28",
        "14:10",
        "leve",
-       "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+       "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
       ],
       [
        "2026-04-08",
@@ -5996,7 +5844,7 @@
        "2026-04-28",
        "10:04",
        "leve",
-       "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+       "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
       ],
       [
        "2026-05-02",
@@ -6062,7 +5910,7 @@
        "10:24",
        "no_ocurrio",
        [
-        "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+        "Veterinario: el veterinario reagendó la visita del 20-abr"
        ]
       ],
       [
@@ -6086,7 +5934,7 @@
        "19:09",
        "si",
        [
-        "Acción: Cambio de agua en todos los sistemas y a Tlascalate y [embargo]"
+        "Acción: Cambio de agua en todos los sistemas y a Tlascalate"
        ]
       ],
       [
@@ -6150,7 +5998,7 @@
        "2026-05-28",
        "17:21"
       ],
-      "label": "8 días · estándar 48 h"
+      "label": "8 días"
      },
      "agua": {
       "2026-01-14": "16.1 °C (2 lecturas)",
@@ -6241,7 +6089,7 @@
       "d": "2026-05-20",
       "tone": "amber",
       "title": "Primera señal del episodio",
-      "text": "Aviso del equipo sobre la alimentación del grupo: quedaban pocos tubifex y rechazaban las lombrices.",
+      "text": "Aviso del equipo sobre la alimentación del grupo. Quedaban pocos tubifex. Rechazaban las lombrices.",
       "src": "chat",
       "t": "09:36"
      },
@@ -6264,14 +6112,14 @@
       "d": "2026-06-08",
       "tone": "amber",
       "title": "Pesa 10 g",
-      "text": "La mitad de lo que pesaba en marzo.",
+      "text": "En marzo pesaba 20 g.",
       "src": "historial médico"
      },
      {
       "d": "2026-06-10",
       "tone": "ink",
       "title": "Eutanasia y necropsia",
-      "text": "Según el laboratorio, a las 15:50. No aparece en ninguna hoja del libro, y el 11 hay un registro que la trata como viva.",
+      "text": "Según el laboratorio, a las 15:50.",
       "src": "laboratorio",
       "t": "15:50"
      }
@@ -6280,25 +6128,13 @@
      "reglas": [
       {
        "d": "2026-05-20",
-       "text": "Señal sin respuesta en 48 h → escala a dirección clínica.",
-       "real": "8 días hasta la primera acción."
+       "text": "Señal sin respuesta en 48 h → escala a la persona responsable."
       }
      ],
-     "con": {
-      "n": "≤ 48 h",
-      "l": "de la primera señal a la acción, con avisos"
-     },
-     "sin": {
-      "n": "8 días",
-      "l": "lo que pasó sin ellos"
+     "cronologia": {
+      "senal": "2026-05-20",
+      "accion": "2026-05-28"
      }
-    },
-    "publico": {
-     "fecha": "2026-06-10",
-     "fuente": "Podcast 13",
-     "url": "https://youtu.be/FwB8MEdB0E0?t=2138",
-     "cita": "Goldy se está quedando atrás en crecimiento (vivo)",
-     "registro": "necropsia: eutanasia y necropsia el 2026-06-10 15:50, el mismo día"
     },
     "evidencia": [],
     "datos": {
@@ -6495,16 +6331,12 @@
    "body": "sin registro",
    "body_conservation": null,
    "lab_reserved": false,
-   "grade": "tardía",
-   "grade_60": "tardía",
-   "grade_note": null,
    "primary": {
     "window": {
      "from": "2026-04-14",
      "to": "2026-05-05",
      "days": 21
     },
-    "grade": "tardía",
     "S0": {
      "date": "2026-04-28",
      "time": "10:04",
@@ -6517,18 +6349,6 @@
     },
     "C": null,
     "latency_h": 59.5,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 13,
-    "unanswered": 6,
-    "coverage": 0.45,
-    "role": "Dirección clínica del museo",
-    "flags": [
-     "estándar_no_escrito_en_el_museo"
-    ],
     "recorded_after_death": 0
    },
    "sensitivity": {
@@ -6537,7 +6357,6 @@
      "to": "2026-05-05",
      "days": 60
     },
-    "grade": "tardía",
     "S0": {
      "date": "2026-04-28",
      "time": "10:04",
@@ -6550,18 +6369,6 @@
     },
     "C": null,
     "latency_h": 59.5,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 16,
-    "unanswered": 8,
-    "coverage": 0.21,
-    "role": "Dirección clínica del museo",
-    "flags": [
-     "estándar_no_escrito_en_el_museo"
-    ],
     "recorded_after_death": 0
    },
    "events": [
@@ -6593,7 +6400,7 @@
      "label": "Aviso de salud",
      "source": "chat",
      "grade": "B",
-     "text": "Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+     "text": "El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
     },
     {
      "date": "2026-04-08",
@@ -6618,12 +6425,12 @@
     {
      "date": "2026-04-20",
      "time": "10:24",
-     "lane": 3,
-     "kind": "preventive_vet_consult",
-     "label": "Consulta veterinaria",
+     "lane": 5,
+     "kind": "vet_visit_rescheduled",
+     "label": "Visita veterinaria reagendada",
      "source": "chat",
      "grade": "B",
-     "text": "Curaduría: el veterinario reagendó la visita del 20-abr"
+     "text": "El veterinario reagendó la visita del 20-abr"
     },
     {
      "date": "2026-04-28",
@@ -6633,17 +6440,7 @@
      "label": "Aviso de salud",
      "source": "chat",
      "grade": "B",
-     "text": "Fundador comparte video sobre las panzas quemadas"
-    },
-    {
-     "date": "2026-04-28",
-     "time": "15:19",
-     "lane": 2,
-     "kind": "signal_chat_health",
-     "label": "Aviso de salud",
-     "source": "chat",
-     "grade": "A",
-     "text": "Vigilar Tamal por posible oviposición; revisar ánimo de parda hembra, Chocorrol y Leucistica; guppies muriendo"
+     "text": "El equipo comparte video sobre las panzas quemadas"
     },
     {
      "date": "2026-04-28",
@@ -6813,7 +6610,7 @@
      "label": "Destino del cuerpo",
      "source": "chat",
      "grade": "A",
-     "text": "Operación espera indicaciones sobre qué hacer con el cuerpo"
+     "text": "El equipo espera indicaciones sobre qué hacer con el cuerpo"
     },
     {
      "date": "2026-05-05",
@@ -6830,7 +6627,7 @@
    ],
    "relato": {
     "nombre": "Leucística",
-    "lead": "Los sistemas de agua de su especie marcaron amoníaco crítico dos veces en abril. El **14 de abril** se registró que flotaba de forma anormal y se arqueaba. Del 17 al 19 no hay ni una medición de agua, y el 19 hay video de su estado crítico. El 21 pesó **50 g, 22 % menos que en enero**, con la misma longitud. La primera consulta veterinaria llegó el **30 de abril**. Murió el 5 de mayo.",
+    "lead": "Los sistemas de agua de su especie marcaron amoníaco sobre cero dos veces en abril. El **14 de abril** se registró que flotaba de forma anormal y se arqueaba. No hay mediciones de agua registradas entre el 17 y el 19 de abril. El 19 de abril hay video de su estado. El 21 de abril pesó **50 g, 22 % menos que en enero**. Su longitud no cambió. La primera consulta veterinaria registrada es del **30 de abril**. Murió el 5 de mayo.",
     "stats": [
      {
       "n": "16",
@@ -6842,8 +6639,8 @@
      {
       "n": "3",
       "u": "días",
-      "l": "sin medir el agua mientras se agravaba",
-      "tone": "rose",
+      "l": "sin mediciones de agua registradas, del 17 al 19 de abril",
+      "tone": "muted",
       "key": "gap"
      },
      {
@@ -6854,7 +6651,7 @@
       "key": "vid"
      }
     ],
-    "stats_note": "Son distancias entre registros. La calificación del método (abajo, en el registro completo) no cambia hasta que se apruebe una enmienda.",
+    "stats_note": "Son distancias entre registros.",
     "curso": {
      "from": "2025-12-24",
      "to": "2026-05-05",
@@ -6969,7 +6766,7 @@
        "2026-03-28",
        "14:10",
        "leve",
-       "Chat del equipo: Curaduría no le gusta el color de un ejemplar; fundador pregunta si está más opaco"
+       "Chat del equipo: El equipo comenta que no le gusta el color de un ejemplar y pregunta si está más opaco"
       ],
       [
        "2026-04-14",
@@ -6981,7 +6778,7 @@
        "2026-04-28",
        "10:04",
        "leve",
-       "Chat del equipo: Fundador comparte video sobre las panzas quemadas"
+       "Chat del equipo: El equipo comparte video sobre las panzas quemadas"
       ],
       [
        "2026-05-02",
@@ -7018,7 +6815,7 @@
        "10:24",
        "no_ocurrio",
        [
-        "Veterinario: Curaduría: el veterinario reagendó la visita del 20-abr"
+        "Veterinario: el veterinario reagendó la visita del 20-abr"
        ]
       ],
       [
@@ -7047,7 +6844,7 @@
        "2026-04-30",
        "21:37"
       ],
-      "label": "16 días · estándar 48 h"
+      "label": "16 días"
      },
      "agua": {
       "2025-12-24": "17.5 °C (2 lecturas)",
@@ -7119,53 +6916,59 @@
       "t": "14:17",
       "tone": "rose",
       "title": "Amoníaco 0.5 en Mexicanum 2",
-      "text": "Alerta crítica en uno de los dos sistemas de su especie.",
+      "text": "Amoníaco sobre cero en uno de los dos sistemas de su especie.",
       "src": "libro · agua"
      },
      {
       "d": "2026-04-07",
-      "d2": "2026-04-13",
-      "tone": "rose",
+      "tone": "muted",
       "title": "Se para el sistema Mexicanum 1",
-      "text": "Una tubería se zafó bajo el filtro y la bomba falló; el agua quedó estancada unas horas. El 13, amoníaco 0.25 y nitrito 0.3 en los dos sistemas.",
-      "src": "podcast 5 · libro"
+      "text": "Se zafa una tubería bajo el filtro. Falla la bomba. El agua queda estancada unas horas.",
+      "src": "podcast 5"
+     },
+     {
+      "d": "2026-04-13",
+      "tone": "amber",
+      "title": "Amoníaco 0.25 y nitrito 0.3 en los dos sistemas",
+      "text": "El 13 de abril hay amoníaco 0.25 y nitrito 0.3 en los dos sistemas.",
+      "src": "libro · agua"
      },
      {
       "d": "2026-04-14",
       "t": "08:40",
       "tone": "amber",
       "title": "Flota de forma anormal y se arquea",
-      "text": "Registrado como solo observación, sin acción.",
+      "text": "Se registra como solo observación.",
       "src": "bitácora"
      },
      {
       "d": "2026-04-17",
       "d2": "2026-04-19",
-      "tone": "rose",
-      "title": "Tres días sin medir el agua",
-      "text": "El 17, según el chat del equipo, otro ejemplar de su especie pasó el día revolcándose. El 19, video de su estado crítico.",
+      "tone": "muted",
+      "title": "Sin mediciones de agua registradas",
+      "text": "No hay mediciones de agua registradas entre el 17 y el 19 de abril. El 19 de abril hay video de su estado.",
       "src": "libro · chat · video"
      },
      {
       "d": "2026-04-14",
       "d2": "2026-04-28",
-      "tone": "amber",
-      "title": "Catorce días sin registro de alimentación",
-      "text": "El último registro antes es del 14 (1 g de camarón); el siguiente, del 28 (0.17 g de lombriz).",
+      "tone": "muted",
+      "title": "Sin registros de alimentación",
+      "text": "El último registro antes es del 14 de abril (1 g de camarón). El siguiente es del 28 de abril (0.17 g de lombriz).",
       "src": "alimentación"
      },
      {
       "d": "2026-04-20",
       "tone": "muted",
-      "title": "El veterinario reagenda",
-      "text": "No hay consulta. La conductividad baja de ≈3,000 a ≈2,000 tras un cambio de agua.",
+      "title": "Visita veterinaria reagendada",
+      "text": "El registro dice que el veterinario reagendó la visita del 20 de abril.",
       "src": "chat · libro"
      },
      {
       "d": "2026-04-21",
       "tone": "amber",
-      "title": "La pesan: 50 g",
-      "text": "9 g menos que el 18 de marzo y 14 menos que en enero, con la misma longitud. Ese día, el podcast dijo que ningún ejemplar estaba en riesgo alto.",
+      "title": "Pesa 50 g",
+      "text": "Pesaba 59 g el 18 de marzo. La longitud es la misma.",
       "src": "historial médico · podcast 6"
      },
      {
@@ -7173,14 +6976,28 @@
       "t": "21:37",
       "tone": "green",
       "title": "Primera consulta veterinaria",
-      "text": "El mismo día falla la bomba que lleva agua fría entre sistemas. El 2 de mayo, el veterinario habla de intoxicación por amoníaco.",
+      "text": "Primera consulta veterinaria registrada.",
+      "src": "chat"
+     },
+     {
+      "d": "2026-04-30",
+      "tone": "muted",
+      "title": "Falla la bomba entre sistemas",
+      "text": "Falla la bomba que lleva agua fría entre sistemas.",
+      "src": "chat"
+     },
+     {
+      "d": "2026-05-02",
+      "tone": "amber",
+      "title": "El veterinario habla de amoníaco",
+      "text": "El veterinario habla de intoxicación por amoníaco.",
       "src": "chat"
      },
      {
       "d": "2026-05-05",
       "tone": "ink",
       "title": "Muere en su tupper",
-      "text": "Esa mañana el agua estaba turbia. Sin necropsia; el destino del cuerpo no se registró.",
+      "text": "Se anota agua turbia esa mañana. No hay necropsia registrada. El destino del cuerpo no se registró.",
       "src": "libro · chat"
      }
     ],
@@ -7188,40 +7005,25 @@
      "reglas": [
       {
        "d": "2026-04-06",
-       "text": "Amoníaco sobre cero → aviso crítico al veterinario en minutos.",
-       "real": "Sin acción registrada."
+       "text": "Amoníaco sobre cero → aviso al veterinario en minutos."
       },
       {
        "d": "2026-04-14",
-       "text": "Incidencia clínica sin respuesta en 48 h → escala a dirección clínica el 16.",
-       "real": "16 días hasta la consulta."
+       "text": "Incidencia clínica sin respuesta en 48 h → escala a la persona responsable el 16."
       },
       {
        "d": "2026-04-18",
-       "text": "24 h sin medición con alerta abierta → aviso de silencio.",
-       "real": "El silencio no se notó."
+       "text": "24 h sin medición con alerta abierta → aviso de silencio."
       },
       {
        "d": "2026-04-19",
-       "text": "Clip propuesto y confirmado por un verificador → renglón en la bitácora y alerta abierta.",
-       "real": "El video quedó en un teléfono cinco meses."
+       "text": "Clip propuesto y confirmado por un verificador → renglón en la bitácora y alerta abierta."
       }
      ],
-     "con": {
-      "n": "≤ 48 h",
-      "l": "de la primera señal a la acción, con avisos"
-     },
-     "sin": {
-      "n": "16 días",
-      "l": "lo que pasó sin ellos"
+     "cronologia": {
+      "senal": "2026-04-14",
+      "accion": "2026-04-30"
      }
-    },
-    "publico": {
-     "fecha": "2026-04-21",
-     "fuente": "Podcast 6",
-     "url": "https://youtu.be/qhfHi1Tr2v0?t=2310",
-     "cita": "Actualmente ninguno de nuestros ejemplares está en cuarentena por enfermedad… realmente ninguno de nuestros ejemplares está en un riesgo demasiado alto.",
-     "registro": "El 19 de abril hay video de su estado crítico, y del 17 al 19 no hay mediciones de agua."
     },
     "evidencia": [
      {
@@ -7233,8 +7035,8 @@
       "poster": "/postmortem/leucistica/leucistica-2026-04-19-telefono.jpg",
       "orient": "vertical",
       "url": null,
-      "identifies": "el fundador",
-      "verifies": "la curaduría",
+      "identifies": "el equipo",
+      "verifies": "el equipo",
       "verified": "2026-09-30",
       "sha256": "9a7cf33e792a54e5e809eea6efc725f3454a9ceb693c03e5eb2660cba42e284d",
       "attestation": null
@@ -7248,8 +7050,8 @@
       "poster": "/postmortem/leucistica/leucistica-2026-04-19-transmision.jpg",
       "orient": "horizontal",
       "url": "https://youtu.be/nMbDgTI_34g?t=15161",
-      "identifies": "el fundador",
-      "verifies": "la curaduría",
+      "identifies": "el equipo",
+      "verifies": "el equipo",
       "verified": "2026-09-30",
       "sha256": "cf0d389e1fad27e1354038335d9a2df71ca557b08cd6f55ce13db5868c0a2378",
       "attestation": null
@@ -7263,8 +7065,8 @@
       "poster": "/postmortem/leucistica/leucistica-2026-04-20-transmision.jpg",
       "orient": "horizontal",
       "url": "https://youtu.be/uwR_Sizaw6I?t=1301",
-      "identifies": "el fundador",
-      "verifies": "la curaduría",
+      "identifies": "el equipo",
+      "verifies": "el equipo",
       "verified": "2026-09-30",
       "sha256": "8d7844e6b2e55a61115b5f166b19f65ae3da4bda84681a4d118a0edb4c28c13b",
       "attestation": null
@@ -7349,16 +7151,12 @@
    "body": "sin registro",
    "body_conservation": null,
    "lab_reserved": false,
-   "grade": "sin_registro_de_acciones",
-   "grade_60": "sin_registro_de_acciones",
-   "grade_note": null,
    "primary": {
     "window": {
      "from": "2025-11-29",
      "to": "2025-12-20",
      "days": 21
     },
-    "grade": "sin_registro_de_acciones",
     "S0": {
      "date": "2025-12-03",
      "time": "11:33",
@@ -7367,16 +7165,6 @@
     "P": null,
     "C": null,
     "latency_h": null,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 16,
-    "unanswered": 16,
-    "coverage": 0.55,
-    "role": "Sistema y dotación",
-    "flags": [],
     "recorded_after_death": 0
    },
    "sensitivity": {
@@ -7385,7 +7173,6 @@
      "to": "2025-12-20",
      "days": 60
     },
-    "grade": "sin_registro_de_acciones",
     "S0": {
      "date": "2025-12-03",
      "time": "11:33",
@@ -7394,16 +7181,6 @@
     "P": null,
     "C": null,
     "latency_h": null,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 24,
-    "unanswered": 24,
-    "coverage": 0.31,
-    "role": "Sistema y dotación",
-    "flags": [],
     "recorded_after_death": 0
    },
    "events": [
@@ -7497,7 +7274,7 @@
      "label": "Aviso de agua",
      "source": "chat",
      "grade": "B",
-     "text": "Fundador pregunta si volvió a dispararse el valor (24) en la estación de los mexicanum y si ya se sustituyó la teja"
+     "text": "El equipo pregunta si volvió a dispararse el valor (24) en la estación de los mexicanum y si ya se sustituyó la teja"
     },
     {
      "date": "2025-12-03",
@@ -7671,17 +7448,9 @@
     }
    ],
    "relato": {
-    "lead": "Pesó **60 g el 9 de noviembre y 29 g el 18 de diciembre**: perdió la mitad de su peso en cinco semanas. El agua de su sistema marcó amoníaco sobre cero el 22 de noviembre. El libro no registra ninguna acción que respondiera a esas señales. Murió el **20 de diciembre**, con sospecha de infección parasitaria o bacteriana y sin necropsia.",
-    "stats": [
-     {
-      "n": "16",
-      "u": "de 16",
-      "l": "señales sin respuesta dentro de su plazo",
-      "tone": "rose",
-      "key": "senales"
-     }
-    ],
-    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
+    "lead": "Pesó **60 g el 9 de noviembre**. Pesó **29 g el 18 de diciembre**. El agua de su sistema marcó amoníaco sobre cero el 22 de noviembre. La primera acción registrada es del 1 de diciembre. No hay acciones registradas entre el 2 y el 20 de diciembre. Murió el **20 de diciembre**. El libro anota sospecha de infección parasitaria o bacteriana. No hay necropsia registrada.",
+    "stats": [],
+    "stats_note": "Antes de abril de 2026 el libro registra pocas acciones; que no haya registro no significa que no se hiciera.",
     "curso": {
      "from": "2025-10-30",
      "to": "2025-12-20",
@@ -7762,14 +7531,14 @@
       "d": "2025-12-18",
       "tone": "amber",
       "title": "Pesa 29 g",
-      "text": "La mitad que en noviembre, dos días antes de morir.",
+      "text": "En noviembre pesaba 60 g.",
       "src": "historial médico"
      },
      {
       "d": "2025-12-20",
       "tone": "ink",
       "title": "Muere",
-      "text": "Sospecha de infección parasitaria o bacteriana; sin necropsia.",
+      "text": "El libro anota sospecha de infección parasitaria o bacteriana. No hay necropsia registrada.",
       "src": "libro"
      }
     ],
@@ -7812,16 +7581,12 @@
    "body": "sin registro",
    "body_conservation": null,
    "lab_reserved": false,
-   "grade": "tardía",
-   "grade_60": "indeterminada",
-   "grade_note": null,
    "primary": {
     "window": {
      "from": "2025-11-26",
      "to": "2025-12-17",
      "days": 21
     },
-    "grade": "tardía",
     "S0": {
      "date": "2025-12-03",
      "time": "11:33",
@@ -7834,18 +7599,6 @@
     },
     "C": null,
     "latency_h": 58.7,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 14,
-    "unanswered": 12,
-    "coverage": 0.45,
-    "role": "Dirección clínica del museo",
-    "flags": [
-     "estándar_no_escrito_en_el_museo"
-    ],
     "recorded_after_death": 0
    },
    "sensitivity": {
@@ -7854,7 +7607,6 @@
      "to": "2025-12-17",
      "days": 60
     },
-    "grade": "indeterminada",
     "S0": {
      "date": "2025-12-03",
      "time": "11:33",
@@ -7867,16 +7619,6 @@
     },
     "C": null,
     "latency_h": 58.7,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 14,
-    "unanswered": 12,
-    "coverage": 0.18,
-    "role": null,
-    "flags": [],
     "recorded_after_death": 0
    },
    "events": [
@@ -7908,7 +7650,7 @@
      "label": "Aviso de agua",
      "source": "chat",
      "grade": "B",
-     "text": "Fundador pregunta si volvió a dispararse el valor (24) en la estación de los mexicanum y si ya se sustituyó la teja"
+     "text": "El equipo pregunta si volvió a dispararse el valor (24) en la estación de los mexicanum y si ya se sustituyó la teja"
     },
     {
      "date": "2025-12-03",
@@ -8068,24 +7810,9 @@
     }
    ],
    "relato": {
-    "lead": "El agua de su sistema marcó amoníaco sobre cero tres veces entre noviembre y diciembre. El **1 de diciembre** estaba en tratamiento, separado por indicación del veterinario y en espera de resultados de laboratorio; el 5 fue a un segundo drenado, lo dieron de alta y volvió a su acuario. Murió el **17 de diciembre**; el libro anota infección bacteriana y no hubo necropsia.",
-    "stats": [
-     {
-      "n": "59",
-      "u": "h",
-      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
-      "tone": "amber",
-      "key": "lat"
-     },
-     {
-      "n": "12",
-      "u": "de 14",
-      "l": "señales sin respuesta dentro de su plazo",
-      "tone": "rose",
-      "key": "senales"
-     }
-    ],
-    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
+    "lead": "El agua de su sistema marcó amoníaco sobre cero tres veces entre noviembre y diciembre. El **1 de diciembre** estaba en tratamiento, separado por indicación del veterinario y en espera de resultados de laboratorio. El 5 de diciembre se registra un segundo drenado y el alta. Murió el **17 de diciembre**. El libro anota infección bacteriana. No hay necropsia registrada.",
+    "stats": [],
+    "stats_note": "Antes de abril de 2026 el libro registra pocas acciones; que no haya registro no significa que no se hiciera.",
     "curso": {
      "from": "2025-11-09",
      "to": "2025-12-17",
@@ -8132,17 +7859,7 @@
        ]
       ]
      ],
-     "latencia": {
-      "from": [
-       "2025-12-03",
-       "11:33"
-      ],
-      "to": [
-       "2025-12-05",
-       "22:12"
-      ],
-      "label": "59 h · estándar 48 h"
-     },
+     "latencia": null,
      "agua": {
       "2025-11-13": "NH₃ 0.25 mg/L",
       "2025-11-14": "NH₃ 0 mg/L",
@@ -8163,7 +7880,7 @@
       "d": "2025-11-13",
       "tone": "rose",
       "title": "Amoníaco sobre cero en su sistema",
-      "text": "Primera de tres lecturas sobre cero en noviembre y diciembre.",
+      "text": "Hay tres lecturas sobre cero entre noviembre y diciembre.",
       "src": "libro · agua"
      },
      {
@@ -8171,7 +7888,7 @@
       "t": "11:41",
       "tone": "green",
       "title": "En tratamiento y separado",
-      "text": "Por indicación del veterinario, en espera de resultados de laboratorio; se ajustan agua y temperatura.",
+      "text": "Por indicación del veterinario. En espera de resultados de laboratorio. Se ajustan agua y temperatura.",
       "src": "chat"
      },
      {
@@ -8179,14 +7896,14 @@
       "t": "22:12",
       "tone": "green",
       "title": "Segundo drenado",
-      "text": "Va al veterinario para un segundo drenado; lo dan de alta y se reincorpora a su acuario.",
+      "text": "Va al veterinario para un segundo drenado. Lo dan de alta. Se reincorpora a su acuario.",
       "src": "chat"
      },
      {
       "d": "2025-12-17",
       "tone": "ink",
       "title": "Muere",
-      "text": "Infección bacteriana, según el libro; sin necropsia.",
+      "text": "El libro anota infección bacteriana. No hay necropsia registrada.",
       "src": "libro"
      }
     ],
@@ -8194,22 +7911,16 @@
      "reglas": [
       {
        "d": "2025-11-13",
-       "text": "Amoníaco sobre cero → aviso crítico al veterinario en minutos.",
-       "real": "La primera acción registrada es del 1 de diciembre; antes de abril de 2026 el libro casi no registraba acciones."
+       "text": "Amoníaco sobre cero → aviso al veterinario en minutos."
       },
       {
        "d": "2025-12-03",
-       "text": "Señal sin respuesta en 48 h → escala a dirección clínica.",
-       "real": "59 h hasta el segundo drenado."
+       "text": "Señal sin respuesta en 48 h → escala a la persona responsable."
       }
      ],
-     "con": {
-      "n": "≤ 48 h",
-      "l": "de la primera señal a la acción, con avisos"
-     },
-     "sin": {
-      "n": "59 h",
-      "l": "lo que pasó sin ellos"
+     "cronologia": {
+      "senal": null,
+      "accion": "2025-12-01"
      }
     },
     "evidencia": [],
@@ -8251,26 +7962,16 @@
    "body": "sin registro",
    "body_conservation": null,
    "lab_reserved": false,
-   "grade": "indeterminada",
-   "grade_60": "indeterminada",
-   "grade_note": null,
    "primary": {
     "window": {
      "from": "2025-11-21",
      "to": "2025-12-12",
      "days": 21
     },
-    "grade": "indeterminada",
     "S0": null,
     "P": null,
     "C": null,
     "latency_h": null,
-    "standard": null,
-    "signals": 0,
-    "unanswered": 0,
-    "coverage": 0,
-    "role": null,
-    "flags": [],
     "recorded_after_death": 0
    },
    "sensitivity": {
@@ -8279,17 +7980,10 @@
      "to": "2025-12-12",
      "days": 60
     },
-    "grade": "indeterminada",
     "S0": null,
     "P": null,
     "C": null,
     "latency_h": null,
-    "standard": null,
-    "signals": 0,
-    "unanswered": 0,
-    "coverage": 0.02,
-    "role": null,
-    "flags": [],
     "recorded_after_death": 0
    },
    "events": [
@@ -8325,9 +8019,9 @@
     }
    ],
    "relato": {
-    "lead": "El agua de los sistemas de su especie marcó amoníaco sobre cero en noviembre. No hay registros clínicos de sus últimas semanas: antes de abril de 2026 el museo casi no registraba acciones. Murió el **12 de diciembre**; la causa quedó como desconocida y la necropsia, en proceso, nunca llegó al libro.",
+    "lead": "El agua de los sistemas de su especie marcó amoníaco sobre cero en noviembre. No hay registros clínicos de sus últimas semanas. Murió el **12 de diciembre**. La causa quedó como desconocida. No hay resultado de necropsia en el libro.",
     "stats": [],
-    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
+    "stats_note": "Antes de abril de 2026 el libro registra pocas acciones; que no haya registro no significa que no se hiciera.",
     "curso": {
      "from": "2025-11-08",
      "to": "2025-12-12",
@@ -8374,7 +8068,7 @@
       "d": "2025-12-12",
       "tone": "ink",
       "title": "Muere",
-      "text": "Causa desconocida; la necropsia quedó en proceso y no hay resultado.",
+      "text": "La causa quedó como desconocida. La necropsia quedó en proceso. No hay resultado en el libro.",
       "src": "libro"
      }
     ],
@@ -8398,7 +8092,7 @@
     "date": "2025-11-10",
     "workbook_date": null,
     "date_source": "libro",
-    "conf": "ambiguous_dm",
+    "conf": "exact",
     "euthanasia": false,
     "note": "se descarta la lectura 2025-10-11: es anterior al último registro del ejemplar vivo (2025-11-10)",
     "alive_record_after": null
@@ -8412,26 +8106,16 @@
    "body": "sin registro",
    "body_conservation": null,
    "lab_reserved": false,
-   "grade": "indeterminada",
-   "grade_60": "indeterminada",
-   "grade_note": null,
    "primary": {
     "window": {
      "from": "2025-10-20",
      "to": "2025-11-10",
      "days": 21
     },
-    "grade": "indeterminada",
     "S0": null,
     "P": null,
     "C": null,
     "latency_h": null,
-    "standard": null,
-    "signals": 0,
-    "unanswered": 0,
-    "coverage": 0.09,
-    "role": null,
-    "flags": [],
     "recorded_after_death": 0
    },
    "sensitivity": {
@@ -8440,17 +8124,10 @@
      "to": "2025-11-10",
      "days": 60
     },
-    "grade": "indeterminada",
     "S0": null,
     "P": null,
     "C": null,
     "latency_h": null,
-    "standard": null,
-    "signals": 0,
-    "unanswered": 0,
-    "coverage": 0.03,
-    "role": null,
-    "flags": [],
     "recorded_after_death": 0
    },
    "events": [
@@ -8486,9 +8163,9 @@
     }
    ],
    "relato": {
-    "lead": "Vivía con Panchita en el acuario de Ambystoma andersoni. No hay registros clínicos de sus últimas semanas y el libro de agua apenas empezaba. Murió el **10 de noviembre**; la hoja Bajas anota sepsis bacteriana y daños por caída, con un reporte de incidente. Las grabaciones de sus últimos días están en revisión.",
+    "lead": "Vivía con Panchita en el acuario de Ambystoma andersoni. No hay registros clínicos de sus últimas semanas. Murió el **10 de noviembre**. La hoja Bajas anota sepsis bacteriana y daños por caída. Hay un reporte de incidente.",
     "stats": [],
-    "stats_note": "Antes de abril de 2026 el museo casi no registraba acciones: que no haya registro no significa que no se hiciera. La calificación del método está en el registro completo.",
+    "stats_note": "Antes de abril de 2026 el libro registra pocas acciones; que no haya registro no significa que no se hiciera.",
     "curso": {
      "from": "2025-10-07",
      "to": "2025-11-10",
@@ -8513,7 +8190,7 @@
       "d": "2025-11-10",
       "tone": "ink",
       "title": "Muere",
-      "text": "Sepsis bacteriana y daños por caída, con reporte de incidente; sin necropsia.",
+      "text": "Sepsis bacteriana y daños por caída, con reporte de incidente. No hay necropsia registrada.",
       "src": "libro"
      }
     ],
@@ -8534,10 +8211,10 @@
    "alias": "Golden",
    "species": null,
    "death": {
-    "date": "2025-01-14",
+    "date": "2026-01-14",
     "workbook_date": null,
     "date_source": "libro",
-    "conf": "exact",
+    "conf": "a_mas_tardar",
     "euthanasia": false,
     "note": null,
     "alive_record_after": null
@@ -8551,60 +8228,43 @@
    "body": "sin registro",
    "body_conservation": null,
    "lab_reserved": false,
-   "grade": "indeterminada",
-   "grade_60": "indeterminada",
-   "grade_note": null,
    "primary": {
     "window": {
-     "from": "2024-12-24",
-     "to": "2025-01-14",
+     "from": "2025-12-24",
+     "to": "2026-01-14",
      "days": 21
     },
-    "grade": "indeterminada",
     "S0": null,
     "P": null,
     "C": null,
     "latency_h": null,
-    "standard": null,
-    "signals": 0,
-    "unanswered": 0,
-    "coverage": 0,
-    "role": null,
-    "flags": [],
     "recorded_after_death": 0
    },
    "sensitivity": {
     "window": {
-     "from": "2024-11-15",
-     "to": "2025-01-14",
+     "from": "2025-11-15",
+     "to": "2026-01-14",
      "days": 60
     },
-    "grade": "indeterminada",
     "S0": null,
     "P": null,
     "C": null,
     "latency_h": null,
-    "standard": null,
-    "signals": 0,
-    "unanswered": 0,
-    "coverage": 0,
-    "role": null,
-    "flags": [],
     "recorded_after_death": 0
    },
    "events": [
     {
-     "date": "2025-01-14",
+     "date": "2026-01-14",
      "time": null,
      "lane": 5,
      "kind": "death",
      "label": "Muerte",
      "source": "libro",
-     "grade": "A",
+     "grade": "B",
      "text": "causa: Infección bacteriana · necropsia: NA · documentación: NA"
     },
     {
-     "date": "2025-01-14",
+     "date": "2026-01-14",
      "time": null,
      "lane": 5,
      "kind": "gap_necropsy",
@@ -8614,7 +8274,7 @@
      "text": "necropsia: NA"
     },
     {
-     "date": "2025-01-14",
+     "date": "2026-01-14",
      "time": null,
      "lane": 5,
      "kind": "gap_disposal",
@@ -8646,16 +8306,12 @@
    "body": "sin registro",
    "body_conservation": null,
    "lab_reserved": false,
-   "grade": "oportuna",
-   "grade_60": "oportuna",
-   "grade_note": null,
    "primary": {
     "window": {
      "from": "2026-09-02",
      "to": "2026-09-23",
      "days": 21
     },
-    "grade": "oportuna",
     "S0": {
      "date": "2026-09-02",
      "time": "18:38",
@@ -8672,18 +8328,6 @@
      "label": "Colección fuera del museo"
     },
     "latency_h": 0,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 7,
-    "unanswered": 2,
-    "coverage": 0.45,
-    "role": null,
-    "flags": [
-     "racha_iniciada_antes_de_la_ventana"
-    ],
     "recorded_after_death": 0
    },
    "sensitivity": {
@@ -8692,7 +8336,6 @@
      "to": "2026-09-23",
      "days": 60
     },
-    "grade": "oportuna",
     "S0": {
      "date": "2026-09-02",
      "time": "18:38",
@@ -8709,16 +8352,6 @@
      "label": "Colección fuera del museo"
     },
     "latency_h": 0,
-    "standard": {
-     "id": "DEC-CLINICA",
-     "title": "Signo clínico en un ejemplar: aislamiento, tratamiento o aviso al veterinario en 48 h",
-     "hours": 48
-    },
-    "signals": 90,
-    "unanswered": 9,
-    "coverage": 0.79,
-    "role": null,
-    "flags": [],
     "recorded_after_death": 0
    },
    "events": [
@@ -8832,7 +8465,7 @@
      "label": "Consulta veterinaria",
      "source": "chat",
      "grade": "B",
-     "text": "Curaduría menciona (07-31) que regresará ; sin detalle de ejemplar ni motivo"
+     "text": "El equipo menciona (07-31) que regresará ; sin detalle de ejemplar ni motivo"
     },
     {
      "date": "2026-07-31",
@@ -8898,7 +8531,7 @@
      "label": "Acción preventiva",
      "source": "chat",
      "grade": "B",
-     "text": "Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+     "text": "La desparasitación no consta en el registro de mantenimiento"
     },
     {
      "date": "2026-08-03",
@@ -9054,7 +8687,7 @@
      "label": "Consulta veterinaria",
      "source": "chat",
      "grade": "B",
-     "text": "Fundador pide agregar al grupo a la veterinaria (Pinal),"
+     "text": "El equipo pide agregar al grupo a la veterinaria (Pinal),"
     },
     {
      "date": "2026-08-11",
@@ -9076,7 +8709,7 @@
      "label": "Aviso de salud",
      "source": "chat",
      "grade": "B",
-     "text": "Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+     "text": "Sobre videos de Pinal: al menos ahí aún no comían piedras"
     },
     {
      "date": "2026-08-12",
@@ -9496,7 +9129,7 @@
      "label": "Consulta veterinaria",
      "source": "chat",
      "grade": "B",
-     "text": "Curaduría avisa durante la junta que sigue en llamada con los de axolovet"
+     "text": "El equipo avisa durante la junta que sigue en llamada con los de axolovet"
     },
     {
      "date": "2026-09-09",
@@ -9526,7 +9159,7 @@
      "label": "Aviso de agua",
      "source": "chat",
      "grade": "B",
-     "text": "Fallo en la energía eléctrica en el biomuseo; curaduría va en camino"
+     "text": "Fallo en la energía eléctrica en el biomuseo; el equipo va en camino"
     },
     {
      "date": "2026-09-14",
@@ -9548,7 +9181,7 @@
      "label": "Acción preventiva",
      "source": "chat",
      "grade": "B",
-     "text": "Curaduría hará la limpieza el martes y cotizará extractores"
+     "text": "El equipo hará la limpieza el martes y cotizará extractores"
     },
     {
      "date": "2026-09-22",
@@ -9558,7 +9191,8 @@
      "label": "Colección fuera del museo",
      "source": "registro",
      "grade": "B",
-     "text": "toda la colección pasa a cuarentena fuera del museo"
+     "text": "toda la colección pasa a cuarentena fuera del museo",
+     "custody": true
     },
     {
      "date": "2026-09-23",
@@ -9568,7 +9202,8 @@
      "label": "Muerte",
      "source": "registro",
      "grade": "B",
-     "text": "causa: Desconocida por ahora · necropsia: sin registro · documentación: sin registro"
+     "text": "causa: Desconocida por ahora · necropsia: sin registro · documentación: sin registro",
+     "custody": true
     },
     {
      "date": "2026-09-23",
@@ -9578,7 +9213,8 @@
      "label": "Sin resultado de necropsia",
      "source": "registro",
      "grade": "A",
-     "text": "necropsia: sin registro"
+     "text": "necropsia: sin registro",
+     "custody": true
     },
     {
      "date": "2026-09-23",
@@ -9588,35 +9224,22 @@
      "label": "Destino del cuerpo sin registro",
      "source": "registro",
      "grade": "A",
-     "text": "destino del cuerpo: sin registro en ninguna hoja"
+     "text": "destino del cuerpo: sin registro en ninguna hoja",
+     "custody": true
     }
    ],
    "relato": {
-    "lead": "Creció de 5 g a 18 g entre junio y agosto. El **20 de agosto** el libro anota que no salió del refugio en todo el día; el 6 de septiembre se le diagnosticó saprolegniasis y se trató con itraconazol, y el 9 y el 10 se rascaba las branquias. Con esas señales abiertas, el agua de su sistema no se midió del 9 al 13 ni del 15 al 22 de septiembre. El 22 la colección salió del museo; murió al día siguiente y la causa sigue sin registrar.",
+    "lead": "Creció de 5 g a 18 g entre junio y agosto. El **20 de agosto** el libro anota que no salió del refugio en todo el día. El 6 de septiembre se le diagnosticó saprolegniasis y se trató con itraconazol. 9 de septiembre: señal registrada, se rascaba las branquias. 10 de septiembre: señal registrada, se rascaba las branquias. Murió el 23 de septiembre. La causa no está registrada. No hay mediciones de agua registradas del 9 al 13 de septiembre. No hay mediciones de agua registradas del 15 al 22 de septiembre. La colección salió del museo el 22 de septiembre.",
     "stats": [
      {
-      "n": "mismo",
-      "u": "día",
-      "l": "de la primera señal del episodio a la primera acción (estándar 48 h)",
-      "tone": "green",
-      "key": "lat"
-     },
-     {
       "n": "13",
-      "u": "días",
-      "l": "sin medir el agua de su sistema con una señal abierta",
-      "tone": "rose",
+      "u": "de 14 días",
+      "l": "sin mediciones de agua registradas, del 9 al 22 de septiembre",
+      "tone": "muted",
       "key": "gap"
-     },
-     {
-      "n": "2",
-      "u": "de 7",
-      "l": "señales sin respuesta dentro de su plazo",
-      "tone": "rose",
-      "key": "senales"
      }
     ],
-    "stats_note": "Son distancias entre registros. La calificación del método está en el registro completo.",
+    "stats_note": "Son distancias entre registros.",
     "curso": {
      "from": "2026-05-16",
      "to": "2026-09-23",
@@ -9766,7 +9389,7 @@
        "2026-06-21",
        "15:52",
        "leve",
-       "Chat del equipo: Fundador: un ejemplar se ve verdoso, como con musgo; curaduría: es normal"
+       "Chat del equipo: un ejemplar se ve verdoso, como con musgo; es normal"
       ],
       [
        "2026-06-29",
@@ -9820,7 +9443,7 @@
        "2026-08-12",
        "17:48",
        "leve",
-       "Chat del equipo: Fundador sobre videos de Pinal: al menos ahí aún no comían piedras"
+       "Chat del equipo: Sobre videos de Pinal: al menos ahí aún no comían piedras"
       ],
       [
        "2026-08-13",
@@ -10091,7 +9714,7 @@
        "12:02",
        "si",
        [
-        "Veterinario: Curaduría menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
+        "Veterinario: El equipo menciona (07-31) que regresará; sin detalle de ejemplar ni motivo",
         "Cambio de agua: Cambio de agua"
        ]
       ],
@@ -10109,7 +9732,7 @@
        "si",
        [
         "Tratamiento: Nematodos · tx: Ivermectina 0.1 mg/ml · Cambio de medicamento, formulado en dosis seguras para ajolotes",
-        "Acción: Fundador: la desparasitación no se reportó en el grupo de mantenimiento"
+        "Acción: la desparasitación no consta en el registro de mantenimiento"
        ]
       ],
       [
@@ -10142,7 +9765,7 @@
        "10:18",
        "si",
        [
-        "Veterinario: Fundador pide agregar al grupo a la veterinaria (Pinal),"
+        "Veterinario: El equipo pide agregar al grupo a la veterinaria (Pinal),"
        ]
       ],
       [
@@ -10282,7 +9905,7 @@
        "20:38",
        "si",
        [
-        "Veterinario: Curaduría avisa durante la junta que sigue en llamada con los de axolovet",
+        "Veterinario: El equipo avisa durante la junta que sigue en llamada con los de axolovet",
         "Cambio de agua: Cambio de agua"
        ]
       ],
@@ -10291,7 +9914,7 @@
        "13:19",
        "si",
        [
-        "Acción: Curaduría hará la limpieza el martes y cotizará extractores"
+        "Acción: El equipo hará la limpieza el martes y cotizará extractores"
        ]
       ],
       [
@@ -10303,17 +9926,7 @@
        ]
       ]
      ],
-     "latencia": {
-      "from": [
-       "2026-09-02",
-       "18:38"
-      ],
-      "to": [
-       "2026-09-02",
-       "13:00"
-      ],
-      "label": "mismo día · estándar 48 h"
-     },
+     "latencia": null,
      "agua": {
       "2026-05-16": "15.4 °C · NH₃ 0 mg/L",
       "2026-05-17": "14–15.1 °C (3 lecturas)",
@@ -10431,7 +10044,7 @@
       "d": "2026-08-20",
       "tone": "amber",
       "title": "No sale del refugio",
-      "text": "No salió del refugio en todo el día; se anota observar por posible estrés.",
+      "text": "No salió del refugio en todo el día. Se anota observarla.",
       "src": "bitácora",
       "t": "18:24"
      },
@@ -10439,7 +10052,7 @@
       "d": "2026-09-06",
       "tone": "green",
       "title": "Saprolegniasis",
-      "text": "Diagnóstico y tratamiento con itraconazol.",
+      "text": "Diagnóstico de saprolegniasis. Tratamiento con itraconazol.",
       "src": "terapéutica",
       "t": "10:00"
      },
@@ -10447,16 +10060,16 @@
       "d": "2026-09-09",
       "tone": "amber",
       "title": "Se rasca las branquias",
-      "text": "El 9 dos veces del lado izquierdo; el 10, tres del derecho.",
+      "text": "El 9 de septiembre se rasca dos veces las branquias del lado izquierdo. El 10 de septiembre se rasca tres veces las del lado derecho.",
       "src": "bitácora",
       "t": "16:42",
       "d2": "2026-09-10"
      },
      {
       "d": "2026-09-15",
-      "tone": "rose",
-      "title": "Una semana sin medir el agua",
-      "text": "Del 15 al 22 de septiembre no hay lecturas de su sistema.",
+      "tone": "muted",
+      "title": "Sin mediciones de agua registradas",
+      "text": "No hay mediciones de agua registradas entre el 15 y el 22 de septiembre.",
       "src": "libro",
       "d2": "2026-09-22"
      },
@@ -10471,7 +10084,7 @@
       "d": "2026-09-23",
       "tone": "ink",
       "title": "Muere",
-      "text": "Causa desconocida por ahora; no hay necropsia registrada.",
+      "text": "La causa no está registrada. No hay necropsia registrada.",
       "src": "registro"
      }
     ],
@@ -10523,173 +10136,6 @@
      ]
     }
    }
-  }
- ],
- "aire": [
-  {
-   "specimen": "goldy",
-   "episode": 13,
-   "date": "2026-06-10",
-   "claim": "Goldy se está quedando atrás en crecimiento (vivo)",
-   "contrast": "necropsia: eutanasia y necropsia el 2026-06-10 15:50, el mismo día",
-   "speaker": "Vocería del museo",
-   "confidence": "alta",
-   "verified_on_video": true,
-   "url": "https://youtu.be/FwB8MEdB0E0?t=2138"
-  },
-  {
-   "specimen": "goldy",
-   "episode": 14,
-   "date": "2026-06-17",
-   "claim": "Golden/Goldy está mejorando bastante; si se recupera tendrá que ir a otras instalaciones",
-   "contrast": "necropsia: eutanasia el 2026-06-10, siete días antes",
-   "speaker": "Vocería del museo",
-   "confidence": "alta",
-   "verified_on_video": true,
-   "url": "https://youtu.be/qg_h-yVaX9E?t=113"
-  },
-  {
-   "specimen": "goldy",
-   "episode": 18,
-   "date": "2026-07-14",
-   "claim": "Goldy falleció un poco más repentinamente que Panchita, con el sistema inmune bajo",
-   "contrast": "necropsia: eutanasia el 06-10, condición corporal 3/5, resultado emitido el 07-10; el guion y el sitio de Zenbit (6f0ca8c, b651d0b) ya decían caquexia y 07-13",
-   "speaker": "Vocería del museo",
-   "confidence": "alta",
-   "verified_on_video": true,
-   "url": "https://youtu.be/B3NpBliaWCs?t=266"
-  },
-  {
-   "specimen": "goldy",
-   "episode": 18,
-   "date": "2026-07-14",
-   "claim": "causas probables: complicaciones post-parasitosis y caquexia",
-   "contrast": "el texto lo escribió el lado de Zenbit en b651d0b (2026-07-14 21:25) y en el guion 6f0ca8c; no se atribuye a la curaduría",
-   "speaker": "Lectura del sitio de AxoloDAO",
-   "confidence": "alta",
-   "verified_on_video": true,
-   "url": "https://youtu.be/B3NpBliaWCs?t=2285"
-  },
-  {
-   "specimen": null,
-   "episode": 9,
-   "date": "2026-05-13",
-   "claim": "Remo no ha presentado ningún signo del hongo",
-   "contrast": "Bitácora 05-07, 05-11, 05-12: crecimiento algodonoso en branquias de Remo; Terapéutica 04-05: Saprolegniasis por microscopía",
-   "speaker": "Vocería del museo",
-   "confidence": "alta-media",
-   "verified_on_video": true,
-   "url": "https://youtu.be/IKqbFoU2gyA?t=994"
-  },
-  {
-   "specimen": "goldy",
-   "episode": 12,
-   "date": "2026-06-03",
-   "claim": "Goldy come, no flota extraño, no es motivo para pensar que esté enfermo",
-   "contrast": "Bitácora 2026-05-28: Goldy nada sin control, permanece flotando, pasa a topper de cuarentena; eutanasia y necropsia el 2026-06-10",
-   "speaker": "Vocería del museo",
-   "confidence": "alta",
-   "verified_on_video": true,
-   "url": "https://youtu.be/s9YyWmdQepA?t=1428"
-  },
-  {
-   "specimen": null,
-   "episode": 16,
-   "date": "2026-06-30",
-   "claim": "las bases nitrogenadas se comportan como en un acuario ciclado",
-   "contrast": "Calidad de agua 06-29: amoníaco 0.125 (AM) y 0.0125 (AD), sobre el máximo de 0",
-   "speaker": "Vocería del museo",
-   "confidence": "alta",
-   "verified_on_video": true,
-   "url": "https://youtu.be/8RbgMyJFtSk?t=883"
-  },
-  {
-   "specimen": null,
-   "episode": 17,
-   "date": "2026-07-07",
-   "claim": "en el sistema mexicanum no se ha presentado el problema de los hongos",
-   "contrast": "Terapéutica: Saprolegniasis de Chocorrol (05-11 a 05-20); Bitácora 06-19: algodoncillo en Limón",
-   "speaker": "Vocería de Zenbit",
-   "confidence": "alta",
-   "verified_on_video": true,
-   "url": "https://youtu.be/-Ql1-LHHXKA?t=1676"
-  },
-  {
-   "specimen": null,
-   "episode": 19,
-   "date": "2026-07-21",
-   "claim": "el amoníaco fue un problema hace dos o tres meses",
-   "contrast": "Calidad de agua 07-06: amoníaco 0.5 (AA) y 0.125 (AM, AD)",
-   "speaker": "Vocería del museo",
-   "confidence": "media",
-   "verified_on_video": true,
-   "url": "https://youtu.be/VVJsGY18i4I?t=3460"
-  },
-  {
-   "specimen": null,
-   "episode": 20,
-   "date": "2026-07-28",
-   "claim": "en mexicanum no se ha visto crecimiento algodonoso ni prurito",
-   "contrast": "Bitácora 07-13 Chocorrol (la nota duda: posible muda); 07-17 La negra con parásitos",
-   "speaker": "Vocería del museo",
-   "confidence": "alta",
-   "verified_on_video": true,
-   "url": "https://youtu.be/dno4elLJSA4?t=4825"
-  },
-  {
-   "specimen": null,
-   "episode": 22,
-   "date": "2026-08-12",
-   "claim": "Tamal de dulce: nada de qué preocuparnos, todo está bien con ella",
-   "contrast": "Bitácora 08-07: flotabilidad anormal de Tamal",
-   "speaker": "Vocería del museo",
-   "confidence": "alta",
-   "verified_on_video": true,
-   "url": "https://youtu.be/bgZSV0_K3Lo?t=181"
-  },
-  {
-   "specimen": null,
-   "episode": 24,
-   "date": "2026-09-09",
-   "claim": "Remo no ha tenido reincidencias",
-   "contrast": "Bitácora 08-13 a 08-16: se rasca branquias; 08-21: parche de Saprolegnia",
-   "speaker": "Vocería del museo",
-   "confidence": "media",
-   "verified_on_video": true,
-   "url": "https://youtu.be/8RYbbXfJEmE?t=2201"
-  },
-  {
-   "specimen": null,
-   "episode": 15,
-   "date": "2026-06-24",
-   "claim": "el veterinario dijo que la mancha de Remo es un lunar benigno",
-   "contrast": "Terapéutica 06-19: la lesión se trató como Saprolegniasis; ningún renglón registra el dictamen del veterinario",
-   "speaker": "Personal del museo",
-   "confidence": "media",
-   "verified_on_video": true,
-   "url": "https://youtu.be/0RZHMB4n9dI?t=984"
-  },
-  {
-   "specimen": null,
-   "episode": 24,
-   "date": "2026-09-09",
-   "claim": "Limón expulsó nematodos tras la primera dosis de ivermectina",
-   "contrast": "Bitácora 07-31 y 08-01: la expulsión fue antes de la ivermectina del 08-03",
-   "speaker": "Vocería de Zenbit",
-   "confidence": "media",
-   "verified_on_video": true,
-   "url": "https://youtu.be/8RYbbXfJEmE?t=890"
-  },
-  {
-   "specimen": "panchita",
-   "episode": 18,
-   "date": "2026-07-14",
-   "claim": "Panchita murió de una infección en varios órganos",
-   "contrast": "necropsia: hepatitis crónica; resultado del 08-04, después del episodio",
-   "speaker": "Sin verificar",
-   "confidence": "—",
-   "verified_on_video": false,
-   "url": "https://youtu.be/B3NpBliaWCs?t=2"
   }
  ]
 }
