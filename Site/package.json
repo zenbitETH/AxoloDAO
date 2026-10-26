@@ -28,9 +28,9 @@
     "test:no-embargo-in-dist": "node scripts/test-embargo.mjs --dist"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.10",
     "@astrojs/preact": "^4.0.0",
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/tailwind": "^5.1.4",
     "@vercel/analytics": "^2.0.1",
     "astro": "^5.0.0",
@@ -44,6 +44,6 @@
     "node-html-parser": "^7.0.1",
     "svgo": "^3.3.2",
     "xlsx": "^0.18.5",
-    "yaml": "^2.6.1"
+    "yaml": "^2.9.1"
   }
 }
