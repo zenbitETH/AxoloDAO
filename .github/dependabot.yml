@@ -1,0 +1,33 @@
+# Dependencias npm del sitio (Site/). No hay CI en este repo y Vercel no construye desde
+# Git (Site/vercel.json, ignoreCommand), así que un PR de Dependabot no tendría ninguna
+# comprobación. Por eso las actualizaciones de versión quedan pausadas
+# (open-pull-requests-limit: 0). Las alertas de seguridad siguen en la pestaña Security y
+# se atienden a mano, probando con npm run build:sitio en local. El resto de la entrada
+# queda listo para cuando se reactiven.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/Site"
+    # Los PR van a dev, como todo lo demás; main solo recibe lo que ya pasó por dev.
+    target-branch: "dev"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    # 0 pausa las actualizaciones de versión. No toca las alertas de seguridad.
+    open-pull-requests-limit: 0
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    # Las versiones mayores (tailwind 4, typescript 7, @astrojs/preact 6…) cambian
+    # la configuración del sitio y sus previews fallan; se hacen a mano, como una
+    # migración probada, no desde Dependabot.
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+    # Un día por encima de min-release-age (7) en Site/.npmrc, para que un grupo
+    # nunca pida una versión que la puerta rechazaría.
+    cooldown:
+      default-days: 8
