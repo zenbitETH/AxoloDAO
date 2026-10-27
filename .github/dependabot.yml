@@ -4,6 +4,9 @@ version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/Site"
+    # Los PR van a dev. Un merge a main reconstruye producción (axolodao.org)
+    # desde main, así que las actualizaciones pasan por dev como todo lo demás.
+    target-branch: "dev"
     schedule:
       interval: "weekly"
       day: "monday"
@@ -13,6 +16,13 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    # Las versiones mayores (tailwind 4, typescript 7, @astrojs/preact 6…) cambian
+    # la configuración del sitio y sus previews fallan; se hacen a mano, como una
+    # migración probada, no desde Dependabot.
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
     # Un día por encima de min-release-age (7) en Site/.npmrc, para que un grupo
     # nunca pida una versión que la puerta rechazaría.
     cooldown:
