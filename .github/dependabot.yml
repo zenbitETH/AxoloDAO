@@ -1,16 +1,20 @@
-# Mantiene al día las dependencias npm del sitio (Site/). No hay CI en este repo,
-# así que cada PR se revisa con su preview de Vercel antes de fusionarse.
+# Dependencias npm del sitio (Site/). No hay CI en este repo y Vercel no construye desde
+# Git (Site/vercel.json, ignoreCommand), así que un PR de Dependabot no tendría ninguna
+# comprobación. Por eso las actualizaciones de versión quedan pausadas
+# (open-pull-requests-limit: 0). Las alertas de seguridad siguen en la pestaña Security y
+# se atienden a mano, probando con npm run build:sitio en local. El resto de la entrada
+# queda listo para cuando se reactiven.
 version: 2
 updates:
   - package-ecosystem: "npm"
     directory: "/Site"
-    # Los PR van a dev. Un merge a main reconstruye producción (axolodao.org)
-    # desde main, así que las actualizaciones pasan por dev como todo lo demás.
+    # Los PR van a dev, como todo lo demás; main solo recibe lo que ya pasó por dev.
     target-branch: "dev"
     schedule:
       interval: "weekly"
       day: "monday"
-    open-pull-requests-limit: 5
+    # 0 pausa las actualizaciones de versión. No toca las alertas de seguridad.
+    open-pull-requests-limit: 0
     groups:
       minor-and-patch:
         update-types:
