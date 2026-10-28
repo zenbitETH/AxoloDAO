@@ -114,9 +114,11 @@ export function problemasDeLaConstruccion(dist) {
 if (import.meta.url === `file://${process.argv[1]}`) {
   let texto;
   const archivo = arg('--listado') ?? process.env.HUELLA_LISTADO;
+  // inside a hook git exports GIT_DIR (and GIT_INDEX_FILE…) for THIS repository; with them `git -C <Contracts>` would look here and find nothing
+  const sinGit = Object.fromEntries(Object.entries(process.env).filter(([k]) => !k.startsWith('GIT_')));
   try {
     if (archivo) texto = readFileSync(archivo, 'utf8');
-    else texto = execFileSync('git', ['-C', process.env.HUELLA_REPO ?? join(homedir(), 'Documents/GitHub/axolodao-system-booth-browser'), 'show', `${process.env.HUELLA_COMMIT ?? '9f7cf28'}:tools/atlas-huella/listado-stand.txt`], { maxBuffer: 1 << 24 }).toString();
+    else texto = execFileSync('git', ['-C', process.env.HUELLA_REPO ?? join(homedir(), 'Documents/GitHub/axolodao-system-booth-browser'), 'show', `${process.env.HUELLA_COMMIT ?? '9f7cf28'}:tools/atlas-huella/listado-stand.txt`], { maxBuffer: 1 << 24, env: sinGit }).toString();
   } catch (e) { console.error(`pre-push-huella: the listing could not be read (${e.message.split('\n')[0]}); nothing was checked, so the push is refused`); process.exit(1); }
   let refs = null, remoto = '';
   if (process.argv.includes('--hook')) {
