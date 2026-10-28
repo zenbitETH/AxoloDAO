@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import ProjectCard from '@components/ProjectCard.astro';
 import Modal from '@components/Modal.astro';
 import { type Locale, t } from '@/i18n/strings';
+import NuevaPestana from '@components/NuevaPestana.astro';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -38,12 +39,12 @@ const projects = order
           {p.data.links && p.data.links.length > 0 ? (
             p.data.links.map((link) => (
               <a href={link.url} target="_blank" rel="noopener noreferrer" class={link.variant === 'secondary' ? 'btn-secondary' : 'btn-primary'}>
-                {link.label[locale]}
+                {link.label[locale]}<NuevaPestana locale={locale} />
               </a>
             ))
           ) : p.data.url ? (
             <a href={p.data.url} target="_blank" rel="noopener noreferrer" class="btn-primary">
-              {p.data.cta?.[locale] ?? t(locale, 'projects.cta')}
+              {p.data.cta?.[locale] ?? t(locale, 'projects.cta')}<NuevaPestana locale={locale} />
             </a>
           ) : (
             <span class="badge-ocre">{t(locale, 'common.soon')}</span>

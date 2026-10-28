@@ -1,5 +1,6 @@
 ---
 import { type Locale, t } from '@/i18n/strings';
+import NuevaPestana from '@components/NuevaPestana.astro';
 import { CLOSURE, assertClosureCopyIsPast } from '@/lib/closure';
 
 // Shown only on the museum's two pages, the water dashboard and the registry, right
@@ -22,7 +23,7 @@ if (CLOSURE.active) assertClosureCopyIsPast(locale);
         rel="noopener noreferrer"
         class="closure-link w-fit font-semibold underline underline-offset-4 focus-visible:rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
       >
-        {t(locale, 'closure.banner.link')}
+        {t(locale, 'closure.banner.link')}<NuevaPestana locale={locale} />
       </a>
     </p>
   </aside>

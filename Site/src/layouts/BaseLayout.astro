@@ -3,6 +3,7 @@ import '@/styles/globals.css';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import { type Locale, LOCALES, DEFAULT_LOCALE, t } from '@/i18n/strings';
+import { llenar } from '@/lib/inventarioHome';
 import Analytics from '@vercel/analytics/astro';
 
 interface Props {
@@ -10,12 +11,19 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  /** Append « — {site name}» to the title. The name lives here, in one place, so the brand decides it (not each page). */
+  appendSiteName?: boolean;
 }
 
-const { locale, title, description, ogImage } = Astro.props;
+const { locale, title, description, ogImage, appendSiteName } = Astro.props;
 
-const pageTitle = title ?? t(locale, 'seo.title');
-const pageDesc = description ?? t(locale, 'seo.description');
+// The name that follows a page title when `appendSiteName` is set: the one place to change with the brand.
+const SITE_NAME = 'AxoloDAO';
+// The Organization's own description in the structured data: the site's fixed one, never the description of the page being viewed.
+const orgDescription = llenar(t(locale, 'seo.description'), locale) ?? t(locale, 'seo.title');
+
+const pageTitle = title ? (appendSiteName ? `${title} — ${SITE_NAME}` : title) : t(locale, 'seo.title');
+const pageDesc = description ?? orgDescription;
 const pageKeywords = t(locale, 'seo.keywords');
 const ogLocale = locale === 'es' ? 'es_MX' : locale === 'en' ? 'en_US' : 'pt_BR';
 const ogLocaleAlternates = (['es', 'en', 'pt'] as Locale[])
@@ -40,10 +48,10 @@ const xDefaultHref = new URL(pathNoLocale, Astro.site).href;
 const orgLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'AxoloDAO',
+  name: SITE_NAME,
   url: Astro.site?.href ?? 'https://axolodao.org',
   logo: new URL('/android-chrome-512x512.png', Astro.site).href,
-  description: pageDesc,
+  description: orgDescription,
   foundingLocation: 'Mexico',
   sameAs: [
     'https://app.ens.domains/axolodao.eth',
@@ -53,7 +61,7 @@ const orgLd = {
 const websiteLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'AxoloDAO',
+  name: SITE_NAME,
   url: Astro.site?.href ?? 'https://axolodao.org',
   inLanguage: [ogLocale, ...ogLocaleAlternates],
 };
@@ -87,8 +95,8 @@ const websiteLd = {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="application-name" content="AxoloDAO" />
-    <meta name="apple-mobile-web-app-title" content="AxoloDAO" />
+    <meta name="application-name" content={SITE_NAME} />
+    <meta name="apple-mobile-web-app-title" content={SITE_NAME} />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="msapplication-TileColor" content="#071F29" />
@@ -96,8 +104,8 @@ const websiteLd = {
     <title>{pageTitle}</title>
     <meta name="description" content={pageDesc} />
     <meta name="keywords" content={pageKeywords} />
-    <meta name="author" content="AxoloDAO" />
-    <meta name="publisher" content="AxoloDAO" />
+    <meta name="author" content={SITE_NAME} />
+    <meta name="publisher" content={SITE_NAME} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <link rel="canonical" href={canonicalUrl} />
@@ -106,7 +114,7 @@ const websiteLd = {
     ))}
     <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
 
-    <meta property="og:site_name" content="AxoloDAO" />
+    <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDesc} />
     <meta property="og:type" content="website" />

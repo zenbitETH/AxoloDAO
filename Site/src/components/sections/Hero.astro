@@ -1,27 +1,29 @@
 ---
-import { type Locale, t } from '@/i18n/strings';
+import { type Locale, t, localePath } from '@/i18n/strings';
 import HeroParallax from '@components/HeroParallax';
+import { ATLAS_VERIFICADO, lineaOnchain, subtituloHero, tituloHero } from '@/lib/heroEstado';
+import { conTaxones } from '@/lib/taxones';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
 const xolotlcalliPath = t(locale, 'xolotlcalli.path');
+// state B's onchain line; state A has none
+const linea = lineaOnchain(locale);
 ---
 
 <HeroParallax client:idle />
 
 <section class="relative">
   <div class="container-tight pb-24 pt-24 text-center sm:pt-32">
-    <h1 class="hero-title mx-auto max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-6xl">
-      {t(locale, 'hero.title')}
-    </h1>
+    <h1 class="hero-title mx-auto max-w-3xl font-display text-4xl font-extrabold leading-tight sm:text-6xl" set:html={conTaxones(tituloHero(locale))} />
 
-    <p class="hero-subtitle mx-auto mt-6 max-w-2xl text-lg">
-      {t(locale, 'hero.subtitle')}
-    </p>
+    <p class="hero-subtitle mx-auto mt-6 max-w-2xl text-lg" set:html={conTaxones(subtituloHero(locale))} />
+
+    {linea && <p class="hero-onchain mx-auto mt-4 max-w-2xl text-sm font-semibold sm:text-base" data-hero-onchain set:html={conTaxones(linea)} />}
 
     <div class="mt-10 flex flex-col items-center gap-3">
-      <a href="#mapa" class="btn-primary">
+      <a href={localePath(locale, 'atlas/')} class="btn-primary" data-hero-atlas>
         {t(locale, 'hero.cta.primary')}
       </a>
       <div class="flex flex-wrap items-center justify-center gap-3">
@@ -29,19 +31,24 @@ const xolotlcalliPath = t(locale, 'xolotlcalli.path');
           {t(locale, 'hero.cta.xolotlcalli')}
         </a>
       </div>
+      {ATLAS_VERIFICADO && (
+        <a href="/atlas/datos/huella/" class="mt-1 text-sm text-teal underline-offset-4 hover:underline" data-hero-verifica>
+          {t(locale, 'hero.verifica')} <span aria-hidden="true">→</span>
+        </a>
+      )}
     </div>
 
     <div class="hero-disclosure-grid mx-auto mt-12 grid max-w-4xl gap-3 text-left sm:grid-cols-2 sm:items-stretch">
       <article class="hero-disclosure-item">
         <span class="badge-rosa">{t(locale, 'hero.problem.label')}</span>
         <h3 class="hero-disclosure-headline">{t(locale, 'hero.problem.headline')}</h3>
-        <p class="hero-disclosure-text">{t(locale, 'hero.problem.body')}</p>
+        <p class="hero-disclosure-text" set:html={conTaxones(t(locale, 'hero.problem.body'))} />
       </article>
 
       <article class="hero-disclosure-item">
         <span class="badge-teal">{t(locale, 'hero.solution.label')}</span>
         <h3 class="hero-disclosure-headline">{t(locale, 'hero.solution.headline')}</h3>
-        <p class="hero-disclosure-text">{t(locale, 'hero.solution.body')}</p>
+        <p class="hero-disclosure-text" set:html={conTaxones(t(locale, 'hero.solution.body'))} />
       </article>
     </div>
   </div>

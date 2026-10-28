@@ -3,10 +3,10 @@
 // QR + label + "Escanea y conoce más", framed in a dedicated color. Tank cards
 // open the station / AM-aquarium detail on the water dashboard via its hash
 // anchor (#AA, #AD, #AM1 … #AM-larvas — see WaterQualityDashboard); the extra
-// cards link to the home-page species map (#mapa) and the Xovi viewer. Each card
+// cards link to the atlas page of the locale (/atlas/, /en/atlas/, /pt/atlas/: the home's map anchor is retired) and the Xovi viewer. Each card
 // can be exported to PNG/SVG (see the client script at the bottom of this file).
 import QRCode from 'qrcode';
-import type { Locale } from '@/i18n/strings';
+import { type Locale, localePath } from '@/i18n/strings';
 import { AM_AQUARIUMS } from './waterQuality/amAquariums';
 
 interface Props {
@@ -35,7 +35,7 @@ const COPY = {
     exportPng: 'Descargar PNG de',
     exportSvg: 'Descargar SVG de',
     mapLabel: 'Mapa',
-    mapSubtitle: 'Mapa de especies',
+    mapSubtitle: 'Atlas de ajolotes',
   },
   en: {
     title: 'QR codes · Stations',
@@ -46,7 +46,7 @@ const COPY = {
     exportPng: 'Download PNG of',
     exportSvg: 'Download SVG of',
     mapLabel: 'Map',
-    mapSubtitle: 'Species map',
+    mapSubtitle: 'Axolotl atlas',
   },
   pt: {
     title: 'Códigos QR · Estações',
@@ -57,7 +57,7 @@ const COPY = {
     exportPng: 'Baixar PNG de',
     exportSvg: 'Baixar SVG de',
     mapLabel: 'Mapa',
-    mapSubtitle: 'Mapa de espécies',
+    mapSubtitle: 'Atlas dos axolotes',
   },
 }[locale];
 
@@ -78,14 +78,14 @@ const stationSpecs: CardSpec[] = [
   { anchor: 'AD', label: 'AD', sci: 'Ambystoma dumerilii', color: SPECIES_COLOR.dumerilii, url: stationUrl('AD') },
 ];
 
-// Extra destinations (not tank stations): the species map on the home page and
+// Extra destinations (not tank stations): the atlas page of the locale and
 // the Xovi viewer (production + testnet). Same card format; the destination URL
 // is shown as the subtitle so the two Xovi cards are self-distinguishing. The
 // Xovi teal is darkened from the logo (#059C9C) so the cream header text stays
 // legible against it.
 const XOVI_TEAL = '#047A7A';
 const extraSpecs: CardSpec[] = [
-  { anchor: 'mapa', label: COPY.mapLabel, sci: COPY.mapSubtitle, color: '#4A3628', url: new URL('/#mapa', SITE).href },
+  { anchor: 'mapa', label: COPY.mapLabel, sci: COPY.mapSubtitle, color: '#4A3628', url: new URL(localePath(locale, 'atlas/'), SITE).href },
   { anchor: 'xovi', label: 'Xovi', sci: 'xovi.axolodao.org', color: XOVI_TEAL, url: 'https://xovi.axolodao.org/' },
 ];
 
