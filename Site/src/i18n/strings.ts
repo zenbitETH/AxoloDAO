@@ -76,8 +76,8 @@ const dictionaries: Record<Locale, Dict> = {
     // keeps «en datos abiertos» only when the build emits the /atlas/datos/ files (lib/heroEstado.ts); its onchain line: one key per scope (especies, atlas)
     'hero.title.b.conDatos': 'Las {especies} especies de ajolotes y salamandras Ambystoma, en datos abiertos',
     'hero.title.b.sinDatos': 'Las {especies} especies de ajolotes y salamandras Ambystoma',
-    'hero.onchain.b.especies': 'Onchain: la tesorería, los nombres ENS, como axolodao.eth, y {confirmaciones}. Ya en Ethereum (red de prueba Sepolia): la huella de las especies del atlas.',
-    'hero.onchain.b.atlas': 'Onchain: la tesorería, los nombres ENS, como axolodao.eth, y {confirmaciones}. Ya en Ethereum (red de prueba Sepolia): la huella del atlas.',
+    'hero.onchain.b.especies': 'Onchain: la tesorería, los nombres ENS, como axolodao.eth, y {confirmaciones}. Ya en Ethereum (red de prueba Sepolia): la huella de las especies del atlas y 48 anclas semanales del registro de Xolotlcalli.',
+    'hero.onchain.b.atlas': 'Onchain: la tesorería, los nombres ENS, como axolodao.eth, y {confirmaciones}. Ya en Ethereum (red de prueba Sepolia): la huella del atlas y 48 anclas semanales del registro de Xolotlcalli.',
     // {confirmaciones}, from the inventory's count of clip confirmations on Sepolia
     'hero.onchain.confirmaciones.uno': 'la confirmación de un clip de prueba',
     'hero.onchain.confirmaciones.varias': 'las confirmaciones de clips',
@@ -91,7 +91,7 @@ const dictionaries: Record<Locale, Dict> = {
     'hero.problem.body': 'Varias especies del género Ambystoma están en peligro. También lo están los datos biológicos que las documentan y el financiamiento de quienes las conservan.',
     'hero.solution.label': 'Solución',
     'hero.solution.headline': 'Blockchain como infraestructura pública',
-    'hero.solution.body': 'AxoloDAO reúne en un solo atlas las especies, sus áreas y los recintos que las cuidan, cada dato con su fuente y en datos abiertos. El caso de referencia es el piloto en el Museo de Ajolotes Xolotlcalli (2025–2026). Ya en Ethereum (red de prueba Sepolia): la huella del atlas.',
+    'hero.solution.body': 'AxoloDAO reúne en un solo atlas las especies, sus áreas y los recintos que las cuidan, cada dato con su fuente y en datos abiertos. El caso de referencia es el piloto en el Museo de Ajolotes Xolotlcalli (2025–2026). Ya en Ethereum (red de prueba Sepolia): la huella del atlas y 48 anclas semanales del registro de Xolotlcalli.',
     'impact.title': 'Tesorería pública',
     'impact.subtitle': 'Cada movimiento de la tesorería de AxoloDAO, verificable en cadena.',
     'impact.stat.species.label': 'Especies de ajolotes y salamandras',
@@ -306,8 +306,8 @@ const dictionaries: Record<Locale, Dict> = {
     // keeps «en datos abiertos» only when the build emits the /atlas/datos/ files (lib/heroEstado.ts); its onchain line: one key per scope (especies, atlas)
     'hero.title.b.conDatos': 'The {especies} species of Ambystoma axolotls and salamanders, as open data',
     'hero.title.b.sinDatos': 'The {especies} species of Ambystoma axolotls and salamanders',
-    'hero.onchain.b.especies': 'Onchain: the treasury, the ENS names, such as axolodao.eth, and {confirmaciones}. Already on Ethereum (Sepolia test network): the fingerprint of the atlas species.',
-    'hero.onchain.b.atlas': 'Onchain: the treasury, the ENS names, such as axolodao.eth, and {confirmaciones}. Already on Ethereum (Sepolia test network): the atlas fingerprint.',
+    'hero.onchain.b.especies': 'Onchain: the treasury, the ENS names, such as axolodao.eth, and {confirmaciones}. Already on Ethereum (Sepolia test network): the fingerprint of the atlas species and 48 weekly anchors of the Xolotlcalli record.',
+    'hero.onchain.b.atlas': 'Onchain: the treasury, the ENS names, such as axolodao.eth, and {confirmaciones}. Already on Ethereum (Sepolia test network): the atlas fingerprint and 48 weekly anchors of the Xolotlcalli record.',
     // {confirmaciones}, from the inventory's count of clip confirmations on Sepolia
     'hero.onchain.confirmaciones.uno': 'a test clip confirmation',
     'hero.onchain.confirmaciones.varias': 'the clip confirmations',
@@ -321,7 +321,7 @@ const dictionaries: Record<Locale, Dict> = {
     'hero.problem.body': 'Several species of the genus Ambystoma are endangered. So is the biological data that documents them and the funding of those who conserve them.',
     'hero.solution.label': 'Solution',
     'hero.solution.headline': 'Blockchain as public infrastructure',
-    'hero.solution.body': 'AxoloDAO brings the species, their ranges and the facilities that care for them into one atlas, every data point with its source and as open data. The reference case is the pilot at the Museo de Ajolotes Xolotlcalli (2025–2026). Already on Ethereum (Sepolia test network): the atlas fingerprint.',
+    'hero.solution.body': 'AxoloDAO brings the species, their ranges and the facilities that care for them into one atlas, every data point with its source and as open data. The reference case is the pilot at the Museo de Ajolotes Xolotlcalli (2025–2026). Already on Ethereum (Sepolia test network): the atlas fingerprint and 48 weekly anchors of the Xolotlcalli record.',
     'impact.title': 'Public treasury',
     'impact.subtitle': 'Every movement of the AxoloDAO treasury, verifiable onchain.',
     'impact.stat.species.label': 'Axolotl and salamander species',
@@ -532,8 +532,8 @@ const dictionaries: Record<Locale, Dict> = {
     // keeps «en datos abiertos» only when the build emits the /atlas/datos/ files (lib/heroEstado.ts); its onchain line: one key per scope (especies, atlas)
     'hero.title.b.conDatos': 'As {especies} espécies de axolotes e salamandras Ambystoma, em dados abertos',
     'hero.title.b.sinDatos': 'As {especies} espécies de axolotes e salamandras Ambystoma',
-    'hero.onchain.b.especies': 'Onchain: a tesouraria, os nomes ENS, como axolodao.eth, e {confirmaciones}. Já na Ethereum (rede de teste Sepolia): a impressão digital das espécies do atlas.',
-    'hero.onchain.b.atlas': 'Onchain: a tesouraria, os nomes ENS, como axolodao.eth, e {confirmaciones}. Já na Ethereum (rede de teste Sepolia): a impressão digital do atlas.',
+    'hero.onchain.b.especies': 'Onchain: a tesouraria, os nomes ENS, como axolodao.eth, e {confirmaciones}. Já na Ethereum (rede de teste Sepolia): a impressão digital das espécies do atlas e 48 âncoras semanais do registro de Xolotlcalli.',
+    'hero.onchain.b.atlas': 'Onchain: a tesouraria, os nomes ENS, como axolodao.eth, e {confirmaciones}. Já na Ethereum (rede de teste Sepolia): a impressão digital do atlas e 48 âncoras semanais do registro de Xolotlcalli.',
     // {confirmaciones}, from the inventory's count of clip confirmations on Sepolia
     'hero.onchain.confirmaciones.uno': 'a confirmação de um clipe de teste',
     'hero.onchain.confirmaciones.varias': 'as confirmações de clipes',
@@ -547,7 +547,7 @@ const dictionaries: Record<Locale, Dict> = {
     'hero.problem.body': 'Várias espécies do gênero Ambystoma estão ameaçadas. Também estão em risco os dados biológicos que as documentam e o financiamento de quem as conserva.',
     'hero.solution.label': 'Solução',
     'hero.solution.headline': 'Blockchain como infraestrutura pública',
-    'hero.solution.body': 'A AxoloDAO reúne em um só atlas as espécies, suas áreas e os recintos que cuidam delas, cada dado com sua fonte e em dados abertos. O caso de referência é o piloto no Museo de Ajolotes Xolotlcalli (2025–2026). Já na Ethereum (rede de teste Sepolia): a impressão digital do atlas.',
+    'hero.solution.body': 'A AxoloDAO reúne em um só atlas as espécies, suas áreas e os recintos que cuidam delas, cada dado com sua fonte e em dados abertos. O caso de referência é o piloto no Museo de Ajolotes Xolotlcalli (2025–2026). Já na Ethereum (rede de teste Sepolia): a impressão digital do atlas e 48 âncoras semanais do registro de Xolotlcalli.',
     'impact.title': 'Tesouraria pública',
     'impact.subtitle': 'Cada movimento da tesouraria da AxoloDAO, verificável onchain.',
     'impact.stat.species.label': 'Espécies de axolotes e salamandras',
