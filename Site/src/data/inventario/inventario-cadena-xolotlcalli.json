@@ -1,0 +1,251 @@
+{
+ "fecha": "2026-10-22",
+ "red": {
+  "nombre": "Ethereum Sepolia",
+  "chainId": 11155111
+ },
+ "enSepoliaHoy": {
+  "esquema": {
+   "nombre": "ClipConfirmation@1",
+   "uid": "0x8d4a9a6e41e07cb67128eaca5a79f4d39e5199eb8c1c7d7a0096e0a5d11c8c6d",
+   "enlaces": {
+    "easscan": "https://sepolia.easscan.org/schema/view/0x8d4a9a6e41e07cb67128eaca5a79f4d39e5199eb8c1c7d7a0096e0a5d11c8c6d",
+    "etherscan": "https://sepolia.etherscan.io/tx/0x255f91b07faa0c10be713c975b2f634b7d4c1fd5e52e6849613d20a791dead25"
+   }
+  },
+  "atestacion": {
+   "clip": 259,
+   "uidEnCadena": "0x33aba0951a8b42a9918464045ba4025ade73c5756a2eabbc3c50979f3b763165",
+   "hora": "2026-10-28 03:58:48 UTC",
+   "enlaces": {
+    "easscan": "https://sepolia.easscan.org/attestation/view/0x33aba0951a8b42a9918464045ba4025ade73c5756a2eabbc3c50979f3b763165",
+    "etherscan": "https://sepolia.etherscan.io/tx/0xbd0d5fc148516f19a7af89b2608d7473337762878b319145e6487c670f64cd59"
+   }
+  }
+ },
+ "clipsConfirmados": {
+  "conAtestacionEnSepolia": {
+   "valor": 1
+  }
+ },
+ "seAnclara": {
+  "semanas": {
+   "valor": 49,
+   "desde": "2025-W43",
+   "hasta": "2026-W39",
+   "porSemana": [
+    {
+     "semana": "2025-W43",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2025-W44",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2025-W45",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2025-W46",
+     "registrosPublicos": 12
+    },
+    {
+     "semana": "2025-W47",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2025-W48",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2025-W49",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2025-W50",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2025-W51",
+     "registrosPublicos": 31
+    },
+    {
+     "semana": "2025-W52",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W01",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W02",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W03",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W04",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W05",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W06",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W07",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W08",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W09",
+     "registrosPublicos": 20
+    },
+    {
+     "semana": "2026-W10",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W11",
+     "registrosPublicos": 11
+    },
+    {
+     "semana": "2026-W12",
+     "registrosPublicos": 8
+    },
+    {
+     "semana": "2026-W13",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W14",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W15",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W16",
+     "registrosPublicos": 18
+    },
+    {
+     "semana": "2026-W17",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W18",
+     "registrosPublicos": 0
+    },
+    {
+     "semana": "2026-W19",
+     "registrosPublicos": 45
+    },
+    {
+     "semana": "2026-W20",
+     "registrosPublicos": 34
+    },
+    {
+     "semana": "2026-W21",
+     "registrosPublicos": 4
+    },
+    {
+     "semana": "2026-W22",
+     "registrosPublicos": 2
+    },
+    {
+     "semana": "2026-W23",
+     "registrosPublicos": 33
+    },
+    {
+     "semana": "2026-W24",
+     "registrosPublicos": 26
+    },
+    {
+     "semana": "2026-W25",
+     "registrosPublicos": 26
+    },
+    {
+     "semana": "2026-W26",
+     "registrosPublicos": 26
+    },
+    {
+     "semana": "2026-W27",
+     "registrosPublicos": 26
+    },
+    {
+     "semana": "2026-W28",
+     "registrosPublicos": 31
+    },
+    {
+     "semana": "2026-W29",
+     "registrosPublicos": 31
+    },
+    {
+     "semana": "2026-W30",
+     "registrosPublicos": 32
+    },
+    {
+     "semana": "2026-W31",
+     "registrosPublicos": 26
+    },
+    {
+     "semana": "2026-W32",
+     "registrosPublicos": 31
+    },
+    {
+     "semana": "2026-W33",
+     "registrosPublicos": 26
+    },
+    {
+     "semana": "2026-W34",
+     "registrosPublicos": 20
+    },
+    {
+     "semana": "2026-W35",
+     "registrosPublicos": 17
+    },
+    {
+     "semana": "2026-W36",
+     "registrosPublicos": 18
+    },
+    {
+     "semana": "2026-W37",
+     "registrosPublicos": 10
+    },
+    {
+     "semana": "2026-W38",
+     "registrosPublicos": 8
+    },
+    {
+     "semana": "2026-W39",
+     "registrosPublicos": 0
+    }
+   ]
+  }
+ },
+ "registrosPublicos": {
+  "diasConRegistro": {
+   "valor": 132
+  },
+  "semanasConRegistro": {
+   "valor": 26,
+   "de": 49
+  },
+  "tiposConRegistro": {
+   "valor": 1
+  }
+ },
+ "areas": {
+  "conRegistro": 2
+ }
+}

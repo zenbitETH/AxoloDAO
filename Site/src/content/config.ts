@@ -95,6 +95,8 @@ const species = defineCollection({
     description: z.string().optional(),
     habitat: z.string().optional(),
     distribution: z.string().optional(),
+    // the citation of a distribution text that is a verbatim quotation (author, year, work, page): the page renders it as a quotation
+    distributionCita: z.string().optional(),
     threats: z.string().optional(),
     feeding: z.string().optional(),
     reproduction: z.string().optional(),

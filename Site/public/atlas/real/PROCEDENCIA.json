@@ -1,0 +1,6 @@
+{
+ "bundle": "0b63ee1244d6",
+ "listingSha256": "b563a364b48452bbfe828cfd612c61707a7831709b761d666a60fa7e935a42ff",
+ "files": 82,
+ "importedBy": "scripts/proto/import-real.mjs"
+}

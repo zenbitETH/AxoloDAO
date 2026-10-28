@@ -28,3 +28,14 @@ pnpm-debug.log*
 
 # operator-only embargo config for data-ajolotes ingest (never committed)
 scripts/.embargo.json
+
+# synthetic prototype data written by scripts/proto/make-sample.mjs: never committed, never shipped
+public/atlas/sample/
+
+# the pilot's card data of the axolodao.org build: copied in by scripts/build-sitio.mjs for the build and removed after; never committed, never shipped by any other build
+public/atlas/real/xolotlcalli-*.json
+
+# the atlas fingerprint and the data it covers are generated into the BUILD and never committed (the attested files, the cite-only and IUCN data files never reach the repository; the site is deployed as a prebuilt upload)
+public/atlas/datos/huella/
+public/atlas/datos/huella-*/
+*.map

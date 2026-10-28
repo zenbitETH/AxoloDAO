@@ -2,51 +2,56 @@
 import { type Locale, t, localePath } from '@/i18n/strings';
 import LocaleToggle from './LocaleToggle.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import NuevaPestana from './NuevaPestana.astro';
 
-interface Props { locale: Locale }
-const { locale } = Astro.props;
+interface Props { locale: Locale; /** the glass container from the first pixel (a page whose content scrolls under the header at once) */ glass?: boolean }
+const { locale, glass = false } = Astro.props;
 
-const home = localePath(locale);
+// the atlas views (/atlas, /especies and their en/pt versions) put the map under the header: the header is a dark glass island from the first pixel there (the map is dark in both themes)
+const enAtlas = /^\/(en\/|pt\/)?(atlas|especies)\/?$/.test(Astro.url.pathname);
 const links: { href: string; label: string; external?: boolean }[] = [
   { href: 'https://xovi.axolodao.org',   label: 'Xovi', external: true },
-  { href: `${home}#mapa`,                label: t(locale, 'nav.species') },
+  { href: localePath(locale, 'atlas/'),  label: t(locale, 'nav.species') },
 ];
 ---
 
-<header class="site-header fixed inset-x-0 top-0 z-50 h-20 bg-navy/85 backdrop-blur-xl">
-  <div class="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6">
-    <a href={localePath(locale)} class="flex items-center">
-      <img src="/logos/AxoloDAO.svg" alt="AxoloDAO" class="header-logo h-12 w-auto sm:h-14" />
-    </a>
+<header class="site-header pointer-events-none fixed inset-x-0 top-0 z-50 h-20">
+  <div class="mx-auto flex h-full max-w-7xl items-center px-3 sm:px-4">
+    <!-- Xovi's header: a floating island, not a bar. Seamless (no fill, no border) at the top of the page; it frosts into liquid glass once the page is scrolled beneath it. -->
+    <div class="site-island pointer-events-auto flex h-14 w-full items-center justify-between rounded-full px-4 sm:px-5" data-scrolled="false" data-glass={glass || enAtlas ? '1' : undefined} data-tone={enAtlas ? 'dark' : undefined}>
+      <a href={localePath(locale)} class="flex items-center">
+        <img src="/logos/AxoloDAO.svg" alt="AxoloDAO" class="header-logo h-10 w-auto sm:h-11" />
+      </a>
 
-    <nav class="hidden items-center gap-6 md:flex">
-      {links.map((l) => (
-        <a
-          href={l.href}
-          target={l.external ? '_blank' : undefined}
-          rel={l.external ? 'noopener noreferrer' : undefined}
-          class="text-sm font-medium text-white/80 transition-colors hover:text-teal hover:[text-shadow:_0_0_10px_rgba(0,156,156,0.6)]"
-        >
-          {l.label}
-        </a>
-      ))}
-      <ThemeToggle locale={locale} compact />
-      <LocaleToggle locale={locale} />
-    </nav>
+      <nav class="hidden items-center gap-6 md:flex">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            target={l.external ? '_blank' : undefined}
+            rel={l.external ? 'noopener noreferrer' : undefined}
+            class="text-sm font-medium text-white/80 transition-colors hover:text-teal hover:[text-shadow:_0_0_10px_rgba(0,156,156,0.6)]"
+          >
+            {l.label}{l.external && <NuevaPestana locale={locale} />}
+          </a>
+        ))}
+        <ThemeToggle locale={locale} compact />
+        <LocaleToggle locale={locale} />
+      </nav>
 
-    <button
-      id="mobile-menu-toggle"
-      class="md:hidden rounded-md border border-white/20 p-2"
-      aria-label="Toggle menu"
-      aria-expanded="false"
-    >
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-    </button>
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden rounded-full border border-white/20 p-2"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
   </div>
 
   <div
     id="mobile-menu"
-    class="hidden h-[calc(100vh-4rem)] flex-col gap-6 bg-gradient-to-br from-navy via-dark-navy to-rosa/15 px-6 py-12 md:hidden"
+    class="pointer-events-auto mx-3 mt-1 hidden max-h-[calc(100vh-6rem)] flex-col gap-6 overflow-y-auto rounded-3xl bg-gradient-to-br from-navy via-dark-navy to-rosa/15 px-6 py-8 md:hidden sm:mx-4"
   >
     {links.map((l) => (
       <a
@@ -55,7 +60,7 @@ const links: { href: string; label: string; external?: boolean }[] = [
         rel={l.external ? 'noopener noreferrer' : undefined}
         class="font-display text-2xl text-white hover:text-teal"
       >
-        {l.label}
+        {l.label}{l.external && <NuevaPestana locale={locale} />}
       </a>
     ))}
     <div class="mt-4 flex items-center gap-3">
@@ -68,6 +73,13 @@ const links: { href: string; label: string; external?: boolean }[] = [
 <div class="h-20"></div>
 
 <script>
+  // the island frosts once the page is scrolled (Xovi: seamless at the top, liquid glass on scroll)
+  const isla = document.querySelector('.site-island') as HTMLElement | null;
+  if (isla) {
+    const alDesplazar = () => isla.setAttribute('data-scrolled', window.scrollY > 4 ? 'true' : 'false');
+    alDesplazar();
+    window.addEventListener('scroll', alDesplazar, { passive: true });
+  }
   const btn = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
   const MENU_STATE = 'axolodao:mobile-menu';

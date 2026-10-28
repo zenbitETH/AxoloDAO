@@ -12,6 +12,11 @@
     --grad-teal: rgba(0, 156, 156, 0.18);
     --grad-rosa: rgba(232, 93, 117, 0.12);
     --grad-ocre: rgba(212, 146, 95, 0.10);
+    /* Text in an accent colour, at ≥ 4.5:1 on the navy and on the sections' teal and rosa glows (contrast check of the home, 22-oct). The
+       brand teal, rosa and ocre stay for borders, tints and fills. */
+    --texto-teal: #7FE0E0;
+    --texto-rosa: #F9B9C4;
+    --texto-ocre: #F0C9A6;
   }
 
   [data-theme="light"] {
@@ -23,6 +28,9 @@
     --grad-teal: rgba(0, 156, 156, 0.10);
     --grad-rosa: rgba(232, 93, 117, 0.08);
     --grad-ocre: rgba(212, 146, 95, 0.08);
+    --texto-teal: #004C4E;
+    --texto-rosa: #8A1F35;
+    --texto-ocre: #5A300E;
   }
 
   html {
@@ -100,10 +108,19 @@
   .badge-teal { @apply badge border-teal/40 bg-teal/10 text-teal; }
   .badge-rosa { @apply badge border-rosa/40 bg-rosa/10 text-rosa; }
   .badge-ocre { @apply badge border-ocre/40 bg-ocre/10 text-ocre; }
+  /* Badge text takes the theme's accent text token; the brand colour stays on the border and the tint. */
+  .badge-teal { color: var(--texto-teal); }
+  .badge-rosa { color: var(--texto-rosa); }
+  .badge-ocre { color: var(--texto-ocre); }
 
   .container-tight { @apply mx-auto w-full max-w-6xl px-6; }
   .container-wide  { @apply mx-auto w-full max-w-7xl px-6; }
 }
+
+/* Accent text utilities read the theme's text token, at full strength: an accent at 70–80 % opacity fell under 4.5:1 on both themes. */
+.text-teal, .text-teal\/70, .text-teal\/80, .hover\:text-teal:hover, .hover\:text-teal\/80:hover { color: var(--texto-teal); }
+.text-rosa, .text-rosa\/70 { color: var(--texto-rosa); }
+.text-ocre { color: var(--texto-ocre); }
 
 /* Light-theme overrides for dark-mode utility classes */
 [data-theme="light"] .text-white { color: var(--text); }
@@ -314,11 +331,11 @@
     translate3d(-50%, calc(-50% + var(--scrollY, 0) * -0.18px), 0)
     scale(calc(1 + var(--scrollY, 0) * -0.00018));
   filter: drop-shadow(0 0 48px rgba(0, 156, 156, 0.35));
-  opacity: 0.22;
+  opacity: 0.1;   /* behind the title: faint, so the title keeps its contrast */
   will-change: transform;
 }
 [data-theme="light"] .hero-parallax-icon {
-  opacity: 0.28;
+  opacity: 0.12;
   /* invert the white SVG to near-black so the silhouette actually reads on the
      cream background, then layer a teal glow behind it for brand warmth. */
   filter: invert(1) brightness(0.4) sepia(0.3) hue-rotate(150deg) saturate(2)
@@ -395,6 +412,7 @@
   border-bottom: 0;
 }
 .site-header::after {
+  display: none;   /* the fade under the old bar: the island has none */
   content: '';
   position: absolute;
   left: 0; right: 0;
@@ -961,3 +979,46 @@
   color: rgb(var(--text-rgb) / 0.82);
   margin: 0;
 }
+
+/* The header island (the same liquid glass as Xovi's .xv-glass, in the site's navy). Seamless at the top of the page; frosted once the page scrolls under it.
+   Both themes are fully transparent at the top. The glass is dark in both themes, so while the island is transparent over the cream page of the light theme its text, logo and controls
+   are navy; once it is glass (scrolled, or data-glass) they are the light ones again. */
+.site-island {
+  border: 1px solid transparent;
+  transition: background-color .3s, backdrop-filter .3s, box-shadow .3s, border-color .3s;
+}
+.site-island[data-scrolled="true"],
+.site-island[data-glass="1"] {
+  background-color: color-mix(in oklab, #0a3b49 62%, transparent);
+  backdrop-filter: blur(16px) saturate(1.1);
+  border: 1px solid color-mix(in oklab, #ffffff 12%, transparent);
+  box-shadow: inset 0 1px 0 0 color-mix(in oklab, white 22%, transparent), 0 8px 30px -12px rgb(0 0 0 / 0.5);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-island[data-scrolled="true"], .site-island[data-glass="1"] { background-color: color-mix(in oklab, #0a3b49 94%, transparent); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .site-island[data-scrolled="true"], .site-island[data-glass="1"] { background-color: color-mix(in oklab, #0a3b49 94%, transparent); backdrop-filter: none; }
+}
+
+
+/* light theme: the page behind the island is cream, so its content is navy in every state, and its glass is cream (Xovi's .xv-glass follows the theme the same way) */
+[data-theme="light"] .site-island:not([data-tone="dark"])[data-scrolled="true"], [data-theme="light"] .site-island:not([data-tone="dark"])[data-glass="1"] {
+  background-color: color-mix(in oklab, #f6efe0 62%, transparent);
+  border-color: color-mix(in oklab, #071f29 14%, transparent);
+  box-shadow: inset 0 1px 0 0 color-mix(in oklab, white 55%, transparent), 0 8px 30px -12px rgb(7 31 41 / 0.28);
+}
+@media (prefers-reduced-transparency: reduce) { [data-theme="light"] .site-island:not([data-tone="dark"])[data-scrolled="true"], [data-theme="light"] .site-island:not([data-tone="dark"])[data-glass="1"] { background-color: color-mix(in oklab, #f6efe0 94%, transparent); } }
+[data-theme="light"] .site-island:not([data-tone="dark"]) .text-white,
+[data-theme="light"] .site-island:not([data-tone="dark"]) .text-white\/80,
+[data-theme="light"] .site-island:not([data-tone="dark"]) .text-white\/70 { color: rgb(7 31 41 / 0.88); }
+[data-theme="light"] .site-island a.hover\:text-teal:hover { color: #00757a; }
+[data-theme="light"] .site-island:not([data-tone="dark"]) .header-logo { filter: brightness(0) opacity(.9); }
+[data-theme="light"] .site-island:not([data-tone="dark"]) .theme-toggle.theme-toggle--compact { border-color: rgb(7 31 41 / 0.28); background-color: rgb(7 31 41 / 0.05); color: rgb(7 31 41 / 0.85); }
+[data-theme="light"] .site-island:not([data-tone="dark"]) .bg-white\/5 { background-color: rgb(7 31 41 / 0.06); }
+[data-theme="light"] .site-island:not([data-tone="dark"]) .border-white\/15,
+[data-theme="light"] .site-island:not([data-tone="dark"]) .border-white\/20 { border-color: rgb(7 31 41 / 0.28); }
+.site-island .header-logo { transition: filter .3s; }
+/* the atlas island is dark glass over a dark map in both themes: its controls stay light */
+[data-theme="light"] .site-island[data-tone="dark"] #mobile-menu-toggle { color: #ffffff; border-color: rgb(255 255 255 / 0.28); }
+[data-theme="light"] .site-island[data-tone="dark"] .theme-toggle.theme-toggle--compact { color: rgb(255 255 255 / 0.85); border-color: rgb(255 255 255 / 0.22); background-color: rgb(255 255 255 / 0.05); }

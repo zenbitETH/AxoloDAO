@@ -1,0 +1,412 @@
+{
+ "registro": "Ejemplares del Museo de Ajolotes Xolotlcalli (2025–2026)",
+ "fuente": "datos públicos del sitio AxoloDAO en 7757599",
+ "corte": "2026-09-14",
+ "campos": {
+  "estadoFecha": "para un ejemplar vivo, la fecha de corte del libro operativo; para una baja, la fecha de la baja",
+  "fechaPrecision": "la precisión de esa fecha, con los códigos del libro operativo",
+  "fechaIngreso": "los datos públicos no registran la fecha de ingreso",
+  "historial": "cada cambio de estado es una entrada nueva (fecha, anterior, nuevo); nada se reescribe"
+ },
+ "ejemplares": [
+  {
+   "id": "tamal-de-dulce",
+   "nombre": "Tamal de dulce",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": "AM-AXOLKALI-123-23",
+   "estado": "vivo",
+   "estadoFecha": "2026-09-14",
+   "fechaPrecision": "corte",
+   "fechaIngreso": null,
+   "historial": []
+  },
+  {
+   "id": "tascalate",
+   "nombre": "Tascalate",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": "ESP-AMSN-1434",
+   "estado": "vivo",
+   "estadoFecha": "2026-09-14",
+   "fechaPrecision": "corte",
+   "fechaIngreso": null,
+   "historial": []
+  },
+  {
+   "id": "parda",
+   "nombre": "Parda",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": "AXPIMVSAJ3/163",
+   "estado": "vivo",
+   "estadoFecha": "2026-09-14",
+   "fechaPrecision": "corte",
+   "fechaIngreso": null,
+   "historial": []
+  },
+  {
+   "id": "la-negra",
+   "nombre": "La negra",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "vivo",
+   "estadoFecha": "2026-09-14",
+   "fechaPrecision": "corte",
+   "fechaIngreso": null,
+   "historial": []
+  },
+  {
+   "id": "pardo-macho",
+   "nombre": "Pardo Macho",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": "AXPIMVSAJ3/164",
+   "estado": "vivo",
+   "estadoFecha": "2026-09-14",
+   "fechaPrecision": "corte",
+   "fechaIngreso": null,
+   "historial": []
+  },
+  {
+   "id": "martin",
+   "nombre": "Martín",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": "ESP-AMSL-1260",
+   "estado": "vivo",
+   "estadoFecha": "2026-09-14",
+   "fechaPrecision": "corte",
+   "fechaIngreso": null,
+   "historial": []
+  },
+  {
+   "id": "limon",
+   "nombre": "Limon",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": "ESP-AMSN-1262",
+   "estado": "vivo",
+   "estadoFecha": "2026-09-14",
+   "fechaPrecision": "corte",
+   "fechaIngreso": null,
+   "historial": []
+  },
+  {
+   "id": "chocorrol",
+   "nombre": "Chocorrol",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": "ESP-AMSM-1261",
+   "estado": "vivo",
+   "estadoFecha": "2026-09-14",
+   "fechaPrecision": "corte",
+   "fechaIngreso": null,
+   "historial": []
+  },
+  {
+   "id": "patito",
+   "nombre": "Patito",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "vivo",
+   "estadoFecha": "2026-09-14",
+   "fechaPrecision": "corte",
+   "fechaIngreso": null,
+   "historial": []
+  },
+  {
+   "id": "remo",
+   "nombre": "Remo",
+   "especie": "Ambystoma dumerilii",
+   "idSemarnat": "XOL-DU-NM-00-002-26",
+   "estado": "vivo",
+   "estadoFecha": "2026-09-14",
+   "fechaPrecision": "corte",
+   "fechaIngreso": null,
+   "historial": []
+  },
+  {
+   "id": "loncho",
+   "nombre": "Loncho",
+   "especie": null,
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2025-11-10",
+   "fechaPrecision": "exacta",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2025-11-10",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "moka",
+   "nombre": "Moka",
+   "especie": null,
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2025-12-12",
+   "fechaPrecision": "exacta",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2025-12-12",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "guajolote",
+   "nombre": "Guajolote",
+   "especie": null,
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2025-12-17",
+   "fechaPrecision": "exacta",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2025-12-17",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "jaffy",
+   "nombre": "Jaffy",
+   "especie": null,
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2025-12-20",
+   "fechaPrecision": "exacta",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2025-12-20",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "golden",
+   "nombre": "Golden",
+   "especie": null,
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2026-01-14",
+   "fechaPrecision": "a_mas_tardar",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2026-01-14",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "larva-de-ajolote-1",
+   "nombre": "Larva de ajolote",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2026-04-05",
+   "fechaPrecision": "ambigua_dm",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2026-04-05",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "larva-de-ajolote-2",
+   "nombre": "Larva de ajolote",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2026-04-15",
+   "fechaPrecision": "exacta",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2026-04-15",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "larva-de-ajolote-3",
+   "nombre": "Larva de ajolote",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2026-04-16",
+   "fechaPrecision": "exacta",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2026-04-16",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "leucistica",
+   "nombre": "Leucistica",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2026-05-05",
+   "fechaPrecision": "exacta",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2026-05-05",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "goldy",
+   "nombre": "Goldy",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2026-06-10",
+   "fechaPrecision": "ventana",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2026-06-10",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "panchita",
+   "nombre": "Panchita",
+   "especie": "Ambystoma andersoni",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2026-07-07",
+   "fechaPrecision": "exacta",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2026-07-07",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "andersoni-1",
+   "nombre": "Andersoni 1",
+   "especie": "Ambystoma andersoni",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2026-09-05",
+   "fechaPrecision": "invertida",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2026-09-05",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "larva-de-ajolote-4",
+   "nombre": "Larva de ajolote",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": null,
+   "fechaPrecision": "sin_fecha",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": null,
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "larva-de-ajolote-5",
+   "nombre": "Larva de ajolote",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": null,
+   "fechaPrecision": "sin_fecha",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": null,
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "larva-de-ajolote-6",
+   "nombre": "Larva de ajolote",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": null,
+   "fechaPrecision": "sin_fecha",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": null,
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "larva-de-ajolote-7",
+   "nombre": "Larva de ajolote",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": null,
+   "fechaPrecision": "sin_fecha",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": null,
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  },
+  {
+   "id": "larva-2",
+   "nombre": "Larva 2",
+   "especie": "Ambystoma mexicanum",
+   "idSemarnat": null,
+   "estado": "baja",
+   "estadoFecha": "2026-09-23",
+   "fechaPrecision": "exacta",
+   "fechaIngreso": null,
+   "historial": [
+    {
+     "fecha": "2026-09-23",
+     "anterior": "vivo",
+     "nuevo": "baja"
+    }
+   ]
+  }
+ ]
+}

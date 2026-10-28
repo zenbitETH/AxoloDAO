@@ -1,0 +1,4 @@
+#!/bin/sh
+# Refuses a push that carries any of the attested atlas files (by path or sha256), anything generated for /atlas/datos/huella/, or nothing it could check.
+# Install once per clone: git config core.hooksPath .githooks
+exec node "$(git rev-parse --show-toplevel)/Site/scripts/pre-push-huella.mjs" --hook "$@"

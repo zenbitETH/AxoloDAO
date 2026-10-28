@@ -1,0 +1,33 @@
+cve_ent,iso,abrev,nombre,nombre_corto,en_svg_sitio
+01,MX-AGU,AGU,Aguascalientes,Aguascalientes,si
+02,MX-BCN,BCN,Baja California,Baja California,si
+03,MX-BCS,BCS,Baja California Sur,Baja California Sur,si
+04,MX-CAM,CAM,Campeche,Campeche,si
+05,MX-COA,COA,Coahuila de Zaragoza,Coahuila,si
+06,MX-COL,COL,Colima,Colima,no
+07,MX-CHP,CHP,Chiapas,Chiapas,si
+08,MX-CHH,CHH,Chihuahua,Chihuahua,si
+09,MX-CMX,CMX,Ciudad de México,Ciudad de México,si
+10,MX-DUR,DUR,Durango,Durango,si
+11,MX-GUA,GUA,Guanajuato,Guanajuato,si
+12,MX-GRO,GRO,Guerrero,Guerrero,si
+13,MX-HID,HID,Hidalgo,Hidalgo,si
+14,MX-JAL,JAL,Jalisco,Jalisco,si
+15,MX-MEX,MEX,México,Estado de México,si
+16,MX-MIC,MIC,Michoacán de Ocampo,Michoacán,si
+17,MX-MOR,MOR,Morelos,Morelos,si
+18,MX-NAY,NAY,Nayarit,Nayarit,si
+19,MX-NLE,NLE,Nuevo León,Nuevo León,si
+20,MX-OAX,OAX,Oaxaca,Oaxaca,si
+21,MX-PUE,PUE,Puebla,Puebla,si
+22,MX-QUE,QUE,Querétaro,Querétaro,si
+23,MX-ROO,ROO,Quintana Roo,Quintana Roo,si
+24,MX-SLP,SLP,San Luis Potosí,San Luis Potosí,si
+25,MX-SIN,SIN,Sinaloa,Sinaloa,si
+26,MX-SON,SON,Sonora,Sonora,si
+27,MX-TAB,TAB,Tabasco,Tabasco,si
+28,MX-TAM,TAM,Tamaulipas,Tamaulipas,si
+29,MX-TLA,TLA,Tlaxcala,Tlaxcala,si
+30,MX-VER,VER,Veracruz de Ignacio de la Llave,Veracruz,si
+31,MX-YUC,YUC,Yucatán,Yucatán,si
+32,MX-ZAC,ZAC,Zacatecas,Zacatecas,si

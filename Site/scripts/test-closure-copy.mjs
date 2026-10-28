@@ -9,7 +9,7 @@ import { contarSupervivencia } from '../src/lib/survival-core.mjs';
 
 const SITE = join(dirname(fileURLToPath(import.meta.url)), '..');
 const TESORERIA = JSON.parse(readFileSync(join(SITE, 'src/data/tesoreria.json'), 'utf8'));
-// La copia de la página del registro (es, en, pt): la de maggia, recortada al mínimo por el fundador (12-oct). La columna pt sigue pendiente de lectura por una persona.
+// La copia de la página del registro (es, en, pt): la de la revisión de IP, recortada al mínimo por el fundador (12-oct). La columna pt sigue pendiente de lectura por una persona.
 const COPIA = {
  "titulo": {
   "es": "Registro de ejemplares del Museo de Ajolotes Xolotlcalli (2025–2026)",
@@ -204,9 +204,9 @@ if (process.argv.includes('--dist')) {
     const html = readFileSync(join(SITE, 'dist', pag), 'utf8');
     ok(!/id="members"/.test(html) && !/Nodos de AxoloDAO|AxoloDAO nodes|Nós da AxoloDAO/.test(html), `dist/${pag}: sin la sección «Nodos de AxoloDAO»`);
     ok(!/id="supporters"/.test(html) && !/Aliados y Guardianes|Allies and Guardians|Aliados e Guardiões/.test(html), `dist/${pag}: sin la sección «Aliados y Guardianes»`);
-    const cifra = (k) => new RegExp(`data-stat="${k}"[^>]*>\\s*([^<]+?)\\s*<`).exec(html)?.[1];
-    ok(cifra('eth') === TESORERIA.totales.ether.toFixed(2), `dist/${pag}: ETH ${cifra('eth')} es la del corte (${TESORERIA.totales.ether.toFixed(2)})`);
-    ok(cifra('stables') === Math.round(TESORERIA.totales.estables_usd).toLocaleString('en-US'), `dist/${pag}: estables ${cifra('stables')} es la del corte`);
+    // the ETH and stablecoin totals of src/data/tesoreria.json were never reviewed by the IP review and are not in the onchain snapshot: the home
+    // no longer shows them (22-oct); the treasury card links to the Safe instead
+    ok(!/data-stat="(?:eth|stables)"/.test(html), `dist/${pag}: sin las cifras de ETH y estables del corte viejo`);
   }
   console.log('\n· la tasa de la página construida es la de los datos');
   const pagina = join(SITE, 'dist/xolotlcalli/index.html');
@@ -222,7 +222,7 @@ if (process.argv.includes('--dist')) {
     ok(enPagina === esperada, `la página dice ${enPagina ?? 'nada'} y los datos ${esperada}`);
     const nota = /data-supervivencia-nota[^>]*>([^<]+)</.exec(html)?.[1] ?? '';
     ok(enPagina === '37.0 %', `la página dice exactamente 37.0 %: dice ${enPagina}`);
-    ok(nota === NOTA, 'la nota de maggia, tal cual, acompaña a la cifra');
+    ok(nota === NOTA, 'la nota de la revisión de IP, tal cual, acompaña a la cifra');
     for (const [l, pag, reg] of [['es', 'xolotlcalli/index.html', '/xolotlcalli/ajolotes/'], ['en', 'en/xolotlcalli/index.html', '/en/xolotlcalli/ajolotes/'], ['pt', 'pt/xolotlcalli/index.html', '/pt/xolotlcalli/ajolotes/']]) {
       const h = readFileSync(join(SITE, 'dist', pag), 'utf8');
       ok(/data-supervivencia[^>]*>37\.0 %</.test(h) && (/data-supervivencia-nota[^>]*>([^<]+)</.exec(h)?.[1] ?? '').replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, '&') === COPIA.nota[l], `dist/${pag}: la tasa y su nota en ${l}`);
@@ -239,7 +239,7 @@ ok(!/"de"\s*:|"from"\s*:/.test(readFileSync(join(SITE, 'src/data/tesoreria.json'
 const impacto = readFileSync(join(SITE, 'src/i18n/strings.ts'), 'utf8');
 ok(!/'impact\.stat\.(eth|stables)\.value'/.test(impacto), 'las cifras de la tesorería no están escritas a mano en strings.ts');
 
-console.log('\n7 · el registro de ejemplares: la copia de maggia, sin «custodia» en presente ni un estado en presente');
+console.log('\n7 · el registro de ejemplares: la copia de la revisión de IP, sin «custodia» en presente ni un estado en presente');
 const tabla = (archivo) => {
   const texto = readFileSync(join(SITE, archivo), 'utf8');
   const i = { es: texto.indexOf('  es: {'), en: texto.indexOf('  en: {'), pt: texto.indexOf('  pt: {') };

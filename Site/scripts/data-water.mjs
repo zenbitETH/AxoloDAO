@@ -594,7 +594,7 @@ for (const c of candidates) {
 allMeasurements.sort((a, b) => (a.date + (a.time ?? '')).localeCompare(b.date + (b.time ?? '')));
 
 // Los archivos públicos no llevan texto libre: la nota de la hoja puede hablar de la salud de un ejemplar y se queda en la fuente
-// privada (veredicto de maggia IP, 7-oct). Sólo la prueba de las filas sospechosas pide conservarla, para rotular las filas de su
+// privada (veredicto de la revisión de IP, 7-oct). Sólo la prueba de las filas sospechosas pide conservarla, para rotular las filas de su
 // libro de muestra con ella; ningún archivo del sitio se escribe con esa variable.
 const KEEP_NOTES = process.env.DATA_WATER_KEEP_NOTES_FOR_TESTS === '1';
 const publicRow = (m) => {

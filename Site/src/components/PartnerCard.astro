@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { type Locale, t } from '@/i18n/strings';
+import NuevaPestana from '@components/NuevaPestana.astro';
 
 interface Props {
   partner: CollectionEntry<'partners'>['data'];
@@ -90,7 +91,7 @@ const links = [
               isGov ? 'border-rosa/40 bg-rosa/10 text-rosa hover:bg-rosa/20' : 'border-teal/40 bg-teal/10 text-teal hover:bg-teal/20',
             ]}
           >
-            {l.label}
+            {l.label}<NuevaPestana locale={locale} />
           </a>
         ))}
       </div>

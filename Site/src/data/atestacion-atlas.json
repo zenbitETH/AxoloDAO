@@ -1,0 +1,53 @@
+{
+ "lectura": {
+  "resultado": "coincide",
+  "peticiones": 3
+ },
+ "texto": "con su huella en Sepolia",
+ "uid": "0x497a7aad54ac9b20f320bbce2afea3fb9385d3fc7d4cdbf7e92ce416b7825e4a",
+ "bloque": 12009718,
+ "tx": "0xb93f852f129df9b4052e0b0f16c3693aafff860f1273263a2031c4cb383b6d8a",
+ "red": "sepolia",
+ "esquema": "0xbe8ed46425daa61f328b568a751fd44e31e37f2a098b65037dac1ae8d90b84af",
+ "esquemaNombre": "OpenDatasetSnapshot@1",
+ "contentSha256": "0x14893f64ed9175b48f404704833901aff3b33c0b657729f67afa33af1bad46b5",
+ "contentSha256Calculado": "0x14893f64ed9175b48f404704833901aff3b33c0b657729f67afa33af1bad46b5",
+ "archivos": 130,
+ "archivosAtestados": 130,
+ "cubre": [
+  {
+   "id": "4216080f8b97-admin1",
+   "datos": "load:species-atlas",
+   "manifestSha256": "0x0b0fe44376e0aa4221f0e83cca9bca6127451110cb04726e13961a49b9894d76"
+  },
+  {
+   "id": "5e8591b04e51",
+   "datos": "load:layers, load:species-states",
+   "manifestSha256": "0xf8af5d2d576b651b14bdebbf083849af56e0ed291e81eb6b8d3e84c85422d134"
+  },
+  {
+   "id": "735c7b3021a1-perfiles",
+   "datos": "load:species-atlas",
+   "manifestSha256": "0xd1983e54513f7d2a53b95d806155c62ca404c5bf43fad5d9c37a950f2bb57041"
+  },
+  {
+   "id": "944f8dbc53b0-genero",
+   "datos": "load:species-atlas, load:taxa",
+   "manifestSha256": "0x47fbf7c23a53ac2e00a0cc1274e19fda700dea7f948ddd86f9dd253795634c05"
+  },
+  {
+   "id": "a1d128c4bf4c-localidades",
+   "datos": "load:species-atlas",
+   "manifestSha256": "0xffb23808783d11adcbe46db4b02f5ba1cb1674469d5baf0237ff4e75a46facd7"
+  },
+  {
+   "id": "a1d128c4bf4c-morfometria",
+   "datos": "load:species-atlas",
+   "manifestSha256": "0xdf29225167b221fb4edf18a15748b000ecf2bf87dec06138dcee6594bd3768d4"
+  }
+ ],
+ "noCubiertos": [],
+ "cargadosFuente": "registro de cargas del build del stand; log del proceso que cargó el hub; el hub no lo sirve ni lo firma: dice qué se cargó, no qué guarda el hub",
+ "leidoEl": "2026-10-28T04:28:33.638Z",
+ "easscan": "https://sepolia.easscan.org/attestation/view/0x497a7aad54ac9b20f320bbce2afea3fb9385d3fc7d4cdbf7e92ce416b7825e4a"
+}

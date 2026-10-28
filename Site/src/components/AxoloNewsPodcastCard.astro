@@ -1,5 +1,6 @@
 ---
 import { type Locale, t } from '@/i18n/strings';
+import NuevaPestana from '@components/NuevaPestana.astro';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -48,7 +49,7 @@ const THUMB = `https://i.ytimg.com/vi/${PLAYLIST_ID}/maxresdefault.jpg`;
       target="_blank"
       rel="noopener noreferrer"
       class="text-sm font-semibold text-teal hover:underline"
-    >{t(locale, 'news.podcast.cta')} →</a>
+    >{t(locale, 'news.podcast.cta')} →<NuevaPestana locale={locale} /></a>
   </footer>
 </article>
 

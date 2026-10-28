@@ -1,0 +1,103 @@
+{
+ "tipo_recinto": {
+  "museo": {
+   "es": "Museo",
+   "en": "Museum",
+   "pt": "Museu"
+  },
+  "comunitario": {
+   "es": "Proyecto comunitario",
+   "en": "Community project",
+   "pt": "Projeto comunitário"
+  },
+  "centro-investigacion": {
+   "es": "Centro de investigación",
+   "en": "Research center",
+   "pt": "Centro de pesquisa"
+  },
+  "ajolotario": {
+   "es": "Ajolotario",
+   "en": "Axolotl center",
+   "pt": "Centro de axolotes"
+  },
+  "criadero": {
+   "es": "Criadero",
+   "en": "Breeding facility",
+   "pt": "Criadouro"
+  },
+  "zoologico": {
+   "es": "Zoológico",
+   "en": "Zoo",
+   "pt": "Zoológico"
+  },
+  "acuario": {
+   "es": "Acuario",
+   "en": "Aquarium",
+   "pt": "Aquário"
+  },
+  "otro": {
+   "es": "Otro",
+   "en": "Other",
+   "pt": "Outro"
+  },
+  "refugio-in-situ": {
+   "es": "Refugio en el hábitat",
+   "en": "Habitat refuge",
+   "pt": "Refúgio no habitat"
+  },
+  "universidad": {
+   "es": "Universidad",
+   "en": "University",
+   "pt": "Universidade"
+  },
+  "santuario": {
+   "es": "Santuario",
+   "en": "Sanctuary",
+   "pt": "Santuário"
+  }
+ },
+ "tipo_legal": {
+  "uma-intensiva": {
+   "es": "UMA intensiva",
+   "en": "Intensive UMA",
+   "pt": "UMA intensiva"
+  },
+  "uma-sin-modalidad": {
+   "es": "UMA, modalidad sin dato",
+   "en": "UMA, type not stated",
+   "pt": "UMA, modalidade não informada"
+  },
+  "pimvs": {
+   "es": "PIMVS",
+   "en": "PIMVS",
+   "pt": "PIMVS"
+  },
+  "desconocido": {
+   "es": "Sin dato de figura legal",
+   "en": "No data on legal status",
+   "pt": "Sem dados sobre a figura legal"
+  },
+  "uma-extensiva": {
+   "es": "UMA extensiva",
+   "en": "Extensive UMA",
+   "pt": "UMA extensiva"
+  },
+  "ninguna-declarada": {
+   "es": "Ninguna declarada",
+   "en": "None declared",
+   "pt": "Nenhuma declarada"
+  }
+ },
+ "siglas": {
+  "UMA": {
+   "es": "UMA: Unidad de Manejo para la Conservación de la Vida Silvestre",
+   "en": "UMA: wildlife management unit (Mexico)",
+   "pt": "UMA: unidade de manejo de vida silvestre (México)"
+  },
+  "PIMVS": {
+   "es": "PIMVS: predio o instalación que maneja vida silvestre fuera de su hábitat",
+   "en": "PIMVS: facility managing wildlife outside its habitat (Mexico)",
+   "pt": "PIMVS: instalação que maneja vida silvestre fora do habitat (México)"
+  }
+ }
+}

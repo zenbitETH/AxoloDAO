@@ -253,9 +253,9 @@ export const CONCEPTS: Concept[] = [
       pt: `Nós onchain com identidade ENS sob axolodao.eth.`,
     },
     body: {
-      es: `AxoloDAO se organiza como un conjunto de nodos onchain, cada uno con identidad propia mediante un subnombre ENS bajo axolodao.eth. Así, treasury.axolodao.eth es la tesorería, zenbit.axolodao.eth la infraestructura digital y xolotlcalli.axolodao.eth la conservación. Los subnombres ENS dan a cada nodo y a cada participante una identidad verificable y legible en toda la red.`,
-      en: `AxoloDAO is organized as a set of onchain nodes, each with its own identity through an ENS subname under axolodao.eth. So treasury.axolodao.eth is the treasury, zenbit.axolodao.eth the digital infrastructure, and xolotlcalli.axolodao.eth conservation. ENS subnames give each node and member a verifiable, human-readable identity across the network.`,
-      pt: `A AxoloDAO se organiza como um conjunto de nós onchain, cada um com identidade própria por meio de um subnome ENS sob axolodao.eth. Assim, treasury.axolodao.eth é a tesouraria, zenbit.axolodao.eth a infraestrutura digital e xolotlcalli.axolodao.eth a conservação. Os subnomes ENS dão a cada nó e participante uma identidade verificável e legível em toda a rede.`,
+      es: `AxoloDAO se organiza como un conjunto de nodos onchain, cada uno con identidad propia mediante un subnombre ENS bajo axolodao.eth. Así, treasury.axolodao.eth es la tesorería. Los subnombres ENS dan a cada nodo y a cada participante una identidad verificable y legible en toda la red.`,
+      en: `AxoloDAO is organized as a set of onchain nodes, each with its own identity through an ENS subname under axolodao.eth. So treasury.axolodao.eth is the treasury. ENS subnames give each node and member a verifiable, human-readable identity across the network.`,
+      pt: `A AxoloDAO se organiza como um conjunto de nós onchain, cada um com identidade própria por meio de um subnome ENS sob axolodao.eth. Assim, treasury.axolodao.eth é a tesouraria. Os subnomes ENS dão a cada nó e participante uma identidade verificável e legível em toda a rede.`,
     },
     refs: ['ENS'],
   },
