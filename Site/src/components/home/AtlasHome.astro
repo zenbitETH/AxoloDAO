@@ -20,7 +20,7 @@ const atlasHref = localePath(locale, 'atlas/');
 <section id="atlas" class="scroll-mt-20 py-20" data-home-atlas>
   <div class="container-wide grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start">
     <div>
-      <h2 class="font-display text-4xl font-bold sm:text-5xl">{t(locale, 'home.datos.atlas.titulo')}</h2>
+      <h2 class="font-display text-4xl font-bold sm:text-5xl"><a href={atlasHref} class="underline-offset-8 decoration-2 hover:text-teal hover:underline focus-visible:underline" data-home-atlas-cta>{t(locale, 'home.datos.atlas.titulo')}</a></h2>
       <p class="cifra mt-6 font-display text-[6.5rem] font-extrabold leading-[0.85] sm:text-[8rem]" data-cifra="especies">{cifra('especies', locale)}</p>
       <p class="mt-3 text-base font-semibold">{t(locale, 'impact.stat.species.label')}</p>
       <p class="mt-1 text-sm text-white/65" set:html={conTaxones(t(locale, 'impact.stat.species.sub'))} />
@@ -35,7 +35,6 @@ const atlasHref = localePath(locale, 'atlas/');
         ))}
       </ul>
 
-      <a href={atlasHref} class="btn-primary mt-10 inline-flex" data-home-atlas-cta>{t(locale, 'home.datos.atlas.cta')}</a>
     </div>
 
     <ul class="rasgos grid gap-x-10 sm:grid-cols-2">

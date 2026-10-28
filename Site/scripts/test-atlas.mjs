@@ -926,7 +926,7 @@ if (args.has('--dist')) {
     const datos = ARCHIVOS.map((a) => { try { return JSON.parse(readFileSync(join(dist, 'atlas/datos', a), 'utf8')); } catch { return null; } });
     ok(datos.every((d) => d && ['hub', 'archivo'].includes(d.fuente)), `the build carries its atlas data snapshot, each file saying where it came from (${datos.map((d, n) => `${ARCHIVOS[n]}: ${d?.fuente}`).join(', ')})`);
     ok(cierre(jsDe(atlas)).some((f) => readFileSync(join(dist, f), 'utf8').includes('/atlas/datos/')), 'the atlas island reads the snapshot, not the committed files directly');
-    // the home's atlas section (founder, 22-oct) is the genus in figures with one way into the atlas: its «Atlas» button, no map of its own
+    // the home's atlas section (founder, 22-oct) is the genus in figures with one way into the atlas: its title «El atlas» is the link (founder, 27-oct: no «Atlas» button), no map of its own
     for (const [p, base] of [['index.html', '/atlas/'], ['en/index.html', '/en/atlas/'], ['pt/index.html', '/pt/atlas/']]) {
       const home = readFileSync(join(dist, p), 'utf8');
       const enlaces = [...home.matchAll(/<a [^>]*href="([^"]*)"[^>]*data-home-atlas-cta/g)].map((m) => m[1]);
