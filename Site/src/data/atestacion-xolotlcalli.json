@@ -1,0 +1,31 @@
+{
+ "lectura": {
+  "resultado": "coincide",
+  "peticiones": 3
+ },
+ "texto": "con su huella en Sepolia",
+ "uid": "0xafa58ee3d7c8901af7cc0071a21b5b66548570514c085c94fda43f996e91fb63",
+ "bloque": 11974891,
+ "tx": "0xee692f731828c649f8ee1952fbc91337f4adac8bf4046ba3fd8e30b33790a6c2",
+ "red": "sepolia",
+ "esquema": "0xbe8ed46425daa61f328b568a751fd44e31e37f2a098b65037dac1ae8d90b84af",
+ "esquemaNombre": "OpenDatasetSnapshot@1",
+ "contentSha256": "0xd72593aa76b99429414e3235315761d1123c01943aa843c0babdba474168bafa",
+ "contentSha256Calculado": "0xd72593aa76b99429414e3235315761d1123c01943aa843c0babdba474168bafa",
+ "archivos": 7,
+ "archivosAtestados": 7,
+ "cubre": [
+  {
+   "id": "7757599-xolotlcalli",
+   "datos": "xolotlcalli",
+   "manifestSha256": "0x6c05a1f55421f0308f814c9bc25dc2554bfc82a8baaa23bb4d844a3236375988"
+  }
+ ],
+ "noCubiertos": [],
+ "cargadosFuente": "los archivos públicos de Xolotlcalli que sirve el sitio en /xolotlcalli/datos/huella/",
+ "atestador": "0xeCB4C1245665e8A1F43826355aaB0Dd6bF336e05",
+ "atestadorNombre": "Zenbit (zenbit.axolodao.eth)",
+ "retrievedAt": 1792734384,
+ "leidoEl": "2026-10-23T06:46:38.974Z",
+ "easscan": "https://sepolia.easscan.org/attestation/view/0xafa58ee3d7c8901af7cc0071a21b5b66548570514c085c94fda43f996e91fb63"
+}

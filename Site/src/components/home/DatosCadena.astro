@@ -1,0 +1,113 @@
+---
+// The Pilot's verifiable record on Ethereum Sepolia: the clip confirmation (inventario-cadena-xolotlcalli.json), and the record's weekly anchors
+// and fingerprint as the chain read them (src/data/anclas-xolotlcalli.json, src/data/atestacion-xolotlcalli.json, both written by a reader of the
+// chain). Each panel links to its transactions. What is not sent yet (the weekly metrics) stays a dashed «later» line, never a claim; the daily
+// records themselves stay offchain.
+import { type Locale, t } from '@/i18n/strings';
+import { CIFRAS, cadena, corto, llenar } from '@/lib/inventarioHome';
+import NuevaPestana from '@components/NuevaPestana.astro';
+import anclas from '@/data/anclas-xolotlcalli.json';
+import huellaRegistro from '@/data/atestacion-xolotlcalli.json';
+import { firmaVigente } from '@/lib/firmasRetiradas.mjs';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const hoy = cadena.enSepoliaHoy;
+const fecha = new Intl.DateTimeFormat(locale === 'pt' ? 'pt-BR' : locale === 'en' ? 'en-US' : 'es-MX', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+  .format(new Date(hoy.atestacion.hora.replace(' UTC', 'Z').replace(' ', 'T')));
+// the «today» caption is written in the singular: a second confirmation needs its plural before this build can show it
+if (CIFRAS.clips !== 1) throw new Error(`[datos] el inventario trae ${CIFRAS.clips} confirmaciones en Sepolia y el texto del panel está en singular: hace falta su plural`);
+const hoyTexto = llenar(t(locale, 'home.datos.cadena.hoy.texto'), locale);
+const planTexto = llenar(t(locale, 'home.datos.cadena.plan.texto'), locale);
+const items = t(locale, 'home.datos.cadena.plan.items').split(' · ');
+const semanas = cadena.seAnclara.semanas.porSemana;
+const maximo = Math.max(...semanas.map((s) => s.registrosPublicos));
+// the anchors and the record's fingerprint are shown only while their signer's key is current (lib/firmasRetiradas.mjs); otherwise the panel says they wait to be signed again
+const firmadas = firmaVigente(anclas.atestador) && firmaVigente(huellaRegistro.atestador);
+// the approved line names 48 weekly anchors: a chain read with another count needs its own wording before this build can show it
+if (firmadas && (anclas.cuenta !== 48 || anclas.anclas.length !== 48 || huellaRegistro?.lectura?.resultado !== 'coincide')) throw new Error('[datos] las anclas o la huella del registro no son las que nombra el texto aprobado (48 anclas, lectura «coincide»)');
+const ancladas = new Set(firmadas ? anclas.anclas.map((a) => a.semana) : []);
+const conRegistro = semanas.filter((s) => s.registrosPublicos > 0).length;
+const fmt = (k: string, n: Record<string, string | number>) => Object.entries(n).reduce((a, [x, v]) => a.replace(`{${x}}`, String(v)), t(locale, k));
+const tx = (h: string) => `https://sepolia.etherscan.io/tx/${h}`;
+---
+
+<section id="datos" class="scroll-mt-20 py-20" data-home-datos>
+  <div class="container-wide">
+    <h2 class="font-display text-4xl font-bold sm:text-5xl">{t(locale, 'home.datos.titulo')}</h2>
+
+    <div class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+      <article class="panel panel--hoy rounded-3xl p-6 sm:p-8" data-estado="hoy">
+        <h3 class="flex items-center gap-3 font-display text-2xl font-bold">
+          <span class="vivo" aria-hidden="true"></span>{t(locale, 'home.datos.cadena.hoy.titulo')}
+        </h3>
+        {hoyTexto && <p class="mt-4 text-sm leading-relaxed text-white/85 sm:text-base">{hoyTexto}</p>}
+        <dl class="huellas mt-6 grid grid-cols-[auto_minmax(0,1fr)] gap-x-4 gap-y-2 font-mono text-xs">
+          <dt class="text-white/70">ClipConfirmation</dt>
+          <dd><a href={hoy.esquema.enlaces.easscan} target="_blank" rel="noopener noreferrer" class="enlace">{corto(hoy.esquema.uid)}<NuevaPestana locale={locale} /></a></dd>
+          <dt class="text-white/70"><span class="sr-only">{t(locale, 'home.datos.cadena.hoy.clip')}</span> {hoy.atestacion.clip}</dt>
+          <dd><a href={hoy.atestacion.enlaces.easscan} target="_blank" rel="noopener noreferrer" class="enlace">{corto(hoy.atestacion.uidEnCadena)}<NuevaPestana locale={locale} /></a> <span class="text-white/70">· {fecha}</span></dd>
+        </dl>
+        <a href={hoy.atestacion.enlaces.easscan} target="_blank" rel="noopener noreferrer" class="btn-secondary btn-secondary--compact mt-6 inline-flex" data-home-atestacion>
+          {t(locale, 'home.datos.cadena.hoy.enlace')}<NuevaPestana locale={locale} />
+        </a>
+      </article>
+
+      <article class="panel panel--plan rounded-3xl p-6 sm:p-8" data-estado="plan">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h3 class="font-display text-2xl font-bold">{t(locale, 'home.datos.cadena.plan.titulo')}</h3>
+          <span class="badge-teal" data-home-plan-estado>{t(locale, firmadas ? 'home.datos.cadena.plan.estado' : 'home.datos.cadena.plan.estadoPendiente')}</span>
+        </div>
+        <p class="mt-4 text-sm font-semibold leading-relaxed sm:text-base" data-home-anclas-linea>{t(locale, firmadas ? 'home.datos.cadena.anclas.linea' : 'home.datos.cadena.anclas.lineaPendiente')}</p>
+        {planTexto && <p class="mt-3 text-sm leading-relaxed text-white/80 sm:text-base">{planTexto}</p>}
+        {firmadas && <dl class="huellas mt-5 grid grid-cols-[auto_minmax(0,1fr)] gap-x-4 gap-y-2 font-mono text-xs" data-home-anclas>
+          {anclas.txs.map((h, i) => (
+            <>
+              <dt class="text-white/70">WeekAnchor@2 · {fmt('home.datos.cadena.anclas.lote', { n: i + 1 })}</dt>
+              <dd><a href={tx(h)} target="_blank" rel="noopener noreferrer" class="enlace">{corto(h)}<NuevaPestana locale={locale} /></a> <span class="text-white/70">· {fmt('home.datos.cadena.anclas.bloque', { n: anclas.bloques[i] })}</span></dd>
+            </>
+          ))}
+          <dt class="text-white/70">OpenDatasetSnapshot@1</dt>
+          <dd><a href={huellaRegistro.easscan} target="_blank" rel="noopener noreferrer" class="enlace">{corto(huellaRegistro.uid)}<NuevaPestana locale={locale} /></a> <span class="text-white/70">· {fmt('home.datos.cadena.anclas.bloque', { n: huellaRegistro.bloque })}</span></dd>
+        </dl>}
+        <!-- the strip draws the weeks the caption above already counts in words: decoration for a screen reader -->
+        <ol class="tira mt-6" style={`--semanas:${semanas.length}`} aria-hidden="true">
+          {semanas.map((s) => (
+            <li
+              class:list={['semana', s.registrosPublicos > 0 && 'semana--con', ancladas.has(s.semana) && 'semana--anclada']}
+              style={`--h:${s.registrosPublicos > 0 ? 0.25 + (0.75 * s.registrosPublicos) / maximo : 0.12}`}
+              title={`${s.semana} · ${s.registrosPublicos}`}
+            ></li>
+          ))}
+        </ol>
+        <p class="mt-2 flex justify-between font-mono text-[0.7rem] text-white/75"><span>{semanas[0].semana}</span><span>{semanas[semanas.length - 1].semana}</span></p>
+        <p class="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-xs" data-home-anclas-cuentas>
+          {firmadas && <span><i class="clave clave--anclada" aria-hidden="true"></i>{fmt('home.datos.cadena.anclas.ancladas', { n: ancladas.size })}</span>}
+          <span><i class="clave clave--con" aria-hidden="true"></i>{fmt('home.datos.cadena.anclas.conRegistro', { n: conRegistro, de: semanas.length })}</span>
+        </p>
+        <a href="/xolotlcalli/datos/huella/" class="btn-secondary btn-secondary--compact mt-5 inline-flex" data-home-huella-registro>{t(locale, 'home.datos.cadena.anclas.verHuella')}</a>
+        <ul class="mt-6 flex flex-wrap gap-2">
+          {items.map((i) => <li class="pendiente rounded-full px-3 py-1 text-xs">{i}</li>)}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .panel--hoy { border: 1px solid rgba(0, 156, 156, 0.55); background: rgba(0, 156, 156, 0.07); }
+  .panel--plan { border: 1px solid rgba(0, 156, 156, 0.55); background: rgba(0, 156, 156, 0.05); }
+  .vivo { width: 0.65rem; height: 0.65rem; border-radius: 999px; background: #009c9c; box-shadow: 0 0 0 4px rgba(0, 156, 156, 0.2); }
+  .enlace { color: var(--texto-teal); text-decoration: underline; text-underline-offset: 3px; }
+  .tira { display: grid; grid-template-columns: repeat(var(--semanas), minmax(0, 1fr)); gap: 3px; height: 4.5rem; align-items: end; }
+  .semana { height: 100%; border: 1px dashed rgba(var(--text-rgb), 0.22); border-radius: 3px; }
+  .semana { height: calc(var(--h, 1) * 100%); }
+  .semana--con { border-style: solid; border-color: rgba(212, 146, 95, 0.75); background: rgba(212, 146, 95, 0.28); }
+  .semana--anclada { border-style: solid; border-color: rgba(0, 156, 156, 0.9); background: rgba(0, 156, 156, 0.35); }
+  .semana--anclada.semana--con { background: linear-gradient(to top, rgba(0, 156, 156, 0.55), rgba(212, 146, 95, 0.4)); }
+  .clave { display: inline-block; width: 0.7rem; height: 0.7rem; margin-right: 0.4rem; border-radius: 2px; vertical-align: -1px; }
+  .clave--anclada { background: rgba(0, 156, 156, 0.55); border: 1px solid rgba(0, 156, 156, 0.9); }
+  .clave--con { background: rgba(212, 146, 95, 0.35); border: 1px solid rgba(212, 146, 95, 0.75); }
+  .pendiente { border: 1px dashed rgba(212, 146, 95, 0.6); color: rgba(var(--text-rgb), 0.82); }
+  @media (max-width: 480px) { .tira { gap: 1px; height: 3.5rem; } }
+</style>

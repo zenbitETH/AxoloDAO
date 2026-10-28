@@ -1,0 +1,11 @@
+---
+import { type Locale } from '@/i18n/strings';
+interface Props { locale: Locale; date: string; live?: boolean }
+const { locale, date, live = false } = Astro.props;
+const label = { es: 'datos al', en: 'data as of', pt: 'dados em' }[locale];
+const fecha = new Intl.DateTimeFormat({ es: 'es-MX', en: 'en-US', pt: 'pt-BR' }[locale], { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
+---
+<span class="freshness-chip inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1 font-mono text-xs text-white/70" data-freshness={date} data-live={live ? 'true' : 'false'}>
+  <span aria-hidden="true" class={`h-1.5 w-1.5 rounded-full ${live ? 'bg-teal' : 'bg-ocre'}`}></span>
+  {label} <time datetime={date}>{fecha}</time>
+</span>

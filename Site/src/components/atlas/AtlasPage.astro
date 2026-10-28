@@ -1,0 +1,50 @@
+---
+import { readFileSync } from 'node:fs';
+import { getCollection } from 'astro:content';
+import { join } from 'node:path';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Atlas from './Atlas';
+import FreshnessChip from '@components/FreshnessChip.astro';
+import { type Locale, localePath, t } from '@/i18n/strings';
+import { atlasText } from '@/lib/atlasText';
+
+interface Props { locale: Locale; vista?: 'atlas' | 'especies' }
+const { locale, vista = 'atlas' } = Astro.props;
+const text = atlasText[locale];
+// /especies is the atlas on its species view: the index open, and the page named for the species
+const titulo = vista === 'especies' ? t(locale, 'species.title') : text.title;
+
+// The date of the data this build carries: the latest `retrievedAt` among the layer cards.
+const manifest = JSON.parse(readFileSync(join(process.cwd(), 'public/atlas/layers/manifest.json'), 'utf8'));
+const builtAt = manifest.capas.map((c: { retrievedAt?: string }) => c.retrievedAt ?? '').sort().pop() as string;
+const hubUrl = (import.meta.env.PUBLIC_HUB_URL ?? '') as string;
+const ncFlag = import.meta.env.PUBLIC_ATLAS_NC === '1';
+const pollMs = Number(import.meta.env.PUBLIC_ATLAS_POLL_MS ?? 30000) || 30000;
+// What the site itself knows of the species it has a page for: common names, accent colour. The snapshot carries the rest.
+const sitio = Object.fromEntries((await getCollection('species')).map((s) => [s.data.slug, { commonNames: s.data.commonNames, accentColor: s.data.accentColor, description: s.data.description, feeding: s.data.feeding }]));
+const speciesPathBase = localePath(locale, 'especies/');
+---
+
+<BaseLayout locale={locale} title={vista === 'especies' ? t(locale, 'species.title') : text.metaTitle} appendSiteName description={vista === 'especies' ? undefined : text.metaDescription}>
+  <section aria-labelledby="atlas-h1">
+    <h1 id="atlas-h1" class="sr-only">{titulo}</h1>
+    <Atlas client:only="preact" locale={locale} hubUrl={hubUrl} ncFlag={ncFlag} builtAt={builtAt} pollMs={pollMs} sitio={sitio} speciesPathBase={speciesPathBase} vista={vista} />
+    <div class="container-wide pb-24">
+      <p class="max-w-3xl text-white/75">{text.subtitle}</p>
+      <p class="mt-4"><FreshnessChip locale={locale} date={builtAt} /></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  /* Popups are HTML (the map has no glyphs): a dark card, readable in both themes. The doubled class beats the library's own sheet, which loads later. */
+  /* A popup stays above the legend in the map's corner. */
+  .maplibregl-popup.maplibregl-popup { z-index: 2; }
+  .maplibregl-popup.maplibregl-popup .maplibregl-popup-content { background: #0e4555; color: #ffffff; border: 1px solid rgba(255,255,255,0.18); border-radius: 0.75rem; padding: 0.75rem 2rem 0.75rem 0.9rem; font-family: Montserrat, sans-serif; font-size: 0.85rem; line-height: 1.35; box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+  .maplibregl-popup.maplibregl-popup .maplibregl-popup-content ul { margin: 0.35rem 0 0; padding-left: 1.1rem; list-style: disc; }
+  .maplibregl-popup.maplibregl-popup .maplibregl-popup-close-button { color: #ffffff; font-size: 1.2rem; padding: 0.1rem 0.45rem; }
+  .maplibregl-popup.maplibregl-popup-anchor-top .maplibregl-popup-tip, .maplibregl-popup.maplibregl-popup-anchor-top-left .maplibregl-popup-tip, .maplibregl-popup.maplibregl-popup-anchor-top-right .maplibregl-popup-tip { border-bottom-color: #0e4555; }
+  .maplibregl-popup.maplibregl-popup-anchor-bottom .maplibregl-popup-tip, .maplibregl-popup.maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip, .maplibregl-popup.maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip { border-top-color: #0e4555; }
+  .maplibregl-popup.maplibregl-popup-anchor-left .maplibregl-popup-tip { border-right-color: #0e4555; }
+  .maplibregl-popup.maplibregl-popup-anchor-right .maplibregl-popup-tip { border-left-color: #0e4555; }
+</style>

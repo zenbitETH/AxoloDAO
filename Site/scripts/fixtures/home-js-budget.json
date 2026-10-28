@@ -1,0 +1,4 @@
+{
+  "bytes": 62000,
+  "nota": "JS que carga la página de inicio (sus scripts, sus islas y lo que importan de forma estática): 59985 bytes medidos con el atlas ya integrado (el cambio sólo añade un enlace en HTML). maplibre-gl sólo puede estar en el trozo de /atlas, que se carga con import() dinámico."
+}

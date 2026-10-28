@@ -33,6 +33,8 @@ const fallos = revisarFechas({
   cierre: leer('src/data/closure.json').closedOn,
   replay,
 });
+// a planted failure, for the test that proves every build runs this check (scripts/test-gancho-fechas.mjs); it can only add a failure, never remove one
+if (process.env.CHECK_FECHAS_PLANTADA === '1') fallos.push('plantada: CHECK_FECHAS_PLANTADA=1 (una fecha mala de prueba, para probar que la construcción corre esta revisión)');
 console.log(`check-fechas: sitio y forense${replay ? ' y replay' : ' (replay: sin paquete en esta máquina, no se compara)'}`);
 for (const f of fallos) console.log(`  ✗ ${f}`);
 if (fallos.length) process.exit(1);

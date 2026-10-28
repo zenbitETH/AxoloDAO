@@ -1,0 +1,112 @@
+---
+// The reference case: the Pilot (2025–2026), with its button to its page. The museum's name is the button's label and never a heading;
+// the closing line is the closure banner's copy. Each figure carries its own label (the IP review's wording): the pilot's metrics from its
+// public card (atlas/real/xolotlcalli-ficha.json, which build:sitio writes from its pinned commit) and the inventories, in gold; the AxoloDAO
+// treasury from the public chain read (atlas/real/xolotlcalli-cadena.json), in teal, never as the museum's funds. A build without the pilot's
+// public files (not build:sitio) shows the inventory figures only. No open-licence label on anything from the Pilot.
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { type Locale, t } from '@/i18n/strings';
+import { cifra } from '@/lib/inventarioHome';
+import anclas from '@/data/anclas-xolotlcalli.json';
+import { firmaVigente } from '@/lib/firmasRetiradas.mjs';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const leer = (n: string) => { const f = join(process.cwd(), 'public/atlas/real', n); return existsSync(f) ? JSON.parse(readFileSync(f, 'utf8')) : null; };
+const ficha = leer('xolotlcalli-ficha.json');
+const cadena = leer('xolotlcalli-cadena.json');
+const fmt = (k: string, n: Record<string, string | number> = {}) => Object.entries(n).reduce((a, [x, v]) => a.replace(`{${x}}`, String(v)), t(locale, k));
+const MESES: Record<string, string[]> = {
+  es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+  pt: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+};
+/** A date as the card writes it: «30-sep-2026» (es, pt), «Sep 30, 2026» (en). */
+const fecha = (iso: string) => {
+  const [a, m, d] = iso.split('-').map(Number);
+  return locale === 'en' ? new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(new Date(Date.UTC(a, m - 1, d))) : `${d}-${MESES[locale][m - 1]}-${a}`;
+};
+const decimal = (n: number, d: number) => new Intl.NumberFormat(locale === 'pt' ? 'pt-BR' : 'en-US', { minimumFractionDigits: d, maximumFractionDigits: d }).format(n);
+
+// the treasury: every line of the Safe's movements, summed by asset and direction (the chain's own amounts; nothing valued)
+const tesoreria = cadena?.filas?.find((f: { id: string }) => f.id === 'tesoreria') ?? null;
+const sumas = { ETH: { entrada: 0, salida: 0 }, estables: { entrada: 0, salida: 0 } };
+let enProtocolo: string | null = null;
+for (const d of tesoreria?.detalle ?? []) {
+  if (d.sentido === 'entrada' || d.sentido === 'salida') {
+    for (const [, n, u] of String(d.v).matchAll(/(\d[\d,]*(?:\.\d+)?) (ETH|USDT|USDC)\b/g)) {
+      const k = u === 'ETH' ? 'ETH' : 'estables';
+      sumas[k][d.sentido as 'entrada' | 'salida'] += Number(n.replace(/,/g, ''));
+    }
+  } else if (/^Moonwell WETH · posición remanente/.test(d.k)) {
+    const m = /(\d[\d.]*) mWETH/.exec(String(d.v));
+    if (m) enProtocolo = `${decimal(Number(m[1]), 4)} mWETH`;
+  }
+}
+const irc = ficha?.irc_v1 ?? null;
+const sup = ficha?.supervivencia ?? null;
+---
+
+<section id="piloto" class="scroll-mt-20 py-12" data-home-piloto>
+  <div class="container-wide">
+    <div class="caso rounded-3xl p-6 sm:p-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <a href={t(locale, 'xolotlcalli.path')} class="btn-secondary inline-flex" data-home-piloto-cta>{t(locale, 'hero.cta.xolotlcalli')}</a>
+        <p class="text-sm text-white/70 sm:text-base">{t(locale, 'closure.banner.text')}</p>
+      </div>
+
+      <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-home-piloto-cifras>
+        {irc && (
+          <div class="cifra" data-piloto="irc">
+            <p class="valor">IRC v1 · {irc.valor}</p>
+            <p class="pie">{fmt('home.piloto.ircPie', { fecha: fecha(irc.calculadoEl.valor) })}</p>
+          </div>
+        )}
+        {sup && (
+          <div class="cifra" data-piloto="supervivencia">
+            <p class="valor">{decimal(sup.valor, 1)} %</p>
+            <p class="pie">{fmt('home.piloto.supPie', { desde: fecha(sup.periodo.desde), hasta: fecha(sup.periodo.hasta) })}</p>
+          </div>
+        )}
+        <div class="cifra" data-piloto="dias">
+          <p class="valor">{cifra('dias', locale)}</p>
+          <p class="pie">{t(locale, 'home.piloto.dias')}</p>
+        </div>
+        <div class="cifra" data-piloto="semanas">
+          <p class="valor">{fmt('home.piloto.semanas', { n: cifra('semanasConRegistro', locale), de: cifra('semanas', locale) })}</p>
+          <p class="pie lado"><span>{t(locale, 'home.piloto.semanasPie')}</span>{firmaVigente(anclas.atestador) && <span class="en-cadena">{fmt('home.piloto.ancladas', { n: anclas.cuenta })}</span>}</p>
+        </div>
+        <div class="cifra" data-piloto="visitas" data-stat="visitors">
+          <p class="valor">{cifra('visitas', locale)}</p>
+          <p class="pie">{t(locale, 'home.piloto.visitas')}</p>
+        </div>
+      </div>
+
+      {tesoreria && (
+        <div class="tesoreria mt-6 rounded-2xl p-5" data-home-tesoreria>
+          <p class="font-semibold"><span class="chip-cadena">{t(locale, 'home.piloto.enCadena')}</span> {t(locale, 'home.piloto.tesoreria')}</p>
+          <dl class="mt-3 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-3">
+            <div><dt class="text-white/70">ETH</dt><dd class="monto">{t(locale, 'home.piloto.entradas')} {decimal(sumas['ETH'].entrada, 4)} · {t(locale, 'home.piloto.salidas')} {decimal(sumas['ETH'].salida, 4)}</dd></div>
+            <div><dt class="text-white/70">{t(locale, 'home.piloto.estables')}</dt><dd class="monto">{t(locale, 'home.piloto.entradas')} {decimal(sumas.estables.entrada, 2)} · {t(locale, 'home.piloto.salidas')} {decimal(sumas.estables.salida, 2)}</dd></div>
+            {enProtocolo && <div><dt class="text-white/70">Moonwell</dt><dd class="monto">{t(locale, 'home.piloto.protocolo')}: {enProtocolo} ({t(locale, 'home.piloto.sinValuar')})</dd></div>}
+          </dl>
+          <p class="mt-3 text-xs text-white/70">{t(locale, 'home.piloto.tesoPie')}</p>
+        </div>
+      )}
+
+      <p class="mt-5 text-xs text-white/70" data-home-piloto-nota>{t(locale, 'home.piloto.nota')}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .caso { border: 1px solid rgba(var(--text-rgb), 0.12); background: rgba(var(--surface-rgb), 0.03); }
+  .cifra { border-radius: 1rem; padding: 1rem 1.1rem; border: 1px solid rgba(212, 146, 95, 0.45); background: rgba(212, 146, 95, 0.06); }
+  .cifra .valor { font-weight: 700; font-size: 1.9rem; line-height: 1.1; color: var(--texto-ocre); }
+  .cifra .pie { margin-top: 0.4rem; font-size: 0.8rem; color: rgba(var(--text-rgb), 0.85); }
+  .lado { display: flex; flex-wrap: wrap; gap: 0.35rem 0.9rem; }
+  .en-cadena { color: var(--texto-teal); font-weight: 600; }
+  .tesoreria { border: 1px solid rgba(0, 156, 156, 0.55); background: rgba(0, 156, 156, 0.06); }
+  .chip-cadena { display: inline-block; margin-right: 0.35rem; padding: 0.05rem 0.55rem; border-radius: 999px; font-size: 0.7rem; color: var(--texto-teal); border: 1px solid rgba(0, 156, 156, 0.7); }
+  .monto { font-variant-numeric: tabular-nums; color: var(--texto-teal); }
+</style>

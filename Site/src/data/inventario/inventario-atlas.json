@@ -1,0 +1,21 @@
+{
+ "fecha": "2026-10-22",
+ "especies": {
+  "valor": 32,
+  "porPais": {
+   "MX": 17,
+   "US": 16,
+   "CA": 8
+  }
+ },
+ "instalaciones": {
+  "valor": 40
+ },
+ "idiomas": {
+  "valor": [
+   "es",
+   "en",
+   "pt"
+  ]
+ }
+}

@@ -2,7 +2,7 @@
 /**
  * test-agua-rangos.mjs: los rangos de agua del museo son rangos generales de manejo, no una regla que decida nada.
  *
- * Criterio de maggia IP (7-oct): los rangos de src/data/water-quality/parameters.json y sus insignias se quedan con tres condiciones, y esta
+ * Criterio de la revisión de IP (7-oct): los rangos de src/data/water-quality/parameters.json y sus insignias se quedan con tres condiciones, y esta
  * prueba es roja ante cada una:
  *   a) ningún código ni dato público junta parámetros en una alerta «crítica» que bloquee o suspenda una captura o un envío;
  *   b) cada fila de rango cita su fuente (literatura o protocolo del museo); la fila sin una lleva «referencia operativa del piloto»;
@@ -43,7 +43,7 @@ export function bloqueaPorAlerta(texto) {
 }
 
 // ---- Las reglas de aviso de la simulación -----------------------------------------------------------------------------------------------
-// Criterio de maggia IP (7-oct): son avisos de un solo parámetro, escalamiento por tiempo, latido de medición y clip a bitácora; nunca una regla
+// Criterio de la revisión de IP (7-oct): son avisos de un solo parámetro, escalamiento por tiempo, latido de medición y clip a bitácora; nunca una regla
 // de varios parámetros, nunca una consecuencia que suspenda capturas o registros, siempre «reglas de aviso» (nunca «umbrales por especie»), y la
 // cronología es un hecho medido: no se compara «con avisos» contra «lo que pasó sin ellos» ni se comenta lo que pasó.
 const PARAMETROS = /amon[ií]aco|nitrito|nitrato|\bph\b|temperatura|conductividad|fosfato|dureza|ox[ií]geno|\bgh\b|\bkh\b/gi;

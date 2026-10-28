@@ -1,0 +1,19 @@
+# Mantiene al día las dependencias npm del sitio (Site/). No hay CI en este repo,
+# así que cada PR se revisa con su preview de Vercel antes de fusionarse.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/Site"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    # Un día por encima de min-release-age (7) en Site/.npmrc, para que un grupo
+    # nunca pida una versión que la puerta rechazaría.
+    cooldown:
+      default-days: 8

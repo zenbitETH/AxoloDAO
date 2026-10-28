@@ -1,0 +1,210 @@
+{
+ "atestador": "0xeCB4C1245665e8A1F43826355aaB0Dd6bF336e05",
+ "txs": [
+  "0xbaa3ac2d9b87481b8437cb5da1f9e64a7daa16878287bc4c4ed650197b316ffd",
+  "0x400e677578ad4769bd0f064800d5e43475bf34b1de3572fc85b0df996dd900bd",
+  "0x278e5fb28e446a08a18cb11ea6c9279f160b9cf7a9d4a10ecb5b153cbafa4331"
+ ],
+ "bloques": [
+  11975034,
+  11975036,
+  11975038
+ ],
+ "anclas": [
+  {
+   "semana": "2025-W44",
+   "uid": "0x84266e14fb204d6cda840e60a03b9500fe899a51a56a80f8e82f6d8e402e1613"
+  },
+  {
+   "semana": "2025-W45",
+   "uid": "0xa67742be0bfa2552c3a356d6b2d8c80cce715ff14d7db27b64daf19cfa621675"
+  },
+  {
+   "semana": "2025-W46",
+   "uid": "0x09c3b2843175838b1fc22b37b5fcb957d541a25be52906bb7b06ed2d528fcac3"
+  },
+  {
+   "semana": "2025-W47",
+   "uid": "0x4f32450ab0ad7a6d1b96c1076a407b1237b1813563fc06b50ca834d2f8f15e1e"
+  },
+  {
+   "semana": "2025-W48",
+   "uid": "0xfd80df42f5c0a549d466de557dc08e22b8503dbc3d2038993bc99ca147a8bb12"
+  },
+  {
+   "semana": "2025-W49",
+   "uid": "0x404ca9ce783b16cd22581c902dc4a7b43628f26444eb5caa1985bfcdbc3e6997"
+  },
+  {
+   "semana": "2025-W50",
+   "uid": "0x2aa73999afdd76c1cda36e0fce778ea48d8f25463269dd431f8152365a6a7984"
+  },
+  {
+   "semana": "2025-W51",
+   "uid": "0xb0ced28b34ee93e8ead16dc3b8d4127a5db8d0c0d2ccf3502111079fce36815d"
+  },
+  {
+   "semana": "2025-W52",
+   "uid": "0xe76147f8728f2e895619e1b80b299faefb14e3d69f00dbfdd11e6cf4715cee85"
+  },
+  {
+   "semana": "2026-W01",
+   "uid": "0xf2efb6370a1d17ccea0bfc68dd224bc3a3341bb9fa6bb7069d23b497d3cb06da"
+  },
+  {
+   "semana": "2026-W02",
+   "uid": "0xb99f36d35edc6032bcea61f9540c3fb0bc0f21b45818a9b72472f56006abfacd"
+  },
+  {
+   "semana": "2026-W03",
+   "uid": "0xdf39ef8a85948c0a4a2d18bf314c707b77848ada8ce20a4c5841a575663dc214"
+  },
+  {
+   "semana": "2026-W04",
+   "uid": "0xf278e67e95bf540b5b8082338d4d107a9aab5041deb1fe50ae83c91104c89297"
+  },
+  {
+   "semana": "2026-W05",
+   "uid": "0x1182d553745143a8fa6edc5b47950b1fab8aa03201f4ae772f2d682cdcba9037"
+  },
+  {
+   "semana": "2026-W06",
+   "uid": "0xbfe9e724bbcf5b38b25d5752418f78d21d185f2412918b6adf32f0b77f1a7b42"
+  },
+  {
+   "semana": "2026-W07",
+   "uid": "0xa7a5b84615359a4634748fd7bb74d9fce37e4c4d3d958b08fb65029d6e04b210"
+  },
+  {
+   "semana": "2026-W08",
+   "uid": "0x58c64c4234ee2526e88b3c1d651a7d4c63e37702ba5eef7438ce377ad3ff7fd0"
+  },
+  {
+   "semana": "2026-W09",
+   "uid": "0xe3100ea56af4f752bf18b64c8dc14f1dee3ae0f2a96fd4e6ca65d303441b5d7c"
+  },
+  {
+   "semana": "2026-W10",
+   "uid": "0x47f3c8bac02719aef06392ecbe8a9f326e787481708ec203a6165d3ef15644d6"
+  },
+  {
+   "semana": "2026-W11",
+   "uid": "0x93fc9fffcdbbba4a88c9c29edaf26eb0e220ee6c304186fb3d2692f9aca42727"
+  },
+  {
+   "semana": "2026-W12",
+   "uid": "0x75789c6f34ff4e9e01a293b0547449bbf0c60765fb9e7649214b4d6abfa3900b"
+  },
+  {
+   "semana": "2026-W13",
+   "uid": "0x72dc471ffab6bcd0e20db04dd7367d172c57dc49ff974b1b675ba08e9e3f2ee7"
+  },
+  {
+   "semana": "2026-W14",
+   "uid": "0xaeb34f8ffbe84cc1b6a91f798fc66d525ff8556abab9ea962487df217f379017"
+  },
+  {
+   "semana": "2026-W15",
+   "uid": "0xc1ae7001838a9ea66adbda95ffbed3eb62afb71a914c62673131d4c792ef7fa4"
+  },
+  {
+   "semana": "2026-W16",
+   "uid": "0x80f8643a456354892cc322569b66598d778cd32fef7cd67bf28f24d6501a6f0c"
+  },
+  {
+   "semana": "2026-W17",
+   "uid": "0x005da634e8341486e94fc393a98640678f24cc0ff9bf5b62c5a85072dfb8acfe"
+  },
+  {
+   "semana": "2026-W18",
+   "uid": "0x9d454b528bf3c237e8a983d56f15c9f889024cbf7204f14226cd3bd4e06dd048"
+  },
+  {
+   "semana": "2026-W19",
+   "uid": "0x430e8daf1564829f5753377ee62abc1981ed8e4f9992266623249b95f87150b0"
+  },
+  {
+   "semana": "2026-W20",
+   "uid": "0x5bbf683292cbacc8ce9abda4e9b0a7681b86da30cf63c3384d2c8a73c2073a8b"
+  },
+  {
+   "semana": "2026-W21",
+   "uid": "0xec9e00e715905b8cb7b498f615b4c6a185c23d1705206d1cba4b65948e101d81"
+  },
+  {
+   "semana": "2026-W22",
+   "uid": "0xfc634abe83bd95927605df5afc31e8dbf7512e2e47225a252ccbcd45df707531"
+  },
+  {
+   "semana": "2026-W23",
+   "uid": "0xb2504a59426eb64f24564552b48a100aa5e02f5f651d49d36efe5a600918f9b5"
+  },
+  {
+   "semana": "2026-W24",
+   "uid": "0x3dce3f0f189c6a3ba259e73556536ceef34e7ba4d0585e4b6e66d0598bdd0a5c"
+  },
+  {
+   "semana": "2026-W25",
+   "uid": "0xd160631f62246f1bb61c2bc5c2dbd3a9ddfae166c8bfeabe637570fc6b70c728"
+  },
+  {
+   "semana": "2026-W26",
+   "uid": "0xa695ba8b4971e617ef674678ae53ce63e2b039f50179407a121cd94684c15622"
+  },
+  {
+   "semana": "2026-W27",
+   "uid": "0xd5b5f227379fbd63564069f0c73e674f45fc01ccb0fc38dfabaa926504e73c50"
+  },
+  {
+   "semana": "2026-W28",
+   "uid": "0x4e4f5a4f5363d555a54b9e76cc24ab2b76c98ced2670e4b541bfdd4b05e9ac3a"
+  },
+  {
+   "semana": "2026-W29",
+   "uid": "0x7e410df3045c0cac1cfd8aa35625eed1318e3d3e08be89ac3dbcc14b561585be"
+  },
+  {
+   "semana": "2026-W30",
+   "uid": "0xddbc153d5e601e0d1815f064fd889edb2eac33e98d4e4ff4b5f4eb0a09f705e2"
+  },
+  {
+   "semana": "2026-W31",
+   "uid": "0xfe7cb8b86f8a5b23365b645d6ad83927d7bbeca9895b6de682ed9c9af4c05a4d"
+  },
+  {
+   "semana": "2026-W32",
+   "uid": "0xa34aa0c9c5a24651a35206ec188d89d250ea0a586635766731369d3b21e9a473"
+  },
+  {
+   "semana": "2026-W33",
+   "uid": "0xe933645671ba944b6773b09d5492462631982fbdecb306093003cb3d70d01afc"
+  },
+  {
+   "semana": "2026-W34",
+   "uid": "0xd258cb3c607870cad43e885440eca8c3cea0a5e7b96a8880e458d3ceb04efec4"
+  },
+  {
+   "semana": "2026-W35",
+   "uid": "0x1ea677fd2c3abd14672fb339f8f8980657736c1ae9bf9b67e955f8c86596e0a1"
+  },
+  {
+   "semana": "2026-W36",
+   "uid": "0xeb7e9f861bdaaa394ff7a26573f5774a1eec1b9593d6b660d70f9b605feea47e"
+  },
+  {
+   "semana": "2026-W37",
+   "uid": "0x193438604a56e08883af6a1d86354d1f288e1fa787616f0441f5f9d48be41ab5"
+  },
+  {
+   "semana": "2026-W38",
+   "uid": "0x5c9d49e7719d0da1af271ce28c8b85be6fc81cf4d16b1f000df7925e040af609"
+  },
+  {
+   "semana": "2026-W39",
+   "uid": "0xe9a84a1f8b3e10ad7fcd9c883037a9529585ef8e2872a4aeb1d73b442de4713d"
+  }
+ ],
+ "primera": "2025-W44",
+ "ultima": "2026-W39",
+ "cuenta": 48
+}

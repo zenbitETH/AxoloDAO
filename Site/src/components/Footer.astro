@@ -1,5 +1,6 @@
 ---
 import { type Locale, t } from '@/i18n/strings';
+import NuevaPestana from '@components/NuevaPestana.astro';
 import ThemeToggle from '@components/ThemeToggle.astro';
 
 interface Props { locale: Locale }
@@ -8,8 +9,6 @@ const { locale } = Astro.props;
 const ens = [
   'axolodao.eth',
   'treasury.axolodao.eth',
-  'zenbit.axolodao.eth',
-  'xolotlcalli.axolodao.eth',
 ];
 
 const taglineParts: Record<Locale, { prefix: string; suffix: string }> = {
@@ -54,7 +53,7 @@ const tag = taglineParts[locale];
     <div class="container-wide flex flex-col items-center justify-between gap-4 py-6 text-sm text-white/60 sm:flex-row">
       <span>
         {tag.prefix}
-        <a href="https://zenbit.mx" target="_blank" rel="noopener noreferrer" class="font-semibold text-teal hover:text-teal/80">Zenbit</a>
+        <a href="https://zenbit.mx" target="_blank" rel="noopener noreferrer" class="font-semibold text-teal hover:text-teal/80">Zenbit<NuevaPestana locale={locale} /></a>
         {tag.suffix}
       </span>
       <ThemeToggle locale={locale} />

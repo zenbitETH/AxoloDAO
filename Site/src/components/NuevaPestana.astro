@@ -1,0 +1,9 @@
+---
+// Hidden text inside a link that opens a new tab, so a screen reader says so in the page's language (a11y.nuevaPestana).
+import { type Locale, t } from '@/i18n/strings';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<span class="sr-only">{' '}{t(locale, 'a11y.nuevaPestana')}</span>

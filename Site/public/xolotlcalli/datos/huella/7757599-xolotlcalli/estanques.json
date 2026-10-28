@@ -1,0 +1,217 @@
+[
+ {
+  "id": "AA",
+  "speciesCode": "andersoni",
+  "scientificName": "Ambystoma andersoni",
+  "displayName": "Pecera AA",
+  "volumeL": 106,
+  "primary": true,
+  "accentColor": "#B87333",
+  "system": {
+   "dimensions": {
+    "volumeNominalL": 106.5,
+    "volumeEffectiveL": 99.1,
+    "heightNominalCm": 33.3,
+    "heightEffectiveCm": 31,
+    "lengthCm": 55.6,
+    "widthCm": 57.5
+   },
+   "tankType": "Cristal",
+   "substrate": "NA",
+   "filter": {
+    "type": "SUMP",
+    "description": "Personalizado (Proveedor externo)",
+    "flow": "400 L/hr",
+    "lastMaintenance": "2025-12-24"
+   },
+   "cooling": {
+    "type": "Aire acondicionado",
+    "capacity": "14k BTU",
+    "setpoint": "17-19 grados C",
+    "lastMaintenance": null
+   },
+   "aeration": {
+    "type": "Bomba de aire + difusores",
+    "airflow": "DD"
+   }
+  }
+ },
+ {
+  "id": "AM 1",
+  "speciesCode": "mexicanum",
+  "scientificName": "Ambystoma mexicanum",
+  "displayName": "Pecera AM 1",
+  "volumeL": 67,
+  "primary": true,
+  "accentColor": "#2C5F7C",
+  "system": {
+   "dimensions": {
+    "volumeNominalL": 252,
+    "volumeEffectiveL": 226.8,
+    "heightNominalCm": 35,
+    "heightEffectiveCm": 31.5,
+    "lengthCm": 120,
+    "widthCm": 60
+   },
+   "tankType": "Cristal+porcelanato",
+   "substrate": "NA",
+   "filter": {
+    "type": "SUMP",
+    "description": "Personalizado (Qualispisicis)",
+    "flow": "3600 L/hr",
+    "lastMaintenance": "2025-12-24"
+   },
+   "cooling": {
+    "type": "Aire acondicionado",
+    "capacity": "14k BTU",
+    "setpoint": "17-19 grados C",
+    "lastMaintenance": null
+   },
+   "aeration": {
+    "type": "Bomba de aire + difusores",
+    "airflow": "DD"
+   }
+  }
+ },
+ {
+  "id": "AM 2",
+  "speciesCode": "mexicanum",
+  "scientificName": "Ambystoma mexicanum",
+  "displayName": "Pecera AM 2",
+  "volumeL": 67,
+  "primary": true,
+  "accentColor": "#2C5F7C",
+  "system": {
+   "dimensions": {
+    "volumeNominalL": 67.2,
+    "volumeEffectiveL": 57.7,
+    "heightNominalCm": 19.8,
+    "heightEffectiveCm": 17,
+    "lengthCm": 58.2,
+    "widthCm": 58.3
+   },
+   "tankType": "Cristal+porcelanato",
+   "substrate": "NA",
+   "filter": {
+    "type": "SUMP",
+    "description": "Personalizado (Qualispisicis)",
+    "flow": "3600 L/hr",
+    "lastMaintenance": "2025-12-24"
+   },
+   "cooling": {
+    "type": "Aire acondicionado",
+    "capacity": "14k BTU",
+    "setpoint": "17-19 grados C",
+    "lastMaintenance": null
+   },
+   "aeration": {
+    "type": "Bomba de aire + difusores",
+    "airflow": "DD"
+   }
+  }
+ },
+ {
+  "id": "AM",
+  "speciesCode": "mexicanum",
+  "scientificName": "Ambystoma mexicanum",
+  "displayName": "Pecera AM",
+  "volumeL": 453,
+  "primary": true,
+  "accentColor": "#2C5F7C",
+  "system": {
+   "dimensions": {
+    "volumeNominalL": 252,
+    "volumeEffectiveL": 226.8,
+    "heightNominalCm": 35,
+    "heightEffectiveCm": 31.5,
+    "lengthCm": 120,
+    "widthCm": 60
+   },
+   "tankType": "Cristal+porcelanato",
+   "substrate": "NA",
+   "filter": {
+    "type": "SUMP",
+    "description": "Personalizado (Qualispisicis)",
+    "flow": "3600 L/hr",
+    "lastMaintenance": "2025-12-24"
+   },
+   "cooling": {
+    "type": "Aire acondicionado",
+    "capacity": "14k BTU",
+    "setpoint": "17-19 grados C",
+    "lastMaintenance": null
+   },
+   "aeration": {
+    "type": "Bomba de aire + difusores",
+    "airflow": "DD"
+   }
+  }
+ },
+ {
+  "id": "AM Larvas",
+  "speciesCode": "mexicanum",
+  "scientificName": "Ambystoma mexicanum",
+  "displayName": "Pecera AM Larvas",
+  "volumeL": null,
+  "primary": true,
+  "accentColor": "#2C5F7C",
+  "system": null
+ },
+ {
+  "id": "AD",
+  "speciesCode": "dumerilii",
+  "scientificName": "Ambystoma dumerilii",
+  "displayName": "Pecera AD",
+  "volumeL": 252,
+  "primary": true,
+  "accentColor": "#3E6B4A",
+  "system": {
+   "dimensions": {
+    "volumeNominalL": 252,
+    "volumeEffectiveL": 226.8,
+    "heightNominalCm": 35,
+    "heightEffectiveCm": 31.5,
+    "lengthCm": 120,
+    "widthCm": 60
+   },
+   "tankType": "Cristal+porcelanato",
+   "substrate": "NA",
+   "filter": {
+    "type": "Canister",
+    "description": "Filtro Canister Canasta Uv Acuario Peces Marino Dulce",
+    "flow": "1500 L/hr",
+    "lastMaintenance": "2025-12-24"
+   },
+   "cooling": {
+    "type": "Aire acondicionado",
+    "capacity": "14k BTU",
+    "setpoint": "17-19 grados C",
+    "lastMaintenance": null
+   },
+   "aeration": {
+    "type": "NA",
+    "airflow": "DD"
+   }
+  }
+ },
+ {
+  "id": "Llave",
+  "speciesCode": "control",
+  "scientificName": null,
+  "displayName": "Control (Llave)",
+  "volumeL": null,
+  "primary": false,
+  "accentColor": "#4A3628",
+  "system": null
+ },
+ {
+  "id": "Guppies",
+  "speciesCode": "guppies",
+  "scientificName": null,
+  "displayName": "Guppies",
+  "volumeL": null,
+  "primary": false,
+  "accentColor": "#4A3628",
+  "system": null
+ }
+]

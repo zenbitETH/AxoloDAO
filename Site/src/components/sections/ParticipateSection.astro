@@ -1,6 +1,7 @@
 ---
 import Modal from '@components/Modal.astro';
 import { type Locale, t } from '@/i18n/strings';
+import NuevaPestana from '@components/NuevaPestana.astro';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -43,7 +44,7 @@ const conceptsHref = t(locale, 'concepts.path');
         {locale === 'pt' && 'A StartupChain é uma plataforma para criar organizações onchain com identidade ENS, tesouraria Safe e atestações EAS desde o primeiro dia. É o caminho que recomendamos para iniciar sua própria microDAO.'}
       </p>
       <div class="mt-8">
-        <a href="https://startupchain.io" target="_blank" rel="noopener noreferrer" class="btn-primary">startupchain.io</a>
+        <a href="https://startupchain.io" target="_blank" rel="noopener noreferrer" class="btn-primary">startupchain.io<NuevaPestana locale={locale} /></a>
       </div>
     </div>
   </Modal>

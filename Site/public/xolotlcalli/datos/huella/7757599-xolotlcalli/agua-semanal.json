@@ -1,0 +1,1745 @@
+{
+ "fuente": "métricas semanales públicas del libro operativo del piloto",
+ "extremosSuprimidos": "en las semanas así marcadas el mínimo y el máximo no se publican; la media sí",
+ "sistemas": {
+  "am": {
+   "taxon": "ambystoma_mexicanum",
+   "propiedades": {
+    "temperature": {
+     "columnaDelLibro": "1. Temperatura (°C)",
+     "unidad": "°C",
+     "semanas": [
+      {
+       "semana": "2025-W51",
+       "n": 8,
+       "min": 14.8,
+       "max": 16.4,
+       "media": 15.38,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W09",
+       "n": 10,
+       "min": 16.3,
+       "max": 16.9,
+       "media": 16.63,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W11",
+       "n": 4,
+       "min": 16.3,
+       "max": 16.6,
+       "media": 16.45,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W12",
+       "n": 2,
+       "min": 15.3,
+       "max": 15.5,
+       "media": 15.4,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W16",
+       "n": 10,
+       "min": 16.5,
+       "max": 17.2,
+       "media": 16.84,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W19",
+       "n": 6,
+       "min": 16.5,
+       "max": 18,
+       "media": 16.98,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W20",
+       "n": 19,
+       "min": 13.7,
+       "max": 17.4,
+       "media": 15.45,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W21",
+       "n": 3,
+       "min": null,
+       "max": null,
+       "media": 15.5,
+       "metodo": "manual_unspecified",
+       "extremosSuprimidos": true
+      },
+      {
+       "semana": "2026-W23",
+       "n": 16,
+       "min": 15.2,
+       "max": 17.9,
+       "media": 16.66,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W24",
+       "n": 36,
+       "min": 16,
+       "max": 18.4,
+       "media": 16.92,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W25",
+       "n": 21,
+       "min": 16.2,
+       "max": 17.2,
+       "media": 16.65,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W26",
+       "n": 21,
+       "min": 16.3,
+       "max": 17.2,
+       "media": 16.6,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W27",
+       "n": 21,
+       "min": 15.35,
+       "max": 17.05,
+       "media": 16.16,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W28",
+       "n": 19,
+       "min": 15.4,
+       "max": 16.3,
+       "media": 15.74,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W29",
+       "n": 23,
+       "min": 15.1,
+       "max": 16,
+       "media": 15.54,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W30",
+       "n": 18,
+       "min": 15.3,
+       "max": 16.7,
+       "media": 15.89,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W31",
+       "n": 20,
+       "min": 15.55,
+       "max": 16.2,
+       "media": 15.8,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W32",
+       "n": 19,
+       "min": 15.6,
+       "max": 16.7,
+       "media": 16.06,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W33",
+       "n": 23,
+       "min": 16.3,
+       "max": 17.2,
+       "media": 16.69,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W34",
+       "n": 6,
+       "min": 16.15,
+       "max": 16.75,
+       "media": 16.42,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W35",
+       "n": 5,
+       "min": 16.45,
+       "max": 17.15,
+       "media": 16.66,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W36",
+       "n": 6,
+       "min": 16.2,
+       "max": 16.75,
+       "media": 16.51,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W37",
+       "n": 2,
+       "min": 16.55,
+       "max": 16.8,
+       "media": 16.68,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W38",
+       "n": 1,
+       "min": 17.1,
+       "max": 17.1,
+       "media": 17.1,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "ph": {
+     "columnaDelLibro": "7. pH",
+     "unidad": "pH",
+     "semanas": [
+      {
+       "semana": "2025-W51",
+       "n": 21,
+       "min": 7,
+       "max": 8.4,
+       "media": 7.83,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W09",
+       "n": 6,
+       "min": 7.4,
+       "max": 7.4,
+       "media": 7.4,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W11",
+       "n": 4,
+       "min": 7.7,
+       "max": 8.14,
+       "media": 7.92,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W12",
+       "n": 2,
+       "min": 7.5,
+       "max": 7.5,
+       "media": 7.5,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W16",
+       "n": 10,
+       "min": 7.6,
+       "max": 7.9,
+       "media": 7.74,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W19",
+       "n": 7,
+       "min": 7,
+       "max": 8,
+       "media": 7.74,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W20",
+       "n": 19,
+       "min": 7.3,
+       "max": 8.3,
+       "media": 7.89,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W21",
+       "n": 3,
+       "min": null,
+       "max": null,
+       "media": 8.07,
+       "metodo": "manual_unspecified",
+       "extremosSuprimidos": true
+      },
+      {
+       "semana": "2026-W22",
+       "n": 8,
+       "min": null,
+       "max": null,
+       "media": 7.74,
+       "metodo": "manual_unspecified",
+       "extremosSuprimidos": true
+      },
+      {
+       "semana": "2026-W23",
+       "n": 15,
+       "min": 7.8,
+       "max": 8.2,
+       "media": 8.01,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W24",
+       "n": 36,
+       "min": 7.7,
+       "max": 8.3,
+       "media": 8.08,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W25",
+       "n": 20,
+       "min": 7.9,
+       "max": 8.4,
+       "media": 8.2,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W26",
+       "n": 19,
+       "min": 8.2,
+       "max": 8.5,
+       "media": 8.28,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W27",
+       "n": 20,
+       "min": 8.2,
+       "max": 8.7,
+       "media": 8.39,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W28",
+       "n": 19,
+       "min": 8.4,
+       "max": 8.7,
+       "media": 8.52,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W29",
+       "n": 23,
+       "min": 8.2,
+       "max": 8.6,
+       "media": 8.48,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W30",
+       "n": 18,
+       "min": 8.2,
+       "max": 8.5,
+       "media": 8.31,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W31",
+       "n": 20,
+       "min": 8.1,
+       "max": 8.8,
+       "media": 8.28,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W32",
+       "n": 19,
+       "min": 8.2,
+       "max": 8.6,
+       "media": 8.4,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W33",
+       "n": 23,
+       "min": 8.2,
+       "max": 8.5,
+       "media": 8.37,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W34",
+       "n": 3,
+       "min": 7.5,
+       "max": 8.6,
+       "media": 8.03,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W35",
+       "n": 2,
+       "min": 7.5,
+       "max": 7.5,
+       "media": 7.5,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W36",
+       "n": 1,
+       "min": 7.5,
+       "max": 7.5,
+       "media": 7.5,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W37",
+       "n": 1,
+       "min": 7.5,
+       "max": 7.5,
+       "media": 7.5,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W38",
+       "n": 1,
+       "min": 8,
+       "max": 8,
+       "media": 8,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "ammonia_total": {
+     "columnaDelLibro": "2. Amonia/amoniaco NH3 (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W51",
+       "n": 6,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W11",
+       "n": 6,
+       "min": 0,
+       "max": 0.5,
+       "media": 0.208,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W12",
+       "n": 2,
+       "min": 0.12,
+       "max": 0.12,
+       "media": 0.12,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W16",
+       "n": 2,
+       "min": 0.25,
+       "max": 0.25,
+       "media": 0.25,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W19",
+       "n": 4,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W20",
+       "n": 5,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W23",
+       "n": 2,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W24",
+       "n": 2,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W25",
+       "n": 2,
+       "min": 0,
+       "max": 1,
+       "media": 0.5,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W27",
+       "n": 1,
+       "min": 0.125,
+       "max": 0.125,
+       "media": 0.125,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W28",
+       "n": 2,
+       "min": 0,
+       "max": 0.125,
+       "media": 0.062,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W29",
+       "n": 2,
+       "min": 0,
+       "max": 0.125,
+       "media": 0.062,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W30",
+       "n": 2,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W31",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W32",
+       "n": 3,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W33",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W34",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W35",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W36",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W37",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W38",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "nitrite": {
+     "columnaDelLibro": "3. Nitritos NO2 (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W51",
+       "n": 5,
+       "min": 0.1,
+       "max": 0.8,
+       "media": 0.28,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W09",
+       "n": 5,
+       "min": 0.1,
+       "max": 0.3,
+       "media": 0.26,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W11",
+       "n": 2,
+       "min": 0.3,
+       "max": 0.3,
+       "media": 0.3,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W12",
+       "n": 2,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W16",
+       "n": 2,
+       "min": 0.3,
+       "max": 0.3,
+       "media": 0.3,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W19",
+       "n": 4,
+       "min": 0,
+       "max": 0.1,
+       "media": 0.025,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W20",
+       "n": 4,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W23",
+       "n": 2,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W24",
+       "n": 2,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W25",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W26",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W27",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W28",
+       "n": 2,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W29",
+       "n": 2,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W30",
+       "n": 2,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W31",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W32",
+       "n": 3,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W33",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W34",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W35",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W36",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W37",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W38",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "nitrate": {
+     "columnaDelLibro": "4. Nitratos NO3 (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W51",
+       "n": 5,
+       "min": 10,
+       "max": 110,
+       "media": 34,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W09",
+       "n": 5,
+       "min": 5,
+       "max": 20,
+       "media": 13,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W11",
+       "n": 2,
+       "min": 5,
+       "max": 15,
+       "media": 10,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W12",
+       "n": 2,
+       "min": 5,
+       "max": 10,
+       "media": 7.5,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W16",
+       "n": 2,
+       "min": 10,
+       "max": 20,
+       "media": 15,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W19",
+       "n": 4,
+       "min": 5,
+       "max": 20,
+       "media": 13.8,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W20",
+       "n": 4,
+       "min": 5,
+       "max": 20,
+       "media": 16.2,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W23",
+       "n": 2,
+       "min": 20,
+       "max": 30,
+       "media": 25,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W24",
+       "n": 2,
+       "min": 0,
+       "max": 40,
+       "media": 20,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W25",
+       "n": 2,
+       "min": 5,
+       "max": 20,
+       "media": 12.5,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W26",
+       "n": 1,
+       "min": 40,
+       "max": 40,
+       "media": 40,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W27",
+       "n": 1,
+       "min": 40,
+       "max": 40,
+       "media": 40,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W28",
+       "n": 2,
+       "min": 40,
+       "max": 40,
+       "media": 40,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W29",
+       "n": 2,
+       "min": 20,
+       "max": 40,
+       "media": 30,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W30",
+       "n": 2,
+       "min": 0,
+       "max": 40,
+       "media": 20,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W31",
+       "n": 1,
+       "min": 40,
+       "max": 40,
+       "media": 40,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W32",
+       "n": 3,
+       "min": 40,
+       "max": 40,
+       "media": 40,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W33",
+       "n": 1,
+       "min": 40,
+       "max": 40,
+       "media": 40,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W34",
+       "n": 1,
+       "min": 40,
+       "max": 40,
+       "media": 40,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W35",
+       "n": 1,
+       "min": 40,
+       "max": 40,
+       "media": 40,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W36",
+       "n": 1,
+       "min": 20,
+       "max": 20,
+       "media": 20,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W37",
+       "n": 1,
+       "min": 10,
+       "max": 10,
+       "media": 10,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W38",
+       "n": 1,
+       "min": 40,
+       "max": 40,
+       "media": 40,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "general_hardness": {
+     "columnaDelLibro": "5. GH Dureza General (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W51",
+       "n": 7,
+       "min": 40,
+       "max": 80,
+       "media": 57.1,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W16",
+       "n": 2,
+       "min": 89.5,
+       "max": 89.5,
+       "media": 89.5,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W19",
+       "n": 4,
+       "min": 35.8,
+       "max": 106.8,
+       "media": 75.9,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W20",
+       "n": 4,
+       "min": 53.7,
+       "max": 71.6,
+       "media": 67.1,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W23",
+       "n": 3,
+       "min": 53.7,
+       "max": 125.3,
+       "media": 95.5,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W24",
+       "n": 2,
+       "min": 53.7,
+       "max": 107.4,
+       "media": 80.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W25",
+       "n": 2,
+       "min": 53.7,
+       "max": 179,
+       "media": 116.4,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W26",
+       "n": 1,
+       "min": 196.9,
+       "max": 196.9,
+       "media": 196.9,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W27",
+       "n": 1,
+       "min": 214.8,
+       "max": 214.8,
+       "media": 214.8,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W28",
+       "n": 2,
+       "min": 214.8,
+       "max": 214.8,
+       "media": 214.8,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W29",
+       "n": 2,
+       "min": 214.8,
+       "max": 214.8,
+       "media": 214.8,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W30",
+       "n": 2,
+       "min": 196.9,
+       "max": 214.8,
+       "media": 205.8,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W31",
+       "n": 1,
+       "min": 196.9,
+       "max": 196.9,
+       "media": 196.9,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W32",
+       "n": 3,
+       "min": 179,
+       "max": 196.9,
+       "media": 185,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W33",
+       "n": 1,
+       "min": 196.9,
+       "max": 196.9,
+       "media": 196.9,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W34",
+       "n": 1,
+       "min": 196.9,
+       "max": 196.9,
+       "media": 196.9,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W35",
+       "n": 1,
+       "min": 196.9,
+       "max": 196.9,
+       "media": 196.9,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W36",
+       "n": 1,
+       "min": 214.8,
+       "max": 214.8,
+       "media": 214.8,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W37",
+       "n": 1,
+       "min": 214.8,
+       "max": 214.8,
+       "media": 214.8,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W38",
+       "n": 1,
+       "min": 214.8,
+       "max": 214.8,
+       "media": 214.8,
+       "metodo": "drop_count_converted"
+      }
+     ]
+    },
+    "carbonate_hardness": {
+     "columnaDelLibro": "6. KH Dureza de Carbonatos (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W51",
+       "n": 7,
+       "min": 30,
+       "max": 80,
+       "media": 51.43,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W09",
+       "n": 6,
+       "min": 64.08,
+       "max": 74.76,
+       "media": 68.53,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W11",
+       "n": 2,
+       "min": 55.18,
+       "max": 55.18,
+       "media": 55.18,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W12",
+       "n": 2,
+       "min": 40.94,
+       "max": 58.74,
+       "media": 49.84,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W16",
+       "n": 2,
+       "min": 18,
+       "max": 35,
+       "media": 26.5,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W19",
+       "n": 3,
+       "min": 35.8,
+       "max": 106.8,
+       "media": 59.47,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W19",
+       "n": 1,
+       "min": 17.5,
+       "max": 17.5,
+       "media": 17.5,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W20",
+       "n": 4,
+       "min": 35.8,
+       "max": 35.8,
+       "media": 35.8,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W23",
+       "n": 3,
+       "min": 35.8,
+       "max": 53.7,
+       "media": 47.73,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W24",
+       "n": 2,
+       "min": 53.7,
+       "max": 71.6,
+       "media": 62.65,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W25",
+       "n": 2,
+       "min": 53.7,
+       "max": 71.6,
+       "media": 62.65,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W26",
+       "n": 1,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W27",
+       "n": 1,
+       "min": 89.5,
+       "max": 89.5,
+       "media": 89.5,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W28",
+       "n": 2,
+       "min": 71.6,
+       "max": 89.5,
+       "media": 80.55,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W29",
+       "n": 2,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W30",
+       "n": 2,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W31",
+       "n": 1,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W32",
+       "n": 3,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W33",
+       "n": 1,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W34",
+       "n": 1,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W35",
+       "n": 1,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W36",
+       "n": 1,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W37",
+       "n": 1,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      },
+      {
+       "semana": "2026-W38",
+       "n": 1,
+       "min": 71.6,
+       "max": 71.6,
+       "media": 71.6,
+       "metodo": "drop_count_converted"
+      }
+     ]
+    },
+    "phosphate": {
+     "columnaDelLibro": "8. Fosfatos PO4 (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W51",
+       "n": 4,
+       "min": 5,
+       "max": 5,
+       "media": 5,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W09",
+       "n": 6,
+       "min": 0.15,
+       "max": 0.3,
+       "media": 0.2,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W11",
+       "n": 2,
+       "min": 0.3,
+       "max": 0.3,
+       "media": 0.3,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W12",
+       "n": 2,
+       "min": 0.3,
+       "max": 0.3,
+       "media": 0.3,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W16",
+       "n": 2,
+       "min": 0.25,
+       "max": 0.5,
+       "media": 0.38,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W19",
+       "n": 1,
+       "min": 0,
+       "max": 0,
+       "media": 0,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W30",
+       "n": 1,
+       "min": 0.25,
+       "max": 0.25,
+       "media": 0.25,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "conductivity": {
+     "columnaDelLibro": "9. Conductividad (µS/cm)",
+     "unidad": "µS/cm",
+     "semanas": [
+      {
+       "semana": "2025-W51",
+       "n": 4,
+       "min": 106,
+       "max": 270,
+       "media": 194,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W09",
+       "n": 8,
+       "min": 1247,
+       "max": 2832,
+       "media": 2364,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W11",
+       "n": 2,
+       "min": 2700,
+       "max": 2700,
+       "media": 2700,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W12",
+       "n": 2,
+       "min": 2508,
+       "max": 2636,
+       "media": 2572,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W16",
+       "n": 10,
+       "min": 2910,
+       "max": 3410,
+       "media": 3083,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W19",
+       "n": 7,
+       "min": 1670,
+       "max": 1790,
+       "media": 1731,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W20",
+       "n": 19,
+       "min": 1700,
+       "max": 1840,
+       "media": 1788,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W21",
+       "n": 3,
+       "min": null,
+       "max": null,
+       "media": 1823,
+       "metodo": "manual_unspecified",
+       "extremosSuprimidos": true
+      },
+      {
+       "semana": "2026-W22",
+       "n": 8,
+       "min": null,
+       "max": null,
+       "media": 1854,
+       "metodo": "manual_unspecified",
+       "extremosSuprimidos": true
+      },
+      {
+       "semana": "2026-W23",
+       "n": 15,
+       "min": 1600,
+       "max": 1870,
+       "media": 1658,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W24",
+       "n": 36,
+       "min": 1400,
+       "max": 2160,
+       "media": 1677,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W25",
+       "n": 20,
+       "min": 1420,
+       "max": 1950,
+       "media": 1483,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W26",
+       "n": 19,
+       "min": 1320,
+       "max": 1410,
+       "media": 1374,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W27",
+       "n": 20,
+       "min": 1190,
+       "max": 1380,
+       "media": 1328,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W28",
+       "n": 19,
+       "min": 1200,
+       "max": 1290,
+       "media": 1242,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W29",
+       "n": 23,
+       "min": 1110,
+       "max": 1230,
+       "media": 1184,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W30",
+       "n": 18,
+       "min": 1100,
+       "max": 1160,
+       "media": 1134,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W31",
+       "n": 20,
+       "min": 1070,
+       "max": 1130,
+       "media": 1099,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W32",
+       "n": 19,
+       "min": 1080,
+       "max": 1200,
+       "media": 1151,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W33",
+       "n": 23,
+       "min": 1040,
+       "max": 1170,
+       "media": 1077,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W34",
+       "n": 6,
+       "min": 1080,
+       "max": 1130,
+       "media": 1100,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W35",
+       "n": 5,
+       "min": 1040,
+       "max": 1090,
+       "media": 1064,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W36",
+       "n": 6,
+       "min": 1030,
+       "max": 1100,
+       "media": 1065,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W37",
+       "n": 2,
+       "min": 1050,
+       "max": 1060,
+       "media": 1055,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W38",
+       "n": 1,
+       "min": 890,
+       "max": 890,
+       "media": 890,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "total_dissolved_solids": {
+     "columnaDelLibro": "10. TDS (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2026-W19",
+       "n": 6,
+       "min": 835,
+       "max": 895,
+       "media": 862,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W20",
+       "n": 4,
+       "min": 850,
+       "max": 920,
+       "media": 900,
+       "metodo": "manual_unspecified"
+      },
+      {
+       "semana": "2026-W21",
+       "n": 3,
+       "min": null,
+       "max": null,
+       "media": 912,
+       "metodo": "manual_unspecified",
+       "extremosSuprimidos": true
+      }
+     ]
+    }
+   }
+  },
+  "aa": {
+   "taxon": "ambystoma_andersoni",
+   "propiedades": {
+    "temperature": {
+     "columnaDelLibro": "1. Temperatura (°C)",
+     "unidad": "°C",
+     "semanas": [
+      {
+       "semana": "2025-W46",
+       "n": 2,
+       "min": 17.2,
+       "max": 17.6,
+       "media": 17.4,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "ph": {
+     "columnaDelLibro": "7. pH",
+     "unidad": "pH",
+     "semanas": [
+      {
+       "semana": "2025-W46",
+       "n": 2,
+       "min": 8.2,
+       "max": 8.2,
+       "media": 8.2,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "ammonia_total": {
+     "columnaDelLibro": "2. Amonia/amoniaco NH3 (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W46",
+       "n": 2,
+       "min": 0,
+       "max": 0.25,
+       "media": 0.125,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "nitrate": {
+     "columnaDelLibro": "4. Nitratos NO3 (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W46",
+       "n": 1,
+       "min": 110,
+       "max": 110,
+       "media": 110,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "general_hardness": {
+     "columnaDelLibro": "5. GH Dureza General (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W46",
+       "n": 2,
+       "min": 120,
+       "max": 160,
+       "media": 140,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "carbonate_hardness": {
+     "columnaDelLibro": "6. KH Dureza de Carbonatos (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W46",
+       "n": 2,
+       "min": 80,
+       "max": 90,
+       "media": 85,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    },
+    "phosphate": {
+     "columnaDelLibro": "8. Fosfatos PO4 (mg/L)",
+     "unidad": "mg/L",
+     "semanas": [
+      {
+       "semana": "2025-W46",
+       "n": 1,
+       "min": 0.5,
+       "max": 0.5,
+       "media": 0.5,
+       "metodo": "manual_unspecified"
+      }
+     ]
+    }
+   }
+  },
+  "ad": {
+   "taxon": "ambystoma_dumerilii",
+   "porQue": "ninguna lectura de este sistema cumplió la regla de publicación del R1 (ADR-004): su agua queda privada",
+   "propiedades": {}
+  }
+ }
+}

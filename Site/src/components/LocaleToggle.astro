@@ -5,6 +5,8 @@ interface Props { locale: Locale }
 const { locale } = Astro.props;
 
 const labels: Record<Locale, string> = { es: 'ES', en: 'EN', pt: 'PT' };
+// the order the person reads: ES · EN · PT (LOCALES keeps its own order for routes and alternates)
+const orden: Locale[] = (['es', 'en', 'pt'] as Locale[]).filter((x) => LOCALES.includes(x));
 
 function pathFor(target: Locale): string {
   const current = Astro.url.pathname;
@@ -17,7 +19,7 @@ function pathFor(target: Locale): string {
 ---
 
 <div class="flex items-center gap-1 rounded-full border border-white/15 bg-white/5 p-0.5 text-xs font-semibold">
-  {LOCALES.map((l) => (
+  {orden.map((l) => (
     <a
       href={pathFor(l)}
       class:list={[

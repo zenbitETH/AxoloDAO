@@ -1,12 +1,14 @@
 import { useEffect, useRef } from 'preact/hooks';
 
+// The DNA shapes live in the side gutters, outside the hero's text columns (review, 22-oct: they covered the subtitle, the problem/solution
+// blocks and the sections below); the logo alone floats in the centre, behind the title, at low opacity. They only show on screens wide enough to have gutters, and the whole stage fades once the first
+// section after the hero (#atlas) comes into view.
 const DNA_STRANDS = [
-  { top: '12%', left: '6%',  size: 170, shape: 'strand',   rot: -14, dur: 22, delay: 0,   depth: 0.32, hue: 'teal' },
-  { top: '20%', left: '86%', size: 200, shape: 'infinity', rot: 10,  dur: 28, delay: -6,  depth: 0.55, hue: 'rosa' },
-  { top: '56%', left: '4%',  size: 150, shape: 'strand',   rot: 6,   dur: 34, delay: -12, depth: 0.45, hue: 'ocre' },
-  { top: '68%', left: '80%', size: 170, shape: 'infinity', rot: -22, dur: 24, delay: -3,  depth: 0.65, hue: 'teal' },
-  { top: '40%', left: '92%', size: 90,  shape: 'strand',   rot: 28,  dur: 30, delay: -9,  depth: 0.75, hue: 'teal' },
-  { top: '84%', left: '48%', size: 210, shape: 'infinity', rot: -4,  dur: 26, delay: -15, depth: 0.26, hue: 'rosa' },
+  { top: '10%', left: '1.5%', size: 150, shape: 'strand',   rot: -14, dur: 22, delay: 0,   depth: 0.32, hue: 'teal' },
+  { top: '14%', left: '87%',  size: 170, shape: 'infinity', rot: 10,  dur: 28, delay: -6,  depth: 0.55, hue: 'rosa' },
+  { top: '50%', left: '2%',   size: 130, shape: 'strand',   rot: 6,   dur: 34, delay: -12, depth: 0.45, hue: 'ocre' },
+  { top: '62%', left: '88%',  size: 150, shape: 'infinity', rot: -22, dur: 24, delay: -3,  depth: 0.65, hue: 'teal' },
+  { top: '38%', left: '93%',  size: 80,  shape: 'strand',   rot: 28,  dur: 30, delay: -9,  depth: 0.75, hue: 'teal' },
 ] as const;
 
 const SHAPE_ASPECT: Record<'strand' | 'infinity', number> = {
@@ -47,7 +49,7 @@ export default function HeroParallax() {
       if (!raf) raf = requestAnimationFrame(update);
     };
 
-    const species = document.getElementById('species');
+    const species = document.getElementById('atlas') ?? document.getElementById('species');
     let io: IntersectionObserver | null = null;
     if (species) {
       io = new IntersectionObserver(
@@ -79,16 +81,17 @@ export default function HeroParallax() {
       <div class="absolute right-[-6rem] top-[40%] h-72 w-72 rounded-full bg-rosa/20 blur-3xl" />
       <div class="absolute bottom-[-4rem] left-[-4rem] h-80 w-80 rounded-full bg-ocre/15 blur-3xl" />
 
+      {/* the logo floats in the centre, behind the hero title (23-oct), faint enough for the title to keep its contrast */}
       <img
         src="/logos/axolodaoicon.svg"
         alt=""
-        class="hero-parallax-icon absolute left-1/2 top-1/2 h-[16rem] w-[16rem] sm:h-[28rem] sm:w-[28rem] lg:h-[36rem] lg:w-[36rem]"
+        class="hero-parallax-icon absolute left-1/2 top-[30%] h-[20rem] w-[20rem] sm:h-[30rem] sm:w-[30rem]"
       />
 
       {DNA_STRANDS.map((s, i) => (
         <div
           key={i}
-          class="hero-parallax-strand absolute"
+          class="hero-parallax-strand absolute hidden xl:block"
           style={{
             top: s.top,
             left: s.left,

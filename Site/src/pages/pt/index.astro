@@ -4,17 +4,21 @@ import Hero from '@components/sections/Hero.astro';
 import ImpactSection from '@components/sections/ImpactSection.astro';
 import AxoloNewsSection from '@components/sections/AxoloNewsSection.astro';
 import PartnersSection from '@components/sections/PartnersSection.astro';
-import SpeciesSection from '@components/sections/SpeciesSection.astro';
 import ProjectsSection from '@components/sections/ProjectsSection.astro';
 import ParticipateSection from '@components/sections/ParticipateSection.astro';
+import AtlasHome from '@components/home/AtlasHome.astro';
+import DatosCadena from '@components/home/DatosCadena.astro';
+import CasoPiloto from '@components/home/CasoPiloto.astro';
 ---
 
 <BaseLayout locale="pt">
   <Hero locale="pt" />
+  <AtlasHome locale="pt" />
+  <DatosCadena locale="pt" />
+  <CasoPiloto locale="pt" />
   <ImpactSection locale="pt" />
   <AxoloNewsSection locale="pt" />
-  <PartnersSection locale="pt" />
-  <SpeciesSection locale="pt" />
   <ProjectsSection locale="pt" />
+  <PartnersSection locale="pt" />
   <ParticipateSection locale="pt" />
 </BaseLayout>

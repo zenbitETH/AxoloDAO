@@ -1,5 +1,5 @@
 /**
- * Lo que el sitio no publica de las personas (decisión del fundador, 7-oct, vía maggia IP): los datos de salud de los animales son
+ * Lo que el sitio no publica de las personas (decisión del fundador, 7-oct, vía la revisión de IP): los datos de salud de los animales son
  * públicos, los de las personas no. Un dato público se limpia así:
  *   - se quitan las llaves de quién escribió o dijo algo: autor, autor2, autorPrincipal, autorSecundario, authors;
  *   - se quitan las llaves de los números de caso de un laboratorio (lab_case, labCase);
