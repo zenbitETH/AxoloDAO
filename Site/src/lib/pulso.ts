@@ -48,15 +48,15 @@ export const CHAPTER_AUTHOR: Record<Chapter, Author> = {
   ajolote: 'xolotlcalli',
 };
 
-/** Chip colours. `podcast` carries the amber/ink identity the podcast cover, the
+/** Chip colours, each at ≥ 4.5:1 for its text over any photo (teal and rosa in a darker, opaque shade). `podcast` carries the amber/ink identity the podcast cover, the
  *  story teaser and both chapter videos already wear, so the rail echoes the post
  *  it links to instead of inventing a fifth palette. */
 export const CHAPTER_ACCENT: Record<Chapter, string> = {
   semanal: 'bg-marfil/90 text-dark-navy',
-  lunes: 'bg-teal/90 text-marfil',
+  lunes: 'bg-[#00585A] text-marfil',
   axolonews: 'bg-marfil/90 text-dark-navy',
   podcast: 'bg-[#F8C471] text-[#1B333F]',
-  ajolote: 'bg-rosa/90 text-marfil',
+  ajolote: 'bg-[#A63148] text-marfil',
 };
 
 /** Short chapter label for the card badge, keyed off i18n at render time. */

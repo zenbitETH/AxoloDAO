@@ -1,7 +1,7 @@
 /**
  * Los textos de relato de los ejemplares (bajas y vivos): lo que la página dibuja de cada uno.
  *
- * Criterio de maggia IP (7-oct): la narración se queda, pero cada oración lleva a lo más un hecho fechado o contado del registro; no hay conjeturas
+ * Criterio de la revisión de IP (7-oct): la narración se queda, pero cada oración lleva a lo más un hecho fechado o contado del registro; no hay conjeturas
  * causales («pudo», «por eso»), ni yuxtaposiciones que insinúen culpa («con esas señales abiertas, el agua no se midió», «mientras se agravaba»),
  * ni nada que señale el error de una persona o un rol, ni lo que dijo el podcast puesto contra el registro. Una ausencia («No hay acciones
  * registradas entre el 2 y el 20 de diciembre») se comprueba contra el registro del mismo ejemplar: una ausencia falsa insinúa descuido.
@@ -159,7 +159,7 @@ export function relatosEnJson(texto) {
 const ROL_DE_PERSONA = /(?<![\p{L}])(?:(?:el|la)\s+)?(operaci[oó]n|curadur[ií]a|fundador)(?![\p{L}])/giu;
 
 /**
- * maggia IP (7-oct): un rol de una persona («Operación», «Curaduría», «el fundador») no aparece en lo público; todo es «el equipo».
+ * the IP review (7-oct): un rol de una persona («Operación», «Curaduría», «el fundador») no aparece en lo público; todo es «el equipo».
  * Se mira todo texto de los dos JSON generados, sea sujeto de una oración, un prefijo de quien habla o el campo de quien identifica o verifica.
  */
 export function rolesEnJson(texto) {
