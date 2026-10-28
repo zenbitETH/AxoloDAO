@@ -3,7 +3,8 @@
 // and what is not, the verification sentence verbatim, and a licence on every file. Plain HTML, no script.
 // The attestation (src/data/atestacion-xolotlcalli.json) exists only once it is signed; without it the page claims nothing is registered.
 import { createHash } from 'node:crypto';
-import { NOMBRE_SITIO, CONFIRMACIONES } from './huella.mjs';
+import { NOMBRE_SITIO, CONFIRMACIONES, comoComprobarlo } from './huella.mjs';
+import { barra, cabeza, cadena, comparacion, glifo } from './huellaEstilo.mjs';
 import { firmaVigente } from '../../src/lib/firmasRetiradas.mjs';
 
 const re40 = (x) => /^0x[0-9a-fA-F]{40}$/.test(x ?? '');
@@ -12,9 +13,9 @@ export const BASE = '/xolotlcalli/datos/huella/';
 export const FRASE = 'La verificación comprueba que los archivos no cambiaron desde que se registró su huella; no certifica que sus fuentes sean exactas.';
 // what this fingerprint leaves out (the IP review's wording); dropping the line is setting this to false
 export const MOSTRAR_LIMITES = true;
-// the key the anchors must be signed by: the address attester.axolodao.eth resolves to (bunker migration plan, «Data signing»). None exists yet,
-// so no anchors file is accepted; the anchors of 22-23 Oct were signed by a key that is now retired (src/lib/firmasRetiradas.mjs).
-export const ATESTADOR_DATOS = null;
+// the key the anchors must be signed by: firmas.zenbit.axolodao.eth, a Ledger account only Habacuc holds (re-signed on Sepolia 27-oct-2026,
+// axolodao-brain context/registros/2026-10-27-refirma-sepolia.md); the anchors of 22-23 Oct were signed by a key now retired (src/lib/firmasRetiradas.mjs).
+export const ATESTADOR_DATOS = '0xadA8Fd8F05602E8a7a61b89beF26530885f89475';
 export const LIMITES = 'Quedan fuera de esta huella el peso, las medidas, las causas de baja, los tratamientos y la alimentación de los ejemplares.';
 // the weekly anchors' line, approved for exactly this range (the IP review's wording); a file with another range is refused, not reworded
 const ANCLAS_APROBADAS = { cuenta: 48, primera: '2025-W44', ultima: '2026-W39' };
@@ -86,26 +87,53 @@ ${firmado
     : porVolverAFirmar
       ? '<p data-huella-pendiente>La huella de estos archivos y las anclas del registro están pendientes de volver a firmarse en cadena.</p>'
       : '<p data-huella-pendiente>La huella de estos archivos todavía no está registrada en cadena.</p>'}
+<div class="lados">
+<div class="lado">
 <h2>Qué está onchain</h2>
 <ul data-huella-onchain>
 ${enCadena.map((t, i) => `<li>${esc(t)}${i === enCadena.length - 1 ? '.' : ';'}</li>`).join('\n')}
 </ul>
 <p>Más adelante: las métricas semanales.</p>
+</div>
+<div class="lado fuera">
 <h2>Qué queda fuera de la cadena</h2>
 <ul data-huella-fuera>
 <li>los registros mismos, que el sitio sirve archivo por archivo aquí abajo.</li>
 </ul>
+</div>
+</div>
 ${MOSTRAR_LIMITES ? `<p data-huella-limites>${esc(LIMITES)}</p>\n` : ''}
 <p data-huella-alcance>${esc(FRASE)}</p>
 </section>`;
+  // the v8 chain, from the museum's records instead of the hub; the last steps wait while the fingerprint is not signed
+  const pasos = [
+    { icono: 'registro', titulo: 'Registro del museo', texto: 'Los datos públicos del museo, leídos en commits fijos del sitio.' },
+    { icono: 'build', titulo: 'Derivación', texto: 'Un script deriva de ellos los archivos del registro, con los mismos bytes cada vez.' },
+    { icono: 'archivos', titulo: 'Archivos', texto: 'El sitio los publica archivo por archivo.' },
+    { icono: 'listado', titulo: 'Listado', texto: 'El hash de cada archivo va a un listado.' },
+    { icono: 'huella', titulo: 'Huella', texto: 'El hash del listado es la huella.' },
+    firmado ? { icono: 'sepolia', titulo: 'EAS en Sepolia', texto: 'La huella queda atestada con EAS en Ethereum, red de prueba Sepolia.' }
+      : { icono: 'sepolia', titulo: porVolverAFirmar ? 'Por volver a firmar' : 'Sin registrar', texto: porVolverAFirmar ? 'La firma anterior se retiró; la huella espera una nueva.' : 'La huella todavía no está registrada en cadena.', pendiente: true },
+    { icono: 'coincide', titulo: 'Coincide', texto: 'Y el sitio la compara con los archivos que sirve.', pendiente: !firmado },
+  ];
   return `<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Huella de los registros del museo — ${NOMBRE_SITIO}</title></head>
-<body style="font-family: system-ui, sans-serif; max-width: 62rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5">
+<html lang="es"><head>${cabeza(`Huella de los registros del museo — ${NOMBRE_SITIO}`)}</head>
+<body><main class="hoja">
+${barra}
+<header class="portada">
 <h1>Huella de los registros del Museo de Ajolotes Xolotlcalli (2025–2026)</h1>
+<figure class="figura">${glifo(sha256Listado, { etiqueta: `Figura de la huella ${sha256Listado}` })}<figcaption>Dibujada con los dígitos de la huella.</figcaption></figure>
+</header>
+<div class="intro${firmado ? '' : ' espera'}">
 ${intro}
+</div>
+<h2>Cómo se verifica</h2>
+${cadena(pasos, { hash: sha256Listado })}
+${firmado ? `${comparacion({ calculada: sha256Listado, atestada: at.contentSha256 })}\n${comoComprobarlo(BASE, `https://sepolia.easscan.org/attestation/view/${at.uid}`)}\n` : ''}<section class="archivos">
 <p>Cada archivo se sirve por separado, tal como está, para que cualquiera pueda recalcular su hash. <a href="${BASE}listado-stand.txt">listado-stand.txt</a> es el listado que ${firmado ? 'la atestación fija' : 'la atestación fijará'}. No hay archivo comprimido.</p>
 <p>El hash del listado es <code>${esc(sha256Listado)}</code>.</p>
 ${listado.bundles.map((b) => `<h2>${esc(b.id)}</h2>\n<ul>\n${filas(b)}\n</ul>`).join('\n')}
-</body></html>
+</section>
+</main></body></html>
 `;
 }

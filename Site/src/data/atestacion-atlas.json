@@ -4,9 +4,9 @@
   "peticiones": 3
  },
  "texto": "con su huella en Sepolia",
- "uid": "0x9af4d31fd937026ae97b0ecd67528034c1e6dcfa57bbb7cc301f0149f8937100",
- "bloque": 11969366,
- "tx": "0xc5482079f34a77bbc725922c18faf065a11f31779c2e4bf20e588964499df923",
+ "uid": "0x497a7aad54ac9b20f320bbce2afea3fb9385d3fc7d4cdbf7e92ce416b7825e4a",
+ "bloque": 12009718,
+ "tx": "0xb93f852f129df9b4052e0b0f16c3693aafff860f1273263a2031c4cb383b6d8a",
  "red": "sepolia",
  "esquema": "0xbe8ed46425daa61f328b568a751fd44e31e37f2a098b65037dac1ae8d90b84af",
  "esquemaNombre": "OpenDatasetSnapshot@1",
@@ -48,6 +48,6 @@
  ],
  "noCubiertos": [],
  "cargadosFuente": "registro de cargas del build del stand; log del proceso que cargó el hub; el hub no lo sirve ni lo firma: dice qué se cargó, no qué guarda el hub",
- "leidoEl": "2026-10-22T12:13:12.993Z",
- "easscan": "https://sepolia.easscan.org/attestation/view/0x9af4d31fd937026ae97b0ecd67528034c1e6dcfa57bbb7cc301f0149f8937100"
+ "leidoEl": "2026-10-28T04:28:33.638Z",
+ "easscan": "https://sepolia.easscan.org/attestation/view/0x497a7aad54ac9b20f320bbce2afea3fb9385d3fc7d4cdbf7e92ce416b7825e4a"
 }

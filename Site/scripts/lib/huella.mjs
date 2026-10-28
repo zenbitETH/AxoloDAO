@@ -3,6 +3,7 @@
 import { createHash } from 'node:crypto';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative } from 'node:path';
+import { barra, cabeza, cadena, comparacion, glifo } from './huellaEstilo.mjs';
 
 /** The site name after a page title, as the layout appends it for the pages that opt in (src/layouts/BaseLayout.astro SITE_NAME; a test compares both). */
 export const NOMBRE_SITIO = 'AxoloDAO';
@@ -56,7 +57,7 @@ export function copiarHuella({ listadoRuta, entidades, salida, atestacion = null
   }
   writeFileSync(join(salida, 'listado-stand.txt'), bytesListado);
   const nc = archivosNc(entidades, listado);
-  const pagina = paginaIndice(listado, nc, atestacion, { confirmaciones });
+  const pagina = paginaIndice(listado, nc, atestacion, { confirmaciones, sha256Listado: `0x${sha(bytesListado)}` });
   writeFileSync(join(salida, 'index.html'), pagina);
   return [...verificarHuella({ listadoRuta, salida, entidades }), ...archivosSinLicencia(pagina, listado).map((r) => `${r}: the index shows no licence for it`)];
 }
@@ -86,6 +87,8 @@ export const CONFIRMACIONES = { uno: 'la confirmación de un clip de prueba', va
 const intro = (at, confirmaciones) => `<section data-huella-intro>
 <p data-huella-red>Huella registrada en Ethereum, red de prueba Sepolia.</p>
 <p style="overflow-wrap: anywhere">Atestación <a href="${esc(at.easscan)}" rel="noopener noreferrer">${esc(at.uid)}</a>, en la transacción <a href="https://sepolia.etherscan.io/tx/${esc(at.tx)}" rel="noopener noreferrer">${esc(at.tx)}</a> (bloque ${esc(at.bloque)}).</p>
+<div class="lados">
+<div class="lado">
 <h2>Qué está onchain</h2>
 <ul data-huella-onchain>
 <li>la huella de los datos del atlas;</li>
@@ -94,15 +97,38 @@ const intro = (at, confirmaciones) => `<section data-huella-intro>
 <li>los nombres ENS (axolodao.eth).</li>
 </ul>
 <p>Más adelante: las métricas semanales.</p>
+</div>
+<div class="lado fuera">
 <h2>Qué queda fuera de la cadena</h2>
 <ul data-huella-fuera>
 <li>los datos mismos, que el sitio lee del hub de Zenbit System y sirve archivo por archivo aquí abajo.</li>
 </ul>
+</div>
+</div>
 <p data-huella-alcance>La verificación comprueba que los archivos no cambiaron desde que se registró su huella; no certifica que sus fuentes sean exactas.</p>
 </section>`;
+/** The chain of the v8 video's fingerprint scene, with its captions (LEYENDAS_HUELLA); the last two steps wait while nothing is registered on Sepolia. */
+const pasosAtlas = (enSepolia) => [
+  { icono: 'hub', titulo: 'Hub de Zenbit System', texto: 'El hub de Zenbit System es la fuente de verdad.' },
+  { icono: 'build', titulo: 'Build del sitio', texto: 'El build del sitio lo lee con una lectura estricta.' },
+  { icono: 'archivos', titulo: 'Archivos', texto: 'Y publica los datos del atlas archivo por archivo.' },
+  { icono: 'listado', titulo: 'Listado', texto: 'El hash de cada archivo va a un listado.' },
+  { icono: 'huella', titulo: 'Huella', texto: 'El hash del listado es la huella.' },
+  enSepolia ? { icono: 'sepolia', titulo: 'EAS en Sepolia', texto: 'La huella queda atestada con EAS en Ethereum, red de prueba Sepolia.' }
+    : { icono: 'sepolia', titulo: 'Sin registrar', texto: 'La huella todavía no está registrada en cadena.', pendiente: true },
+  { icono: 'coincide', titulo: 'Coincide', texto: 'Y el sitio la compara con los archivos que sirve.', pendiente: !enSepolia },
+];
+/** How anyone checks it by hand: the listing's sha256 against the attestation's contentSha256, then any file's against its line in the listing. */
+export const comoComprobarlo = (base, easscan) => `<h2>Compruébalo tú</h2>
+<ol class="pasos">
+<li>Descarga <a href="${esc(base)}listado-stand.txt">listado-stand.txt</a> y calcula su SHA-256; en macOS o Linux:<br><code>shasum -a 256 listado-stand.txt</code></li>
+<li>Compáralo con el campo contentSha256 de la <a href="${esc(easscan)}" rel="noopener noreferrer">atestación</a> (sin el 0x inicial): son iguales.</li>
+<li>Descarga cualquier archivo de la lista de abajo y calcula su SHA-256: aparece junto a su ruta en el listado.</li>
+</ol>`;
 /** The index page: plain HTML, no script. Each file is its own link with its sha256 and its licence: a CC BY-NC layer shows its licence on a line of its
- *  own («CC BY-NC 2.5 MX (no comercial)») and is never described as open data; every other file links to its bundle's licences.jsonl. */
-export function paginaIndice(listado, nc, atestacion = null, { base = '/atlas/datos/huella/', confirmaciones = null } = {}) {
+ *  own («CC BY-NC 2.5 MX (no comercial)») and is never described as open data; every other file links to its bundle's licences.jsonl.
+ *  `sha256Listado`: the served listing's own hash, computed here at build time; with it the page draws the fingerprint and compares it to the attestation's. */
+export function paginaIndice(listado, nc, atestacion = null, { base = '/atlas/datos/huella/', confirmaciones = null, sha256Listado = null } = {}) {
   const enSepolia = atestacion?.red === 'sepolia';
   if (enSepolia && !(Number.isInteger(confirmaciones) && confirmaciones >= 1)) throw new Error('the fingerprint page needs the inventory\'s count of clip confirmations (an integer ≥ 1) for its intro');
   const listados = new Set(listado.archivos.map((a) => a.ruta));
@@ -112,14 +138,23 @@ export function paginaIndice(listado, nc, atestacion = null, { base = '/atlas/da
       : listados.has(`${b.id}/licences.jsonl`) ? ` · <a href="${esc(`${base}${b.id}/licences.jsonl`)}" data-licencia="paquete">licencias del paquete</a>` : '';
     return `<li><a href="${esc(base + a.ruta)}">${esc(a.ruta.slice(b.id.length + 1))}</a> <code>${a.sha256}</code>${licencia}</li>`;
   }).join('\n');
+  const huella = atestacion?.contentSha256 ?? sha256Listado;
   return `<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Huella de los datos del atlas — ${NOMBRE_SITIO}</title></head>
-<body style="font-family: system-ui, sans-serif; max-width: 62rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5">
+<html lang="es"><head>${cabeza(`Huella de los datos del atlas — ${NOMBRE_SITIO}`)}</head>
+<body><main class="hoja">
+${barra}
+<header class="portada">
 <h1>Huella de los datos del atlas</h1>
-${enSepolia ? `${intro(atestacion, confirmaciones)}\n` : ''}<p>Cada archivo del paquete se sirve por separado, tal como está, para que cualquiera pueda recalcular su hash. <a href="${esc(base)}listado-stand.txt">listado-stand.txt</a> es el listado que la atestación fija. No hay archivo comprimido.</p>
+${huella ? `<figure class="figura">${glifo(huella, { etiqueta: `Figura de la huella ${huella}` })}<figcaption>Dibujada con los dígitos de la huella.</figcaption></figure>` : ''}
+</header>
+${enSepolia ? `<div class="intro">\n${intro(atestacion, confirmaciones)}\n</div>\n` : ''}<h2>Cómo se verifica</h2>
+${cadena(pasosAtlas(enSepolia), { hash: huella })}
+${enSepolia && sha256Listado ? `${comparacion({ calculada: sha256Listado, atestada: atestacion.contentSha256 })}\n${comoComprobarlo(base, atestacion.easscan)}\n` : ''}<section class="archivos">
+<p>Cada archivo del paquete se sirve por separado, tal como está, para que cualquiera pueda recalcular su hash. <a href="${esc(base)}listado-stand.txt">listado-stand.txt</a> es el listado que la atestación fija. No hay archivo comprimido.</p>
 ${atestacion ? `<p>El hash del listado es <code>${esc(atestacion.contentSha256)}</code>.</p>` : ''}
 ${listado.bundles.map((b) => `<h2>${esc(b.id)}</h2>\n<ul>\n${filas(b)}\n</ul>`).join('\n')}
-</body></html>
+</section>
+</main></body></html>
 `;
 }
 

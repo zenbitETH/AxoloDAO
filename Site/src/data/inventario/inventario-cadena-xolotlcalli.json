@@ -15,11 +15,11 @@
   },
   "atestacion": {
    "clip": 259,
-   "uidEnCadena": "0xf3e3edf3c8bf0051bc2d70848592846b0604f89bd0b9439c4ba06bccf0232044",
-   "hora": "2026-09-11 07:08:36 UTC",
+   "uidEnCadena": "0x33aba0951a8b42a9918464045ba4025ade73c5756a2eabbc3c50979f3b763165",
+   "hora": "2026-10-28 03:58:48 UTC",
    "enlaces": {
-    "easscan": "https://sepolia.easscan.org/attestation/view/0xf3e3edf3c8bf0051bc2d70848592846b0604f89bd0b9439c4ba06bccf0232044",
-    "etherscan": "https://sepolia.etherscan.io/tx/0xd86c2902aaf8cb0cebf529e4171f64bdd1b4235aa6f5e2eb419c1e044fca5538"
+    "easscan": "https://sepolia.easscan.org/attestation/view/0x33aba0951a8b42a9918464045ba4025ade73c5756a2eabbc3c50979f3b763165",
+    "etherscan": "https://sepolia.etherscan.io/tx/0xbd0d5fc148516f19a7af89b2608d7473337762878b319145e6487c670f64cd59"
    }
   }
  },

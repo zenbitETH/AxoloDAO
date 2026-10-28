@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'preact/hooks';
 
 // The DNA shapes live in the side gutters, outside the hero's text columns (review, 22-oct: they covered the subtitle, the problem/solution
 // blocks and the sections below); the logo alone floats in the centre, behind the title, at low opacity. They only show on screens wide enough to have gutters, and the whole stage fades once the first
-// section after the hero (#atlas) comes into view.
+// section after the hero (#atlas) reaches the upper half of the screen.
 const DNA_STRANDS = [
   { top: '10%', left: '1.5%', size: 150, shape: 'strand',   rot: -14, dur: 22, delay: 0,   depth: 0.32, hue: 'teal' },
   { top: '14%', left: '87%',  size: 170, shape: 'infinity', rot: 10,  dur: 28, delay: -6,  depth: 0.55, hue: 'rosa' },
@@ -56,7 +56,8 @@ export default function HeroParallax() {
         ([entry]) => {
           stage.style.setProperty('--stage-opacity', entry.isIntersecting ? '0' : '1');
         },
-        { threshold: 0, rootMargin: '-30% 0px 0px 0px' },
+        // only once #atlas reaches the upper part of the screen: on a 1080-high screen it already shows below the hero at load
+        { threshold: 0, rootMargin: '0px 0px -55% 0px' },
       );
       io.observe(species);
     }
@@ -85,7 +86,7 @@ export default function HeroParallax() {
       <img
         src="/logos/axolodaoicon.svg"
         alt=""
-        class="hero-parallax-icon absolute left-1/2 top-[30%] h-[20rem] w-[20rem] sm:h-[30rem] sm:w-[30rem]"
+        class="hero-parallax-icon absolute left-1/2 top-[calc(30%+4rem)] h-[20rem] w-[20rem] sm:h-[30rem] sm:w-[30rem]"
       />
 
       {DNA_STRANDS.map((s, i) => (
