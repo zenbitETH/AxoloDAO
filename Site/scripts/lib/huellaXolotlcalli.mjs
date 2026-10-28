@@ -12,9 +12,9 @@ export const BASE = '/xolotlcalli/datos/huella/';
 export const FRASE = 'La verificación comprueba que los archivos no cambiaron desde que se registró su huella; no certifica que sus fuentes sean exactas.';
 // what this fingerprint leaves out (the IP review's wording); dropping the line is setting this to false
 export const MOSTRAR_LIMITES = true;
-// the key the anchors must be signed by: the address attester.axolodao.eth resolves to (bunker migration plan, «Data signing»). None exists yet,
-// so no anchors file is accepted; the anchors of 22-23 Oct were signed by a key that is now retired (src/lib/firmasRetiradas.mjs).
-export const ATESTADOR_DATOS = null;
+// the key the anchors must be signed by: firmas.zenbit.axolodao.eth, a Ledger account only Habacuc holds (re-signed on Sepolia 27-oct-2026,
+// axolodao-brain context/registros/2026-10-27-refirma-sepolia.md); the anchors of 22-23 Oct were signed by a key now retired (src/lib/firmasRetiradas.mjs).
+export const ATESTADOR_DATOS = '0xadA8Fd8F05602E8a7a61b89beF26530885f89475';
 export const LIMITES = 'Quedan fuera de esta huella el peso, las medidas, las causas de baja, los tratamientos y la alimentación de los ejemplares.';
 // the weekly anchors' line, approved for exactly this range (the IP review's wording); a file with another range is refused, not reworded
 const ANCLAS_APROBADAS = { cuenta: 48, primera: '2025-W44', ultima: '2026-W39' };
