@@ -1,0 +1,26 @@
+{
+ "generadoPor": "scripts/build-sitio.mjs --fijar",
+ "archivos": [
+  {
+   "id": "ficha",
+   "ruta": "context/datos/demo/xolotlcalli-ficha.json",
+   "commit": "9a61a62",
+   "destino": "public/atlas/real/xolotlcalli-ficha.json",
+   "sha256": "2087287f714a72bf4348df7171bb59e3333addf85a8c6950b4d892fb2ea8a13b"
+  },
+  {
+   "id": "clips",
+   "ruta": "context/datos/demo/xovi-clips-xolotlcalli.json",
+   "commit": "305b81d",
+   "destino": "public/atlas/real/xolotlcalli-clips.json",
+   "sha256": "4515dc581c226665464743e35fcc9aa2b44ac7c6eb09c2d51dd177f81943a69a"
+  },
+  {
+   "id": "cadena",
+   "ruta": "context/datos/demo/xolotlcalli-cadena-stand.json",
+   "commit": "a30747b",
+   "destino": "public/atlas/real/xolotlcalli-cadena.json",
+   "sha256": "0fcc6f4443155a366ec4cc9610720b04a8c852e3018e5879e8c93b70543574f1"
+  }
+ ]
+}

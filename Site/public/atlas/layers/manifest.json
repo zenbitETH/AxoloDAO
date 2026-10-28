@@ -1,0 +1,379 @@
+{
+ "generadoDe": "open-data-2026-10",
+ "sinonimos": {
+  "nothagenes": "texanum",
+  "microstomum": "texanum",
+  "schmidti": "texanum",
+  "subsalsum": "velasci",
+  "macrodactyla": "macrodactylum",
+  "stejnegeri": "macrodactylum",
+  "croceum": "macrodactylum",
+  "krausii": "macrodactylum",
+  "tigrina": "tigrinum",
+  "lurida": "tigrinum",
+  "episcopus": "tigrinum",
+  "bicolor": "tigrinum",
+  "ingens": "tigrinum",
+  "sopeanum": "tigrinum",
+  "conspersum": "tigrinum",
+  "copeanum": "tigrinum",
+  "mavortia": "mavortium",
+  "nebulosum": "mavortium",
+  "proserpine": "mavortium",
+  "subviolaceum": "maculatum",
+  "carolinae": "maculatum",
+  "carolina": "maculatum",
+  "platineum": "laterale",
+  "decorticatum": "gracile",
+  "zempoalaensis": "altamirani",
+  "tremblayi": "jeffersonianum",
+  "jeffersoniana": "jeffersonianum",
+  "fuscum": "jeffersonianum",
+  "rivularis": "rivulare",
+  "silvensis": "silvense",
+  "cingulatus": "cingulatum",
+  "opaca": "opacum",
+  "faciatum": "opacum"
+ },
+ "capas": [
+  {
+   "id": "especies-por-estado",
+   "grupo": "especies",
+   "kind": "choropleth",
+   "lazy": false,
+   "flag": null,
+   "download": false,
+   "title": {
+    "es": "Riqueza de especies por estado y provincia",
+    "en": "Species richness by state and province",
+    "pt": "Riqueza de espécies por estado e província"
+   },
+   "note": {
+    "es": "Cuántas especies de Ambystoma tienen registro confirmado en cada estado o provincia de México, Estados Unidos y Canadá.",
+    "en": "How many Ambystoma species have a confirmed record in each state or province of Mexico, the United States and Canada.",
+    "pt": "Quantas espécies de Ambystoma têm registro confirmado em cada estado ou província do México, dos Estados Unidos e do Canadá."
+   },
+   "source": {
+    "es": "Base de especies de AxoloDAO (Zenbit): cada registro cita su fuente",
+    "en": "AxoloDAO species base (Zenbit): each record cites its source",
+    "pt": "Base de espécies da AxoloDAO (Zenbit): cada registro cita a sua fonte"
+   },
+   "licence": {
+    "id": "LicenseRef-fuente-de-cada-registro",
+    "label": {
+     "es": "La de cada fuente; cada registro la cita",
+     "en": "That of each source; each record cites it",
+     "pt": "A de cada fonte; cada registro a cita"
+    }
+   },
+   "lastDataText": "varía por fuente",
+   "retrievedAt": "2026-10-16",
+   "sourceIds": []
+  },
+  {
+   "id": "localidades-especies",
+   "grupo": "especies",
+   "kind": "localities",
+   "lazy": false,
+   "flag": null,
+   "download": false,
+   "title": {
+    "es": "Localidades de las especies",
+    "en": "Species localities",
+    "pt": "Localidades das espécies"
+   },
+   "note": {
+    "es": "Zonas y puntos generalizados a celdas de 0.5° (unos 50 km), nunca una coordenada exacta. Un color por especie.",
+    "en": "Zones and points generalized to 0.5° cells (about 50 km), never an exact coordinate. One colour per species.",
+    "pt": "Zonas e pontos generalizados em células de 0,5° (cerca de 50 km), nunca uma coordenada exata. Uma cor por espécie."
+   },
+   "source": {
+    "es": "Base de especies de AxoloDAO (Zenbit): cada localidad cita su fuente",
+    "en": "AxoloDAO species base (Zenbit): each locality cites its source",
+    "pt": "Base de espécies da AxoloDAO (Zenbit): cada localidade cita a sua fonte"
+   },
+   "licence": {
+    "id": "LicenseRef-fuente-de-cada-registro",
+    "label": {
+     "es": "La de cada fuente; cada registro la cita",
+     "en": "That of each source; each record cites it",
+     "pt": "A de cada fonte; cada registro a cita"
+    }
+   },
+   "lastDataText": "varía por fuente",
+   "retrievedAt": "2026-10-16",
+   "sourceIds": []
+  },
+  {
+   "id": "metrica-estatal",
+   "grupo": "instalaciones",
+   "kind": "choropleth",
+   "lazy": false,
+   "flag": null,
+   "download": false,
+   "title": {
+    "es": "Una métrica por estado",
+    "en": "One metric per state",
+    "pt": "Uma métrica por estado"
+   },
+   "note": {
+    "es": "UMA, PIMVS, instalaciones catalogadas y especies, por estado.",
+    "en": "UMAs, PIMVS, cataloged facilities and species, by state.",
+    "pt": "UMAs, PIMVS, instalações catalogadas e espécies, por estado."
+   },
+   "source": {
+    "es": "SEMARNAT (BADESNIARN), INEGI (Censo 2020) y PACE 2018",
+    "en": "SEMARNAT (BADESNIARN), INEGI (Census 2020) and PACE 2018",
+    "pt": "SEMARNAT (BADESNIARN), INEGI (Censo 2020) e PACE 2018"
+   },
+   "licence": {
+    "id": "LicenseRef-semarnat-badesniarn-biodiv",
+    "label": {
+     "es": "SEMARNAT: datos estadísticos públicos, con su fuente · INEGI: Términos de libre uso, con cita",
+     "en": "SEMARNAT: public statistical data, with its source · INEGI: Terms of Free Use, with attribution",
+     "pt": "SEMARNAT: dados estatísticos públicos, com a fonte · INEGI: Termos de Livre Uso, com citação"
+    }
+   },
+   "lastDataText": "2024 (UMA, PIMVS); 2020 (población)",
+   "retrievedAt": "2026-09-24",
+   "sourceIds": [
+    "semarnat-badesniarn-biodiv"
+   ]
+  },
+  {
+   "id": "instalaciones-catalogadas",
+   "grupo": "instalaciones",
+   "kind": "points",
+   "lazy": false,
+   "flag": null,
+   "download": false,
+   "title": {
+    "es": "Instalaciones catalogadas",
+    "en": "Cataloged facilities",
+    "pt": "Instalações catalogadas"
+   },
+   "note": {
+    "es": "Catalogadas desde fuentes públicas; no es un registro ni una verificación. Cada ícono marca el municipio (o el estado), no la dirección.",
+    "en": "Cataloged from public sources; this is not a registry or a verification. Each icon marks the municipality (or the state), not the address.",
+    "pt": "Catalogadas a partir de fontes públicas; não é um registro nem uma verificação. Cada ícone marca o município (ou o estado), não o endereço."
+   },
+   "aviso": {
+    "es": "Directorio compilado de fuentes públicas. Ninguna instalación de esta tabla forma parte de la red ni la respalda. Para corregir o retirar una fila, escribe a hola@zenbit.mx; respondemos en diez días hábiles",
+    "en": "Directorio compilado de fuentes públicas. Ninguna instalación de esta tabla forma parte de la red ni la respalda. Para corregir o retirar una fila, escribe a hola@zenbit.mx; respondemos en diez días hábiles",
+    "pt": "Directorio compilado de fuentes públicas. Ninguna instalación de esta tabla forma parte de la red ni la respalda. Para corregir o retirar una fila, escribe a hola@zenbit.mx; respondemos en diez días hábiles"
+   },
+   "source": {
+    "es": "Páginas oficiales y de prensa y SIC Cultura; ubicación: INEGI, Marco Geoestadístico",
+    "en": "Official and press pages and SIC Cultura; location: INEGI, Marco Geoestadístico",
+    "pt": "Páginas oficiais e de imprensa e SIC Cultura; localização: INEGI, Marco Geoestadístico"
+   },
+   "licence": {
+    "id": "CC-BY-4.0",
+    "label": {
+     "es": "CC BY 4.0, la licencia de la compilación de Zenbit; cada fuente conserva sus derechos",
+     "en": "CC BY 4.0, the licence of Zenbit's compilation; each source keeps its own rights",
+     "pt": "CC BY 4.0, a licença da compilação da Zenbit; cada fonte mantém seus direitos"
+    }
+   },
+   "attribution": {
+    "es": "Ubicación al nivel del municipio: INEGI, Marco Geoestadístico, diciembre de 2025.",
+    "en": "Location at municipality level: INEGI, Marco Geoestadístico, December 2025.",
+    "pt": "Localização no nível do município: INEGI, Marco Geoestadístico, dezembro de 2025."
+   },
+   "lastDataText": "2026-06-13",
+   "retrievedAt": "2026-09-24",
+   "sourceIds": [
+    "web-instalaciones-2026-09",
+    "web-oficial-instalaciones-2026-09",
+    "sic-museos-directorio",
+    "etnobiologia-2012-achoque",
+    "semarnat-dgvs-oficio-ajolote-2017"
+   ]
+  },
+  {
+   "id": "uma-extensivas",
+   "grupo": "instalaciones",
+   "kind": "points",
+   "lazy": true,
+   "flag": "nc",
+   "download": false,
+   "hubLayer": "umas-centroides",
+   "title": {
+    "es": "UMA extensivas",
+    "en": "Extensive UMAs",
+    "pt": "UMAs extensivas"
+   },
+   "note": {
+    "es": "Centroides de las UMA extensivas registradas; sin nombres de predio.",
+    "en": "Centroids of registered extensive UMAs; no property names.",
+    "pt": "Centroides das UMAs extensivas registradas; sem nomes de propriedades."
+   },
+   "source": {
+    "es": "CONABIO, UMA 2020",
+    "en": "CONABIO, UMA 2020",
+    "pt": "CONABIO, UMA 2020"
+   },
+   "licence": {
+    "id": "CC-BY-NC-2.5-MX",
+    "label": {
+     "es": "CC BY-NC 2.5 MX",
+     "en": "CC BY-NC 2.5 MX",
+     "pt": "CC BY-NC 2.5 MX"
+    }
+   },
+   "attribution": {
+    "es": "Fuente: CONABIO, UMA, 2020. Licencia CC BY-NC 2.5 MX",
+    "en": "Source: CONABIO, UMA, 2020. License CC BY-NC 2.5 MX",
+    "pt": "Fonte: CONABIO, UMA, 2020. Licença CC BY-NC 2.5 MX"
+   },
+   "lastDataText": "2020-08 (corte del metadato; los polígonos no traen fecha)",
+   "retrievedAt": "2026-09-24",
+   "sourceIds": [
+    "conabio-uma-2020-shp"
+   ]
+  },
+  {
+   "id": "rios-lagos",
+   "grupo": "agua",
+   "kind": "context",
+   "lazy": false,
+   "flag": null,
+   "download": false,
+   "title": {
+    "es": "Ríos y lagos",
+    "en": "Rivers and lakes",
+    "pt": "Rios e lagos"
+   },
+   "note": {
+    "es": "Los ríos y los cuerpos de agua de Norteamérica, como contexto de las áreas.",
+    "en": "North America's rivers and water bodies, as context for the ranges.",
+    "pt": "Os rios e corpos de água da América do Norte, como contexto das áreas."
+   },
+   "source": {
+    "es": "Natural Earth, ríos y lagos de Norteamérica (paquete de datos del atlas)",
+    "en": "Natural Earth, rivers and lakes of North America (atlas data package)",
+    "pt": "Natural Earth, rios e lagos da América do Norte (pacote de dados do atlas)"
+   },
+   "licence": {
+    "id": "PD",
+    "label": {
+     "es": "Dominio público",
+     "en": "Public domain",
+     "pt": "Domínio público"
+    }
+   },
+   "lastDataText": "Natural Earth",
+   "retrievedAt": "2026-10-18"
+  },
+  {
+   "id": "sitios-conagua-2013",
+   "grupo": "agua",
+   "kind": "points",
+   "lazy": true,
+   "flag": "nc",
+   "download": false,
+   "hubLayer": "calidad-agua-2013",
+   "title": {
+    "es": "Sitios de calidad del agua (2013)",
+    "en": "Water quality sites (2013)",
+    "pt": "Pontos de qualidade da água (2013)"
+   },
+   "note": {
+    "es": "Clases de 2013, no lecturas actuales.",
+    "en": "Classes from 2013, not current readings.",
+    "pt": "Classes de 2013, não leituras atuais."
+   },
+   "source": {
+    "es": "CONABIO, calidad del agua en sitios 2013",
+    "en": "CONABIO, water quality at sites 2013",
+    "pt": "CONABIO, qualidade da água em locais 2013"
+   },
+   "licence": {
+    "id": "CC-BY-NC-2.5-MX",
+    "label": {
+     "es": "CC BY-NC 2.5 MX",
+     "en": "CC BY-NC 2.5 MX",
+     "pt": "CC BY-NC 2.5 MX"
+    }
+   },
+   "attribution": {
+    "es": "Fuente: CONABIO, calidad del agua, 2013. Licencia CC BY-NC 2.5 MX",
+    "en": "Source: CONABIO, water quality, 2013. License CC BY-NC 2.5 MX",
+    "pt": "Fonte: CONABIO, qualidade da água, 2013. Licença CC BY-NC 2.5 MX"
+   },
+   "lastDataText": "2013",
+   "retrievedAt": "2026-09-24",
+   "sourceIds": [
+    "conabio-calidad-agua-sitios-2013"
+   ]
+  },
+  {
+   "id": "organizaciones-registradas",
+   "grupo": "instalaciones",
+   "kind": "live",
+   "lazy": false,
+   "flag": null,
+   "download": false,
+   "title": {
+    "es": "Organizaciones registradas",
+    "en": "Registered organizations",
+    "pt": "Organizações registradas"
+   },
+   "note": {
+    "es": "Las registradas (en rosa) se distinguen de las instalaciones catalogadas, que son candidatas; cada una muestra su nivel de verificación.",
+    "en": "Registered organizations (in pink) are shown apart from cataloged facilities, which are candidates; each shows its verification level.",
+    "pt": "As organizações registradas (em rosa) aparecem separadas das instalações catalogadas, que são candidatas; cada uma mostra seu nível de verificação."
+   },
+   "source": {
+    "es": "Registro de organizaciones de AxoloDAO",
+    "en": "AxoloDAO organization registry",
+    "pt": "Registro de organizações da AxoloDAO"
+   },
+   "licence": {
+    "id": "LicenseRef-axolodao-registro",
+    "label": {
+     "es": "Datos que cada organización decide publicar",
+     "en": "Data each organization chooses to publish",
+     "pt": "Dados que cada organização decide publicar"
+    }
+   },
+   "lastDataText": "",
+   "retrievedAt": "",
+   "sourceIds": []
+  },
+  {
+   "id": "limites-admin1",
+   "grupo": "contexto",
+   "kind": "context",
+   "lazy": false,
+   "flag": null,
+   "download": false,
+   "title": {
+    "es": "Límites de estado y provincia",
+    "en": "State and province boundaries",
+    "pt": "Limites de estados e províncias"
+   },
+   "note": {
+    "es": "Los límites de las 96 unidades del mapa.",
+    "en": "The boundaries of the 96 units on the map.",
+    "pt": "Os limites das 96 unidades do mapa."
+   },
+   "source": {
+    "es": "Natural Earth, 1:10m",
+    "en": "Natural Earth, 1:10m",
+    "pt": "Natural Earth, 1:10m"
+   },
+   "licence": {
+    "id": "LicenseRef-public-domain",
+    "label": {
+     "es": "Dominio público",
+     "en": "Public domain",
+     "pt": "Domínio público"
+    }
+   },
+   "lastDataText": "v5.1.1",
+   "retrievedAt": "2026-10-16",
+   "sourceIds": []
+  }
+ ]
+}

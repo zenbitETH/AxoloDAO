@@ -1,0 +1,258 @@
+{
+ "mavortium": [
+  "gracile",
+  "macrodactylum",
+  "rosaceum",
+  "tigrinum",
+  "velasci"
+ ],
+ "rosaceum": [
+  "mavortium",
+  "silvense",
+  "velasci"
+ ],
+ "velasci": [
+  "altamirani",
+  "amblycephalum",
+  "andersoni",
+  "bombypellum",
+  "dumerilii",
+  "flavipiperatum",
+  "granulosum",
+  "leorae",
+  "lermaense",
+  "mavortium",
+  "mexicanum",
+  "ordinarium",
+  "rivulare",
+  "rosaceum",
+  "silvense",
+  "taylori"
+ ],
+ "gracile": [
+  "californiense",
+  "macrodactylum",
+  "mavortium",
+  "tigrinum"
+ ],
+ "macrodactylum": [
+  "californiense",
+  "gracile",
+  "mavortium",
+  "tigrinum"
+ ],
+ "tigrinum": [
+  "annulatum",
+  "barbouri",
+  "bishopi",
+  "cingulatum",
+  "gracile",
+  "jeffersonianum",
+  "laterale",
+  "mabeei",
+  "macrodactylum",
+  "maculatum",
+  "mavortium",
+  "opacum",
+  "talpoideum",
+  "texanum"
+ ],
+ "silvense": [
+  "rosaceum",
+  "velasci"
+ ],
+ "dumerilii": [
+  "amblycephalum",
+  "andersoni",
+  "bombypellum",
+  "velasci"
+ ],
+ "altamirani": [
+  "bombypellum",
+  "granulosum",
+  "leorae",
+  "lermaense",
+  "mexicanum",
+  "rivulare",
+  "velasci"
+ ],
+ "ordinarium": [
+  "amblycephalum",
+  "bombypellum",
+  "velasci"
+ ],
+ "mexicanum": [
+  "altamirani",
+  "bombypellum",
+  "granulosum",
+  "leorae",
+  "lermaense",
+  "rivulare",
+  "velasci"
+ ],
+ "taylori": [
+  "velasci"
+ ],
+ "lermaense": [
+  "altamirani",
+  "bombypellum",
+  "granulosum",
+  "leorae",
+  "mexicanum",
+  "rivulare",
+  "velasci"
+ ],
+ "leorae": [
+  "altamirani",
+  "lermaense",
+  "mexicanum",
+  "rivulare",
+  "velasci"
+ ],
+ "amblycephalum": [
+  "andersoni",
+  "bombypellum",
+  "dumerilii",
+  "ordinarium",
+  "velasci"
+ ],
+ "flavipiperatum": [
+  "velasci"
+ ],
+ "granulosum": [
+  "altamirani",
+  "bombypellum",
+  "lermaense",
+  "mexicanum",
+  "rivulare",
+  "velasci"
+ ],
+ "bombypellum": [
+  "altamirani",
+  "amblycephalum",
+  "andersoni",
+  "dumerilii",
+  "granulosum",
+  "lermaense",
+  "mexicanum",
+  "ordinarium",
+  "rivulare",
+  "velasci"
+ ],
+ "andersoni": [
+  "amblycephalum",
+  "bombypellum",
+  "dumerilii",
+  "velasci"
+ ],
+ "rivulare": [
+  "altamirani",
+  "bombypellum",
+  "granulosum",
+  "leorae",
+  "lermaense",
+  "mexicanum",
+  "velasci"
+ ],
+ "annulatum": [
+  "maculatum",
+  "opacum",
+  "texanum",
+  "tigrinum"
+ ],
+ "maculatum": [
+  "annulatum",
+  "barbouri",
+  "bishopi",
+  "cingulatum",
+  "jeffersonianum",
+  "laterale",
+  "mabeei",
+  "opacum",
+  "talpoideum",
+  "texanum",
+  "tigrinum"
+ ],
+ "opacum": [
+  "annulatum",
+  "barbouri",
+  "bishopi",
+  "cingulatum",
+  "jeffersonianum",
+  "laterale",
+  "mabeei",
+  "maculatum",
+  "talpoideum",
+  "texanum",
+  "tigrinum"
+ ],
+ "texanum": [
+  "annulatum",
+  "barbouri",
+  "jeffersonianum",
+  "laterale",
+  "maculatum",
+  "opacum",
+  "talpoideum",
+  "tigrinum"
+ ],
+ "barbouri": [
+  "jeffersonianum",
+  "maculatum",
+  "opacum",
+  "texanum",
+  "tigrinum"
+ ],
+ "jeffersonianum": [
+  "barbouri",
+  "laterale",
+  "maculatum",
+  "opacum",
+  "talpoideum",
+  "texanum",
+  "tigrinum"
+ ],
+ "bishopi": [
+  "cingulatum",
+  "maculatum",
+  "opacum",
+  "talpoideum",
+  "tigrinum"
+ ],
+ "cingulatum": [
+  "bishopi",
+  "mabeei",
+  "maculatum",
+  "opacum",
+  "talpoideum",
+  "tigrinum"
+ ],
+ "talpoideum": [
+  "bishopi",
+  "cingulatum",
+  "jeffersonianum",
+  "mabeei",
+  "maculatum",
+  "opacum",
+  "texanum",
+  "tigrinum"
+ ],
+ "californiense": [
+  "gracile",
+  "macrodactylum"
+ ],
+ "mabeei": [
+  "cingulatum",
+  "maculatum",
+  "opacum",
+  "talpoideum",
+  "tigrinum"
+ ],
+ "laterale": [
+  "jeffersonianum",
+  "maculatum",
+  "opacum",
+  "texanum",
+  "tigrinum"
+ ]
+}

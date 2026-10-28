@@ -1,0 +1,22 @@
+{
+ "larva": {
+  "es": "larva",
+  "en": "larva",
+  "pt": "larva"
+ },
+ "paedomorph": {
+  "es": "neoténico",
+  "en": "neotenic",
+  "pt": "neotênico"
+ },
+ "metamorph": {
+  "es": "metamórfico",
+  "en": "metamorphic",
+  "pt": "metamórfico"
+ },
+ "adult": {
+  "es": "adulto",
+  "en": "adult",
+  "pt": "adulto"
+ }
+}
