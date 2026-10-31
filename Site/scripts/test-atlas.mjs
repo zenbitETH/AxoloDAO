@@ -838,7 +838,7 @@ if (args.has('--dist')) {
     {
       const paginas = []; const anda3 = (d) => { for (const n of readdirSync(d)) { const f = join(d, n); if (statSync(f).isDirectory()) anda3(f); else if (n === 'index.html') paginas.push(f); } }; anda3(dist);
       const enlazan = paginas.filter((f) => /href="[^"]*#mapa"/.test(readFileSync(f, 'utf8'))).map((f) => f.replace(dist, ''));
-      const homes = [['index.html', '/atlas/'], ['en/index.html', '/en/atlas/'], ['pt/index.html', '/pt/atlas/']].map(([f, a]) => { const h = readFileSync(join(dist, f), 'utf8'); return h.includes(`href="${a}" class="btn-primary"`) && h.includes(`href="${a}"`) && !/href="#mapa"/.test(h); });
+      const homes = [['index.html', '/atlas/'], ['en/index.html', '/en/atlas/'], ['pt/index.html', '/pt/atlas/']].map(([f, a]) => { const h = readFileSync(join(dist, f), 'utf8'); return new RegExp(`<a href="${a}" class="btn-secondary btn-secondary--compact"[^>]*data-hero-enlace="atlas"`).test(h) && !/href="#mapa"/.test(h); });
       ok(paginas.length >= 20 && enlazan.length === 0 && homes.every(Boolean), `no built page links to #mapa (${paginas.length} pages read${enlazan.length ? '; found in ' + enlazan.join(', ') : ''}), and the nav and hero buttons of the three home pages point to /atlas/, /en/atlas/ and /pt/atlas/`);
     }
     // The site name after a page title comes from ONE place (the layout's SITE_NAME), only for pages that opt in with `appendSiteName`: no page template

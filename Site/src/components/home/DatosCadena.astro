@@ -85,7 +85,11 @@ const tx = (h: string) => `https://sepolia.etherscan.io/tx/${h}`;
           {firmadas && <span><i class="clave clave--anclada" aria-hidden="true"></i>{fmt('home.datos.cadena.anclas.ancladas', { n: ancladas.size })}</span>}
           <span><i class="clave clave--con" aria-hidden="true"></i>{fmt('home.datos.cadena.anclas.conRegistro', { n: conRegistro, de: semanas.length })}</span>
         </p>
-        <a href="/xolotlcalli/datos/huella/" class="btn-secondary btn-secondary--compact mt-5 inline-flex" data-home-huella-registro>{t(locale, 'home.datos.cadena.anclas.verHuella')}</a>
+        <!-- the case these records come from: the museum's page sits beside its record's fingerprint (it left the hero on 30-oct) -->
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href="/xolotlcalli/datos/huella/" class="btn-secondary btn-secondary--compact inline-flex" data-home-huella-registro>{t(locale, 'home.datos.cadena.anclas.verHuella')}</a>
+          <a href={t(locale, 'xolotlcalli.path')} class="btn-secondary btn-secondary--compact inline-flex" data-home-datos-xolotlcalli>{t(locale, 'hero.cta.xolotlcalli')}</a>
+        </div>
         <ul class="mt-6 flex flex-wrap gap-2">
           {items.map((i) => <li class="pendiente rounded-full px-3 py-1 text-xs">{i}</li>)}
         </ul>
