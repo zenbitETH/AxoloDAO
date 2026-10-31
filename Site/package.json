@@ -79,7 +79,7 @@
     "@types/qrcode": "^1.5.6",
     "d3-geo": "^3.1.1",
     "mapshaper": "^0.7.80",
-    "node-html-parser": "^7.0.1",
+    "node-html-parser": "^9.0.5",
     "playwright-core": "^1.63.0",
     "svgo": "^3.3.2",
     "xlsx": "^0.18.5",
