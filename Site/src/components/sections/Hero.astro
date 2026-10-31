@@ -9,8 +9,8 @@ import { conTaxones } from '@/lib/taxones';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
-// the header's three doors, the atlas first and the strongest; Xolotlcalli's button lives in «Los datos, a la vista» as the case those data come from
-const [atlas, ...xovi] = enlacesPrincipales(locale);
+// the header's three doors, on one line and in one style; Xolotlcalli's button lives in «Los datos, a la vista» as the case those data come from
+const enlaces = enlacesPrincipales(locale);
 // state B's onchain line; state A has none
 const linea = lineaOnchain(locale);
 ---
@@ -26,13 +26,16 @@ const linea = lineaOnchain(locale);
     {linea && <p class="hero-onchain mx-auto mt-4 max-w-2xl text-sm font-semibold sm:text-base" data-hero-onchain set:html={conTaxones(linea)} />}
 
     <div class="mt-10 flex flex-col items-center gap-3">
-      <a href={atlas.href} class="btn-primary" data-hero-atlas>
-        {t(locale, 'hero.cta.primary')}
-      </a>
       <div class="flex flex-wrap items-center justify-center gap-3">
-        {xovi.map((l) => (
-          <a href={l.href} target="_blank" rel="noopener noreferrer" class="btn-secondary btn-secondary--compact" data-hero-enlace={l.clave}>
-            {l.label}<NuevaPestana locale={locale} />
+        {enlaces.map((l) => (
+          <a
+            href={l.href}
+            class="btn-secondary btn-secondary--compact"
+            target={l.external ? '_blank' : undefined}
+            rel={l.external ? 'noopener noreferrer' : undefined}
+            data-hero-enlace={l.clave}
+          >
+            {l.label}{l.external && <NuevaPestana locale={locale} />}
           </a>
         ))}
       </div>
