@@ -1,5 +1,6 @@
 ---
-import { type Locale, t, localePath } from '@/i18n/strings';
+import { type Locale, localePath } from '@/i18n/strings';
+import { enlacesPrincipales } from '@/lib/navPrincipal';
 import LocaleToggle from './LocaleToggle.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import NuevaPestana from './NuevaPestana.astro';
@@ -9,10 +10,7 @@ const { locale, glass = false } = Astro.props;
 
 // the atlas views (/atlas, /especies and their en/pt versions) put the map under the header: the header is a dark glass island from the first pixel there (the map is dark in both themes)
 const enAtlas = /^\/(en\/|pt\/)?(atlas|especies)\/?$/.test(Astro.url.pathname);
-const links: { href: string; label: string; external?: boolean }[] = [
-  { href: 'https://xovi.axolodao.org',   label: 'Xovi', external: true },
-  { href: localePath(locale, 'atlas/'),  label: t(locale, 'nav.species') },
-];
+const links = enlacesPrincipales(locale);
 ---
 
 <header class="site-header pointer-events-none fixed inset-x-0 top-0 z-50 h-20">
