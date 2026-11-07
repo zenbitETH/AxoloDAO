@@ -25,6 +25,7 @@
     "test:closure-copy": "node --experimental-strip-types --no-warnings scripts/test-closure-copy.mjs",
     "test:closure-copy:dist": "node --experimental-strip-types --no-warnings scripts/test-closure-copy.mjs --dist",
     "test:fechas": "node scripts/test-fechas.mjs",
+    "test:foto-fija": "node scripts/test-foto-fija.mjs",
     "test:embargo": "node scripts/test-embargo.mjs",
     "test:no-embargo-in-dist": "node scripts/test-embargo.mjs --dist",
     "data:atlas": "node scripts/build-atlas-base.mjs",

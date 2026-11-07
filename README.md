@@ -161,8 +161,8 @@ Three surfaces carry the same record: a public site that renders it, an applicat
 onchain layer that will anchor it.
 
 ```text
- Museo de Ajolotes Xolotlcalli ──► operations workbook ──► Site data:* scripts ──► axolodao.org
-   tanks · specimens                                                       (public record)
+ Museo de Ajolotes Xolotlcalli ──► pilot snapshot, fixed at its end (JSON) ──► axolodao.org
+   tanks · specimens                                                           (public record)
         │
         └── daily 9:00–21:00 stream ──► Xovi · xovi.axolodao.org ──► operator + verifier queues
                                                                             │
@@ -172,15 +172,7 @@ onchain layer that will anchor it.
                                         built and tested · nothing deployed · pre-audit
 ```
 
-**The site is the render source of truth.** Every public **operational** figure on axolodao.org — water
-quality, the bitácora and the specimen roster — is generated from the Museo de Ajolotes Xolotlcalli's operations workbook by the
-`data:water`, `data:ajolotes` and `data:ops` scripts in `Site/scripts/` and committed as JSON — the
-build never reaches a live database. Today that is 1,128 water-quality measurements (source:
-`Site/public/data/water-quality/measurements-all.json`, measured 2026-09-02), 1,229 operations-log entries
-(source: `Site/public/data/ops/bitacora.json`, measured 2026-09-02) and 11 ejemplares in the current bundle
-(source: `Site/src/data/ajolotes/bundle.json`, measured 2026-09-02). The site holds no visitor identity: no
-forms, no accounts, no wallet connection. See [`Site/README.md`](./Site/README.md) for the scripts, their
-inputs and their outputs.
+**The site is the render source of truth.** The pilot's public **operational** figures on axolodao.org, water quality and the specimen roster, are a fixed snapshot of the end of the pilot: the museum closed on 2026-09-22, the files were last written on 2026-10-12, and they are committed as JSON and pinned byte for byte by `npm run test:foto-fija` in `Site/`. No script in this repository reads the operations workbook any more; new records are meant for contracts and attestations, not for this repository. The site holds no visitor identity: no forms, no accounts, no wallet connection. See [`Site/README.md`](./Site/README.md) for the snapshot and the scripts that remain.
 
 **Xovi captures observations.** [xovi.axolodao.org](https://xovi.axolodao.org/) is the interaction layer
 over the museum's daily livestream, 9:00 to 21:00 (Mexico City), with recordings available any time:
