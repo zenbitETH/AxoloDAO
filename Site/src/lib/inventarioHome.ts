@@ -1,15 +1,14 @@
-// The home page's figures: the public copy of its two inventories (scripts/copiar-inventario.mjs writes it) and the box-office count.
+// The home page's figures: the public copy of its two inventories (scripts/copiar-inventario.mjs writes it).
 // No figure is typed in a string: a caption carries {placeholders} and lib/cifrasHome.mjs fills them, formatted for the page's locale.
 // A caption with a placeholder that has no figure is not shown.
 import cadena from '@/data/inventario/inventario-cadena-xolotlcalli.json';
 import atlas from '@/data/inventario/inventario-atlas.json';
-import taquilla from '@/data/inventario/taquilla-home.json';
 import { cifrasDe, formatear, llenar as llenarCon } from '@/lib/cifrasHome.mjs';
 
 export { cadena, atlas };
 
 /** The values the home captions may use, by placeholder name. */
-export const CIFRAS = cifrasDe({ cadena, atlas, taquilla });
+export const CIFRAS = cifrasDe({ cadena, atlas });
 
 /** A caption with its {placeholders} filled, or null if one has no figure (then the caption is not shown). */
 export const llenar = (texto: string, locale: string): string | null => llenarCon(texto, locale, CIFRAS);

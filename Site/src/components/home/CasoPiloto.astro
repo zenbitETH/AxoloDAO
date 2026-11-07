@@ -76,10 +76,6 @@ const sup = ficha?.supervivencia ?? null;
           <p class="valor">{fmt('home.piloto.semanas', { n: cifra('semanasConRegistro', locale), de: cifra('semanas', locale) })}</p>
           <p class="pie lado"><span>{t(locale, 'home.piloto.semanasPie')}</span>{firmaVigente(anclas.atestador) && <span class="en-cadena">{fmt('home.piloto.ancladas', { n: anclas.cuenta })}</span>}</p>
         </div>
-        <div class="cifra" data-piloto="visitas" data-stat="visitors">
-          <p class="valor">{cifra('visitas', locale)}</p>
-          <p class="pie">{t(locale, 'home.piloto.visitas')}</p>
-        </div>
       </div>
 
       {tesoreria && (

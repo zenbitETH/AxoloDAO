@@ -7,13 +7,13 @@ import { cifrasDe, formatear, llenar } from '../src/lib/cifrasHome.mjs';
 
 const SITE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const leer = (f) => JSON.parse(readFileSync(join(SITE, 'src/data/inventario', f), 'utf8'));
-const cifras = cifrasDe({ cadena: leer('inventario-cadena-xolotlcalli.json'), atlas: leer('inventario-atlas.json'), taquilla: leer('taquilla-home.json') });
+const cifras = cifrasDe({ cadena: leer('inventario-cadena-xolotlcalli.json'), atlas: leer('inventario-atlas.json') });
 
 let fallas = 0;
 const ok = (cond, msg) => { console.log(`${cond ? '  ✓' : '  ✗'} ${msg}`); if (!cond) fallas++; };
 
 ok(cifras.especies === 32 && cifras.recintos === 40 && cifras.clips === 1, 'the figures come from the inventories (32 species, 40 facilities on the layer, 1 clip confirmation on Sepolia)');
-ok(formatear(cifras.visitas, 'es') === '6,565' && formatear(cifras.visitas, 'en') === '6,565' && formatear(cifras.visitas, 'pt') === '6.565', 'visits per locale: 6,565 · 6,565 · 6.565');
+ok(!('visitas' in cifras), 'no box-office count: the pilot has no physical visits any more');
 ok(llenar('en {idiomas}.', 'es', cifras) === 'en español, inglés y portugués.', 'languages in es');
 ok(llenar('in {idiomas}.', 'en', cifras) === 'in Spanish, English and Portuguese.', 'languages in en, without the serial comma of the approved caption');
 ok(llenar('em {idiomas}.', 'pt', cifras) === 'em espanhol, inglês e português.', 'languages in pt');

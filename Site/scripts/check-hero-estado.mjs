@@ -27,7 +27,6 @@ const leerJson = (f) => JSON.parse(readFileSync(f, 'utf8'));
 const CIFRAS = cifrasDe({
   cadena: leerJson(join(SITE, 'src/data/inventario/inventario-cadena-xolotlcalli.json')),
   atlas: leerJson(join(SITE, 'src/data/inventario/inventario-atlas.json')),
-  taquilla: leerJson(join(SITE, 'src/data/inventario/taquilla-home.json')),
 });
 
 const texto = (html) => (html ?? '').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
