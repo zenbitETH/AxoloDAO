@@ -3,7 +3,7 @@
 // paths only, never the matched text.
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
-import { digestDePalabra, foldForEmbargo } from './xlsx-utils.mjs';
+import { digestDePalabra, foldForEmbargo } from './embargo.mjs';
 
 const TEXT = /\.(html|json|js|mjs|cjs|css|txt|xml|svg|webmanifest|map|yaml|yml|md|ts|tsx|astro)$/i;
 

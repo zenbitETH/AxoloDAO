@@ -35,7 +35,7 @@
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { extname, join, relative, resolve } from 'node:path';
-import { EMBARGO_SHA256, embargoDigest } from './lib/xlsx-utils.mjs';
+import { EMBARGO_SHA256, embargoDigest } from './lib/embargo.mjs';
 import { scanTree } from './lib/embargo-scan.mjs';
 import { problemasDeUnLead, relatosEnJson, cronologiaFalsa, rolesEnJson, procedenciaEnJson } from './lib/relatos-check.mjs';
 import { ENS_DE_ORGANIZACION, RE_CORREO_OFUSCADO, RE_TELEFONO, firmaAlFinal, firmaAlInicio, huellaDe, nombresPorForma, normalizar, partesDePalabra, sha256 } from './lib/limpiar-personas.mjs';

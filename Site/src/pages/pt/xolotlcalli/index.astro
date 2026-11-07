@@ -21,8 +21,8 @@ const mondays = mondaysRaw as unknown as Measurement[];
 const podcastMap = await podcastByWeek();
 const podcastEpisodeUrls = episodeUrls();
 
-// `bundle.ejemplares` is the LIVE roster by construction: data-ajolotes.mjs
-// filters deceased + embargoed specimens at ingest, so no per-page list is needed.
+// `bundle.ejemplares` is the LIVE roster by construction: the pilot's generator filtered
+// deceased + embargoed specimens before the bundle was fixed, so no per-page list is needed.
 // While every axolotl is outside the museum, the stations list nobody:
 // a tank's specimens and the per-aquarium tiles would place animals where they are not.
 // The registry (/xolotlcalli/ajolotes) keeps every record.

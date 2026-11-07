@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 /**
  * limpiar-datos-publicos.mjs: deja los datos publicados sin datos de personas (ver lib/limpiar-personas.mjs) y escribe las huellas de la
- * lista privada de nombres en src/data/personas-huellas.json. Es idempotente. Los generadores (data-*.mjs) escriben limpio por su cuenta;
- * esto limpia los archivos que ya estaban confirmados.
+ * lista privada de nombres en src/data/personas-huellas.json. Es idempotente y limpia los archivos que ya estaban confirmados.
  *
  *   AXOLODAO_PERSONAS_PRIVADAS=/ruta/privada/personas.txt node scripts/limpiar-datos-publicos.mjs
  */

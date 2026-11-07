@@ -62,12 +62,12 @@ function applyTheme(t: 'light' | 'dark') {
 const BAJAS_VISIBLE_NAMES = new Set(['Loncho', 'Leucistica', 'Panchita', 'Goldy', 'Andersoni 1', 'Larva 2', 'Guajolote', 'Jaffy', 'Moka', 'Golden']);
 
 // NOTE: the per-component hidden-alias list that used to live here is gone.
-// `bundle.ejemplares` is now the LIVE roster by construction — data-ajolotes.mjs
-// filters deceased (Bajas sheet + DECEASED_NOT_IN_BAJAS) and embargoed names at
-// ingest, so every consumer inherits it. That matters beyond this file: Xovi and
+// `bundle.ejemplares` is the LIVE roster by construction: the pilot's generator
+// filtered deceased and embargoed names before the bundle became a fixed snapshot
+// of the end of the pilot, so every consumer inherits it. That matters beyond this file: Xovi and
 // the /covers generator fetch the same bundle over HTTPS and never had a copy of
 // this list, which is how a deceased specimen was still being offered as a clip
-// target. If a deceased specimen reappears here, fix the ingest, not this file.
+// target. If a deceased specimen reappears here, fix the bundle, not this file.
 
 const isAjolobebe = (e: Ejemplar) =>
   (e.alias ?? '').toLowerCase().includes('ajolobebe');
@@ -125,8 +125,8 @@ function synthGoldyBaja(ejemplares: Ejemplar[]): Baja | null {
 
 // Larva 2 died on 2026-09-23, during the closure; the cause is not known yet. The roster
 // is frozen while the museum is closed, so its record was moved out of the live list by
-// hand and data-ajolotes.mjs lists it as deceased. The entry is removable once the
-// operativo Bajas sheet records the same date and a cause.
+// hand. The bundle is a fixed snapshot of the end of the pilot, so this entry stays
+// until a death record with a cause replaces it.
 function synthLarva2Baja(ejemplares: Ejemplar[]): Baja | null {
   const e = ejemplares.find((x) => (x.alias ?? '').trim() === 'Larva 2');
   if (!e) return null;

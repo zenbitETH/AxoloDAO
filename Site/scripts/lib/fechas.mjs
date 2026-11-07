@@ -1,6 +1,6 @@
 // Las ocho reglas de fechas de los datos del museo.
-// Funciones puras: las usan los generadores (data-ajolotes, data-ops) y la comprobación de la
-// construcción (check-fechas.mjs), y cada una tiene su prueba vista en rojo (test-fechas.mjs).
+// Funciones puras: las usa la comprobación de la construcción (check-fechas.mjs) sobre los datos fijos
+// del piloto, y cada una tiene su prueba vista en rojo (test-fechas.mjs).
 
 /** Regla 1. El periodo de operación, con su fuente, aparte de la apertura y el cierre públicos. */
 export const PERIODO = {

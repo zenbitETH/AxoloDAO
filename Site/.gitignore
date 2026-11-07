@@ -26,7 +26,7 @@ pnpm-debug.log*
 # vercel
 .vercel
 
-# operator-only embargo config for data-ajolotes ingest (never committed)
+# operator-only embargo names file of the retired ingest, kept ignored so it is never committed
 scripts/.embargo.json
 
 # synthetic prototype data written by scripts/proto/make-sample.mjs: never committed, never shipped

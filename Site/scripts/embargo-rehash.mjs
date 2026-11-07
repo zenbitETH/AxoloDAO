@@ -6,7 +6,7 @@
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { foldForEmbargo } from './lib/xlsx-utils.mjs';
+import { foldForEmbargo } from './lib/embargo.mjs';
 import { huellaDe } from './lib/limpiar-personas.mjs';
 
 const origen = process.argv[2];

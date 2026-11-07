@@ -331,9 +331,9 @@ export default function TankCard({
           <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {AM_AQUARIUMS.map((aq) => {
               // Membership is an exact pecera match. AM animals temporarily in
-              // cuarentena keep their home aquarium (set via AM_PECERA, flagged
+              // cuarentena keep their home aquarium in the bundle's pecera (flagged
               // enCuarentena) so they still appear here; a mexicanum left at raw
-              // "Cuarentena" and NOT in AM_PECERA would not surface on any tile.
+              // "Cuarentena" with no home aquarium would not surface on any tile.
               const members = ejemplares.filter(
                 (e) => (e.pecera ?? '').trim() === aq.id,
               );

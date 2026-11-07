@@ -2,7 +2,7 @@
 //   1. the committed files are byte for byte what the script derives from AxoloDAO 7757599 and the pinned pilot card;
 //   2. the listing parses, names every served file with its sha256, and nothing else is served;
 //   3. no JSON key of any file belongs to a denied class (weight, length, cause, necropsy, hash, photo, treatment, feeding), and no value names one;
-//   4. no specimen name under embargo (the site's digests, lib/xlsx-utils.mjs EMBARGO_SHA256);
+//   4. no specimen name under embargo (the site's digests, lib/embargo.mjs EMBARGO_SHA256);
 //   5. no alias or organism id of the replay that the public data never published (the replay's private alias lists, local only);
 //   6. no byte of any file carries a local path, a private repository, the booth database or a generator record (lib/barridoBinario.mjs).
 // A failure names its class and the file, never the matched text. The names of people are checked by the keyed test:
@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 import { hallazgosBinarios } from './lib/barridoBinario.mjs';
 import { scanTree } from './lib/embargo-scan.mjs';
 import { leerListado, verificarHuella } from './lib/huella.mjs';
-import { EMBARGO_SHA256 } from './lib/xlsx-utils.mjs';
+import { EMBARGO_SHA256 } from './lib/embargo.mjs';
 import { BUNDLE, COMMIT_SITIO, SALIDA } from './xolotlcalli-registro.mjs';
 
 const SITE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
