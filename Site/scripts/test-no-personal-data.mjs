@@ -35,7 +35,7 @@
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { extname, join, relative, resolve } from 'node:path';
-import { EMBARGO_SHA256, embargoDigest } from './lib/embargo.mjs';
+import { embargoDigest, leerEmbargo } from './lib/embargo.mjs';
 import { scanTree } from './lib/embargo-scan.mjs';
 import { problemasDeUnLead, relatosEnJson, cronologiaFalsa, rolesEnJson, procedenciaEnJson } from './lib/relatos-check.mjs';
 import { ENS_DE_ORGANIZACION, RE_CORREO_OFUSCADO, RE_TELEFONO, firmaAlFinal, firmaAlInicio, huellaDe, nombresPorForma, normalizar, partesDePalabra, sha256 } from './lib/limpiar-personas.mjs';
@@ -653,8 +653,11 @@ for (const [nombre, minimo, exigir] of [['dist', 10, ['index.html', 'xolotlcalli
   total += revisados;
   fallos.push(...problemas);
 }
+// El embargo, con la misma clave: sin src/data/embargo-huellas.json en HMAC, o escrito con otra clave, la prueba falla hacia lo cerrado.
+let embargo;
+try { embargo = leerEmbargo(); } catch (e) { console.error(`✗ el embargo no se puede leer: ${e.message}`); process.exit(1); }
 for (const [nombre, raiz] of [['dist', join(SITE, 'dist')], ['public', join(SITE, 'public')], ['src', join(SITE, 'src')], ['scripts', join(SITE, 'scripts')], ['Docs', resolve(SITE, '..', 'Docs')]]) {
-  for (const hit of scanTree(raiz, EMBARGO_SHA256)) fallos.push(`${join(raiz, hit)}: un nombre de la lista de embargo (por digest, en su texto o en el nombre del archivo); se muestra sólo la ruta`);
+  for (const hit of scanTree(raiz, embargo)) fallos.push(`${join(raiz, hit)}: un nombre de la lista de embargo (por digest, en su texto o en el nombre del archivo); se muestra sólo la ruta`);
 }
 for (const r of ['../README.md', 'README.md', '../CLAUDE.md']) {
   const f = join(SITE, r);

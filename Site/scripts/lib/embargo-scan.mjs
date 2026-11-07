@@ -8,6 +8,8 @@ import { digestDePalabra, foldForEmbargo } from './embargo.mjs';
 const TEXT = /\.(html|json|js|mjs|cjs|css|txt|xml|svg|webmanifest|map|yaml|yml|md|ts|tsx|astro)$/i;
 
 export function makeMatcher(digests) {
+  // an empty or missing set would pass everything: the scan needs the embargo (lib/embargo.mjs leerEmbargo())
+  if (!(digests instanceof Set) || !digests.size) throw new Error('the embargo scan needs the embargo digests (leerEmbargo())');
   const cache = new Map();
   const hit = (w) => {
     let r = cache.get(w);

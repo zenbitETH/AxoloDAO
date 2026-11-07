@@ -2,7 +2,7 @@
 //   1. the committed files are byte for byte what the script derives from AxoloDAO 7757599 and the pinned pilot card;
 //   2. the listing parses, names every served file with its sha256, and nothing else is served;
 //   3. no JSON key of any file belongs to a denied class (weight, length, cause, necropsy, hash, photo, treatment, feeding), and no value names one;
-//   4. no specimen name under embargo (the site's digests, lib/embargo.mjs EMBARGO_SHA256);
+//   4. no specimen name under embargo (the site's keyed digests, lib/embargo.mjs leerEmbargo; without the key it fails closed);
 //   5. no alias or organism id of the replay that the public data never published (the replay's private alias lists, local only);
 //   6. no byte of any file carries a local path, a private repository, the booth database or a generator record (lib/barridoBinario.mjs).
 // A failure names its class and the file, never the matched text. The names of people are checked by the keyed test:
@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 import { hallazgosBinarios } from './lib/barridoBinario.mjs';
 import { scanTree } from './lib/embargo-scan.mjs';
 import { leerListado, verificarHuella } from './lib/huella.mjs';
-import { EMBARGO_SHA256 } from './lib/embargo.mjs';
+import { leerEmbargo } from './lib/embargo.mjs';
 import { BUNDLE, COMMIT_SITIO, SALIDA } from './xolotlcalli-registro.mjs';
 
 const SITE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -125,9 +125,12 @@ if (listado) {
 }
 const negadas = clasesNegadas(SALIDA);
 ok(negadas.length === 0, `no key or value of a denied class${negadas.length ? `: ${negadas.join('; ')}` : ''}`);
-const embargo = scanTree(SALIDA, EMBARGO_SHA256);
-const nEmbargo = Array.isArray(embargo) ? embargo.length : (embargo?.hits?.length ?? embargo?.length ?? 0);
-ok(nEmbargo === 0, `no specimen name under embargo (digest match)${nEmbargo ? ` in ${nEmbargo} place(s)` : ''}`);
+let digestsEmbargo = null;
+try { digestsEmbargo = leerEmbargo(); } catch (e) { ok(false, `the embargo loads (${e.message}): without it the name check cannot run, so it fails closed`); }
+if (digestsEmbargo) {
+  const nEmbargo = scanTree(SALIDA, digestsEmbargo).length;
+  ok(nEmbargo === 0, `no specimen name under embargo (keyed digest match)${nEmbargo ? ` in ${nEmbargo} place(s)` : ''}`);
+}
 if (!existsSync(join(REPLAY_PRIVADO, 'organism_aliases.jsonl'))) ok(false, 'the replay\'s private alias lists are not on this machine: the alias check cannot run, so it fails closed (set REPLAY_PRIVADO)');
 else {
   const fuentes = ['Site/src/data/ajolotes/bundle.json', 'Site/public/data/ajolotes/bajas-forense.json', 'Site/public/data/ajolotes/seguimiento.json'].map((f) => execFileSync('git', ['-C', SITE, 'show', `${COMMIT_SITIO}:${f}`], { maxBuffer: 1 << 27 }).toString('utf8')).join('\n');
