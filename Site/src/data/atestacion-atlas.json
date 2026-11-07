@@ -48,6 +48,6 @@
  ],
  "noCubiertos": [],
  "cargadosFuente": "registro de cargas del build del stand; log del proceso que cargó el hub; el hub no lo sirve ni lo firma: dice qué se cargó, no qué guarda el hub",
- "leidoEl": "2026-10-28T04:28:33.638Z",
+ "leidoEl": "2026-11-07T20:53:10.724Z",
  "easscan": "https://sepolia.easscan.org/attestation/view/0x497a7aad54ac9b20f320bbce2afea3fb9385d3fc7d4cdbf7e92ce416b7825e4a"
 }
