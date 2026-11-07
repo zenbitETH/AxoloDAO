@@ -29,7 +29,6 @@ if (dir) {
 const fallos = revisarFechas({
   bundle: leer('src/data/ajolotes/bundle.json'),
   forense: leer('public/data/ajolotes/bajas-forense.json'),
-  bitacoras: [leer('src/data/ops/bitacora-recent.json'), leer('public/data/ops/bitacora.json')],
   cierre: leer('src/data/closure.json').closedOn,
   replay,
 });

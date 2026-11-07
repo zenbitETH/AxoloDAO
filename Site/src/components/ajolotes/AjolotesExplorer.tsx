@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'preact/hooks';
 import type { ComponentChildren } from 'preact';
-import type { Baja, BitacoraEntry, Bundle, Ejemplar, Locale, SpeciesCode } from './types';
+import type { Baja, Bundle, Ejemplar, Locale, SpeciesCode } from './types';
 import { bajaCount } from './types';
 import { survival, pct, OPENING } from '../../lib/survival';
 import type { Measurement } from '../waterQuality/types';
@@ -21,7 +21,6 @@ interface Props {
   locale: Locale;
   bundle: Bundle;
   water: Measurement[];
-  bitacora: BitacoraEntry[];      // bitacora-recent.json eagerly imported by the page shell
   logoSvg: string;                // Xolotlcalli wordmark, injected by the page shell
   // Locale-aware paths injected by the page shell so links keep their prefixes
   paths: {
@@ -152,7 +151,7 @@ const SYNTH_BAJAS: Record<string, (ejemplares: Ejemplar[]) => Baja | null> = {
   'Larva 2': synthLarva2Baja,
 };
 
-export default function AjolotesExplorer({ locale, bundle, water, bitacora, logoSvg, paths, children }: Props) {
+export default function AjolotesExplorer({ locale, bundle, water, logoSvg, paths, children }: Props) {
   const theme = useTheme();
   const [view, setView] = useState<'ejemplares' | 'bajas'>('ejemplares');
   const [viewDensity, setViewDensity] = useState<'gallery' | 'list'>('gallery');
@@ -362,7 +361,6 @@ export default function AjolotesExplorer({ locale, bundle, water, bitacora, logo
         <EjemplarModal
           ej={active.ej}
           bundle={bundle}
-          bitacora={bitacora}
           theme={theme}
           locale={locale}
           water={water}

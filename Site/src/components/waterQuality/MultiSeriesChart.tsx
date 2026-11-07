@@ -13,9 +13,8 @@ export interface ChartSeries {
   points: { date: string; value: number | null }[];
 }
 
-// Annotation marker drawn behind the data series. Used today for "cambio de
-// agua" events from the bitácora — the chart stays generic so future event
-// kinds (treatments, filter swaps) can reuse the same hook.
+// Optional annotation marker drawn behind the data series, kept generic for a
+// future event source (treatments, filter swaps).
 export interface ChartEvent {
   date: string;
   label: string;   // short legend label (e.g. "Cambio de agua")
