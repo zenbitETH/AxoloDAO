@@ -2,12 +2,11 @@
 // (and later the carousel) can render a single chronological feed.
 //
 // Tone selection extends the previous HistorialTab `dotForCat()` logic with
-// rules for terapéutica `estado` and bitácora `categoria`/`estado`.
+// rules for terapéutica `estado`.
 
 import type {
   HistorialEntry,
   TerapeuticaEntry,
-  BitacoraEntry,
   Baja,
 } from '../../components/ajolotes/types';
 import type { TimelineEvent, TimelineTone } from './types';
@@ -20,13 +19,6 @@ export function dotColorForCategory(cat: string | null | undefined): TimelineTon
   if (/vigil|aten|moder|requiere/.test(x)) return 'warn';
   if (/cuarentena|saproleg|enferm/.test(x)) return 'warn';
   return 'ok';
-}
-
-// Strip "(emoji) ESTABLE" / "(emoji) ALARMA CLÍNICA" markers down to the
-// label; tone is computed from the underlying word, not the emoji.
-function stripStatusEmoji(s: string | null | undefined): string {
-  if (!s) return '';
-  return s.replace(/[✅⚠️❌🚨🔴🟡🟢]/g, '').trim();
 }
 
 function truncate(s: string, max = 120): string {
@@ -121,38 +113,6 @@ export function fromTerapeutica(
     notes: t.observaciones,
     authors: { main: null, secondary: null },
     raw: t,
-  };
-}
-
-// --- Bitácora --------------------------------------------------------------
-
-export function fromBitacora(b: BitacoraEntry, idx: number): TimelineEvent {
-  // Tone derived from state first (Resuelto → ok, Requiere acción → alarm),
-  // falling back to categoria when state is absent. "Requiere acción" needs
-  // the red alarm tone so it reads as more urgent than open/active events.
-  const estadoLower = (b.estado ?? '').toLowerCase();
-  let tone: TimelineTone;
-  if (/resuelt|cerrad|alta/.test(estadoLower)) tone = 'ok';
-  else if (/requiere acción|requiere accion|aler|criti|grav|emerg|alarma/.test(estadoLower)) tone = 'alarm';
-  else tone = dotColorForCategory(b.categoria);
-  const title = firstNonEmpty(b.incidencia, b.accion, b.categoria, b.notas) ?? 'Evento';
-  const detail = firstNonEmpty(b.accion !== b.incidencia ? b.accion : null, b.categoria, b.ubicacion);
-  return {
-    id: `bitacora:${b.alias ?? b.ubicacion ?? '·'}:${b.fecha}:${idx}`,
-    source: 'bitacora',
-    date: b.fecha,
-    time: b.hora,
-    alias: b.alias,
-    ubicacion: b.ubicacion,
-    categoria: b.categoria,
-    subcategoria: null,                  // state moved to its own pill
-    tone,
-    estado: stripStatusEmoji(b.estado) || null,
-    title: truncate(title),
-    detail,
-    notes: b.notas,
-    authors: { main: null, secondary: null },
-    raw: b,
   };
 }
 

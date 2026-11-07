@@ -12,11 +12,10 @@ import ParameterTable from './ParameterTable';
 import HistoricalGrid from './HistoricalGrid';
 import WindowToggle from './WindowToggle';
 import { accentForTheme, useTheme } from './theme';
-import type { BitacoraEntry, Ejemplar } from '../ajolotes/types';
+import type { Ejemplar } from '../ajolotes/types';
 import { speciesToWq } from '../ajolotes/types';
 import { aliasSlug, ejemplarPhotoUrl } from '../ajolotes/photos';
 import AjoloteAvatar from '../ajolotes/AjoloteAvatar';
-import { filterBitacoraByTank, buildTankTimeline, type TimelineTone } from '../../lib/timeline';
 
 interface Props {
   locale: Locale;
@@ -26,7 +25,6 @@ interface Props {
   history: Measurement[];
   catalogForTank: ParameterCatalogEntry[];
   ejemplares: Ejemplar[];
-  bitacora: BitacoraEntry[];
   onBack: () => void;
   window: TimeWindow;
   onWindowChange: (w: TimeWindow) => void;
@@ -34,13 +32,6 @@ interface Props {
   // the targeted aquarium anchor so its tile scrolls into view and pulses.
   focusedAquarium?: string | null;
 }
-
-const TONE_COLOR: Record<TimelineTone, string> = {
-  ok:    '#10B981',
-  warn:  '#FBBF24',
-  alarm: '#F43F5E',
-  muted: 'rgba(128,128,128,0.55)',
-};
 
 // Bundle stores pecera as "AM1".."AM4" / "AM Larvas", while tank IDs in the
 // water-quality data are "AM 1", "AM 2", and the unified "AM". Match by prefix
@@ -139,7 +130,6 @@ export default function TankCard({
   history,
   catalogForTank,
   ejemplares,
-  bitacora,
   onBack,
   window: timeWindow,
   onWindowChange,
@@ -341,9 +331,9 @@ export default function TankCard({
           <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {AM_AQUARIUMS.map((aq) => {
               // Membership is an exact pecera match. AM animals temporarily in
-              // cuarentena keep their home aquarium (set via AM_PECERA, flagged
+              // cuarentena keep their home aquarium in the bundle's pecera (flagged
               // enCuarentena) so they still appear here; a mexicanum left at raw
-              // "Cuarentena" and NOT in AM_PECERA would not surface on any tile.
+              // "Cuarentena" with no home aquarium would not surface on any tile.
               const members = ejemplares.filter(
                 (e) => (e.pecera ?? '').trim() === aq.id,
               );
@@ -425,69 +415,6 @@ export default function TankCard({
         </section>
       )}
 
-      {(() => {
-        // Eventos del sistema panel shows only system-level entries — incidents,
-        // accidents and maintenance. Ejemplar-tagged events (Accidente / Incidencia
-        // de Ejemplar) and shift operations (Apertura / Cierre de turno) belong
-        // on the per-ejemplar timeline, not on the tank detail.
-        const tankBitacora = filterBitacoraByTank(bitacora, tank.id).filter((b) => {
-          const cat = (b.categoria ?? '').toLowerCase();
-          if (!cat) return !b.alias;
-          if (/sistema|mantenimiento/.test(cat)) return true;
-          return false;
-        });
-        const tankEvents = buildTankTimeline({
-          tankId: tank.id,
-          bitacora: tankBitacora,
-        }).reverse().slice(0, 6);
-        if (tankEvents.length === 0) return null;
-        return (
-          <section class="border-t border-[var(--wq-divider)] px-4 py-5 sm:px-6">
-            <h3 class="mb-3 font-display text-lg" style={{ color: accent }}>
-              {t.bitacoraTankTitle}
-            </h3>
-            <ol class="m-0 list-none space-y-2 p-0">
-              {tankEvents.map((ev) => (
-                <li
-                  key={ev.id}
-                  class="flex items-start gap-3 rounded-lg border border-[var(--wq-divider)] bg-[var(--wq-cell-bg)] p-2.5"
-                >
-                  <span
-                    class="mt-1.5 inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full"
-                    style={{ backgroundColor: TONE_COLOR[ev.tone] }}
-                    aria-hidden="true"
-                  />
-                  <div class="min-w-0 flex-1">
-                    <div class="flex flex-wrap items-center gap-2 text-[11px] text-[var(--wq-ink-muted)] tabular-nums">
-                      <span>{ev.date}{ev.time ? ` · ${ev.time}` : ''}</span>
-                      {ev.categoria && (
-                        <span
-                          class="rounded-full border px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.04em]"
-                          style={{ color: accent, borderColor: `${accent}40`, backgroundColor: `${accent}10` }}
-                        >
-                          {ev.categoria}
-                        </span>
-                      )}
-                      {ev.alias && (
-                        <span class="rounded-full bg-[var(--wq-row-bg)] px-1.5 py-0.5 text-[10px] font-semibold text-[var(--wq-ink-muted)]">
-                          {ev.alias}
-                        </span>
-                      )}
-                    </div>
-                    <p class="m-0 mt-1 text-sm text-[var(--wq-ink)]">{ev.title}</p>
-                    {ev.authors.main && (
-                      <p class="m-0 mt-0.5 font-mono text-[10px] text-[var(--wq-ink-muted)]">
-                        {ev.authors.main}
-                      </p>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </section>
-        );
-      })()}
-
       <section class="border-t border-[var(--wq-divider)] bg-[var(--wq-surface)] px-4 py-5 sm:px-6">
         <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
           <h3 class="font-display text-lg" style={{ color: accent }}>
@@ -515,7 +442,6 @@ export default function TankCard({
             measurements={history}
             catalogForTank={catalogForTank}
             accent={accent}
-            bitacora={bitacora}
           />
         )}
       </section>

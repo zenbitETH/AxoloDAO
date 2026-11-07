@@ -40,7 +40,6 @@ export const GET: APIRoute = () => {
   const forense = leer('public/data/ajolotes/bajas-forense.json');
   const agua = leer('public/data/water-quality/measurements-all.json');
   const parametros = leer('src/data/water-quality/parameters.json');
-  const bitacora = leer('public/data/ops/bitacora.json');
   const xovi = leer('src/data/mesa/xovi.json');
   const anclasSrc = leer('src/data/anclas-xolotlcalli.json');
 
@@ -89,18 +88,8 @@ export const GET: APIRoute = () => {
       ev(alias, [t, 'med', r.tratamiento ? 'Tratamiento' : 'Revisión médica', `${txt}${r.ubicacion ? ` (${r.ubicacion})` : ''}`, 'libro']);
     }
   }
-  // lo que la bitácora anota de un ajolote va con él; lo demás es respuesta del equipo sobre una estación
+  // `respuesta` (la respuesta del equipo por estación) va vacía: el sitio no publica el registro de operación, y /datos de Xovi lee la lista
   const respuesta: unknown[][] = [];
-  const conocidos = new Set(ajolotes.map((a) => a.alias as string));
-  for (const r of bitacora) {
-    const t = ms(r.fecha, r.hora); if (t == null) continue;
-    const txt = [r.incidencia, r.accion, r.notas].filter(Boolean).join(' · ');
-    if (!txt) continue;
-    const alias = r.alias ? (ALIAS[r.alias] ?? r.alias) : null;
-    if (alias && conocidos.has(alias)) ev(alias, [t, 'med', r.accion ? 'Acción del equipo' : 'Observación', `${txt}${r.ubicacion ? ` (${r.ubicacion})` : ''}`, 'bitácora']);
-    // un grupo («Larvas») o un nombre fuera del padrón publicado queda como respuesta sobre su estación, con su nombre
-    else respuesta.push([t, estacion(r.ubicacion), r.ubicacion ?? 'sin ubicación', r.categoria ?? 'Bitácora', alias ? `${alias}: ${txt}` : txt]);
-  }
   // las bajas sin libro propio toman su relato del expediente forense (ya publicado en su pestaña Postmortem)
   for (const b of forense.especimenes) {
     if (bundle.historial[b.alias] || bundle.terapeutica[b.alias] || bundle.alimentacion[b.alias]) continue;
@@ -120,7 +109,6 @@ export const GET: APIRoute = () => {
     ev(alias, [t0 + Math.round(c.st * 1000), 'clip', CONDUCTA[c.tag] ?? c.tag, `Clip verificado #${c.id} en ${c.station}, ${Math.round(c.en - c.st)} s.`, `Xovi, clip #${c.id}`, null, `https://www.youtube.com/watch?v=${c.v}&t=${Math.floor(c.st)}s`, c.hipotesis ?? null]);
   }
   for (const k of Object.keys(eventos)) eventos[k].sort((a, b) => (a[0] as number) - (b[0] as number));
-  respuesta.sort((a, b) => (a[0] as number) - (b[0] as number));
 
   const lecturas = agua.map((w: { date: string; time: string; tankId: string; values: Record<string, number | null> }) => [ms(w.date, w.time), w.tankId, limpio(w.values)]);
   const rangos: Record<string, Record<string, [number, number, string]>> = {};
@@ -132,7 +120,7 @@ export const GET: APIRoute = () => {
 
   const todas = [...lecturas.map((l: unknown[]) => l[0] as number), ...Object.values(eventos).flat().map((f) => f[0] as number)].filter((t) => t != null);
   return new Response(JSON.stringify({
-    fuente: 'Registro público de axolodao.org: bundle de ajolotes, bajas-forense.json, measurements-all.json, parameters.json y bitacora.json',
+    fuente: 'Registro público de axolodao.org: bundle de ajolotes, bajas-forense.json, measurements-all.json y parameters.json',
     desde: Math.min(...todas), hasta: Math.max(...todas),
     ajolotes, eventos, peso, consumo, lecturas, rangos, respuesta, grabaciones, fuenteXovi: xovi.fuente, anclas, atestadorAnclas: anclasSrc.atestador,
   }), { headers: { 'content-type': 'application/json' } });

@@ -2,14 +2,12 @@ import { useEffect, useMemo, useState } from 'preact/hooks';
 import type {
   HistorialEntry,
   TerapeuticaEntry,
-  BitacoraEntry,
   Baja,
   Locale,
 } from '../types';
 import { s } from '../strings';
 import {
   buildAliasTimeline,
-  filterBitacoraByAlias,
   type TimelineEvent,
   type TimelineSource,
   type TimelineTone,
@@ -19,7 +17,6 @@ interface Props {
   alias: string;
   historial: HistorialEntry[];
   terapeutica: TerapeuticaEntry[];
-  bitacora: BitacoraEntry[];        // pre-loaded array; filtered to alias here
   baja: Baja | null;
   accent: string;
   locale: Locale;
@@ -55,13 +52,13 @@ function shouldPulse(tone: TimelineTone): boolean {
   return tone === 'warn' || tone === 'alarm';
 }
 
-const SOURCES: TimelineSource[] = ['historial', 'terapeutica', 'bitacora', 'baja'];
+const SOURCES: TimelineSource[] = ['historial', 'terapeutica', 'baja'];
 const TONES: Array<'ok' | 'warn' | 'alarm'> = ['ok', 'warn', 'alarm'];
 const FILTER_KEY = 'axolodao:eventos-filters';
 const STATE_FILTER_KEY = 'axolodao:eventos-state-filters';
 
 function loadFilters(): Record<TimelineSource, boolean> {
-  const all = { historial: true, terapeutica: true, bitacora: true, baja: true } as const;
+  const all = { historial: true, terapeutica: true, baja: true } as const;
   if (typeof window === 'undefined') return { ...all };
   try {
     const raw = window.localStorage.getItem(FILTER_KEY);
@@ -70,7 +67,6 @@ function loadFilters(): Record<TimelineSource, boolean> {
     return {
       historial:   parsed.historial   !== false,
       terapeutica: parsed.terapeutica !== false,
-      bitacora:    parsed.bitacora    !== false,
       baja:        parsed.baja        !== false,
     };
   } catch {
@@ -100,7 +96,6 @@ export default function EventosTab({
   alias,
   historial,
   terapeutica,
-  bitacora,
   baja,
   accent,
   locale,
@@ -127,24 +122,18 @@ export default function EventosTab({
     }
   }, [toneFilters]);
 
-  const bitacoraForAlias = useMemo(
-    () => filterBitacoraByAlias(bitacora, alias),
-    [bitacora, alias],
-  );
-
   const allEvents = useMemo(
     () => buildAliasTimeline({
       alias,
       historial,
       terapeutica,
-      bitacora: bitacoraForAlias,
       baja,
     }),
-    [alias, historial, terapeutica, bitacoraForAlias, baja],
+    [alias, historial, terapeutica, baja],
   );
 
   const sourceCounts = useMemo(() => {
-    const counts: Record<TimelineSource, number> = { historial: 0, terapeutica: 0, bitacora: 0, baja: 0 };
+    const counts: Record<TimelineSource, number> = { historial: 0, terapeutica: 0, baja: 0 };
     for (const e of allEvents) counts[e.source]++;
     return counts;
   }, [allEvents]);
@@ -193,7 +182,7 @@ export default function EventosTab({
               {anyFilterOff && (
                 <button
                   type="button"
-                  onClick={() => setFilters({ historial: true, terapeutica: true, bitacora: true, baja: true })}
+                  onClick={() => setFilters({ historial: true, terapeutica: true, baja: true })}
                   class="inline-flex items-center gap-1 rounded-full border border-dashed px-2.5 py-1 text-[11px] font-semibold transition-[background-color,border-color,color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)]"
                   style={{ borderColor: accent, color: accent, backgroundColor: 'transparent' }}
                 >
@@ -370,8 +359,6 @@ function EventRow({ event, accent, locale }: RowProps) {
           <HistorialDetail event={event} accent={accent} locale={locale} />
         ) : event.source === 'terapeutica' ? (
           <TerapeuticaDetail event={event} accent={accent} locale={locale} />
-        ) : event.source === 'bitacora' ? (
-          <BitacoraDetail event={event} accent={accent} locale={locale} />
         ) : (
           <BajaDetail event={event} accent={accent} locale={locale} />
         )}
@@ -456,18 +443,6 @@ function TerapeuticaDetail({ event, locale }: RowProps) {
       <DetailRow label={s(locale, 'eventos.label.dosis')} value={dosisVia || null} />
       <DetailRow label={s(locale, 'eventos.label.ubicacion')} value={t.ubicacion} />
       <NotesRow notes={t.observaciones} locale={locale} />
-    </div>
-  );
-}
-
-function BitacoraDetail({ event, locale }: RowProps) {
-  const b = event.raw as BitacoraEntry;
-  return (
-    <div class="grid gap-1.5">
-      <DetailRow label={s(locale, 'eventos.label.incidencia')} value={b.incidencia} />
-      <DetailRow label={s(locale, 'eventos.label.accion')} value={b.accion} />
-      <DetailRow label={s(locale, 'eventos.label.ubicacion')} value={b.ubicacion} />
-      <NotesRow notes={b.notas} locale={locale} />
     </div>
   );
 }

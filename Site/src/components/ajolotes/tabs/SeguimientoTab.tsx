@@ -4,8 +4,8 @@ import { s } from '../strings';
 import Relato, { type PmRelato } from './Relato';
 
 // The follow-up of a living specimen, read like its postmortem would be. Data is
-// seguimiento.json, regenerated in the brain (tools/forense/seguimiento.mjs) and published by
-// project-public.mjs with the same scrub and guards as bajas-forense.json; never edited.
+// seguimiento.json, a fixed snapshot of the end of the pilot published with the same scrub and
+// guards as bajas-forense.json; never edited.
 
 interface SegData { generated: string; vivos: Record<string, PmRelato & { alias: string }> }
 

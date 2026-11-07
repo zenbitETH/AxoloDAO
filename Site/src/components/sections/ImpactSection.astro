@@ -9,7 +9,7 @@ const TX_URL = 'https://optimistic.etherscan.io/address/0xbdf701408ad237faa2d5d3
 
 type Stat = { key: string; href?: string; external?: boolean };
 const valor = (key: string) => t(locale, `impact.stat.${key}.value`);
-// The public treasury only. The species figure moved to the atlas section and the box-office visits to the Pilot's (components/home).
+// The public treasury only. The species figure moved to the atlas section (components/home).
 // One card, the multisig, with no count: a count would need re-measuring at every build, and the ETH and stablecoin totals of the old
 // snapshot (src/data/tesoreria.json) were never reviewed and are not in the onchain snapshot of record, so they are not shown.
 const stats: Stat[] = [

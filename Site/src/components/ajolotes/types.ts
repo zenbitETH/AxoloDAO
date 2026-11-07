@@ -156,25 +156,6 @@ export interface TerapeuticaEntry {
   estado: string | null;          // "Activo" | "Alta medica" | …
 }
 
-// Bitácora events live in a separate JSON (ops/bitacora-recent.json) and can
-// carry both an alias (per-ejemplar) and an ubicación (per-tank/system).
-export interface BitacoraEntry {
-  fecha: string;                  // ISO
-  hora: string | null;            // HH:MM
-  etapa?: 'preapertura';          // before the public opening: setup (scripts/lib/fechas.mjs, rule 1)
-  trasMuerte?: true;              // dated after the specimen's canonical death: for a person to resolve (rule 6)
-  estado: string | null;
-  autorPrincipal: string | null;
-  autorSecundario: string | null;
-  categoria: string | null;
-  alias: string | null;           // may be comma-separated for multi-ejemplar events
-  ubicacion: string | null;
-  incidencia: string | null;
-  accion: string | null;
-  notas: string | null;
-  linkReporte: string | null;
-}
-
 export interface Bundle {
   /** Live roster only — deceased and embargoed specimens are filtered at ingest. */
   ejemplares: Ejemplar[];

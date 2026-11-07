@@ -81,7 +81,7 @@ try {
     const salidaHuella = join(out, 'atlas/datos/huella');
     // the clip confirmations the page's intro names, counted by the same inventory as the home's figures
     const inventario = (f) => JSON.parse(readFileSync(join(SITE, 'src/data/inventario', f), 'utf8'));
-    const { clips: confirmaciones } = cifrasDe({ cadena: inventario('inventario-cadena-xolotlcalli.json'), atlas: inventario('inventario-atlas.json'), taquilla: inventario('taquilla-home.json') });
+    const { clips: confirmaciones } = cifrasDe({ cadena: inventario('inventario-cadena-xolotlcalli.json'), atlas: inventario('inventario-atlas.json') });
     const mal = copiarHuella({ listadoRuta, entidades, salida: salidaHuella, atestacion, confirmaciones });
     if (mal.length) throw new Error(`the fingerprint is not exact: ${mal.slice(0, 5).join('; ')}`);   // before any build record: a record only ever describes an exact fingerprint
     // the Xolotlcalli registry fingerprint: its files come from public/ (scripts/xolotlcalli-registro.mjs); here they are re-verified against their

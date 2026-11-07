@@ -21,8 +21,8 @@ const GENDER_CLASS: Record<'♀' | '♂' | '(?)', string> = {
   '(?)': 'text-[var(--wq-ink-muted)] text-[0.78em] tracking-tight font-medium ml-1',
 };
 
-// Cuarentena ribbon — derived from the bundle's pecera string so it stays in
-// sync with the operativo workbook without manual edits. Other ribbon kinds
+// Cuarentena ribbon, derived from the bundle's pecera string so it needs no
+// manual edits. Other ribbon kinds
 // can be added here later (e.g. "Hospital") with the same pattern.
 function specimenRibbon(locale: Locale, pecera: string | null | undefined): string | null {
   if ((pecera ?? '').trim() !== 'Cuarentena') return null;

@@ -1,6 +1,6 @@
 // Las ocho reglas de fechas de los datos del museo.
-// Funciones puras: las usan los generadores (data-ajolotes, data-ops) y la comprobación de la
-// construcción (check-fechas.mjs), y cada una tiene su prueba vista en rojo (test-fechas.mjs).
+// Funciones puras: las usa la comprobación de la construcción (check-fechas.mjs) sobre los datos fijos
+// del piloto, y cada una tiene su prueba vista en rojo (test-fechas.mjs).
 
 /** Regla 1. El periodo de operación, con su fuente, aparte de la apertura y el cierre públicos. */
 export const PERIODO = {
@@ -127,11 +127,11 @@ const LARVA_SIN_NOMBRE = /^larva de ajolote/i;
 
 /**
  * La comprobación de la construcción: aplica las ocho reglas a lo que se publica. `bundle` es
- * src/data/ajolotes/bundle.json, `forense` bajas-forense.json, `bitacoras` las listas de la bitácora,
+ * src/data/ajolotes/bundle.json, `forense` bajas-forense.json,
  * `cierre` el closedOn de closure.json y `replay`, si lo hay, un mapa alias → fechas de muerte del
  * paquete privado del replay. Devuelve los fallos; vacío es verde.
  */
-export function revisarFechas({ bundle, forense, bitacoras = [], cierre, replay = null }) {
+export function revisarFechas({ bundle, forense, cierre, replay = null }) {
   const fallos = [];
   if (cierre !== PERIODO.cierre) fallos.push(`regla 1: el cierre de closure.json (${cierre}) no es el de PERIODO (${PERIODO.cierre})`);
   // Regla 8 (y 5: una muerte por animal en cada fuente).
@@ -150,9 +150,8 @@ export function revisarFechas({ bundle, forense, bitacoras = [], cierre, replay 
   }
   // Regla 4: la confianza publicada sigue la regla día ≤ 12 y distinto del mes.
   for (const b of bundle.bajas) if (b.fechaConf === 'ambigua_dm' && lecturasDeFecha(b.fecha).conf !== 'ambigua_dm') fallos.push(`regla 4: una baja del ${b.fecha} se publica ambigua y no lo es`);
-  // Reglas 1, 2, 3, 6 y 7 en cada registro por ejemplar y en la bitácora.
-  const listas = [...['historial', 'terapeutica', 'alimentacion'].flatMap((k) => Object.entries(bundle[k] ?? {}).map(([a, rs]) => [`${k}`, a, rs])),
-    ...bitacoras.map((rs, i) => [`bitácora ${i + 1}`, null, rs])];
+  // Reglas 1, 2, 3, 6 y 7 en cada registro por ejemplar.
+  const listas = ['historial', 'terapeutica', 'alimentacion'].flatMap((k) => Object.entries(bundle[k] ?? {}).map(([a, rs]) => [`${k}`, a, rs]));
   const muerte = new Map([...fz].map(([a, fs]) => [a, fs[0]]));
   const cuenta = { hora: 0, repetida: 0, fuera: 0, sinMarca: 0, marcaDeMas: 0 };
   for (const [, alias, rs] of listas) {
@@ -160,8 +159,7 @@ export function revisarFechas({ bundle, forense, bitacoras = [], cierre, replay 
     for (const r of rs) {
       if (r.hora != null && !HHMM.test(r.hora)) cuenta.hora++;
       if (etapaDe(r.fecha) === 'fuera') cuenta.fuera++;
-      const nombres = alias ? [alias] : String(r.alias ?? '').split(',').map((x) => x.trim()).filter(Boolean);
-      const tras = nombres.some((a) => registrosTrasMuerte([r], muerte.get(a.toLowerCase())).length);
+      const tras = registrosTrasMuerte([r], muerte.get(alias.toLowerCase())).length > 0;
       if (tras && !r.trasMuerte) cuenta.sinMarca++;
       if (!tras && r.trasMuerte) cuenta.marcaDeMas++;
     }

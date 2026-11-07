@@ -81,7 +81,7 @@ ok(archivosSinLicencia(paginaIndice(sinLic, new Map(), null), sinLic).length ===
 const html = readFileSync(join(DIST, 'atlas/datos/huella/index.html'), 'utf8');
 const at = JSON.parse(readFileSync(join(SITE, 'src/data/atestacion-atlas.json'), 'utf8'));
 const leerInv = (n) => JSON.parse(readFileSync(join(SITE, 'src/data/inventario', n), 'utf8'));
-const { clips } = cifrasDe({ cadena: leerInv('inventario-cadena-xolotlcalli.json'), atlas: leerInv('inventario-atlas.json'), taquilla: leerInv('taquilla-home.json') });
+const { clips } = cifrasDe({ cadena: leerInv('inventario-cadena-xolotlcalli.json'), atlas: leerInv('inventario-atlas.json') });
 const pb = problemasDeLaIntro(html, at, clips);
 ok(pb.length === 0, `atlas/datos/huella/index.html: the intro is all there${pb.length ? ` (${pb.join('; ')})` : ''}`);
 const listado = leerListado(readFileSync(join(DIST, 'atlas/datos/huella/listado-stand.txt'), 'utf8'));

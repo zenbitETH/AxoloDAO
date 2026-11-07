@@ -62,7 +62,6 @@ const base = () => ({
     historial: { Zzuno: [{ fecha: '2026-07-01' }] }, terapeutica: {}, alimentacion: { Zzuno: [{ fecha: '2026-07-02', hora: '09:30' }] } },
   forense: { especimenes: [{ alias: 'Larvas (1)', group: [{ date: '2026-04-05' }], death: { date: '2026-04-05' }, events: [] },
     { alias: 'Zzuno', death: { date: '2026-07-07' }, events: [{ date: '2026-09-23', custody: true }] }] },
-  bitacoras: [[{ fecha: '2026-07-03', hora: '10:00', alias: 'Zzuno' }]],
   cierre: '2026-09-22',
 });
 const rojo = (cambio) => { const d = base(); cambio(d); return revisarFechas(d).length > 0; };
@@ -71,10 +70,10 @@ caso('el replay con una muerte duplicada', revisarFechas({ ...base(), replay: m(
   revisarFechas({ ...base(), replay: m({ zzuno: ['2026-07-07'] }) }).length > 0);
 caso('una larva sin nombre con otra fecha que el grupo', rojo((d) => { d.bundle.bajas[1].fecha = '2026-04-06'; }), false);
 caso('una hora como fracción de Excel', rojo((d) => { d.bundle.alimentacion.Zzuno[0].hora = 0.39; }), false);
-caso('una fila de la bitácora repetida', rojo((d) => { d.bitacoras[0].push({ ...d.bitacoras[0][0] }); }), false);
+caso('una fila del historial repetida', rojo((d) => { d.bundle.historial.Zzuno.push({ ...d.bundle.historial.Zzuno[0] }); }), false);
 caso('un registro de marzo de 2025', rojo((d) => { d.bundle.historial.Zzuno.push({ fecha: '2025-03-16' }); }), false);
-caso('un registro tras la muerte sin marcar', rojo((d) => { d.bitacoras[0].push({ fecha: '2026-07-09', hora: null, alias: 'Zzuno' }); }),
-  rojo((d) => { d.bitacoras[0].push({ fecha: '2026-07-09', hora: null, alias: 'Zzuno', trasMuerte: true }); }));
+caso('un registro tras la muerte sin marcar', rojo((d) => { d.bundle.historial.Zzuno.push({ fecha: '2026-07-09' }); }),
+  rojo((d) => { d.bundle.historial.Zzuno.push({ fecha: '2026-07-09', trasMuerte: true }); }));
 caso('un evento forense del cierre sin marca de custodia', rojo((d) => { delete d.forense.especimenes[1].events[0].custody; }), false);
 caso('un evento forense de antes del cierre marcado como custodia', rojo((d) => { d.forense.especimenes[1].events.push({ date: '2026-09-20', custody: true }); }), false);
 caso('una baja ambigua que no lo es', rojo((d) => { d.bundle.bajas[0].fechaConf = 'ambigua_dm'; }), false);

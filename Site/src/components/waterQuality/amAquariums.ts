@@ -2,13 +2,13 @@
 // aquariums (AM1–AM4). Water quality is measured once for the whole "AM" system,
 // but each aquarium houses a distinct set of axolotls and gets its own anchor +
 // printable QR. Ejemplar membership is derived from the canonical `pecera` value
-// (see scripts/data-ajolotes.mjs → AM_PECERA); `id` matches that value exactly.
+// of the ajolotes bundle; `id` matches that value exactly.
 // `anchor` is the URL hash used by QR deep-links (#AM1 … #AM4) and must be DOM-id
 // safe (no spaces).
 //
 // The larvae moved into AM3 on 2026-06-15, so there is no longer a standalone
-// larvae aquarium in this occupancy list. The larvae water is still logged and
-// charted separately as the "AM Larvas" water system (see data-water.mjs) — it
+// larvae aquarium in this occupancy list. The larvae water was logged and is
+// charted separately as the "AM Larvas" water system (src/data/water-quality/tanks.json); it
 // just no longer has its own occupancy tile here.
 
 export interface AmAquarium {
