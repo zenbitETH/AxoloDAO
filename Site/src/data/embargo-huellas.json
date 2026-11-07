@@ -1,0 +1,9 @@
+{
+  "formato": "hmac-sha256",
+  "_nota": "Huellas HMAC-SHA256 (clave AXOLODAO_PERSONAS_CLAVE) de los nombres retenidos, plegados como los pliega el escáner; los nombres no están en el repositorio.",
+  "huellas": [
+    "a2d1b1904e5bf3bc2167fb73af246e6da09d996a083b8c91fefca0196aecd623",
+    "d58d7d345484d241f44bf82f07b81753977190a06c86487533a012b420d084db"
+  ],
+  "centinela": "2f70ae9362c6054d13331c17fc78788de7fb4ea3420e7fce10769dc3fd78b3d9"
+}

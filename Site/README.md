@@ -17,22 +17,20 @@ GATE (run before any commit to the public repo; must return nothing):
 Astro 5 + Preact + Tailwind. Trilingual (ES default, EN, PT). Static output, deployed on Vercel at
 [axolodao.org](https://axolodao.org).
 
-The site is the **render surface for the Museo de Ajolotes Xolotlcalli record**: the operations workbook and a
-handful of source asset folders go in, committed JSON and static pages come out. Nothing is fetched at
+The site is the **render surface for the Museo de Ajolotes Xolotlcalli record**: the pilot's water and axolotl data, a fixed snapshot of its end committed as JSON, and a handful of source asset folders go in; static pages come out. Nothing is fetched at
 runtime except three files this same build produces: `public/map/mexico-interactive.svg`,
 `public/map/state-bboxes.json` and `public/data/water-quality/measurements-all.json` (source:
 `src/components/SpeciesExplorer.tsx:164,173` and `src/components/waterQuality/WaterQualityDashboard.tsx:192`,
 2026-09-02).
 
 ```text
- Operations workbook (.xlsx)                    Hand-edited YAML
- path from $AXOLODAO_XLSX                       src/content/{members,partners,projects,news}/
+ Pilot snapshot, fixed at its end               Hand-edited YAML
+ test:foto-fija pins every byte                 src/content/{members,partners,projects,news}/
         │                                                       │
-        │  data:water · data:ajolotes · data:ops                │
         ▼                                                       │
- ┌── generated JSON (committed) ───────────────────────────┐    │
+ ┌── committed JSON, no script regenerates it ─────────────┐    │
  │ src/data/water-quality/*   src/data/ajolotes/bundle.json│    │
- │ src/data/ops/*            public/data/**  public/map/** │    │
+ │ public/data/water-quality/*   public/data/ajolotes/*    │    │
  └───────────────────────────┬─────────────────────────────┘    │
                              │                                  │
  MapAssets/ ──── data:map ───┼──► public/map/mexico-interactive.svg
@@ -71,29 +69,12 @@ a `{ es, en, pt }` object validated by Zod.
 
 ## Data scripts
 
-Six one-shot Node scripts, all declared in `package.json` (source: `package.json`, 2026-09-02). Three of
-them read the **operations workbook** maintained by the Museo de Ajolotes Xolotlcalli team; the other three work
-from asset folders inside the repository.
+None of the `data:*` scripts in `package.json` reads the pilot's operations workbook; its data is the fixed snapshot described below. These three build the map, the species sheets and the control tables from asset folders inside the repository:
 
 ```bash
 npm run data:map        # MapAssets/            -> public/map/mexico-interactive.svg
 npm run data:species    # AmbystomaSpecies/     -> src/content/species/*.yaml
 npm run data:tables     # src/content/*         -> docs/data-tables/*.md
-npm run data:water      # workbook              -> src/data/water-quality/* + public/data/water-quality/*
-npm run data:ajolotes   # workbook              -> src/data/ajolotes/bundle.json
-npm run data:ops        # workbook              -> src/data/ops/* + public/data/ops/*
-npm run data:all        # all six, in the order above
-```
-
-### The workbook path is an environment variable, never a checked-in path
-
-`data:water`, `data:ajolotes` and `data:ops` resolve the workbook through `resolveXlsxPath()` in
-`scripts/lib/xlsx-utils.mjs`, which reads **`AXOLODAO_XLSX`** and throws if it is unset (source:
-`scripts/lib/xlsx-utils.mjs:21-30`, 2026-09-02). The workbook itself is not in this repository and its
-location is not recorded anywhere in it — point the variable at your own copy:
-
-```bash
-AXOLODAO_XLSX="/path/to/Control operativo AxoloDAO.xlsx" npm run data:all
 ```
 
 ### `data:map` — interactive Mexico map
@@ -117,64 +98,31 @@ tables to `docs/data-tables/` (`members.md`, `partners.md`, `projects.md`, `spec
 control dashboard for humans; **the build does not depend on them** (source:
 `scripts/build-control-tables.mjs:1-8`, 2026-09-02).
 
-### `data:water` — water-quality dashboard
+### The pilot's water and axolotl data: a fixed snapshot
 
-Sheets consumed: `Descripcion de sistemas`, `Catálogo de parámetros`, `Dashboard calidad de agua`,
-`Calidad de agua` (source: `scripts/data-water.mjs`, 2026-09-02).
+The museum closed on 2026-09-22 (source: `src/data/closure.json`) and its operations workbook is no longer read. The seven files below were last written on 2026-10-12 (source: `git log` of each file) and they stay as a fixed snapshot of the end of the pilot: `scripts/fixtures/foto-fija-piloto.manifest.json` pins each one by sha256, and `npm run test:foto-fija` fails if a byte changes or a file appears in their folders unlisted. A correction is a deliberate commit that updates the manifest in the same change. New records are meant for contracts and attestations, not for this repository.
 
-| Output | Contents | Current size |
-|---|---|---|
-| `src/data/water-quality/tanks.json` | one entry per water system: species, display name, volume, accent colour, and the physical system description (dimensions, tank type, filter, cooling, aeration) | 8 systems (measured 2026-09-02) |
-| `src/data/water-quality/parameters.json` | per-system, per-parameter reference row: `tankId`, `speciesCode`, `key`, `unit`, `min`, `max`, `target` | 60 rows (measured 2026-09-02) |
-| `src/data/water-quality/measurements-mondays.json` | default view — the Monday round only | 113 rows (measured 2026-09-02) |
-| `public/data/water-quality/measurements-all.json` | full measurement history, fetched lazily by the client when the visitor switches off "Mondays only" | 1,128 rows (measured 2026-09-02) |
+| File | Contents |
+|---|---|
+| `src/data/water-quality/tanks.json` | one entry per water system: species, display name, volume, accent colour, and the physical system description (dimensions, tank type, filter, cooling, aeration) |
+| `src/data/water-quality/parameters.json` | per system, per parameter reference row: `tankId`, `speciesCode`, `key`, `unit`, `min`, `max`, `target`, with the source of each range |
+| `src/data/water-quality/measurements-mondays.json` | the default view, the Monday round only |
+| `public/data/water-quality/measurements-all.json` | the full measurement history, fetched lazily by the client when the visitor switches off "Mondays only" |
+| `src/data/ajolotes/bundle.json` | per specimen: the dashboard snapshot, medical history, feeding plan, feeding log, therapeutic records and the colony's deaths |
+| `public/data/ajolotes/bajas-forense.json` | the public projection of the forensic audit of each death |
+| `public/data/ajolotes/seguimiento.json` | the follow up of each living specimen, with the same scrub and guards as the forensic file |
 
-Ten parameters are tracked: `temp`, `nh3`, `no2`, `no3`, `gh`, `kh`, `ph`, `po4`, `cond`, `tds` (source:
-`scripts/data-water.mjs:41`, 2026-09-02). Each measurement row carries the date and time, the system id,
-the recorded values, and the list of parameters out of range for that reading.
-
-### `data:ajolotes` — per-axolotl explorer
-
-Emits a single `src/data/ajolotes/bundle.json` holding, per specimen, the dashboard snapshot, medical
-history, feeding plan, feeding log, therapeutic records and the colony's historical records — sourced from
-six sheets in the workbook, among them `Dashboard ejemplares`, `Historial medico`, `Plan de alimentación`,
-`Alimentación 2.0` and `Terapéutica y Hospital` (source: `scripts/data-ajolotes.mjs:183,290,379,418,610`,
-2026-09-02). The current bundle
-holds **11 ejemplares** (source: `src/data/ajolotes/bundle.json`, measured 2026-09-02).
-
-The script rebuilds the bundle from scratch on every run — no merge logic, so the same workbook always
-produces byte-identical output. Two small maps reconcile spelling variants between the workbook and the site:
-`ALIAS_NORMALIZE` in `scripts/lib/xlsx-utils.mjs` folds spelling variants so the structured alias joins do
-not silently miss a row, and `TEXT_RENAMES` in `scripts/data-ajolotes.mjs` applies whole-word display
-renames to free-text prose only — deliberately kept separate, because folding a spelling variant into prose
-would rewrite what the operator actually wrote. Drop an entry from either map once the source spelling is
-unified.
-
-### `data:ops` — bitácora, calendar, shifts
-
-Sheets consumed: `Bitacora`, `Bitacora de mantenimiento de ag`, `Calendario de actividades`,
-`Rol de turnos` (source: `scripts/data-ops.mjs`, 2026-09-02).
-
-| Output | Contents | Current size |
-|---|---|---|
-| `public/data/ops/bitacora.json` | full operations log, generated and committed; not currently consumed by the build or the client | 1,229 events (measured 2026-09-02) |
-| `src/data/ops/bitacora-recent.json` | rolling 90-day window, inlined into the page | 1,020 events (measured 2026-09-02) |
-| `src/data/ops/personnel.json` | `{ actividades[], turnos[] }` — the activity calendar and the shift roster | 61 actividades, 16 turnos (measured 2026-09-02) |
-
-A bitácora row can carry both an `Alias` (a per-specimen event) and a `Ubicación` (a per-system event); the
-specimen modal and the water page filter the same array by different keys.
+Ten water parameters are tracked: `temp`, `nh3`, `no2`, `no3`, `gh`, `kh`, `ph`, `po4`, `cond`, `tds` (source: `src/components/waterQuality/types.ts:4-5`). Each measurement row carries the date and time, the system id, the recorded values, and the list of parameters out of range for that reading.
 
 ## Generated output is not editable
 
-Everything under these paths is **regenerated from scratch** on the next run. Editing a generated file is
-lost work — fix the script, the override JSON, or the upstream workbook instead:
+Everything under these paths is **regenerated from scratch** on the next run of its script. Editing a generated file is lost work; fix the script or the override JSON instead:
 
-- `src/data/water-quality/**`, `public/data/water-quality/**`
-- `src/data/ajolotes/**`
-- `src/data/ops/**`, `public/data/ops/**`
 - `src/content/species/**`
 - `public/map/**`
 - `docs/data-tables/**`
+
+The pilot's snapshot (`src/data/water-quality/**`, `public/data/water-quality/**`, `src/data/ajolotes/**`, `public/data/ajolotes/**`) has no script any more; it is pinned by `npm run test:foto-fija`.
 
 Hand-editable **content** is `src/content/{members,partners,projects,news}/`, plus
 `src/data/podcast-episodes.json` and `src/data/supporters.ts`. Hand-edited **configuration** lives in
@@ -214,7 +162,7 @@ Two invariants keep the printed paper and the running site in lockstep:
    `AM`, and `Llave` and `Guppies` are logged but have no visitor-facing station. Each aquarium houses a
    different set of axolotls and gets its own anchor and its own QR; the printable cards, the hash anchors and
    the per-aquarium occupancy tiles all derive from that one array, and `id` matches the canonical aquarium
-   value in `AM_PECERA` (`scripts/data-ajolotes.mjs:151-162`) exactly — not the workbook's own location column.
+   value, the `pecera` field of each specimen in `src/data/ajolotes/bundle.json`, exactly.
    Moving a specimen between AM aquariums means editing both files; nothing enforces the pairing.
 2. **Anchors must be DOM-id safe** (no spaces) — `WaterQualityDashboard.tsx` resolves the hash on load *and*
    on `hashchange`, so a printed code keeps working when the visitor scans a second tank without reloading.

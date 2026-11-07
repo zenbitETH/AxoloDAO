@@ -113,10 +113,9 @@ export default function CoverHeader({
   );
 }
 
-const TEST_CHIP: Record<TestType, { key: 'testMantenimiento' | 'testControl' | 'testEmergencia'; cls: string; dot: string }> = {
+const TEST_CHIP: Record<TestType, { key: 'testMantenimiento' | 'testControl'; cls: string; dot: string }> = {
   mantenimiento: { key: 'testMantenimiento', cls: 'bg-teal/15 text-teal', dot: 'bg-teal' },
   control: { key: 'testControl', cls: 'bg-ocre/20 text-ocre', dot: 'bg-ocre' },
-  emergencia: { key: 'testEmergencia', cls: 'bg-rosa/15 text-rosa', dot: 'bg-rosa wq-pulse' },
 };
 
 function TestTypeChip({ type, locale }: { type: TestType; locale: Locale }) {

@@ -8,9 +8,8 @@ import tanksRaw from '@/data/water-quality/tanks.json';
 import parametersRaw from '@/data/water-quality/parameters.json';
 import mondaysRaw from '@/data/water-quality/measurements-mondays.json';
 import bundleRaw from '@/data/ajolotes/bundle.json';
-import bitacoraRaw from '@/data/ops/bitacora-recent.json';
 import type { Tank, ParameterCatalogEntry, Measurement } from '@components/waterQuality/types';
-import type { Bundle, BitacoraEntry } from '@components/ajolotes/types';
+import type { Bundle } from '@components/ajolotes/types';
 import { t } from '@/i18n/strings';
 import { podcastByWeek, episodeUrls, PODCAST_PLAYLIST_URL } from '@/lib/podcast';
 import { ANIMALS_AWAY_FROM_MUSEUM } from '@/lib/closure';
@@ -19,12 +18,11 @@ const locale = 'en';
 const tanks = tanksRaw as unknown as Tank[];
 const parameters = parametersRaw as unknown as ParameterCatalogEntry[];
 const mondays = mondaysRaw as unknown as Measurement[];
-const bitacora = bitacoraRaw as unknown as BitacoraEntry[];
 const podcastMap = await podcastByWeek();
 const podcastEpisodeUrls = episodeUrls();
 
-// `bundle.ejemplares` is the LIVE roster by construction: data-ajolotes.mjs
-// filters deceased + embargoed specimens at ingest, so no per-page list is needed.
+// `bundle.ejemplares` is the LIVE roster by construction: the pilot's generator filtered
+// deceased + embargoed specimens before the bundle was fixed, so no per-page list is needed.
 // While every axolotl is outside the museum, the stations list nobody:
 // a tank's specimens and the per-aquarium tiles would place animals where they are not.
 // The registry (/xolotlcalli/ajolotes) keeps every record.
@@ -46,7 +44,6 @@ const logoSvg = MUSEO_WORDMARK_SVG;
       parameters={parameters}
       mondays={mondays}
       ejemplares={ejemplares}
-      bitacora={bitacora}
       allDataUrl="/data/water-quality/measurements-all.json"
       podcastByWeek={podcastMap}
       episodeUrls={podcastEpisodeUrls}

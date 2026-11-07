@@ -1,16 +1,16 @@
 // Shared types for the unified event timeline used by the ajolotes detail
-// modal (Eventos tab) and the xolotlcalli per-tank panel.
+// modal (Eventos tab).
 //
 // `TimelineEvent` is render-agnostic: the modal renders JSX, the carousel
 // generator (eventually) emits HTML strings, but both consume the same merged
 // chronological feed.
 
-export type TimelineSource = 'historial' | 'terapeutica' | 'bitacora' | 'baja';
+export type TimelineSource = 'historial' | 'terapeutica' | 'baja';
 
 export type TimelineTone = 'ok' | 'warn' | 'alarm' | 'muted';
 
 export interface TimelineEvent {
-  id: string;                  // stable key: `${source}:${alias|ubicacion}:${fecha}:${idx}`
+  id: string;                  // stable key: `${source}:${alias}:${fecha}:${idx}`
   source: TimelineSource;
   date: string;                // ISO YYYY-MM-DD
   time: string | null;         // "HH:MM" or null when unknown

@@ -18,7 +18,7 @@ import TankCard from './TankCard';
 import RotatingHeroChart from './RotatingHeroChart';
 import WaterLogTable from './WaterLogTable';
 import { AM_AQUARIUM_BY_ANCHOR } from './amAquariums';
-import type { BitacoraEntry, Ejemplar } from '../ajolotes/types';
+import type { Ejemplar } from '../ajolotes/types';
 import { useBackToClose } from '../useBackToClose';
 
 interface Props {
@@ -27,7 +27,6 @@ interface Props {
   parameters: ParameterCatalogEntry[];
   mondays: Measurement[];
   ejemplares: Ejemplar[];
-  bitacora: BitacoraEntry[];
   allDataUrl: string;
   // Water-test context: ISO/Pulso week number -> podcast episode number, per-episode deep links,
   // and the podcast archive URL as a fallback.
@@ -71,21 +70,11 @@ function shiftWeek(iso: string, weeks: number): string {
 // own current-week column — its water is still logged and charted separately.
 const GRID_HIDDEN_TANKS = new Set(['AM Larvas']);
 
-// The source data has no test-type field, so derive it on the site. The weekly
-// Monday test is ALWAYS the routine maintenance test ("Lunes de Mantenimiento")
-// — it is never relabeled, even if an emergency water change also happened that
-// week. Only off-schedule (non-Monday) tests can be a control spot-check or, if
-// a genuine emergency bitácora entry exists on that date, an emergency test.
-const EMERGENCY_RE = /emergencia|accidente de sistema/i;
-function deriveTestType(latest: Measurement | null, bitacora: BitacoraEntry[]): TestType {
-  if (!latest) return 'mantenimiento';
-  if (latest.isMonday) return 'mantenimiento';
-  const emergency = bitacora.some(
-    (e) =>
-      e.fecha === latest.date &&
-      EMERGENCY_RE.test(`${e.categoria ?? ''} ${e.incidencia ?? ''} ${e.accion ?? ''} ${e.notas ?? ''}`),
-  );
-  return emergency ? 'emergencia' : 'control';
+// The source data has no test-type field, so derive it on the site: the weekly
+// Monday test is the routine maintenance test ("Lunes de Mantenimiento") and an
+// off-schedule (non-Monday) test is a control spot-check.
+function deriveTestType(latest: Measurement | null): TestType {
+  return !latest || latest.isMonday ? 'mantenimiento' : 'control';
 }
 
 export default function WaterQualityDashboard({
@@ -94,7 +83,6 @@ export default function WaterQualityDashboard({
   parameters,
   mondays,
   ejemplares,
-  bitacora,
   allDataUrl,
   podcastByWeek,
   episodeUrls,
@@ -120,7 +108,6 @@ export default function WaterQualityDashboard({
   );
   const [tankId, setTankId] = useState<string | null>(null);
   const [mondaysOnly, setMondaysOnly] = useState(true);
-  const [showWaterChanges, setShowWaterChanges] = useState(true);
   const [timeWindow, setTimeWindow] = useState<TimeWindow>(12);
   const [focusedParam, setFocusedParam] = useState<ParamKey | null>(null);
   const [focusedAquarium, setFocusedAquarium] = useState<string | null>(null);
@@ -280,7 +267,7 @@ export default function WaterQualityDashboard({
     )[0];
   }, [weekMeasurements]);
 
-  const testType = useMemo(() => deriveTestType(latestOfWeek, bitacora), [latestOfWeek, bitacora]);
+  const testType = useMemo(() => deriveTestType(latestOfWeek), [latestOfWeek]);
 
   // The week's podcast episode for "further insight on the water tests", only when the Pulso
   // content records one for that week. It is not extrapolated: the podcast is every two weeks
@@ -400,28 +387,15 @@ export default function WaterQualityDashboard({
           />
         )}
 
-        {/* Trend chart + water-change marker toggle, below the table */}
-        <div class="mt-6 flex flex-wrap items-center justify-end gap-3 sm:mt-8">
-          <label class="flex cursor-pointer items-center gap-2 rounded-full bg-[var(--wq-surface-2)] px-3 py-1.5 text-sm text-[var(--wq-ink)] shadow-sm ring-1 ring-[var(--wq-divider)]">
-            <input
-              type="checkbox"
-              checked={showWaterChanges}
-              onChange={(e) => setShowWaterChanges((e.target as HTMLInputElement).checked)}
-              class="h-4 w-4 accent-current"
-            />
-            <span class="font-body">{t.showChanges}</span>
-          </label>
-        </div>
-        <div class="mt-3">
+        {/* Trend chart, below the table */}
+        <div class="mt-6 sm:mt-8">
           <RotatingHeroChart
             locale={locale}
             tanks={primaryTanks}
             measurements={sourceMeasurements}
             catalog={parameters}
-            bitacora={bitacora}
             focusedParam={focusedParam}
             onFocusChange={setFocusedParam}
-            showEvents={showWaterChanges}
           />
         </div>
 
@@ -433,7 +407,6 @@ export default function WaterQualityDashboard({
           locale={locale}
           tanks={primaryTanks}
           measurements={sourceMeasurements}
-          bitacora={bitacora}
           weekIso={weekIso}
         />
       </div>
@@ -459,7 +432,6 @@ export default function WaterQualityDashboard({
             history={historyForDetail}
             catalogForTank={catalogForSelected}
             ejemplares={ejemplares}
-            bitacora={bitacora}
             onBack={onBack}
             window={timeWindow}
             onWindowChange={setTimeWindow}

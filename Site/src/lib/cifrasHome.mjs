@@ -9,8 +9,8 @@ export const ETIQUETA = { es: 'es-MX', en: 'en-US', pt: 'pt-BR' };
 // lists in English without the serial comma, as the approved captions write them
 const ETIQUETA_LISTA = { es: 'es-MX', en: 'en-GB', pt: 'pt-BR' };
 
-/** The values the home captions may use, by placeholder name, from the two inventories and the box-office file. */
-export function cifrasDe({ cadena, atlas, taquilla }) {
+/** The values the home captions may use, by placeholder name, from the two inventories. */
+export function cifrasDe({ cadena, atlas }) {
   return {
     especies: atlas.especies.valor,
     recintos: atlas.instalaciones.valor, // the atlas's public layer, not the catalogue's rows
@@ -21,7 +21,6 @@ export function cifrasDe({ cadena, atlas, taquilla }) {
     semanasConRegistro: cadena.registrosPublicos.semanasConRegistro.valor,
     tipos: cadena.registrosPublicos.tiposConRegistro.valor,
     areas: cadena.areas.conRegistro,
-    visitas: taquilla.visitas,
   };
 }
 

@@ -56,7 +56,7 @@ export function csvLargo(filas: { t: number; entidad: string; variable: string; 
 export const scriptR = (archivo: string) => `# La Variable Incógnita · mesa de detectives (axolodao.org/xolotlcalli/mesa)
 library(readr); library(dplyr); library(tidyr); library(ggplot2)
 d <- read_csv("${archivo}", col_types = cols(fecha = col_date(), valor = col_double(), .default = col_character()))
-eventos <- d |> filter(startsWith(variable, "evento:"))   # tratamientos, bitácora, clips, muerte: texto en la columna nota
+eventos <- d |> filter(startsWith(variable, "evento:"))   # tratamientos, clips, muerte: texto en la columna nota
 diario <- d |> filter(!is.na(valor)) |> group_by(fecha, entidad, variable) |> summarise(valor = mean(valor, na.rm = TRUE), .groups = "drop")
 ggplot(diario, aes(fecha, valor, colour = entidad)) + geom_line() + geom_point(size = 1) +
   facet_wrap(~ variable, scales = "free_y", ncol = 1) + theme_minimal()
@@ -67,7 +67,7 @@ ancho <- diario |> unite(v, entidad, variable) |> pivot_wider(names_from = v, va
 export const scriptPy = (archivo: string) => `# La Variable Incógnita · mesa de detectives (axolodao.org/xolotlcalli/mesa)
 import pandas as pd
 d = pd.read_csv("${archivo}", parse_dates=["fecha"])
-eventos = d[d.variable.str.startswith("evento:")]  # tratamientos, bitácora, clips, muerte: texto en la columna nota
+eventos = d[d.variable.str.startswith("evento:")]  # tratamientos, clips, muerte: texto en la columna nota
 diario = d.dropna(subset=["valor"]).groupby(["fecha", "entidad", "variable"], as_index=False)["valor"].mean()
 ancho = diario.assign(v=diario.entidad + " · " + diario.variable).pivot(index="fecha", columns="v", values="valor")
 print(ancho.corr(method="spearman"))

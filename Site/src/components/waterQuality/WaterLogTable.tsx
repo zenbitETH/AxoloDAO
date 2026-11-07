@@ -2,18 +2,13 @@ import { useMemo, useState } from 'preact/hooks';
 import type { Locale, Measurement, ParamKey, Tank } from './types';
 import { PARAM_KEYS } from './types';
 import { STRINGS, formatShortDate, formatNumber } from './strings';
-import type { BitacoraEntry } from '../ajolotes/types';
-import { cambiosDeAguaByTank } from '../../lib/timeline/cambios';
 
 interface Props {
   locale: Locale;
-  tanks: Tank[];               // primary tanks (used for naming + cambio matching)
+  tanks: Tank[];               // primary tanks (used for naming)
   measurements: Measurement[]; // source measurements (mondays-only or all)
-  bitacora: BitacoraEntry[];
   weekIso: string;             // unused for scoping now; kept for API stability
 }
-
-type Tab = 'tests' | 'changes';
 
 const PAGE_SIZE = 20;
 
@@ -25,15 +20,14 @@ const PARAM_SHORT: Record<ParamKey, string> = {
 
 const SPECIES_ACCENT: Record<string, string> = { AA: '#B87333', AM: '#2C5F7C', AD: '#3E6B4A' };
 
-// A scannable, paginated log of weekly water tests and water-change events —
-// the ajolotes list view's counterpart for the tanks.
-export default function WaterLogTable({ locale, tanks, measurements, bitacora }: Props) {
+// A scannable, paginated log of weekly water tests, the ajolotes list view's
+// counterpart for the tanks.
+export default function WaterLogTable({ locale, tanks, measurements }: Props) {
   const t = STRINGS[locale];
-  const [tab, setTab] = useState<Tab>('tests');
   const [page, setPage] = useState(0);
 
   const tankName = (id: string) => tanks.find((tk) => tk.id === id)?.displayName ?? id;
-  // Species accent from an exact tank id OR a free-form bitácora ubicación.
+  // Species accent from an exact tank id, else from the id's species prefix.
   const accentFor = (s: string) => {
     const tank = tanks.find((tk) => tk.id === s);
     if (tank?.accentColor) return tank.accentColor;
@@ -55,33 +49,12 @@ export default function WaterLogTable({ locale, tanks, measurements, bitacora }:
     [testRows],
   );
 
-  const changeRows = useMemo(() => {
-    const seen = new Set<string>();
-    const out: { date: string; ubic: string; accion: string; autor: string | null }[] = [];
-    for (const tk of tanks) {
-      for (const c of cambiosDeAguaByTank(bitacora, tk.id)) {
-        const key = `${c.date}|${c.ubicacionReal}|${c.accion}`;
-        if (seen.has(key)) continue;
-        seen.add(key);
-        out.push({ date: c.date, ubic: c.ubicacionReal, accion: c.accion, autor: c.autor });
-      }
-    }
-    return out.sort((a, b) => b.date.localeCompare(a.date));
-  }, [tanks, bitacora]);
-
-  const isTests = tab === 'tests';
-  const total = isTests ? testRows.length : changeRows.length;
+  const total = testRows.length;
   const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
   const safePage = Math.min(page, pageCount - 1);
   const start = safePage * PAGE_SIZE;
   const pagedTests = testRows.slice(start, start + PAGE_SIZE);
-  const pagedChanges = changeRows.slice(start, start + PAGE_SIZE);
-  const colSpan = isTests ? 3 + activeParams.length : 4;
-
-  function switchTab(tb: Tab) {
-    setTab(tb);
-    setPage(0);
-  }
+  const colSpan = 3 + activeParams.length;
 
   const dateCell = (date: string) => (
     <td class="whitespace-nowrap border-b border-[var(--wq-divider)] py-2 pl-4 pr-3 font-mono text-[12px] text-[var(--wq-ink)]">
@@ -112,23 +85,6 @@ export default function WaterLogTable({ locale, tanks, measurements, bitacora }:
     <section class="mt-8">
       <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
         <h3 class="font-display text-lg text-[var(--wq-ink)]">{t.logTitle}</h3>
-        <div class="inline-flex rounded-full bg-[var(--wq-surface-2)] p-1 ring-1 ring-[var(--wq-divider)]">
-          {(['tests', 'changes'] as Tab[]).map((tb) => (
-            <button
-              key={tb}
-              type="button"
-              onClick={() => switchTab(tb)}
-              aria-pressed={tab === tb}
-              class={`rounded-full px-3 py-1 font-body text-xs transition ${
-                tab === tb
-                  ? 'bg-[var(--wq-ink)] text-[var(--wq-surface)] shadow-sm'
-                  : 'text-[var(--wq-ink)]/70 hover:text-[var(--wq-ink)]'
-              }`}
-            >
-              {tb === 'tests' ? t.logTests : t.logChanges}
-            </button>
-          ))}
-        </div>
       </div>
 
       <div class="overflow-x-auto rounded-2xl border border-[var(--wq-divider)] bg-[var(--wq-cell-bg)]">
@@ -137,9 +93,7 @@ export default function WaterLogTable({ locale, tanks, measurements, bitacora }:
             <tr>
               {th(t.logColDate, { first: true })}
               {th(t.logColTank)}
-              {isTests
-                ? activeParams.map((k) => th(PARAM_SHORT[k], { num: true }))
-                : th(t.logColAction)}
+              {activeParams.map((k) => th(PARAM_SHORT[k], { num: true }))}
             </tr>
           </thead>
           <tbody>
@@ -149,7 +103,7 @@ export default function WaterLogTable({ locale, tanks, measurements, bitacora }:
                   {t.logEmpty}
                 </td>
               </tr>
-            ) : isTests ? (
+            ) : (
               pagedTests.map((m, i) => (
                 <tr key={`${m.tankId}-${m.date}-${i}`} class="transition-colors hover:bg-[var(--wq-row-bg)]">
                   {dateCell(m.date)}
@@ -172,14 +126,6 @@ export default function WaterLogTable({ locale, tanks, measurements, bitacora }:
                       </td>
                     );
                   })}
-                </tr>
-              ))
-            ) : (
-              pagedChanges.map((c, i) => (
-                <tr key={`${c.date}-${c.ubic}-${i}`} class="transition-colors hover:bg-[var(--wq-row-bg)]">
-                  {dateCell(c.date)}
-                  {peceraCell(c.ubic, accentFor(c.ubic))}
-                  <td class="border-b border-[var(--wq-divider)] px-3 py-2 text-[var(--wq-ink)]/80">{c.accion}</td>
                 </tr>
               ))
             )}

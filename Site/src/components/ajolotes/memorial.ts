@@ -32,7 +32,7 @@ const BAJA_SPECIES_HINT: Record<string, SpeciesCode> = {
 };
 
 // Fechas corregidas a mano, por nombre, sólo para lo que no tiene fila de baja con fecha. Las bajas con
-// fila llegan ya con su fecha canónica desde el generador (scripts/data-ajolotes.mjs toma la de
+// fila llegan ya con su fecha canónica en el bundle fijo (el generador del piloto tomó la de
 // bajas-forense.json: día y mes invertidos, año errado y laboratorio contra libro ya resueltos), y la
 // comprobación de la construcción (scripts/check-fechas.mjs) falla si el sitio y forense no coinciden.
 export const BAJA_FECHA_FIX: Record<string, string> = {

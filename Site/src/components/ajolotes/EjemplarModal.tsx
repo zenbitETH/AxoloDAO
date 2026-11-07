@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import type { Baja, Bundle, BitacoraEntry, Ejemplar, Locale } from './types';
+import type { Baja, Bundle, Ejemplar, Locale } from './types';
 import type { Measurement } from '../waterQuality/types';
 import {
   accent as accentFor,
@@ -26,7 +26,6 @@ type TabId = 'postmortem' | 'seguimiento' | 'resumen' | 'biometria' | 'eventos' 
 interface Props {
   ej: Ejemplar;
   bundle: Bundle;
-  bitacora: BitacoraEntry[];
   theme: ThemeMode;
   locale: Locale;
   water: Measurement[];
@@ -54,7 +53,7 @@ function peceraLabel(locale: Locale, pecera: string | null | undefined): string 
   return raw;
 }
 
-export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, water, waterPath, onClose, memorial = false, baja: bajaProp = null }: Props) {
+export default function EjemplarModal({ ej, bundle, theme, locale, water, waterPath, onClose, memorial = false, baja: bajaProp = null }: Props) {
   // A deceased specimen opens on its forensic postmortem; a living one on its summary, with
   // its follow-up (the same reading of the record as a postmortem) right after.
   const [tab, setTab] = useState<TabId>(memorial ? 'postmortem' : 'resumen');
@@ -362,7 +361,6 @@ export default function EjemplarModal({ ej, bundle, bitacora, theme, locale, wat
               alias={ej.alias}
               historial={hist}
               terapeutica={tera}
-              bitacora={bitacora}
               baja={baja}
               accent={ac}
               locale={locale}

@@ -3,9 +3,9 @@ import type { Locale } from '../types';
 import { s } from '../strings';
 import Relato, { relatoEvents, type PmRelato } from './Relato';
 
-// Forensic postmortem of one deceased specimen. Data is the public projection of the
-// audit in the brain (tools/forense/project-public.mjs): no people are named, the lab
-// reports are summarised (never reproduced) and the method is pre-registered.
+// Forensic postmortem of one deceased specimen. Data is bajas-forense.json, the public
+// projection of the forensic audit, a fixed snapshot of the end of the pilot: no people are
+// named, the lab reports are summarised (never reproduced) and the method is pre-registered.
 
 type Lane = 1 | 2 | 3 | 4 | 5 | 'integrity' | 'datos';
 interface PmEvent {
