@@ -3,7 +3,8 @@ import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import type { Locale } from '@/i18n/strings';
 import { atlasText } from '@/lib/atlasText';
 import { baseStyle, colorDe, RAMPA, RAMPA_INST, rayasDebil, SIN_DATO } from '@/lib/atlasStyle.mjs';
-import { filasDeInstalaciones, lugarDeInstalacion } from '@/lib/atlasPlace.mjs';
+import { lugarDeInstalacion, nombreDeEstado } from '@/lib/atlasPlace.mjs';
+import { HOJA } from '@/lib/atlasPantalla.mjs';
 import { acento, cajasDeUnidades, claseDeEvidencia, extension, fuentesDePuntos, presenciaPorEspecie, puntosDeLocalidades, riqueza } from '@/lib/atlasSpecies.mjs';
 import { escribirUrl, leerUrl } from '@/lib/atlasUrl.mjs';
 import { capasDelRegistro, desenvolver, geojsonDeCapa, getJson, liveOrBuild, organizacionesComoPuntos, organizacionesEnVivo } from '@/lib/hubLive.mjs';
@@ -42,6 +43,8 @@ interface Props {
   speciesPathBase: string;
   /** 'especies' is /especies: the atlas with the species index open from the start */
   vista?: 'atlas' | 'especies';
+  /** The page with the atlas's tables, data date and credits (/atlas/tablas/ in the page's language), linked beside the layer switches. */
+  tablasHref?: string;
 }
 
 interface Metricas { metricas: { id: string; title: Record<Locale, string> }[]; estados: Record<string, any> }
@@ -130,9 +133,8 @@ export const radioMarcador = (zona: any, P: number, Z: number, k = 1) => {
   const zoomReal = Math.log2(Z / 0.365);
   return ['interpolate', ['exponential', 2], ['zoom'], 0, ['case', zona, Z * k, P * k], zoomReal, ['case', zona, Z * k, P * k], 12, ['case', zona, Z * k * 2 ** (12 - zoomReal), P * k]];
 };
-/** The name of an admin-1 unit from the admin1 data; where that data gives the state the country's own name («México» for MX-MEX) the state is spelled out, until the data does it. */
-const nombreDeEstado = (pr: any, loc: string) => { const dato = (loc === 'en' ? pr.nameEn : pr.nameEs) ?? pr.iso; return pr.iso === 'MX-MEX' && /^m[eé]xico$/i.test(dato) ? (loc === 'en' ? 'State of Mexico' : loc === 'pt' ? 'Estado do México' : 'Estado de México') : dato; };
-const esTelefono = () => typeof matchMedia !== 'undefined' && matchMedia('(max-width: 720px)').matches;
+// a phone or an upright window up to a tablet's width: the panels are bottom sheets (src/lib/atlasPantalla.mjs, the same rule as atlas.css)
+const esTelefono = () => typeof matchMedia !== 'undefined' && matchMedia(HOJA).matches;
 const sinMovimiento = () => typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
 /**
  * The first view: where records exist, from southern Canada to southern Mexico. It is the box around the centre of every unit with a confirmed or weak record
@@ -160,7 +162,7 @@ function extremosDelGenero(fichas: Record<string, Ficha>) {
   return con.length ? { menor: con[0], mayor: con[con.length - 1], n: con.length } : null;
 }
 
-export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000, sitio, speciesPathBase, vista = 'atlas' }: Props) {
+export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000, sitio, speciesPathBase, vista = 'atlas', tablasHref }: Props) {
   const text = atlasText[locale];
   const ui = uiText[locale];
   const raiz = useRef<HTMLDivElement>(null);
@@ -252,7 +254,7 @@ export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000,
       .catch(() => setStatus((s) => ({ ...s, base: 'error' })));
   }, []);
   useEffect(() => {
-    const mq = matchMedia('(max-width: 720px)');
+    const mq = matchMedia(HOJA);
     const al = () => setPhone(mq.matches);
     mq.addEventListener?.('change', al);
     return () => mq.removeEventListener?.('change', al);
@@ -548,15 +550,6 @@ export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000,
   // the unit the index is filtered by
   useEffect(() => { cuandoListo(() => mapa.current.setFilter('estado-elegido', ['==', ['get', 'iso'], estado ?? ''])); }, [estado, status.mapa]);
 
-  // the stage scrolls with the page under the fixed site header: the drawers keep their top one gap below it (--desp, read by atlas.css; phones dock a sheet at the bottom and do not use it)
-  useEffect(() => {
-    let r = 0;
-    const poner = () => { r = 0; const el = raiz.current as HTMLElement | null; const st = el?.querySelector('.at-stage') as HTMLElement | null; if (!el || !st) return; el.style.setProperty('--desp', `${Math.max(0, Math.round(-st.getBoundingClientRect().top))}px`); };
-    const pedir = () => { if (!r) r = requestAnimationFrame(poner); };
-    poner(); addEventListener('scroll', pedir, { passive: true }); addEventListener('resize', pedir);
-    return () => { removeEventListener('scroll', pedir); removeEventListener('resize', pedir); if (r) cancelAnimationFrame(r); };
-  }, []);
-
   // the camera: padded by the drawers (or by the sheet on a phone) and refit when they open or close; back to North America when the species is cleared
   const padding = () => {
     const V = vivo.current;
@@ -566,10 +559,15 @@ export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000,
       const h = abierto === null ? 0 : abierto === 'peek' ? PEEK : abierto === 'full' ? stage.clientHeight * 0.92 : stage.clientHeight * 0.5;
       return { top: 76 + 80, bottom: h + 28, left: 20, right: 20 };
     }
-    const css = getComputedStyle(raiz.current as HTMLElement);
-    const n = (v: string) => parseFloat(css.getPropertyValue(v));
+    // each length is resolved by the browser on a hidden probe: a custom property holds the text it was given («min(540px, 42vw)»),
+    // and parseFloat on that text is NaN, which the camera rejects (Invalid LngLat)
+    const sonda = document.createElement('div');
+    sonda.style.cssText = 'position:absolute;visibility:hidden;height:0;pointer-events:none';
+    (raiz.current as HTMLElement).appendChild(sonda);
+    const n = (v: string) => { sonda.style.width = `var(${v}, 0px)`; return sonda.getBoundingClientRect().width; };
     const izq = V.indice ? n('--gap') + n('--rail') + 6 + n('--drawer-w') + 28 : n('--gap') + n('--rail') + 6 + 28;
     const der = V.detalle ? n('--detail-w') + n('--gap') + 28 : 28;
+    sonda.remove();
     return { top: 28 + 80, bottom: 28, left: izq, right: der };
   };
   const ajustarEspecie = (slug: string) => {
@@ -641,14 +639,14 @@ export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000,
   const avisar = (t: string) => { setAviso(t); if (avisoReloj.current) clearTimeout(avisoReloj.current); avisoReloj.current = setTimeout(() => setAviso(null), 3400); };
   const abrirIndice = (hasta: Snap = 'half') => {
     setPopGrupo(null); setEstadoPop(null);
-    if (phone) { setDetalle(false); setSnapI(hasta); }
+    if (phone) { setDetalle(false); setSnapI(hasta); setLeyenda(false); }
     setIndice(true); empujar('indice');
   };
   const cerrarIndice = () => { setIndice(false); setHover(null); };
   const abrirDetalle = (slug: string, pestana?: Tab) => {
     setTab(pestana ?? 'resumen'); setExpandida(false);
     setPopGrupo(null); setEstadoPop(null);
-    if (phone) { setIndice(false); setSnapD('half'); }
+    if (phone) { setIndice(false); setSnapD('half'); setLeyenda(false); }
     setDetalle(true); empujar('detalle');
   };
   const pick = (slug: string) => {
@@ -686,9 +684,12 @@ export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000,
     return false;
   };
   vivo.current.cerrarArriba = cerrarArriba;
+  // on a phone the legend is a sheet of its own: Escape closes it first, and it has no history entry to take back
+  vivo.current.cerrarLeyenda = () => { if (!phone || !leyenda) return false; setLeyenda(false); return true; };
   // Escape closes the top layer and takes its history entry with it; Back (popstate) closes the top layer too, but never both from one press
   useEffect(() => {
     const alTecla = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && vivo.current.cerrarLeyenda()) return;
       if (e.key === 'Escape' && vivo.current.cerrarArriba() && history.state && (history.state.detalle || history.state.indice || history.state.carta)) { ignorarPop.current = true; history.back(); }
     };
     const alVolver = () => { if (ignorarPop.current) { ignorarPop.current = false; return; } vivo.current.cerrarArriba(); };
@@ -851,17 +852,21 @@ export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000,
     ? D.items.filter((s) => D.presencia[s.slug]?.[estadoPop.iso]).sort((a, b) => Number(claseDeEvidencia(D.presencia[a.slug][estadoPop.iso]) === 'weak') - Number(claseDeEvidencia(D.presencia[b.slug][estadoPop.iso]) === 'weak') || a.slug.localeCompare(b.slug))
     : [];
   const stage = raiz.current?.querySelector('.at-stage') as HTMLElement | null;
-  const filasTabla = D ? (colorear === 'metrica'
-    ? Object.entries(valores).map(([iso, v]) => ({ iso, nombre: metricas?.estados[iso]?.nombre ?? iso, v }))
-    : D.isos.map((iso) => ({ iso, nombre: D.nombreDe[iso], v: D.riq.fuerte[iso] ?? 0 }))).sort((a, b) => a.nombre.localeCompare(b.nombre, locale)) : [];
-  const etiquetaTabla = colorear === 'metrica' ? etiqueta : ui.legendRichness;
+  // the credits of what the map draws now; every credit and licence of the atlas is on the tables page
+  const creditos = [
+    ...cards.filter((c) => c.attribution && visible[c.id] && (c.flag !== 'nc' || ncEnabled)).map((c) => <p class="at-cred" data-attribution data-attribution-for={c.id}>{citas[c.id] ?? c.attribution}</p>),
+    ...(visible['instalaciones-catalogadas'] ? [<p class="at-cred" data-attribution data-attribution-for="iconos">{ui.iconsCredit} <a href="/atlas/aviso-iconos.txt" target="_blank" rel="noopener noreferrer" data-iconos-aviso>{ORIGEN_ICONOS.set} ({ORIGEN_ICONOS.licencia})</a></p>] : []),
+  ];
+  // the tables page opens on what the map shows: the same species and state in its query, so «back to the map» returns here
+  const enlaceTablas = tablasHref && !kiosko ? `${tablasHref}${escribirUrl('', { capa: CAPA_DE_COLOREAR[colorear], especie, estado })}` : undefined;
   // ex situ: how many cataloged facilities name the species (a count, never a place)
   const nInst = (slug: string) => (instalaciones ? instalacionesDeEspecie(instalaciones.features, slug, (manifest as any)?.sinonimos ?? {}) : 0);
   const ocupado = (phone && (indice || detalle)) ? '1' : '0';
+  const snapAbierto = phone ? (detalle ? snapD : indice ? snapI : '') : '';
 
   return (
     <div ref={raiz} class="at-ui" data-atlas data-kiosko={kiosko ? '1' : '0'} data-nc={ncEnabled ? '1' : '0'} data-ready={status.mapa === 'ready' && D ? '1' : '0'} data-counts={JSON.stringify(conteos)}
-      data-indice={indice ? '1' : '0'} data-sheet-open={ocupado} data-detalle={detalle ? '1' : '0'} data-expanded={expandida ? '1' : '0'} data-colorear={colorear} data-nc-on={ncEnabled ? '1' : '0'} data-especie={especie ?? ''} data-vista={vista} data-ciclo={CICLO_ENCENDIDO ? '1' : '0'} data-clips={CLIPS_ENCENDIDO ? '1' : '0'}>
+      data-indice={indice ? '1' : '0'} data-sheet-open={ocupado} data-sheet-snap={snapAbierto} data-leyenda={leyenda ? '1' : '0'} data-detalle={detalle ? '1' : '0'} data-expanded={expandida ? '1' : '0'} data-colorear={colorear} data-nc-on={ncEnabled ? '1' : '0'} data-especie={especie ?? ''} data-vista={vista} data-ciclo={CICLO_ENCENDIDO ? '1' : '0'} data-clips={CLIPS_ENCENDIDO ? '1' : '0'}>
       <div class="at-stage">
         <div ref={contenedor} role="application" aria-label={ui.mapLabel} class="at-map" data-map />
         {sinWebgl && <p class="at-nowebgl">{text.webgl}</p>}
@@ -875,11 +880,12 @@ export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000,
             rango={itemVista ? rangoVisible(itemVista.slug) : []} rampas={D.rampas}
             trama={itemVista ? D.tramas[itemVista.slug] : undefined} conPuntos={!!itemVista && conPunto.has(itemVista.slug)} conAreas={!!itemVista && conArea.has(itemVista.slug)} lagos={itemVista ? (puntosLoc?.features ?? []).filter((f: any) => f.properties.kind === 'lake' && f.properties.slug === itemVista.slug) : []} estadosComoLinea={!!itemVista && (D.rangosPor[itemVista.slug]?.length ?? 0) > 0} 
             fuentesPuntos={itemVista ? fuentesPuntos[itemVista.slug] ?? [] : []} ocultarRevision={STAND || SITIO}
-            instalaciones={!!visible['instalaciones-catalogadas']} instTipos={Object.keys(tiposDeInst)} instFiguras={Object.keys(figurasDeInst)} etiquetasInst={etiquetasInst} locale={locale} abierta={leyenda} onToggle={() => setLeyenda(!leyenda)} />
+            instalaciones={!!visible['instalaciones-catalogadas']} instTipos={Object.keys(tiposDeInst)} instFiguras={Object.keys(figurasDeInst)} etiquetasInst={etiquetasInst} locale={locale} abierta={leyenda} hoja={phone} onToggle={() => setLeyenda(!leyenda)} />
         )}
+        {creditos.length > 0 && <details class="at-creditos" data-creditos open={!phone}><summary>{ui.credits}</summary>{creditos}</details>}
         {D && indice && (
           <IndexDrawer ui={ui} locale={locale} items={D.items} lista={lista} especie={especie} preview={hover ?? primed} q={q} iucn={iucn} grupo={grupo} estadoNombre={estado ? D.nombreDe[estado] : null} estadoIso={estado} filtrosAbiertos={filtros}
-            snap={snapI} phone={phone} capas={['limites-admin1', 'rios-lagos'].map((id) => ({ id, label: id === 'limites-admin1' ? ui.ctlLimits : ui.ctlRivers, checked: !!visible[id] }))} onCapa={alternar} riqueza={colorear === 'riqueza'} onRiqueza={() => elegirColorear(colorear === 'riqueza' ? 'ninguno' : 'riqueza')} onQ={setQ} onIucn={setIucn} onGrupo={(g) => { setGrupo(g); if (g !== 'iucn') setIucn(null); }} onQuitarEstado={() => setEstado(null)} onFiltros={() => setFiltros(!filtros)} onPreview={(sl) => { if (sl && sinVistaPrevia.current) return; setHover(sl); }}
+            snap={snapI} phone={phone} tablasHref={enlaceTablas} capas={['limites-admin1', 'rios-lagos'].map((id) => ({ id, label: id === 'limites-admin1' ? ui.ctlLimits : ui.ctlRivers, checked: !!visible[id] }))} onCapa={alternar} riqueza={colorear === 'riqueza'} onRiqueza={() => elegirColorear(colorear === 'riqueza' ? 'ninguno' : 'riqueza')} onQ={setQ} onIucn={setIucn} onGrupo={(g) => { setGrupo(g); if (g !== 'iucn') setIucn(null); }} onQuitarEstado={() => setEstado(null)} onFiltros={() => setFiltros(!filtros)} onPreview={(sl) => { if (sl && sinVistaPrevia.current) return; setHover(sl); }}
             onPick={pick} onTap={tocar} onSnap={setSnapI} onClose={cerrarIndice}
             panel={panelTab} onPanel={(t) => { setPanelTab(t); setHover(null); setPrimed(null); }} tituloInstalaciones={tituloInstalaciones(text)} capacidades={D.caps} tramas={D.tramas}
             cuerpoInstalaciones={<Hud cards={cards} text={text} ui={ui} colorear={colorear} visible={visible} status={status} ncEnabled={ncEnabled} kiosko={kiosko} metrics={metricasLista} metric={metric} orgsNote={orgsNote}
@@ -899,32 +905,6 @@ export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000,
             onPick={(s) => { setEstadoPop(null); pick(s); }} onFilter={() => { setEstado(estadoPop.iso); setEstadoPop(null); abrirIndice(); }} onClose={() => setEstadoPop(null)} />
         )}
         {aviso && <div class="at-toast" role="status">{aviso}</div>}
-      </div>
-      <div class="container-wide at-below">
-        {cards.filter((c) => c.attribution && visible[c.id] && (c.flag !== 'nc' || ncEnabled)).map((c) => <p class="mt-2 font-mono text-[11px] text-white/60" data-attribution data-attribution-for={c.id}>{citas[c.id] ?? c.attribution}</p>)}
-        {visible['instalaciones-catalogadas'] && <p class="mt-2 font-mono text-[11px] text-white/60" data-attribution data-attribution-for="iconos">{ui.iconsCredit} <a class="underline" href="/atlas/aviso-iconos.txt" target="_blank" rel="noopener noreferrer" data-iconos-aviso>{ORIGEN_ICONOS.set} ({ORIGEN_ICONOS.licencia})</a></p>}
-        <details class="mt-4 rounded-xl border border-white/10 p-4">
-          <summary class="cursor-pointer text-sm font-semibold">{text.table}</summary>
-          <p class="mt-2 text-xs text-white/60">{text.tableNote} {etiquetaTabla}</p>
-          <div class="mt-2 overflow-x-auto"><table class="w-full text-left text-sm"><thead><tr><th class="py-1">{text.state}</th><th class="py-1">{text.value}</th></tr></thead>
-            <tbody>{filasTabla.map((f) => <tr class="border-t border-white/10"><td class="py-1">{f.nombre}</td><td class="py-1 font-mono">{f.v === null || f.v === undefined ? text.noData : f.v}</td></tr>)}</tbody></table></div>
-        </details>
-        {instalaciones && (
-          <details class="mt-4 rounded-xl border border-white/10 p-4" data-facilities-table>
-            <summary class="cursor-pointer text-sm font-semibold">{text.facilitiesTable}</summary>
-            <p class="mt-2 text-xs text-white/60">{text.facilitiesTableNote}</p>
-            <div class="mt-2 overflow-x-auto"><table class="w-full text-left text-sm">
-              <thead><tr><th class="py-1 pr-2">{text.municipality}</th><th class="py-1 pr-2">{text.state}</th><th class="py-1 pr-2">{text.facility}</th><th class="py-1">{text.legalFigure}</th></tr></thead>
-              <tbody>{filasDeInstalaciones(instalaciones.features.map((f: any) => f.properties)).map((p: any) => (
-                <tr class="border-t border-white/10 align-top" data-facility={p.id}>
-                  <td class="py-1 pr-2">{p.nivel === 'estado' || !p.municipio ? text.noMunicipality : p.municipio}</td>
-                  <td class="py-1 pr-2">{p.estado}</td>
-                  <td class="py-1 pr-2">{p.nombre}</td>
-                  <td class="py-1">{p.estado_operacion === 'cerrado' && p.estado_fecha ? `${ui.closedAt} · ${mesDeCierre(String(p.estado_fecha), locale)}` : p.tipo_legal === 'no consta' || !p.tipo_legal ? text.notStated : <>{p.tipo_legal} (<a class="underline" href={p.tipo_legal_fuente} rel="noopener noreferrer">{text.source}</a>)</>}</td>
-                </tr>))}</tbody>
-            </table></div>
-          </details>
-        )}
       </div>
     </div>
   );

@@ -1019,6 +1019,8 @@
 [data-theme="light"] .site-island:not([data-tone="dark"]) .border-white\/15,
 [data-theme="light"] .site-island:not([data-tone="dark"]) .border-white\/20 { border-color: rgb(7 31 41 / 0.28); }
 .site-island .header-logo { transition: filter .3s; }
+/* a full-screen page (the atlas): the page itself never scrolls and never rubber-bands; its map and sheets move inside it */
+html[data-pantalla="completa"], html[data-pantalla="completa"] body { height: 100%; overflow: hidden; overscroll-behavior: none; }
 /* the atlas island is dark glass over a dark map in both themes: its controls stay light */
 [data-theme="light"] .site-island[data-tone="dark"] #mobile-menu-toggle { color: #ffffff; border-color: rgb(255 255 255 / 0.28); }
 [data-theme="light"] .site-island[data-tone="dark"] .theme-toggle.theme-toggle--compact { color: rgb(255 255 255 / 0.85); border-color: rgb(255 255 255 / 0.22); background-color: rgb(255 255 255 / 0.05); }

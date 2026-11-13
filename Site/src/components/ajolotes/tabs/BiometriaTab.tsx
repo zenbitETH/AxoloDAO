@@ -2,6 +2,7 @@ import type { HistorialEntry, Locale } from '../types';
 import { s } from '../strings';
 import LineChart from '../charts/LineChart';
 import MemorialNote, { dMem, weightDrop } from './MemorialNote';
+import { COLUMNAS_TARJETA } from '@/lib/medidasBiometria.mjs';
 
 interface Props {
   hist: HistorialEntry[];
@@ -20,6 +21,11 @@ export default function BiometriaTab({ hist, accent, locale, death }: Props) {
   const peso = hist.filter((h) => h.peso != null).map((h) => ({ date: h.fecha, value: +(h.peso as number) }));
   const lt = hist.filter((h) => h.lt != null).map((h) => ({ date: h.fecha, value: +(h.lt as number) }));
   const lhc = hist.filter((h) => h.lhc != null).map((h) => ({ date: h.fecha, value: +(h.lhc as number) }));
+
+  // the measures table shows a column only when one of this specimen's rows carries one of its measures
+  const columnas = COLUMNAS_TARJETA.filter((c) => hist.some((h) => c.claves.some((k) => (h as unknown as Record<string, unknown>)[k] != null)));
+  const celda = (h: HistorialEntry, c: (typeof COLUMNAS_TARJETA)[number]) =>
+    c.claves.map((k) => fmt((h as unknown as Record<string, unknown>)[k], c.dec)).join(c.sep ? ` ${c.sep} ` : '');
 
   const measurementCount = (n: number) =>
     `${n} ${n === 1 ? s(locale, 'biometria.measurement.one') : s(locale, 'biometria.measurement.many')}`;
@@ -78,6 +84,7 @@ export default function BiometriaTab({ hist, accent, locale, death }: Props) {
           <h3 class="m-0 font-display text-base font-bold tracking-tight text-[var(--wq-ink)]">
             {s(locale, 'biometria.detalladas')}
           </h3>
+          {hist.length > 0 && <p class="m-0 mt-1 text-xs text-[var(--wq-ink-muted)]">{s(locale, 'biometria.unidades')}</p>}
         </header>
         {hist.length === 0 ? (
           <p class="m-0 py-5 text-center text-sm text-[var(--wq-ink-muted)]">
@@ -89,19 +96,16 @@ export default function BiometriaTab({ hist, accent, locale, death }: Props) {
               <thead>
                 <tr>
                   {[
-                    { k: 'biometria.col.fecha' },
-                    { k: 'biometria.col.peso' },
-                    { k: 'biometria.col.lt', tip: 'card.lt.tooltip' },
-                    { k: 'biometria.col.lhc', tip: 'card.lhc.tooltip' },
-                    { k: 'biometria.col.cabeza' },
-                    { k: 'biometria.col.cuerpo' },
-                    { k: 'biometria.col.branquias' },
+                    { k: 'biometria.col.fecha', tip: undefined as string | undefined },
+                    ...columnas.map((c) => ({ k: c.etiqueta, tip: c.tip })),
                     { k: 'biometria.col.bcs', tip: 'card.bcs.tooltip' },
                   ].map(({ k, tip }) => (
+                    // a header wraps at its spaces («Brazo / antebrazo» in two lines): the values set each column's width, so the
+                    // twelve columns of a fully measured specimen fit a desktop card without scrolling sideways
                     <th
                       key={k}
                       title={tip ? s(locale, tip) : undefined}
-                      class={`whitespace-nowrap border-b border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-2.5 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)] ${tip ? 'cursor-help underline decoration-dotted underline-offset-[3px]' : ''}`}
+                      class={`border-b border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-2.5 py-2 text-left align-bottom text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)] ${tip ? 'cursor-help underline decoration-dotted underline-offset-[3px]' : ''}`}
                     >
                       {s(locale, k)}
                     </th>
@@ -114,16 +118,9 @@ export default function BiometriaTab({ hist, accent, locale, death }: Props) {
                     <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 font-mono tabular-nums text-[var(--wq-ink)]">
                       {h.fecha}
                     </td>
-                    <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 tabular-nums text-[var(--wq-ink)]">{fmt(h.peso, 1)}</td>
-                    <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 tabular-nums text-[var(--wq-ink)]">{fmt(h.lt, 1)}</td>
-                    <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 tabular-nums text-[var(--wq-ink)]">{fmt(h.lhc, 1)}</td>
-                    <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 tabular-nums text-[var(--wq-ink)]">
-                      {fmt(h.largoCabeza, 1)}×{fmt(h.anchoCabeza, 1)}
-                    </td>
-                    <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 tabular-nums text-[var(--wq-ink)]">{fmt(h.anchoCuerpo, 1)}</td>
-                    <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 tabular-nums text-[var(--wq-ink)]">
-                      {fmt(h.branqIzq, 1)} / {fmt(h.branqDer, 1)}
-                    </td>
+                    {columnas.map((c) => (
+                      <td key={c.etiqueta} data-medida={c.claves.join(' ')} class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 tabular-nums text-[var(--wq-ink)]">{celda(h, c)}</td>
+                    ))}
                     <td class="whitespace-nowrap border-b border-[var(--wq-divider)] px-2.5 py-2 tabular-nums text-[var(--wq-ink)]">{fmt(h.bcs, 1)}</td>
                   </tr>
                 ))}

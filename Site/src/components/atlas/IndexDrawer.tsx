@@ -33,6 +33,8 @@ interface Props {
   /** map layers that live in the species list (state boundaries, rivers and lakes): off by default */
   capas: { id: string; label: string; checked: boolean }[];
   onCapa: (id: string) => void;
+  /** the tables page (state and facility tables, data date, credits), with the map's species and state in its query; absent in kiosk mode */
+  tablasHref?: string;
   onQ: (q: string) => void;
   onIucn: (k: string | null) => void;
   onGrupo: (g: Agrupar) => void;
@@ -103,6 +105,7 @@ export function IndexDrawer(p: Props) {
         <div class="at-ctls" role="group" aria-label={ui.hud}>
           <label class="at-ctl"><input type="checkbox" role="switch" data-richness aria-checked={p.riqueza ? 'true' : 'false'} checked={p.riqueza} onChange={p.onRiqueza} /><i aria-hidden="true" /><span>{ui.richnessToggle}</span></label>
           {p.capas.map((c) => <label class="at-ctl"><input type="checkbox" role="switch" data-capa={c.id} aria-checked={c.checked ? 'true' : 'false'} checked={c.checked} onChange={() => p.onCapa(c.id)} /><i aria-hidden="true" /><span>{c.label}</span></label>)}
+          {p.tablasHref && <a class="at-ctl at-tablas" href={p.tablasHref} data-atlas-tablas title={ui.tablasTitle}><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="2" /><path d="M1.5 6.5h13M1.5 10h13M6 6.5v7" /></svg><span>{ui.tablasLink}</span></a>}
         </div>
         <div class="at-qrow">
           <input class="at-q" type="search" placeholder={ui.search} aria-label={ui.searchAria} autocomplete="off" value={p.q} onInput={(e) => p.onQ((e.target as HTMLInputElement).value)} />

@@ -4,7 +4,6 @@ import { getCollection } from 'astro:content';
 import { join } from 'node:path';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Atlas from './Atlas';
-import FreshnessChip from '@components/FreshnessChip.astro';
 import { type Locale, localePath, t } from '@/i18n/strings';
 import { atlasText } from '@/lib/atlasText';
 
@@ -23,16 +22,15 @@ const pollMs = Number(import.meta.env.PUBLIC_ATLAS_POLL_MS ?? 30000) || 30000;
 // What the site itself knows of the species it has a page for: common names, accent colour. The snapshot carries the rest.
 const sitio = Object.fromEntries((await getCollection('species')).map((s) => [s.data.slug, { commonNames: s.data.commonNames, accentColor: s.data.accentColor, description: s.data.description, feeding: s.data.feeding }]));
 const speciesPathBase = localePath(locale, 'especies/');
+// the tables, the data date and the credits that used to sit under the map: their own page, one link from the layer switches
+const tablasHref = localePath(locale, 'atlas/tablas/');
 ---
 
-<BaseLayout locale={locale} title={vista === 'especies' ? t(locale, 'species.title') : text.metaTitle} appendSiteName description={vista === 'especies' ? undefined : text.metaDescription}>
+<BaseLayout pantallaCompleta locale={locale} title={vista === 'especies' ? t(locale, 'species.title') : text.metaTitle} appendSiteName description={vista === 'especies' ? undefined : text.metaDescription}>
   <section aria-labelledby="atlas-h1">
     <h1 id="atlas-h1" class="sr-only">{titulo}</h1>
-    <Atlas client:only="preact" locale={locale} hubUrl={hubUrl} ncFlag={ncFlag} builtAt={builtAt} pollMs={pollMs} sitio={sitio} speciesPathBase={speciesPathBase} vista={vista} />
-    <div class="container-wide pb-24">
-      <p class="max-w-3xl text-white/75">{text.subtitle}</p>
-      <p class="mt-4"><FreshnessChip locale={locale} date={builtAt} /></p>
-    </div>
+    <p class="sr-only">{text.subtitle}</p>
+    <Atlas client:only="preact" locale={locale} hubUrl={hubUrl} ncFlag={ncFlag} builtAt={builtAt} pollMs={pollMs} sitio={sitio} speciesPathBase={speciesPathBase} tablasHref={tablasHref} vista={vista} />
   </section>
 </BaseLayout>
 

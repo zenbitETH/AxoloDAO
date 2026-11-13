@@ -9,6 +9,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { firmaVigente } from '@/lib/firmasRetiradas.mjs';
 import { estadoClip } from '@components/mesa/votos';
+import { MEDIDAS } from '@/lib/medidasBiometria.mjs';
 
 const leer = (p: string) => JSON.parse(readFileSync(join(process.cwd(), p), 'utf8'));
 const TZ = 6;
@@ -47,6 +48,8 @@ export const GET: APIRoute = () => {
   const eventos: Record<string, unknown[][]> = {};
   const peso: Record<string, number[][]> = {};
   const consumo: Record<string, number[][]> = {};
+  // las demás medidas de la biometría, una serie por medida (el peso sigue en su `peso`, que la mesa cruza)
+  const medidas: Record<string, Record<string, number[][]>> = {};
   const ev = (alias: string, fila: unknown[]) => { (eventos[alias] ||= []).push(fila); };
 
   for (const e of bundle.ejemplares) {
@@ -68,9 +71,11 @@ export const GET: APIRoute = () => {
     for (const r of filas) {
       const t = ms(r.fecha as string); if (t == null) continue;
       if (typeof r.peso === 'number') (peso[alias] ||= []).push([t, r.peso]);
-      const medidas = ['peso', 'lt', 'lhc', 'bcs'].filter((k) => r[k] != null).map((k) => `${k} ${r[k]}`).join(' · ');
+      for (const m of MEDIDAS) if (m.k !== 'peso' && typeof r[m.k] === 'number') ((medidas[alias] ||= {})[m.k] ||= []).push([t, r[m.k] as number]);
+      // el evento dice cada medida de la fila con su unidad: «peso 108 g · LT 24 cm · … · BCS 3»
+      const valores = [...MEDIDAS.filter((m) => typeof r[m.k] === 'number').map((m) => `${m.corto} ${r[m.k]} ${m.unidad}`), ...(r.bcs != null && r.bcs !== '' ? [`BCS ${r.bcs}`] : [])].join(' · ');
       const obs = [r.comportamiento, r.cabeza, r.cuerpo, r.extremidades, r.cola, r.notas].filter(Boolean).join(' · ');
-      ev(alias, [t, 'bio', 'Biometría', [medidas, obs].filter(Boolean).join(' — '), 'libro', typeof r.peso === 'number' ? r.peso : null]);
+      ev(alias, [t, 'bio', 'Biometría', [valores, obs].filter(Boolean).join(' — '), 'libro', typeof r.peso === 'number' ? r.peso : null]);
     }
   }
   for (const [alias, filas] of Object.entries(bundle.alimentacion as Record<string, Record<string, unknown>[]>)) {
@@ -122,6 +127,9 @@ export const GET: APIRoute = () => {
   return new Response(JSON.stringify({
     fuente: 'Registro público de axolodao.org: bundle de ajolotes, bajas-forense.json, measurements-all.json y parameters.json',
     desde: Math.min(...todas), hasta: Math.max(...todas),
-    ajolotes, eventos, peso, consumo, lecturas, rangos, respuesta, grabaciones, fuenteXovi: xovi.fuente, anclas, atestadorAnclas: anclasSrc.atestador,
+    ajolotes, eventos, peso, consumo, medidas,
+    // el diccionario de las medidas: nombre, unidad y el carril que comparte cada una (src/lib/medidasBiometria.mjs); `peso` va en su serie
+    medidasDef: MEDIDAS.map(({ k, grupo, unidad, corto, es }) => ({ k, grupo, unidad, corto, nombre: es })),
+    lecturas, rangos, respuesta, grabaciones, fuenteXovi: xovi.fuente, anclas, atestadorAnclas: anclasSrc.atestador,
   }), { headers: { 'content-type': 'application/json' } });
 };
