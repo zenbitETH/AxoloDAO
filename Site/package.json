@@ -34,6 +34,7 @@
     "test:atlas:dist": "node scripts/test-atlas.mjs --dist",
     "test:atlas:browser": "node scripts/test-atlas-browser.mjs",
     "test:atlas:pantallas": "node scripts/test-atlas-pantallas.mjs",
+    "og:especies": "node scripts/og-especies.mjs",
     "test:species-sheet": "node scripts/test-species-sheet.mjs",
     "test:atlas:guardia": "node scripts/test-guardia-plantada.mjs",
     "test:hero-alcance": "node scripts/test-alcance-atestacion.mjs",
