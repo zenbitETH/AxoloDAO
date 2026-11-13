@@ -100,10 +100,12 @@ export default function BiometriaTab({ hist, accent, locale, death }: Props) {
                     ...columnas.map((c) => ({ k: c.etiqueta, tip: c.tip })),
                     { k: 'biometria.col.bcs', tip: 'card.bcs.tooltip' },
                   ].map(({ k, tip }) => (
+                    // a header wraps at its spaces («Brazo / antebrazo» in two lines): the values set each column's width, so the
+                    // twelve columns of a fully measured specimen fit a desktop card without scrolling sideways
                     <th
                       key={k}
                       title={tip ? s(locale, tip) : undefined}
-                      class={`whitespace-nowrap border-b border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-2.5 py-2 text-left text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)] ${tip ? 'cursor-help underline decoration-dotted underline-offset-[3px]' : ''}`}
+                      class={`border-b border-[var(--wq-divider)] bg-[var(--wq-row-bg)] px-2.5 py-2 text-left align-bottom text-[11px] font-semibold uppercase tracking-[0.08em] text-[var(--wq-ink-muted)] ${tip ? 'cursor-help underline decoration-dotted underline-offset-[3px]' : ''}`}
                     >
                       {s(locale, k)}
                     </th>
