@@ -18,6 +18,7 @@ import { validarLocalidades, tablaDeSinonimos } from '../src/lib/atlasSpecies.mj
 import { geometriasCrudas } from '../src/lib/atlasGenus.mjs';
 import { PROCEDENCIA, generadoDeDe } from './lib/procedencia.mjs';
 import { leerAtlas, hubDelBuild } from '../src/lib/atlasLectura.mjs';
+import { HOJA } from '../src/lib/atlasPantalla.mjs';
 import { puntosDeLocalidades, fuentesDePuntos, componentes, celdasDe } from '../src/lib/atlasSpecies.mjs';
 import { buscarLocal } from './lib/direccionesLocales.mjs';
 import { problemasDeLaConstruccion } from './pre-push-huella.mjs';
@@ -818,6 +819,16 @@ const metaDescs = [...textoFuente.matchAll(/metaDescription: '((?:[^'\\]|\\.)*)'
 const META_ATLAS = Object.fromEntries(['es', 'en', 'pt'].map((l, i) => [l, { metaTitle: metaTitulos[i], metaDescription: metaDescs[i] }]));
 ok(metaTitulos.length === 3 && metaDescs.length === 3 && ['es', 'en', 'pt'].every((l) => META_ATLAS[l].metaTitle.length <= 60 && META_ATLAS[l].metaDescription.length <= 155 && !/AxoloDAO/.test(META_ATLAS[l].metaTitle + META_ATLAS[l].metaDescription)), 'the meta title is 60 characters or fewer and the description 155 or fewer, in es, en and pt, and neither names a brand');
 ok(!/— AxoloDAO/.test(readFileSync(join(SITE, 'src/components/atlas/AtlasPage.astro'), 'utf8')) && /appendSiteName/.test(readFileSync(join(SITE, 'src/components/atlas/AtlasPage.astro'), 'utf8')) && /SITE_NAME = /.test(readFileSync(join(SITE, 'src/layouts/BaseLayout.astro'), 'utf8')), 'the « — AxoloDAO» suffix is not in the atlas page: the layout adds the site name from one constant');
+// One screen class for the phone sheets: every phone rule of atlas.css uses the HOJA query of src/lib/atlasPantalla.mjs, and the island reads the same constant,
+// so a portrait tablet gets the sheets the CSS draws for it (a rule left at a bare 720 px would draw a phone sheet the component does not manage).
+{
+  const css = readFileSync(join(SITE, 'src/components/atlas/atlas.css'), 'utf8');
+  const telefono = css.match(/@media[^{]*\b720px[^{]*\{/g) ?? [];
+  const otras = telefono.filter((q) => q.replace(/\s+/g, ' ').trim() !== `@media ${HOJA} {`);
+  ok(telefono.length >= 10 && otras.length === 0, `every phone rule of atlas.css is the HOJA query (${telefono.length} rules${otras.length ? `; differ: ${otras.join(' | ')}` : ''})`);
+  const isla = readFileSync(join(SITE, 'src/components/atlas/Atlas.tsx'), 'utf8');
+  ok(/matchMedia\(HOJA\)/.test(isla) && !/matchMedia\(['"`]\(max-width/.test(isla), 'the island tells a phone with matchMedia(HOJA), not a bare width of its own');
+}
 const dist = join(SITE, 'dist');
 // The surfaces a search engine or a share card reads: the title, every meta tag, every structured-data block and every alt text.
 const superficiesSeo = (html) => [...(html.match(/<title[^>]*>[\s\S]*?<\/title>/gi) ?? []), ...(html.match(/<meta\b[^>]*>/gi) ?? []), ...(html.match(/<script[^>]*application\/ld\+json[^>]*>[\s\S]*?<\/script>/gi) ?? []), ...(html.match(/\balt="[^"]*"/gi) ?? [])];
@@ -828,10 +839,12 @@ if (args.has('--dist')) {
   if (existsSync(dist)) {
     for (const [p, l] of [['atlas', 'es'], ['en/atlas', 'en'], ['pt/atlas', 'pt']]) {
       const html = existsSync(join(dist, p, 'index.html')) ? readFileSync(join(dist, p, 'index.html'), 'utf8') : '';
-      ok(html.includes('data-freshness='), `/${p}/ carries a freshness chip (${l})`);
       const mt = META_ATLAS[l];
       ok(html.includes(`<title>${mt.metaTitle} — AxoloDAO</title>`) && html.includes(`content="${mt.metaDescription}"`), `/${p}/ has Comms' meta title (the layout adds the site name) and description (${l})`);
-      ok(/data-freshness="\d{4}-\d{2}-\d{2}"/.test(html) && html.includes('lang="' + { es: 'es', en: 'en', pt: 'pt' }[l]), `/${p}/ has the build date and its language`);
+      ok(html.includes('lang="' + l + '"') && html.includes('data-pantalla="completa"') && !/<footer\b/.test(html), `/${p}/ has its language and is a full-screen page with no footer under the map (${l})`);
+      // the data date moved with the tables: the map page is the map, its /tablas/ page says when the data was built
+      const tablas = existsSync(join(dist, p, 'tablas/index.html')) ? readFileSync(join(dist, p, 'tablas/index.html'), 'utf8') : '';
+      ok(/data-freshness="\d{4}-\d{2}-\d{2}"/.test(tablas) && tablas.includes('lang="' + l + '"'), `/${p}/tablas/ has the build date and its language`);
       ok(superficiesSeo(html).filter((x) => PILOTO_EN_SEO.test(x)).length === 0 && !html.includes(FILA_PILOTO.nombre), `/${p}/: the pilot's name is in no title, meta or og tag, structured-data block or alt text, and not in the page at all (${l})`);
     }
     // the home's map is retired as a destination: no built page links to #mapa, and the nav and hero buttons of the three home pages point to the atlas of their language
@@ -989,6 +1002,14 @@ if (args.has('--browser')) {
     return { page, ctx, bloqueados, errores };
   };
 
+  const abrirPagina = async (url) => {
+    const ctx = await navegador.newContext({ viewport: { width: 1400, height: 1100 } });
+    const page = await ctx.newPage();
+    await page.route('**/*', (route) => (['127.0.0.1', 'localhost'].includes(new URL(route.request().url()).hostname) ? route.continue() : route.abort()));
+    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    return { page, ctx };
+  };
+
   try {
     const a = await abrir(`${base}/atlas/`);
     const poligonos = await a.page.evaluate(() => document.querySelector('[data-map]').__map.queryRenderedFeatures({ layers: ['estados-relleno'] }).length);
@@ -1033,13 +1054,17 @@ if (args.has('--browser')) {
       ok(await a.page.locator('#at-detalle').count() === 0 && await a.page.locator('.at-estado-pop').count() === 0, 'and the click opens neither a species nor a state popover underneath');
       await a.page.click('.maplibregl-popup-close-button');
     }
-    // the facilities as a table: keyboard reachable, every facility of the map, no coordinate
-    ok(await a.page.$('[data-facilities-table] summary') !== null, 'the facilities table has a summary a keyboard can reach');
-    await a.page.focus('[data-facilities-table] summary', { timeout: 3000 }).catch(() => {});
-    await a.page.keyboard.press('Enter');
-    const tabla = await a.page.$$eval('[data-facilities-table] tbody tr', (r) => r.map((x) => x.innerText));
-    ok((await a.page.$eval('[data-facilities-table]', (e) => e.open).catch(() => false)) && tabla.length === instal.features.length, `the facilities table opens from the keyboard and lists every facility (${tabla.length} of ${instal.features.length})`);
-    ok(!tabla.some((t) => /-?\d{2,3}\.\d{3,}/.test(t)) && tabla.some((t) => /no consta/.test(t)) && tabla.some((t) => /Xochimilco/.test(t)), 'the table has the municipality, the state, the facility and the legal figure («no consta» unless sourced), and no coordinate');
+    // the facilities as a table, on the tables page: keyboard reachable, every facility of the map, no coordinate
+    {
+      const t = await abrirPagina(`${base}/atlas/tablas/`);
+      await t.page.keyboard.press('Tab'); await t.page.keyboard.press('Tab');
+      const marcos = await t.page.$$eval('[data-tabla]', (m) => m.map((x) => x.tabIndex === 0 && x.getAttribute('role') === 'region' && !!document.getElementById(x.getAttribute('aria-labelledby') ?? '')));
+      ok(marcos.length === 3 && marcos.every(Boolean), `each table's frame is a named region the keyboard can reach and scroll (${marcos.filter(Boolean).length} of ${marcos.length})`);
+      const tabla = await t.page.$$eval('[data-facilities-table] tbody tr', (r) => r.map((x) => x.innerText));
+      ok(tabla.length === instal.features.length, `the facilities table lists every facility (${tabla.length} of ${instal.features.length})`);
+      ok(!tabla.some((x) => /-?\d{2,3}\.\d{3,}/.test(x)) && tabla.some((x) => /no consta/.test(x)) && tabla.some((x) => /Xochimilco/.test(x)), 'the table has the municipality, the state, the facility and the legal figure («no consta» unless sourced), and no coordinate');
+      await t.ctx.close();
+    }
     // North America: the units of the United States and Canada are on the map, can be reached, and open a popover with their species when clicked
     const clicEstado = async (page, [lng, lat, zoom]) => {
       await page.evaluate(([x, y, z]) => new Promise((res) => { const m = document.querySelector('[data-map]').__map; m.once('idle', res); m.jumpTo({ center: [x, y], zoom: z }); }), [lng, lat, zoom]);
