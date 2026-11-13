@@ -6,7 +6,7 @@ import { baseStyle, colorDe, RAMPA, RAMPA_INST, rayasDebil, SIN_DATO } from '@/l
 import { lugarDeInstalacion, nombreDeEstado } from '@/lib/atlasPlace.mjs';
 import { HOJA } from '@/lib/atlasPantalla.mjs';
 import { acento, cajasDeUnidades, claseDeEvidencia, extension, fuentesDePuntos, presenciaPorEspecie, puntosDeLocalidades, riqueza } from '@/lib/atlasSpecies.mjs';
-import { escribirUrl, leerUrl } from '@/lib/atlasUrl.mjs';
+import { escribirUrl, leerUrl, urlDelAtlas } from '@/lib/atlasUrl.mjs';
 import { capasDelRegistro, desenvolver, geojsonDeCapa, getJson, liveOrBuild, organizacionesComoPuntos, organizacionesEnVivo } from '@/lib/hubLive.mjs';
 import { IUCN_GROUPS } from '@/components/species/strings';
 import { DetailDrawer, type Tab } from './DetailDrawer';
@@ -45,6 +45,10 @@ interface Props {
   vista?: 'atlas' | 'especies';
   /** The page with the atlas's tables, data date and credits (/atlas/tablas/ in the page's language), linked beside the layer switches. */
   tablasHref?: string;
+  /** A species' own page (/atlas/<slug>/, to share): the atlas opens on that species' card, expanded (the whole screen on a phone). */
+  especieInicial?: string;
+  /** The atlas's path in the page's language (/atlas/, /en/atlas/): where the address goes once the visitor leaves that species. */
+  atlasHref?: string;
 }
 
 interface Metricas { metricas: { id: string; title: Record<Locale, string> }[]; estados: Record<string, any> }
@@ -162,7 +166,7 @@ function extremosDelGenero(fichas: Record<string, Ficha>) {
   return con.length ? { menor: con[0], mayor: con[con.length - 1], n: con.length } : null;
 }
 
-export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000, sitio, speciesPathBase, vista = 'atlas', tablasHref }: Props) {
+export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000, sitio, speciesPathBase, vista = 'atlas', tablasHref, especieInicial, atlasHref }: Props) {
   const text = atlasText[locale];
   const ui = uiText[locale];
   const raiz = useRef<HTMLDivElement>(null);
@@ -801,21 +805,30 @@ export default function Atlas({ locale, hubUrl, ncFlag, builtAt, pollMs = 30000,
     if (volo.current && SITIO && !especie) { volo.current = false; const D0 = vivo.current.D; if (D0 && mapa.current) mapa.current.fitBounds(esTelefono() ? D0.inicialTel : D0.inicial, { padding: padding(), duration: sinMovimiento() ? 0 : 700 }); }
   }, [carta, !!instalaciones]);
 
-  // -- the URL: ?capa ?especie ?estado are read once, when the data is here, and written as they change
+  // -- the URL: ?capa ?especie ?estado are read once, when the data is here, and written as they change. A species' own page
+  // (/atlas/<slug>/) opens on that species with its card expanded, and keeps its path while that species is the one shown.
+  // The first write waits for the render that carries what was read: written in the same pass, it would see no species yet.
   const urlLeida = useRef(false);
+  const [urlLista, setUrlLista] = useState(false);
+  const propia = useRef(!!especieInicial);
   useEffect(() => {
     if (!D || urlLeida.current) return;
     urlLeida.current = true;
     const u = leerUrl(location.search, { slugs: D.items.map((i) => i.slug), isos: D.isos });
+    const inicial = !u.especie && especieInicial && D.items.some((i) => i.slug === especieInicial) ? especieInicial : null;
     setColorear(COLOREAR_DE_CAPA[u.capa] ?? 'ninguno');
-    if (u.estado || (vista === 'especies' && !u.especie)) { if (u.estado) setEstado(u.estado); setIndice(true); }
-    if (u.especie) { setEspecie(u.especie); setTab('resumen'); setDetalle(true); }
+    if (u.estado || (vista === 'especies' && !u.especie && !inicial)) { if (u.estado) setEstado(u.estado); setIndice(true); }
+    const abrir = u.especie ?? inicial;
+    if (abrir) { setEspecie(abrir); setTab('resumen'); setDetalle(true); }
+    if (inicial) { if (phone) setSnapD('full'); else setExpandida(true); }
+    setUrlLista(true);
   }, [D]);
   useEffect(() => {
-    if (!urlLeida.current) return;
-    const nuevo = escribirUrl(location.search, { capa: CAPA_DE_COLOREAR[colorear], especie, estado });
-    if (nuevo !== location.search) history.replaceState(history.state, '', `${location.pathname}${nuevo}${location.hash}`);
-  }, [colorear, especie, estado, !!D]);
+    if (!urlLista) return;
+    const r = urlDelAtlas({ pathname: location.pathname, search: location.search, hash: location.hash, atlas: atlasHref, especieInicial, propia: propia.current, capa: CAPA_DE_COLOREAR[colorear], especie, estado });
+    propia.current = r.propia;
+    if (r.url !== `${location.pathname}${location.search}${location.hash}`) history.replaceState(history.state, '', r.url);
+  }, [urlLista, colorear, especie, estado]);
 
   // kiosk: after 60 s without touch, tour the layers
   useEffect(() => {

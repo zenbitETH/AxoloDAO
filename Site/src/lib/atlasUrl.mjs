@@ -26,3 +26,16 @@ export function escribirUrl(search, { capa, especie, estado }) {
   const s = q.toString();
   return s ? `?${s}` : '';
 }
+
+/**
+ * The address for a state, on the atlas or on a species' own page (/atlas/<slug>/, made to be shared). While its species is the
+ * one shown, that page keeps its clean path; once the visitor leaves it (another species, or the card closed) the address goes back
+ * to the atlas (`atlas`, the atlas's path in the page's language) with the state as a query, and stays there, even when Back
+ * restores the species' path: a copied link never names one species and shows another. `propia` says whether the page is still the
+ * species' own; the caller keeps it.
+ */
+export function urlDelAtlas({ pathname, search, hash = '', atlas, especieInicial, propia, capa, especie, estado }) {
+  if (propia && especieInicial && especie === especieInicial) return { url: `${pathname}${escribirUrl(search, { capa, especie: null, estado })}${hash}`, propia: true };
+  const ruta = especieInicial && atlas ? atlas : pathname;
+  return { url: `${ruta}${escribirUrl(search, { capa, especie, estado })}${hash}`, propia: false };
+}
