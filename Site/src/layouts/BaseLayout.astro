@@ -13,9 +13,11 @@ interface Props {
   ogImage?: string;
   /** Append « — {site name}» to the title. The name lives here, in one place, so the brand decides it (not each page). */
   appendSiteName?: boolean;
+  /** A full-screen page (the atlas): the page itself never scrolls and has no footer; the page's own surface fills the viewport. */
+  pantallaCompleta?: boolean;
 }
 
-const { locale, title, description, ogImage, appendSiteName } = Astro.props;
+const { locale, title, description, ogImage, appendSiteName, pantallaCompleta = false } = Astro.props;
 
 // The name that follows a page title when `appendSiteName` is set: the one place to change with the brand.
 const SITE_NAME = 'AxoloDAO';
@@ -68,7 +70,7 @@ const websiteLd = {
 ---
 
 <!doctype html>
-<html lang={locale} data-theme="dark">
+<html lang={locale} data-theme="dark" data-pantalla={pantallaCompleta ? 'completa' : undefined}>
   <head>
     <script is:inline>
       (function () {
@@ -151,6 +153,6 @@ const websiteLd = {
     <main>
       <slot />
     </main>
-    <Footer locale={locale} />
+    {!pantallaCompleta && <Footer locale={locale} />}
   </body>
 </html>
