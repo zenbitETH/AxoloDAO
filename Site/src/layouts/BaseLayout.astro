@@ -11,13 +11,15 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  /** What the share image shows, for those who cannot see it; the page title when left out. */
+  ogImageAlt?: string;
   /** Append « — {site name}» to the title. The name lives here, in one place, so the brand decides it (not each page). */
   appendSiteName?: boolean;
   /** A full-screen page (the atlas): the page itself never scrolls and has no footer; the page's own surface fills the viewport. */
   pantallaCompleta?: boolean;
 }
 
-const { locale, title, description, ogImage, appendSiteName, pantallaCompleta = false } = Astro.props;
+const { locale, title, description, ogImage, ogImageAlt, appendSiteName, pantallaCompleta = false } = Astro.props;
 
 // The name that follows a page title when `appendSiteName` is set: the one place to change with the brand.
 const SITE_NAME = 'AxoloDAO';
@@ -125,7 +127,7 @@ const websiteLd = {
     <meta property="og:image:type" content={ogImageType} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={pageTitle} />
+    <meta property="og:image:alt" content={ogImageAlt ?? pageTitle} />
     <meta property="og:locale" content={ogLocale} />
     {ogLocaleAlternates.map((l) => (
       <meta property="og:locale:alternate" content={l} />
@@ -135,7 +137,7 @@ const websiteLd = {
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDesc} />
     <meta name="twitter:image" content={ogImageUrl} />
-    <meta name="twitter:image:alt" content={pageTitle} />
+    <meta name="twitter:image:alt" content={ogImageAlt ?? pageTitle} />
 
     <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteLd)} />

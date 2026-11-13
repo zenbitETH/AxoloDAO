@@ -1,0 +1,12 @@
+---
+// /en/atlas/<slug>/: a species' own page, to share. The atlas opens on that species' card, expanded (the whole screen on a phone),
+// and the page carries the species' card (/og/atlas/<slug>.jpg) for chats and social networks. scripts/test-atlas-especie.mjs.
+import AtlasPage from '@components/atlas/AtlasPage.astro';
+import { leerAtlas } from '@/lib/atlasLectura.mjs';
+
+export async function getStaticPaths() {
+  const { especies } = await leerAtlas('especies-atlas.json', { publica: (import.meta.env.PUBLIC_HUB_URL ?? '') as string });
+  return especies.map((e: { slug: string }) => ({ params: { especie: e.slug } }));
+}
+---
+<AtlasPage locale="en" especie={Astro.params.especie} />
