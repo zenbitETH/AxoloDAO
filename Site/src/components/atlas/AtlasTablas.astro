@@ -1,0 +1,179 @@
+---
+// /atlas/tablas/: what used to sit under the map, now that the map is the whole screen. The species per state, the indicators per Mexican
+// state, the cataloged facilities, the date of the data and every source, credit and licence, as text a keyboard and a screen reader read.
+// Built from the same read as the map (src/lib/atlasLectura.mjs), so the two never disagree; «Volver al mapa» keeps the map's query.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import FreshnessChip from '@components/FreshnessChip.astro';
+import { type Locale, localePath } from '@/i18n/strings';
+import { atlasText } from '@/lib/atlasText';
+import { uiText } from './uiText';
+import { leerAtlas } from '@/lib/atlasLectura.mjs';
+import { presenciaPorEspecie, riqueza } from '@/lib/atlasSpecies.mjs';
+import { filasDeInstalaciones, nombreDeEstado } from '@/lib/atlasPlace.mjs';
+import { ORIGEN_ICONOS } from '@/lib/iconosInstalaciones.mjs';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const text = atlasText[locale];
+const ui = uiText[locale];
+const T = {
+  es: { title: 'El atlas en tablas', back: 'Volver al mapa', species: 'Especies por estado y provincia', speciesNote: 'Cuántas especies de Ambystoma tienen registro en cada unidad y cuántas sólo están citadas, sin confirmar.', unit: 'Estado o provincia', recorded: 'Con registro', cited: 'Citadas, sin confirmar',
+    metrics: 'Indicadores por estado de México', metricsNote: 'Los indicadores con los que el mapa colorea los estados, todos juntos.', facilities: 'Instalaciones catalogadas', credits: 'Fuentes, créditos y licencias', icons: 'Íconos de las instalaciones' },
+  en: { title: 'The atlas as tables', back: 'Back to the map', species: 'Species by state and province', speciesNote: 'How many Ambystoma species are recorded in each unit, and how many are only cited, unconfirmed.', unit: 'State or province', recorded: 'Recorded', cited: 'Cited, unconfirmed',
+    metrics: 'Indicators by Mexican state', metricsNote: 'The indicators the map can colour the states by, side by side.', facilities: 'Cataloged facilities', credits: 'Sources, credits and licences', icons: 'Facility icons' },
+  pt: { title: 'O atlas em tabelas', back: 'Voltar ao mapa', species: 'Espécies por estado e província', speciesNote: 'Quantas espécies de Ambystoma têm registro em cada unidade e quantas só estão citadas, sem confirmação.', unit: 'Estado ou província', recorded: 'Com registro', cited: 'Citadas, sem confirmação',
+    metrics: 'Indicadores por estado do México', metricsNote: 'Os indicadores com que o mapa colore os estados, lado a lado.', facilities: 'Instalações catalogadas', credits: 'Fontes, créditos e licenças', icons: 'Ícones das instalações' },
+}[locale];
+
+const manifest = JSON.parse(readFileSync(join(process.cwd(), 'public/atlas/layers/manifest.json'), 'utf8'));
+const builtAt = manifest.capas.map((c: { retrievedAt?: string }) => c.retrievedAt ?? '').sort().pop() as string;
+const ncFlag = import.meta.env.PUBLIC_ATLAS_NC === '1';
+const publica = (import.meta.env.PUBLIC_HUB_URL ?? '') as string;
+const [snap, admin1, metricas, instalaciones] = await Promise.all(['especies-atlas.json', 'admin1.geojson', 'estados-metricas.json', 'instalaciones-catalogadas.geojson'].map((n) => leerAtlas(n, { publica }))) as any[];
+
+const fmt = new Intl.NumberFormat({ es: 'es-MX', en: 'en-US', pt: 'pt-BR' }[locale], { maximumFractionDigits: 2 });
+const orden = (a: string, b: string) => a.localeCompare(b, locale);
+// species per unit, grouped by country in the index's order (Mexico, the United States, Canada)
+const riq = riqueza(presenciaPorEspecie(snap)) as { fuerte: Record<string, number>; debil: Record<string, number> };
+const unidades = (admin1.features as any[]).map((f) => ({ iso: f.properties.iso as string, nombre: nombreDeEstado(f.properties, locale) as string, fuerte: riq.fuerte[f.properties.iso] ?? 0, debil: riq.debil[f.properties.iso] ?? 0 }));
+const maxFuerte = Math.max(1, ...unidades.map((u) => u.fuerte));
+const paises = (['MX', 'US', 'CA'] as const).map((p) => ({ p, nombre: ui.countries[p], filas: unidades.filter((u) => u.iso.startsWith(`${p}-`)).sort((a, b) => orden(a.nombre, b.nombre)) })).filter((g) => g.filas.length);
+// the indicators of the Mexican states, every one in its own column
+const columnas = (metricas.metricas as { id: string; title: Record<Locale, string> }[]).map((m) => ({ id: m.id, titulo: m.title[locale] }));
+const estadosMx = Object.entries(metricas.estados as Record<string, Record<string, unknown>>).map(([iso, v]) => ({ iso, nombre: nombreDeEstado({ iso, nameEs: v.nombre, nameEn: v.nombre }, locale) as string, v })).sort((a, b) => orden(a.nombre, b.nombre));
+// the facilities, as the map's popup names them (no address, no coordinate)
+const mesDeCierre = (aaaamm: string) => { const d = new Date(`${aaaamm.slice(0, 7)}-01T00:00:00Z`); return Number.isNaN(+d) ? aaaamm : new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d); };
+const filasInst = filasDeInstalaciones((instalaciones.features as any[]).map((f) => f.properties)) as any[];
+// every layer's source and licence; a CC BY-NC layer is named only where the build may show it
+const capas = (manifest.capas as any[]).filter((c) => c.flag !== 'nc' || ncFlag);
+const mapa = localePath(locale, 'atlas/');
+---
+
+<BaseLayout locale={locale} title={T.title} appendSiteName description={text.subtitle}>
+  <article class="tablas container-wide pb-24 pt-6" data-atlas-tablas-pagina>
+    <a href={mapa} class="volver" data-volver-mapa>
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" /></svg>{T.back}
+    </a>
+    <header class="mt-6 max-w-3xl">
+      <h1 class="font-display text-4xl font-bold sm:text-5xl">{T.title}</h1>
+      <p class="mt-3 text-white/75">{text.subtitle}</p>
+      <p class="mt-4"><FreshnessChip locale={locale} date={builtAt} /></p>
+    </header>
+
+    <section class="mt-12" aria-labelledby="t-especies">
+      <h2 id="t-especies" class="font-display text-2xl font-bold">{T.species}</h2>
+      <p class="nota">{T.speciesNote}</p>
+      <div class="marco" data-tabla="especies" tabindex="0" role="region" aria-labelledby="t-especies">
+        <table>
+          <thead><tr><th scope="col">{T.unit}</th><th scope="col" class="num">{T.recorded}</th><th scope="col" class="num">{T.cited}</th></tr></thead>
+          {paises.map((g) => (
+            <tbody>
+              <tr class="grupo"><th scope="rowgroup" colspan="3">{g.nombre} <span>{g.filas.length}</span></th></tr>
+              {g.filas.map((u) => (
+                <tr data-iso={u.iso}>
+                  <th scope="row">{u.nombre}</th>
+                  <td class="num"><span class="barra" style={`--v:${u.fuerte / maxFuerte}`} aria-hidden="true"></span>{u.fuerte}</td>
+                  <td class="num tenue">{u.debil}</td>
+                </tr>
+              ))}
+            </tbody>
+          ))}
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-14" aria-labelledby="t-metricas">
+      <h2 id="t-metricas" class="font-display text-2xl font-bold">{T.metrics}</h2>
+      <p class="nota">{T.metricsNote}</p>
+      <div class="marco" data-tabla="metricas" tabindex="0" role="region" aria-labelledby="t-metricas">
+        <table>
+          <thead><tr><th scope="col">{text.state}</th>{columnas.map((c) => <th scope="col" class="num">{c.titulo}</th>)}</tr></thead>
+          <tbody>
+            {estadosMx.map((e) => (
+              <tr data-iso={e.iso}>
+                <th scope="row">{e.nombre}</th>
+                {columnas.map((c) => <td class="num">{typeof e.v[c.id] === 'number' ? fmt.format(e.v[c.id] as number) : <span class="tenue">{text.noData}</span>}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-14" aria-labelledby="t-instalaciones">
+      <h2 id="t-instalaciones" class="font-display text-2xl font-bold">{T.facilities}</h2>
+      <p class="nota">{text.facilitiesTableNote}</p>
+      <div class="marco" data-tabla="instalaciones" data-facilities-table tabindex="0" role="region" aria-labelledby="t-instalaciones">
+        <table>
+          <thead><tr><th scope="col">{text.municipality}</th><th scope="col">{text.state}</th><th scope="col">{text.facility}</th><th scope="col">{text.legalFigure}</th></tr></thead>
+          <tbody>
+            {filasInst.map((p) => (
+              <tr data-facility={p.id}>
+                <td>{p.nivel === 'estado' || !p.municipio ? text.noMunicipality : p.municipio}</td>
+                <td>{p.estado}</td>
+                <th scope="row">{p.nombre}</th>
+                <td>{p.estado_operacion === 'cerrado' && p.estado_fecha ? `${ui.closedAt} · ${mesDeCierre(String(p.estado_fecha))}` : p.tipo_legal === 'no consta' || !p.tipo_legal ? <span class="tenue">{text.notStated}</span> : <>{p.tipo_legal} (<a href={p.tipo_legal_fuente} rel="noopener noreferrer">{text.source}</a>)</>}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-14 max-w-4xl" aria-labelledby="t-creditos">
+      <h2 id="t-creditos" class="font-display text-2xl font-bold">{T.credits}</h2>
+      <dl class="creditos" data-creditos-pagina>
+        {capas.map((c) => (
+          <div data-capa={c.id}>
+            <dt>{c.title[locale]}</dt>
+            <dd>{c.source[locale]}</dd>
+            {c.attribution?.[locale] && <dd data-attribution data-attribution-for={c.id}>{c.attribution[locale]}</dd>}
+            <dd class="tenue">{text.licence}: {c.licence.label[locale]}{c.retrievedAt ? ` · ${text.retrieved} ${c.retrievedAt}` : ''}</dd>
+          </div>
+        ))}
+        <div data-capa="iconos">
+          <dt>{T.icons}</dt>
+          <dd><a href="/atlas/aviso-iconos.txt" target="_blank" rel="noopener noreferrer">{ORIGEN_ICONOS.set} ({ORIGEN_ICONOS.licencia})</a></dd>
+        </div>
+      </dl>
+    </section>
+  </article>
+</BaseLayout>
+
+<script>
+  // «Volver al mapa» returns to what the map showed: its species, state and colouring, nothing else from the address; the unit the map was filtered by is marked
+  const q = new URLSearchParams(location.search);
+  const propio = new URLSearchParams();
+  for (const k of ['capa', 'especie', 'estado']) { const v = q.get(k); if (v && /^[A-Za-z0-9_-]{1,40}$/.test(v)) propio.set(k, v); }
+  const volver = document.querySelector<HTMLAnchorElement>('[data-volver-mapa]');
+  if (volver && propio.toString()) volver.search = `?${propio}`;
+  const iso = propio.get('estado');
+  if (iso) document.querySelectorAll(`tr[data-iso="${CSS.escape(iso)}"]`).forEach((tr) => tr.setAttribute('aria-current', 'true'));
+</script>
+
+<style>
+  /* the site's theme tokens (--text, --text-rgb, --bg, --texto-teal): the page reads in the dark and the light theme alike */
+  .volver { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px 8px 12px; border-radius: 999px; border: 1px solid rgb(var(--text-rgb) / 0.2); font-weight: 600; font-size: 0.9rem; color: var(--text); text-decoration: none; }
+  .volver:hover, .volver:focus-visible { border-color: #009c9c; color: var(--texto-teal); }
+  .volver svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .nota { margin-top: 0.4rem; max-width: 65ch; font-size: 0.9rem; color: rgb(var(--text-rgb) / 0.72); }
+  /* a wide table scrolls inside its own frame, never the page; its header stays on top while the rows scroll, and the frame takes the keyboard's focus so its arrows scroll it */
+  .marco:focus-visible { outline: 2px solid #009c9c; outline-offset: 2px; }
+  .marco { margin-top: 1rem; max-height: min(70vh, 44rem); overflow: auto; border: 1px solid rgb(var(--text-rgb) / 0.12); border-radius: 14px; overscroll-behavior: contain; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.875rem; text-align: left; color: var(--text); }
+  thead th { position: sticky; top: 0; z-index: 1; padding: 10px 14px; background: var(--bg); box-shadow: inset 0 -1px rgb(var(--text-rgb) / 0.2); font-weight: 600; white-space: nowrap; }
+  tbody th, tbody td { padding: 7px 14px; border-top: 1px solid rgb(var(--text-rgb) / 0.08); vertical-align: top; font-weight: 400; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .tenue { color: rgb(var(--text-rgb) / 0.62); }
+  tr.grupo th { padding-top: 16px; background: rgb(var(--surface-rgb) / 0.05); font-family: 'Baloo 2', system-ui, sans-serif; font-size: 1.05rem; font-weight: 700; }
+  tr.grupo span { margin-left: 6px; font-family: Montserrat, system-ui, sans-serif; font-size: 0.75rem; font-weight: 600; color: rgb(var(--text-rgb) / 0.62); }
+  /* the count of recorded species, drawn as a short bar before its number: the eye finds the rich units down the column */
+  .barra { display: inline-block; width: calc(var(--v) * 4.5rem); height: 6px; margin-right: 10px; border-radius: 3px; background: #009c9c; vertical-align: middle; }
+  tr[aria-current="true"] th, tr[aria-current="true"] td { background: rgb(0 156 156 / 0.18); }
+  td a, .creditos a { color: var(--texto-teal); text-decoration: underline; }
+  .creditos { margin-top: 1.25rem; display: grid; gap: 1.1rem; }
+  .creditos dt { font-weight: 700; }
+  .creditos dd { margin: 0.15rem 0 0; font-size: 0.875rem; color: rgb(var(--text-rgb) / 0.82); overflow-wrap: anywhere; }
+</style>

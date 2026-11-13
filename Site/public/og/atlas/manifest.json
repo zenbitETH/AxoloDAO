@@ -1,0 +1,322 @@
+{
+  "altamirani": {
+    "archivo": "altamirani.jpg",
+    "imagen": "species/gen-altamirani.jpg",
+    "nombre": "Ambystoma altamirani",
+    "comun": "Ajolote de arroyo de montaña",
+    "iucn": "EN",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 104
+  },
+  "amblycephalum": {
+    "archivo": "amblycephalum.jpg",
+    "imagen": "species/gen-amblycephalum.jpg",
+    "nombre": "Ambystoma amblycephalum",
+    "comun": "Axolote de cabeza chata",
+    "iucn": "CR",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 66
+  },
+  "andersoni": {
+    "archivo": "andersoni.jpg",
+    "imagen": "species/andersoni.png",
+    "nombre": "Ambystoma andersoni",
+    "comun": "Achoque de Zacapu",
+    "iucn": "CR",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 108
+  },
+  "annulatum": {
+    "archivo": "annulatum.jpg",
+    "imagen": "species/gen-annulatum.jpg",
+    "nombre": "Ambystoma annulatum",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 98
+  },
+  "barbouri": {
+    "archivo": "barbouri.jpg",
+    "imagen": "species/gen-barbouri.jpg",
+    "nombre": "Ambystoma barbouri",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "bishopi": {
+    "archivo": "bishopi.jpg",
+    "imagen": "species/gen-bishopi.jpg",
+    "nombre": "Ambystoma bishopi",
+    "comun": null,
+    "iucn": "EN",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "bombypellum": {
+    "archivo": "bombypellum.jpg",
+    "imagen": "species/gen-bombypellum.jpg",
+    "nombre": "Ambystoma bombypellum",
+    "comun": "Axolote de piel fina",
+    "iucn": "DD",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 78
+  },
+  "californiense": {
+    "archivo": "californiense.jpg",
+    "imagen": "species/gen-californiense.jpg",
+    "nombre": "Ambystoma californiense",
+    "comun": null,
+    "iucn": "VU",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 84
+  },
+  "cingulatum": {
+    "archivo": "cingulatum.jpg",
+    "imagen": "species/gen-cingulatum.jpg",
+    "nombre": "Ambystoma cingulatum",
+    "comun": null,
+    "iucn": "EN",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 94
+  },
+  "dumerilii": {
+    "archivo": "dumerilii.jpg",
+    "imagen": "species/dumerilii.png",
+    "nombre": "Ambystoma dumerilii",
+    "comun": "Achoque de Pátzcuaro",
+    "iucn": "CR",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "flavipiperatum": {
+    "archivo": "flavipiperatum.jpg",
+    "imagen": "species/gen-flavipiperatum.jpg",
+    "nombre": "Ambystoma flavipiperatum",
+    "comun": "Axolote de Chapala",
+    "iucn": "EN",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": "Foto base: Tiia Monto (User:Kulmalukko), CC BY 4.0, modificada",
+    "tamEpiteto": 72
+  },
+  "gracile": {
+    "archivo": "gracile.jpg",
+    "imagen": "species/gen-gracile.jpg",
+    "nombre": "Ambystoma gracile",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "granulosum": {
+    "archivo": "granulosum.jpg",
+    "imagen": "species/gen-granulosum.jpg",
+    "nombre": "Ambystoma granulosum",
+    "comun": "Axolote de Toluca",
+    "iucn": "EN",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": "Foto base: Tiia Monto (User:Kulmalukko), CC BY 4.0, modificada",
+    "tamEpiteto": 90
+  },
+  "jeffersonianum": {
+    "archivo": "jeffersonianum.jpg",
+    "imagen": "species/gen-jeffersonianum.jpg",
+    "nombre": "Ambystoma jeffersonianum",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 70
+  },
+  "laterale": {
+    "archivo": "laterale.jpg",
+    "imagen": "species/gen-laterale.jpg",
+    "nombre": "Ambystoma laterale",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "leorae": {
+    "archivo": "leorae.jpg",
+    "imagen": "species/gen-leorae.jpg",
+    "nombre": "Ambystoma leorae",
+    "comun": "Axolote de Río Frío",
+    "iucn": "CR",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "lermaense": {
+    "archivo": "lermaense.jpg",
+    "imagen": "species/gen-lermaense.jpg",
+    "nombre": "Ambystoma lermaense",
+    "comun": "Axolote de Lerma",
+    "iucn": "EN",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": "Foto base: Tiia Monto (User:Kulmalukko), CC BY 4.0, modificada",
+    "tamEpiteto": 104
+  },
+  "mabeei": {
+    "archivo": "mabeei.jpg",
+    "imagen": "species/gen-mabeei.jpg",
+    "nombre": "Ambystoma mabeei",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": "Foto base: Seig, CC BY 4.0, modificada",
+    "tamEpiteto": 112
+  },
+  "macrodactylum": {
+    "archivo": "macrodactylum.jpg",
+    "imagen": "species/gen-macrodactylum.jpg",
+    "nombre": "Ambystoma macrodactylum",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 68
+  },
+  "maculatum": {
+    "archivo": "maculatum.jpg",
+    "imagen": "species/gen-maculatum.jpg",
+    "nombre": "Ambystoma maculatum",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 94
+  },
+  "mavortium": {
+    "archivo": "mavortium.jpg",
+    "imagen": "species/gen-mavortium.jpg",
+    "nombre": "Ambystoma mavortium",
+    "comun": "Axolote tigre rayado",
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 98
+  },
+  "mexicanum": {
+    "archivo": "mexicanum.jpg",
+    "imagen": "species/mexicanum.png",
+    "nombre": "Ambystoma mexicanum",
+    "comun": "Axolote",
+    "iucn": "CR",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 92
+  },
+  "opacum": {
+    "archivo": "opacum.jpg",
+    "imagen": "species/gen-opacum.jpg",
+    "nombre": "Ambystoma opacum",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "ordinarium": {
+    "archivo": "ordinarium.jpg",
+    "imagen": "species/gen-ordinarium.jpg",
+    "nombre": "Ambystoma ordinarium",
+    "comun": "Achoque de Michoacán",
+    "iucn": "EN",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 98
+  },
+  "rivulare": {
+    "archivo": "rivulare.jpg",
+    "imagen": "species/gen-rivulare.jpg",
+    "nombre": "Ambystoma rivulare",
+    "comun": "Axolote de arroyo de Michoacán",
+    "iucn": "EN",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "rosaceum": {
+    "archivo": "rosaceum.jpg",
+    "imagen": "species/gen-rosaceum.jpg",
+    "nombre": "Ambystoma rosaceum",
+    "comun": "Axolote rosado",
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 110
+  },
+  "silvense": {
+    "archivo": "silvense.jpg",
+    "imagen": "species/gen-silvense.jpg",
+    "nombre": "Ambystoma silvense",
+    "comun": "Axolote del bosque de pino",
+    "iucn": "DD",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "talpoideum": {
+    "archivo": "talpoideum.jpg",
+    "imagen": "species/gen-talpoideum.jpg",
+    "nombre": "Ambystoma talpoideum",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 94
+  },
+  "taylori": {
+    "archivo": "taylori.jpg",
+    "imagen": "species/gen-taylori.jpg",
+    "nombre": "Ambystoma taylori",
+    "comun": "Axolote de Alchichica",
+    "iucn": "CR",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": "Foto base: Tiia Monto (User:Kulmalukko), CC BY 4.0, modificada",
+    "tamEpiteto": 112
+  },
+  "texanum": {
+    "archivo": "texanum.jpg",
+    "imagen": "species/gen-texanum.jpg",
+    "nombre": "Ambystoma texanum",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "tigrinum": {
+    "archivo": "tigrinum.jpg",
+    "imagen": "species/gen-tigrinum.jpg",
+    "nombre": "Ambystoma tigrinum",
+    "comun": null,
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  },
+  "velasci": {
+    "archivo": "velasci.jpg",
+    "imagen": "species/velasci.png",
+    "nombre": "Ambystoma velasci",
+    "comun": "Axolote del altiplano",
+    "iucn": "LC",
+    "etiqueta": "Ilustración generada con IA",
+    "credito": null,
+    "tamEpiteto": 112
+  }
+}

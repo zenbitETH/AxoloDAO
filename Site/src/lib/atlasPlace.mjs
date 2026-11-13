@@ -10,3 +10,10 @@ export function lugarDeInstalacion(p, enLaLocalidad = 'en') {
   const lugar = p.nivel === 'estado' || !p.municipio ? p.estado : `${p.municipio}, ${p.estado}`;
   return `${enLaLocalidad} ${lugar}`;
 }
+
+/** The name of an admin-1 unit from the admin1 data; where that data gives the state the country's own name («México» for MX-MEX) the state is spelled out, until the data does it.
+ *  Shared by the map (Atlas.tsx) and the tables page (AtlasTablas.astro), so both name a unit the same way. */
+export function nombreDeEstado(pr, loc) {
+  const dato = (loc === 'en' ? pr.nameEn : pr.nameEs) ?? pr.iso;
+  return pr.iso === 'MX-MEX' && /^m[eé]xico$/i.test(dato) ? (loc === 'en' ? 'State of Mexico' : loc === 'pt' ? 'Estado do México' : 'Estado de México') : dato;
+}

@@ -44,6 +44,8 @@ interface Props {
   etiquetasInst: EtiquetasInstalaciones | null;
   locale: string;
   abierta: boolean;
+  /** a phone or an upright tablet: the open legend is a sheet docked at the bottom, with its own close button, instead of a box under the chip */
+  hoja?: boolean;
   onToggle: () => void;
 }
 
@@ -65,9 +67,10 @@ export function Legend(p: Props) {
   // a state colouring is not drawn while a species is shown, so its legend waits too
   const conRampa = p.colorear !== 'ninguno' && !v;
   return (
-    <div class="at-legend-wrap">
+    <div class="at-legend-wrap" data-hoja={p.hoja ? '1' : '0'} data-abierta={p.abierta ? '1' : '0'}>
       <button type="button" class="at-legend-chip" aria-expanded={p.abierta ? 'true' : 'false'} aria-controls="at-legend" onClick={p.onToggle}>{ui.legendChip}</button>
-      <div id="at-legend" ref={caja} data-legend-for={v?.slug ?? ''} data-legend-ready="0" class="at-legend" aria-label={p.text.legend} data-legend hidden={!p.abierta}>
+      <div id="at-legend" ref={caja} data-legend-for={v?.slug ?? ''} data-legend-ready="0" class="at-legend" role={p.hoja ? 'dialog' : undefined} aria-label={p.text.legend} data-legend hidden={!p.abierta}>
+        {p.hoja && <div class="at-legend-head"><b>{p.text.legend}</b><button type="button" class="at-x" data-close="leyenda" aria-label={ui.legendClose} onClick={p.onToggle}>×</button></div>}
         {conRampa && (
           <>
             <div class="at-lt">{p.etiqueta}</div>

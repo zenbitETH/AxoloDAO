@@ -71,7 +71,13 @@ const nuevo = {
   capMetaTip: 'Metamorfosis: pierde las branquias y sale del agua', capRegenTip: 'Regeneración de patas documentada en estudios',
   cellIucn: 'UICN', habitatCodes: 'Hábitats UICN 3.1', threatCode: 'Amenazas UICN 3.2',
 };
-const es = { ...esBase, ...nuevo };
+// the full-screen atlas (13-nov): the link to the tables page, the credits of the map, the legend as a sheet
+const pantalla = {
+  es: { tablasLink: 'Ver en tablas', tablasTitle: 'Los datos del atlas en tablas, con su fecha, fuentes y licencias', credits: 'Créditos', legendClose: 'Cerrar la leyenda' },
+  en: { tablasLink: 'View as tables', tablasTitle: 'The atlas data as tables, with its date, sources and licences', credits: 'Credits', legendClose: 'Close the legend' },
+  pt: { tablasLink: 'Ver em tabelas', tablasTitle: 'Os dados do atlas em tabelas, com sua data, fontes e licenças', credits: 'Créditos', legendClose: 'Fechar a legenda' },
+};
+const es = { ...esBase, ...nuevo, ...pantalla.es };
 // English and Portuguese of the flat keys: the communications team, the communications repository fe84e42 (19-Oct-2026), applied as given except the four country strings, whose preposition now comes from the countriesIn / countriesOf vocabularies
 const enNuevo = {
   cellIucn: 'IUCN', habitatCodes: 'IUCN Habitats 3.1', threatCode: 'IUCN Threats 3.2',
@@ -124,6 +130,7 @@ export type UiText = typeof es;
 
 const en: UiText = {
   ...enNuevo,
+  ...pantalla.en,
   richnessToggle: 'Presence by state', ctlLimits: 'State boundaries', ctlRivers: 'Rivers and lakes',
   notaDifiereLermaense: 'Taylor (1940) places its type locality east of Toluca; the PACE maps draw it west of Toluca.', notaDifiereAndersoni: 'Aguilar-Miguel (2005) restricts it to the Laguna de Zacapu; the PACE maps draw it about 0.4° to the west.',
   capNeotenyTip: 'Neoteny: keeps its gills as an adult', capFacultativeTip: 'Facultative neoteny: may transform or keep its gills', capMetaTip: 'Metamorphosis: loses its gills and leaves the water', capRegenTip: 'Limb regeneration documented in studies', 
@@ -159,6 +166,7 @@ const en: UiText = {
 
 const pt: UiText = {
   ...ptNuevo,
+  ...pantalla.pt,
   richnessToggle: 'Presença por estado', ctlLimits: 'Limites estaduais', ctlRivers: 'Rios e lagos',
   notaDifiereLermaense: 'Taylor (1940) situa sua localidade-tipo a leste de Toluca; os mapas do PACE a desenham a oeste de Toluca.', notaDifiereAndersoni: 'Aguilar-Miguel (2005) a restringe à Laguna de Zacapu; os mapas do PACE a desenham cerca de 0,4° a oeste.',
   capNeotenyTip: 'Neotenia: mantém as brânquias quando adulta', capFacultativeTip: 'Neotenia facultativa: pode se transformar ou manter brânquias', capMetaTip: 'Metamorfose: perde as brânquias e sai da água', capRegenTip: 'Regeneração de patas documentada em estudos', 

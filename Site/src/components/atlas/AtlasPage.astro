@@ -1,18 +1,18 @@
 ---
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { getCollection } from 'astro:content';
 import { join } from 'node:path';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Atlas from './Atlas';
-import FreshnessChip from '@components/FreshnessChip.astro';
 import { type Locale, localePath, t } from '@/i18n/strings';
 import { atlasText } from '@/lib/atlasText';
+import { leerAtlas } from '@/lib/atlasLectura.mjs';
+import { IUCN_LABELS } from '@/components/species/strings';
 
-interface Props { locale: Locale; vista?: 'atlas' | 'especies' }
-const { locale, vista = 'atlas' } = Astro.props;
+/** `especie`: a species' own page (/atlas/<slug>/), the atlas opened on that species' card, with its own share card. */
+interface Props { locale: Locale; vista?: 'atlas' | 'especies'; especie?: string }
+const { locale, vista = 'atlas', especie } = Astro.props;
 const text = atlasText[locale];
-// /especies is the atlas on its species view: the index open, and the page named for the species
-const titulo = vista === 'especies' ? t(locale, 'species.title') : text.title;
 
 // The date of the data this build carries: the latest `retrievedAt` among the layer cards.
 const manifest = JSON.parse(readFileSync(join(process.cwd(), 'public/atlas/layers/manifest.json'), 'utf8'));
@@ -23,16 +23,39 @@ const pollMs = Number(import.meta.env.PUBLIC_ATLAS_POLL_MS ?? 30000) || 30000;
 // What the site itself knows of the species it has a page for: common names, accent colour. The snapshot carries the rest.
 const sitio = Object.fromEntries((await getCollection('species')).map((s) => [s.data.slug, { commonNames: s.data.commonNames, accentColor: s.data.accentColor, description: s.data.description, feeding: s.data.feeding }]));
 const speciesPathBase = localePath(locale, 'especies/');
+// the tables, the data date and the credits that used to sit under the map: their own page, one link from the layer switches
+const tablasHref = localePath(locale, 'atlas/tablas/');
+const atlasHref = localePath(locale, 'atlas/');
+
+// A species' own page: named for the species, and shared with its card (public/og/atlas/<slug>.jpg, made by scripts/og-especies.mjs,
+// in Spanish for every language). A species with no card yet (one the hub added since) is shared with the site's card.
+const ficha = especie ? (await leerAtlas('especies-atlas.json', { publica: hubUrl })).especies.find((e: { slug: string }) => e.slug === especie) : null;
+if (especie && !ficha) throw new Error(`/atlas/${especie}/: no such species in the atlas`);
+const tarjetas = JSON.parse(readFileSync(join(process.cwd(), 'public/og/atlas/manifest.json'), 'utf8'));
+const tarjeta = ficha && tarjetas[ficha.slug] && existsSync(join(process.cwd(), 'public/og/atlas', tarjetas[ficha.slug].archivo)) ? tarjetas[ficha.slug] : null;
+const comun = ficha ? sitio[ficha.slug]?.commonNames?.[0] : undefined;
+const iucn = ficha?.categories?.find((c: { system: string; scope: string }) => c.system === 'iucn' && c.scope === 'global')?.category as string | undefined;
+const estadoUicn = iucn ? IUCN_LABELS[iucn]?.[locale] : undefined;
+const COPIA = {
+  es: { titulo: 'en el atlas de los ajolotes', desc: (n: string, e?: string) => `${n}: dónde vive${e ? `, su estado en la Lista Roja de la UICN (${e})` : ''} y su ficha en el atlas de los ajolotes de AxoloDAO.`, ia: 'ilustración generada con IA', alt: (q: string, e?: string) => `${q}, en la tarjeta del atlas de AxoloDAO${e ? `; UICN: ${e}` : ''}` },
+  en: { titulo: 'in the axolotl atlas', desc: (n: string, e?: string) => `${n}: where it lives${e ? `, its IUCN Red List status (${e})` : ''} and its card in the AxoloDAO axolotl atlas.`, ia: 'AI-generated illustration', alt: (q: string, e?: string) => `${q}, on the AxoloDAO atlas card${e ? `; IUCN: ${e}` : ''}` },
+  pt: { titulo: 'no atlas dos axolotes', desc: (n: string, e?: string) => `${n}: onde vive${e ? `, seu estado na Lista Vermelha da IUCN (${e})` : ''} e sua ficha no atlas dos axolotes da AxoloDAO.`, ia: 'ilustração gerada por IA', alt: (q: string, e?: string) => `${q}, no cartão do atlas da AxoloDAO${e ? `; IUCN: ${e}` : ''}` },
+}[locale];
+const nombre = ficha ? `${ficha.scientificName}${comun ? ` (${comun})` : ''}` : '';
+
+// /especies is the atlas on its species view: the index open, and the page named for the species
+const titulo = ficha ? ficha.scientificName : vista === 'especies' ? t(locale, 'species.title') : text.title;
+const metaTitulo = ficha ? `${nombre} ${COPIA.titulo}` : vista === 'especies' ? t(locale, 'species.title') : text.metaTitle;
+const metaDesc = ficha ? COPIA.desc(nombre, estadoUicn) : vista === 'especies' ? undefined : text.metaDescription;
+const ogImage = tarjeta ? `/og/atlas/${tarjeta.archivo}` : undefined;
+const ogImageAlt = tarjeta ? COPIA.alt([ficha.scientificName, tarjeta.etiqueta ? COPIA.ia : null].filter(Boolean).join(', '), estadoUicn) : undefined;
 ---
 
-<BaseLayout locale={locale} title={vista === 'especies' ? t(locale, 'species.title') : text.metaTitle} appendSiteName description={vista === 'especies' ? undefined : text.metaDescription}>
+<BaseLayout pantallaCompleta locale={locale} title={metaTitulo} appendSiteName description={metaDesc} ogImage={ogImage} ogImageAlt={ogImageAlt}>
   <section aria-labelledby="atlas-h1">
     <h1 id="atlas-h1" class="sr-only">{titulo}</h1>
-    <Atlas client:only="preact" locale={locale} hubUrl={hubUrl} ncFlag={ncFlag} builtAt={builtAt} pollMs={pollMs} sitio={sitio} speciesPathBase={speciesPathBase} vista={vista} />
-    <div class="container-wide pb-24">
-      <p class="max-w-3xl text-white/75">{text.subtitle}</p>
-      <p class="mt-4"><FreshnessChip locale={locale} date={builtAt} /></p>
-    </div>
+    <p class="sr-only">{text.subtitle}</p>
+    <Atlas client:only="preact" locale={locale} hubUrl={hubUrl} ncFlag={ncFlag} builtAt={builtAt} pollMs={pollMs} sitio={sitio} speciesPathBase={speciesPathBase} tablasHref={tablasHref} vista={vista} especieInicial={ficha?.slug} atlasHref={atlasHref} />
   </section>
 </BaseLayout>
 
