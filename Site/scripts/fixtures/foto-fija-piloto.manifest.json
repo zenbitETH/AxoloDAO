@@ -1,7 +1,7 @@
 {
  "descripcion": "Foto fija del cierre del piloto: los datos de agua y de ajolotes del museo ya no se regeneran. Una corrección es un commit deliberado que actualiza este manifiesto en el mismo cambio.",
  "cierreDelMuseo": "2026-09-22",
- "ultimaEscritura": "2026-10-12",
+ "ultimaEscritura": "2026-11-13",
  "archivos": [
   {
    "ruta": "src/data/water-quality/tanks.json",
@@ -21,7 +21,7 @@
   },
   {
    "ruta": "src/data/ajolotes/bundle.json",
-   "sha256": "dd5fc9b5731313723aa0af50d16432d03d08a105b2eaae9b8827aceb838686bd"
+   "sha256": "969df5a57592e65c92fb74cc94c25fb8f9ef10af747b8671f7f749f14fb71b79"
   },
   {
    "ruta": "public/data/ajolotes/bajas-forense.json",
