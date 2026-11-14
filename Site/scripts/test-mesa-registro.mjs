@@ -22,6 +22,14 @@ const campos = camposNumericos(filas);
 ok(filas.length >= 100 && campos.length >= 10, `the bundle's biometry has rows and numeric fields to check (${filas.length} rows, ${campos.length} fields: ${campos.join(', ')})`);
 const sinNombre = campos.filter((k) => !MEDIDAS.some((m) => m.k === k));
 ok(sinNombre.length === 0, `every numeric field of the biometry is a named measure, with its unit and lane${sinNombre.length ? ` (missing: ${sinNombre.join(', ')})` : ''}`);
+// one weighing per ajolote and day (since 13-nov-2026): two weights on one date draw a vertical jump that no ajolote makes.
+// Chocorrol (47 and 27 g) and Guajolote (26 and 41 g) had two on 9 Nov 2025; the one that broke with what came next went.
+const pesadas = new Map();
+for (const [alias, rs] of Object.entries(bundle.historial))
+  for (const r of rs)
+    if (typeof r.peso === 'number' && r.fecha) pesadas.set(`${alias} ${r.fecha}`, [...(pesadas.get(`${alias} ${r.fecha}`) ?? []), r.peso]);
+const dobles = [...pesadas].filter(([, ps]) => ps.length > 1).map(([k, ps]) => `${k}: ${ps.join(' and ')} g`);
+ok(dobles.length === 0, `each ajolote has at most one weighing per day${dobles.length ? ` (${dobles.join('; ')})` : ''}`);
 
 // the card: every measure is in one column, once
 const enColumnas = COLUMNAS_TARJETA.flatMap((c) => c.claves);
