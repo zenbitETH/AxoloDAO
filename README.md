@@ -169,7 +169,7 @@ onchain layer that will anchor it.
                                         built and tested · nothing deployed · pre-audit
 ```
 
-**The site is the render source of truth.** The pilot's public **operational** figures on axolodao.org, water quality and the specimen roster, are a fixed snapshot of the end of the pilot: the museum closed on 2026-09-22, the files were last written on 2026-10-12, and they are committed as JSON and pinned byte for byte by `npm run test:foto-fija` in `Site/`. No script in this repository reads the operations workbook any more; new records are meant for contracts and attestations, not for this repository. The site holds no visitor identity: no forms, no accounts, no wallet connection. See [`Site/README.md`](./Site/README.md) for the snapshot and the scripts that remain.
+**The site is the render source of truth.** The pilot's public **operational** figures on axolodao.org, water quality and the specimen roster, are a fixed snapshot of the end of the pilot: the museum closed on 2026-09-22, the files were last written on 2026-10-12 (the specimen bundle was corrected on 2026-11-13), and they are committed as JSON and pinned byte for byte by `npm run test:foto-fija` in `Site/`. No script in this repository reads the operations workbook any more; new records are meant for contracts and attestations, not for this repository. The site holds no visitor identity: no forms, no accounts, no wallet connection. See [`Site/README.md`](./Site/README.md) for the snapshot and the scripts that remain.
 
 **Xovi captures observations.** [xovi.axolodao.org](https://xovi.axolodao.org/) is the interaction layer
 over the museum's daily livestream, 9:00 to 21:00 (Mexico City), with recordings available any time:
