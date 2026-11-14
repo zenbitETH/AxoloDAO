@@ -31,10 +31,7 @@ AxoloDAO connects conservation actors, researchers, and communities around a sha
 
 ## ⚠️ 2. The Conservation Crisis of the Genus *Ambystoma*
 
-The genus *Ambystoma* encompasses approximately **32 salamander species across North America**, of which
-**17 occur in Mexico** and **16 are endemic to the country** — approximately half of the genus (the North
-American and endemic counts are approximate and not individually sourced here; the Mexican count matches the
-17 species sheets published on this site, source: `Site/src/content/species/`, measured 2026-09-02). Despite
+The genus *Ambystoma* has **32 salamander species across North America**: Canada, the United States and Mexico. **17 occur in Mexico** and **16 live only there**, half of the genus. 16 occur in the United States, 8 of them only there, and 8 in Canada, none of them only there. The count follows the [atlas on this site](https://axolodao.org/atlas/tablas): in Mexico, the 17 species of the PACE *Ambystoma* (SEMARNAT/CONANP, 2018); elsewhere, the IUCN Red List units. AmphibiaWeb lists the same 32 species. Amphibian Species of the World, which ITIS follows, and the PROY-NOM-059-SEMARNAT-2025 draft treat six of the Mexican species as synonyms (*A. leorae* and *A. rivulare* of *A. altamirani*, *A. bombypellum* and *A. granulosum* of *A. lermaense*, *A. flavipiperatum* of *A. amblycephalum*, and *A. taylori* of *A. velasci*), which would leave 26 (source: [`/atlas/datos/especies-atlas.json`](https://axolodao.org/atlas/datos/especies-atlas.json), checked against AmphibiaWeb on 2026-11-14). Despite
 this, Mexico contributes only a small fraction of global scientific publications on *Ambystoma*. The Mexican axolotl (*Ambystoma mexicanum*) alone accounts for a disproportionate share of worldwide research output, consolidating its role as a dominant biomedical model organism.
 
 ### Systemic Extinction Pressures
@@ -47,7 +44,7 @@ The survival of Mexican *Ambystoma* species is threatened by:
 - Climate-driven ecosystem instability
 - Genetic fragmentation from isolated populations
 
-According to IUCN classifications, at least 9 Mexican endemic species are categorized as Critically Endangered, with additional taxa listed as Endangered — meaning a majority of endemic species face extremely high or very high extinction risk.<sup>[1](https://www.iucnredlist.org/search?query=ambystoma&searchType=species)</sup>
+On the IUCN Red List (version 2026-1, consulted 2026-10-16), 6 of the 16 species that live only in Mexico are Critically Endangered and 6 more are Endangered: 12 of 16 face an extremely high or very high risk of extinction. All six Critically Endangered species of the genus are Mexican.<sup>[1](https://www.iucnredlist.org/search?query=ambystoma&searchType=species)</sup>
 
 ### Global Research Imbalance
 
