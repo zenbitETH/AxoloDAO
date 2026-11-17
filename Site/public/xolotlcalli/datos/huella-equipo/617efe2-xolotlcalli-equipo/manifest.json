@@ -1,0 +1,23 @@
+{
+ "bundle": "617efe2-xolotlcalli-equipo",
+ "algoritmo": "sha256",
+ "licencia": "LicenseRef-registros-piloto-xolotlcalli",
+ "fuente": "los archivos de Equipo que lee /datos de Xovi (zenbitETH/Xovi 617efe2, packages/nextjs/lib/mesa/), byte por byte",
+ "archivos": [
+  {
+   "ruta": "chat-equipo.json",
+   "bytes": 70338,
+   "huella": "fc4d4460233c752fd0775aeb260d5f9329270a31b58ef0f3a14e707edf6247c2"
+  },
+  {
+   "ruta": "equipo-congelado.json",
+   "bytes": 256436,
+   "huella": "14f1d3b9adb1bf746a426bf25f12a1c06f1fe6598c2152b3ebdb3c4d3a17b341"
+  },
+  {
+   "ruta": "licences.jsonl",
+   "bytes": 51,
+   "huella": "e01e116c2a0d9f122a4fca582df13baf309137376501711d53e13230f613832c"
+  }
+ ]
+}
