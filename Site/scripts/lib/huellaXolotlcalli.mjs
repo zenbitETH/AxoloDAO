@@ -104,6 +104,7 @@ ${enCadena.map((t, i) => `<li>${esc(t)}${i === enCadena.length - 1 ? '.' : ';'}<
 </div>
 ${MOSTRAR_LIMITES ? `<p data-huella-limites>${esc(LIMITES)}</p>\n` : ''}
 <p data-huella-alcance>${esc(FRASE)}</p>
+<p data-huella-licencia>Licencia de estos archivos: <a href="/xolotlcalli/datos/licencia/">LicenseRef-registros-piloto-xolotlcalli</a>, sólo con fines no comerciales.</p>
 </section>`;
   // the v8 chain, from the museum's records instead of the hub; the last steps wait while the fingerprint is not signed
   const pasos = [

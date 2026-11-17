@@ -17,6 +17,8 @@ import { cadenaPublica, clipsPublicos, fichaPublica } from '../src/lib/pilotoPub
 import { cifrasDe } from '../src/lib/cifrasHome.mjs';
 import { archivosSinLicencia, copiarHuella, leerListado, registroDeConstruccion, verificarHuella } from './lib/huella.mjs';
 import { paginaXolotlcalli, problemasDeLaAtestacion, problemasDeLasAnclas } from './lib/huellaXolotlcalli.mjs';
+import { paginaEquipo } from './lib/huellaEquipo.mjs';
+import { paginaLicencia, RUTA as RUTA_LICENCIA } from './lib/licenciaXolotlcalli.mjs';
 import { firmaVigente } from '../src/lib/firmasRetiradas.mjs';
 import { arbolSucio, motivoParaNoConstruir, problemasDeLaConstruccionDelSitio } from './lib/construccionSitio.mjs';
 
@@ -102,6 +104,23 @@ try {
       malX.push(...archivosSinLicencia(paginaX, lx).map((r) => `${r}: the Xolotlcalli index shows no licence for it`));
       if (malX.length) throw new Error(`the Xolotlcalli fingerprint is not exact: ${malX.slice(0, 5).join('; ')}`);
       writeFileSync(join(dirX, 'index.html'), paginaX);
+    }
+    // the licence both Xolotlcalli fingerprints declare (lib/licenciaXolotlcalli.mjs): outside every listing; it throws while its date or mailbox is missing
+    mkdirSync(join(out, RUTA_LICENCIA.slice(1)), { recursive: true });
+    writeFileSync(join(out, RUTA_LICENCIA.slice(1), 'index.html'), paginaLicencia());
+    // the Equipo fingerprint (lib/huellaEquipo.mjs): the files Xovi /datos reads for its Equipo line, served from public/ and re-verified here
+    // against their own listing; the attestation (once signed) is checked against that listing, and the page is written
+    {
+      const dirE = join(out, 'xolotlcalli/datos/huella-equipo'), listadoE = join(dirE, 'listado-stand.txt');
+      const bytesE = readFileSync(listadoE), le = leerListado(bytesE.toString('utf8'));
+      const rutaAtE = join(SITE, 'src/data/atestacion-xolotlcalli-equipo.json');
+      const atLeidaE = existsSync(rutaAtE) ? JSON.parse(readFileSync(rutaAtE, 'utf8')) : null;
+      const atE = atLeidaE && firmaVigente(atLeidaE.atestador) ? atLeidaE : null;
+      const malE = [...verificarHuella({ listadoRuta: listadoE, salida: dirE }), ...problemasDeLaAtestacion(atE, bytesE)];
+      const paginaE = paginaEquipo(le, atE, { sha256Listado: `0x${sha(bytesE)}` });
+      malE.push(...archivosSinLicencia(paginaE, le).map((r) => `${r}: the Equipo index shows no licence for it`));
+      if (malE.length) throw new Error(`the Equipo fingerprint is not exact: ${malE.slice(0, 5).join('; ')}`);
+      writeFileSync(join(dirE, 'index.html'), paginaE);
     }
     const registro = registroDeConstruccion({ commitSitio: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: SITE }).toString().trim(), arbolLimpio: arbolSucio(SITE).length === 0, prueba, listadoRuta, entidades, atestacion });
     writeFileSync(join(salidaHuella, 'build.json'), JSON.stringify(registro, null, 1) + '\n');
