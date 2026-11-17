@@ -291,14 +291,14 @@ export const CONCEPTS: Concept[] = [
       pt: 'Custódia e baixas',
     },
     summary: {
-      es: `Cuidar ejemplares con registro abierto; honrar las bajas in memoriam.`,
-      en: `Caring for specimens on an open registry; honoring losses in memoriam.`,
-      pt: `Cuidar exemplares com registro aberto; honrar as baixas in memoriam.`,
+      es: `Cuidar ejemplares con registro público; honrar las bajas in memoriam.`,
+      en: `Caring for specimens on a public registry; honoring losses in memoriam.`,
+      pt: `Cuidar exemplares com registro público; honrar as baixas in memoriam.`,
     },
     body: {
-      es: `Durante el piloto, el Museo de Ajolotes Xolotlcalli resguardó y cuidó a cada ejemplar, manteniendo un registro público y abierto con su biometría, historial médico y plan de alimentación. Cuando un ejemplar dejaba la colección activa —por fallecimiento, traslado o liberación— se registraba como una baja. Las bajas por fallecimiento no se ocultaron: se conservan «in memoriam», con su última biometría y la causa probable, como parte del compromiso de transparencia.`,
-      en: `During the pilot, the Museo de Ajolotes Xolotlcalli held and cared for each specimen, keeping an open, public registry with its biometry, medical history and feeding plan. When a specimen left the active collection —through death, transfer or release— it was recorded as a baja (loss). Losses by death were not hidden: they are kept "in memoriam", with the specimen's last biometry and probable cause, as part of the commitment to transparency.`,
-      pt: `Durante o piloto, o Museo de Ajolotes Xolotlcalli guardou e cuidou de cada exemplar, mantendo um registro público e aberto com sua biometria, histórico médico e plano alimentar. Quando um exemplar deixava a coleção ativa —por falecimento, transferência ou soltura— era registrado como uma baixa. As baixas por falecimento não foram ocultadas: são mantidas "in memoriam", com a última biometria e a causa provável, como parte do compromisso de transparência.`,
+      es: `Durante el piloto, el Museo de Ajolotes Xolotlcalli resguardó y cuidó a cada ejemplar, manteniendo un registro público con su biometría, historial médico y plan de alimentación. Cuando un ejemplar dejaba la colección activa —por fallecimiento, traslado o liberación— se registraba como una baja. Las bajas por fallecimiento no se ocultaron: se conservan «in memoriam», con su última biometría y la causa probable, como parte del compromiso de transparencia.`,
+      en: `During the pilot, the Museo de Ajolotes Xolotlcalli held and cared for each specimen, keeping a public registry with its biometry, medical history and feeding plan. When a specimen left the active collection —through death, transfer or release— it was recorded as a baja (loss). Losses by death were not hidden: they are kept "in memoriam", with the specimen's last biometry and probable cause, as part of the commitment to transparency.`,
+      pt: `Durante o piloto, o Museo de Ajolotes Xolotlcalli guardou e cuidou de cada exemplar, mantendo um registro público com sua biometria, histórico médico e plano alimentar. Quando um exemplar deixava a coleção ativa —por falecimento, transferência ou soltura— era registrado como uma baixa. As baixas por falecimento não foram ocultadas: são mantidas "in memoriam", com a última biometria e a causa provável, como parte do compromisso de transparência.`,
     },
   },
   {
@@ -317,9 +317,9 @@ export const CONCEPTS: Concept[] = [
       pt: `App de arquivo de vídeo e visão computacional para observar os axolotes.`,
     },
     body: {
-      es: `Xovi (antes AxoloVision) es la capa de participación de AxoloDAO sobre el video del Museo de Ajolotes Xolotlcalli, cuyas grabaciones quedan en un archivo abierto. Quienes las observan pueden detectar comportamientos de los ajolotes y enviarlos como clips; tras la validación de la comunidad, cada contribución puede quedar registrada en Ethereum mediante atestaciones EAS. Los miembros inician sesión con su cuenta de Ethereum (SIWE, «Sign in with Ethereum»). El proyecto está en desarrollo activo.`,
-      en: `Xovi (formerly AxoloVision) is AxoloDAO's participation layer over the video from the Museo de Ajolotes Xolotlcalli, whose recordings stay in an open archive. Viewers can spot axolotl behaviours and submit them as clips; after community validation, each contribution can be recorded on Ethereum through EAS attestations. Members sign in with their Ethereum account (SIWE, "Sign in with Ethereum"). The project is in active development.`,
-      pt: `Xovi (antes AxoloVision) é a camada de participação da AxoloDAO sobre o vídeo do Museo de Ajolotes Xolotlcalli, cujas gravações ficam num arquivo aberto. Quem as assiste pode detectar comportamentos dos axolotes e enviá-los como clipes; após a validação da comunidade, cada contribuição pode ser registrada na Ethereum por meio de atestações EAS. Os membros entram com sua conta Ethereum (SIWE, "Sign in with Ethereum"). O projeto está em desenvolvimento ativo.`,
+      es: `Xovi (antes AxoloVision) es la capa de participación de AxoloDAO sobre el video del Museo de Ajolotes Xolotlcalli, cuyas grabaciones quedan en un archivo público. Quienes las observan pueden detectar comportamientos de los ajolotes y enviarlos como clips; tras la validación de la comunidad, cada contribución puede quedar registrada en Ethereum mediante atestaciones EAS. Los miembros inician sesión con su cuenta de Ethereum (SIWE, «Sign in with Ethereum»). El proyecto está en desarrollo activo.`,
+      en: `Xovi (formerly AxoloVision) is AxoloDAO's participation layer over the video from the Museo de Ajolotes Xolotlcalli, whose recordings stay in a public archive. Viewers can spot axolotl behaviours and submit them as clips; after community validation, each contribution can be recorded on Ethereum through EAS attestations. Members sign in with their Ethereum account (SIWE, "Sign in with Ethereum"). The project is in active development.`,
+      pt: `Xovi (antes AxoloVision) é a camada de participação da AxoloDAO sobre o vídeo do Museo de Ajolotes Xolotlcalli, cujas gravações ficam num arquivo público. Quem as assiste pode detectar comportamentos dos axolotes e enviá-los como clipes; após a validação da comunidade, cada contribuição pode ser registrada na Ethereum por meio de atestações EAS. Os membros entram com sua conta Ethereum (SIWE, "Sign in with Ethereum"). O projeto está em desenvolvimento ativo.`,
     },
     refs: ['SIWE', 'EAS'],
   },
