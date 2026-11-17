@@ -171,9 +171,12 @@ const COMPROBACIONES = [
   },
   {
     // El nombre nuevo es de los textos y las páginas, no de lo registrado: el texto de un registro (public/data, src/data, dist/data) se queda como se escribió.
+    // También el de un archivo de datos dentro de un paquete de huella (xolotlcalli/datos/huella*/<paquete>/*.json[l]): son bytes atestados, una copia
+    // congelada de lo publicado; la página de la huella, a su lado, sí se revisa.
     razon: 'el nombre anterior del museo (Biomuseo)',
     busca: (t0, { archivo = '' }) => {
       if (/(?:^|[/\\])(?:public|dist|src)[/\\]data[/\\]/.test(archivo)) return false;
+      if (/(?:^|[/\\])(?:public|dist)[/\\]xolotlcalli[/\\]datos[/\\]huella(?:-[a-z]+)?[/\\][^/\\]+[/\\][^/\\]+\.jsonl?$/.test(archivo)) return false;
       const t = sinCitaDelAcuerdo(t0, archivo);
       // Una página lleva el registro dentro de los props de una isla (props="…"): ese texto también se queda como se escribió.
       const visible = /\.html$/i.test(archivo) ? t.replace(/\sprops="[^"]*"/g, ' ') : t;
@@ -365,6 +368,7 @@ const POSITIVOS = [
   ['{"lab_case":"LAB-2026-0412"}', DATO, 'un número de caso de un laboratorio'], ['Laboratorio de Patología Acuática, caso n.º AB-1234', {}, 'un número de caso de un laboratorio'],
   ['la necropsia se hizo en el Laboratorio de Patología Acuática', {}, 'el nombre de un laboratorio'],
   ['resultado del laboratorio LANIVET: negativo', {}, 'el nombre de un laboratorio escrito como siglas'], ['muestra enviada a CIAD para cultivo', {}, 'el nombre de un laboratorio escrito como siglas'],
+  ['Biomuseo Xolotlcalli', { archivo: 'dist/xolotlcalli/datos/huella-equipo/index.html' }, 'el nombre anterior del museo'], ['Biomuseo', { archivo: 'public/xolotlcalli/datos/huella-equipo/listado-stand.json' }, 'el nombre anterior del museo'], ['Biomuseo', { archivo: 'public/xolotlcalli/datos/huella-equipo/617efe2-xolotlcalli-equipo/nota.md' }, 'el nombre anterior del museo'],
   ['Biomuseo Xolotlcalli', {}, 'el nombre anterior del museo'], ['Xolotlcalli BioMuseum', {}, 'el nombre anterior del museo'], ['Visitantes ao BioMuseu', {}, 'el nombre anterior del museo'], ['Bio Museo', {}, 'el nombre anterior del museo'], ['<p>Bienvenidos al Biomuseo</p>', { datos: true, archivo: 'dist/index.html' }, 'el nombre anterior del museo'],
   // la excepción de direcciones: nada fuera de la URL de una contraparte en el archivo de la tarjeta pasa
   [`{"filas":[{"id":"x","titulo":"pago a ${A40}"}]}`, { datos: true, archivo: 'dist/atlas/real/xolotlcalli-cadena.json' }, 'una dirección de cartera'],
@@ -405,7 +409,8 @@ const NEGATIVOS = [
   [`export const CITA_ACUERDO = '${CITA}';`, { archivo: 'src/lib/fichaOrg.mjs' }], [`a="${CITA}",b=1`, { archivo: 'dist/_astro/Atlas.abc123.js' }],
   ['"nota": null', DATO], ['{"retrievedAt": 1792734384}', DATO], ['const AT = { retrievedAt: 1792734384 };', { archivo: 'scripts/test-x.mjs' }], ['{"lastDataAt":1792734384,"timestamp": 1792734384}', DATO], ['Museo de Ajolotes Xolotlcalli (2025–2026)', {}], ['Se conocen 17 especies; temperatura 17.15 °C y pH 7.4', DATO], ['impact.stat.eth', {}],
   ['El laboratorio de agua del museo midió amoníaco y nitritos', {}], ['{"authorityKey": 1, "authorized": true}', DATO],
-  ['Lavado de trapos de Biomuseo', { datos: true, archivo: 'public/data/ops/bitacora.json' }], ['<astro-island props="{&quot;notas&quot;:&quot;Lavado de trapos de biomuseo&quot;}"></astro-island>', { datos: true, archivo: 'dist/xolotlcalli/index.html' }],                  // el texto de un registro se queda como se escribió
+  ['Lavado de trapos de Biomuseo', { datos: true, archivo: 'public/data/ops/bitacora.json' }],
+  ['Lavado de trapos de Biomuseo', { datos: true, archivo: 'public/xolotlcalli/datos/huella-equipo/617efe2-xolotlcalli-equipo/equipo-congelado.json' }], ['<astro-island props="{&quot;notas&quot;:&quot;Lavado de trapos de biomuseo&quot;}"></astro-island>', { datos: true, archivo: 'dist/xolotlcalli/index.html' }],                  // el texto de un registro se queda como se escribió
   ['Aplicación realizada por [persona]', REGISTRO], ['realizada por el equipo del museo', REGISTRO], ['Publicado por Zenbit', REGISTRO],
   ['Respuesta registrada 5 días después de la señal, por el equipo del museo', DATO], ['9 veces desde el 27 de mayo; 12 días con la curaduría de guardia', DATO], ['"role": "Laboratorio"', DATO], ['"grade": "A"', DATO],
   ['Fechas del 2026-05-09 al 2026-05-12, serie 2026-0512-0001', {}], ['resultados de pH y amoníaco, enviados a análisis', {}],

@@ -57,6 +57,7 @@
     "test:mesa-registro": "node scripts/test-mesa-registro.mjs",
     "test:home-sin-pulso": "node scripts/test-home-sin-pulso.mjs",
     "test:huella-xolotlcalli": "node scripts/test-huella-xolotlcalli.mjs",
+    "test:huella-equipo": "node scripts/test-huella-equipo.mjs",
     "test:gancho-fechas": "node scripts/test-gancho-fechas.mjs",
     "data:inventario": "node scripts/copiar-inventario.mjs",
     "test:hero-estado:dist": "node --experimental-strip-types --no-warnings scripts/check-hero-estado.mjs",

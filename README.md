@@ -1,19 +1,3 @@
-<!-- STAGING HEADER — STRIP THIS COMMENT BEFORE COMMITTING TO THE PUBLIC REPO
----
-title: AxoloDAO — root README (one added section: System and Xovi)
-audience: Kira (Protocol Engineer, Zenbit)
-date: 2026-09-02
-status: draft for review
----
-Rationale for the comment wrapper: this file ships to a PUBLIC repository, where a rendered
-`audience:` frontmatter block would be both meaningless to readers and an unnecessary disclosure.
-The dossier frontmatter is preserved here for the review pass and MUST NOT be committed.
-GATE (run before any commit to the public repo; must return nothing):
-    grep -n "STAGING HEADER" README.md Site/README.md
-The single-view diagram for this artifact sits inside the added "6. System and Xovi" section,
-because a diagram bolted above the project title would break the README it belongs to.
--->
-
 # 🧬 AxoloDAO
 
 AxoloDAO is a **[microDAO](./Docs/English/Concepts/4.%20MicroDAOs.md)** — an onchain organization built on ENS identity, Safe treasury, and EAS attestations — dedicated to advancing **[conservation and scientific research for Ambystoma species in Mexico](https://paragraph.com/@zenbit-2/we-are-axolodao)** through public digital infrastructure, collaborative governance, and transparent onchain/offchain coordination. This repository documents the conceptual, technical, and governance foundations of the AxoloDAO system.
@@ -83,9 +67,10 @@ AxoloDAO's architecture is built on:
 - **ENS-based decentralized identities** for institutions and conservation nodes
 - **Programmable treasuries (Safe)** for impact-based resource allocation
 
-The ENS identities and the Safe treasury are live today (§5). The specimen registry and the attestation
-layer are built and tested, but **nothing is deployed or registered on any chain as of 2026-09-02** — see
-§6.
+The ENS identities and the Safe treasury are live today (§5). The pilot's records are anchored on Ethereum
+Sepolia, a test network, as EAS attestations: the fingerprints of the atlas data and of the Xolotlcalli
+record, 48 weekly anchors and one clip confirmation. The specimen registry's own contracts are built and
+tested but have no deployment record on any chain as of 2026-11-17 — see §6.
 
 By aligning verifiable data capture with governance and finance, conservation becomes transparent, auditable, and collaborative public infrastructure.
 
@@ -144,10 +129,10 @@ AxoloDAO operates through ENS-based identities and modular organizational nodes.
 | [treasury.axolodao.eth](https://app.ens.domains/treasury.axolodao.eth) | `0xbDF701408aD237faA2d5d3177ae257aF35265dbb` | Safe multisig treasury (OP Mainnet) |
 | [zenbit.axolodao.eth](https://app.ens.domains/zenbit.axolodao.eth) | resolve via ENS | Infrastructure and system design node |
 | [xolotlcalli.axolodao.eth](https://app.ens.domains/xolotlcalli.axolodao.eth) | resolve via ENS | Conservation and museum node |
-| [ndali.axolodao.eth](https://app.ens.domains/ndali.axolodao.eth) | — | Community articulation and coordination node |
+| [ndali.axolodao.eth](https://app.ens.domains/ndali.axolodao.eth) | — | Community articulation and coordination node during the Xolotlcalli pilot (2025–2026) |
 
-The treasury (`treasury.axolodao.eth`) is a Safe multisig on OP Mainnet — 2/3 by internal decision, 2/4
-onchain while the fourth signer is retired. Its transaction history is public and can be read directly from
+The treasury (`treasury.axolodao.eth`) is a Safe multisig on OP Mainnet with three owners and a threshold of
+two (read onchain on 2026-11-17). Its transaction history is public and can be read directly from
 the Safe. Zenbit and the AxoloDAO treasury have both funded parts of Museo de Ajolotes Xolotlcalli's operational
 infrastructure onchain; the share is not currently published because no measured, sourced figure exists for
 it.
@@ -155,34 +140,43 @@ it.
 ## 🧩 6. System and Xovi
 
 Three surfaces carry the same record: a public site that renders it, an application that captures it, and an
-onchain layer that will anchor it.
+onchain layer that anchors it.
 
 ```text
  Museo de Ajolotes Xolotlcalli ──► pilot snapshot, fixed at its end (JSON) ──► axolodao.org
    tanks · specimens                                                           (public record)
         │
-        └── daily 9:00–21:00 stream ──► Xovi · xovi.axolodao.org ──► operator + verifier queues
+        └── daily 9:00–21:00 stream, ended 2026-09-23 ──► Xovi · xovi.axolodao.org ──► operator + verifier queues
                                                                             │
                                                                             ▼
                                         AxoloDAO System · private Foundry repository
                                         4 frozen EAS schemas · weekly Merkle root
-                                        built and tested · nothing deployed · pre-audit
+                                        built and tested · no deployment record · pre-audit
+                                        pilot records anchored with EAS on Sepolia (testnet)
 ```
 
 **The site is the render source of truth.** The pilot's public **operational** figures on axolodao.org, water quality and the specimen roster, are a fixed snapshot of the end of the pilot: the museum closed on 2026-09-22, the files were last written on 2026-10-12 (the specimen bundle was corrected on 2026-11-13), and they are committed as JSON and pinned byte for byte by `npm run test:foto-fija` in `Site/`. No script in this repository reads the operations workbook any more; new records are meant for contracts and attestations, not for this repository. The site holds no visitor identity: no forms, no accounts, no wallet connection. See [`Site/README.md`](./Site/README.md) for the snapshot and the scripts that remain.
 
 **Xovi captures observations.** [xovi.axolodao.org](https://xovi.axolodao.org/) is the interaction layer
-over the museum's daily livestream, 9:00 to 21:00 (Mexico City), with recordings available any time:
-operators record water cycles and readings, viewers submit clips of axolotl behaviour, and human verifiers
-confirm them before anything is treated as a fact. Machine-produced values enter as *proposals*, never as
-confirmed records. Xovi is pre-launch; no XOVI token has been issued and no Xovi-specific contract is
-deployed.
+built over the museum's daily livestream, 9:00 to 21:00 (Mexico City). The stream ended with the pilot: the
+transmission equipment was removed on 2026-09-23, and the recordings stay available. Operators recorded
+water cycles and readings, viewers submit clips of axolotl behaviour, and human verifiers confirm them
+before anything is treated as a fact. Machine-produced values enter as *proposals*, never as confirmed
+records. Xovi is in production; no XOVI token has been issued and no Xovi-specific contract is deployed.
 
 **The AxoloDAO onchain system is a private Foundry repository.** It holds the access manager (ENS-bound
 roles), the record registry and its validator, the EAS attestor and a weekly Merkle batcher. It is **built
-and tested (45 tests pass, 1 fork test skipped without an RPC; no CI); nothing is deployed or registered on
-any chain as of 2026-09-02**; it is Sepolia-deployable, and Base mainnet comes only after an external audit
-and ratification of the `SpecimenObserved` / `CareEventLogged` vocabulary by Xolotlcalli. The repository is private and is not linked from here.
+and tested (45 tests pass, 1 fork test skipped without an RPC; no CI); its contracts have no deployment
+record on any chain as of 2026-11-17**; it is Sepolia-deployable, and Base mainnet comes only after an
+external audit and ratification of the `SpecimenObserved` / `CareEventLogged` vocabulary by Xolotlcalli. The
+repository is private and is not linked from here.
+
+**The pilot's records are anchored without those contracts**, as EAS attestations on Ethereum Sepolia, a test
+network, signed by `firmas.zenbit.axolodao.eth` (0xadA8…9475): an `OpenDatasetSnapshot@1` fingerprint of the
+atlas data (uid 0x497a…5e4a, block 12009718) and one of the Xolotlcalli record (uid 0x4d12…faf5, block
+12009726), 48 `WeekAnchor@2` weekly anchors from 2025-W44 to 2026-W39 (blocks 12009731, 12009743 and
+12009750) and one `ClipConfirmation` (block 12009773). Each fingerprint page on axolodao.org shows how to
+check it. The data itself stays off chain.
 
 **Four canonical EAS schemas were frozen on 2026-07-18:** `TankReading`, `WaterQualitySummary`,
 `SpecimenObserved` and `CareEventLogged`. Their UIDs are *chain-independent* — the UID is
@@ -210,7 +204,7 @@ Conservation and field-practice node connected to biodiversity operations.
 ---
 
 ### Ndali Networking Center / [`ndali.axolodao.eth`](https://app.ens.domains/ndali.axolodao.eth)
-Community articulation and stakeholder coordination node.
+Community articulation and stakeholder coordination node during the Xolotlcalli pilot (2025–2026).
 
 - [Instagram](https://www.instagram.com/ndali_centro_de_conexion/)
 

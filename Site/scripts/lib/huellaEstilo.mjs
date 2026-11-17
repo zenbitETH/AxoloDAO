@@ -37,14 +37,14 @@ export function cadena(pasos, { hash = null } = {}) {
   const INICIO = 0.3, PASO = 0.55;
   const filas = pasos.map((p, i) => {
     const sig = pasos[i + 1];
-    const dir = !sig ? null : i < 3 ? 'der' : i === 3 ? 'abajo' : 'izq';
+    const dir = sig ? 'der' : null;
     const ocre = p.icono === 'listado' || p.icono === 'huella';
     const vars = `--k:${i};--d:${n2(INICIO + i * PASO)}s;--dn:${n2(INICIO + (i + 1) * PASO)}s`;
     const enlace = !sig ? '' : `<span class="enlace${sig.pendiente ? ' corta' : ''}${ocre ? ' ocre' : ''}" data-dir="${dir}" aria-hidden="true"></span>`;
     const icono = p.icono === 'huella' ? (hash ? glifo(hash) : ICONOS.listado) : ICONOS[p.icono];
     return `<li class="paso${p.pendiente ? ' pendiente' : ''}${p.icono === 'huella' ? ' es-huella' : ''}" style="${vars}"><span class="icono">${icono}</span>${enlace}<strong>${esc(p.titulo)}</strong><span class="nota">${esc(p.texto)}</span></li>`;
   });
-  return `<ol class="cadena">\n${filas.join('\n')}\n</ol>`;
+  return `<ol class="cadena" style="--n:${pasos.length}">\n${filas.join('\n')}\n</ol>`;
 }
 
 /** The v8 comparison: the listing's hash as computed from the served file against the one the attestation carries, swept character by
@@ -116,11 +116,10 @@ p{max-width:44rem}
 .intro > section > .lados ~ p{margin:1.25rem 0 0;padding:.1rem 0 .1rem 1rem;border-left:3px solid rgba(230,159,81,.45);font-size:.9375rem;color:var(--texto)}
 .intro > section > .lados ~ p:last-child{font:600 1.15rem/1.45 'Baloo 2',system-ui,sans-serif;color:var(--tinta);border-left-color:var(--ocre)}
 
-.cadena{list-style:none;margin:1.75rem 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--g);row-gap:var(--rg)}
+.cadena{--g:.75rem;list-style:none;margin:1.75rem 0 0;padding:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));column-gap:var(--g);width:min(calc(100vw - 2rem),76rem);margin-left:calc(50% - min(calc(50vw - 1rem),38rem))}
 .paso{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.25rem;animation:encender .6s ease-out var(--d) both}
-.paso:nth-child(5){grid-area:2/4}.paso:nth-child(6){grid-area:2/3}.paso:nth-child(7){grid-area:2/2}
-.paso strong{font:700 1.08rem/1.2 'Baloo 2',system-ui,sans-serif;color:var(--tinta);margin-top:.45rem}
-.paso .nota{font-size:.8125rem;line-height:1.45;color:var(--suave);max-width:15rem}
+.paso strong{font:700 1.02rem/1.2 'Baloo 2',system-ui,sans-serif;color:var(--tinta);margin-top:.45rem}
+.paso .nota{font-size:.78rem;line-height:1.45;color:var(--suave);max-width:11rem;text-wrap:balance}
 .icono{position:relative;z-index:1;flex:none;width:calc(var(--r) * 2);height:calc(var(--r) * 2);border-radius:50%;display:grid;place-items:center;background:var(--panel);border:1.5px solid var(--agua);box-shadow:0 0 18px rgba(127,211,206,.25)}
 .icono svg{width:62%;height:62%;fill:none;stroke:var(--agua);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .icono::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:2px solid var(--agua);opacity:0;animation:onda 1s ease-out var(--d) 1}
@@ -140,24 +139,13 @@ p{max-width:44rem}
 .enlace.ocre{--c:var(--ocre)}
 .enlace::before{content:"";position:absolute;inset:0;background:var(--c);box-shadow:0 0 8px var(--c);animation:trazo-x .45s ease-in-out calc(var(--dn) - .45s) both}
 .enlace::after{content:"";position:absolute;width:.55rem;height:.55rem;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c);opacity:0;top:50%;left:0;translate:-50% -50%;animation:viaje-der 6.6s linear calc(4.6s + var(--k) * 1.1s) infinite}
-.enlace[data-dir=der],.enlace[data-dir=izq]{top:calc(var(--r) - 1px);height:2px;width:calc(100% + var(--g) - var(--r) * 2)}
-.enlace[data-dir=der]{left:calc(50% + var(--r))}
+.enlace[data-dir=der]{top:calc(var(--r) - 1px);height:2px;left:calc(50% + var(--r));width:calc(100% + var(--g) - var(--r) * 2)}
 .enlace[data-dir=der]::before{transform-origin:left}
-.enlace[data-dir=izq]{right:calc(50% + var(--r))}
-.enlace[data-dir=izq]::before{transform-origin:right}
-.enlace[data-dir=izq]::after{animation-name:viaje-izq}
-.enlace[data-dir=abajo]{left:calc(50% + var(--r));right:calc(var(--g) * -1);top:calc(var(--r) - 1px);height:calc(100% + var(--rg));background:none;border:2px solid rgba(127,211,206,.16);border-left:0;border-radius:0 1.25rem 1.25rem 0}
-.enlace[data-dir=abajo]::before{inset:-2px -2px -2px 0;background:none;box-shadow:none;border:2px solid var(--c);border-left:0;border-radius:inherit;filter:drop-shadow(0 0 4px var(--c));animation-name:revela}
-.enlace[data-dir=abajo]::after{top:0;animation-name:viaje-vuelta}
 .enlace.corta{background:repeating-linear-gradient(90deg,rgba(230,159,81,.6) 0 6px,transparent 6px 12px)}
-.enlace.corta[data-dir=abajo]{background:repeating-linear-gradient(180deg,rgba(230,159,81,.6) 0 6px,transparent 6px 12px)}
 .enlace.corta::before,.enlace.corta::after{display:none}
 @keyframes trazo-x{from{transform:scaleX(0)}}
 @keyframes trazo-y{from{transform:scaleY(0)}}
 @keyframes viaje-der{0%{left:0;opacity:1}16%{left:100%;opacity:1}17%,100%{left:100%;opacity:0}}
-@keyframes viaje-izq{0%{left:100%;opacity:1}16%{left:0;opacity:1}17%,100%{left:0;opacity:0}}
-@keyframes revela{from{clip-path:inset(0 100% 100% 0)}to{clip-path:inset(0)}}
-@keyframes viaje-vuelta{0%{left:0;top:0;opacity:1}4%{left:100%;top:0}12%{left:100%;top:100%}16%{left:0;top:100%;opacity:1}17%,100%{left:0;top:100%;opacity:0}}
 @keyframes viaje-abajo{0%{top:0;opacity:1}16%{top:100%;opacity:1}17%,100%{top:100%;opacity:0}}
 
 .comparacion{margin-top:1.25rem;padding:1.4rem 1.5rem 1.5rem;border-radius:1.25rem;background:var(--panel);border:1px solid var(--linea)}
@@ -197,19 +185,21 @@ p{max-width:44rem}
 .portada{grid-template-columns:minmax(0,1fr) 6.5rem;gap:1rem;align-items:start}
 .figura figcaption{display:none}
 .lados{grid-template-columns:1fr}
-.cadena{grid-template-columns:1fr;row-gap:1.5rem;--rg:1.5rem}
-.paso{display:grid;grid-template-columns:calc(var(--r) * 2) minmax(0,1fr);column-gap:1rem;align-items:start;text-align:left}
-.paso:nth-child(n){grid-area:auto}
-.paso .icono{grid-row:1/span 2}
-.paso strong{margin-top:.35rem}
-.paso .nota{max-width:none}
-.enlace[data-dir]{left:calc(var(--r) - 1px);right:auto;top:calc(var(--r) * 2);width:2px;height:calc(100% - var(--r) * 2 + var(--rg));border:0;border-radius:0;background:rgba(127,211,206,.16)}
-.enlace[data-dir]::before{inset:0;border:0;border-radius:0;background:var(--c);box-shadow:0 0 8px var(--c);filter:none;transform-origin:top;animation-name:trazo-y}
-.enlace[data-dir]::after{top:0;left:50%;animation-name:viaje-abajo}
-.enlace.corta[data-dir]{background:repeating-linear-gradient(180deg,rgba(230,159,81,.6) 0 6px,transparent 6px 12px)}
 .comparacion{padding:1.1rem 1rem 1.2rem}
 .hash{font-size:.78rem}
 .barrido{display:none}
+}
+/* below 64rem seven steps do not fit in one line: the chain becomes a vertical list */
+@media (max-width:64rem){
+.cadena{grid-template-columns:1fr;row-gap:1.5rem;--rg:1.5rem;width:auto;margin-left:0}
+.paso{display:grid;grid-template-columns:calc(var(--r) * 2) minmax(0,1fr);column-gap:1rem;align-items:start;text-align:left}
+.paso .icono{grid-row:1/span 2}
+.paso strong{margin-top:.35rem}
+.paso .nota{max-width:none;text-wrap:wrap}
+.enlace[data-dir]{left:calc(var(--r) - 1px);top:calc(var(--r) * 2);width:2px;height:calc(100% - var(--r) * 2 + var(--rg))}
+.enlace[data-dir]::before{transform-origin:top;animation-name:trazo-y}
+.enlace[data-dir]::after{top:0;left:50%;animation-name:viaje-abajo}
+.enlace.corta[data-dir]{background:repeating-linear-gradient(180deg,rgba(230,159,81,.6) 0 6px,transparent 6px 12px)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
 `;

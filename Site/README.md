@@ -1,17 +1,3 @@
-<!-- STAGING HEADER — STRIP THIS COMMENT BEFORE COMMITTING TO THE PUBLIC REPO
----
-title: AxoloDAO Landing Site — README (refreshed)
-audience: Kira (Protocol Engineer, Zenbit)
-date: 2026-09-02
-status: draft for review
----
-Rationale for the comment wrapper: this file ships to a PUBLIC repository, where a rendered
-`audience:` frontmatter block would be both meaningless to readers and an unnecessary disclosure.
-The dossier frontmatter is preserved here for the review pass and MUST NOT be committed.
-GATE (run before any commit to the public repo; must return nothing):
-    grep -n "STAGING HEADER" README.md Site/README.md
--->
-
 # AxoloDAO Landing Site
 
 Astro 5 + Preact + Tailwind. Trilingual (ES default, EN, PT). Static output, deployed on Vercel at
@@ -41,7 +27,7 @@ The site is the **render surface for the atlas of the genus *Ambystoma* and the 
              │  and /xolotlcalli/datos/huella/                        │
              └───────────────────────────┬────────────────────────────┘
                                          ▼   dist/ → deploy:sitio, a prebuilt upload → Vercel
-   visitor standing at a tank ── scans the printed QR ──► /xolotlcalli#AA · #AM1…#AM4 · #AD
+   pilot QR sheet (museum closed 2026-09-22) ──► /xolotlcalli#AA · #AM1…#AM4 · #AD
 ```
 
 ## Quick start
@@ -134,25 +120,27 @@ Hand-editable **content** is `src/content/{members,partners,projects,news}/`, pl
 `src/i18n/strings.ts`, `src/components/waterQuality/amAquariums.ts` and the override JSONs under `scripts/`
 (`species-overrides.json`, `species-state-overrides.json`, and `state-path-overrides.json` if you create it).
 
-## The QR sheet — how a visitor enters the site
+## The QR sheet — how visitors entered the site during the pilot
 
 `/xolotlcalli/qr` renders a printable sheet of QR cards, one per station, from
 `src/components/QrSheet.astro`. Each tank card is a QR + label + call to action in its species accent colour;
-the two extra cards use their own brand colours (source: `src/components/QrSheet.astro:70-89`, 2026-09-03).
-Every card can be exported individually to PNG or SVG from the browser. The sheet is printed and a card is
-placed next to its aquarium; a visitor scanning it lands directly on that station's detail view.
+the two extra cards use their own brand colours (source: `src/components/QrSheet.astro:69-90`, 2026-11-17).
+Every card can be exported individually to PNG or SVG from the browser. During the pilot the sheet was
+printed and a card was placed next to its aquarium; a visitor scanning it landed directly on that station's
+detail view. The museum closed on 2026-09-22; the page and its anchors stay, so a printed card still opens
+its station's record.
 
 | Card | Anchor | Destination |
 |---|---|---|
 | AA — *Ambystoma andersoni* | `#AA` | `/xolotlcalli#AA` |
 | AM1 … AM4 — *Ambystoma mexicanum* | `#AM1` … `#AM4` | `/xolotlcalli#AM1` … `#AM4` |
 | AD — *Ambystoma dumerilii* | `#AD` | `/xolotlcalli#AD` |
-| Mapa | `#mapa` | `/#mapa` — the species map on the home page |
+| Mapa | `#mapa` | `/atlas/` — the atlas page of the sheet's locale |
 | Xovi | — | `https://xovi.axolodao.org/` |
 
 Eight cards in total: six tank stations plus two extra destinations (source:
-`src/components/QrSheet.astro`, 2026-09-03). There used to be a ninth, `Xovi
-Testnet`, pointing at `xovi-testnet.vercel.app`. It was dropped: this sheet gets
+`src/components/QrSheet.astro`, 2026-11-17). There used to be a ninth, `Xovi
+Testnet`, pointing at `xovi-testnet.vercel.app`. It was dropped: the sheet was
 printed and taped next to an aquarium, which is the worst place to leave a
 pointer at a test deployment.
 
