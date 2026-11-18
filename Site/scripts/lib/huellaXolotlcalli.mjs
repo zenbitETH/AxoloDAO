@@ -10,6 +10,8 @@ import { firmaVigente } from '../../src/lib/firmasRetiradas.mjs';
 const re40 = (x) => /^0x[0-9a-fA-F]{40}$/.test(x ?? '');
 const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 export const BASE = '/xolotlcalli/datos/huella/';
+// maggia, 17-nov-2026 (M2): the October hub was not kept, so the anchors no longer admit a proof per record; shown wherever the page names them
+export const SIN_PRUEBA_ANCLAS = 'Las anclas semanales de octubre ya no permiten comprobar sus registros diarios uno por uno: el hub que guardaba los datos para armar esas pruebas no se conservó. Cada ancla, por sí misma, sigue mostrando en qué bloque se registraron su raíz y sus conteos de registros públicos.';
 export const FRASE = 'La verificación comprueba que los archivos no cambiaron desde que se registró su huella; no certifica que sus fuentes sean exactas.';
 // what this fingerprint leaves out (the IP review's wording); dropping the line is setting this to false
 export const MOSTRAR_LIMITES = true;
@@ -102,8 +104,7 @@ ${enCadena.map((t, i) => `<li>${esc(t)}${i === enCadena.length - 1 ? '.' : ';'}<
 </ul>
 </div>
 </div>
-${MOSTRAR_LIMITES ? `<p data-huella-limites>${esc(LIMITES)}</p>\n` : ''}
-<p data-huella-alcance>${esc(FRASE)}</p>
+${MOSTRAR_LIMITES ? `<p data-huella-limites>${esc(LIMITES)}</p>\n` : ''}${anclas ? `<p data-huella-anclas-sin-prueba>${esc(SIN_PRUEBA_ANCLAS)}</p>\n` : ''}<p data-huella-alcance>${esc(FRASE)}</p>
 <p data-huella-licencia>Licencia de estos archivos: <a href="/xolotlcalli/datos/licencia/">LicenseRef-registros-piloto-xolotlcalli</a>, sólo con fines no comerciales.</p>
 </section>`;
   // the v8 chain, from the museum's records instead of the hub; the last steps wait while the fingerprint is not signed
