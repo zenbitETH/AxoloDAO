@@ -176,7 +176,9 @@ network, signed by `firmas.zenbit.axolodao.eth` (0xadA8…9475): an `OpenDataset
 atlas data (uid 0x497a…5e4a, block 12009718) and one of the Xolotlcalli record (uid 0x4d12…faf5, block
 12009726), 48 `WeekAnchor@2` weekly anchors from 2025-W44 to 2026-W39 (blocks 12009731, 12009743 and
 12009750) and one `ClipConfirmation` (block 12009773). Each fingerprint page on axolodao.org shows how to
-check it. The data itself stays off chain.
+check its fingerprint. The weekly anchors can no longer be checked record by record: the hub that held the
+data to build those proofs was not kept. Each anchor, on its own, still shows the block in which its root and
+its counts of public records were registered. The data itself stays off chain.
 
 **Four canonical EAS schemas were frozen on 2026-07-18:** `TankReading`, `WaterQualitySummary`,
 `SpecimenObserved` and `CareEventLogged`. Their UIDs are *chain-independent* — the UID is

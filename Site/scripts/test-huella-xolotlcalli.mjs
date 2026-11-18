@@ -8,7 +8,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { archivosSinLicencia, leerListado } from './lib/huella.mjs';
 import { firmaVigente } from '../src/lib/firmasRetiradas.mjs';
-import { ATESTADOR_DATOS, FRASE, LIMITES, LINEA_ANCLAS, MOSTRAR_LIMITES, paginaXolotlcalli, problemasDeLaAtestacion, problemasDeLasAnclas } from './lib/huellaXolotlcalli.mjs';
+import { ATESTADOR_DATOS, FRASE, LIMITES, LINEA_ANCLAS, MOSTRAR_LIMITES, SIN_PRUEBA_ANCLAS, paginaXolotlcalli, problemasDeLaAtestacion, problemasDeLasAnclas } from './lib/huellaXolotlcalli.mjs';
 import { SALIDA } from './xolotlcalli-registro.mjs';
 
 const SITE = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -56,6 +56,10 @@ export function problemasDeLaPagina(html, at, anclas = null) {
   const conAnclas = intro.includes(`<li>${LINEA_ANCLAS};</li>`);
   if (anclas && !conAnclas) mal.push('confirmed anchors, and no anchors line');
   if (!anclas && /anclas semanales/.test(intro)) mal.push('an anchors line with no confirmed anchors');
+  const sinPrueba = texto((intro.match(/<p data-huella-anclas-sin-prueba>([\s\S]*?)<\/p>/) ?? [])[1]);
+  if (anclas && sinPrueba !== SIN_PRUEBA_ANCLAS) mal.push('confirmed anchors, and not maggia\'s line that they no longer admit a proof per record, verbatim');
+  if (!anclas && /data-huella-anclas-sin-prueba/.test(intro)) mal.push('the no-proof line with no anchors named');
+  if (anclas && intro.indexOf('data-huella-anclas-sin-prueba') > intro.indexOf('data-huella-alcance')) mal.push('the no-proof line comes after the verification sentence');
   return mal;
 }
 
